@@ -1,20 +1,17 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: ''
-labels: ''
+about: Suggest an idea for the Just Yuri mod
+title: "Feature Request - <Name Suggestion Here>"
+labels: Feature Request
 assignees: ''
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+**Your Request**
+What would you like to see in Just Yuri?
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
+**Further Details**
+Why would this feature be useful? Are there any benefits? Does it help accomplish a goal?
 
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
+**Links / Attachments**
+Do you have any sources or any kind of file that helps describe the feature?
