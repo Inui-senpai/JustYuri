@@ -1,0 +1,13 @@
+Sweaters	School
+1_left.png	Left 1 and 4? Right 3 maybe 2
+2.png		Left and right 6 or 7 maybe 5
+3.png		Left and right 8
+4.png		Left and right 9 or 10
+5.png		Right 9 or 10
+6.png		Left 11 or 12
+7.png		Left 12 and Right 9 or 10
+8.png		Left 14 and Right 13
+
+BCHN - missing both sides
+I,M - has both sides
+Er,Dl,Gr,Fl,Kl,Lr,Or,Jr - Could be recoverable from their corresponding pair.
