@@ -3,18 +3,18 @@ default persistent.mod_count = 0
 label intro_mods:
 
     # Check if the previous label was ch30_intro2
-    if renpy.previous_label == "ch30_intro2":
+    if check_memory("ch30_intro2"):
         # Call intro_mods
-        call intro_mods
+        $ renpy.call("intro_mods")
     else:
         # Check if the game was opened (no previous label)
-        if renpy.previous_label is None:
-            call startup_mods
+        if check_memory(None):
+            $ renpy.call("startup_mods")
         else:
             # Default case: No special handling
             # Add code here for general behavior or other checks
             # Or just pass to detection_pitstop
-            jump detection_pitstop
+            $ renpy.call("detection_pitstop")
 
     $ show_chr("A-ABAAA-AAAA")
     y "So let's..."

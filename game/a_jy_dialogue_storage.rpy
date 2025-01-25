@@ -1383,7 +1383,7 @@ init -5 python:
         sub_category = "Awkward Topics"))
 
     add_dialogue(Dialogue(
-        label = "NNN",
+        label = "nnn",
         category = "actives",
         conditions = ["""time_interval_check(
             {'month': 11,

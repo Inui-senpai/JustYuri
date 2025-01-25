@@ -105,7 +105,7 @@ label chess:
     # avoid rolling back and losing chess game state
     $ renpy.block_rollback()
 
-    show screen chess(fen, player_color, movetime, depth) # Correctly shows the screen
+    show screen chess(fen=fen, player_color=player_color, movetime=movetime, depth=depth)
 
     # avoid rolling back and entering the chess game again
     $ renpy.block_rollback()
@@ -114,42 +114,34 @@ label chess:
     $ renpy.checkpoint()
 
     $ quick_menu = True
-    window show
 
 
-    #label chess_loop:
-    #   $ keep_looping = True
-    #   while keep_looping:
-    #       $ global player_turn
-    #       if player_turn:
-    #           y "It's your turn, [player]!{fast}{nw}"
-    #       else:
-    #           y "I'm going to do this move{cps=1}...{/cps}{nw}"
-    #           $ player_turn = True
-    #       if _return == DRAW or _return == WHITE or _return == BLACK:
-    #           hide screen Chess
-    #           $ keep_looping = False
+    # label chess_loop:
+    #    $ keep_looping = True
+    #    while keep_looping:
+    #        $ global player_turn
+    #        if player_turn:
+    #            y "It's your turn, [player]!{fast}{nw}"
+    #        else:
+    #            y "I'm going to do this move{cps=1}...{/cps}{nw}"
+    #            $ player_turn = True
+    #        if _return == DRAW or _return == WHITE or _return == BLACK:
+    #            hide screen Chess
+    #            $ keep_looping = False
 
     #label chess_results:
     if _return == DRAW:
         y "Looks like it's a draw. Well played, [player]."
-        $ renpy.call("ch30_loop")
+        jump ch30_loop
     else: # RESIGN or CHECKMATE
         $ winner = "White" if _return == WHITE else "Black"
 
         if player_color is not None: # PvC
             if _return == player_color:
                 y "Congratulations, [player]!"
-                $ renpy.call("ch30_loop")
+                jump ch30_loop
             else:
                 y "Better luck next time, [player]."
-                $ renpy.call("ch30_loop")
+                jump ch30_loop
 
     return
-
-# In your screen definition file (e.g., chess_displayable.rpy)
-screen chess(fen, player_color, movetime, depth):
-    modal True
-
-    default hover_displayable = HoverDisplayable()
-    default chess_displayable = ChessDisplayable(fen=fen, player_color=player_color, movetime=movetime, depth=depth)

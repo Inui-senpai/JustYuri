@@ -1,4 +1,4 @@
-define Khet_winner = 0
+"""define Khet_winner = 0
 default explain = 0
 
 label Khet:
@@ -482,3 +482,4 @@ init python:
                             self.who_turn_is_it = 0
                             self.start_laser(self.current_color)
                             self.current_color = self.Yuri_color
+"""

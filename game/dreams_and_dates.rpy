@@ -295,6 +295,7 @@ label dates_and_dreams_system:
             ["garden_date", "persistent.lovecheck and invariant_karma() > 3"],
             ["urban_date", "persistent.lovecheck and invariant_karma() > 3"],
             ["tropical_date", "persistent.lovecheck and invariant_karma() > 3"],
+            ["valentines_2021", "persistent.lovecheck and invariant_karma() > 3"],
             ["vday_2024_date", "persistent.lovecheck and invariant_karma() > 3"]
             ]
 
@@ -321,44 +322,67 @@ image glitch_color_scaled:
 screen dates_and_dreams(dict_items, type):
     fixed:
         python:
-            #Split array of dreams for X 12 elements arrays as on screen will be avaible only 12 elements at once.
+            dates_and_dreams = [
+                # dreams
+                ["rain_dream", "persistent.lovecheck and invariant_karma() > 3", "dream"],
+                ["ocean_dream", "renpy.seen_label('rain_dream') and persistent.lovecheck and invariant_karma() > 3", "dream"],
+                ["highway_dream", "renpy.seen_label('rain_dream') and persistent.lovecheck and invariant_karma() > 3", "dream"],
+                ["stroll_dream", "renpy.seen_label('rain_dream') and persistent.lovecheck and invariant_karma() > 3", "dream"],
+
+                # dates
+                ["garden_date", "persistent.lovecheck and invariant_karma() > 3", "date"],
+                ["urban_date", "persistent.lovecheck and invariant_karma() > 3", "date"],
+                ["tropical_date", "persistent.lovecheck and invariant_karma() > 3", "date"],
+                ["valentines_2021_date", "persistent.lovecheck and invariant_karma() > 3", "date"],
+                ["vday_2024_date", "persistent.lovecheck and invariant_karma() > 3", "date"]
+                ]
             split_dreams = []
-            for i, dream in enumerate(dict_items):
-                print(dream)
-                if type in dream[0] and eval(dream[1]):
-                    split_dreams.append(dream)
-                    print("accepted")
-                elif type in dream[0] and not eval(dream[1]):
-                    split_dreams.append([dream[0],"glitch"])
-                    print("rejected")
-            split_dreams = split(split_dreams,12)
+            temp_dreams = []
+
+            for dream in dates_and_dreams:
+                if dream[2] == type and eval(dream[1]): # Assuming dream[2] is the 'type' and dream[1] is the condition
+                    temp_dreams.append(dream)
+                elif dream[2] == type and not eval(dream[1]):
+                    temp_dreams.append([dream[0], "glitch"])
+            # If you still want to enforce a limit of 12 per page:
+                if len(temp_dreams) == 12:
+                    split_dreams.append(temp_dreams)
+                    temp_dreams = []
+            if temp_dreams: # Add any remaining dreams to the list.
+                split_dreams.append(temp_dreams)
             # Variable pointing which part of dreams are showm
             def Move_left(dict_items):
                 global current_dream_chart
-                current_dream_chart-=1
-                renpy.hide_screen("hello_world")
-                renpy.show_screen("hello_world", dict_items)
+                current_dream_chart = max(0, current_dream_chart - 1)
+                renpy.hide_screen("dates_and_dreams")  # Make sure this is the correct screen name
+                renpy.show_screen("dates_and_dreams", dict_items, type)  # Pass the 'type' argument
+
             def Move_right(dict_items):
                 global current_dream_chart
-                current_dream_chart+=1
-                renpy.hide_screen("hello_world")
-                renpy.show_screen("hello_world", dict_items)
+                current_dream_chart = min(len(split_dreams) - 1, current_dream_chart + 1)
+                renpy.hide_screen("dates_and_dreams")  # Make sure this is the correct screen name
+                renpy.show_screen("dates_and_dreams", dict_items, type)  # Pass the 'type' argument
 
         for i, dream in enumerate(split_dreams[current_dream_chart]):
-
+            # Assuming each page has a maximum of 12 dreams/dates (4 per row, 3 rows)
+            $ row_index = i // 4 # Integer division this time to get the row number.
+            $ col_index = i % 4 # Modulo to get the column number.
+            $ button_width = 300 # The width you are giving to the buttons
+            $ button_height = 168
+            $ x_spacing = 10
+            $ y_spacing = 10
             imagebutton:
-                xalign 0.05 + (i % 4) * 0.3
-                yalign 0.1 + math.ceil(i/4) * 0.35
+                # Left edge position + button width * column index + spacing between buttons.
+                xpos 20 + col_index * (button_width + x_spacing)
+                # Top edge position + button height * row index + spacing between rows.
+                ypos 30 + row_index * (button_height + y_spacing)
                 if dream[1] != "glitch":
-                    idle im.Scale(type + "s/Thumbnail/" + dream[0] + "_idle.png", 300, 168)
-                    hover im.Scale(type + "s/Thumbnail/" + dream[0] + "_hover.png", 300, 168)
+                    idle im.Scale(type + "s/Thumbnail/" + dream[0] + "_idle.png", button_width, button_height)
+                    hover im.Scale(type + "s/Thumbnail/" + dream[0] + "_hover.png", button_width, button_height)
                     action Jump(dream[0])
                 else:
                     idle LiveComposite((300, 168), (0,0), im.Scale(type + "s/Thumbnail/" + dream[0] + "_idle.png", 290, 168), (0, 0), "glitch_color_scaled")
                     hover LiveComposite((300, 168), (0,0), im.Scale(type + "s/Thumbnail/" + dream[0] + "_idle.png", 290, 168), (0, 0), "glitch_color_scaled")
-            #if dream[1] != "glitch":
-            #    text str(dream[0]) xalign 0.05 + (i % 4) * 0.243 yalign 0.1 + math.ceil(i/4) * 0.28
-
 
         #Arrow image buttons
         if(current_dream_chart<len(split_dreams)-1):

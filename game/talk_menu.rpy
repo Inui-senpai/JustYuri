@@ -119,7 +119,7 @@ screen talkbutton():
             textbutton "Dreams":
                 action Call("talk_slow_no_dismiss", "dream_menu")
     #       null height 10
-    #           textbutton "Nightmare":
+    #           textbutton "Nightmares":
     #               action Call("talk_slow_no_dismiss", "nightmare_menu")
     #           null height 
             if renpy.android:
@@ -169,10 +169,14 @@ label games_menu:
     menu:
         "Tetris":
             jump tetris
-        "Khet":
-            jump Khet
+        #"Khet":
+        #    jump Khet
         "Chess":
             jump chess
+        #"Solitaire":
+        #    jump solitaire
+        #"Reversi":
+        #    jump reversi
         "Nevermind":
             jump ch30_loop
 
@@ -182,7 +186,7 @@ screen untalkbutton():
         textbutton "Dreams":
             action NullAction()
 #       null height 10
-#           textbutton "Nightmare":
+#           textbutton "Nightmares":
 #               action NullAction()
 #           null height 10
         if persistent.lovecheck:

@@ -23,7 +23,7 @@ $ gui.show_name = True
 
 ## The version of the game.
 
-define config.version = "Beta-1.11.0"
+define config.version = "Beta-1.10.4"
 
 
 ## Text that is placed on the game's about screen. To insert a blank line
