@@ -1,0 +1,33 @@
+yh1.ogg (Hello Again)- 
+    Neutral(?) Karma and Sanity; 
+    - Plays after launching the game for the first time, or changing the music to default 	with positive sanity
+
+yins1.ogg-(Hello Again Insane)
+     Negative Karma and Sanity;
+    - Plays after changing the music to default with low sanity
+ 
+Eternity.ogg- 
+    Positive Karma, Negative(?) Sanity;
+    - Plays during late sunrise (for now)
+
+Introversion.ogg- 
+    Positive Karma and Sanity;
+    - Plays during the day and early sunrise (for now)
+
+Starset.ogg- 
+    Neutral Karma and Sanity;
+        - Plays during sunset (as of now)
+
+Enotronics.ogg- 
+    Neutral(?) Karma, Positive Sanity;
+    - Played at night (for now)
+
+Teardrops.ogg
+	Positive Karma and Sanity; 
+	- Plays durning the pleasant rain dream
+
+Stagnant_Air.ogg
+	Negative Karma, Positive Sanity;
+	- Should play at sunset/night (for now) with yuri at the aforementioned K/S level
+
+*Footnote: Amiss here. I'm not including certain tracks such as y_hopeless in this list despite them being in the music folder because right now, I'd consider them a little more on the "sound effect" side. Might change this in the future
