@@ -1,0 +1,19 @@
+*yupee time of day sprite bug - being worked on by chronks
+
+*"whats your favorite weather?" conversation - always insanity variant  bug/coding typo - just needs a code correction of "hogh" to "High" to fix
+
+*karma and sanity are NOT being modified per conversion as expected,  only on certain few deep involved conversations, possible bug?
+
+*when attempting to play the game with no audio devices enabled, it just crashes to a traceback telling you "no audio". - need this to be handled by the game with out it crashing
+
+* " i love you" active bug - when asking with no karma or insanity Yuri does not reply to question and active closes
+*also when player has + karma,  it appears to use a negative karma response as mc kinda acts uncertain and Yuri questions the players statement
+
+*random outro/goodbye bug? - outro/goodbyes appear to be random -
+        - saying goodbye at neutral 0 karma and insanity game appers to be pulling from low karma / high insanity goodbyes
+the "im gonna ..close the game now" goodbye. 
+and
+"oh! look at the time!" goodbye which appears to be a high insanity 
+goodbye
+
+- saying goodbye at high karma and low insanity occasionaly has these goodbyes as well
