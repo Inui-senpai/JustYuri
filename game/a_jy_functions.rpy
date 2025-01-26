@@ -1,5 +1,4 @@
 #Currently in the process of making these functions to replace the mess located in classes.rpy
-
 ###################
 #DEFAULT VARIABLES#
 ###################

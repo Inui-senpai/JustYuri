@@ -162,16 +162,16 @@ label updatedevconsole_torrent(log=[("", "")]):
     while x < len(text):
         $text_element = text[x]
         show console_text_new "_" as ctext zorder 100:
-            #xalign 0.014 yalign 1.0
+            pass #xalign 0.014 yalign 1.0
         show console_text_new "[text_element]" as ctext zorder 100:
-            #xalign 0.014 yalign 1.0
+            pass #xalign 0.014 yalign 1.0
         if text_element.strip():
             $renpy.music.play("sfx/text_typing.mp3", channel="sound", loop=False)
         $pause(len(text) / 30.0+1.7)
         stop sound
         hide ctext
         show console_text_new "_" as ctext zorder 100:
-            #xalign 0.014 yalign 1.0
+            pass #xalign 0.014 yalign 1.0
         call updatedevconsolehistory(history[x])
         $x += 1
     pause 0.5

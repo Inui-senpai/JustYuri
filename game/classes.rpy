@@ -4,15 +4,15 @@ init -2 python:
 
     class Quit(Action, DictEquality):
         """
-         :doc: menu_action
+        :doc: menu_action
 
-         Quits the game.
+        Quits the game.
 
-         `confirm`
-              If true, prompts the user if he wants to quit, rather
-              than quitting directly. If None, asks if and only if
-              the user is not at the main menu.
-         """
+        `confirm`
+            If true, prompts the user if he wants to quit, rather
+            than quitting directly. If None, asks if and only if
+            the user is not at the main menu.
+        """
 
         def __init__(self, confirm=None):
             self.confirm = confirm
@@ -36,15 +36,15 @@ init -2 python:
 
     class Quit_no_farewell(Action, DictEquality):
         """
-         :doc: menu_action
+        :doc: menu_action
 
-         Quits the game.
+        Quits the game.
 
-         `confirm`
-              If true, prompts the user if he wants to quit, rather
-              than quitting directly. If None, asks if and only if
-              the user is not at the main menu.
-         """
+        `confirm`
+            If true, prompts the user if he wants to quit, rather
+            than quitting directly. If None, asks if and only if
+            the user is not at the main menu.
+        """
 
         def __init__(self, confirm=None):
             self.confirm = confirm
@@ -65,4 +65,3 @@ init -2 python:
                     renpy.jump('save_and_quit_but_its_abrupt')
             else:
                 renpy.jump("_quit")
-

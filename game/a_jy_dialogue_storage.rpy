@@ -1,5 +1,4 @@
 default ch30_loop_type = "pool"
-
 label repeat_idles:
     y "It seems we ran out of dialogues you haven't seen yet."
     $ch30_loop_type = "pool"
