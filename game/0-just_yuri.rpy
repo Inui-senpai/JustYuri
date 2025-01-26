@@ -9,7 +9,7 @@
 
 #==================================================#
 # Pre Initialization
-#==================================================#
+#==================================================#    
 python early:
     import os, shutil, datetime, singleton, random, subprocess, base64, string, math, time, webbrowser
     #import jycrypt
@@ -72,6 +72,19 @@ init -999 python:
 
     #If game closed with HDY enabled, disable it
     persistent.HDY = False
+
+    
+    # Prints an error message and optionally writes the full error in the specified path relative to the base directory. Path must be a string.
+    def print_error(message, path=None):
+        exc_type, exc, tb = sys.exc_info()
+        print(message + ":  " + str(exc_type) + ": " + str(exc))
+
+        if (type(path) == str):
+            with open(os.path.join(config.basedir, path, "error.log"), mode='w') as file_error:
+                file_error.write(message + os.linesep)
+                file_error.write(str(exc_type) + ": " + str(exc) + os.linesep)
+                traceback.print_tb(tb, file=file_error)
+                print("  - Created error.log file in " + path)
 
 #==================================================#
 # Post Initialization
