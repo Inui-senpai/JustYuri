@@ -1,4 +1,4 @@
-default persistent.mod_count = 0
+
 
 label intro_mods:
 

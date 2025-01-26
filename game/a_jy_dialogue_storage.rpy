@@ -15,7 +15,7 @@ label repeat_idles:
     #    y "That's a relief... thank you, [player]."
     #return#
 
-init -5 python:
+init -3 python:
 
 #####
 #BACKUPS

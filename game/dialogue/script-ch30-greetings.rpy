@@ -607,7 +607,6 @@ label birthday_yes:
     call cake
     return
 
-default persistent.cake = "choco_candles"
 
 label cake:
     if persistent.cake == None or not persistent.cake:

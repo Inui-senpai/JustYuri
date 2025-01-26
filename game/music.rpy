@@ -1,4 +1,4 @@
-default persistent.custom_music = None
+
 define audio.space = "[current_music]"
 #define audio.space = current_music
 #This file generally controls the music related functions, screens, and variables of Just Yuri.

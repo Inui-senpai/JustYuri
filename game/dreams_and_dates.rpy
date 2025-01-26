@@ -1535,7 +1535,6 @@ label dream_cut:
 ##DATES###
 ##########
 
-default persistent.dates_taken = 0
 
 label garden_date:
     hide craneo

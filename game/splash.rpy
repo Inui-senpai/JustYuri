@@ -187,7 +187,6 @@ label splashscreen:
                     renpy.jump("readonly")
 
     #If this is the first time the game has been run, show a disclaimer
-    default persistent.first_run = False
     if not persistent.first_run:
         python:
             restore_all_characters()

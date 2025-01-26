@@ -1,10 +1,9 @@
 #persistent.dialogue_memory will house the main persistent info on dialogues
 default blocked_dialogues = []
-default persistent.memory = {}
 
 #use renpy.has_seen to determine if something has been seen before.
 
-init -6 python:
+init -4 python:
     #from datetime import datetime
     import datetime
     from time_module import time_shift, time_interval_check

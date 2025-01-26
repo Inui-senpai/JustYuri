@@ -1,4 +1,4 @@
-default persistent.saved_costume = None
+
 
 label test_area:
     show oceanbonus_2 zorder 100

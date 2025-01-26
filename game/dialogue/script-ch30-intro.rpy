@@ -987,8 +987,6 @@ label ch30_stream_no:
     $ renpy.music.play(current_music, "music", True)
     return
 
-default persistent.bday_month = "1"
-default persistent.bday_day = "1"
 
 screen messagebox(message):
     modal True

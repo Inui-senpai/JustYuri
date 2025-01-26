@@ -3,42 +3,18 @@
 #DEFAULT VARIABLES#
 ###################
 
-default persistent.hdy_statue_is_enabled = False
-default persistent.halloween_cupcake_is_enabled = False
-default persistent.diffuser_is_enabled = False
-default persistent.diffuser_mist_is_enabled = False
-default persistent.lavenderO_mist_is_enabled = False
-default persistent.sandalwood_oil_mist_is_enabled = False
-default persistent.sweet_dream_oil_mist_is_enabled = False
-default persistent.roseO_is_enabled = False
-default persistent.raccoon_is_enabled = False
-default persistent.bunnyO_is_enabled = False
-default persistent.craneO_is_enabled = False
 default torso_costume2 = "nothing"
-default persistent.ingame_time = datetime.timedelta(0)
-default persistent.sleepy_yuri_is_enabled = False
 #Sort these... like soon. Now-ish if possible.
 default currentpos = 0
 default face_mask = "nothing"
 default face_mask_2 = "nothing"
 default faint_effect = None
-default persistent.yuri_nickname = "Yuri"
-default persistent.chibi_topic = 0
 default repeat_dialogue_ask = False
 default loop_again = False
 default hide_yuri_sit = False
 default hide_yuri_sleep = True
-default persistent.monika_first = True
-default persistent.eyecolor = "other"
-default persistent.yuriidles = []
-default persistent.yuri_reload = 0
-default persistent.tried_skip = None
-default persistent.monika_kill = None
 #Quick additions for the button addition on the Preferences screen. #Courtesy of Terra#2060
-default persistent.buttonvar = False
-default persistent.gift_given = False
-default persistent.current_yuriidle = 0
-default persistent.room_items = ["nothing"] * 10
+
 default mouse_move_dict = {
     "A":[265, 360],
     "B":[335, 320],
@@ -98,12 +74,6 @@ default default_yuri_dict = {#base, face1, face2, head1, head2, hands, eyebrows,
     8:"nothing",
     9:"eyes_0",
     10:"mouth_b"}
-default persistent.costume = "school"
-default persistent.face1 = "nothing"
-default persistent.face2 = "nothing"
-default persistent.head1 = "nothing"
-default persistent.head2 = "nothing"
-default persistent.hairstyle = "default"
 default special_costume = ""
 default costume = persistent.costume
 default yuri_state = {
@@ -139,11 +109,6 @@ default ks_variance = 15 #ks_variance is the variation within her points (She so
 default number_of_lvls = float(5)
 default points_per_level = float(40)
 default max_points = float(100)
-default persistent.lovecheck = False
-
-#Tetris Variables
-default persistent.tetris_first = True
-default persistent.best_co_op_tetris_score = 0
 
 ###########
 #FUNCTIONS#
@@ -1219,7 +1184,6 @@ init -2 python:
     tc_class = Timecycle()
 
 #Timecycle/Room Variables
-default persistent.bg = "space"
 define slow_dissolve = Dissolve(5)
 
 
@@ -1500,11 +1464,6 @@ screen yuri_sit():
         else:
             idle "yuri_sit"
 
-
-
-
-
-
         #hotspot (x_left_side, y_top_side, width, length)
 
         hotspot (654, 225, 13, 13) action Function(boop_init, "boop_nose")
@@ -1513,9 +1472,6 @@ screen yuri_sit():
         hotspot (693,216,50,50) action Function(boop_init, "boop_cheek")
         hotspot (578, 50, 186, 103) action Function(boop_init, "headpat")
         hotspot (627, 50, 13, 13) action Function(boop_init, "sleepy_headpat")
-
-
-
         #hotspot (615, 440, ) action If(persistent.playername, true=Start(), false=Show(screen="name_input", message="Please enter your name", ok_action=Function(FinishEnterName)))
         #hotspot (126, 254, 191, 377)action Function(boop_init, "diffuser_boop")
 
@@ -1529,10 +1485,6 @@ screen yuri_sleep():
         else:
             $ DisableTalk()
             idle "yuri_sleep"
-
-
-
-
 
 layeredimage yuri_sleep:
 
@@ -1548,8 +1500,6 @@ layeredimage yuri_sleep:
 
 if hide_yuri_sleep == False:
     hide yuri_sit
-
-
 
 #LiveComposite([base],[face1],[face2],[head1],[head2],[hands],[eyebrows],[blush],[cry],[eyes],[mouth])
 layeredimage yuri_sit:
@@ -1794,12 +1744,6 @@ layeredimage yuri_kiss:
     #always "kiss_[persistent.costume][current_timecycle_marker]" #costume
     #always "kiss_head[current_timecycle_marker]" #head
     #always "kiss_face[current_timecycle_marker]" #face
-
-
-
-
-
-
 
 # Objects on top of her desk
 image cake = "cake_[persistent.cake][current_timecycle_marker]"

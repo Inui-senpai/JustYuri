@@ -1,5 +1,3 @@
-default persistent.boop = 0
-default persistent.boop_locations = [0.] * 12
 default boopable = False
 #[nose, cheeks, head,]
 

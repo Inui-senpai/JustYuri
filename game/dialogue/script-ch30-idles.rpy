@@ -5947,7 +5947,6 @@ label hobbies:
     $ renpy.call(temporary)
     return
 
-default persistent.hobbies = {}
 
 label gaming:
     $show_chr("A-CBAAA-ABAB")

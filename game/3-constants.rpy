@@ -5,30 +5,10 @@ image fake_exception3 = Text("While running game code: File \"game/script-ch30.r
 #################################
 #DEFINES AND DEFAULTS SECTION####
 #################################
-default persistent.seen_poem_raccoon = False
-default persistent.playername = ""
-default persistent.stutter_player = ""
 define stutter_player = persistent.stutter_player
-default persistent.stutter_yuri = ""
 define stutter_yuri = persistent.stutter_yuri
-default persistent.steam = ("steamapps" in config.basedir.lower())
 default player = persistent.playername
-default persistent.playthrough = 0
-default persistent.yuri_kill = False
-default persistent.seen_eyes = None
-default persistent.seen_sticker = None
-default persistent.ghost_menu = None
-default persistent.seen_ghost_menu = None
 default seen_eyes_this_chapter = False
-default persistent.anticheat = 0
-default persistent.clear = [False, False, False, False, False, False, False, False, False, False]
-default persistent.special_poems = None
-default persistent.clearall = None
-default persistent.menu_bg_m = None
-default persistent.first_load = None
-default persistent.first_poem = None
-default persistent.seen_colors_poem = None
-default persistent.monika_back = None
 default in_sayori_kill = None
 default in_yuri_kill = None
 default anticheat = 0
@@ -36,14 +16,8 @@ define config.mouse = None
 default allow_skipping = True
 default basedir = config.basedir
 default chapter = 0
-default persistent.HDY = False
+
 define old_hdy_image = None
-default persistent.seen_halloween_no = False
-default persistent.ouija_done = False
-default persistent.book = False
-
-default persistent.demo = False
-
 default s_name = "Sayori"
 default m_name = "Monika"
 default n_name = "Natsuki"

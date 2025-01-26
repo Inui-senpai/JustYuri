@@ -1,6 +1,4 @@
 default restore_message = "hello"
-default persistent.idle_frequency_factor = 1
-default persistent.high_gpu = 1
 
 label open_discord:
     $ webbrowser.open_new('https://discordapp.com/invite/RUdwW7q')

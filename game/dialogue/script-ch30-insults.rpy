@@ -1,5 +1,4 @@
-default persistent.misclick = 0
-default persistent.insult_counter = 0
+
 
 label insult_menu:
     python:

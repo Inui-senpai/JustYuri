@@ -1,4 +1,4 @@
-default persistent.skin = 0
+
 define TetrisWinner = 0
 define LineLimit = 0
 define TetrisScore = 0
