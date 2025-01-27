@@ -1210,7 +1210,7 @@ screen jy_bg():
             hotspot (153, 0, 438, 341)action Function(boop_init, "boop_window")
 
         if hide_yuri_sit == True:
-            hotspot (627, 50, 103, 516) action Function(boop_init, "sleepy_headpat")
+            hotspot (478, 335, 324, 174) action Function(boop_init, "sleepy_headpat")
 
         if persistent.bg == "laboratory":
             if persistent.costume != "lab": #Since the screen constantly repeats, we have to add this to keep track of the previous costume and not have it replaced with the labcoat
@@ -1471,7 +1471,7 @@ screen yuri_sit():
         hotspot (585,216,50,50) action Function(boop_init, "boop_cheek")
         hotspot (693,216,50,50) action Function(boop_init, "boop_cheek")
         hotspot (578, 50, 186, 103) action Function(boop_init, "headpat")
-        hotspot (627, 50, 13, 13) action Function(boop_init, "sleepy_headpat")
+        hotspot (478, 335, 13, 13) action Function(boop_init, "sleepy_headpat")
         #hotspot (615, 440, ) action If(persistent.playername, true=Start(), false=Show(screen="name_input", message="Please enter your name", ok_action=Function(FinishEnterName)))
         #hotspot (126, 254, 191, 377)action Function(boop_init, "diffuser_boop")
 
@@ -1484,6 +1484,7 @@ screen yuri_sleep():
             idle "nothing"
         else:
             $ DisableTalk()
+            $ set_boop_state(True)
             idle "yuri_sleep"
 
 layeredimage yuri_sleep:

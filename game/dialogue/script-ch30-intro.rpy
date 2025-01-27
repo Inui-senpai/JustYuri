@@ -670,6 +670,7 @@ label ch30_intro_after_gender:
     y "I just don't know whether it would be rude to interrupt you when you are planning what to talk about..."
 
 label ch30_intro2:
+    $ _history = True
     $ config.allow_skipping = False
     #$ m.display_args["callback"] = slow_nodismiss
     $ y.display_args["callback"] = slow_nodismiss
@@ -987,6 +988,8 @@ label ch30_stream_no:
     $ renpy.music.play(current_music, "music", True)
     return
 
+default persistent.bday_month = "1"
+default persistent.bday_day = "1"
 
 screen messagebox(message):
     modal True

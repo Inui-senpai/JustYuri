@@ -793,13 +793,15 @@ It's worth it.
 - Brian"""
     )
 
+    yuri_nickname = persistent.yuri_nickname
+
     poem_sp5 = Poem(
     author = "monika",
     title = "The Dreams System",
     text = """\
 Greetings! If you've found this message, it means you've stumbled across the Dreams System!
 The Dreams System is a special feature we've been working on for a while, and it might need a small bit of explanation.
-With this system, you'll be able to peer inside Yuri's dreams, and watch them unfold before your very eyes, or, more accurately, watch them unfold from [persistent.yuri_nickname]'s eyes! The Dreams take place entirely from [persistent.yuri_nickname]'s perspective. Not only can you watch them, but actually influence them as well!
+With this system, you'll be able to peer inside Yuri's dreams, and watch them unfold before your very eyes, or, more accurately, watch them unfold from """ + yuri_nickname + """'s eyes! The Dreams take place entirely from """ + yuri_nickname + """'s perspective. Not only can you watch them, but actually influence them as well!
 You'll be presented choices, much like you would regular dialogue, that determine the way the Dreams play out!
 
 We hope you have fun with this system!"""
