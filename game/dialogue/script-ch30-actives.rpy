@@ -7521,6 +7521,7 @@ label gifting_explanation:
 label sleepy_yuri:
     $ config.allow_skipping = False
     $ DisableTalk()
+    $ set_boop_state(True)
     $ allow_dialogue = False
     y "Heading to bed [player]?"
     if not renpy.seen_label('sleepy_yuri'):
@@ -7539,6 +7540,7 @@ label sleepy_yuri:
                         if persistent.costume == "school":
                             y "In that case I'll just keep my school uniform on since I won't be asleep for long."
                             $ DisableTalk()
+                            $ set_boop_state(True)
                             show black zorder 100 with Dissolve(2.0)
                             hide yuri_sit
                             show yuri_sleepy zorder 20
@@ -7554,6 +7556,7 @@ label sleepy_yuri:
                         y "I see, let me just go change into something more comfortable very quickly."
                         y "I'll be right back [player]."
                         $ DisableTalk()
+                        $ set_boop_state(True)
                         show black zorder 100 with Dissolve(2.0)
                         hide yuri_sit
                         show yuri_sleepy zorder 20
@@ -7572,6 +7575,7 @@ label sleepy_yuri:
                         if renpy.seen_label('diffuser'):
                             y "I'll also go grab and setup the diffuser you gifted me, just to make things more comfortable."
                             $ DisableTalk()
+                            $ set_boop_state(True)
                             show black zorder 100 with Dissolve(2.0)
                             hide yuri_sit
                             show diffuser zorder 11
@@ -7587,6 +7591,8 @@ label sleepy_yuri:
                             $persistent.sleepy_yuri_is_enabled = True
                             jump sleepy_loop
                         y "I'll be right back [player]."
+                        $ DisableTalk()
+                        $ set_boop_state(True)
                         show black zorder 100 with Dissolve(2.0)
                         hide yuri_sit
                         show yuri_sleepy zorder 11
@@ -7614,6 +7620,7 @@ label sleepy_yuri:
             if persistent.costume == "school":
                 y "In that case I'll just keep my school uniform on since I won't be asleep for long."
                 $ DisableTalk()
+                $ set_boop_state(True)
                 show black zorder 100 with Dissolve(2.0)
                 hide yuri_sit
                 show yuri_sleepy zorder 20
@@ -7630,6 +7637,7 @@ label sleepy_yuri:
             y "I see, let me just go change into something more comfortable very quickly."
             y "I'll be right back [player]."
             $ DisableTalk()
+            $ set_boop_state(True)
             show black zorder 100 with Dissolve(2.0)
             hide yuri_sit
             show yuri_sleepy zorder 20
@@ -7649,6 +7657,7 @@ label sleepy_yuri:
             if renpy.seen_label('diffuser'):
                 y "I'll also go grab and setup the diffuser you gifted me, just to make things more comfortable."
                 $ DisableTalk()
+                $ set_boop_state(True)
                 show black zorder 100 with Dissolve(2.0)
                 hide yuri_sit
                 show diffuser zorder 11
@@ -7665,6 +7674,8 @@ label sleepy_yuri:
                 $persistent.sleepy_yuri_is_enabled = True
                 jump sleepy_loop
             y "I'll be right back [player]."
+            $ DisableTalk()
+            $ set_boop_state(True)
             show black zorder 100 with Dissolve(2.0)
             hide yuri_sit
             show yuri_sleepy zorder 11

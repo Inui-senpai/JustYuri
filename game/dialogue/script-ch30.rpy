@@ -575,5 +575,5 @@ init -15 python:
 
 label sleepy_loop:
     $ persistent.idle_frequency_factor = 0
-    $ boopable = False
+    $ set_boop_state(True)
     jump ch30_loop

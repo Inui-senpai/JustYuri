@@ -370,6 +370,7 @@ label yuriwakeup:
     $boopable = True
     python:
         EnableTalk()
+        set_boop_state(False)
         persistent.HDY = False
         renpy.jump("ch30_loop")
 

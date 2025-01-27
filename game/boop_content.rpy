@@ -1,5 +1,8 @@
+default persistent.boop = 0
+default persistent.boop_locations = [0.] * 12  # Extended to accommodate sleepy headpats
 default boopable = False
-#[nose, cheeks, head,]
+default boop_sleepy_only = False  # Global variable to disable most boops
+#[nose, cheeks, head, sleepy_headpat, window,]
 
 
 # Boop Script, all of the guts are in here.
@@ -43,6 +46,16 @@ init python:
     config.overlay_functions.append(checkEvent)
 
 
+    def set_boop_state(sleepy_only):
+        """Enables or disables boop types.
+
+        Args:
+            sleepy_only (bool): If True, only sleepy headpats are enabled.
+        """
+        global boop_sleepy_only
+        boop_sleepy_only = sleepy_only
+
+    # Function for managing boop logic. 
     def boop_init(boop_type):
         global boopable
         global loop_again
@@ -50,12 +63,19 @@ init python:
         if boopable:
             boopable = False
             DisableTalk()
-            if (boop_type == "boop_nose_chibi" and persistent.costume == "_chibi") or (boop_type == "boop_nose" and persistent.costume != "_chibi"):
+            if boop_sleepy_only: # Is this boop disabled?
+                if boop_type == "sleepy_headpat": # This is a sleepy_headpat call, so do not skip it!
+                    renpy.call("sleepy_headpat")
+                else:
+                    return # This boop location is not valid when sleepy_only is enabled.
+            elif (boop_type == "boop_nose_chibi" and persistent.costume == "_chibi") or (boop_type == "boop_nose" and persistent.costume != "_chibi"): # Should this call boop_nose?
                 renpy.call("boop_nose")
-            elif renpy.has_label(boop_type):
+            elif renpy.has_label(boop_type): # This calls the corresponding function (headpat, cheek) when not disabled.
                 renpy.call(boop_type)
             EnableTalk()
         return
+
+    config.overlay_functions.append(checkEvent)
 # This shit is from here: https://lemmasoft.renai.us/forums/viewtopic.php?t=19572
 
 label mouse_coords:
@@ -414,15 +434,20 @@ label headpat:
     return
 
 label sleepy_headpat:
-        y "hmph...?"
-        hide yuri_sleep
-        show yuri_sleepy zorder 11
-        y "O-oh it's you [player]"
-        y "You scared me a bit, although that is quite comforting"
-        hide yuri_sleepy
-        show yuri_sleep
-        y "I wouldn't be opposed if you kept doing it..."
-        return
+    python:
+        if persistent.boop_locations[3] == 0:
+            set_boop_state(True) # Disables every other boop event
+        persistent.boop_locations[3] += 1
+    y "hmph...?"
+    hide yuri_sleep
+    show yuri_sleepy zorder 11
+    y "O-oh it's you [player]"
+    y "You scared me a bit, although that is quite comforting"
+    hide yuri_sleepy
+    show yuri_sleep
+    y "I wouldn't be opposed if you kept doing it..."
+    $ set_boop_state(True)
+    return
 
 
 label boop_window:

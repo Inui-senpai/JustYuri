@@ -173,6 +173,7 @@ label ch30_reload_3:
     y "What should we discuss today?"
     return
 label ch30_reload_4:
+    $ _history = True
     $ renpy.music.play(current_music, "music", True)
     #$finder = persistent.narrative.find("_dream")
     #if finder:
@@ -607,6 +608,7 @@ label birthday_yes:
     call cake
     return
 
+default persistent.cake = "choco_candles"
 
 label cake:
     if persistent.cake == None or not persistent.cake:
