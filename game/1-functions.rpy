@@ -1470,6 +1470,7 @@ image room_mask2 = LiveComposite((1280, 720), (0, 0), "mask_test3", (0, 0), "mas
 #    )
 
 #####UNSORTED!!!!
+
 screen yuri_sit():
     zorder 11
     layer "master"

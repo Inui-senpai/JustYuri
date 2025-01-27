@@ -14,6 +14,7 @@ init -996 python:
     submods = {}
     submods.mods = {}
     submods.mod_count = 0
+    submods.mod_icon = Image(os.path.join("images", "default_submod.png"))
     submods.modinfo = """{{
 \t\"name\": \"{0}\",
 \t\"id\": \"{1}\",
@@ -32,14 +33,14 @@ init -996 python:
         id = None
         version = None
         dependencies = None
-        image = None
+        icon = None
 
-        def __init__(self, mod_name, mod_id, mod_version, mod_dependencies, mod_image):
+        def __init__(self, mod_name, mod_id, mod_version, mod_dependencies, mod_icon):
             self.name = mod_name
             self.id = mod_id
             self.version = mod_version
             self.dependencies = mod_dependencies
-            self.image = mod_image
+            self.icon = mod_icon
 
 
     #==================================================#
@@ -53,7 +54,7 @@ init -996 python:
         for directory in os.scandir(paths.submods[2]):
             print("Scanning mod: " + directory.name)
             submods.mod_count = submods.mod_count + 1
-            submod = Submod(directory.name, parse_mod_id(directory.name), "1.0.0", [], None)
+            submod = Submod(directory.name, parse_mod_id(directory.name), "1.0.0", [], submods.mod_icon)
 
             mod_docs_dir =  os.path.join(directory.path, "documentation")
             mod_error_path = os.path.join("game", "submods", directory.name)
@@ -90,7 +91,12 @@ init -996 python:
 
             if os.path.isfile(mod_icon_path):
                 print("  - Mod " + submod.id + " has an icon. Loading image...")
+                try:
+                    submod.icon = Image("submods/" + directory.name + "/icon.png")
+                except:
+                    print_error("  - Failed to load icon.png", path=mod_error_path)
 
+            renpy.image(submod.id + ":icon", submod.icon)
             submods.mods[submod.id] = submod
             print("  - Mod ID: " + submod.id + ", Version: " + submod.version + os.linesep + "  - Dependencies: " + str(submod.dependencies))
     print("Checking loaded submods for missing dependencies...")

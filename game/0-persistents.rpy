@@ -40,6 +40,7 @@ default persistent.autoload = None
 # Dialogue Variables
 #==================================================#
 default persistent.memory = {}
+default persistent.dialogue_memory = {}
 
 #==================================================#
 # Functional Variables
