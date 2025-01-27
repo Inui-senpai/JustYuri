@@ -3,7 +3,7 @@ default blocked_dialogues = []
 
 #use renpy.has_seen to determine if something has been seen before.
 
-init -4 python:
+init -996 python:
     #from datetime import datetime
     import datetime
     from time_module import time_shift, time_interval_check

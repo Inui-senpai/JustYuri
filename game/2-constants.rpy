@@ -2,9 +2,22 @@
 image exception_bg = "#dadada"
 image fake_exception = Text("An exception has occurred.", size=40, style="_default")
 image fake_exception3 = Text("While running game code: File \"game/script-ch30.rpy\", line 7370, in script.", size=20, style="_default")
-#################################
-#DEFINES AND DEFAULTS SECTION####
-#################################
+
+init -997 python:
+    #==================================================#
+    # Path Variables
+    #==================================================#
+
+    # Contains references to paths commonly used within jy. Value: (<Archive Location>, <Base Directory Location>, <Absolute Location>)
+    # Use os.path.join when declaring paths for compatability with linux and mac
+    class paths:
+        all = renpy.list_files()
+        documentation = ("docs", os.path.join("game", "docs"), os.path.join(config.basedir, "game", "docs"))
+        submods = ("submods", os.path.join("game", "submods"), os.path.join(config.basedir, "game", "submods"))
+
+#==================================================#
+# Defines and Defaults
+#==================================================#
 define stutter_player = persistent.stutter_player
 define stutter_yuri = persistent.stutter_yuri
 default player = persistent.playername
@@ -249,7 +262,7 @@ image yuri_body_glitch2:
 
 image splash-glitch2 = "images/splash/splash-glitch2.png"
 
-init -100 python:
+init -997 python:
     #for people that jump from alpha to current version and have a hat on (which no longer exists)
     if persistent.head1 == "hat":
         persistent.head1 = "nothing"

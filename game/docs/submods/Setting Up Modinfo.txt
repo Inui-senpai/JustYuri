@@ -1,0 +1,20 @@
+{
+	####################################################################################
+	# This is what the Just Yuri mod reads to figure out what this submod is.          #
+	# This is always automatically generated when a modinfo.json file is not detected. #
+	####################################################################################
+
+	# The name of your submod. This will show up in game in the mods menu.
+	"name": "",
+
+	# The unique id of your submod. This is used in the dependencies blocks of other mods.
+	"id": "",
+
+	# The version of your submod. This can be anything you want, but keep it close to the format #.#.#
+	"version": "1.0.0",
+
+	# The unique ids of each submod that this submod requires.
+	# If any id is present here and the mod isn't loaded, the game will crash and display any mods that are missing
+	# Also supports putting a single string as well if you don't want to use a list
+	"dependencies": []
+}

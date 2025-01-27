@@ -114,7 +114,7 @@ default max_points = float(100)
 #FUNCTIONS#
 ###########
 
-init python:
+init -998 python:
     import rstr
     import random
     import re
@@ -774,6 +774,27 @@ init python:
     ####################################
     #UNARCHIVE AND FILE COMPARISON CODE#
     ####################################
+    # Unpacks a directory within the game folder or in .rpa files
+    def unpack(directory, new_directory):
+        # directory: Location relative to the game folder
+        # new_directory: path relative to the base directory
+        n_dir = os.path.join(config.basedir, new_directory)
+        if not os.path.exists(n_dir):
+            os.makedirs(n_dir)
+
+        from shutil import copyfileobj
+        for path in paths.all:
+            if directory in path:
+                file_path = path.replace(directory + "/", "", 1).replace("/", os.sep)
+                file_dir = os.path.join(n_dir, regex.sub("[/]*[^/]*$", "", file_path.replace(os.sep, "/")).replace("/", os.sep))
+                
+                with renpy.open_file(path) as file:
+                    file_result = os.path.join(n_dir,  file_path)
+                    if not os.path.exists(file_dir):
+                        os.makedirs(file_dir)
+                    with open(file_result, "wb") as new_file:
+                        copyfileobj(file, new_file)
+
     def unarchive(original_filename, new_filename):
         # original_filename is the name the file has when stored in the archive, including any
         # leading paths.

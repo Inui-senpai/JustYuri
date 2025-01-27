@@ -1,0 +1,4 @@
+Welcome to the submodding community!
+
+
+If you ever need to regenerate these docs, delete the modinfo.json file and reboot the game. Have fun!
