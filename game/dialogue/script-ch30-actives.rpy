@@ -6644,45 +6644,31 @@ label table_items:
                 "Nevermind":
                     pass
                     return
+label gift_intro:
+    $ show_chr("A-JBAAA-ALAL")
+    y "[player], is that gift for me?"
+    return
 
 label gifting_revamp:
-    $ cur_gifts = gift_detect()
-    $ gift_list = ["blackroses.jy","redroses.jy", "whiteroses.jy", "sandalwoodoil.jy", "lavenderoil.jy", "sweetdreamoil.jy","hershey.jy", "lavenderchocolate.jy", "mintchocolate.jy", "craneorigami.jy", "roseorigami.jy",
-    "bunnyorigami.jy", "raccoonplush.jy", "diffuser.jy", "horrorbookset.jy"]
-    $ gift_scenario = define_gift_scenario(gift_list, cur_gifts)
-    if gift_scenario is not None and len(cur_gifts) >= 1:
-        $ show_chr("A-JBAAA-ALAL")
-        y "[player], is that gift for me?"
-        if gift_scenario == 0:
-            jump blackroses
-        if gift_scenario == 1:
-            jump redroses
-        if gift_scenario == 2:
-            jump whiteroses
-        if gift_scenario == 3:
-            jump sandalwood
-        if gift_scenario == 4:
-            jump lavender_oil
-        if gift_scenario == 5:
-            jump sweet_dream_oil
-        if gift_scenario == 6:
-            jump hershey
-        if gift_scenario == 7:
-            jump lavender_choco
-        if gift_scenario == 8:
-            jump mint_choco
-        if gift_scenario == 9:
-            jump crane_origami
-        if gift_scenario == 10:
-            jump rose_origami
-        if gift_scenario == 11:
-            jump bunny_origami
-        if gift_scenario == 12:
-            jump raccoon_plush
-        if gift_scenario == 13:
-            jump diffuser
-        if gift_scenario == 14:
-            jump horror_book_set
+    $ gifts = Gift.find()
+    $ size = len(gifts)
+    
+    if size > 0:
+        if size == 1:
+            if gifts[0].size() > 0:
+                $ gifts[0].call_intro()
+            elif len(Gift.intro_labels) == 0:
+                call gift_intro
+            else:
+                $ renpy.call(random.choice(Gift.intro_labels))
+        else:
+            if len(Gift.intro_labels) == 0:
+                call gift_intro
+            else:
+                $ renpy.call(random.choice(Gift.intro_labels))
+        python:
+            for gift in gifts:
+                gift.call()
     else:
         $ show_chr("A-AFDAA-AAAA")
         y "oh... You have a gift for me?"
@@ -6692,6 +6678,8 @@ label gifting_revamp:
         $ show_chr("A-CAGAA-AAAL")
         y "No need to worry, I'll still be here waiting after all."
     jump ch30_loop
+        
+    
 
 label sandalwood:
     $show_chr("A-OBAAA-ALAL")
@@ -6722,7 +6710,7 @@ label sandalwood:
     y "Thank you [player], I will definitely make good use of it!"
     hide sandalwood_oil
     #hide diffuser
-    jump ch30_loop
+    return
 
 
 label lavender_oil:
@@ -6747,7 +6735,7 @@ label lavender_oil:
     y "That's everything I ever hoped for."
     hide lavendero
     #hide diffuser
-    jump ch30_loop
+    return
 
 
 label sweet_dream_oil:
@@ -6773,7 +6761,7 @@ label sweet_dream_oil:
     hide sweet_dream_oil
     #hide diffuser
     hide sweet_dream_oil_mist
-    jump ch30_loop
+    return
 
 
 label hershey:
@@ -6799,7 +6787,7 @@ label hershey:
     $show_chr("A-CAABA-ALAA")
     y "Thank you, my Soulmate... my heart... my everything..."
     hide hershey
-    jump ch30_loop
+    return
 
 
 label lavender_choco:
@@ -6815,7 +6803,7 @@ label lavender_choco:
     $show_chr("A-EAABA-ALAA")
     y "Mhmmm... I can almost feel the soft cream melting on my tongue... Thank you, my love."
     hide lavenderc
-    jump ch30_loop
+    return
 
 
 label mint_choco:
@@ -6844,7 +6832,7 @@ label mint_choco:
         $show_chr("A-DLABA-ALAG")
         y "Just... like... me."
     hide mint
-    jump ch30_loop
+    return
 
 
 
@@ -6873,7 +6861,7 @@ label crane_origami:
     $show_chr("A-FBABA-AKAL")
     y "After all, if you've done it once, you can do it a million times, as the saying goes. Fufufu~"
     #hide craneo
-    jump ch30_loop
+    return
 
 label rose_origami:
     $show_chr("A-OBAAA-ALAL")
@@ -6927,7 +6915,7 @@ label rose_origami:
         $ show_chr("A-JCBBB-AAAA")
         hide yuri_hug
         hide black zorder 100 with Dissolve(2.0)
-    jump ch30_loop
+    return
 
 
 label bunny_origami:
@@ -6957,7 +6945,7 @@ label bunny_origami:
     $show_chr("A-BBABA-AMAM")
     y "S-Sorry, I'm rambling, aren't I? Thank you for this, [player], I'll treasure it."
     #hide bunnyo
-    jump ch30_loop
+    return
 
 
 
@@ -7008,7 +6996,7 @@ label raccoon_plush:
     hide yuri_hug
     hide black zorder 100 with Dissolve(2.0)
     show raccoon zorder 11
-    jump ch30_loop
+    return
 
 label diffuser:
     $ show_chr("A-OBAAA-ALAL")
@@ -7064,7 +7052,7 @@ label diffuser:
             $ show_chr ("A-ACAAA-ALAA")
             y "It's quite exciting now that I can test different kinds of oils with you."
 
-            jump ch30_loop
+            return
         "Uhhh, that's alright I guess...":
             $ show_chr ("A-AEDAA-ALAB")
             y "Alright... if you say so..."
@@ -7094,7 +7082,7 @@ label diffuser:
             $ show_chr ("A-ACAAA-ALAA")
             y "It's quite exciting now that I can test different kinds of oils with you."
 
-            jump ch30_loop
+            return
         "I get bored when you talk too much. Can we just continue?":
             $ show_chr ("A-AEBAA-ALAL")
             y "O-Oh, I-I'm so sorry [player]. I didn't mean to bore you..."
@@ -7102,7 +7090,7 @@ label diffuser:
             $ show_chr ("A-BFBAA-ALAL")
             y "L-Let's just end the conversation here then..."
             hide diffuser
-            jump ch30_loop
+            return
 
 label horror_book_set:
     $ show_chr("A-OBAAA-ALAL")
@@ -7134,7 +7122,7 @@ label horror_book_set:
             y "I look forward to reading a or two book with you, my love."
             $ show_chr("A-CCGBA-ADAA")
             $ persistent.book = False
-            jump ch30_loop
+            return
         "Not much, I gifted it because you mentioned having an interest in it.":
             $ persistent.book = True
             $ show_chr("A-CBAAA-ALAL")
@@ -7156,7 +7144,7 @@ label horror_book_set:
             y "I hope that my explanation was able to give you a basic idea about the sub-genre. I look forward to reading a book or two with you, my love."
             $ show_chr("A-CCGBA-ADAA")
             $ persistent.book = False
-            jump ch30_loop
+            return
 
 
 label diffuser_mist_enable:

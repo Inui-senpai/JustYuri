@@ -19,6 +19,8 @@ python early:
 #==================================================#
 # Initialization
 #==================================================#
+define current_label = None
+
 init -999 python:
     print("Loading " + config.name + " - " + config.version + "...")
     persistent.crash = True
@@ -27,7 +29,6 @@ init -999 python:
     allow_skipping = False
     quick_menu = False
     dissolve_time = 5
-    current_label = None
 
     config.keymap['game_menu'].remove('mouseup_3')
     config.keymap['hide_windows'].append('mouseup_3')

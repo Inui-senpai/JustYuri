@@ -130,7 +130,7 @@ init -998 python:
         Callback.call(StartEvent())
 
     def callback_label(label_name, called):
-        current_label = label_name
+        global current_label; current_label = label_name
         event = LabelEvent(str(label_name), called)
         Callback.call(event)
 

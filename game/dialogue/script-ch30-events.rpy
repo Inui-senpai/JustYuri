@@ -1033,7 +1033,11 @@ label choc:
 label tea:
     $persistent.gift = "tea"
     $persistent.gift_given = True
-    if gift_scenario == 0:
+    if len(Gift.last_gifts) == 0:
+        $ print_error("Question, how is this possible? How did you give her non-existent tea?")
+        $ raise Exception("Gift.last_gift does not have any gifts")
+
+    if Gift.last_gifts[0].id == "high_mountain_tea":
         menu:
             "...this 'Gao Shan Tea' from Taiwan!":
                 $persistent.brand = "gaoshan"
@@ -1057,7 +1061,23 @@ label tea:
         $show_chr("A-AAABA-AAAA")
         y "Thank you, my love..."
         hide teabag zorder 11
-    elif gift_scenario == 2:
+    elif Gift.last_gifts[0].id == "imperial_tea":
+        menu:
+            "...anything less than 'Silver Tips Imperial' tea would be an insult!":
+                $persistent.brand = "silvertip"
+        show teabag zorder 11
+        $show_chr("A-DBAAA-AAAA")
+        y "T-That's..."
+        $show_chr("A-DFAAA-AAAA")
+        y "Silver Tips Imperial Tea? Have you robbed a bank recently?"
+        $show_chr("A-AAAAA-ALAA")
+        y "Oh wait... the developers made a gift store for the Christmas event, didn't they?"
+        y "You might not be aware of this but, this is one of the most expensive teas in the whole world."
+        y "And it has quite a history as well. This tea is produced in the 'Makaibari Tea Estate' in India. The first tea factory in the world. It owes its popularity not only to its color, but the very special flavor as well."
+        $show_chr("A-CAAAA-AMAM")
+        y "I'm looking forward to trying this wonderful gift... and especially to share this moment with my greatest love, you."
+        hide teabag zorder 11
+    elif Gift.last_gifts[0].id == "tienchi_tea":
         menu:
             "...anything less than 'Tienchi Ginseng' tea would be an insult!":
                 $persistent.brand = "tienchi"
@@ -1080,23 +1100,7 @@ label tea:
         $show_chr("A-EAABA-AAAJ")
         y "Thank you, [player]... you are my true and only love."
         hide teabag zorder 11
-    elif gift_scenario == 1:
-        menu:
-            "...anything less than 'Silver Tips Imperial' tea would be an insult!":
-                $persistent.brand = "silvertip"
-        show teabag zorder 11
-        $show_chr("A-DBAAA-AAAA")
-        y "T-That's..."
-        $show_chr("A-DFAAA-AAAA")
-        y "Silver Tips Imperial Tea? Have you robbed a bank recently?"
-        $show_chr("A-AAAAA-ALAA")
-        y "Oh wait... the developers made a gift store for the Christmas event, didn't they?"
-        y "You might not be aware of this but, this is one of the most expensive teas in the whole world."
-        y "And it has quite a history as well. This tea is produced in the 'Makaibari Tea Estate' in India. The first tea factory in the world. It owes its popularity not only to its color, but the very special flavor as well."
-        $show_chr("A-CAAAA-AMAM")
-        y "I'm looking forward to trying this wonderful gift... and especially to share this moment with my greatest love, you."
-        hide teabag zorder 11
-    jump ch30_loop
+    return
 
 
 label caketest:

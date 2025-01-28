@@ -8,7 +8,6 @@ init -996 python:
         @staticmethod
         def tick():
             if TimeCycle.ticks % 20 == 0:
-                print("Time ID: " + TimeCycle.time_id + ", Time: " + str(TimeCycle.hour) + ":"  + str(TimeCycle.minute) + ":" + str(TimeCycle.second))
                 # Tick game time based on game time rate
                 if persistent.game_time_rate > 0:
                     TimeCycle.second += 1 * persistent.game_time_rate

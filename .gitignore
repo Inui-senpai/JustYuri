@@ -6,6 +6,7 @@
 *.rpymc
 *.pyc
 *.pyo
+*.jy
 firstrun
 *.bak
 saves

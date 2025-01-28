@@ -2284,34 +2284,29 @@ label post_tea_facts:
     $ persistent.dates_taken += 1
     jump ch30_loop
     #Outro, fade to white and then returning to ch30 loop.
+
+label gift_intro_date:
+    $show_chr("A-AAAAA-AAAJ")
+    y "You do? Awww... that wouldn't have been necessary [player], your mere presence is all I ever hoped for."
+    return
+
 label giftgiving:
-    $ cur_gifts = gift_detect()
-    #$ chocolate_list = ["green_black_choco.jpg", "hersheys_choco.jpg", "wicked_choco.jpg"]
-    #$ oil_list = ["doterra_oil.jpg", "sandalwood_oil.jpg", "sweet_dream_oil.jpg"]
-    $ tea_list = ["high_mountain_tea.jpg", "imperial_tea.jpg", "tienchi_tea.jpg"]
-    if len(cur_gifts) == 1:
-        $show_chr("A-AAAAA-AAAJ")
-        y "You do? Awww... that wouldn't have been necessary [player], your mere presence is all I ever hoped for."
-        #if cur_gifts[0][0] in chocolate_list:
-        #    $gift_scenario = chocolate_list.index(cur_gifts[0][0])
-        #    menu:
-        #        "Well, I thought since you are sweet and gentle all on your own":
-        #            jump choc
-        #elif cur_gifts[0][0] in oil_list:
-        #    $gift_scenario = oil_list.index(cur_gifts[0][0])
-        #    menu:
-        #        "You see [persistent.yuri_nickname]... since your fine smell always lures me into your arms...":
-        #            jump diffuser
-        #elif cur_gifts[0][0] in tea_list:
-        if cur_gifts[0][0] in tea_list:
-            $gift_scenario = tea_list.index(cur_gifts[0][0])
-            menu:
-                "But I can't let such a fine and elegant lady be without...":
-                    jump tea
+    $ gifts = Gift.find()
+    $ size = len(gifts)
+    
+    if size > 0:
+        if size == 1:
+            if gifts[0].size() > 0:
+                $ gifts[0].call_intro()
+            else:
+                call gift_intro_date
         else:
-            "That's strange... the gift is an impossible tesseract that's sucking up all of existence{nw}"#{nw}"
-            $renpy.call("save_and_quit_but_its_abrupt")
-    elif len(cur_gifts) > 1:
+            call gift_intro_date
+        
+        menu:
+            "But I can't let such a fine and elegant lady be without...":
+                $ gifts[0].call()
+    else:
         $show_chr("A-AAABA-ALAA")
         y "You do? Awww... that wouldn't have been necessary [player], your mere presence is all I ever hoped for.{nw}"
         $show_chr("A-CECBA-AIAI")
@@ -2327,12 +2322,7 @@ label giftgiving:
         y "Your system's GPU is probably already lagging from my presence as it is. Additional objects might start to overheat your device."
         $show_chr("A-BBBAA-AMAM")
         y "Besides, I think it would be best to see you pick out something for me personally."
-        jump ch30_loop
-    else:
-        y "You do? Awww... that wouldn't have been necessary [player], your mere presence is all I ever hoped for.{nw}"
-        $add_k(-4)
-        $renpy.error("Buffer underflow extraction attempt by 'characters/yuri.chr' detected. Potential buffer underflow attack prevented. NULL gift error. If you're saying you're gonna give her something, just give her something :P.")
-        $renpy.call("save_and_quit_but_its_abrupt")
+    jump ch30_loop
 
 label urban_date:
     hide craneo
