@@ -123,10 +123,12 @@ init -996 python:
             for id, gift in Gift.gifts.items():
                 if not renpy.exists("game/" + id + ".jy"): # Place a copy of a gift into the game folder
                     Gift.place_gift(id + ".jy")
+                print(id)
                 if gift.is_enabled():
                     for potential_gift in os.listdir(Gift.path): 
-                        normalized_gift = potential_gift.lower()
+                        normalized_gift = regex.sub("\.*[^\.]*$", "", potential_gift.lower())
                         normalized_gift = re.sub('[^a-z0-9]', '', normalized_gift)
+                        print(normalized_gift)
                         if gift.match(normalized_gift):
                             results.append(gift)
                             Gift.last_gifts.append(gift)
