@@ -87,5 +87,4 @@ init -996 python:
             TimeCycle.second = now.second
 
     TimeCycle.reset()
-    TimeCycle.set_time(hour=4)
     TimeCycle.set_time_id()
