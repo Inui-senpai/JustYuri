@@ -12,13 +12,17 @@ init -996 python:
 
         def __init__(self, id, intro_label, label, *filenames):
             self.id = id
-            for filename in filenames:
-                self.gifts.append(filename)
-            self.labels.append(label)
+            self.gifts = []
+
+            if type(filenames[0] == str):
+                for filename in filenames:
+                    self.gifts.append(filename)
             if label == None:
                 self.intro_labels = []
+                self.labels = []
             else:
                 self.intro_labels = [label]
+                self.labels = [label]
         
         def is_enabled():
             return eval(expression)
@@ -35,8 +39,9 @@ init -996 python:
 
         # Adds one or more labels to this gift. If more than one, then a random label is executed
         def add_label(*items):
-            for item in items:
-                self.labels.append(item)
+            if type(items[0] == str):
+                for item in items:
+                    self.labels.append(item)
             return self
 
         # Clears the list of labels for this gift and sets it to just the specified label for execution
@@ -48,8 +53,9 @@ init -996 python:
             return self
 
         def add_intro(*items):
-            for item in items:
-                self.intro_labels.append(item)
+            if type(items[0] == str):
+                for item in items:
+                    self.intro_labels.append(item)
             return self
 
         def set_intro(label):
@@ -96,7 +102,7 @@ init -996 python:
         def find():
             results = []
 
-            for id, gift in gift_list:
+            for id, gift in Gift.gifts:
                 if not renpy.exists("game/" + id + ".jy"): # Place a copy of a gift into the game folder
                     place_gift(id + ".jy")
                 if gift.is_enabled():

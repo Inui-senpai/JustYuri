@@ -568,7 +568,6 @@ init -998 python:
             book = "book1"
         elif downarm_both != "" and base64_to_index(expression[11]) + 1 == 2:
             book = "book2"
-        print(base64_to_index(expression[9]))
 
         #Is behind table
         leftdownarmbehind = True
@@ -859,7 +858,6 @@ init -998 python:
                 normalized_gift = potential_gift.lower()
                 normalized_gift = re.sub('[^.,a-z0-9\n\.]', '', normalized_gift)
                 if normalized_gift == gift: # if the file is in the character folder
-                    print(normalized_gift)
                     cur_gifts.append([gift, True]) #add it to the list of gifts available
                     os.remove(os.path.join(config.basedir, "characters", potential_gift))
                 else:
@@ -1021,13 +1019,6 @@ init -2 python:
         hours = persistent.ingame_time.seconds // (3600)
         return {"days": days, "hours": hours}
 
-    print("Time tracker?")
-    print(time_tracker_start())
-
-
-
-
-
     def timecycle_transition(bg="space", speed = "normal", bypass=False, sprite_present=True, forced_timecycle = None):
         tc_class.transition(bg, speed, bypass, sprite_present, forced_timecycle)
         return
@@ -1146,7 +1137,6 @@ init -2 python:
             bg_list = self.bg_list_dict()[persistent.bg]
 
         def transition(self, bg="space", speed = "normal", bypass=False, sprite_present=True, forced_timecycle = None):
-            print("a transition has occurred")
             global past_yuri_sit, past_timecycle_marker, past_bg, past_bg_list
             global yuri_sit, current_timecycle_marker, bg_list, is_sprite_present
             past_bg = ""

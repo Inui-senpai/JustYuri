@@ -60,7 +60,7 @@ init -996 python:
                         print("Condition not met for " + self.label + ": " + condition)
                         return False
                 except Exception as e:
-                    print("Error evaluating condition:", e)
+                    print_error("Error evaluating condition:", e)
                     return False  # Consider failure if evaluation fails
 
             return True  # All conditions evaluated successfully
@@ -83,7 +83,6 @@ init -996 python:
 
         dlist_no_block = list(set(dlist) - set(blocked_dialogues))
         if dlist_no_block == []:
-            print("all dialogues are blocked dialogues!")
             if blocked_dialogues == []:
                 renpy.error("No dialogues left! category type: " + selection_detail)
             else:
@@ -95,7 +94,6 @@ init -996 python:
         if len(blocked_dialogues) > size_of_blocked_dialogues:
             blocked_dialogues.pop(-1)
         blocked_dialogues.insert(0, chosen_dialogue)
-        print(blocked_dialogues)
         return chosen_dialogue
 
 
