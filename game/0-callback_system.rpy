@@ -85,6 +85,9 @@ init -998 python:
                     callback(event_object)
                 except:
                     print_error("Failed to execute event " + self.id + " as the function errored upon execution")
+                    raise
+                if event_object.canceled:
+                    break
             return event_object
 
     # The Callback API
@@ -160,7 +163,8 @@ init -998 python:
     # Events
     #==============================================#
     class EventObject:
-        id = None
+        id = None  # The event id this event is used in
+        canceled = False  # Whether the event should continue running
 
     class StartEvent(EventObject):
         id = "_start"
