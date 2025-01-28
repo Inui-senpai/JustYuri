@@ -44,6 +44,7 @@ define bulld.directory_name = "jy_build"
 define config.label_callbacks = [callback_label]
 define config.start_callbacks = [callback_start]
 define config.python_exit_callbacks = [callback_exit]
+define config.periodic_callbacks = [callback_tick]
 
 ## Sounds and music ############################################################
 ## These three variables control which mixers are shown to the player by

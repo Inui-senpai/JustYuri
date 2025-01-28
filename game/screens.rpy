@@ -1018,24 +1018,26 @@ init -501 screen preferences():
                 box_wrap True
 
                 vbox:
-
                     if persistent.idle_frequency_factor <= .75:
                         label _("Idle Frequency: Frequent")
                     elif persistent.idle_frequency_factor >= 1.25:
                         label _("Idle Frequency: Hesitant")
                     else:
                         label _("Idle Frequency: Normal")
-
                     bar value FieldValue(persistent, "idle_frequency_factor", 1.3, offset=0.5, step=0.1):
                         xmaximum 350
 
+                    if persistent.game_time_rate > 1:
+                        label _("Game Time Cycle: " + str(persistent.game_time_rate) + "x Faster")
+                    else:
+                        label _("Game Time Cycle: Realtime")
+                    bar value FieldValue(persistent, "game_time_rate", step=1, min=1, max=100):
+                        xmaximum 350
+
                     label _("Text Speed")
-
-
                     bar value FieldValue(_preferences, "text_cps", range=180, max_is_zero=False, style="slider", offset=20)
 
                     label _("Auto-Forward Time")
-
                     bar value Preference("auto-forward time")
 
 
@@ -1933,13 +1935,13 @@ screen make_expression():
 
 init -1 python:
     def split(arr, size):
-     arrs = []
-     while len(arr) > size:
-         pice = arr[:size]
-         arrs.append(pice)
-         arr   = arr[size:]
-     arrs.append(arr)
-     return arrs
+        arrs = []
+        while len(arr) > size:
+            pice = arr[:size]
+            arrs.append(pice)
+            arr   = arr[size:]
+        arrs.append(arr)
+        return arrs
 
 screen messagebox(message):
     modal True

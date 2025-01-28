@@ -40,6 +40,12 @@
 #     will be called. You must pass the coresponding
 #     EventObject on the second parameter or the
 #     game will crash.
+#
+#  4: Stopping further event calls
+#     If you want to stop the event from executing
+#     further callbacks, set event.canceled to
+#     True. If there are any more callbacks that
+#     need to be fired, they will all be skipped.
 #==================================================#
 
 #==================================================#
@@ -64,6 +70,9 @@
 #
 #     _crash: Called durring the init phase if jy
 #             has crashed last session
+#
+#     _tick: Called twenty times every second in
+#            the background
 #==================================================#
 init -998 python:
     class CallbackObject:
@@ -121,8 +130,10 @@ init -998 python:
         Callback.call("_start", StartEvent())
 
     def callback_label(label_name, called):
-        event = LabelEvent(label_name, called)
+        current_label = label_name
+        event = LabelEvent(str(label_name), called)
         Callback.call("_label", event)
+
         if event.label_name == "_quit":
             callback_quit()
             return
@@ -137,12 +148,15 @@ init -998 python:
     def callback_safe_quit():
         persistent.crash = False
         Callback.call("_save_quit", SafeQuitEvent())
-
-    def callback_crash():
-        Callback.call("_crash", CrashEvent())
         
     def callback_exit():
         Callback.call("_exit", ExitEvent())
+
+    def callback_crash():
+        Callback.call("_crash", CrashEvent())
+
+    def callback_tick():
+        Callback.call("_tick", TickEvent())
         
     #==============================================#
     # Main Callbacks
@@ -158,9 +172,10 @@ init -998 python:
     Callback.register("_safe_quit")
     Callback.register("_exit")
     Callback.register("_crash")
+    Callback.register("_tick")
 
     #==============================================#
-    # Events
+    # Renpy Events
     #==============================================#
     class EventObject:
         id = None  # The event id this event is used in
@@ -188,6 +203,9 @@ init -998 python:
 
     class CrashEvent(EventObject):
         id = "_crash"
+
+    class TickEvent(EventObject):
+        id = "_tick"
 
     if persistent.crash:
         callback_crash()

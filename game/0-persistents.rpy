@@ -85,6 +85,12 @@ default persistent.head1 = "nothing"
 default persistent.head2 = "nothing"
 default persistent.hairstyle = "default"
 default persistent.game_session = None
+#==================================================#
+# Setting Variables
+#==================================================#
+default persistent.idle_frequency_factor = 1  # How often Yuri speaks
+default persistent.high_gpu = 1  # Whether space background should render 0 = off, 1 = on, 2 = video
+default persistent.game_time_rate = 1
 
 #==================================================#
 # Karma/Sanity Variables
@@ -104,8 +110,6 @@ default persistent.skin = 0
 # Timecycle/Room Variables
 #==================================================#
 default persistent.bg = "space"
-default persistent.marker = None
-default persistent.previous_time = None
 
 #==================================================#
 # Boop Variables
@@ -122,12 +126,6 @@ default persistent.dates_taken = 0
 # Music Variables
 #==================================================#
 default persistent.custom_music = None
-
-#==================================================#
-# Screen Variables
-#==================================================#
-default persistent.idle_frequency_factor = 1
-default persistent.high_gpu = 1
 
 #==================================================#
 # Script Variables
@@ -147,3 +145,6 @@ default persistent.mod_count = 0
 default persistent.alpha_save = None
 default persistent.insanity_points = None
 default persistent.temp_memory = None
+default persistent.marker = None
+default persistent.previous_time = None
+default persistent.narrative = None
