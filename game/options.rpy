@@ -143,8 +143,8 @@ default preferences.sfx_volume = 0.75
 ##
 ## Generally the same as your build name
 ## Should always be a literal string and not an expression
-
-define config.save_directory = "JustYuri"#Overhaul"
+define config.developer = "auto"
+define config.save_directory = "JustYuri" if config.developer else None #Overhaul"
 
 
 ## Icon

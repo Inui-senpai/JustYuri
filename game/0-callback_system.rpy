@@ -115,24 +115,24 @@ init -998 python:
 
         # Calls all functions of a callback with a specified EventObject. EventObjects are used to pass parameters and get a result back.
         @staticmethod
-        def call(event_id, event_object):
-            if event_id in Callback.events:
-                if event_object == None or event_object.id != event_id:
-                    print_error("Failed to execute event " + event_id + " as the event object has the incorrect id")
-                    raise NameError("EventObject does not have the incorrect id for callback " + event_id)
-                Callback.events[event_id].call(event_object)
+        def call(event_object):
+            if event_object.id in Callback.events:
+                Callback.events[event_object.id].call(event_object)
+            else:
+                print_error("Failed to execute event " + str(event_object.id) + " as the event was not registered prior to calling it")
+                raise NameError("Event id " + event_object.id + " was not registered prior to calling it")
 
     #==============================================#
     # Renpy Callbacks
     #==============================================#
     
     def callback_start():
-        Callback.call("_start", StartEvent())
+        Callback.call(StartEvent())
 
     def callback_label(label_name, called):
         current_label = label_name
         event = LabelEvent(str(label_name), called)
-        Callback.call("_label", event)
+        Callback.call(event)
 
         if event.label_name == "_quit":
             callback_quit()
@@ -143,36 +143,24 @@ init -998 python:
 
     def callback_quit():
         persistent.crash = False
-        Callback.call("_quit", QuitEvent())
+        Callback.call(QuitEvent())
 
     def callback_safe_quit():
         persistent.crash = False
-        Callback.call("_save_quit", SafeQuitEvent())
+        Callback.call(SafeQuitEvent())
         
     def callback_exit():
-        Callback.call("_exit", ExitEvent())
+        Callback.call(ExitEvent())
 
     def callback_crash():
-        Callback.call("_crash", CrashEvent())
+        Callback.call(CrashEvent())
 
     def callback_tick():
-        Callback.call("_tick", TickEvent())
+        Callback.call(TickEvent())
         
     #==============================================#
     # Main Callbacks
     #==============================================#
-
-
-    #==============================================#
-    # Registering Callbacks
-    #==============================================#
-    Callback.register("_start")
-    Callback.register("_label")
-    Callback.register("_quit")
-    Callback.register("_safe_quit")
-    Callback.register("_exit")
-    Callback.register("_crash")
-    Callback.register("_tick")
 
     #==============================================#
     # Renpy Events
@@ -207,5 +195,16 @@ init -998 python:
     class TickEvent(EventObject):
         id = "_tick"
 
+    #==============================================#
+    # Registering Callbacks
+    #==============================================#
+    Callback.register(StartEvent.id)
+    Callback.register(LabelEvent.id)
+    Callback.register(QuitEvent.id)
+    Callback.register(SafeQuitEvent.id)
+    Callback.register(ExitEvent.id)
+    Callback.register(CrashEvent.id)
+    Callback.register(TickEvent.id)
+    
     if persistent.crash:
         callback_crash()

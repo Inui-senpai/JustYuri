@@ -1031,7 +1031,7 @@ init -501 screen preferences():
                         label _("Game Time Cycle: " + str(persistent.game_time_rate) + "x Faster")
                     else:
                         label _("Game Time Cycle: Realtime")
-                    bar value FieldValue(persistent, "game_time_rate", step=1, min=1, max=100):
+                    bar value FieldValue(persistent, "game_time_rate", step=1, range=100):
                         xmaximum 350
 
                     label _("Text Speed")

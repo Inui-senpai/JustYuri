@@ -1025,7 +1025,7 @@ init -2 python:
 
     #TIMECYCLE FUNCTIONS
 
-    class Timecycle:
+    class Timecycles:
         bg_timecycle = {
             "space": False,
             "timecycle": True,
@@ -1111,17 +1111,7 @@ init -2 python:
 
         def time_to_timecycle(self, time, bg):
             if self.bg_timecycle[bg]:
-                timecycle_time_dict = {
-                    "_sunrise": ["05", "06"],
-                    "_day": ["07", "08", "09", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19"],
-                    "_sunset": ["20"],
-                    "_night": ["21", "22", "23", "24", "00", "01", "02", "03", "04"]
-                }
-                for key in timecycle_time_dict:
-                    if str(time) in timecycle_time_dict[key]:
-                        #if timecycle_list[i] == "_night" and 1029 <= int(self.cur_month_day()) <= 1105:
-                            #return "_harvest"
-                        return key
+                return "_" + TimeCycle.time_id
             elif persistent.bg == "laboratory":
                 return "_night"
 
@@ -1189,7 +1179,7 @@ init -2 python:
                 renpy.call("tc_transition")
             return
 
-    tc_class = Timecycle()
+    tc_class = Timecycles()
 
 #Timecycle/Room Variables
 define slow_dissolve = Dissolve(5)
