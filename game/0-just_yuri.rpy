@@ -21,6 +21,7 @@ python early:
 #==================================================#
 init -999 python:
     print("Loading " + config.name + " - " + config.version + "...")
+    persistent.crash = True
     dismiss_keys = config.keymap['dismiss']
     allow_dialogue = False
     allow_skipping = False
@@ -77,12 +78,12 @@ init -999 python:
     # Prints an error message and optionally writes the full error in the specified path relative to the base directory. Path must be a string.
     def print_error(message, path=None):
         exc_type, exc, tb = sys.exc_info()
-        print(message + ":  " + str(exc_type) + ": " + str(exc))
+        print(message + ":  " + repr(exc_type) + ": " + str(exc))
 
         if (type(path) == str):
             with open(os.path.join(config.basedir, path, "error.log"), mode='w') as file_error:
                 file_error.write(message + os.linesep)
-                file_error.write(str(exc_type) + ": " + str(exc) + os.linesep)
+                file_error.write(repr(exc_type) + ": " + str(exc) + os.linesep)
                 traceback.print_tb(tb, file=file_error)
                 print("  - Created error.log file in " + path)
 

@@ -847,7 +847,6 @@ init -998 python:
     def gift_detect():
         cur_gifts = []
         import os
-        import filecmp
 
         gift_list = ["blackroses.jy","redroses.jy", "whiteroses.jy", "sandalwoodoil.jy", "lavenderoil.jy", "sweetdreamoil.jy","hershey.jy", "lavenderchocolate.jy", "mintchocolate.jy", "craneorigami.jy", "roseorigami.jy",
         "bunnyorigami.jy", "raccoonplush.jy", "diffuser.jy", "horrorbookset.jy"] #"high_mountain_tea.jpg", "imperial_tea.jpg", "tienchi_tea.jpg"]
@@ -857,15 +856,14 @@ init -998 python:
             if not renpy.exists("game/" + gift):
                 unarchive("images/gifts/" + gift, "game/" + gift)
             for potential_gift in os.listdir(config.basedir + "\\characters"): #and for every file in character folder
-                if filecmp.cmp(config.basedir + "\\characters\\" + potential_gift, config.basedir + "\\game\\" + gift): # if the file is in the character folder
-                    normalized_gift = potential_gift.lower()
-                    normalized_gift = re.sub('[^.,a-zA-Z0-9\n\.]', '', normalized_gift)
+                normalized_gift = potential_gift.lower()
+                normalized_gift = re.sub('[^.,a-z0-9\n\.]', '', normalized_gift)
+                if normalized_gift == gift: # if the file is in the character folder
                     print(normalized_gift)
-                    if gift == normalized_gift:
-                        cur_gifts.append([potential_gift, True]) #add it to the list of gifts available
-                    else:
-                        cur_gifts.append([potential_gift, False])
-            os.remove(config.basedir + "/game/" + gift)
+                    cur_gifts.append([gift, True]) #add it to the list of gifts available
+                    os.remove(os.path.join(config.basedir, "characters", potential_gift))
+                else:
+                    cur_gifts.append([gift, False])
         return cur_gifts
 
     #allowed_gifts = list of gifts you can give in a certain dialogue; available_gifts: list of gifts detected on folder
@@ -877,7 +875,6 @@ init -998 python:
             normalized_gift = re.sub('[^.,a-zA-Z0-9\n\.]', '', normalized_gift)
             if available_gifts[gift][1]: #if the gift has 'existance' flag on True i.e [["blackroses.jy", True],...]
                 gift_scenario = allowed_gifts.index(normalized_gift) #define number of scenario based on index of
-                os.remove(config.basedir + "\\characters\\" + available_gifts[gift][0])#delete gift in folder once gift scenario was defined
                 break
         return gift_scenario
 

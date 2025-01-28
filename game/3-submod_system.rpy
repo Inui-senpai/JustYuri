@@ -14,11 +14,11 @@ init -996 python:
     submods = {}
     submods.mods = {}
     submods.mod_count = 0
-    submods.mod_icon = Image(os.path.join("images", "default_submod.png"))
     submods.modinfo = """{{
 \t\"name\": \"{0}\",
 \t\"id\": \"{1}\",
 \t\"version\": \"1.0.0\",
+\t\"descriptiono\": \"This is a mod description.\nHi! :D\",
 \t\"dependencies\": []
 }}"""
     #==================================================#
@@ -31,16 +31,14 @@ init -996 python:
     class Submod:
         name = None
         id = None
-        version = None
-        dependencies = None
-        icon = None
+        version = "1.0.0"
+        description = None
+        dependencies = []
+        icon = Transform("images/default_submod.png", size=(100,100), fit="contain")
 
-        def __init__(self, mod_name, mod_id, mod_version, mod_dependencies, mod_icon):
+        def __init__(self, mod_name, mod_id):
             self.name = mod_name
             self.id = mod_id
-            self.version = mod_version
-            self.dependencies = mod_dependencies
-            self.icon = mod_icon
 
 
     #==================================================#
@@ -54,7 +52,7 @@ init -996 python:
         for directory in os.scandir(paths.submods[2]):
             print("Scanning mod: " + directory.name)
             submods.mod_count = submods.mod_count + 1
-            submod = Submod(directory.name, parse_mod_id(directory.name), "1.0.0", [], submods.mod_icon)
+            submod = Submod(directory.name, parse_mod_id(directory.name))
 
             mod_docs_dir =  os.path.join(directory.path, "documentation")
             mod_error_path = os.path.join("game", "submods", directory.name)
@@ -80,7 +78,11 @@ init -996 python:
                     submod.name = str(modinfo.get("name", submod.name))
                     submod.id = str(modinfo.get("id", submod.id))
                     submod.version = str(modinfo.get("version", submod.version))
+                    submod.description = modinfo.get("description", submod.description)
                     submod.dependencies = modinfo.get("dependencies", submod.dependencies)
+
+                    if submod.description:
+                        submod.description = str(submod.description)
                     if type(submod.dependencies) == str:
                         submod.dependencies = [submod.dependencies]
                     else:
@@ -92,7 +94,7 @@ init -996 python:
             if os.path.isfile(mod_icon_path):
                 print("  - Mod " + submod.id + " has an icon. Loading image...")
                 try:
-                    submod.icon = Image("submods/" + directory.name + "/icon.png")
+                    submod.icon = Transform("submods/" + directory.name + "/icon.png", size=(100,100), fit="contain")
                 except:
                     print_error("  - Failed to load icon.png", path=mod_error_path)
 

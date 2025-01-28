@@ -45,6 +45,7 @@ default persistent.dialogue_memory = {}
 #==================================================#
 # Functional Variables
 #==================================================#
+default persistent.crash = False # Checks this variable on start to see if the game was abruptly closed before
 default persistent.hdy_statue_is_enabled = False
 default persistent.halloween_cupcake_is_enabled = False
 default persistent.diffuser_is_enabled = False

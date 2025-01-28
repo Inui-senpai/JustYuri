@@ -585,6 +585,13 @@ init -501 screen navigation():
             style_prefix "navigation"
             hbox:
                 if renpy.variant("pc"):
+                    textbutton _("Mod List") action ShowMenu("mod_list")
+        vbox:
+            xpos 30
+            ypos 380
+            style_prefix "navigation"
+            hbox:
+                if renpy.variant("pc"):
                     textbutton _("Quit") action Quit_no_farewell(confirm=not main_menu)
 
 
@@ -1716,7 +1723,7 @@ screen three_choice_menu(dict_items, current_list, three_below_button_items, sid
                     action Return(i_label)
             $ temp += 1
 
- #Side button objects
+#Side button objects
         #fixed:
         #    area (35, 40, 400, 1000)
 
@@ -1969,6 +1976,40 @@ screen compliments(items):
                 for i in items:
                     textbutton i[0] action Jump(i[1]) xpos 430 ypos 25
                     null
+screen mod_list():
+    tag menu
+    use game_menu(_("Mod List"), scroll="viewport"):
+        style_prefix "about"
+        label "Mod List"
+        if submods.mod_count == 0:
+            text "You have no submods installed. Submods can be installed under game/submods."
+        else:
+            if submods.mod_count == 1:
+                text "You have a submod installed. You can view it below."
+            else :
+                text "You have " + str(submods.mod_count) + " submods installed. You can view them below."
+        vbox:
+            ypos 20
+            spacing 60
+            for mod_id in submods.mods:
+                vbox:
+                    xpos 50
+                    $submod = submods.mods[mod_id]
+                    hbox:
+                        add submod.icon
+                        vbox:
+                            xpos 10
+                            label submod.name
+                            text "{size=*0.7}Version: " + submod.version + "{/size}"
+                            text "{size=*0.7}ID: " + submod.id + "{/size}"
+                    if submod.description:
+                        text submod.description
+                    if len(submod.dependencies) > 0:
+                        label "Dependencies"
+                        for dependency in submod.dependencies:
+                            text "  > " + dependency
+            null
+
 
 screen about():
     tag menu

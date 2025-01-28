@@ -12,7 +12,7 @@
 ##
 ## The _() surrounding the string marks it as eligible for translation.
 
-define config.name = "Just Yuri (Beta)"
+define config.name = "Just Yuri"
 
 
 ## Determines if the title given above is shown on the main menu screen. Set
@@ -39,8 +39,13 @@ define gui.about = _("")
 define build.name = "JustYuri"
 define bulld.directory_name = "jy_build"
 
-## Sounds and music ############################################################
+## Callbacks ###################################################################
 
+define config.label_callbacks = [callback_label]
+define config.start_callbacks = [callback_start]
+define config.python_exit_callbacks = [callback_exit]
+
+## Sounds and music ############################################################
 ## These three variables control which mixers are shown to the player by
 ## default. Setting one of these to False will hide the appropriate mixer.
 
@@ -240,7 +245,7 @@ init python:
     build.classify("game/**.txt", "scripts")
     build.classify("game/**.chr", "scripts")
     build.classify("game/**.exe", "scripts")
-    build.classify("game/**.jy", "scripts")
+    #build.classify("game/**.jy", "scripts")
     build.classify("game/**.xml", "scripts")
     build.classify("game/**.wav", "audio")
     build.classify("game/**.mp3", "audio")
