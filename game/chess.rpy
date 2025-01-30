@@ -62,6 +62,7 @@ label chess:
 
 
     $ fen = STARTING_FEN
+    $ global_objects['STOCKFISH_ENGINE'] = chess.engine.SimpleEngine.popen_uci(STOCKFISH, startupinfo=STARTUPINFO)
     $ movetime = 2000
 
     menu:
@@ -105,7 +106,7 @@ label chess:
     # avoid rolling back and losing chess game state
     $ renpy.block_rollback()
 
-    show screen chess(fen=fen, player_color=player_color, movetime=movetime, depth=depth)
+    call screen chess(fen, player_color, movetime, depth)
 
     # avoid rolling back and entering the chess game again
     $ renpy.block_rollback()
@@ -114,6 +115,7 @@ label chess:
     $ renpy.checkpoint()
 
     $ quick_menu = True
+    window show
 
 
     # label chess_loop:
@@ -129,7 +131,7 @@ label chess:
     #            hide screen Chess
     #            $ keep_looping = False
 
-    #label chess_results:
+label chess_results:
     if _return == DRAW:
         y "Looks like it's a draw. Well played, [player]."
         jump ch30_loop
