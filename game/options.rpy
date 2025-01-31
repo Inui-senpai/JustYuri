@@ -257,6 +257,11 @@ init python:
     build.classify("game/**.webm", "videos")
 
     #new addition. Saves all python files while excluding
+    build.classify("game/00-chess-engine/python-packages/chess/**", "scripts")
+    build.classify("game/00-chess-engine/python-packages/chess-1.9.4.dist-info/**", "scripts")
+    build.classify("game/python-packages/pykhet/**", "scripts")
+    build.classify("game/python-packages/chess/**", "scripts")
+    build.classify("game/python-packages/chess-1.9.4.dist-info/**", "scripts")
     build.classify("game/python-packages/filecmp.py", "scripts")
     build.classify("game/python-packages/time_module.py", "scripts")
     build.classify("game/python-packages/rstr/**", "scripts")
@@ -265,6 +270,8 @@ init python:
     #build.classify("game/python-packages/jychrmod.py", "scripts")
     #build.classify("game/python-packages/jysavechanger.py", "scripts")
     build.classify("game/dev_logs/**.jy_log", "scripts")
+    build.classify("game/bin/**", "scripts")
+    build.classify("game/00-chess-engine/bin/**", "scripts")
 
     ##Optionally include a zip file with all source code
     build.classify('**.rpy','source')
