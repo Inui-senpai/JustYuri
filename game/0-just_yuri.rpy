@@ -76,18 +76,23 @@ init -999 python:
     #If game closed with HDY enabled, disable it
     persistent.HDY = False
 
+    def print_debug(message):
+        if not dev_access: return
+        print(message)
     
     # Prints an error message and optionally writes the full error in the specified path relative to the base directory. Path must be a string.
-    def print_error(message, path=None):
+    def print_error(message, exception=None, path=None):
         exc_type, exc, tb = sys.exc_info()
         print(message + ":  " + repr(exc_type) + ": " + str(exc))
 
-        if (type(path) == str):
+        if type(path) == str:
             with open(os.path.join(config.basedir, path, "error.log"), mode='w') as file_error:
                 file_error.write(message + os.linesep)
                 file_error.write(repr(exc_type) + ": " + str(exc) + os.linesep)
                 traceback.print_tb(tb, file=file_error)
                 print("  - Created error.log file in " + path)
+        if isinstance(exception, Exception):
+            raise exception
 
 #==================================================#
 # Post Initialization
