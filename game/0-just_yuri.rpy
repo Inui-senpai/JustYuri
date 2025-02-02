@@ -69,7 +69,7 @@ init -999 python:
         if type(persistent.costume)==list:
             persistent.costume = persistent.costume[0]
     #Check for each archive needed. If one is missing, throw an error and close
-    for archive in ['audio','images','fonts']:
+    for archive in ['fonts']:
         if not archive in config.archives:
             renpy.error("DDLC archive files not found in /game folder. Check installation and try again.")
 
