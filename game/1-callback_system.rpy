@@ -8,9 +8,9 @@
 #==================================================#
 
 #==================================================#
-#  How To Use Callbacks
+#  How To Use Events
 #  
-#  Callbacks are used in JY to allow developers to
+#  Events are used in JY to allow developers to
 #  execute special code when any event occurs
 #  in game. JY comes with a few pre-registered
 #  events listed below. JY also allows custom
@@ -38,18 +38,18 @@
 #     Callback.call(<id>, <event>) to call that id.
 #     All callbacks registered with that event
 #     will be called. You must pass the coresponding
-#     EventObject on the second parameter or the
+#     Event on the second parameter or the
 #     game will crash.
 #
 #  4: Stopping further event calls
 #     If you want to stop the event from executing
-#     further callbacks, set event.canceled to
-#     True. If there are any more callbacks that
-#     need to be fired, they will all be skipped.
+#     further callbacks, call event.cancel().
+#     If there are any more callbacks that needs
+#     to be fired, they will be skipped.
 #==================================================#
 
 #==================================================#
-#  Renpy Callbacks
+#  Renpy Events
 #
 #     _start: Called when the game has finished
 #             loading
@@ -87,14 +87,13 @@ init -998 python:
                 for callback in callbacks:
                     self.callbacks.append(callback)
 
-        # Calls all functions registered while passing in a EventObject. EventObjects are used to pass parameters and get a result back.
+        # Calls all functions registered while passing in a Event. EventObjects are used to pass parameters and get a result back.
         def call(self, event_object):
             for callback in self.callbacks:
                 try:
                     callback(event_object)
-                except:
-                    print_error("Failed to execute event " + self.id + " as the function errored upon execution")
-                    raise
+                except Exception as e:
+                    print_error("Failed to execute event " + self.id + " as the function errored upon execution", exception = e)
                 if event_object.canceled:
                     break
             return event_object
@@ -113,14 +112,13 @@ init -998 python:
             else:
                 Callback.events[event_id] = CallbackObject(event_id, callbacks)
 
-        # Calls all functions of a callback with a specified EventObject. EventObjects are used to pass parameters and get a result back.
+        # Calls all functions of a callback with a specified Event. EventObjects are used to pass parameters and get a result back.
         @staticmethod
         def call(event_object):
             if event_object.id in Callback.events:
                 Callback.events[event_object.id].call(event_object)
             else:
-                print_error("Failed to execute event " + str(event_object.id) + " as the event was not registered prior to calling it")
-                raise NameError("Event id " + event_object.id + " was not registered prior to calling it")
+                print_error("Failed to execute event " + str(event_object.id) + " as the event was not registered prior to calling it", exception = NameError("Event id " + event_object.id + " was not registered prior to calling it"))
 
     #==============================================#
     # Renpy Callbacks
@@ -158,53 +156,17 @@ init -998 python:
     def callback_tick():
         Callback.call(TickEvent())
         
-    #==============================================#
-    # Main Callbacks
-    #==============================================#
-
-    #==============================================#
-    # Renpy Events
-    #==============================================#
-    class EventObject:
+    class Event:
         id = None  # The event id this event is used in
         canceled = False  # Whether the event should continue running
+        def cancel(self):
+            self.canceled = True
 
-    class StartEvent(EventObject):
-        id = "_start"
-
-    class LabelEvent(EventObject):
-        id = "_label"
-        label_name = None
-        called = False
-        def __init__(self, label_name, called):
-            self.label_name = label_name
-            self.called = called
-
-    class QuitEvent(EventObject):
-        id = "_quit"
-
-    class SafeQuitEvent(EventObject):
-        id = "_safe_quit"
-
-    class ExitEvent(EventObject):
-        id = "_exit"
-
-    class CrashEvent(EventObject):
-        id = "_crash"
-
-    class TickEvent(EventObject):
-        id = "_tick"
-
-    #==============================================#
-    # Registering Callbacks
-    #==============================================#
-    Callback.register(StartEvent.id)
-    Callback.register(LabelEvent.id)
-    Callback.register(QuitEvent.id)
-    Callback.register(SafeQuitEvent.id)
-    Callback.register(ExitEvent.id)
-    Callback.register(CrashEvent.id)
-    Callback.register(TickEvent.id)
-    
+init -997 python:
     if persistent.crash:
+        crashed = True
         callback_crash()
+    else:
+        crashed = False
+        persistent.crash = True
+        renpy.save_persistent()

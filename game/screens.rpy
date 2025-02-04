@@ -1561,10 +1561,10 @@ screen three_choice_menu(dict_items, current_list, three_below_button_items, sid
             renpy.show_screen("three_choice_menu", dict_items, new_topics, three_below_button_items, side_button_items, "", cur_wheel_num)
 
     #Assigne function to keybored buttons
-    key "K_LEFT"  action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, 1, "left", cur_wheel_num)
-    key "K_RIGHT" action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, -1, "right", cur_wheel_num)
-    key "K_a"  action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, 1, "left", cur_wheel_num)
-    key "K_d" action Function(change_to_left, dict_items,scroll_button_items, three_below_button_items, side_button_items, -1, "right", cur_wheel_num)
+    key "K_LEFT"  action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, -1, "right", cur_wheel_num)
+    key "K_RIGHT" action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, 1, "left", cur_wheel_num)
+    key "K_a"  action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, -1, "right", cur_wheel_num)
+    key "K_d" action Function(change_to_left, dict_items,scroll_button_items, three_below_button_items, side_button_items, 1, "left", cur_wheel_num)
 
 #Scroll button objects
     fixed:
@@ -1575,8 +1575,8 @@ screen three_choice_menu(dict_items, current_list, three_below_button_items, sid
 
 
         #Arrow image buttons
-        imagebutton xalign 0.99 yalign 0.98 auto "gui/arrow_button_right_%s.png" action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, -1, "right", cur_wheel_num)
-        imagebutton xalign 0.01 yalign 0.98 auto "gui/arrow_button_left_%s.png" action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, 1, "left", cur_wheel_num)
+        imagebutton xalign 0.99 yalign 0.98 auto "gui/arrow_button_right_%s.png" action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, 1, "left", cur_wheel_num)
+        imagebutton xalign 0.01 yalign 0.98 auto "gui/arrow_button_left_%s.png" action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, -1, "right", cur_wheel_num)
         if cur_wheel_num > 0:
             textbutton "Back":
                 xpos 585

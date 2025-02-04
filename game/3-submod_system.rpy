@@ -18,7 +18,7 @@ init -996 python:
 \t\"name\": \"{0}\",
 \t\"id\": \"{1}\",
 \t\"version\": \"1.0.0\",
-\t\"descriptiono\": \"This is a mod description.\nHi! :D\",
+\t\"description\": \"This is a mod description.\\nHi! :D\",
 \t\"dependencies\": []
 }}"""
     #==================================================#

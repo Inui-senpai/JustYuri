@@ -4,6 +4,14 @@ default blocked_dialogues = []
 #use renpy.has_seen to determine if something has been seen before.
 
 init -996 python:
+
+    class DialogueAPI:
+        registry = {}
+
+        @staticmethod
+        def register(label, category = None, conditions = None, importance = 0):
+            pass
+
     #from datetime import datetime
     import datetime
     from time_module import time_shift, time_interval_check
@@ -60,7 +68,6 @@ init -996 python:
                         print("Condition not met for " + self.label + ": " + condition)
                         return False
                 except Exception as e:
-                    print_error("Error evaluating condition:", e)
                     return False  # Consider failure if evaluation fails
 
             return True  # All conditions evaluated successfully

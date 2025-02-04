@@ -45,7 +45,7 @@ default persistent.dialogue_memory = {}
 #==================================================#
 # Functional Variables
 #==================================================#
-default persistent.crash = False # Checks this variable on start to see if the game was abruptly closed before
+default persistent.crash = False # Checks this variable at the end of of the event handler to see if the game was abruptly closed last session
 default persistent.hdy_statue_is_enabled = False
 default persistent.halloween_cupcake_is_enabled = False
 default persistent.diffuser_is_enabled = False
@@ -91,6 +91,9 @@ default persistent.game_session = None
 default persistent.idle_frequency_factor = 1  # How often Yuri speaks
 default persistent.high_gpu = 1  # Whether space background should render 0 = off, 1 = on, 2 = video
 default persistent.game_time_rate = 1
+default persistent.enable_window_detection = False
+default persistent.enable_browser_detection = False
+default persistent.enable_file_detection = False
 
 #==================================================#
 # Karma/Sanity Variables

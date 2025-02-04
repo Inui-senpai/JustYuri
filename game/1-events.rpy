@@ -1,6 +1,32 @@
 init -998 python:
+    class StartEvent(Event):
+        id = "_start"
+
+    class LabelEvent(Event):
+        id = "_label"
+        label_name = None
+        called = False
+        def __init__(self, label_name, called):
+            self.label_name = label_name
+            self.called = called
+
+    class QuitEvent(Event):
+        id = "_quit"
+
+    class SafeQuitEvent(Event):
+        id = "_safe_quit"
+
+    class ExitEvent(Event):
+        id = "_exit"
+
+    class CrashEvent(Event):
+        id = "_crash"
+
+    class TickEvent(Event):
+        id = "_tick"
+
     # Fires anytime Yuri's karma changes
-    class KarmaEvent(EventObject):
+    class KarmaEvent(Event):
         id = "karma"
         karma = 0
         original_karma = 0
@@ -10,7 +36,7 @@ init -998 python:
             self.original_karma = karma
 
     # Fires anytime Yuri's sanity changes
-    class SanityEvent(EventObject):
+    class SanityEvent(Event):
         id = "sanity"
         sanity = 0
         original_sanity = 0
@@ -20,7 +46,7 @@ init -998 python:
             self.original_sanity = sanity
 
     # Fires anytime the TimeCycle system wants to change the time id
-    class TimeCycleEvent(EventObject):
+    class TimeCycleEvent(Event):
         id = "timecycle"
         hour = minute = second = 0
 
@@ -40,7 +66,17 @@ init -998 python:
                 return "sunset"
 
     def callback_jy_tick(event):
+        DetectionAPI.tick()
         TimeCycle.tick()
+
+
+    Callback.register(StartEvent.id)
+    Callback.register(LabelEvent.id)
+    Callback.register(QuitEvent.id)
+    Callback.register(SafeQuitEvent.id)
+    Callback.register(ExitEvent.id)
+    Callback.register(CrashEvent.id)
+    Callback.register(TickEvent.id)
 
     Callback.register(KarmaEvent.id)
     Callback.register(SanityEvent.id)

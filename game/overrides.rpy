@@ -5,7 +5,7 @@
 ## Normal overrides
 ## These overrides happen after any of the normal init blocks in scripts.
 ## Use these to change variables on screens, effects, and the like.
-init 10 python:
+init -999 python:
     #####################################
     #TURNS ON AND OFF THE DEV TOOLS######
     #####################################O

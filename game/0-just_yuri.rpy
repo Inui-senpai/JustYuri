@@ -15,6 +15,12 @@ python early:
     #import jycrypt
     me = singleton.SingleInstance()
     today = datetime.date.today()
+    sys.path.append(os.path.join(renpy.config.gamedir, 'python-packages'))
+
+    if renpy.windows:
+        import ctypes, ctypes.wintypes as wintypes
+        user32 = ctypes.windll.user32
+        win_callback = ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
 
 #==================================================#
 # Initialization
@@ -23,7 +29,6 @@ define current_label = None
 
 init -999 python:
     print("Loading " + config.name + " - " + config.version + "...")
-    persistent.crash = True
     dismiss_keys = config.keymap['dismiss']
     allow_dialogue = False
     allow_skipping = False
@@ -89,7 +94,10 @@ init -999 python:
             with open(os.path.join(config.basedir, path, "error.log"), mode='w') as file_error:
                 file_error.write(message + os.linesep)
                 file_error.write(repr(exc_type) + ": " + str(exc) + os.linesep)
-                traceback.print_tb(tb, file=file_error)
+                try:
+                    traceback.print_tb(tb, file=file_error)
+                except:
+                    pass
                 print("  - Created error.log file in " + path)
         if isinstance(exception, Exception):
             raise exception
