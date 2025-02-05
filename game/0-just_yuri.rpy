@@ -21,6 +21,8 @@ python early:
         import ctypes, ctypes.wintypes as wintypes
         user32 = ctypes.windll.user32
         win_callback = ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
+    elif renpy.linux or renpy.macintosh:
+        import pywinctl
 
 #==================================================#
 # Initialization

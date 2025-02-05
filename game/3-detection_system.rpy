@@ -45,7 +45,30 @@ init -996 python:
             pass
         def get_windows(self):
             pass
+            
     
+    class BetterLinuxDetector(Detector):
+        @staticmethod
+        def create(window):
+            window_obj = WindowObject(window.getPID(), window.title)
+            window_obj.active = window.isActive
+            window_obj.minimized = window.isMinimized
+            window_obj.background = window.isVisible
+            return window_obj
+            
+        def get_active_window(self):
+            window = pywinctl.getActiveWindow()
+            if not window:
+                return None
+            return BetterLinuxDetector.create(window)
+
+        def get_windows(self):
+            windows = []
+            all_windows = pywinctl.getAllWindows()
+            for window in all_windows:
+                windows.append(BetterLinuxDetector.create(window))
+            return windows
+
     class LinuxDetector(Detector):
         @staticmethod
         def create(id):
@@ -143,5 +166,10 @@ init -996 python:
     if renpy.windows:
         DetectionAPI.detector = WindowsDetector()
     elif renpy.linux:
-        DetectionAPI.detector = LinuxDetector()
+        display_session_type = os.environ.get("XDG_SESSION_TYPE")
+        if display_session_type == "x11":
+            DetectionAPI.detector = BetterLinuxDetector()
+        elif display_session_type == "wayland":
+            DetectionAPI.detector = LinuxDetector()
+        
         
