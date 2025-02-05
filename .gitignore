@@ -13,6 +13,7 @@ saves
 tmp
 cache
 env
+.DS_Store
 log.txt
 errors.txt
 traceback.txt
