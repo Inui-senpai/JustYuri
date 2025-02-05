@@ -50,6 +50,8 @@ init -996 python:
         os.mkdir(paths.submods[2])
     else:
         for directory in os.scandir(paths.submods[2]):
+            if not directory.is_dir():
+                continue
             print("Scanning mod: " + directory.name)
             submods.mod_count = submods.mod_count + 1
             submod = Submod(directory.name, parse_mod_id(directory.name))

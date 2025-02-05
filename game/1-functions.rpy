@@ -773,6 +773,8 @@ init -998 python:
     ####################################
     #UNARCHIVE AND FILE COMPARISON CODE#
     ####################################
+    def isValidFile(path):
+        return not regex.match("\.DS_Store$", path) and not regex.match("thumbs\.db$", path)
     # Unpacks a directory within the game folder or in .rpa files
     def unpack(directory, new_directory):
         # directory: Location relative to the game folder
@@ -786,7 +788,8 @@ init -998 python:
             if directory in path:
                 file_path = path.replace(directory + "/", "", 1).replace("/", os.sep)
                 file_dir = os.path.join(n_dir, regex.sub("[/]*[^/]*$", "", file_path.replace(os.sep, "/")).replace("/", os.sep))
-                
+                if not isValidFile(file_path):
+                    continue
                 with renpy.open_file(path) as file:
                     file_result = os.path.join(n_dir,  file_path)
                     if not os.path.exists(file_dir):
