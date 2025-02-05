@@ -40,6 +40,9 @@ label ch30_loop:
     if persistent.HDY:
         $show_hdy("hdy_derpy_smile")
     python:
+        windows = DetectionAPI.get_windows()
+        for window in windows:
+            print(str(window.id) + ": " + window.title + " []")
         if persistent.saved_costume != None:
             persistent.costume = persistent.saved_costume
             persistent.saved_costume = None

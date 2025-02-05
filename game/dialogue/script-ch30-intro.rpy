@@ -760,7 +760,7 @@ label detection_pitstop:
     $ stream_list = ["obs32.exe", "obs64.exe", "obs.exe", "xsplit.core.exe", "vmixdesktopcapture.exe", "gameshow.exe", "wirecast.exe", "CamtasiaStudio.exe", "Action.exe", "Action_x86.bin", "Action_x64.bin", "ffmpeg.exe", "CamRecorder.exe", "fraps.exe", "bdcam.exe", "bdcam_nonadmin.exe", "bdcam64.bin", "streamlabsobs.exe" "streamlabs_obs.exe"]
     if list(set(process_list).intersection(stream_list)):
         call ch30_stream
-    if renpy.windows or renpy.mac or renpy.linux:
+    if renpy.windows or renpy.macintosh or renpy.linux:
         if persistent.high_gpu == 0:
             $ show_chr("A-ADAAA-ALAA")
             y "But first, I want to make double sure you did the right thing."

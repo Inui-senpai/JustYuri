@@ -46,6 +46,60 @@ init -996 python:
         def get_windows(self):
             pass
     
+    class LinuxDetector(Detector):
+        @staticmethod
+        def create(id):
+            window = WindowObject(id, id)
+            output = subprocess.check_output(["xprop", "-id", id, "WM_NAME", "_NET_WM_NAME", "_NET_WM_STATE", "_NET_ACTIVE_WINDOW"]).decode("utf-8")
+            name = None
+
+            for line in output.splitlines():
+                if "WM_NAME" in line:
+                    if not "not found" in line:
+                        name = line
+                elif "_NET_WM_NAME" in line:
+                    if not "not found" in line:
+                        name = line
+                elif "_NET_WM_STATE" in line:
+                    if not "not found" in line:
+                        window.minimized = "_NET_WM_STATE_HIDDEN" in output
+            
+            if name:
+                name = name.split("= ")[1]
+                name = regex.sub("^\"", "", name)
+                window.title = regex.sub("\"$", "", name)
+            else:
+                window.background = True
+
+            return window
+
+        @staticmethod
+        def get_active_id():
+            output = subprocess.check_output(["xprop", "-root", "_NET_ACTIVE_WINDOW"]).decode("utf-8")
+            if "not found" in output.lower():
+                return None
+            return output.split("# ")[1].split(", ")[0]
+            
+        def get_active_window(self):
+            id = LinuxDetector.get_active_id()
+            if id:
+                window = LinuxDetector.create(id)
+                window.active = True
+                return window
+            return None
+
+        def get_windows(self):
+            windows = []
+            active_window_id = LinuxDetector.get_active_id()
+            output = subprocess.check_output(["xwininfo", "-root", "-tree"]).decode("utf-8")
+            for line in output.splitlines():
+                line = regex.sub("^\s*", "", line)
+                line = regex.sub(" .*", "", line)
+                if regex.match("^0x", line):
+                    window = LinuxDetector.create(line)
+                    windows.append(window)
+            return windows
+
     class WindowsDetector(Detector):
         @staticmethod
         def create(id):
@@ -88,4 +142,6 @@ init -996 python:
 
     if renpy.windows:
         DetectionAPI.detector = WindowsDetector()
+    elif renpy.linux:
+        DetectionAPI.detector = LinuxDetector()
         

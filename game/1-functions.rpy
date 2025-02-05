@@ -2,7 +2,7 @@
 ###################
 #DEFAULT VARIABLES#
 ###################
-
+define time_tracker = None
 default torso_costume2 = "nothing"
 #Sort these... like soon. Now-ish if possible.
 default currentpos = 0
@@ -995,7 +995,7 @@ init -2 python:
     def time_tracker_update():
         global time_tracker
         if time_tracker == None:
-            renpy.error("how did you even start up the game without time_tracker_start")
+            time_tracker_start()
         else:
             if time_tracker > datetime.datetime.now(): #if the past is later than the present
                 return True
