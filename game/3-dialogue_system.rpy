@@ -66,7 +66,7 @@ init -999 python:
             for condition in self.conditions:
                 try:
                     if not eval(condition):
-                        print("Condition not met for " + self.label + ": " + condition)
+                        print_debug("Condition not met for " + self.label + ": " + condition)
                         return False
                 except Exception as e:
                     return False  # Consider failure if evaluation fails
@@ -77,8 +77,8 @@ init -999 python:
     def conditions_met_run():
         global dialogue_db
         for dialogue_name in dialogue_db.keys():
-            print(dialogue_name)
-            print(dialogue_db[dialogue_name].conditions_met())
+            print_debug(dialogue_name)
+            print_debug(dialogue_db[dialogue_name].conditions_met())
 
     #adds the dialogue class to the database
     def add_dialogue(dialogue_class):
@@ -115,10 +115,10 @@ init -999 python:
                     print(dialogue_db[selection_detail].conditions)
                     print(dialogue_db[selection_detail].conditions_met())
                 else:
-                    print("calling: " + selection_detail)
+                    print_debug("calling: " + selection_detail)
                     renpy.call(selection_detail)
             else:
-                print(selection_detail + ": label does not exist")
+                print_debug(selection_detail + ": label does not exist")
                 renpy.error(selection_detail + ": label does not exist")
                 return
         
@@ -191,7 +191,7 @@ init -999 python:
 
             #Activation
             if selected_dialogue != "return":
-                print("calling: " + selected_dialogue)
+                print_debug("calling: " + selected_dialogue)
                 renpy.call(selected_dialogue)
 
 
@@ -202,7 +202,7 @@ init -999 python:
             loop_again = True
             return
         else:
-            print(selection_method)
+            print_debug(selection_method)
             y("Selection method not found")
             return
             
@@ -269,7 +269,7 @@ init -999 python:
         if memory_name in persistent.dialogue_memory:
             return persistent.dialogue_memory[memory_name]
         else:
-            print(memory_name + " not found in persistent.dialogue_memory. Could not return_memory.")
+            print_error(memory_name + " not found in persistent.dialogue_memory. Could not return_memory.")
 
     def reset_memory():
         persistent.dialogue_memory = {}

@@ -40,7 +40,7 @@ python early:
 define current_label = None
 
 init -999 python:
-    print("Loading " + config.name + " - " + config.version + "...")
+    print("Loading " + config.name + " - " + config.version + "..." + os.linesep + "-------------------------------")
     dev_access = config.developer
     dismiss_keys = config.keymap['dismiss']
     allow_dialogue = False
@@ -136,6 +136,18 @@ init -999 python:
                 except:
                     pass
                 print("  - Created error.log file in " + path)
+        elif type(path) == tuple:
+            print(os.linesep + "------------ ERROR ------------" + os.linesep + exception_type + ": " + str(exception))
+            traceback.print_tb(tb, file=sys.stdout)
+            print("")
+            for sub_path in path:
+                with open(os.path.join(config.basedir, sub_path, "error.log"), mode='a') as file_error:
+                    file_error.write(os.linesep + "------------ ERROR ------------" + os.linesep + exception_type + ": " + str(exception) + os.linesep)
+                    try:
+                        traceback.print_tb(tb, file=file_error)
+                    except:
+                        pass
+                    print("  - Created error.log file in " + sub_path)
         else:
             print(os.linesep + "-------- SILENT ERROR ---------" + os.linesep + exception_type + ": " + str(exception))
             traceback.print_tb(tb, file=sys.stdout)
@@ -171,11 +183,24 @@ init -999 python:
                 except:
                     pass
                 print("  - Created fatal.log file in " + path)
+        elif type(path) == tuple:
+            print(os.linesep + "------------ FATAL ------------" + os.linesep + exception_type + ": " + str(exception))
+            traceback.print_tb(tb, file=sys.stdout)
+            print("")
+            for sub_path in path:
+                with open(os.path.join(config.basedir, sub_path, "fatal.log"), mode='a') as file_error:
+                    file_error.write(os.linesep + "------------ FATAL ------------" + os.linesep + exception_type + ": " + str(exception) + os.linesep)
+                    try:
+                        traceback.print_tb(tb, file=file_error)
+                    except:
+                        pass
+                    print("  - Created fatal.log file in " + sub_path)
         raise exception
 
 
 #==================================================#
 # Post Initialization
 #==================================================#
-init python:
+init 999 python:
     year, month, day, hour, minute, second = tc_class.cur_time()
+    print(os.linesep + "Loading of " + config.name + " - " + config.version + " complete!" + os.linesep + "-------------------------------" + os.linesep + os.linesep)

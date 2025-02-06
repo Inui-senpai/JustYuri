@@ -59,18 +59,14 @@ label ch30_loop:
         $ config.allow_skipping = False
     $ EnableTalk()
     if persistent.idle_frequency_factor == 0:
-        $ print("idle_frequency_null")
         $ waittime = renpy.random.randint(999999999999999999999999999999999999999999999999999999999999, 999999999999999999999999999999999999999999999999999999999999)
     elif persistent.idle_frequency_factor <= .75:
-        $ print("idle_frequency_quick")
         $ waittime = renpy.random.randint(15, 30)
     elif persistent.idle_frequency_factor >= 1.25:
-        $ print("idle_frequency_slow")
         $ waittime = renpy.random.randint(300, 600)
     elif persistent.idle_frequency_factor >= 1.5:
         $ waittime = renpy.random.randint(10000, 20000)
     else:
-        $ print("idle_frequency_medium")
         $ waittime = renpy.random.randint(60, 75)
     window hide(config.window_hide_transition)
 
@@ -110,7 +106,6 @@ label ch30_waitloop:
             player = randomplayername()
             call_dialogue(ch30_loop_type, "hdy")
         EnableTalk()
-    $ print("Done Ping")
     window auto
     jump ch30_loop
 

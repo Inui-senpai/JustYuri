@@ -1814,7 +1814,7 @@ init python:
                                 if self.is_locking:
                                     self.move_count += 1
                         else:
-                            print("      Executing Horizontal Move:", horizontal_move)
+                            print_debug("      Executing Horizontal Move:", horizontal_move)
                             del self.moves_to_execute[0]
                 self.temp_position += 1
 

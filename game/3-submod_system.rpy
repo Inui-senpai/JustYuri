@@ -31,10 +31,12 @@ init -999 python:
         description = None
         dependencies = []
         icon = Transform("images/default_submod.png", size=(100,100), fit="contain")
+        path = None
 
-        def __init__(self, mod_name, mod_id):
+        def __init__(self, mod_name, mod_id, path):
             self.name = mod_name
             self.id = mod_id
+            self.path = path
 
 
     #==================================================#
@@ -50,12 +52,11 @@ init -999 python:
                 continue
             print("Scanning mod: " + directory.name)
             submods.mod_count = submods.mod_count + 1
-            submod = Submod(directory.name, parse_mod_id(directory.name))
-
             mod_docs_dir =  os.path.join(directory.path, "documentation")
             mod_error_path = os.path.join("game", "submods", directory.name)
             mod_info_path = os.path.join(directory.path, "modinfo.json")
             mod_icon_path = os.path.join(directory.path, "icon.png")
+            submod = Submod(directory.name, parse_mod_id(directory.name), mod_error_path)
 
             if not os.path.isfile(mod_info_path):
                 print("  - Mod " + submod.id + " does not contain a modinfo.json file. Creating new files...")
@@ -105,13 +106,14 @@ init -999 python:
     print("Checking loaded submods for missing dependencies...")
 
     #TODO: Make sure to check all dependencies first before raising any errors as ideally we want to show all dependencies that are missing.
+    should_continue = True
     for key, submod in submods.mods.items():
         if len(submod.dependencies) > 0:
             for dependency in submod.dependencies:
                 if not parse_mod_id(dependency) in submods.mods:
-                    try:
-                        raise KeyError("Failed to load submods as submod " + submod.id + " is missing dependency " + parse_mod_id(dependency))
-                    except:
-                        print_error("  - Failed to load submods as submod " + submod.id + " is missing dependency " + parse_mod_id(dependency), path=mod_error_path)
-                        raise
+                    print("  - Submod " + submod.id + " is missing dependency " + parse_mod_id(dependency))
+                    print_error(KeyError("Submod " + submod.id + " is missing dependency " + parse_mod_id(dependency)), path=(submod.path, config.basedir))
+                    should_continue = False
+    if not should_continue:
+        print_fatal(KeyError("One or more submods are missing dependencies. Read error.log for more info"))        
     print("Mod loading complete! Loaded " + str(submods.mod_count) + " mod(s)")

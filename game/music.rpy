@@ -37,7 +37,7 @@ init python:
         else:
             possible_music.append("<loop 18.08>music/jy_music/hello_again_loop.ogg")
 
-        print(possible_music)
+        print_debug(possible_music)
         return random.choice(possible_music)
 
     def custom_music_list(all_options = True):

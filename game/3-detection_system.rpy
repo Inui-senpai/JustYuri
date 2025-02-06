@@ -130,7 +130,6 @@ init -999 python:
             children = linux_root.query_tree().children
             for child in children:
                 LinuxDetector.get_children(child, active_window.id if active_window else None, windows)
-            print(str(windows))
             return windows
 
     class WindowsDetector(Detector):

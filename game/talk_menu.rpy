@@ -85,7 +85,7 @@ label prompt_menu:
                 talk_menu.append((_("Compliment."), "renpy.jump(\"compliment_menu\")"))
                 talk_menu.append((_("Antagonize."), "renpy.jump(\"insult_menu\")"))
             else:
-                print(datetime.datetime.now() - persistent.memory["last_compliment_time"])
+                print_debug(datetime.datetime.now() - persistent.memory["last_compliment_time"])
         else:
             talk_menu.append((_("Compliment."), "renpy.jump(\"compliment_menu\")"))
             talk_menu.append((_("Antagonize."), "renpy.jump(\"insult_menu\")"))

@@ -1873,10 +1873,10 @@ screen make_expression():
                         str(lowRList[lowRIterator]))
                 persistent.costume = costumeList[costumeIterator]
                 if tc_class.bg_timecycle[persistent.bg]:
-                    print(1)
+                    print_debug(1)
                     current_timecycle_marker = timecycle0List[timecycleIterator]
                 else:
-                    print(2)
+                    print_debug(2)
                     current_timecycle_marker = "_space"
                 persistent.face1 = glasses0List[glassesIterator]
                 persistent.head1 = neko0List[nekoIterator]

@@ -210,7 +210,7 @@ label ch30_reload_4:
             #$show_chr("A-ACAAA-AAAL")
             #y "We were going to talk a little more, right?"
             #return
-    $print("reload_4 triggered")
+    $print_debug("reload_4 triggered")
     $ ks_convert_1 = sanity()
     if ks_convert_1 == 2:
         $ reload_random = renpy.random.randint(1, 6)

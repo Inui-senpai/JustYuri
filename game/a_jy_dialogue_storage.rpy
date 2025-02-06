@@ -1653,7 +1653,7 @@ init -3 python:
                     'day': persistent.bday_day},
                 {'day':1})
             )
-        print(hello)
+        print_debug(hello)
 
     def check():
         hello = time_interval_check(
@@ -1666,7 +1666,7 @@ init -3 python:
                     'day': persistent.bday_day},
                 {'day':-4})
             )
-        print(hello)
+        print_debug(hello)
 
     def check2():
         hello = time_interval_check(
@@ -1679,7 +1679,7 @@ init -3 python:
                     'day': 20},
                 {'week': 4})
             )
-        print(hello)
+        print_debug(hello)
 
     ########
 
