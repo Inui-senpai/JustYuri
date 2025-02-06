@@ -21,8 +21,13 @@ python early:
         import ctypes, ctypes.wintypes as wintypes
         user32 = ctypes.windll.user32
         win_callback = ctypes.WINFUNCTYPE(wintypes.BOOL, wintypes.HWND, wintypes.LPARAM)
-    elif renpy.linux or renpy.macintosh:
-        import pywinctl
+    elif renpy.linux:
+        import Xlib
+        from Xlib.display import Display
+        from Xlib.Xutil import IconicState # Used to see if a window is minimized
+
+        linux_display = Display() # Gets the default display in linux
+        linux_root = linux_display.screen().root # Gets the root window in linux to get important information
 
 #==================================================#
 # Initialization

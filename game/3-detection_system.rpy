@@ -45,82 +45,67 @@ init -996 python:
             pass
         def get_windows(self):
             pass
-            
-    
-    class BetterLinuxDetector(Detector):
-        @staticmethod
-        def create(window):
-            window_obj = WindowObject(window.getPID(), window.title)
-            window_obj.active = window.isActive
-            window_obj.minimized = window.isMinimized
-            window_obj.background = window.isVisible
-            return window_obj
-            
-        def get_active_window(self):
-            window = pywinctl.getActiveWindow()
-            if not window:
-                return None
-            return BetterLinuxDetector.create(window)
-
-        def get_windows(self):
-            windows = []
-            all_windows = pywinctl.getAllWindows()
-            for window in all_windows:
-                windows.append(BetterLinuxDetector.create(window))
-            return windows
 
     class LinuxDetector(Detector):
         @staticmethod
-        def create(id):
-            window = WindowObject(id, id)
-            output = subprocess.check_output(["xprop", "-id", id, "WM_NAME", "_NET_WM_NAME", "_NET_WM_STATE", "_NET_ACTIVE_WINDOW"]).decode("utf-8")
-            name = None
+        def create(window):
+            id = window.get_full_property(linux_display.intern_atom("_NET_WM_PID", False), 0)
+            if not id:
+                return None
 
-            for line in output.splitlines():
-                if "WM_NAME" in line:
-                    if not "not found" in line:
-                        name = line
-                elif "_NET_WM_NAME" in line:
-                    if not "not found" in line:
-                        name = line
-                elif "_NET_WM_STATE" in line:
-                    if not "not found" in line:
-                        window.minimized = "_NET_WM_STATE_HIDDEN" in output
-            
+            window_obj = WindowObject(id.value[0], str(id.value[0]))
+            name = window.get_full_property(linux_display.intern_atom("WM_NAME", False), 0)
+            if not name:
+                name = window.get_full_property(linux_display.intern_atom("_NET_WM_NAME", False), 0)
+
             if name:
-                name = name.split("= ")[1]
-                name = regex.sub("^\"", "", name)
-                window.title = regex.sub("\"$", "", name)
+                window_obj.title = name.value.decode("utf-8")
             else:
-                window.background = True
+                window_obj.background = True
+            
+            state_prop = window.get_wm_state()
+            if state_prop:
+                window_obj.minimized = state_prop.state == IconicState
 
+            return window_obj
+        
+        @staticmethod
+        def get_children(window, active_id, windows):
+            window_obj = LinuxDetector.create(window)
+            if window_obj:
+                window_obj.active = True if active_id and window_obj.id == active_id else False
+                windows.append(window_obj)
+
+            children = window.query_tree().children
+            for child in children:
+                LinuxDetector.get_children(child, active_id, windows)
+
+
+        def get_active_window(self):
+            if not persistent.enable_window_detection:
+                return None
+
+            active_windows = linux_root.get_full_property(linux_display.intern_atom("_NET_ACTIVE_WINDOW"), 0)
+            if not active_windows:
+                return None
+
+            window = LinuxDetector.create(linux_display.create_resource_object("window", active_windows.value[0]))
+            if not window:
+                return None
+
+            window.active = True
             return window
 
-        @staticmethod
-        def get_active_id():
-            output = subprocess.check_output(["xprop", "-root", "_NET_ACTIVE_WINDOW"]).decode("utf-8")
-            if "not found" in output.lower():
-                return None
-            return output.split("# ")[1].split(", ")[0]
-            
-        def get_active_window(self):
-            id = LinuxDetector.get_active_id()
-            if id:
-                window = LinuxDetector.create(id)
-                window.active = True
-                return window
-            return None
-
         def get_windows(self):
+            if not persistent.enable_window_detection:
+                return []
+
             windows = []
-            active_window_id = LinuxDetector.get_active_id()
-            output = subprocess.check_output(["xwininfo", "-root", "-tree"]).decode("utf-8")
-            for line in output.splitlines():
-                line = regex.sub("^\s*", "", line)
-                line = regex.sub(" .*", "", line)
-                if regex.match("^0x", line):
-                    window = LinuxDetector.create(line)
-                    windows.append(window)
+            active_window = self.get_active_window()
+            children = linux_root.query_tree().children
+            for child in children:
+                LinuxDetector.get_children(child, active_window.id if active_window else None, windows)
+                
             return windows
 
     class WindowsDetector(Detector):
@@ -151,7 +136,7 @@ init -996 python:
 
         def get_windows(self):
             if not persistent.enable_window_detection:
-                return None
+                return []
             windows = []
             active_window_id = user32.GetForegroundWindow()
             def callback(hwnd: int, lparam: int) -> bool:
@@ -162,14 +147,8 @@ init -996 python:
                 return True
             user32.EnumWindows(win_callback(callback), wintypes.LPARAM(0))
             return windows
-
+    persistent.enable_window_detection = True
     if renpy.windows:
         DetectionAPI.detector = WindowsDetector()
     elif renpy.linux:
-        display_session_type = os.environ.get("XDG_SESSION_TYPE")
-        if display_session_type == "x11":
-            DetectionAPI.detector = BetterLinuxDetector()
-        elif display_session_type == "wayland":
-            DetectionAPI.detector = LinuxDetector()
-        
-        
+        DetectionAPI.detector = LinuxDetector()
