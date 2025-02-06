@@ -24,6 +24,8 @@ init -998 python:
 
     class TickEvent(Event):
         id = "_tick"
+        ticks = 0
+    callback_tick_event = TickEvent()
 
     # Fires anytime Yuri's karma changes
     class KarmaEvent(Event):

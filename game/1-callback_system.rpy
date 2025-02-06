@@ -154,8 +154,9 @@ init -998 python:
         Callback.call(CrashEvent())
 
     def callback_tick():
-        Callback.call(TickEvent())
-        
+        Callback.call(callback_tick_event)
+        callback_tick_event.ticks += 1
+    
     class Event:
         id = None  # The event id this event is used in
         canceled = False  # Whether the event should continue running

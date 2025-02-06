@@ -22,6 +22,7 @@ init -996 python:
 
     #dialogue_db will be the primary dictionary called on for information
     dialogue_db = {}
+    queued_dialoguee = []
 
     #This is to make sure dialogue_memory is a dictionary, and not None, before the dialogues are added to dialogue_db
     if persistent.dialogue_memory == None:
@@ -103,6 +104,8 @@ init -996 python:
         blocked_dialogues.insert(0, chosen_dialogue)
         return chosen_dialogue
 
+    def queue_dialogue(selection_method = "pool", selection_detail = "idles", screener = False):
+        queued_dialoguee.append((selection_method, selection_detail, screener))
 
     def call_dialogue(selection_method = "pool", selection_detail = "idles", screener = False):
         #selection methods range from "pool_nonrepeat" to "pool" to "specific"

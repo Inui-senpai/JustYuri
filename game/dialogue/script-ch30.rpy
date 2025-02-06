@@ -81,9 +81,21 @@ label ch30_waitloop:
         loop_again = False
         boopable = True
         start_time = time.time()
-        renpy.pause(waittime)
+        renpy.pause(1)
         boopable = False
         renpy.pause(0.1)
+
+    python:
+        ran_dialogue = False
+        if len(queued_dialoguee) > 0:
+            ran_dialogue = True
+            DisableTalk()
+            call_dialogue(queued_dialoguee[0][0], queued_dialoguee[0][1], queued_dialoguee[0][2])
+            
+    python:
+        if ran_dialogue:
+            queued_dialoguee.pop(0)
+            EnableTalk()
 
     python:
         slow_nodismiss_copy()
@@ -98,6 +110,7 @@ label ch30_waitloop:
             player = randomplayername()
             call_dialogue(ch30_loop_type, "hdy")
         EnableTalk()
+    $ print("Done Ping")
     window auto
     jump ch30_loop
 

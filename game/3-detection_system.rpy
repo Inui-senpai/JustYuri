@@ -12,10 +12,12 @@ init -996 python:
         detector = None
         ticks = 0
 
+        cached_detections = None
+
         @staticmethod
         def tick():
-            if DetectionAPI.ticks % 200 == 0:
-                pass
+            if DetectionAPI.ticks % 1200 == 0:
+                cached_detections = DetectionAPI.get_windows()
             DetectionAPI.ticks += 1
 
         @staticmethod
@@ -26,9 +28,31 @@ init -996 python:
         
         @staticmethod
         def get_windows():
-            if not DetectionAPI.detector:
-                return []
-            return DetectionAPI.detector.get_windows()
+            windows = []
+            if DetectionAPI.detector:
+                windows = DetectionAPI.detector.get_windows()
+            if not DetectionAPI.cached_detections:
+                DetectionAPI.cached_detections = windows
+            return windows
+        
+        @staticmethod
+        def get_cached_windows():
+            return DetectionAPI.cached_detections if DetectionAPI.cached_detections else DetectionAPI.get_windows()
+
+        @staticmethod
+        def contains(window_name, lowercase=False, use_regex=False):
+            windows = DetectionAPI.get_windows()
+            if use_regex:
+                for window in windows:
+                    title = window.title.lower() if lowercase else window.title
+                    if regex.match(window_name, title):
+                        return True
+            else:
+                for window in windows:
+                    title = window.title.lower() if lowercase else window.title
+                    if title == window_name:
+                        return True
+            return False
 
     class WindowObject:
         id = None
@@ -49,24 +73,26 @@ init -996 python:
     class LinuxDetector(Detector):
         @staticmethod
         def create(window):
-            id = window.get_full_property(linux_display.intern_atom("_NET_WM_PID", False), 0)
-            if not id:
+            try:
+                id = window.get_full_property(linux_display.intern_atom("_NET_WM_PID", False), 0)
+                if not id:
+                    return None
+
+                window_obj = WindowObject(id.value[0], str(id.value[0]))
+                name = window.get_full_property(linux_display.intern_atom("WM_NAME", False), 0)
+                if not name:
+                    name = window.get_full_property(linux_display.intern_atom("_NET_WM_NAME", False), 0)
+
+                if name:
+                    window_obj.title = name.value.decode("utf-8")
+                else:
+                    window_obj.background = True
+                
+                state_prop = window.get_wm_state()
+                if state_prop:
+                    window_obj.minimized = state_prop.state == IconicState
+            except:
                 return None
-
-            window_obj = WindowObject(id.value[0], str(id.value[0]))
-            name = window.get_full_property(linux_display.intern_atom("WM_NAME", False), 0)
-            if not name:
-                name = window.get_full_property(linux_display.intern_atom("_NET_WM_NAME", False), 0)
-
-            if name:
-                window_obj.title = name.value.decode("utf-8")
-            else:
-                window_obj.background = True
-            
-            state_prop = window.get_wm_state()
-            if state_prop:
-                window_obj.minimized = state_prop.state == IconicState
-
             return window_obj
         
         @staticmethod
@@ -75,7 +101,6 @@ init -996 python:
             if window_obj:
                 window_obj.active = True if active_id and window_obj.id == active_id else False
                 windows.append(window_obj)
-
             children = window.query_tree().children
             for child in children:
                 LinuxDetector.get_children(child, active_id, windows)
@@ -105,7 +130,7 @@ init -996 python:
             children = linux_root.query_tree().children
             for child in children:
                 LinuxDetector.get_children(child, active_window.id if active_window else None, windows)
-                
+            print(str(windows))
             return windows
 
     class WindowsDetector(Detector):
@@ -152,3 +177,5 @@ init -996 python:
         DetectionAPI.detector = WindowsDetector()
     elif renpy.linux:
         DetectionAPI.detector = LinuxDetector()
+
+    DetectionAPI.get_cached_windows()
