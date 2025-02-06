@@ -11,8 +11,13 @@
 # Pre Initialization
 #==================================================#    
 python early:
-    import os, shutil, datetime, singleton, random, subprocess, base64, string, math, time, webbrowser
+    import os, shutil, datetime, singleton, random, subprocess, base64, string, math, time, webbrowser, json, traceback
+    import re as regex
     #import jycrypt
+    from collections.abc import Callable as CHE
+    from typing import Any
+    
+
     me = singleton.SingleInstance()
     today = datetime.date.today()
     sys.path.append(os.path.join(renpy.config.gamedir, 'python-packages'))
@@ -36,6 +41,7 @@ define current_label = None
 
 init -999 python:
     print("Loading " + config.name + " - " + config.version + "...")
+    dev_access = config.developer
     dismiss_keys = config.keymap['dismiss']
     allow_dialogue = False
     allow_skipping = False
@@ -88,26 +94,85 @@ init -999 python:
     #If game closed with HDY enabled, disable it
     persistent.HDY = False
 
+    
+    def change_exception_arg(exception: BaseException, msg: str):
+        if len(exception.args) > 0 and type(exception.args[0]) == str:
+            exception.args = exception.args[1:]
+            exception.args = (msg,) + exception.args
+
+    def type_str(obj):
+        return regex.sub("\<class '([^']*)'\>", "\\1", str(type(obj)))
+
     def print_debug(message):
         if not dev_access: return
         print(message)
-    
+
     # Prints an error message and optionally writes the full error in the specified path relative to the base directory. Path must be a string.
-    def print_error(message, exception=None, path=None):
-        exc_type, exc, tb = sys.exc_info()
-        print(message + ":  " + repr(exc_type) + ": " + str(exc))
+    def print_error(message, new_traceback=True, path=config.basedir):
+        exception_type, exception, tb = sys.exc_info()
+
+        if isinstance(message, BaseException):
+            exception = message
+            exception_type = type(message)
+        else:
+            exception = Exception(message)
+            exception_type = type(exception)
+
+        if new_traceback:
+            tb = exception.__traceback__
+        elif tb:
+            exception.__traceback__ = tb
+        exception_type = type_str(exception)
+        
 
         if type(path) == str:
-            with open(os.path.join(config.basedir, path, "error.log"), mode='w') as file_error:
-                file_error.write(message + os.linesep)
-                file_error.write(repr(exc_type) + ": " + str(exc) + os.linesep)
+            print(os.linesep + "------------ ERROR ------------" + os.linesep + exception_type + ": " + str(exception))
+            traceback.print_tb(tb, file=sys.stdout)
+            print("")
+            with open(os.path.join(config.basedir, path, "error.log"), mode='a') as file_error:
+                file_error.write(os.linesep + "------------ ERROR ------------" + os.linesep + exception_type + ": " + str(exception) + os.linesep)
                 try:
                     traceback.print_tb(tb, file=file_error)
                 except:
                     pass
                 print("  - Created error.log file in " + path)
-        if isinstance(exception, Exception):
-            raise exception
+        else:
+            print(os.linesep + "-------- SILENT ERROR ---------" + os.linesep + exception_type + ": " + str(exception))
+            traceback.print_tb(tb, file=sys.stdout)
+            print("")
+        return exception
+
+    # Prints a fatal error message and optionally writes the full error in the specified path relative to the base directory. Path must be a string. Once complete, raises the exception
+    def print_fatal(message, status=1, new_traceback=True, path=config.basedir):
+        exception_type, exception, tb = sys.exc_info()
+
+        if isinstance(message, BaseException):
+            exception = message
+            exception_type = type(message)
+        else:
+            exception = Exception(message)
+            exception_type = type(exception)
+
+        if new_traceback:
+            tb = exception.__traceback__
+        elif tb:
+            exception.__traceback__ = tb
+        exception_type = type_str(exception)
+        
+        print(os.linesep + "------------ FATAL ------------" + os.linesep + exception_type + ": " + str(exception))
+        traceback.print_tb(tb, file=sys.stdout)
+        print("")
+
+        if type(path) == str:
+            with open(os.path.join(config.basedir, path, "fatal.log"), mode='w') as file_error:
+                file_error.write(os.linesep + "------------ FATAL ------------" + os.linesep + exception_type + ": " + str(exception) + os.linesep)
+                try:
+                    traceback.print_tb(tb, file=file_error)
+                except:
+                    pass
+                print("  - Created fatal.log file in " + path)
+        raise exception
+
 
 #==================================================#
 # Post Initialization

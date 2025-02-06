@@ -1,4 +1,4 @@
-init -996 python:
+init -999 python:
     # The TimeCycle API
     class TimeCycle:
         year = month = day = hour = minute = second = 0
@@ -24,16 +24,16 @@ init -996 python:
                             event = TimeCycleEvent()
                             if TimeCycle.time_id == "night":
                                 if TimeCycle.hour == 5:
-                                    Callback.call(event)
+                                    EventAPI.call(event)
                             elif TimeCycle.time_id == "sunrise":
                                 if TimeCycle.hour == 7:
-                                    Callback.call(event)
+                                    EventAPI.call(event)
                             elif TimeCycle.time_id == "day":
                                 if TimeCycle.hour == 20:
-                                    Callback.call(event)
+                                    EventAPI.call(event)
                             elif TimeCycle.time_id == "sunset":
                                 if TimeCycle.hour == 21:
-                                    Callback.call(event)
+                                    EventAPI.call(event)
                             TimeCycle.hour = min(event.hour, 23)
                             TimeCycle.minute = min(event.minute, 59)
                             TimeCycle.second = min(event.second, 59)

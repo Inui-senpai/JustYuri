@@ -1034,7 +1034,7 @@ label tea:
     $persistent.gift = "tea"
     $persistent.gift_given = True
     if len(Gift.last_gifts) == 0:
-        $ print_error("Question, how is this possible? How did you give her non-existent tea?", exception = NameError("Gift.last_gift does not have any gifts"))
+        $ print_error(NameError("Question, how is this possible? How did you give her non-existent tea?"))
 
     if Gift.last_gifts[0].id == "high_mountain_tea":
         menu:

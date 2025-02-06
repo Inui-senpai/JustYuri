@@ -7,7 +7,7 @@
 #  :D
 #==================================================#
 
-init -996 python:
+init -999 python:
     class DetectionAPI:
         detector = None
         ticks = 0

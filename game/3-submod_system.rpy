@@ -6,11 +6,7 @@
 #  documentation for mod developers
 #  :D
 #==================================================#
-init -996 python:
-    import json
-    import traceback
-    import re as regex
-
+init -999 python:
     submods = {}
     submods.mods = {}
     submods.mod_count = 0
@@ -71,8 +67,9 @@ init -996 python:
                     with open(mod_info_path, 'w') as file:
                         file.write(submods.modinfo.format(submod.name, submod.id))
                     print("  - Finished!")
-                except:
-                    print_error("  - Failed to create modinfo.json", path=mod_error_path)
+                except BaseException as exception:
+                    print("  - Failed to create modinfo.json")
+                    print_error(exception, path=mod_error_path)
 
             try:
                 with open(mod_info_path) as file:
@@ -90,15 +87,17 @@ init -996 python:
                     else:
                         if (str(type(submod.dependencies)) != "<class 'list'>"):
                             submod.dependencies = []
-            except:
-                print_error("  - Failed to load modinfo.json", path=mod_error_path)
+            except BaseException as exception:
+                print("  - Failed to load modinfo.json")
+                print_error(exception, path=mod_error_path)
 
             if os.path.isfile(mod_icon_path):
                 print("  - Mod " + submod.id + " has an icon. Loading image...")
                 try:
                     submod.icon = Transform("submods/" + directory.name + "/icon.png", size=(100,100), fit="contain")
-                except:
-                    print_error("  - Failed to load icon.png", path=mod_error_path)
+                except BaseException as exception:
+                    print("  - Failed to load icon.png")
+                    print_error(exception, path=mod_error_path)
 
             renpy.image(submod.id + ":icon", submod.icon)
             submods.mods[submod.id] = submod

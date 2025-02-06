@@ -1,4 +1,4 @@
-init -998 python:
+init -999 python:
     class StartEvent(Event):
         id = "_start"
 
@@ -72,15 +72,15 @@ init -998 python:
         TimeCycle.tick()
 
 
-    Callback.register(StartEvent.id)
-    Callback.register(LabelEvent.id)
-    Callback.register(QuitEvent.id)
-    Callback.register(SafeQuitEvent.id)
-    Callback.register(ExitEvent.id)
-    Callback.register(CrashEvent.id)
-    Callback.register(TickEvent.id)
+    EventAPI.register(StartEvent)
+    EventAPI.register(LabelEvent)
+    EventAPI.register(QuitEvent)
+    EventAPI.register(SafeQuitEvent)
+    EventAPI.register(ExitEvent)
+    EventAPI.register(CrashEvent)
+    EventAPI.register(TickEvent)
 
-    Callback.register(KarmaEvent.id)
-    Callback.register(SanityEvent.id)
-    Callback.register(TimeCycleEvent.id)
-    Callback.register(TickEvent.id, callback_jy_tick)
+    EventAPI.register(KarmaEvent)
+    EventAPI.register(SanityEvent)
+    EventAPI.register(TimeCycleEvent)
+    EventAPI.register(TickEvent, callback_jy_tick)

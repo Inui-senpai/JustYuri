@@ -3,7 +3,7 @@ image exception_bg = "#dadada"
 image fake_exception = Text("An exception has occurred.", size=40, style="_default")
 image fake_exception3 = Text("While running game code: File \"game/script-ch30.rpy\", line 7370, in script.", size=20, style="_default")
 
-init -997 python:
+init -999 python:
     #==================================================#
     # Path Variables
     #==================================================#
@@ -262,7 +262,7 @@ image yuri_body_glitch2:
 
 image splash-glitch2 = "images/splash/splash-glitch2.png"
 
-init -997 python:
+init -998 python:
     #for people that jump from alpha to current version and have a hat on (which no longer exists)
     if persistent.head1 == "hat":
         persistent.head1 = "nothing"

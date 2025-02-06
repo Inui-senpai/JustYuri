@@ -16,6 +16,8 @@ env
 .DS_Store
 log.txt
 errors.txt
+error.log
+fatal.log
 traceback.txt
 styles.txt
 /gui/game/gui

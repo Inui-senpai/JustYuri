@@ -114,7 +114,7 @@ default max_points = float(100)
 #FUNCTIONS#
 ###########
 
-init -998 python:
+init -999 python:
     import rstr
     import random
     import re

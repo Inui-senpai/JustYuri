@@ -3,7 +3,7 @@ default blocked_dialogues = []
 
 #use renpy.has_seen to determine if something has been seen before.
 
-init -996 python:
+init -999 python:
 
     class DialogueAPI:
         registry = {}

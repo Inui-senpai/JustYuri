@@ -1,4 +1,4 @@
-init -996 python:
+init -999 python:
     # GiftObjects simplify the gift system by allowing developers to get a gift object based on a gift id
     # They can also add labels or set labels to any gift in the game
     class GiftObject:

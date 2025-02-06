@@ -1,4 +1,4 @@
-init -996 python:
+init -999 python:
     class SpriteObject:
         id = None
 
