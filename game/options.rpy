@@ -258,14 +258,7 @@ init python:
 
     #new addition. Saves all python files while excluding
     build.classify("game/00-chess-engine/python-packages/chess/**", "scripts")
-    build.classify("game/00-chess-engine/python-packages/chess-1.9.4.dist-info/**", "scripts")
-    build.classify("game/python-packages/pykhet/**", "scripts")
-    build.classify("game/python-packages/chess/**", "scripts")
-    build.classify("game/python-packages/chess-1.9.4.dist-info/**", "scripts")
-    build.classify("game/python-packages/filecmp.py", "scripts")
-    build.classify("game/python-packages/time_module.py", "scripts")
-    build.classify("game/python-packages/rstr/**", "scripts")
-    build.classify("game/python-packages/gift_detection.py", "scripts")
+    build.classify("game/python-packages/**", "scripts")
     #build.classify("game/python-packages/jycrypt.py", "scripts")
     #build.classify("game/python-packages/jychrmod.py", "scripts")
     #build.classify("game/python-packages/jysavechanger.py", "scripts")
@@ -276,13 +269,13 @@ init python:
     ##Optionally include a zip file with all source code
     build.classify('**.rpy','source')
     build.package(build.directory_name + "source",'zip','source',description='Source Code Archive')
-
     build.package(build.directory_name + "Mod",'zip',build.name,description='DDLC Compatible Mod')
 
     build.classify('**~', None)
     build.classify('**.bak', None)
     build.classify('**/.**', None)
     build.classify('**/#**', None)
+    build.classify('**/.DS_Store', None)
     build.classify('**/thumbs.db', None)
     build.classify('**.rpy', None)
     build.classify('**.psd', None)
@@ -292,6 +285,7 @@ init python:
     build.classify('script-regex.txt', None)
     build.classify('/game/10', None)
     build.classify('/game/cache/*.*', None)
+    build.classify('/game/submods/**', None)
     build.classify('**.rpa',None)
     build.classify('*the_magic_password.txt*',None)
 

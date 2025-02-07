@@ -221,6 +221,120 @@ init -1 style say_label_sky_blue:
     xalign gui.name_xalign
     yalign 0.5
     outlines [(3, "#58cced", 0, 0), (1, "#58cced", 1, 1)]
+init -501 screen configuration(configurations):
+    python: # Pre-Cache Options to preserver rendering order
+        cache_render = []
+        for configuration, options in configurations.items():
+            cache = [ configuration.name, [0, []] ]
+            cached_height = 0
+            size = 0
+            height = 0
+            cache_index = 1
+            index = 1
+            option_should_shift = False
+            option_can_shift = False
+            for option in options:
+                option_type = type(option)
+                option_size = 4 if option_type == OptionSeparator else 2 if option_type == OptionBar else 0 if option_type == OptionTitle or option_type == OptionButton or option_type == OptionCheckbox else 1
+                option_height = 0 if option_type == OptionButton or option_type == OptionCheckbox else 1
+                option_should_shift = False if option_type == OptionButton or option_type == OptionCheckbox else True
+                option_can_shift = option_can_shift or option_type == OptionButton or option_type == OptionCheckbox
+                size += option_size
+                
+                if option_can_shift and option_should_shift:
+                    index += 1
+                    cached_height = cached_height if height < cached_height else height
+                    cache[cache_index][0] = cached_height
+                    height = 0
+                    option_can_shift = False
+                    cache[cache_index].append([])
+                    size += 1
+
+                if size > 4 or size == 4 and option_size <= 0:
+                    size = option_size
+                    cached_height = 0
+                    height = 0
+                    cache_index += 1
+                    cache.append([0, []])
+                    index = 1
+                        
+                height += option_height
+                cache[cache_index][index].append(option)
+                cache[cache_index][0] = cached_height
+                if option_size > 0:
+                    index += 1
+                    cached_height = cached_height if height < cached_height else height
+                    cache[cache_index][0] = cached_height
+                    height = 0
+                    option_can_shift = False
+                    cache[cache_index].append([])
+            cache_render.append(cache)
+                
+        for cache in cache_render:
+            for cache_hbox in cache:
+                if type(cache_hbox) == str:
+                    continue
+                cached_height = 0
+                for cache_column in cache_hbox:
+                    if type(cache_column) == int:
+                        cached_height = cache_column
+                        continue
+                    else:
+                        height = 0
+                        for option in cache_column:
+                            option_type = type(option)
+                            option_size = 4 if option_type == OptionSeparator else 2 if option_type == OptionBar else 0 if option_type == OptionTitle else 1
+                            height += 0 if option_type == OptionButton or option_type == OptionCheckbox else 1
+                            if option_size > 0:
+                                for amount in range(0, cached_height - height):
+                                    cache_column.insert(0, ScreenSpacer())
+                                break
+                del cache_hbox[0]
+
+    for cache in cache_render:
+        null height (4 * gui.pref_spacing)
+        vbox:  
+            for cache_hbox in cache:
+                if type(cache_hbox) == str:
+                    label "{size=*1.25}" + cache_hbox + "{/size}":
+                        style_prefix "slider"
+                else:
+                    hbox:
+                        for cache_column in cache_hbox:
+                            vbox:
+                                for option in cache_column:
+                                    $ option_type = type(option)
+                                    if option_type == OptionSeparator:
+                                        null height (4 * gui.pref_spacing)
+                                    elif option_type == OptionTitle:
+                                        label option.title:
+                                            style_prefix "slider"
+                                    elif option_type == OptionBar:
+                                        vbox:
+                                            $ option_label = option.labels if type(option.labels) == str else option.labels[0]
+                                            style_prefix "slider"
+                                            label option.labels
+                                            bar value FieldValue(option, "value", min=option.min, max=option.max, offset=option.offset, step=option.step, action=Function(option.action if option.action else option.default_action, option)):
+                                                xmaximum 350
+                                    elif option_type == OptionButton:
+                                        vbox:
+                                            $ option_label = option.labels if type(option.labels) == str else option.labels[option.value]
+                                            style_prefix "check"
+                                            textbutton option_label action ActionButton(option)
+                                    elif option_type == OptionCheckbox:
+                                        vbox:
+                                            $ option_label = option.labels if type(option.labels) == str else option.labels[0]
+                                            style_prefix "check"
+                                            textbutton option_label action ActionCheckbox(option)
+                                    elif option_type == OptionChecklist:
+                                        vbox:
+                                            style_prefix "check"
+                                            $ option_label = option.label if type(option.label) == str else option.label[0]
+                                            label option.label
+                                            for index in range(0, len(option.labels)):
+                                                textbutton option.labels[index] action ActionChecklist(option, index)
+                                    else:
+                                        null height 50
 
 init -501 screen say(who, what): #dialogue window
     zorder 100
@@ -698,7 +812,6 @@ init -501 screen game_menu_m():
     timer 0.3 action Hide("game_menu_m")
 
 init -501 screen game_menu(title, scroll=None):
-
     if main_menu:
         add gui.main_menu_background
     else:
@@ -709,31 +822,22 @@ init -501 screen game_menu(title, scroll=None):
 
     frame:
         style "game_menu_outer_frame"
-
         has hbox
-
-
         frame:
             style "game_menu_navigation_frame"
-
         frame:
             style "game_menu_content_frame"
-
             if scroll == "viewport":
-
                 viewport:
                     scrollbars "vertical"
                     mousewheel True
                     draggable True
-                    yinitial 1.0
-
+                    yinitial 0.0
                     side_yfill True
-
                     has vbox
                     transclude
 
             elif scroll == "vpgrid":
-
                 vpgrid:
                     cols 1
                     yinitial 1.0
@@ -741,15 +845,10 @@ init -501 screen game_menu(title, scroll=None):
                     scrollbars "vertical"
                     mousewheel True
                     draggable True
-
                     side_yfill True
-
                     transclude
-
             else:
-
                 transclude
-
     use navigation
 
     if not main_menu and persistent.playthrough == 2 and not persistent.menu_bg_m and renpy.random.randint(0, 49) == 0:
@@ -773,17 +872,13 @@ init -1 style game_menu_content_frame is empty
 init -1 style game_menu_viewport is gui_viewport
 init -1 style game_menu_side is gui_side
 init -1 style game_menu_scrollbar is gui_vscrollbar
-
 init -1 style game_menu_label is gui_label
 init -1 style game_menu_label_text is gui_label_text
-
 init -1 style return_button is navigation_button
 init -1 style return_button_text is navigation_button_text
-
 init -1 style game_menu_outer_frame:
     bottom_padding 30
     top_padding 120
-
     background "gui/overlay/game_menu.png"
 
 init -1 style game_menu_navigation_frame:
@@ -820,10 +915,8 @@ init -1 style return_button:
     yalign 1.0
     yoffset -30
 
-
 init -501 screen about():
     tag menu
-
     use game_menu(_("About"), scroll="viewport"):
 
         style_prefix "about"
@@ -939,18 +1032,8 @@ init -1 style slot_button_text:
     color "#666"
     outlines []
 
-
-
-
-
-
-
-
-
 init -501 screen preferences():
     tag menu
-
-
 
     if renpy.mobile:
         $ cols = 2
@@ -958,10 +1041,8 @@ init -501 screen preferences():
         $ cols = 4
 
     use game_menu(_("Settings"), scroll="viewport"):
-
         vbox:
             xoffset 50
-
             hbox:
                 box_wrap True
 
@@ -1009,16 +1090,12 @@ init -501 screen preferences():
                             textbutton _("Assets Ready") action Jump("reveal_asset_location")
                             textbutton _("JYCrypt") action Jump("jycrypt")
 
-
-
             null height (4 * gui.pref_spacing)
-
             hbox:
                 style_prefix "slider"
-                box_wrap True
 
                 vbox:
-                    if persistent.idle_frequency_factor <= .75:
+                    if persistent.idle_frequency_factor <= 0.75:
                         label _("Idle Frequency: Frequent")
                     elif persistent.idle_frequency_factor >= 1.25:
                         label _("Idle Frequency: Hesitant")
@@ -1040,50 +1117,44 @@ init -501 screen preferences():
                     label _("Auto-Forward Time")
                     bar value Preference("auto-forward time")
 
-
                 vbox:
-
-
                     if config.has_music:
                         label _("Music Volume")
-
                         hbox:
                             bar value Preference("music volume")
 
                     if config.has_sound:
-
                         label _("Sound Volume")
-
                         hbox:
                             bar value Preference("sound volume")
-
                             if config.sample_sound:
                                 textbutton _("Test") action Play("sound", config.sample_sound)
 
-
                     if config.has_voice:
                         label _("Voice Volume")
-
                         hbox:
                             bar value Preference("voice volume")
-
                             if config.sample_voice:
                                 textbutton _("Test") action Play("voice", config.sample_voice)
 
                     if config.has_music or config.has_sound or config.has_voice:
                         null height gui.pref_spacing
-
                         textbutton _("Mute All"):
                             action Preference("all mute", "toggle")
                             style "mute_all_button"
 
-                    #if persistent.high_gpu == 0:
-                    #    textbutton _("Space BG Bloom: On") action [SetField(persistent, "high_gpu", 1), Function(timecycle_transition, persistent.bg, "now", True)]
-                    #el
-                    if persistent.high_gpu == 1:
-                        textbutton _("Space BG Bloom: Off") action [SetField(persistent, "high_gpu", 1), Function(timecycle_transition, persistent.bg, "now", True)]
-                    elif persistent.high_gpu == 2:
-                        textbutton _("Space BG Bloom: Vid") action [SetField(persistent, "high_gpu", 0), Function(timecycle_transition, persistent.bg, "now", True)]
+                    if persistent.high_gpu == 0:
+                        textbutton _("Space BG Bloom: On") action [SetField(persistent, "high_gpu", 1), Function(timecycle_transition, persistent.bg, "now", True)]:
+                            style_prefix "check"
+                    elif persistent.high_gpu == 1:
+                        textbutton _("Space BG Bloom: Off") action [SetField(persistent, "high_gpu", 2), Function(timecycle_transition, persistent.bg, "now", True)]:
+                            style_prefix "check"
+                    else:
+                        textbutton _("Space BG Bloom: Vid") action [SetField(persistent, "high_gpu", 0), Function(timecycle_transition, persistent.bg, "now", True)]:
+                            style_prefix "check"
+
+            use configuration(ConfigAPI.configurations)
+
 
     text "v[config.version]":
         xalign 1.0 yalign 1.0
@@ -1978,39 +2049,54 @@ screen compliments(items):
                 for i in items:
                     textbutton i[0] action Jump(i[1]) xpos 430 ypos 25
                     null
+screen mod_settings(mod_id):
+    tag menu
+    use game_menu(_("Mod List"), scroll="viewport"):
+        vbox:
+            xoffset 50
+            use configuration(ConfigAPI.mod_configurations[mod_id])
+            
+
 screen mod_list():
     tag menu
     use game_menu(_("Mod List"), scroll="viewport"):
-        style_prefix "about"
-        label "Mod List"
-        if submods.mod_count == 0:
-            text "You have no submods installed. Submods can be installed under game/submods."
-        else:
-            if submods.mod_count == 1:
-                text "You have a submod installed. You can view it below."
-            else :
-                text "You have " + str(submods.mod_count) + " submods installed. You can view them below."
         vbox:
-            ypos 20
-            spacing 60
-            for mod_id in submods.mods:
-                vbox:
-                    xpos 50
-                    $submod = submods.mods[mod_id]
-                    hbox:
-                        add submod.icon
-                        vbox:
-                            xpos 10
-                            label submod.name
-                            text "{size=*0.7}Version: " + submod.version + "{/size}"
-                            text "{size=*0.7}ID: " + submod.id + "{/size}"
-                    if submod.description:
-                        text submod.description
-                    if len(submod.dependencies) > 0:
-                        label "Dependencies"
-                        for dependency in submod.dependencies:
-                            text "  > " + dependency
-            null
+            xoffset 50
+            style_prefix "about"
+            label "{size=*1.25}" + "Mod List" + "{/size}":
+                style_prefix "slider"
+            if submods.mod_count == 0:
+                text "You have no submods installed. Submods can be installed under game/submods."
+            else:
+                if submods.mod_count == 1:
+                    text "You have a submod installed. You can view it below."
+                else :
+                    text "You have " + str(submods.mod_count) + " submods installed. You can view them below."
+            vbox:
+                ypos 20
+                spacing 60
+                for mod_id in submods.mods:
+                    vbox:
+                        $submod = submods.mods[mod_id]
+                        hbox:
+                            add submod.icon
+                            vbox:
+                                xpos 10
+                                label submod.name:
+                                    style_prefix "slider"
+                                text "{size=*0.7}Version: " + submod.version + "{/size}"
+                                text "{size=*0.7}ID: " + submod.id + "{/size}"
+                            if submod.id in ConfigAPI.mod_configurations:
+                                textbutton "{size=*0.7}" + _("Open Settings") + "{/size}" action ShowMenu("mod_settings", submod.id):
+                                    style_prefix "slider"
+
+                        if submod.description:
+                            text submod.description
+                        if len(submod.dependencies) > 0:
+                            label "Dependencies"
+                            for dependency in submod.dependencies:
+                                text "  > " + dependency
+                null
 
 
 screen about():

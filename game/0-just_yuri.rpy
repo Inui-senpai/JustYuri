@@ -94,7 +94,6 @@ init -999 python:
     #If game closed with HDY enabled, disable it
     persistent.HDY = False
 
-    
     def change_exception_arg(exception: BaseException, msg: str):
         if len(exception.args) > 0 and type(exception.args[0]) == str:
             exception.args = exception.args[1:]
