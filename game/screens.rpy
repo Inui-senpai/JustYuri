@@ -290,7 +290,7 @@ init -501 screen configuration(configurations):
                                     cache_column.insert(0, ScreenSpacer())
                                 break
                 del cache_hbox[0]
-
+    
     for cache in cache_render:
         null height (4 * gui.pref_spacing)
         vbox:  
@@ -310,6 +310,7 @@ init -501 screen configuration(configurations):
                                         label option.title:
                                             style_prefix "slider"
                                     elif option_type == OptionBar:
+                                        $ option.init_action(option)
                                         vbox:
                                             $ option_label = option.labels if type(option.labels) == str else option.labels[0]
                                             style_prefix "slider"
@@ -317,16 +318,19 @@ init -501 screen configuration(configurations):
                                             bar value FieldValue(option, "value", min=option.min, max=option.max, offset=option.offset, step=option.step, action=Function(option.action if option.action else option.default_action, option)):
                                                 xmaximum 350
                                     elif option_type == OptionButton:
+                                        $ option.init_action(option)
                                         vbox:
                                             $ option_label = option.labels if type(option.labels) == str else option.labels[option.value]
                                             style_prefix "check"
                                             textbutton option_label action ActionButton(option)
                                     elif option_type == OptionCheckbox:
+                                        $ option.init_action(option)
                                         vbox:
                                             $ option_label = option.labels if type(option.labels) == str else option.labels[0]
                                             style_prefix "check"
                                             textbutton option_label action ActionCheckbox(option)
                                     elif option_type == OptionChecklist:
+                                        $ option.init_action(option)
                                         vbox:
                                             style_prefix "check"
                                             $ option_label = option.label if type(option.label) == str else option.label[0]

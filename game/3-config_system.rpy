@@ -16,18 +16,7 @@ init python:
                         OptionBar(ModConfig, "test_variable", "This Should Be A Bar"),
                         OptionTitle("Extra Settings"),
                         OptionTitle("eeeeeeeeeeee Settings"),
-                        OptionCheckbox(ModConfig, "test_1", "Checkbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checekbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checakbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checkbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checekbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checakbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checkbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checekbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checakbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checkbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checekbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checakbox?"),
+                        OptionButton(persistent, "high_gpu", ("No Space", "Space", "SUPER SPACE")), 
                         OptionCheckbox(ModConfig, "test_1", "Checkbox?"),
                         OptionCheckbox(ModConfig, "test_1", "Checekbox?"),
                         OptionCheckbox(ModConfig, "test_1", "Checakbox?"),
@@ -45,7 +34,6 @@ init python:
 
 init -998 python:
     class ConfigAPI:
-
         configurations = {}
         mod_configurations = {}
 
@@ -57,7 +45,7 @@ init -998 python:
                 config.name = config.id
             final_options = []
             options = config.setup()
-            print(str(type(options)))
+
             for option in options:
                 option_type = type(option)
                 if not isinstance(option, Option):
@@ -127,7 +115,7 @@ init -998 python:
         max = 2
         step = 1
 
-        def __init__(self, obj, variable, labels, action=None, offset=0, min=0, max=2, step=1):
+        def __init__(self, obj, variable, labels, init_action=None, action=None, offset=0, min=0, max=2, step=1):
             self.obj = obj
             self.variable = variable
             self.labels = labels
@@ -136,6 +124,17 @@ init -998 python:
             self.min = min
             self.max = max
             self.step = step
+            self.init_action = init_action if init_action else self.default_init_action
+            self.init_action(self)
+
+        @staticmethod
+        def default_init_action(self):
+            value = getattr(self.obj, self.variable)
+            if type(value) == float or type(value) == int:
+                self.value = value
+            else:
+                self.value = self.min
+
         @staticmethod
         def default_action(self):
             setattr(self.obj, self.variable, self.value)
@@ -149,18 +148,29 @@ init -998 python:
         action = None
         starting_index = 0
 
-        def __init__(self, obj, variable, labels, values=None, action=None, starting_index=0):
+        def __init__(self, obj, variable, labels, values=None, init_action=None, action=None):
             self.obj = obj
             self.variable = variable
             self.labels = labels
             self.action = action
-            self.value = starting_index
-            self.values = values if values else labels
+            self.values = values
+            self.init_action = init_action if init_action else self.default_init_action
+            self.init_action(self)
+
+        @staticmethod
+        def default_init_action(self):
+            value = getattr(self.obj, self.variable)
+            if type(value) == int:
+                self.value = value
+            else:
+                self.value = 0
+                
         @staticmethod
         def default_action(self):
             self.value += 1
-            self.value = self.value % len(self.values)
-            setattr(self.obj, self.variable, self.values[self.value])
+            self.value = self.value % len(self.labels)
+            setattr(self.obj, self.variable, self.values[self.value] if self.values else self.value)
+            self.init_action(self)
 
     class OptionCheckbox(Option):
         labels = None
@@ -168,13 +178,20 @@ init -998 python:
         variable = None
         value = None
         action = None
+        values = None
 
-        def __init__(self, obj, variable, labels, action=None):
+        def __init__(self, obj, variable, labels, init_action=None, action=None):
             self.obj = obj
             self.variable = variable
             self.labels = labels
-            self.value = False if self.variable else True
             self.action = action
+            self.init_action = init_action if init_action else self.default_init_action
+            self.init_action(self)
+
+        @staticmethod
+        def default_init_action(self):
+            self.value = True if getattr(self.obj, self.variable) else False
+
         @staticmethod
         def default_action(self):
             self.value = not self.value
@@ -186,19 +203,28 @@ init -998 python:
         obj = None
         variable = None
         value = None
+        init_action = None
         action = None
 
-        def __init__(self, obj, variable, label, labels, action=None):
+        def __init__(self, obj, variable, label, labels, values=None, init_action=None, action=None):
             self.obj = obj
             self.variable = variable
             self.label = label
             self.labels = labels
-            self.value = getattr(obj, variable) if type(getattr(obj, variable)) == int else 0
+            self.values = values
             self.action = action
+            self.init_action = init_action if init_action else self.default_init_action
+            self.init_action(self)
+
+        @staticmethod
+        def default_init_action(self):
+            value = getattr(self.obj, self.variable)
+            self.value = value if type(value) == int else 0
+
         @staticmethod
         def default_action(self, index):
             self.value = index
-            setattr(self.obj, self.variable, self.value)
+            setattr(self.obj, self.variable, self.values[self.value] if self.values else self.value)
             
     class ScreenSpacer():
         pass
