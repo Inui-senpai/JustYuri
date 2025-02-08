@@ -33,91 +33,26 @@ image rain_dream_blossom:
 init:
     $ import random
 
-image open_ocean:
-    "underwater_1"
-    truecenter
-    zoom 0.7
-image ocean_2:
-    "underwater_2"
-    truecenter
-    zoom 0.7
-image ocean_3:
-    "underwater_3"
-    truecenter
-    zoom 0.7
-
-image ocean_4:
-    "underwater_4"
-    truecenter
-    zoom 0.7
-
-image ocean_5:
-    "underwater_5"
-    truecenter
-    zoom 0.7
-image ocean_6:
-    "underwater_6"
-    truecenter
-    zoom 0.7
-image ocean_7:
-    "underwater_7"
-    truecenter
-    zoom 0.7
-
-image ocean_8:
-    "underwater_8"
-    truecenter
-    zoom 0.7
-
-image oceanbonus_1:
-    "underwater_bonus1"
-    truecenter
-    zoom 0.7
-
-image oceanbonus_2:
-    "underwater_bonus2"
-    truecenter
+image open_ocean = im.Scale("underwater_1", 1280, 720)
+image ocean_2 = im.Scale("underwater_2", 1280, 720)
+image ocean_3 = im.Scale("underwater_3", 1280, 720)
+image ocean_4 = im.Scale("underwater_4", 1280, 720)
+image ocean_5 = im.Scale("underwater_5", 1280, 720)
+image ocean_6 = im.Scale("underwater_6", 1280, 720)
+image ocean_7 = im.Scale("underwater_7", 1280, 720)
+image ocean_8 = im.Scale("underwater_8", 1280, 720)
+image oceanbonus_1 = im.Scale("underwater_bonus1", 1280, 720)
+image oceanbonus_2 =  im.Scale("underwater_bonus2", 1280, 720)
 
 
-image beach_1:
-    "images/dates/funinthesun/Backgrounds only/fits_beach_1.png"
-    truecenter
-    zoom 0.5
-
-image beach_2:
-    "images/dates/funinthesun/Backgrounds only/fits_beach_2.jpg"
-    truecenter
-    zoom 0.4
-
-image beach_3:
-    "images/dates/funinthesun/Backgrounds only/fits_beach_3.jpg"
-    truecenter
-    zoom 0.7
-
-image beach_4:
-    "images/dates/funinthesun/Backgrounds only/fits_beach_4.jpg"
-    truecenter
-    zoom 0.5
-
-image beach_5:
-    "images/dates/funinthesun/Backgrounds only/fits_parasol.jpg"
-    truecenter
-    zoom 0.7
-
-image beach_6:
-    "images/dates/funinthesun/Backgrounds only/fits_sea.jpg"
-    truecenter
-    zoom 0.7
-
-image beach_7:
-    "images/dates/funinthesun/Backgrounds only/fits_star_sky.jpg"
-    truecenter
-    zoom 0.8
-
-image beach_8:
-    "images/dates/funinthesun/Backgrounds only/fits_white_room.png"
-    truecenter
-    zoom 0.3
+image beach_1 = im.Scale("images/dates/funinthesun/Backgrounds only/fits_beach_1.png", 1280, 720)
+image beach_2 = im.Scale("images/dates/funinthesun/Backgrounds only/fits_beach_2.jpg", 1280, 720)
+image beach_3 = im.Scale("images/dates/funinthesun/Backgrounds only/fits_beach_3.jpg", 1280, 720)
+image beach_4 = im.Scale("images/dates/funinthesun/Backgrounds only/fits_beach_4.jpg", 1280, 720)
+image beach_5 = im.Scale("images/dates/funinthesun/Backgrounds only/fits_parasol.jpg", 1280, 720)
+image beach_6 = im.Scale("images/dates/funinthesun/Backgrounds only/fits_sea.jpg", 1280, 720)
+image beach_7 = im.Scale("images/dates/funinthesun/Backgrounds only/fits_star_sky.jpg", 1280, 720)
+image beach_8 = im.Scale("images/dates/funinthesun/Backgrounds only/fits_white_room.png", 1280, 720)
 
 image blasphemous_flan:
     "images/dates/funinthesun/Desserts/Coco_flan.png"
@@ -245,6 +180,8 @@ image stroll_1 = "images/dreams/stroll_dream_1.png"
 image stroll_2 = "images/dreams/stroll_dream_2.png"
 image stroll_3 = "images/dreams/stroll_dream_3.png"
 image stroll_4 = "images/dreams/stroll_dream_4.png"
+
+image highway_yuri_car = im.Scale("images/dreams/highway/highway_yuri.png", 1280, 720) #scaled
 
 ####################
 #Dream Menu Control#
@@ -846,9 +783,6 @@ label highway_dream:
             xoffset -10936
             linear 40 xoffset 0
             repeat
-    image highway_yuri_car:
-        "images/dreams/highway/highway_yuri.png"
-        zoom 0.27
     define martha = Character("Martha")
     $ config.allow_skipping = False
     stop music fadeout 1.5
