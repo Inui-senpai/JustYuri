@@ -14,7 +14,6 @@ python early:
     import os, shutil, datetime, singleton, random, subprocess, base64, string, math, time, webbrowser, json, traceback
     import re as regex
     #import jycrypt
-    from collections.abc import Callable as CHE
     from typing import Any
     
 
@@ -93,6 +92,9 @@ init -999 python:
 
     #If game closed with HDY enabled, disable it
     persistent.HDY = False
+
+    def is_callable(obj):
+        return hasattr(obj, "__call__")
 
     def change_exception_arg(exception: BaseException, msg: str):
         if len(exception.args) > 0 and type(exception.args[0]) == str:

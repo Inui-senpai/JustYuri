@@ -1,37 +1,3 @@
-init python:
-    class ModConfig(Config):
-        id = "ddlc"
-        name = "Beep Boop Skebep Settings"
-        test_variable = 0
-        test_1 = 0
-        test_2 = 0
-        test_3 = None
-        test_4 = None
-
-        def setup(self):
-            return (
-                        OptionTitle("Sa Dude"),
-                        OptionBar(ModConfig, "test_variable", "This Should Be A Bar"),
-                        OptionBar(ModConfig, "test_variable", "TE"),
-                        OptionBar(ModConfig, "test_variable", "This Should Be A Bar"),
-                        OptionTitle("Extra Settings"),
-                        OptionTitle("eeeeeeeeeeee Settings"),
-                        OptionButton(persistent, "high_gpu", ("No Space", "Space", "SUPER SPACE")), 
-                        OptionCheckbox(ModConfig, "test_1", "Checkbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checekbox?"),
-                        OptionCheckbox(ModConfig, "test_1", "Checakbox?"),
-                        OptionSeparator(),
-                        OptionTitle("Extra Settings"),
-                        OptionCheckbox(ModConfig, "test_1", "Checkbox?"),
-                        OptionChecklist(ModConfig, "test_2", "Checklist?", ("Yes", "No", "Maybe")),
-                        OptionButton(ModConfig, "test_3", ("Button: Enabled", "Button: Disabled", "Button: Fuck You")), 
-                        OptionTitle("a Settings"),
-                        OptionButton(ModConfig, "test_4", ("Button: Enabled", "Button: Disabled", "Button: Fuck You"), (69, None, "Durrr"))
-                    )
-
-    ConfigAPI.register_config(ModConfig())
-    ConfigAPI.register_mod_config(ModConfig())
-
 init -998 python:
     class ConfigAPI:
         configurations = {}
@@ -55,20 +21,26 @@ init -998 python:
                 if option_type == OptionSeparator:
                     pass
                 elif option_type == OptionTitle:
-                    if type(option.title) != str:
-                        print_error("  - Failed to add option " + type_str(option) + " as the title is not a valid string")
+                    option_label_type = type(option.title)
+                    print(str(type(option.title)))
+                    if option_label_type != str and not is_callable(option.title):
+                        print_error("  - Failed to add option " + type_str(option) + " as the title is not a valid type")
                 elif option_type == OptionBar:
-                    if type(option.labels) != str:
-                        print_error("  - Failed to add option " + type_str(option) + " as the label is not a valid string")
+                    option_label_type = type(option.labels)
+                    if option_label_type != str and option_label_type != tuple and not is_callable(option.labels):
+                        print_error("  - Failed to add option " + type_str(option) + " as the label is not a valid type")
                 elif option_type == OptionButton:
-                    if type(option.labels) != tuple:
+                    option_label_type = type(option.labels)
+                    if option_label_type != tuple:
                         print_error("  - Failed to add option " + type_str(option) + " as the label is not a valid tuple")
                 elif option_type == OptionCheckbox:
-                    if type(option.labels) != str:
-                        print_error("  - Failed to add option " + type_str(option) + " as the label is not a valid string")
+                    option_label_type = type(option.labels)
+                    if option_label_type != str and option_label_type != tuple and not is_callable(option.labels):
+                        print_error("  - Failed to add option " + type_str(option) + " as the label is not a valid type")
                 elif option_type == OptionChecklist:
-                    if type(option.label) != str:
-                        print_error("  - Failed to add option " + type_str(option) + " as the label is not a valid string")
+                    option_label_type = type(option.label)
+                    if option_label_type != str and option_label_type != tuple and not is_callable(option.label):
+                        print_error("  - Failed to add option " + type_str(option) + " as the label is not a valid type")
                 else:
                     print("  - Failed to add option " + type_str(option) + " as it is not a valid option type")
                     continue

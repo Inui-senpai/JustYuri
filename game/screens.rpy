@@ -307,14 +307,24 @@ init -501 screen configuration(configurations):
                                     if option_type == OptionSeparator:
                                         null height (4 * gui.pref_spacing)
                                     elif option_type == OptionTitle:
-                                        label option.title:
+                                        $ option_label = option.title(option) if is_callable(option.title) else option.title
+                                        label option_label:
                                             style_prefix "slider"
                                     elif option_type == OptionBar:
                                         $ option.init_action(option)
                                         vbox:
-                                            $ option_label = option.labels if type(option.labels) == str else option.labels[0]
+                                            python:
+                                                option_label_type = type(option.labels)
+                                                if option_label_type == str:
+                                                    option_label = option.labels
+                                                elif is_callable(option.labels):
+                                                    option_label = option.labels()
+                                                else:
+                                                    option_label_size = len(option.labels)
+                                                    option_label_index = int(option_label_size * ((option.value + 1) / option_label_size))
+                                                    option_label = option.labels[option_label_index - 1]
                                             style_prefix "slider"
-                                            label option.labels
+                                            label option_label
                                             bar value FieldValue(option, "value", min=option.min, max=option.max, offset=option.offset, step=option.step, action=Function(option.action if option.action else option.default_action, option)):
                                                 xmaximum 350
                                     elif option_type == OptionButton:
@@ -326,15 +336,15 @@ init -501 screen configuration(configurations):
                                     elif option_type == OptionCheckbox:
                                         $ option.init_action(option)
                                         vbox:
-                                            $ option_label = option.labels if type(option.labels) == str else option.labels[0]
+                                            $ option_label = option.labels if type(option.labels) == str else option.labels(option) if is_callable(option.labels) else option.labels[1 if option.value else 0]
                                             style_prefix "check"
                                             textbutton option_label action ActionCheckbox(option)
                                     elif option_type == OptionChecklist:
                                         $ option.init_action(option)
+                                        $ option_label = option.label if type(option.label) == str else option.label(option) if is_callable(option.label) else option.label[option.value]
+                                        label option.label
                                         vbox:
                                             style_prefix "check"
-                                            $ option_label = option.label if type(option.label) == str else option.label[0]
-                                            label option.label
                                             for index in range(0, len(option.labels)):
                                                 textbutton option.labels[index] action ActionChecklist(option, index)
                                     else:
