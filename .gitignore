@@ -7,6 +7,8 @@
 *.pyc
 *.pyo
 *.jy
+project.json
+update.pem
 firstrun
 *.bak
 saves
@@ -16,8 +18,7 @@ env
 .DS_Store
 log.txt
 errors.txt
-error.log
-fatal.log
+*.log
 traceback.txt
 styles.txt
 /gui/game/gui

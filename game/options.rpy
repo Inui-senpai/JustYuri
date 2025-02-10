@@ -273,6 +273,9 @@ init python:
 
     build.classify('**~', None)
     build.classify('**.bak', None)
+    build.classify('**.log',None)
+    build.classify('**.pdn',None)
+    build.classify('firstrun',None)
     build.classify('**/.**', None)
     build.classify('**/#**', None)
     build.classify('**/.DS_Store', None)
@@ -288,6 +291,7 @@ init python:
     build.classify('/game/submods/**', None)
     build.classify('**.rpa',None)
     build.classify('*the_magic_password.txt*',None)
+    build.classify('characters.zip',None)
 
     ## Files matching documentation patterns are duplicated in a mac app build,
     ## so they appear in both the app and the zip file.
