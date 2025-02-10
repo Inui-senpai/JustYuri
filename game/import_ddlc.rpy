@@ -74,8 +74,9 @@ label import_ddlc_persistent:
     python:
         #Open the persistent save file as old_persistent
         #open the persistent save file at save_path
-        f=file(ddlc_save_path,"rb")
-        s=f.read().decode("zlib")
+        import codecs
+        f=open(ddlc_save_path,"rb")
+        s = codecs.decode(f.read(), encoding='zlib', errors='strict')
         f.close()
         
         old_persistent=loads(s)
