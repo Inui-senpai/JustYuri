@@ -12,6 +12,8 @@ label g_return:
     return
 
 label ch30_reload_0:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $ renpy.music.play(current_music, "music", True)
     $ show_chr("A-EFBBA-AMAM")
     y "..."
@@ -34,6 +36,8 @@ label ch30_reload_0:
     return
 
 label ch30_reload_1:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $ renpy.music.play(current_music, "music", True)
     $show_chr("A-GBBBA-ABAB")
     y "You're back..."
@@ -88,6 +92,8 @@ label ch30_reload_1:
     return
 
 label ch30_reload_2:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $ renpy.music.play(current_music, "music", True)
     $show_chr("A-GCBBA-ABAB")
     y "So... I've finally decided to alter my sleeping function next time."
@@ -145,6 +151,8 @@ label greetings_of_course:
     return
 
 label ch30_reload_3:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $ renpy.music.play(current_music, "music", True)
     $show_chr("A-BFAAA-AAAL")
     y "..."
@@ -173,6 +181,8 @@ label ch30_reload_3:
     y "What should we discuss today?"
     return
 label ch30_reload_4:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $ _history = True
     $ renpy.music.play(current_music, "music", True)
     #$finder = persistent.narrative.find("_dream")
@@ -447,6 +457,8 @@ label ch30_reload_4:
 #Replaced entirely by a new greetings text https://docs.google.com/document/d/1EfeXUUgyW6SoYZWfKqvqTQdImf1nLY4vmTlx8zklSVM/edit
 
 label birthday_chocolate:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ABBAA-ADAB")
     y "Hey [player], this question might sound a bit random but..."
     y "Do you like chocolate? I ask because... well, I think you asked me at some point about the chocolate you gave me in the original game. So I was wondering."
@@ -484,6 +496,8 @@ label birthday_chocolate:
     return
 
 label birthday_greeting_text:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     #$ today = str(datetime.datetime.date(datetime.datetime.today()))
     #$ birthdate = persistent.birthdate
     #if today == birthdate:
@@ -670,17 +684,23 @@ label birthday_no:
     return
 
 label holiday_greeting:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ACAAA-ABAB")
     y "Happy holidays, [player]!"
     return
 
 label holiday_event_greeting:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ACAAA-ABAB")
     y "Happy holidays, [player]!"
     call holiday
     return
 
 label valentines_greeting:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ACAAA-ABAB")
     y "Greetings again [player]. I was actually looking forward to seeing you today."
     if persistent.lovecheck:
@@ -724,6 +744,8 @@ label valentines_greeting:
 
 
 label featuregreetings:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ACAAA-ABAB")
     y "Oh hello [player]."
     $show_chr("A-BDBAA-AMAM")
@@ -737,6 +759,8 @@ label featuregreetings:
     return
 
 label tetrisgreetings:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ACBAA-ABAB")
     y "You see, I put a lot of thought into things we can do together lately."
     $show_chr("A-BCBAA-ABAB")
@@ -752,6 +776,8 @@ label tetrisgreetings:
     return
 
 label tcrgreetings:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ACBAA-ABAB")
     y "You see, I talked about how limited this world currently is before, at least I think I already talked about it..."
     $show_chr("A-BCBAA-ABAB")
@@ -788,6 +814,8 @@ label tcrgreetings:
     return
 
 label vday_2021:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     if karma() >= 3:
         if persistent.lovecheck:
             $ show_chr("A-ABGBA-ALAL")
@@ -912,6 +940,8 @@ label vday_2021:
     return
 
 label hdy_statue_greeting:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-JBGAA-AAAA")
     y "[player]! Do you remember that time I had this weird dream about becoming a hot dog?"
     $show_chr("A-BIDAA-AAAA")

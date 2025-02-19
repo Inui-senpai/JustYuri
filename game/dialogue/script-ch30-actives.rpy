@@ -6567,6 +6567,7 @@ return
 label table_items:
     $show_chr("A-ABAAA-ALAA")
     y "Would you like to put out a gift or remove one [player]?"
+    $persistent.diffuser_is_enabled = False
     menu:
         "Put out a gift":
             $show_chr("A-AJAAA-AFAB")
@@ -6978,10 +6979,10 @@ label raccoon_plush:
     y "Their rather common nickname, Trash Panda, does not afford them proper justice if you ask me, though one can say it highlights certain aspects of their portrayed character."
     $ show_chr("A-ABAAA-ALAL")
     y "Regardless of my little tirade, again, thank you [player]."
-    if karma > 3 and sanity < 2:
+    if karma() > 3 and sanity() < 2:
         $ show_chr("A-DBABA-ALAL")
         y "Whenever I stare into its beady eyes, It'll remind me of you, my little rambunctious raccoon."
-    if karma > 3 and sanity > 2:
+    if karma() > 3 and sanity() > 2:
         $ show_chr("A-ABABA-ALAL")
         y "It will always remind me of you, my lovely little raccoon."
     hide yuri_sit

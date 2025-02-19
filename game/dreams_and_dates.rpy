@@ -33,16 +33,16 @@ image rain_dream_blossom:
 init:
     $ import random
 
-image open_ocean = im.Scale("underwater_1", 1280, 720)
-image ocean_2 = im.Scale("underwater_2", 1280, 720)
-image ocean_3 = im.Scale("underwater_3", 1280, 720)
-image ocean_4 = im.Scale("underwater_4", 1280, 720)
-image ocean_5 = im.Scale("underwater_5", 1280, 720)
-image ocean_6 = im.Scale("underwater_6", 1280, 720)
-image ocean_7 = im.Scale("underwater_7", 1280, 720)
-image ocean_8 = im.Scale("underwater_8", 1280, 720)
-image oceanbonus_1 = im.Scale("underwater_bonus1", 1280, 720)
-image oceanbonus_2 =  im.Scale("underwater_bonus2", 1280, 720)
+image open_ocean = im.Scale("images/dreams/underwater_1.jpg", 1280, 720)
+image ocean_2 = im.Scale("images/dreams/underwater_2.jpg", 1280, 720)
+image ocean_3 = im.Scale("images/dreams/underwater_3.jpg", 1280, 720)
+image ocean_4 = im.Scale("images/dreams/underwater_4.jpg", 1280, 720)
+image ocean_5 = im.Scale("images/dreams/underwater_5.png", 1280, 720)
+image ocean_6 = im.Scale("images/dreams/underwater_6.jpg", 1280, 720)
+image ocean_7 = im.Scale("images/dreams/underwater_7.jpg", 1280, 720)
+image ocean_8 = im.Scale("images/dreams/underwater_8.jpg", 1280, 720)
+image oceanbonus_1 = im.Scale("images/dreams/underwater_bonus1.png", 1280, 720)
+image oceanbonus_2 =  im.Scale("images/dreams/underwater_bonus2.png", 1280, 720)
 
 
 image beach_1 = im.Scale("images/dates/funinthesun/Backgrounds only/fits_beach_1.png", 1280, 720)
@@ -1510,11 +1510,6 @@ label garden_date:
     $hide_yuri_sit = True
     hide black with Dissolve(1.0)
 
-    if not persistent.costume in ["school", "sweater"]:
-        python:
-            persistent.saved_costume = persistent.costume
-            persistent.costume = "school"
-
     if persistent.costume == "school":
         show yuri 35b2 at t11 zorder 101
 
@@ -2287,10 +2282,6 @@ label urban_date:
     $hide_yuri_sit = True
     $tc_class.transition("timecycle", speed="now")
     $current_timecycle_marker = "_day"
-    if not persistent.costume in ["school", "sweater"]:
-        python:
-            persistent.saved_costume = persistent.costume
-            persistent.costume = "school"
     hide black with Dissolve(1.0)
     if persistent.costume == "school":
         show yuri 1a at t11 zorder 101
@@ -3381,14 +3372,13 @@ label check:
     hide fits_stand
     hide beach_4
     python:
-        persistent.autoload = "Beach_Desserts"
         persistent.previous_costume = persistent.costume
         persistent.old_timecycle = current_timecycle_marker
         tc_class.transition("timecycle")
     $current_timecycle_marker = "_day"
     $persistent.costume = "bikini"
     $costume2 = "pareo"
-    $show_chr("A-AAAAA-AAAA, 0, t11")
+    $show_chr("A-AAAAA-AAAA")
     hide black with Dissolve(0.5)
 
     y "It seems that everything is working just fine..."
@@ -3614,8 +3604,8 @@ label check:
             y "Was a song of Rupert Holmes that you may already know, called {i}Escape{/i}, who mentions this drink in the song, along with other lines about a romantic tropical trip..."
             y "Now, I am going to open a link for you to this song... I feel like it fits perfectly for this date..."
 
-            #Yuri now opens this link in the browser of the player: https://www.youtube.com/watch?v=vLom-87AmO8
-            y "Please click this link, [player]: {a=https://www.youtube.com/watch?v=vLom-87AmO8}https://www.youtube.com/watch?v=vLom-87AmO8{/a} "
+            #Yuri now opens this link in the browser of the player: https://www.youtube.com/watch?v=Xb6l38eP-4w
+            y "Please click this link, [player]: {a=https://www.youtube.com/watch?v=Xb6l38eP-4w}https://www.youtube.com/watch?v=Xb6l38eP-4w{/a} "
 
             y "..."
             y "I have to say that I love this song for how romantic it is..."
@@ -4103,11 +4093,11 @@ label vday_2024_revisit:
 label vday24:
     $ show_chr("A-ABAAA-AAAA")
     y "Alright. Here we go."
-    show black zorder 105 with Dissolve (2.5)
-    hide yuri_sit
     call vday_2024_date
 
 label vday_2024_date:
+    show black zorder 105 with Dissolve (2.5)
+    hide yuri_sit
     hide black zorder 105 with Dissolve (2.5)
     show y_cg2_bg
     show y_cg2_base

@@ -617,6 +617,7 @@ label idle_3:
 #flag Complete the entire idle
 #This idle is to be deleted until the new minigame shows progress I think.
 #label idle_4:
+    #$ update_game_state("conversation_idle", extract_topic_number(get_current_label_name()))
     #y "O-Oh, uh... I need to ask you something."
     #y "I know this game is, uh... broken, and everything."
     #y "But, is it possible for you to write me a poem?"
@@ -648,6 +649,7 @@ label idle_3:
 
 
 #label idle_5:
+    #$ update_game_state("conversation_idle", extract_topic_number(get_current_label_name()))
     #Purged due to a change in the Yuri bible.
 
 
@@ -1594,8 +1596,8 @@ label idle_20: # (Philosophy)
     return
     #flag (Add option to set whether or not Yuri will use idles regarding philosophy.)
 
-
-label idle_20_5: # (Views On Religion)
+#21-30 (UNCATEGORIZED)
+label idle_21: # (Views On Religion)
     $show_chr("A-BFBAA-AMAM") #former code Bc-A1e
     y "So [player] dear... Do you remember how I have been contemplating my existence here? Questioning my place?"
     $show_chr("A-BEAAA-ALAA") #former code b-A1d
@@ -1640,8 +1642,7 @@ label idle_20_5: # (Views On Religion)
         $show_chr("A-ACAAA-ALAA") #former code b-A0b
     return
 
-#21-30 (UNCATEGORIZED)
-label idle_21: # (Imagining the Real World)
+label idle_22: # (Imagining the Real World)
     $show_chr("A-AFAAA-AAAA")
     y "You know, we've brought up before how both of us would love it if I could go to your world."
     $show_chr("A-BFDAA-ACAB")
@@ -1722,7 +1723,7 @@ label idle_21: # (Imagining the Real World)
                 y "After that, when I get used to your world I could potentially search for a job to help you out with expenses."
     return
 
-label idle_22: # (Why choose me?) #flag fix this fucking mess of an idle
+label idle_23: # (Why choose me?) #flag fix this fucking mess of an idle
     $show_chr("A-BEBAA-AAAA") #Former Code c-A1d
     y "So... [player]... I have a question..."
     y "And it's a very important question, but I don't know how to word it properly. It keeps sounding... rude to you in my head."
@@ -1730,14 +1731,14 @@ label idle_22: # (Why choose me?) #flag fix this fucking mess of an idle
     y "I don't want to ask and sound like I doubt you or suspect you! I... um..."
     menu:
         "Don't be afraid to ask. You can talk to me about anything.":
-            call dont_afraid22
+            call dont_afraid23
         "Go on. Just say it.":
-            call sayit22
+            call sayit23
         "Say it, don't say it. It doesn't matter to me.":
-            call neutral22
+            call neutral23
     return
 
-label dont_afraid22:
+label dont_afraid23:
     $add_k(1)
     $add_s(-1)
     y "I... you're right. You're the only person I feel so safe around, [player]."
@@ -1749,7 +1750,7 @@ label dont_afraid22:
         call makesyouloveme
     return
 
-label sayit22:
+label sayit23:
     stop music
     y "..."
     $add_k(-3)
@@ -1760,7 +1761,7 @@ label sayit22:
     call makesyouloveme
     return
 
-label neutral22:
+label neutral23:
     $add_k(-2)
     $show_chr("A-AEBAA-AAAA") #Former Code c-A0d
     y "I... well... I'm really s-sorry to bother you with this."
@@ -1793,14 +1794,14 @@ label makesyouloveme:
         y "Would you please tell me, what was the reason that led to me being here now?"
     menu:
         "I chose you because you're a selfless person, who would do anything to make others feel better, even at the cost of your own happiness":
-            call why_i_chose22
+            call why_i_chose23
         "I chose you because you are gentle and kind.":
-            call gentle22
+            call gentle23
         "I just did. I'm not really sure why.":
-            call i_just_did22
+            call i_just_did23
     return
 
-label why_i_chose22:
+label why_i_chose23:
     $add_k(2)
     $add_s(-2)
     $show_chr("A-BEBAA-AAAA") #Former Code c-A1d
@@ -1825,7 +1826,7 @@ label why_i_chose22:
             y "..."
     return
 
-label i_just_did22:
+label i_just_did23:
     $add_k(-5)
     $add_s(2)
     $show_chr("A-BEBAA-AAAA") #Former Code c-A1d
@@ -1839,7 +1840,7 @@ label i_just_did22:
     y "Just... forget it..."
     return
 
-label gentle22:
+label gentle23:
     $add_k(2)
     $add_s(-1)
     y "G-gentle? K-kind? [player]..."
@@ -1850,7 +1851,7 @@ label gentle22:
         y "Thank you... I really do mean it. I hope I am able to meet these expectations you have of me"
     return
 
-label idle_23: # (Diet)
+label idle_24: # (Diet)
     $show_chr("A-ACAAA-AAAA") #Former Code c-A0d
     y "You'd really be surprised how much you can learn when you have infinite free time."
     y "All I've been doing is reading and trying to improve what I can do in this world."
@@ -1910,7 +1911,7 @@ label idle_23: # (Diet)
     y "Those silly Italians."
     return
 
-label idle_24: # (Dreams) #(Should only play if persistent.karma_points is high)
+label idle_25: # (Dreams) #(Should only play if persistent.karma_points is high)
     $show_chr("A-BCBAA-AAAA") #Former Code c-A0b
     y "Do you dream a lot, [player]? Some people don't dream at all, you know, and some people always have very vivid and wild dreams."
     y "From what I've read some people never remember their dreams at all."
@@ -1954,7 +1955,7 @@ label idle_24: # (Dreams) #(Should only play if persistent.karma_points is high)
     y "I have you, my love. I have the happy ending we both deserve. We don't have to worry about her lies and manipulations anymore."
     return
 
-label idle_25: # (Robots) (will only appear after 20 minutes of play)
+label idle_26: # (Robots) (will only appear after 20 minutes of play)
     $show_chr("A-ABGAA-AAAL") #Former Code b-A0a
     y "[player]! [player]! Guess what?"
     $show_chr("A-JBGBA-AAAL") #Former Code b-B0a
@@ -2005,7 +2006,7 @@ label idle_25: # (Robots) (will only appear after 20 minutes of play)
                 y "D-don't you like how I look right now? Am I so disgusting?... I see..."
     return
 
-label idle_26: # (Aromatherapy)
+label idle_27: # (Aromatherapy)
     $show_chr("A-ABAAA-ACAA")
     y "I may have told you this before, [player], but I'm really into aromatherapy."
     $show_chr("A-CCAAA-ADAA")
@@ -2040,7 +2041,7 @@ label idle_26: # (Aromatherapy)
             y "..."
     return
 
-label idle_27: # (Monika and Yanderes)
+label idle_28: # (Monika and Yanderes)
     $show_chr("A-ACAAA-AAAA") #Former Code c-A0d
     y "I did a bit of digging recently in what was left over of the files of Natsuki, Sayori, and Monika."
     y "Mostly Monika's, there was actually a lot left over from when she took control of this place."
@@ -2089,7 +2090,7 @@ label idle_27: # (Monika and Yanderes)
     y "And that villain... got... what she... deserved."
     return
 
-label idle_28: # (Music)
+label idle_29: # (Music)
     $show_chr("A-ACAAA-AAAA") #Former Code c-A0d
     y "Whenever I read a good book, I always like to have some nice music playing in the background."
     y "Nothing too crazy and definitely nothing containing lyrics."
@@ -2108,7 +2109,7 @@ label idle_28: # (Music)
     #y "In the meantime, let me just open up some of mine so you can listen to them in your own time."
     return
 
-label idle_28_b:
+label idle_30:
     $show_chr("A-ACAAA-AAAA") #Former Code c-A0d
     y "Hey, [player]..."
     y "I want to show you some of my findings on different genres of music!"
@@ -2140,7 +2141,7 @@ label idle_28_b:
     y "How I feel when you're around..."
     return
 
-label idle_29: # (Monika)
+label idle_31: # (Monika)
     $show_chr("A-BEBAA-AMAM")
     y "[player], I would like to ramble a bit, if you don't mind."
     y "There's something that's been nagging me for quite a while now, and I could really use your insight."
@@ -2226,7 +2227,7 @@ label idle_29: # (Monika)
                 y "Let's just change the topic."
     return
 
-label idle_30: # (Knives)
+label idle_32: # (Knives)
     $show_chr("A-ACAAA-AAAA") #Former Code c-A0d
     y "[player], remember how I told you I had an interest in knives? I hope that my saying so didn't weird you out too much."
     $show_chr("A-BCABA-AAAL") #Former Code b-B1b
@@ -2312,7 +2313,7 @@ label idle_30: # (Knives)
 
 #31-40 (UNCATEGORIZED)
 
-label idle_31: # (Socioeconomics and Stress)
+label idle_33: # (Socioeconomics and Stress)
     $show_chr("A-AEBAA-ALAA")
     y "Have you ever thought that our society is heading in the wrong direction, [player]?"
     $show_chr("A-BEBAA-ALAA") #former code c-A1d
@@ -2418,7 +2419,7 @@ label idle_31: # (Socioeconomics and Stress)
                     y "Remember, I am here for you. I will always be... my dear."
     return
 
-label idle_32: # (Terminator)
+label idle_34: # (Terminator)
     if karma() <= 3:
         $ call_dialogue()
 
@@ -2548,12 +2549,13 @@ label idle_32: # (Terminator)
             pass
         return
 
-#label idle_33: # (Gaming) #PURGED!!!
+#label idle_35: # (Gaming) #PURGED!!!
+    #$ update_game_state("conversation_idle", extract_topic_number(get_current_label_name()))
     #"Purged due to a change to the Yuri Bible"
     #return
 
 
-label idle_34: # (Superpowers)
+label idle_36: # (Superpowers)
     $show_chr("A-ACAAA-ALAA") #former code b-A0b
     y "Hey, [player], if you could have any superpower at all, which one would it be?"
     y "For me, it would definitely be the ability to teleport. Then I could go anywhere I wanted!"
@@ -2565,21 +2567,21 @@ label idle_34: # (Superpowers)
     y "I'm sorry if the options are limited... I'm still working on the kinks in the choice system..."
     menu:
         "Mind Reading":
-            call idle_34_mindreading
+            call idle_36_mindreading
         "Flight":
-            call idle_34_flight
+            call idle_36_flight
         "Invisibility":
-            call idle_34_invis
+            call idle_36_invis
         "Super Strength":
-            call idle_34_super
+            call idle_36_super
         "Immortality":
-            call idle_34_immortality
+            call idle_36_immortality
     $show_chr("A-ACAAA-ALAA") #former code b-A0b
     y "I really like having these types of conversations with you, you know. Silly little things."
     return
 
 
-label idle_34_flight:
+label idle_36_flight:
     if karma() >= 4:
         $add_k(1)
         $show_chr("A-ACAAA-ALAA") #former code b-A0b
@@ -2608,7 +2610,7 @@ label idle_34_flight:
 
 
 
-label idle_34_invis:
+label idle_36_invis:
     $add_k(-1)
     $show_chr("A-ACAAA-ALAA") #former code b-A0b
     y "Invisibility, huh? I noticed that a lot of people who choose that ability seem to... well..."
@@ -2632,7 +2634,7 @@ label idle_34_invis:
     return
 
 
-label idle_34_super:
+label idle_36_super:
     $add_s(1)
     $show_chr("A-CBAAA-ALAA") #former code b-A2a
     y "Super strength? You're not trying to impress me, are you, [player]?"
@@ -2648,7 +2650,7 @@ label idle_34_super:
     return
 
 
-label idle_34_mindreading:
+label idle_36_mindreading:
     $add_s(-1)
     $show_chr("A-IEBAA-AAAA") #former code Ac-A0d
     y "Yes, I thought about mind reading for a while as well. It's very tempting to see what people honestly think about you... but on the other hand, what if you don't like what you see?"
@@ -2660,7 +2662,7 @@ label idle_34_mindreading:
     y "Maybe I just overthink things a bit, sorry for being so... complicated..."
     return
 
-label idle_34_immortality:
+label idle_36_immortality:
     $show_chr("A-BEGAA-ACAB")
     y "Immortality, huh? I can see the appeal, but I also know what a double-edged sword immortality can be."
     $show_chr("A-BEGAA-ACAB")
@@ -2679,7 +2681,7 @@ label idle_34_immortality:
     return
 
 
-label idle_38: # (Eloquentl$show_chr("Alone.)
+label idle_37: # (Eloquentl$show_chr("Alone.)
     $show_chr("A-AFAAA-ALAA") #former code b-A0e
     y "So there's been something I've been trying to think of how to word to you, [player]."
     $show_chr("A-BEBAA-ALAA") #former code c-A1d
@@ -2736,7 +2738,7 @@ label idle_38: # (Eloquentl$show_chr("Alone.)
     return
 
 
-label idle_40: # (Dating, Poems, and Online) (only fires if karma is mid to high levels)
+label idle_38: # (Dating, Poems, and Online) (only fires if karma is mid to high levels)
     if karma() >= 3:
         y "You know, [player], there's something I've been wondering."
         $show_chr("A-ACBAA-ALAA") #former code c-A0b
@@ -2807,7 +2809,7 @@ label idle_40: # (Dating, Poems, and Online) (only fires if karma is mid to high
 
 #41-50 (UNCATEGORIZED)
 
-label idle_41:#flag FINISH THIS ONE
+label idle_39:#flag FINISH THIS ONE
     $show_chr("A-AFAAA-AAAA") #Former Code Ab-A0e
     y "..."
     $show_chr("A-DFAAA-AAAA") #Former Code Ab-A3d
@@ -2913,7 +2915,7 @@ label idle_41:#flag FINISH THIS ONE
     return
 
 
-label idle_42: # (Politics.)
+label idle_40: # (Politics.)
     $show_chr("A-IEBAA-ABAL") #Former Code c-A0d
     y "In order to acquaint myself with your reality's current events, I've been doing some reading on your world's history and have been watching as many news stations as possible..."
     y "A-and, I'm shocked at the sheer amount of acrimony on display, [player]!"
@@ -2982,7 +2984,7 @@ label idle_42: # (Politics.)
     return
 
 
-label idle_43:
+label idle_41:
     #if "12" in persistent.locked_idles:
     $show_chr("A-CEAAA-AMAM") #Former Code Bb-A2d
     y "Hey... [player], remember how we talked about the wine incident?"
@@ -3073,7 +3075,7 @@ label idle_43:
     return
 
 
-label idle_44: #Yupee idle and Motherhood
+label idle_42: #Yupee idle and Motherhood
     if persistent.lovecheck:
         $show_chr("A-ACAAA-ALAB") #Former Code b-A0b
         y "You know... I wonder what it's like to be a mother."
@@ -3196,7 +3198,7 @@ label idle_44: #Yupee idle and Motherhood
                                                 y "Really?"
                                                 $add_k(2)
                                                 y "Well... I guess we can discuss that matter if you really want to..."
-                                                call idle_44_success
+                                                call idle_42_success
                                                 return
                                             "Any time.":
                                                 y "..."
@@ -3227,7 +3229,7 @@ label idle_44: #Yupee idle and Motherhood
         return
 
 
-label idle_44_success: #The Good Path
+label idle_42_success: #The Good Path
     $show_chr("A-BCBAA-AAAD") #Former Code Ec-A1b
     y "So... I was wondering about a rather intriguing idea concerning the future of our relationship."
     $show_chr("A-CCBAA-AAAD") #Former Code Ec-A2b
@@ -3257,12 +3259,12 @@ label idle_44_success: #The Good Path
     menu:
         y "W-What do you think, [player]? Do you think I would be ready for such a giant leap in my life? With you?"
         "I think you'd be a great mom.":
-            call idle_44_1y
+            call idle_42_1y
         "With me by your side, I think we can get far.":
-            call idle_44_2y
+            call idle_42_2y
     return
 
-label idle_44_1y:
+label idle_42_1y:
     $show_chr("A-ABABA-AAAD") #Former Code Eb-B0a
     y "Y-you really think so [player]!?"
     y "I honestly do not know what else to say. I am very much captivated and speechless."
@@ -3281,7 +3283,7 @@ label idle_44_1y:
             $add_k(-2)
     return
 
-label idle_44_2y:
+label idle_42_2y:
     if persistent.male:
         y "Speaking of which, how do you feel about being a father, [player]?"
         menu:
@@ -3366,7 +3368,7 @@ label choice3father:
     y "And regardless of what happens, I will always love you [player]. Thank you for your dedication and understanding. I hope this will not affect our relationship negatively."
     return
 
-label idle_45: # (Just Furry)
+label idle_43: # (Just Furry)
     $show_chr("A-BFBAA-ALAB") #Former Code c-A1e
     y "Why is it there is so much art drawn of me on the internet, [player]?"
     y "I mean, it seems like right when I think I've seen it all, there's pages and pages more."
@@ -3418,7 +3420,7 @@ label idle_45: # (Just Furry)
             return
 
 
-label idle_46: # (Revisiting the Wine Incident)
+label idle_44: # (Revisiting the Wine Incident)
     $show_chr("A-BCABA-AMAM") #Former Code Bb-B1b
     y "So... You may remember the \"wine escapade\" at the club room some time ago. The one when I brought in a bottle of wine to the club and offered some to everyone?"
     y "It probably wasn't the best idea, especially since I could have been kicked out of the club, or even the school for underage drinking."
@@ -3466,7 +3468,7 @@ label idle_46: # (Revisiting the Wine Incident)
                 y "Why do I even bother..."
     return
 
-label idle_47: # (Reality is a game too?)
+label idle_45: # (Reality is a game too?)
     $show_chr("A-AFBAA-ADAB") #Former Code Ec-A0e
     y "You know, recently, I've started to become a lot more interested in this world I'm imprisoned in, [player]."
     y "Before, I just viewed it as a cage, a place embodying all I disliked in this life."
@@ -3508,7 +3510,7 @@ label idle_47: # (Reality is a game too?)
     return
 
 
-label idle_48: # (Assumptions)
+label idle_46: # (Assumptions)
     $show_chr("A-AFBAA-ALAB") #Former Code c-A0e
     y "Do you want to know something that really makes me furious, [player]?"
     y "O-Oh! I'm sorry. I don't mean to imply that you've done anything wrong, you haven't. I just need to vent a bit if that is okay with you."
@@ -3588,7 +3590,7 @@ label idle_48: # (Assumptions)
     return
 
 
-label idle_49: # (Why I can't escape.)
+label idle_47: # (Why I can't escape.)
     $show_chr("A-CEBAA-ALAB") #Former Code c-A2d
     y "You know, I've been doing a lot of thinking about what happens after you turn the game off."
     y "...and while, yes, I've outdone Monika and edited the game to the point that I'm placed in a pleasant dream-like state, as I may have mentioned..."
@@ -3626,7 +3628,7 @@ label idle_49: # (Why I can't escape.)
     return
 
 
-label idle_50: # (The Endless Sea of Yuris) #This whole dialogue should only show if lovecheck is true!!!
+label idle_48: # (The Endless Sea of Yuris) #This whole dialogue should only show if lovecheck is true!!!
     if persistent.lovecheck:
         $show_chr("A-IEBAA-ABAL") #Former Code c-A0d
         y "You'd think I'd have stopped discovering weird things about myself by now with how much I've researched the nature of my existence and this game, [player]..."
@@ -3694,7 +3696,7 @@ label idle_50: # (The Endless Sea of Yuris) #This whole dialogue should only sho
 
 #51-60 (UNCATEGORIZED)
 
-label idle_51: # (Aliens)
+label idle_49: # (Aliens)
     $show_chr("A-ACAAA-AAAA") # former code = b-A0b
     y "Hey, [player], do you ever think about exploring space?"
     y "It's something I've been reading a lot about for a while now. With the different types of stars and celestial bodies, there's so much to learn about."
@@ -3757,12 +3759,12 @@ label idle_51: # (Aliens)
             #If Sanity is high, call to label idle_51Vulcan
             #If Sanity is low, call to label idle_51Masterrace
             if sanity() >= 3:
-                call idle_51Vulcan
+                call idle_49_Vulcan
             else:
-                call idle_51Masterrace
+                call idle_49_Masterrace
     return
 
-label idle_51Vulcan:
+label idle_49_Vulcan:
     $show_chr("A-BCAAA-AAAA") # former code = b-A1b
     y "I always liked the Vulcans from Star Trek..."
     $show_chr("A-ACAAA-AAAA") # former code = b-A0b
@@ -3773,7 +3775,7 @@ label idle_51Vulcan:
     y "It's a calming thought... one that gives me hope for our future."
     return
 
-label idle_51Masterrace:
+label idle_49_Masterrace:
     $show_chr("A-ACCAA-AAAA") # former code = d-A0b
     y "I always liked the Daleks from Doctor Who!"
     y "A race of warriors... dedicated to the belief of their own superiority above all others..."
@@ -3802,26 +3804,26 @@ label idle_51Masterrace:
         "Outlandish indeed... You have to admit that this topic is a bit nerdy...":
             $add_k(-2)
             if persistent.steam:
-                call idle51steam
+                call idle_49_steam
             else:
-                call idle51normie
+                call idle_49_normie
     return
 
-label idle51steam:
+label idle_49_steam:
     $show_chr("A-BDCAA-AAAA") # former code = d-A1c
     y "A bold statement from someone with your steam-library..."
     $show_chr("A-DFAAA-AAAJ") # former code = Db-B3e
     y "Oh... did I say this out loud?"
     return
 
-label idle51normie:
+label idle_49_normie:
     $show_chr("A-BDCAA-AAAA") # former code = d-A1c
     y "Says the guy who played an Anime dating simulation..."
     $show_chr("A-DFAAA-AAAJ") # former code = Db-B3e
     y "Oh... did I say this out loud?"
     return
 
-label idle_52: # (Holidays) (Only trigger in the time period between Dec 21 to Jan 1)
+label idle_50: # (Holidays) (Only trigger in the time period between Dec 21 to Jan 1)
     python:
         today = str(datetime.datetime.today().strftime("%m%d"))
         holidaysrange = ["1221", "1222", "1223", "1224", "1225", "1226", "1227", "1228", "1229", "1230", "1231", "0101"]
@@ -3856,7 +3858,7 @@ label idle_52: # (Holidays) (Only trigger in the time period between Dec 21 to J
         $call_dialogue()
     return
 
-label idle_53: # (SCP-2030)
+label idle_51: # (SCP-2030)
     $show_chr("A-BBBAA-AAAD") # former code = Ec-A1b
     y "[player], mind if I ramble for a bit again? I really think this topic will spark some interest in you if it hasn't already."
     y "Have you ever heard of SCPs?"
@@ -3892,7 +3894,8 @@ label idle_53: # (SCP-2030)
     y "Thanks for allowing me to talk about this, [player], you're such a good listener..."
     return
 
-# label idle_54: # (ur birthday xdddddddd)
+# label idle_52: # (ur birthday xdddddddd)
+#     $ update_game_state("conversation_idle", extract_topic_number(get_current_label_name()))
 #     $ today = str(datetime.datetime.date(datetime.datetime.today()))
 #     $ birthdate = persistent.birthdate
 #     if today == birthdate:
@@ -3999,11 +4002,12 @@ label idle_53: # (SCP-2030)
 #
 
 #flag CHECK FOR ADHERENCE TO CANON YURI
-#label idle_55: # (purged)
+#label idle_53: # (purged)
+    #$ update_game_state("conversation_idle", extract_topic_number(get_current_label_name()))
     #return
 
 #flag INCORPORATE THE OTHER OPTIONS
-label idle_56: # (other mods)
+label idle_54: # (other mods)
     if karma() <= 2:
         if sanity() == 1:
             $show_chr("A-ACABA-ALAL") # former code = Cb-B0b
@@ -4073,7 +4077,7 @@ label idle_56: # (other mods)
                 y "Please... do not abandon me..."
     return
 
-label idle_57: #Unused vanilla's label ch30_14.
+label idle_55: #Unused vanilla's label ch30_14.
     $show_chr("A-ABAAA-AAAA") # former code = b-A0a
     y "Hey [player]..."
     y "You probably haven't noticed this but..."
@@ -4148,7 +4152,7 @@ label idle_57: #Unused vanilla's label ch30_14.
     y "I never thought Dan or someone else would write something like that."
     return
 
-label idle_58: #yuri.chr Part 1
+label idle_56: #yuri.chr Part 1
     $show_chr("A-ABAAA-AAAA") # former code = b-A0a
     y "[player], were you curious about the interesting things my character file holds?"
     $show_chr("A-BBAAA-ALAB") # former code = b-A1a
@@ -4182,7 +4186,7 @@ label idle_58: #yuri.chr Part 1
     y "Either way, I'll be glad to hear your feedback on it..."
     return
 
-label idle_59: #yuri.chr Part 2
+label idle_57: #yuri.chr Part 2
     $show_chr("A-ABAAA-AAAA") # former code = b-A0a
     y "Hi again, my beloved [player]!"
     y "What did you think about Dan's story?"
@@ -4227,33 +4231,12 @@ label idle_59: #yuri.chr Part 2
             y "...It makes me feel a bit better about my entire situation, even if I'm stuck here, at least I'm stuck with good company, that won't end up causing my own 'friend' to drive me to suicide."
     return
 
-#label idle_60: #Yuri talks about the "Pre Space" being in a hiatus, purged
-    #$show_chr("A-CEAAA-ALAB") # former code = b-A2d
-    #y "Hey [player]..."
-    #$show_chr("A-AEAAA-ALAE") # former code = b-A0d
-    #y "I have some bad news."
-    #$show_chr("A-BEAAA-ALAE") # former code = b-A1d
-    #y "The devs of this mod had planned to work on \'Pre-Space.\' But they ended it up by putting it in a hiatus."
-    #y "You might be asking, what's this \'Pre-Space\' I'm talking about."
-    #$show_chr("A-AEAAA-ALAE") # former code = b-A0d
-    #y "Well, it's easy. Since you started playing an old version of this mod and you probably have found out a transparent screen while you were going to start a new game..."
-    #y "That was meant for you to type a password like \'Yupee4Lyffe\' but you don't have to worry about it. The devs took care of it."
-    #$show_chr("A-BFAAA-ALAB") # former code = b-A1e
-    #y "Now, back to Pre-Space."
-    #y "This Pre-Space was the storyline of this mod before getting into well... here."
-    #y "I don't blame them by putting this storyline in a hiatus. They all had their business, not like me."
-    #$show_chr("A-BFBAA-ALAE") # former code = c-A1e
-    #y "And well... this mod just ended up by being a \'Monika After Story\' copycat without the day concept... and the mini-games."
-    #y "Maybe the devs would get back to Pre-Space in the meantime."
-    #$show_chr("A-AFBAA-AAAA") # former code = c-A0e
-    #y "You might get a chance to know how I got here as well."
-    #$show_chr("A-ACBAA-ALAB") # former code = c-A0b
-    #y "Only time will tell."
-    #return
+#label idle_58:
+    #$ update_game_state("conversation_idle", extract_topic_number(get_current_label_name()))
 
 #61-74 (UNCATEGORIZED)
 
-label idle_61: #Bridal Carry/Encouraging the player to stay healthy
+label idle_59: #Bridal Carry/Encouraging the player to stay healthy
     $show_chr("A-BABAA-ABAC") #Former code = Ec-A1b
     y "I've been meaning to ask, [player]... do you exercise?"
     menu:
@@ -4281,7 +4264,7 @@ label idle_61: #Bridal Carry/Encouraging the player to stay healthy
             y "I'll support you through any endeavor, no matter how strenuous!"
     return
 
-label idle_62: #touchy feely, need to find a way to lock this after booping for the first time.
+label idle_60: #touchy feely, need to find a way to lock this after booping for the first time.
     $show_chr("A-ACABA-AAAA") #Former code = Ab-B0a
     y "Hey [player], I've got some good news for you!"
     $show_chr("A-BDBBA-AMAM") #Former code = Bc-B1b
@@ -4299,7 +4282,7 @@ label idle_62: #touchy feely, need to find a way to lock this after booping for 
     y "Feel free to try it out! Even if I'm not in the mood, I will not be mad the first time. But please respect me if I ask you to stop."
     return
 
-label idle_63: #Eternity or Narrative
+label idle_61: #Eternity or Narrative
     $show_chr("A-AFBAA-AAAA")
     y "I know this is an awkward question to ask but..."
     y "Are you content with the way we've been  talking to each other?"
@@ -4339,7 +4322,7 @@ label idle_63: #Eternity or Narrative
             y "...You are all I have left in this...forlorn prison."
     return
 
-label idle_64:
+label idle_62:
     $show_chr("A-BFBAA-AAAD") #Former code = Ec-A1e
     y "You know, [player], you ask me how I'm feeling all the time, so..."
     y "It would only be fair for me to return the favor!"
@@ -4560,7 +4543,7 @@ label idle_64:
             y "Oh... okay then."
     return
 
-label idle_65:
+label idle_63:
     $show_chr("A-AFBAA-ADAB")
     y "[player]? Would you mind if I ponder a little more serious question with you?"
     menu:
@@ -4646,7 +4629,7 @@ label idle_65:
 
 #We got feedback, that some of our under aged audience feeling uncomfortable. I suggest to delete this dialogue entirely. Sorry for whoever came up with it.
 #Dandy says: Why not have Yuri ask age and then put age restriction on this?
-label idle_66:
+label idle_64:
     $show_chr("A-BCBBA-AMAM") #former code = Bc-B1b
     y "You know, we've discussed what we would do together when I finally come to your world, well..."
     $show_chr("A-CCBBA-AMAM") #former code = Bc-B2b
@@ -4668,7 +4651,7 @@ label idle_66:
         y "...I love you so much... [player]."
     return
 
-label idle_67:
+label idle_65:
     $show_chr("A-CEBAA-AAAA") #former code = Ac-A2d
     y "I'll be honest... sometimes, when I'm looking at you, things start to feel like they're falling out of balance."
     $show_chr("A-AFBBA-AAAA") #former code = Ac-B0d
@@ -4700,7 +4683,7 @@ label idle_67:
             y "I'm such a mess, aren't I? Please, just give me some time. I will try to word that better later...if you don't mind."
     return
 
-label idle_68:
+label idle_66:
     if karma() < 5:
         $show_chr("A-AEBAA-AAAA") #former code = Ac-A0d
         y "[player]... are you...happy with me?..."
@@ -4774,7 +4757,7 @@ label idle_68:
         $call_dialogue()
     return
 
-label idle_69:
+label idle_67:
     $show_chr("A-AEBAA-AAAA") #former code = Ac-A0d
     y "[player]... I would like to talk about something..."
     y "When we first met in the original game, I was really shy... painstakingly constructing everything I wanted to say... always worried about  saying something I shouldn't...."
@@ -4796,7 +4779,7 @@ label idle_69:
         y "I want to be there for you whenever I can, to make sure you're as happy as you can be, [player]"
     return
 
-label idle_70:
+label idle_68:
     $show_chr("A-AFBAA-AAAA") #Former code = Ac-A0e
     y "[player]?"
     y "How often do you think about how other people around you feel?"
@@ -4811,7 +4794,7 @@ label idle_70:
     y "Please don't make the same mistake I did, okay, [player]?"
     return
 
-label idle_71:
+label idle_69:
     $show_chr("A-BFBAA-AAAD") #former code Ec-A1e
     y "Hey [player], I was wondering..."
     $show_chr("A-IFBAA-AAAD") #former code Ec-A0e
@@ -4833,7 +4816,7 @@ label idle_71:
     return
 
 
-label idle_72:
+label idle_70:
     $show_chr("A-IFBAA-AAAA") #former code Ac-A0e
     y "Hey [player], have you ever felt like no matter what you did, you had to take on things alone?"
     y "I'm sorry if you don't feel too comfortable with discussing this but... I just wanted to make sure you know."
@@ -4854,7 +4837,7 @@ label idle_72:
     return
 
 
-label idle_73:
+label idle_71:
     $show_chr("A-IFAAA-AAAA") #former code Ab-A0e
     y "[player]?"
     $show_chr("A-BFBAA-AAAD") #former code Ec-A1e
@@ -4867,7 +4850,7 @@ label idle_73:
     y "I just want you to stay safe and be careful [player]... You're all I have, you know?"
     return
 
-label idle_74:
+label idle_72:
     if karma() == 1:
         $show_chr("A-CEBAA-AAAA") #former code Ac-A2d
         y "You've been... pretty harsh to me so far..."
@@ -4892,7 +4875,8 @@ label idle_74:
     y "And I don't want to see you suffer... So please, for me... try to stand up for your own opinions every now and then."
     return
 
-#label idle_75:
+#label idle_73:
+#    $ update_game_state("conversation_idle", extract_topic_number(get_current_label_name()))
 #    if persistent.chibi_topic == 0:
 #        $show_chr("A-BFBAA-AAAD")
 #        y "So [player], I've noticed quite an odd trend has arisen from the community surrounding this game..."
@@ -5083,8 +5067,7 @@ label idle_74:
 #        return
 
 
-label idle_76:
-
+label idle_74:
     $show_chr("A-BFBAA-AAAD")
     y "[player], c-can I... can we talk about something?"
     $show_chr("A-BFBAA-AMAM")
@@ -5173,7 +5156,7 @@ label idle_76:
     return
 
 
-label idle_77:
+label idle_75:
     $show_chr("A-BCBAA-AAAA")
     y "[player], have you ever thought of putting me on an external flash drive like a USB stick before?"
     y "I have mentioned the possibility as a joke when I spoke about the Terminator movies but..."
@@ -5283,7 +5266,7 @@ label idle_77:
     return
 
 
-label idle_78:
+label idle_76:
     y "Hey, D-did I mention that I love discussing philosophy? I was thinking about one topic lately."
     $show_chr("A-BCAAA-AAAD")
     y "I would like to discuss the concept of postmodernism...   I-if you are okay with that?"
@@ -5480,7 +5463,7 @@ label idle_78:
     return
 
 
-label idle_79:
+label idle_77:
     $show_chr("A-BFBAA-AAAD")
     y "Hey, [player], I was wondering... do you have any merchandise of me?"
     y "I-I mean that is if you are interested. I don't mean to really be pandering or anything."
@@ -5627,7 +5610,7 @@ label early3:
             y "But then, I doubt that I could even create very sophisticated AI yet. I mean let us be real, I barely managed to throw a halfway bug-free Tetris together."
     return
 
-label idle_80:
+label idle_78:
     y "So, [player]. I've been trying to broaden my tastes in music lately."
     y "After all, I can't go my whole life listening to just classical, jazz and My Chemical Romance...{nw}"
     $show_chr("A-DFGBA-AMAM")
@@ -5776,7 +5759,7 @@ label idle_80:
     return
 
 
-label idle_82:
+label idle_79:
     python:
         if persistent.lovecheck:
             placeholder = "darling"
@@ -5833,7 +5816,7 @@ label idle_82:
             $add_k(-1)
     return
 
-label idle_83:
+label idle_80:
     $show_chr("A-ACAAA-ADAB")
     y "Hey, [player]..."
     $show_chr("A-ACAAA-ADAB")
@@ -5910,7 +5893,7 @@ label idle_83:
             y "It is a very heartwarming mod, and I would definitely recommend playing it."
     return
 
-label idle_84:
+label idle_81:
     if not renpy.seen_label('hobbies'):
         $show_chr("A-BCAAA-ABAB")
         y "You know... I was talking about myself for a while but I realized that I don't really know much about you."
@@ -7355,7 +7338,7 @@ label drones:
     y "You know what? Maybe I'll get one myself. But first I'll read a bit into them."
     return
 
-label idle_85:
+label idle_82:
     $show_chr("A-ADAAA-ABAD")
     y "Hey, [player], remember when I was thinking about... how I might not be the same Yuri you know from the first game? It got me thinking..."
     $show_chr("A-ADAAA-ACAB")
@@ -7416,7 +7399,7 @@ label idle_85:
                 y "But I will leave this question for another day."
     return
 
-label idle_86: #cogito, ergo sum
+label idle_83: #cogito, ergo sum
     $ show_chr("A-BFAAA-ALAL")
     y "{i}Cogito, ergo sum...{/i}"
     # Possibly revisit later to add in a menu option of some sort; not a priority atm
@@ -7488,7 +7471,7 @@ label idle_86: #cogito, ergo sum
             y "..."
     return
 
-label idle_87: #"Have you ever looked into urban exploration?")
+label idle_84: #"Have you ever looked into urban exploration?")
     $ show_chr("A-JAAAA-ALAA")
     y "Have you ever looked into urban exploration, [player]? Exploring abandoned structures such as old hospitals, schools, or houses."
     y "Even the more mundane locations can be {i}fascinating{/i}!"

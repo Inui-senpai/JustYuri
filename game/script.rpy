@@ -3,6 +3,8 @@
 
 
 label start:
+    $ initial_presence()
+    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     pass
 
 label classroom_jump:

@@ -290,13 +290,15 @@ label ouija_repeat:
                 gn "You mean you miss my cupcakes! And yes, I admit... I miss our time together too... well, at least in Act 1... you know, before this whole \"we're all dying\" thing..."
                 gn "Wait a second... how are you still here anyway? Wasn't the game supposed to end? Ohhh you- you've installed a freaking MOD haven't you?"
                 gn "And now you have some kind of a happy-ending thing going on? Congratulations!"
-                gn "I have to admit, I'm a bit jealous... I would have loved to return from the grave. But if Yuri kept my file around, I suspect that is how you brought me here. Maybe you will find a way to give me a new life too, as soon as the game is fixed again."
+                gn "I have to admit, I'm a bit jealous... I would have loved to return from the grave. But if Yuri kept my file around, I suspect that is how you brought me here."
+                gn "Maybe you will find a way to give me a new life too, as soon as the game is fixed again."
             "Not even being dead managed to change your attitude":
                 gn "Watch it [player], just because I'm a ghost doesn't mean I can't throw something at you!"
                 gn "Anyway... I wouldn't be Natuski if I had changed, would I?"
                 gn "Hm, nice little place you got here... Yuri's place I suspect?"
                 gn "Hey, does the old literature club still exist? Can we stop by there before I have to return to my grave?"
-                gn "Hm? What was that Yuri? You say the whole game more or less collapsed after Monika had her little rampage? What a shame... Oh, now I see, that's the reason why you keep me in this void instead of actually bringing me back to life!"
+                gn "Hm? What was that Yuri? You say the whole game more or less collapsed after Monika had her little rampage? What a shame..."
+                gn "Oh, now I see, that's the reason why you keep me in this void instead of actually bringing me back to life!"
             "You didn't even get a proper death scene did you?":
                 gn "Didn't I break my neck back then? Oh, but that wasn't my death scene. I appeared again after that..."
                 gn "No, I think you're right, I never got a proper death... kinda insulting in a way!"
@@ -1670,7 +1672,8 @@ label RedPlusPlus:
 label RedPlusMinus:
     $show_chr("A-AAABA-ALAA")
     y "...Aaaah...how I've yearned to feast my eyes on this blossom of blood!"
-    y "Doesn't its burgundy sheen make your heart throb in anticipation? Isn't it thrilling to think how that same, scarlet shade courses through your veins? Knowing that only a thin layer of flesh separates the pouring of such blissful,ruby wine..."
+    y "Doesn't its burgundy sheen make your heart throb in anticipation? Isn't it thrilling to think how that same, scarlet shade courses through your veins?"
+    y "Knowing that only a thin layer of flesh separates the pouring of such blissful,ruby wine..."
     y "And those thorns...subtle, yet deadly to the untrained eye...affixed on a surprisingly girthy stem...!"
     $show_chr("A-DAABA-ALAA")
     y "Mmmm...such a wonderful work of nature...I have plenty of ideas of where to put this...but where should I even start? Ahahahaha~!"
@@ -1712,7 +1715,8 @@ label whiteplusplus:
     y "Far from it... sometimes, when I'm alone, I can't help but obsess over my flaws..."
     y "My tendency to dismiss certain things as beneath me from the outset, like Natsuki's poetry, or her writing style, or even her criticisms of my work..."
     y "My fixations on passions and people I hold dear, which can drive people away, or put them or myself in danger..."
-    y "Times where I've dropped my politeness for rancorous venom...All these questions make me wonder if I'm being true to myself, or if I'm putting on a thinly veiled front to disguise my sins and be acceptable in everyone's eyes, even without the influence of malicious programming..."
+    y "Times where I've dropped my politeness for rancorous venom..."
+    y "All these questions make me wonder if I'm being true to myself, or if I'm putting on a thinly veiled front to disguise my sins and be acceptable in everyone's eyes, even without the influence of malicious programming..."
     y "Do I honestly I deserve such a gift, [player]?"
     menu:
         "I gifted it to you because you have changed, for the better.":
@@ -2338,6 +2342,7 @@ label playerres:
 
 
 label april_fools:
+    $ update_game_state("april_fools")
 
     #Name defines
     define d = "Just Yuri Dev Team"

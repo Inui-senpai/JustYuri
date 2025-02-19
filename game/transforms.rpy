@@ -1,9 +1,10 @@
 transform moveleft:
-    linear .3 xpos 0.00
+    xalign 0.0
+    linear 0.3 xalign 0.00
 
 transform moveright:
-    linear .3 xpos 0.25
-
+    xalign 0.25
+    linear 0.3 xalign 0.25
 
 transform dizzy(m, t, subpixel=True):
     subpixel subpixel
@@ -25,87 +26,144 @@ transform dizzy(m, t, subpixel=True):
         easein 1.0 * t yoffset 0
         repeat
 
-###above is imported from original DDLC cgs.rpy
-
 transform tcommon(x=640, z=0.80):
-    yanchor 1.0 subpixel True
-    on show:
-        ypos 1.03
-        zoom z*0.95 alpha 0.00
-        xcenter x yoffset -20
-        easein .25 yoffset 0 zoom z*1.00 alpha 1.00
-    on replace:
+    yanchor 1.0
+    subpixel True
+    xanchor 0.5
+    ypos 1.03
+    zoom z*0.95
+    alpha 0.00
+    xpos x
+    yoffset -20
+    block:
+        easein 0.25 yoffset 0 zoom z*1.00 alpha 1.00
 
+    on replace:
         alpha 1.00
         parallel:
-            easein .25 xcenter x zoom z*1.00
+            easein 0.25 xpos x zoom z*1.00
         parallel:
-            easein .15 yoffset 0 ypos 1.03
+            easein 0.15 yoffset 0 ypos 1.03
 
 transform tinstant(x=640, z=0.80):
-    xcenter x yoffset 0 zoom z*1.00 alpha 1.00 yanchor 1.0 ypos 1.03
+    xanchor 0.5
+    xpos x
+    yoffset 0
+    zoom z*1.00
+    alpha 1.00
+    yanchor 1.0
+    ypos 1.03
 
 transform focus(x=640, z=0.80):
-    yanchor 1.0 ypos 1.03 subpixel True
-    on show:
+    yanchor 1.0
+    ypos 1.03
+    subpixel True
+    xanchor 0.5
 
-        zoom z*0.95 alpha 0.00
-        xcenter x yoffset -20
-        easein .25 yoffset 0 zoom z*1.05 alpha 1.00
-        yanchor 1.0 ypos 1.03
+    on show:
+        zoom z*0.95
+        alpha 0.00
+        xpos x
+        yoffset -20
+        easein 0.25 yoffset 0 zoom z*1.05 alpha 1.00
+        yanchor 1.0
+        ypos 1.03
+
     on replace:
         alpha 1.00
         parallel:
-            easein .25 xcenter x zoom z*1.05
+            easein 0.25 xpos x zoom z*1.05
         parallel:
-            easein .15 yoffset 0
+            easein 0.15 yoffset 0
 
 transform sink(x=640, z=0.80):
-    xcenter x yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.00 alpha 1.00 subpixel True
-    easein .5 ypos 1.06
+    xanchor 0.5
+    xpos x
+    yoffset 0
+    yanchor 1.0
+    ypos 1.03
+    zoom z*1.00
+    alpha 1.00
+    subpixel True
+    easein 0.5 ypos 1.06
 
 transform hop(x=640, z=0.80):
-    xcenter x yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.00 alpha 1.00 subpixel True
-    easein .1 yoffset -20
-    easeout .1 yoffset 0
+    xanchor 0.5
+    xpos x
+    yoffset 0
+    yanchor 1.0
+    ypos 1.03
+    zoom z*1.00
+    alpha 1.00
+    subpixel True
+    easein 0.1 yoffset -20
+    easeout 0.1 yoffset 0
 
 transform hopfocus(x=640, z=0.80):
-    xcenter x yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.05 alpha 1.00 subpixel True
-    easein .1 yoffset -21
-    easeout .1 yoffset 0
+    xanchor 0.5
+    xpos x
+    yoffset 0
+    yanchor 1.0
+    ypos 1.03
+    zoom z*1.05
+    alpha 1.00
+    subpixel True
+    easein 0.1 yoffset -21
+    easeout 0.1 yoffset 0
 
 transform dip(x=640, z=0.80):
-    xcenter x yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.00 alpha 1.00 subpixel True
-    easein .25 yoffset 25
-    easeout .25 yoffset 0
+    xanchor 0.5
+    xpos x
+    yoffset 0
+    yanchor 1.0
+    ypos 1.03
+    zoom z*1.00
+    alpha 1.00
+    subpixel True
+    easein 0.25 yoffset 25
+    easeout 0.25 yoffset 0
 
 transform panic(x=640, z=0.80):
-    xcenter x yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.00 alpha 1.00 subpixel True
+    xanchor 0.5
+    xpos x
+    yoffset 0
+    yanchor 1.0
+    ypos 1.03
+    zoom z*1.00
+    alpha 1.00
+    subpixel True
     parallel:
         ease 1.2 yoffset 25
         ease 1.2 yoffset 0
         repeat
     parallel:
-        easein .3 xoffset 20
-        ease .6 xoffset -20
-        easeout .3 xoffset 0
+        easein 0.3 xoffset 20
+        ease 0.6 xoffset -20
+        easeout 0.3 xoffset 0
         repeat
 
 transform leftin(x=640, z=0.80):
-    xcenter -300 yoffset 0 yanchor 1.0 ypos 1.03 zoom z*1.00 alpha 1.00 subpixel True
-    easein .25 xcenter x
+    xanchor 0.5
+    xpos -300
+    yoffset 0
+    yanchor 1.0
+    ypos 1.03
+    zoom z*1.00
+    alpha 1.00
+    subpixel True
+    easein 0.25 xpos x
 
 
 transform thide(z=0.80):
     subpixel True
-    transform_anchor True
     on hide:
+        easein 0.25 zoom z*0.95 alpha 0.00 yoffset -20
 
-        easein .25 zoom z*0.95 alpha 0.00 yoffset -20
 transform lhide:
     subpixel True
     on hide:
-        easeout .25 xcenter -300
+        easeout 0.25 xpos -300
+        xanchor 0.5
 
 
 transform t41:
@@ -279,8 +337,10 @@ transform l11:
 
 transform face(z=0.80, y=500):
     subpixel True
-    xcenter 640
-    yanchor 1.0 ypos 1.03
+    xanchor 0.5
+    xpos 640
+    yanchor 1.0
+    ypos 1.03
     yoffset y
     zoom z*2.00
 
@@ -403,7 +463,6 @@ transform noise_alpha:
 
 transform noisefade(t=0):
     alpha 0.0
-    t
     linear 5.0 alpha 0.40
 
 image vignette:
@@ -412,35 +471,36 @@ image vignette:
 
 transform vignettefade(t=0):
     alpha 0.0
-    t
     linear 25.0 alpha 1.00
 
 transform vignetteflicker(t=0):
     alpha 0.0
-    t + 2.030
+    block:
+        pause t + 2.030
     parallel:
         alpha 1.00
         linear 0.2 alpha 0.8
-        0.1
+        pause 0.1
         alpha 0.7
         linear 0.1 alpha 1.00
         alpha 0.0
-        1.19
+        pause 1.19
         repeat
     parallel:
-        easeout 20 zoom 3.0
+        easeout 20.0 zoom 3.0
 
 transform layerflicker(t=0):
     truecenter
-    t + 2.030
+    block:
+        pause t+2.030
     parallel:
         zoom 1.05
         linear 0.2 zoom 1.04
-        0.1
+        pause 0.1
         zoom 1.035
         linear 0.1 zoom 1.05
         zoom 1.0
-        1.19
+        pause 1.19
         repeat
     parallel:
         easeout_bounce 0.3 xalign 0.6
@@ -465,12 +525,12 @@ transform heartbeat:
 transform heartbeat2(m):
     truecenter
     parallel:
-        0.144
+        pause 0.144
         zoom 1.00 + 0.07 * m
         easein 0.250 zoom 1.00 + 0.04 * m
         easeout 0.269 zoom 1.00 + 0.07 * m
         zoom 1.00
-        1.479
+        pause 1.479
         repeat
     parallel:
         easeout_bounce 0.3 xalign 0.5 + 0.02 * m
@@ -487,13 +547,7 @@ init python:
         return random.random() * 1.2 + 0.3
 
 transform malpha(a=1.00):
-    i11
     alpha a
-
-################################
-#transforms_jy.rpy carry overs##
-################################
-
 
 transform music_button_zoom:
     xalign 1.0
@@ -505,13 +559,14 @@ transform music_button_zoom:
 transform music_menu_animation:
     xoffset 1.0
     xpos 1.5
+    alpha 0.0
+
     on start:
-        alpha 0.0
         linear 0.2 alpha 1.0
         linear 0.3 xpos 1.0
 
     on hide:
-        alpha 1.0
+        linear 0.2 alpha 0.0
         linear 0.2 xpos 1.5
 
 define eye_open = ImageDissolve("vfx/eye.png", 1.0, 64, ramptype="cube")
