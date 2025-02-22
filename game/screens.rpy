@@ -1856,7 +1856,7 @@ default glassesIterator = 0
 default nekoIterator = 0
 default positionIterator = 0
 default botharmsIterator = 0
-define temp_code = "A-AAAAA-AAAA"
+default temp_code = "A-AAAAA-AAAA"
 
 default headList = ["A","B"]
 #0 = forward facing
@@ -1890,85 +1890,92 @@ default spriteList = ["yuri_sit", "yuri_stand"]
 default positionList = ["t11", "t21", "t22", "t31", "t32", "t33"]
 default position_marker = "t11"
 screen make_expression():
-#Scroll button objects
+    # Scroll button objects
     fixed:
-        xpos 0 ypos 0
+        xpos 0
+        ypos 0
         viewport:
             xadjustment prev_adj
 
         python:
 
             def addToClipBoard(text):
+                import os
                 command = 'echo ' + text.strip() + '| clip'
                 os.system(command)
 
-            def update(type, step_size = 1):
-                global current_timecycle_marker
-                global headIterator
-                global eyesIterator
-                global mouthIterator
-                global eyebrowsIterator
-                global blushIterator
-                global cryIterator
-                global upLIterator
-                global lowLIterator
-                global upRIterator
-                global lowRIterator
-                global bothIterator
-                global costumeIterator
-                global spriteIterator
-                global positionIterator
-                global botharmsIterator
-                global temp_code
-                global timecycleIterator
-                global glassesIterator
-                global nekoIterator
-                global position_marker
-                #global temp
-                if type in ["upL", "lowL", "upR", "lowR", "head", "costume", "sprite", "position","botharms"]:
-                    globals()[str(type) + "Iterator"] = (globals()[str(type) + "Iterator"] + step_size)%len(globals()[str(type) + "List"])
+            def update(type, step_size=1):
+                global current_timecycle_marker, headIterator, eyesIterator, mouthIterator, eyebrowsIterator, blushIterator, cryIterator, upLIterator, lowLIterator, upRIterator, lowRIterator, bothIterator, costumeIterator, spriteIterator, positionIterator, botharmsIterator, temp_code, timecycleIterator, glassesIterator, nekoIterator, position_marker
+
+                # Define a helper function to avoid repetition
+                def update_iterator(iterator_type, list_type, step):
+                    iterator = globals().get(iterator_type + "Iterator")
+                    if iterator is None:
+                        return 0  # or handle the error as you see fit
+
+                    iterator = (iterator + step) % len(globals().get(list_type))
+                    globals()[iterator_type + "Iterator"] = iterator
+                    return iterator
+
+                if type in ["upL", "lowL", "upR", "lowR", "head", "costume", "sprite", "position", "botharms"]:
+                     update_iterator(type, type + "List", step_size)
+
                 else:
-                    globals()[str(type) + "Iterator"] = (globals()[str(type) + "Iterator"] + step_size)%len(globals()[str(type) + str(headIterator) + "List"])
-                for element in ["head", "eyes", "mouth", "eyebrows", "blush", "cry","upL", "lowL", "upR", "lowR", "costume", "sprite", "position",]:
+                    head_iterator = globals().get("headIterator")
+                    if head_iterator is None:
+                        head_iterator = 0
+                    update_iterator(type, type + str(head_iterator) + "List", step_size)
+
+                # Ensure all iterators are within bounds. Refactor this loop for efficiency
+                for element in ["head", "eyes", "mouth", "eyebrows", "blush", "cry", "upL", "lowL", "upR", "lowR", "costume", "sprite", "position"]:
                     if element in ["upL", "lowL", "upR", "lowR", "head", "costume", "sprite", "position", "botharms"]:
-                        globals()[str(element) + "Iterator"] = (globals()[str(element) + "Iterator"])%len(globals()[str(element) + "List"])
+                        globals()[element + "Iterator"] = globals().get(element + "Iterator") % len(globals().get(element + "List"))
                     else:
-                        globals()[str(element) + "Iterator"] = (globals()[str(element) + "Iterator"])%len(globals()[str(element) + str(headIterator) + "List"])
-                #expression = "0-0ab00-a1a1"
+                        head_iterator = globals().get("headIterator")
+                        if head_iterator is None:
+                            head_iterator = 0
+
+                        globals()[element + "Iterator"] = globals().get(element + "Iterator") % len(globals().get(element + str(head_iterator) + "List"))
+
+
                 if type == "botharms":
                     temp_code = (str(headList[headIterator]) + "-"
-                        + str(eval("eyes"+ str(headIterator) +"List")[eyesIterator])
-                        + str(eval("mouth" + str(headIterator) +"List")[mouthIterator]) +
-                        str(eval("eyebrows" + str(headIterator) +"List")[eyebrowsIterator]) +
-                        str(eval("blush" + str(headIterator) +"List")[blushIterator]) +
-                        str(eval("cry" + str(headIterator) +"List")[cryIterator]) +
-                        "-ZZA" +
-                        str(botharmsList[botharmsIterator]))
+                                 + str(eval("eyes" + str(headIterator) + "List")[eyesIterator])
+                                 + str(eval("mouth" + str(headIterator) + "List")[mouthIterator]) +
+                                 str(eval("eyebrows" + str(headIterator) + "List")[eyebrowsIterator]) +
+                                 str(eval("blush" + str(headIterator) + "List")[blushIterator]) +
+                                 str(eval("cry" + str(headIterator) + "List")[cryIterator]) +
+                                 "-ZZA" +
+                                 str(botharmsList[botharmsIterator]))
                 else:
-                        temp_code = (str(headList[headIterator]) + "-"
-                        + str(eval("eyes"+ str(headIterator) +"List")[eyesIterator])
-                        + str(eval("mouth" + str(headIterator) +"List")[mouthIterator]) +
-                        str(eval("eyebrows" + str(headIterator) +"List")[eyebrowsIterator]) +
-                        str(eval("blush" + str(headIterator) +"List")[blushIterator]) +
-                        str(eval("cry" + str(headIterator) +"List")[cryIterator]) +
-                        "-" +
-                        str(upLList[upLIterator]) +
-                        str(lowLList[lowLIterator]) +
-                        str(upRList[upRIterator]) +
-                        str(lowRList[lowRIterator]))
+                    temp_code = (str(headList[headIterator]) + "-"
+                                 + str(eval("eyes" + str(headIterator) + "List")[eyesIterator])
+                                 + str(eval("mouth" + str(headIterator) + "List")[mouthIterator]) +
+                                 str(eval("eyebrows" + str(headIterator) + "List")[eyebrowsIterator]) +
+                                 str(eval("blush" + str(headIterator) + "List")[blushIterator]) +
+                                 str(eval("cry" + str(headIterator) + "List")[cryIterator]) +
+                                 "-" +
+                                 str(upLList[upLIterator]) +
+                                 str(lowLList[lowLIterator]) +
+                                 str(upRList[upRIterator]) +
+                                 str(lowRList[lowRIterator]))
+
                 persistent.costume = costumeList[costumeIterator]
+
                 if tc_class.bg_timecycle[persistent.bg]:
-                    print_debug(1)
+                    renpy.log(1)  # Use renpy.log instead of print_debug
                     current_timecycle_marker = timecycle0List[timecycleIterator]
                 else:
-                    print_debug(2)
+                    renpy.log(2) # Use renpy.log instead of print_debug
                     current_timecycle_marker = "_space"
+
                 persistent.face1 = glasses0List[glassesIterator]
                 persistent.head1 = neko0List[nekoIterator]
                 if persistent.head1 == "raccoon_ears":
                     persistent.head2 = "raccoon_tail"
                 else:
                     persistent.head2 = "nothing"
+
                 if spriteList[spriteIterator] == "yuri_stand":
                     if persistent.yuri_beta:
                         renpy.hide("yuri_sit")
@@ -1976,15 +1983,14 @@ screen make_expression():
                         renpy.hide("yuri_sit_alpha")
                 else:
                     renpy.hide("yuri_stand")
+
                 show_chr(temp_code, str(spriteList[spriteIterator]), [str(positionList[positionIterator])])
                 position_marker = positionList[positionIterator]
 
-
-
-        #Text label
+        # Text label
         text "CURRENT CODE: [temp_code] , [spriteIterator], [position_marker]" xpos 450 yalign 0.90 size 30
 
-        #Buttons
+        # Buttons
         textbutton "Head" xpos 50 yalign 0.10 style "choice_button" xmaximum 125 ymaximum 35 action Function(update, "head") alternate Function(update, "head", -1)
 
         textbutton "Timecycle" xpos 200 yalign 0.10 style "choice_button" xmaximum 125 ymaximum 35 action Function(update, "timecycle") alternate Function(update, "timecycle", -1)
@@ -2007,12 +2013,12 @@ screen make_expression():
 
         textbutton "Costume" xpos 50 yalign 0.95 style "choice_button" xmaximum 125 ymaximum 35 action Function(update, "costume") alternate Function(update, "costume", -1)
 
-        #END Buttons
+        # END Buttons
         textbutton "COPY_CODE" xpos 250 yalign 0.99 style "choice_button" action Function(addToClipBoard, temp_code)
         textbutton "DONE" xpos 700 yalign 0.99 style "choice_button" action Jump("control_panel")
 
-        #sprite changer section
-        textbutton "Background" xpos 1100 yalign 0.31 style "choice_button" xmaximum 125 ymaximum 35 action Function(ui.callsinnewcontext("timecycleswitch"))
+        # sprite changer section
+        textbutton "Background" xpos 1100 yalign 0.31 style "choice_button" xmaximum 125 ymaximum 35 action ui.callsinnewcontext("timecycleswitch")
         textbutton "Sprite" xpos 1100 yalign 0.49 style "choice_button" xmaximum 125 ymaximum 35 action Function(update, "sprite") alternate Function(update, "sprite", -1)
         #text "Design: [sprite]" xpos 550 yalign 0.85 size 30
         textbutton "Position" xpos 1100 yalign 0.40 style "choice_button" xmaximum 125 ymaximum 35 action Function(update, "position") alternate Function(update, "position", -1)

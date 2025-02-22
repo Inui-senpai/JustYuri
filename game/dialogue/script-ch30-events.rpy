@@ -390,7 +390,7 @@ label changeoutfit:
 
         menu:
 
-            "Your headwear" if renpy.seen_label("idle_45") or persistent.seen_poem_raccoon:
+            "Your headwear" if renpy.seen_label("idle_43") or persistent.seen_poem_raccoon:
                 if persistent.head1 == "cat_ears":
                     $show_chr("A-BEBBA-AMAM")
                     y "I'm actually a little embarrassed about these ears you gave me..."
@@ -410,7 +410,7 @@ label changeoutfit:
                         hide black with Dissolve(2.0)
                         y "There we go..."
 
-                    "Cat ears" if persistent.head1 != "cat_ears" and renpy.seen_label("idle_45"):
+                    "Cat ears" if persistent.head1 != "cat_ears" and renpy.seen_label("idle_43"):
                         $show_chr("A-IFAAA-ALAA")
                         y "I... I guess I could..."
                         show black zorder 100 with Dissolve(2.0)

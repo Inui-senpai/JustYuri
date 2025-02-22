@@ -85,10 +85,93 @@ label alter_1:
         "Reset Sanity and Karma to 0":
             $persistent.sanity_points = 0
             $persistent.karma_points = 0
+
+        # --- New Custom Options ---
+        "Custom Increase":
+            jump custom_increase
+        "Custom Decrease":
+            jump custom_decrease
+        # --- End of New Options ---
+
         "Return To Control Panel":
             "Huh. I suppose we don't need to do that."
             jump control_panel
     "Done."
+    jump alter_1
+
+label custom_increase:
+    menu:
+        "Which value to increase?"
+        "Karma":
+            jump custom_karma_increase
+        "Sanity":
+            jump custom_sanity_increase
+        "Back":
+            jump alter_1
+
+label custom_decrease:
+    menu:
+        "Which value to decrease?"
+        "Karma":
+            jump custom_karma_decrease
+        "Sanity":
+            jump custom_sanity_decrease
+        "Back":
+            jump alter_1
+label custom_karma_increase:
+    python:
+        amount = renpy.input("Enter amount to increase Karma (between -100 and 100):")
+        try:
+            amount = int(amount)
+            if -100 <= amount <= 100:
+                persistent.karma_points += amount
+                y("Karma increased by [amount]. New Karma Points: [persistent.karma_points]")
+            else:
+                y("Invalid amount. Must be between -100 and 100.")
+        except ValueError:
+            y("Invalid input. Please enter a number.")
+    jump alter_1
+
+label custom_sanity_increase:
+    python:
+        amount = renpy.input("Enter amount to increase Sanity (between -100 and 100):")
+        try:
+            amount = int(amount)
+            if -100 <= amount <= 100:
+                persistent.sanity_points += amount
+                y("Sanity increased by [amount]. New Sanity Points: [persistent.sanity_points]")
+            else:
+                y("Invalid amount. Must be between -100 and 100.")
+        except ValueError:
+            y("Invalid input. Please enter a number.")
+    jump alter_1
+
+label custom_karma_decrease:
+    python:
+        amount = renpy.input("Enter amount to decrease Karma (between -100 and 100):")
+        try:
+            amount = int(amount)
+            if -100 <= amount <= 100:
+                persistent.karma_points += amount  # Use += for decrease as well (amount will be negative)
+                y("Karma decreased by [amount]. New Karma: [persistent.karma_points]")
+            else:
+                y("Invalid amount. Must be between -100 and 100.")
+        except ValueError:
+            y("Invalid input. Please enter a number.")
+    jump alter_1
+
+label custom_sanity_decrease:
+    python:
+        amount = renpy.input("Enter amount to decrease Sanity (between -100 and 100):")
+        try:
+            amount = int(amount)
+            if -100 <= amount <= 100:
+                persistent.sanity_points += amount # Use += for decrease as well (amount will be negative)
+                y("Sanity decreased by [amount]. New Sanity: [persistent.sanity_points]")
+            else:
+                y("Invalid amount. Must be between -100 and 100.")
+        except ValueError:
+            y("Invalid input. Please enter a number.")
     jump alter_1
 
 label alter_2:

@@ -1,21 +1,23 @@
 init python:
     def screenshot_srf():
-        srf = renpy.display.draw.screenshot(None, False)
+        srf = renpy.display.draw.screenshot()  # Removed unnecessary arguments
 
         return srf
 
     def invert():
         srf = screenshot_srf()
-        inv = renpy.Render(srf.get_width(), srf.get_height()).canvas().get_surface()
-        inv.fill((255,255,255,255))
-        inv.blit(srf, (0,0), None, 2)
-        return inv
+        inv = renpy.Render(srf.get_width(), srf.get_height())
+        inv_surf = inv.canvas().get_surface()  # Get surface from canvas *before* using it
+        inv_surf.fill((255, 255, 255, 255))
+        inv_surf.blit(srf, (0, 0), None, 2) # BLEND_ADD
+        return inv_surf  # Return the surface, not the Render
 
     class Invert(renpy.Displayable):
         def __init__(self, delay=0.0, screenshot_delay=0.0):
             super(Invert, self).__init__()
             self.width, self.height = renpy.get_physical_size()
-            self.height = self.width * 9 / 16
+            self.height = int(self.width * 9 / 16) #Ensure this results in integers.  Critical for displayable dimensions.
+            self.width = int(self.width)
             self.srf = invert()
             self.delay = delay
 
@@ -25,6 +27,9 @@ init python:
                 render.blit(self.srf, (0, 0))
             return render
 
+        def visit(self):  # Add visit method
+            return [ ]
+
     def hide_windows_enabled(enabled=True):
         global _windows_hidden
         _windows_hidden = not enabled
@@ -32,13 +37,10 @@ init python:
 
 screen invert(length, delay=0.0):
     add Invert(delay) size (1280, 720)
-    timer delay action PauseAudio("music")
-    timer delay action Play("sound", "sfx/glitch1.ogg")
+    timer delay action [Play("sound", "sfx/glitch1.ogg"), PauseAudio("music")]
     timer length + delay action Hide("invert")
     on "show" action Function(hide_windows_enabled, enabled=False)
-    on "hide" action PauseAudio("music", False)
-    on "hide" action Stop("sound")
-    on "hide" action Function(hide_windows_enabled, enabled=True)
+    on "hide" action [PauseAudio("music", False), Stop("sound"), Function(hide_windows_enabled, enabled=True)]
 
 
 init python:
@@ -64,9 +66,12 @@ init python:
             super(Tear, self).__init__()
             self.width, self.height = renpy.get_physical_size()
             if float(self.width) / float(self.height) > 16.0/9.0:
-                self.width = self.height * 16 / 9
+                self.width = int(self.height * 16 / 9) #Ensure integers
             else:
-                self.height = self.width * 9 / 16
+                self.height = int(self.width * 9 / 16)
+            self.width = int(self.width)
+            self.height = int(self.height)
+
             self.number = number
             if not srf: self.srf = screenshot_srf()
             else: self.srf = srf
@@ -87,6 +92,9 @@ init python:
                 render.blit(subsrf, (piece.offset, piece.startY))
             renpy.redraw(self, 0)
             return render
+        
+        def visit(self):
+            return []
 
 screen tear(number=10, offtimeMult=1, ontimeMult=1, offsetMin=0, offsetMax=50, srf=None):
     zorder 150
@@ -95,19 +103,19 @@ screen tear(number=10, offtimeMult=1, ontimeMult=1, offsetMin=0, offsetMax=50, s
     on "hide" action Function(hide_windows_enabled, enabled=True)
 
 image m_rectstatic:
-    RectStatic(Solid("#000"), 32, 32, 32).sm
+    Solid("#000")
     pos (0, 0)
     size (32, 32)
 image m_rectstatic2:
-    RectStatic(im.FactorScale(im.Crop("gui/logo.png", (100, 100, 128, 128)), 0.25), 2, 32, 32).sm
+    im.FactorScale(im.Crop("gui/logo.png", (100, 100, 128, 128)), 0.25)
 image m_rectstatic3:
-    RectStatic(im.FactorScale(im.Crop("gui/menu_art_s.png", (100, 100, 64, 64)), 0.5), 2, 32, 32).sm
+    im.FactorScale(im.Crop("gui/menu_art_s.png", (100, 100, 64, 64)), 0.5)
 
 init python:
     import math
     class RectStatic(object):
         def __init__(self, theDisplayable, numRects=12, rectWidth = 30, rectHeight = 30):
-            self.sm = SpriteManager(update=self.update)
+            self.sm = renpy.display.particle.SpriteManager(update=self.update) # use fully qualified path
             self.rects = [ ]
             self.timers = [ ]
             self.displayable = theDisplayable
@@ -134,9 +142,10 @@ init python:
                     s.y = random.randint(0, 23) * 32
                     self.timers[i] = st + random.random() * 0.4 + 0.1
             return 0
+
     class ParticleBurst(object):
         def __init__(self, theDisplayable, explodeTime=0, numParticles=20, particleTime = 0.500, particleXSpeed = 3, particleYSpeed = 3):
-            self.sm = SpriteManager(update=self.update)
+            self.sm = renpy.display.particle.SpriteManager(update=self.update)  # Fully qualified path
 
             self.stars = [ ]
             self.displayable = theDisplayable
@@ -174,7 +183,7 @@ init python:
 
     class Blood(object):
         def __init__(self, theDisplayable, density=120.0, particleTime=1.0, dripChance=0.05, dripSpeedX=0.0, dripSpeedY=120.0, dripTime=180.0, burstSize=100, burstSpeedX=200.0, burstSpeedY=400.0, numSquirts=4, squirtPower=400, squirtTime=0.25):
-            self.sm = SpriteManager(update=self.update)
+            self.sm = renpy.display.particle.SpriteManager(update=self.update)   # Fully qualified path
             self.drops = []
             self.squirts = []
             self.displayable = theDisplayable
@@ -271,13 +280,17 @@ init python:
             mr = renpy.render(self.mask, width, height, st, at)
             mb = renpy.Render(width, height)
 
-
+            
             if self.moving:
-                mb.place(self.mask, ((-st * 50) % (width * 2)) - (width * 2), 0)
-                mb.place(self.maskb, -width / 2, 0)
+
+                mb.place(self.mask, xpos=((-st * 50) % (width * 2)) - (width*2) , ypos= 0)
+
+                mb.place(self.maskb,  xpos=(-width / 2), ypos=0)
             else:
-                mb.place(self.mask, 0, 0)
-                mb.place(self.maskb, 0, 0)
+
+                mb.place(self.mask, xpos=0, ypos=0)
+
+                mb.place(self.maskb, xpos=0, ypos=0)
 
 
 
@@ -289,23 +302,29 @@ init python:
             size = (w, h)
 
             if self.size != size:
-                self.null = Null(w, h)
+                self.null = renpy.displayable.Null(w, h)  # Use renpy.displayable
+                self.size = size
 
-            nr = renpy.render(self.null, width, height, st, at)
+            nr = renpy.render(self.null, w, h, st, at)   #Render at new size.
 
-            rv = renpy.Render(w, h)
+            rv = renpy.Render(w, h) #Use the new size.
 
-            rv.operation = renpy.display.render.IMAGEDISSOLVE
-            rv.operation_alpha = 1.0
-            rv.operation_complete = self.oc + math.pow(math.sin(st * self.speed / 8), 64 * self.frequency) * self.amount
-            rv.operation_parameter = self.op
+            renpy.display.render.blit(rv, mb, (0, 0),  main=False, focus=False)  # Use module-level blit
+            renpy.display.render.blit(rv, nr, (0, 0), main=False, focus=False)  # Use module-level blit
+            renpy.display.render.blit(rv, cr, (0, 0))  #Use the correct position.
+            
+            rv.add_property('operation', renpy.display.render.IMAGEDISSOLVE)   #use add property to call operation.
+            rv.add_property('operation_alpha', 1.0)
+            rv.add_property('operation_complete', self.oc + math.pow(math.sin(st * self.speed / 8), 64 * self.frequency) * self.amount)
+            rv.add_property('operation_parameter',self.op)
 
-            rv.blit(mb, (0, 0), focus=False, main=False)
-            rv.blit(nr, (0, 0), focus=False, main=False)
-            rv.blit(cr, (0, 0))
+
 
             renpy.redraw(self, 0)
             return rv
+        
+        def visit(self):
+            return [self.child, self.mask, self.maskb, self.null]
 
     def monika_alpha(trans, st, at):
         trans.alpha = math.pow(math.sin(st / 8), 64) * 1.4

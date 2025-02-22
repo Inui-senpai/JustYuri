@@ -200,7 +200,7 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_20_5',
+        label='idle_21',
         category='idles',
         conditions = ["renpy.seen_label('idle_20')", 'philosophy == True'],
         importance = 0,
@@ -208,7 +208,7 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_21',
+        label='idle_22',
         category='idles',
         conditions = ["renpy.seen_label('idle_18')", "renpy.seen_label('a18')"],
         importance = 0,
@@ -216,7 +216,7 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_22',
+        label='idle_23',
         category='idles',
         conditions = ["renpy.seen_label('idle_15')", "not renpy.seen_label('idle_22')"],
         importance = 0,
@@ -224,7 +224,7 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_23',
+        label='idle_24',
         category='idles',
         conditions = ['persistent.game_session >= 30'],
         importance = 0,
@@ -232,17 +232,9 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_24',
-        category='idles',
-        conditions = ['persistent.game_session >= 5'],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
         label='idle_25',
         category='idles',
-        conditions = [],
+        conditions = ['persistent.game_session >= 5'],
         importance = 0,
         name = None,
         sub_category = None))
@@ -258,7 +250,7 @@ init -3 python:
     add_dialogue(Dialogue(
         label='idle_27',
         category='idles',
-        conditions = ["renpy.seen_label('idle_2')", "renpy.seen_label('idle_3')"],
+        conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
@@ -266,7 +258,7 @@ init -3 python:
     add_dialogue(Dialogue(
         label='idle_28',
         category='idles',
-        conditions = ["not renpy.seen_label('idle_28')"],
+        conditions = ["renpy.seen_label('idle_2')", "renpy.seen_label('idle_3')"],
         importance = 0,
         name = None,
         sub_category = None))
@@ -274,7 +266,7 @@ init -3 python:
     add_dialogue(Dialogue(
         label='idle_29',
         category='idles',
-        conditions = ["renpy.seen_label('idle_27')"],
+        conditions = ["not renpy.seen_label('idle_29')"],
         importance = 0,
         name = None,
         sub_category = None))
@@ -282,7 +274,7 @@ init -3 python:
     add_dialogue(Dialogue(
         label='idle_30',
         category='idles',
-        conditions = [],
+        conditions = ["renpy.seen_label('idle_29')"],
         importance = 0,
         name = None,
         sub_category = None))
@@ -298,18 +290,18 @@ init -3 python:
     add_dialogue(Dialogue(
         label='idle_32',
         category='idles',
-        conditions = ["renpy.seen_label('idle_24')", "renpy.seen_label('a24')"],
+        conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
-    #add_dialogue(Dialogue(
-        #label='idle_33',
-        #category='idles',
-        #conditions = [],
-        #importance = 0,
-        #name = None,
-        #sub_category = None))
+    add_dialogue(Dialogue(
+        label='idle_33',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_25')", "renpy.seen_label('a24')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
 
     add_dialogue(Dialogue(
         label='idle_34',
@@ -319,136 +311,8 @@ init -3 python:
         name = None,
         sub_category = None))
 
-    add_dialogue(Dialogue(
-        label='idle_38',
-        category='idles',
-        conditions = ['persistent.lovecheck'],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_40',
-        category='idles',
-        conditions = ['karma() >= 4'],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_41',
-        category='idles',
-        conditions = ['persistent.game_session >= 5'],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_42',
-        category='idles',
-        conditions = ['persistent.game_session >= 20'],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_43',
-        category='idles',
-        conditions = ["renpy.seen_label('idle_12')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_44',
-        category='idles',
-        conditions = ['persistent.lovecheck'],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_45',
-        category='idles',
-        conditions = ['persistent.game_session >= 2', 'persistent.head1 != "cat_ears"'],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_46',
-        category='idles',
-        conditions = ["renpy.seen_label('idle_12')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_47',
-        category='idles',
-        conditions = ["renpy.seen_label('idle_10')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_48',
-        category='idles',
-        conditions = ["renpy.seen_label('idle_15')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_49',
-        category='idles',
-        conditions = ["renpy.seen_label('idle_47')", "not renpy.seen_label('idle_49')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_50',
-        category='idles',
-        conditions = ["renpy.seen_label('idle_47')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_51',
-        category='idles',
-        conditions = ["not renpy.seen_label('idle_51')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_52',
-        category='idles',
-        conditions = [],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_53',
-        category='idles',
-        conditions = [],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    #add_dialogue(Dialogue(
-    #    label='idle_54',
-    #    category='idles',
-    #    conditions = [],
-    #    importance = 0,
-    #    name = None,
-    #    sub_category = None))
-
-    #add_dialogue(Dialogue(
-        #label='idle_55',
+        #add_dialogue(Dialogue(
+        #label='idle_35',
         #category='idles',
         #conditions = [],
         #importance = 0,
@@ -456,47 +320,7 @@ init -3 python:
         #sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_56',
-        category='idles',
-        conditions = [],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_57',
-        category='idles',
-        conditions = ["renpy.seen_label('idle_3')", "renpy.seen_label('idle_47')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_58',
-        category='idles',
-        conditions = ['persistent.lovecheck', "renpy.seen_label('idle_57')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_59',
-        category='idles',
-        conditions = ["renpy.seen_label('idle_58')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    #add_dialogue(Dialogue(
-    #    label='idle_60',
-    #    category='idles',
-    #    conditions = [],
-    #    importance = 0,
-    #    name = None,
-    #    sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_61',
+        label='idle_37',
         category='idles',
         conditions = ['persistent.lovecheck'],
         importance = 0,
@@ -504,15 +328,191 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_62',
+        label='idle_38',
         category='idles',
-        conditions = ["renpy.seen_label('idle_48')", "not check_memory('idle_62', 'first_boop')"],
+        conditions = ['karma() >= 4'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_63',
+        label='idle_39',
+        category='idles',
+        conditions = ['persistent.game_session >= 5'],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_40',
+        category='idles',
+        conditions = ['persistent.game_session >= 20'],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_41',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_12')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_42',
+        category='idles',
+        conditions = ['persistent.lovecheck'],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_43',
+        category='idles',
+        conditions = ['persistent.game_session >= 2', 'persistent.head1 != "cat_ears"'],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_44',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_12')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_45',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_10')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_46',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_15')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_47',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_45')", "not renpy.seen_label('idle_47')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_48',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_45')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_49',
+        category='idles',
+        conditions = ["not renpy.seen_label('idle_49')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_50',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_51',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    #add_dialogue(Dialogue(
+    #    label='idle_52',
+    #    category='idles',
+    #    conditions = [],
+    #    importance = 0,
+    #    name = None,
+    #    sub_category = None))
+
+    #add_dialogue(Dialogue(
+        #label='idle_53',
+        #category='idles',
+        #conditions = [],
+        #importance = 0,
+        #name = None,
+        #sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_54',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_55',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_3')", "renpy.seen_label('idle_45')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_56',
+        category='idles',
+        conditions = ['persistent.lovecheck', "renpy.seen_label('idle_55')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_57',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_56')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    #add_dialogue(Dialogue(
+    #    label='idle_58',
+    #    category='idles',
+    #    conditions = [],
+    #    importance = 0,
+    #    name = None,
+    #    sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_59',
+        category='idles',
+        conditions = ['persistent.lovecheck'],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_60',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_44')", "not check_memory('idle_60', 'first_boop')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_61',
         category='idles',
         conditions = ['persistent.game_session >= 40'],
         importance = 0,
@@ -520,9 +520,25 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_64',
+        label='idle_62',
         category='idles',
         conditions = ["renpy.seen_label('a1')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_63',
+        category='idles',
+        conditions = ["renpy.seen_label('a1')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_64',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_14')", "renpy.seen_label('idle_22')"],
         importance = 0,
         name = None,
         sub_category = None))
@@ -530,7 +546,7 @@ init -3 python:
     add_dialogue(Dialogue(
         label='idle_65',
         category='idles',
-        conditions = ["renpy.seen_label('a1')"],
+        conditions = ['persistent.lovecheck'],
         importance = 0,
         name = None,
         sub_category = None))
@@ -538,7 +554,7 @@ init -3 python:
     add_dialogue(Dialogue(
         label='idle_66',
         category='idles',
-        conditions = ["renpy.seen_label('idle_14')", "renpy.seen_label('idle_21')"],
+        conditions = ['karma() <= 4', "renpy.seen_label('a1')"],
         importance = 0,
         name = None,
         sub_category = None))
@@ -554,7 +570,7 @@ init -3 python:
     add_dialogue(Dialogue(
         label='idle_68',
         category='idles',
-        conditions = ['karma() <= 4', "renpy.seen_label('a1')"],
+        conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
@@ -562,7 +578,7 @@ init -3 python:
     add_dialogue(Dialogue(
         label='idle_69',
         category='idles',
-        conditions = ['persistent.lovecheck'],
+        conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
@@ -586,29 +602,13 @@ init -3 python:
     add_dialogue(Dialogue(
         label='idle_72',
         category='idles',
-        conditions = [],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_73',
-        category='idles',
-        conditions = [],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_74',
-        category='idles',
         conditions = ['persistent.game_session >= 10'],
         importance = 0,
         name = None,
         sub_category = None))
 
     #add_dialogue(Dialogue(
-    #    label='idle_75',
+    #    label='idle_73',
     #    category='idles',
     #    conditions = [],
     #    importance = 0,
@@ -616,23 +616,23 @@ init -3 python:
     #    sub_category = None))
 
     add_dialogue(Dialogue(
+        label='idle_74',
+        category='idles',
+        conditions = ['karma() == 5', "not renpy.seen_label('idle_74')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_75',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_32')", "not renpy.seen_label('idle_75')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
         label='idle_76',
-        category='idles',
-        conditions = ['karma() == 5', "not renpy.seen_label('idle_76')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_77',
-        category='idles',
-        conditions = ["renpy.seen_label('idle_32')", "not renpy.seen_label('idle_77')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_78',
         category='idles',
         conditions = ['persistent.game_session >= 4', 'philosophy == True'],
         importance = 0,
@@ -640,7 +640,7 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_79',
+        label='idle_77',
         category='idles',
         conditions = ['persistent.game_session >= 10'],
         importance = 0,
@@ -648,7 +648,7 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_80',
+        label='idle_78',
         category='idles',
         conditions = ['persistent.game_session >= 3'],
         importance = 0,
@@ -656,40 +656,16 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_77',
+        label='idle_79',
         category='idles',
-        conditions = ['persistent.lovecheck', "renpy.seen_label('idle_32')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='early1',
-        category='idles',
-        conditions = ["not renpy.seen_label('early1')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='early2',
-        category='idles',
-        conditions = ["not renpy.seen_label('early2')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='early3',
-        category='idles',
-        conditions = ["not renpy.seen_label('early3')"],
+        conditions = ['persistent.lovecheck', "renpy.seen_label('idle_34')"],
         importance = 0,
         name = None,
         sub_category = None))
 
 
     add_dialogue(Dialogue(
-        label='idle_82',
+        label='idle_80',
         category='idles',
         conditions = ["renpy.seen_label('a11')"],
         importance = 0,
@@ -697,7 +673,7 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_83',
+        label='idle_81',
         category='idles',
         conditions = [],
         importance = 0,
@@ -705,7 +681,7 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_84',
+        label='idle_82',
         category='idles',
         conditions = ["((persistent.ingame_time.seconds // 3600) >= 5)"],
         importance = 0,
@@ -713,23 +689,23 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
+        label='idle_83',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_72')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_84',
+        category='idles',
+        conditions = ["renpy.seen_label('idle_74'), 'philosophy == True'"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
         label='idle_85',
-        category='idles',
-        conditions = ["renpy.seen_label('idle_76')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_86',
-        category='idles',
-        conditions = ["renpy.seen_label('idle_78'), 'philosophy == True'"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label='idle_87',
         category='idles',
         conditions = ["renpy.seen_label('Halloween_2021') or renpy.seen_label('hobbies')"],
         importance = 0,
@@ -737,33 +713,177 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_yuriception_1',
+        label='idle_86',
         category='idles',
-        conditions = ["karma()>3", "not renpy.seen_label('idle_yuriception_1')"],
+        conditions = ["karma()>3", "not renpy.seen_label('idle_84')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_yuriception_2',
+        label='idle_87',
         category='idles',
-        conditions = ["karma()>3", "renpy.seen_label('idle_yuriception_1')", "not renpy.seen_label('idle_yuriception_2')"],
+        conditions = ["karma()>3", "renpy.seen_label('idle_84')", "not renpy.seen_label('idle_85')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='beach_idle_1',
+        label='idle_88',
         category='idles',
-        conditions = ["renpy.seen_label('tropical_date')", "not renpy.seen_label('beach_idle_1')"],
+        conditions = ["renpy.seen_label('tropical_date')", "not renpy.seen_label('idle_88')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='beach_idle_2',
+        label='idle_89',
         category='idles',
-        conditions = ["renpy.seen_label('tropical_date')", "not renpy.seen_label('beach_idle_2')"],
+        conditions = ["renpy.seen_label('tropical_date')", "not renpy.seen_label('idle_89')"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_90',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    #add_dialogue(Dialogue(
+    #    label='idle_91',
+    #    category='idles',
+    #    conditions = [],
+    #    importance = 0,
+    #    name = None,
+    #    sub_category = None))
+
+    #add_dialogue(Dialogue(
+    #    label='idle_92',
+    #    category='idles',
+    #    conditions = [],
+    #    importance = 0,
+    #    name = None,
+    #    sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_93',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_94',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_95',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_96',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_97',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_98',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_99',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_100',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_101',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_102',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_103',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_104',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_105',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_106',
+        category='idles',
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label='idle_107',
+        category='idles',
+        conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
