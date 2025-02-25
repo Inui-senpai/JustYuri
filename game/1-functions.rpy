@@ -859,7 +859,7 @@ init -999 python:
                 unarchive("images/gifts/" + gift, "game/" + gift)
             for potential_gift in os.listdir(config.basedir + "\\characters"): #and for every file in character folder
                 normalized_gift = potential_gift.lower()
-                normalized_gift = re.sub('[^.,a-z0-9\n\.]', '', normalized_gift)
+                normalized_gift = regex.sub('[^.,a-z0-9\n\.]', '', normalized_gift)
                 if normalized_gift == gift: # if the file is in the character folder
                     cur_gifts.append([gift, True]) #add it to the list of gifts available
                     os.remove(os.path.join(config.basedir, "characters", potential_gift))
@@ -873,7 +873,7 @@ init -999 python:
         gift_scenario = None
         for gift in range(len(available_gifts)): #for every gift on folder
             normalized_gift = available_gifts[gift][0].lower()
-            normalized_gift = re.sub('[^.,a-zA-Z0-9\n\.]', '', normalized_gift)
+            normalized_gift = regex.sub('[^.,a-zA-Z0-9\n\.]', '', normalized_gift)
             if available_gifts[gift][1]: #if the gift has 'existance' flag on True i.e [["blackroses.jy", True],...]
                 gift_scenario = allowed_gifts.index(normalized_gift) #define number of scenario based on index of
                 break

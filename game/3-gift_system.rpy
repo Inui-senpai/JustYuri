@@ -127,7 +127,7 @@ init -999 python:
                 if gift.is_enabled():
                     for potential_gift in os.listdir(Gift.path): 
                         normalized_gift = regex.sub("\.*[^\.]*$", "", potential_gift.lower())
-                        normalized_gift = re.sub('[^a-z0-9]', '', normalized_gift)
+                        normalized_gift = regex.sub('[^a-z0-9]', '', normalized_gift)
                         if gift.match(normalized_gift):
                             results.append(gift)
                             Gift.last_gifts.append(gift)

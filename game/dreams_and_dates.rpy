@@ -2656,15 +2656,15 @@ layeredimage fits_cg_large:
         "fits_cg_arm_1"
 
     if fits_var["costume"] != "nothing": # swimsuit/bikini
-        "fits_cg_[fits_var[costume]]_base"#costume
+        "fits_cg_[fits_var['costume']]_base"#costume
     if fits_var["costume2"] != "nothing": #pareo
-        "fits_cg_[fits_var[costume2]]"
+        "fits_cg_[fits_var['costume2']]"
 
     if fits_var["arms"] == "front":
         "fits_cg_arm_2"
 
     if fits_var["cg_face"] != "nothing":
-        "fits_cg_face_[fits_var[cg_face]]"
+        "fits_cg_face_[fits_var['cg_face']]"
 
 image fits_cg:
     "fits_cg_large"
@@ -2682,9 +2682,9 @@ layeredimage fits_standing:
         "fits_standing_arms_1_scars"#arms behind + scars#back arms
 
     if fits_var["costume"] != "nothing": # swimsuit/bikini
-        "fits_standing_outfit_[fits_var[costume]]"#costume
+        "fits_standing_outfit_[fits_var['costume']]"#costume
     if fits_var["costume2"] != "nothing": #pareo
-        "fits_standing_outfit_[fits_var[costume2]]"
+        "fits_standing_outfit_[fits_var['costume2']]"
     always "fits_standing_hair_front" # hair front pieces
 
     if fits_var["arms"] == "front":
@@ -2692,10 +2692,10 @@ layeredimage fits_standing:
     if fits_var["arms"] == "front" and fits_var["scars"] != "nothing":
         "fits_standing_arms_2_scars"#arms front + scars
 
-    always "fits_standing_mouth_[fits_var[mouth]]_[fits_var[mood_mouth]]"#mouth
+    always "fits_standing_mouth_[fits_var['mouth']]_[fits_var['mood_mouth']]"#mouth
     if fits_var["blush"] != "nothing":
         "fits_standing_blush_1"#blush
-    always "fits_standing_eyes_[fits_var[mood_eyes]]" #eyes
+    always "fits_standing_eyes_[fits_var['mood_eyes']]" #eyes
 
 image fits_stand:
     "fits_standing"

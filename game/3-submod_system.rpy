@@ -15,7 +15,8 @@ init -999 python:
 \t\"id\": \"{1}\",
 \t\"version\": \"1.0.0\",
 \t\"description\": \"This is a mod description.\\nHi! :D\",
-\t\"dependencies\": []
+\t\"dependencies\": [],
+\t\"developer_mode\": false
 }}"""
     #==================================================#
     #  Functions
