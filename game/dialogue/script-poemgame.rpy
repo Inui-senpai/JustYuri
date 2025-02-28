@@ -21,12 +21,12 @@ init python:
                 # Very Important! Robust error handling for inconsistent data formats
                 x = line.split(',')
                 if len(x) == 5: # check the length before conversion
-                   try:
+                    try:
                         full_wordlist.append(PoemWord(x[0], float(x[1]), float(x[2]), float(x[3]), float(x[4])))
-                   except ValueError as e:  # Check for non-floats
-                       print_debug(f"Error parsing line '{line}': {e}. Skipping this line") 
+                    except ValueError as e:  # Check for non-floats
+                        print_debug(f"Error parsing line '{line}': {e}. Skipping this line") 
                 else:
-                   print_debug(f"Error: Unexpected number of fields in '{line}'. Skipping this line.")
+                    print_debug(f"Error: Unexpected number of fields in '{line}'. Skipping this line.")
 
     except FileNotFoundError:
         print_debug(f"File '/poemwords_different.txt' not found.")
@@ -132,20 +132,20 @@ label poem(transition=True):
 
 
         Good = [GoodPointTotal > SanePointTotal,
-         GoodPointTotal > InsanePointTotal,
-         GoodPointTotal > SadPointTotal]
+        GoodPointTotal > InsanePointTotal,
+        GoodPointTotal > SadPointTotal]
 
         Sad = [SadPointTotal > SanePointTotal,
-         SadPointTotal > InsanePointTotal,
-         SadPointTotal > GoodPointTotal]
+        SadPointTotal > InsanePointTotal,
+        SadPointTotal > GoodPointTotal]
 
         Insane = [InsanePointTotal > SanePointTotal,
-         InsanePointTotal > SadPointTotal,
-         InsanePointTotal > GoodPointTotal]
+        InsanePointTotal > SadPointTotal,
+        InsanePointTotal > GoodPointTotal]
 
         Sane = [SanePointTotal > SadPointTotal,
-         SanePointTotal > InsanePointTotal,
-         SanePointTotal > GoodPointTotal]
+        SanePointTotal > InsanePointTotal,
+        SanePointTotal > GoodPointTotal]
 
         if all(Good):
             renpy.jump ("goodpoemresponse")

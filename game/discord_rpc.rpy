@@ -1,17 +1,15 @@
-init python:
-    import time
-    import sys
-    import os
-
-    # Construct the absolute path to the python-packages directory
-    packages_dir = os.path.join(renpy.config.gamedir, "python-packages")
-    sys.path.append(packages_dir)
-
+python early:
     from pypresence import Presence
 
-    client_id = '1322302098385276988'  # Replace with your Client ID
+    client_id = '1322302098385276988'
     RPC = Presence(client_id)
     connected = False
+    presence_details = None
+    presence_large_image = None
+    presence_large_text = None
+    presence_small_image = None
+    presence_icon = None
+    presence_start_time = int(time.time())
 
     def connect_to_discord():
         global connected
@@ -22,22 +20,28 @@ init python:
         except Exception as e:
             print(f"Failed to connect to Discord: {e}") #Debug message
             connected = False
-
-    def update_presence(details="Playing Just Yuri", large_image="icon_large"):
-        global connected
+    
+    def update_presence(details = None, large_image = "icon_large", large_text = "Like our little secret sneak peek?", small_image = None, small_text = None):
+        global connected, presence_details, presence_large_image, presence_large_text, presence_small_image, presence_small_text
         if not connected:
             connect_to_discord()  # Try to connect if not already
 
         if connected:
-            try:
-                start_time = int(time.time())
-                RPC.update(details=details,
-                           large_image=large_image,
-                           start=start_time)
-                print("Discord RPC Updated") #Debug
-            except Exception as e:
-                print(f"Failed to update presence: {e}") #Debug message
-                connected = False # We probably lost connection, set to false
+            if presence_details != details or presence_large_image != large_image or presence_large_text != large_text or presence_small_image != small_image or presence_small_text != small_text:
+                presence_details = details
+                presence_large_image = large_image
+                presence_large_text = large_text
+                presence_small_image = small_image
+                presence_small_text = small_text
 
-    def initial_presence():
-        update_presence(details="Just started playing", large_image="icon_large")
+                if details == None:
+                    details = "Spending time with " + ("his" if persistent.male else "her" if persistent.male == False else "their") + " " + (persistent.yuri_nickname if persistent.yuri_nickname else "Yuri")
+                try:
+                    RPC.update(details=details, large_image=large_image, large_text=large_text, small_image=small_image, small_text=small_text, start=presence_start_time)
+                    print("Updating discord presence")
+                except Exception as e:
+                    print(f"Failed to update presence: {e}")
+                    connected = False # We probably lost connection, set to false
+
+    update_presence(details="Launching Just Yuri...")
+        

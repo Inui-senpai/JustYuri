@@ -117,18 +117,18 @@ label preknife:
     menu:
         "It's nice! What a great job you've done, [persistent.yuri_nickname]!":
             #karma +1
-            $ add_k(1)
+            karma 1
             y "Oh thank you! I put a lot of effort into it, I'm glad that you like it!"
     
         "It's quite... elegant. But still an amazing piece of work [persistent.yuri_nickname]!":
             #karma +2 (I think she respects honesty)
-            $ add_k(2)
+            karma 2
             y "...I guess you're right. Maybe I took it a bit too far?"
             y "Thank you for your feedback, I appreciate your honesty." 
     
         "It's...not very impressive, I must admit.":
             #karma -1
-            $ add_k(-1)
+            karma -1
             y "...I see."
 
     hide screen un_knife_wall

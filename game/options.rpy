@@ -11,26 +11,21 @@
 ## title, and shows up in the interface and error reports.
 ##
 ## The _() surrounding the string marks it as eligible for translation.
-
 define config.name = "Just Yuri (Beta)"
 
+## The version of the game.
+define config.version = "Beta-1.10.4"
+
+## Whether debug mode is enabled. Mainly used to change what persistent file is read
+define config.developer = dev_access
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
-
 $ gui.show_name = True
-
-
-## The version of the game.
-
-define config.version = "Beta-1.10.4"
-
 
 ## Text that is placed on the game's about screen. To insert a blank line
 ## between paragraphs, write \n\n.
-
 define gui.about = _("")
-
 
 ## A short name for the game used for executables and directories in the built
 ## distribution. This must be ASCII-only, and must not contain spaces, colons,
@@ -143,9 +138,7 @@ default preferences.sfx_volume = 0.75
 ##
 ## Generally the same as your build name
 ## Should always be a literal string and not an expression
-define config.developer = "auto"
-define config.save_directory = "JustYuri" if config.developer else None #Overhaul"
-
+define config.save_directory = "JustYuri" if not config.developer else None
 
 ## Icon
 ## ########################################################################'
@@ -275,7 +268,7 @@ init python:
     build.classify('**.bak', None)
     build.classify('**.log',None)
     build.classify('**.pdn',None)
-    build.classify('firstrun',None)
+    build.classify('/game/firstrun',None)
     build.classify('**/.**', None)
     build.classify('**/#**', None)
     build.classify('**/.DS_Store', None)

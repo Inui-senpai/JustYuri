@@ -11,7 +11,7 @@ label tetris:
         show_chr("A-BFBAA-AAAC")
         LineLimit = 0
         TetrisScore = 0
-    if sanity() > 2 and karma() > 2:
+    if sanity_lvl() > 2 and karma_lvl() > 2:
         menu:
             y "Oh, so you'd like to play some Tetris, hm?"
             "Yes.":
@@ -22,7 +22,7 @@ label tetris:
                 y "I see..."
                 y "Perhaps some other time, then."
                 jump ch30_loop
-    elif sanity() > 2 and karma() < 3:
+    elif sanity_lvl() > 2 and karma_lvl() < 3:
         menu:
             y "You... want to play Tetris...?"
             "Yes.":
@@ -36,7 +36,7 @@ label tetris:
                 y "Oh..."
                 y "Perhaps... some other time, then."
                 jump ch30_loop
-    elif sanity() < 3 and karma() > 2:
+    elif sanity_lvl() < 3 and karma_lvl() > 2:
         menu:
             y "Y-you want to play Tetris, yes?"
             "Yes.":
@@ -50,7 +50,7 @@ label tetris:
                 y "Alright..."
                 y "Perhaps some other time, then..."
                 jump ch30_loop
-    elif sanity() < 3 and karma() < 3:
+    elif sanity_lvl() < 3 and karma_lvl() < 3:
         menu:
             y "You want to play Tetris, hm?"
             "Yes.":
@@ -117,7 +117,7 @@ label tetris:
     y "Alright [player], now I can let you select the modes you want to play."
     menu:
         "Line count":
-            if persistent.lovecheck and karma() > 3:
+            if persistent.lovecheck and karma_lvl() > 3:
                 #If lovecheck is true along with K: 4-5
                 $ show_chr("A-BBBAA-ADAA")
                 y "It's a nice way to pass the time, really."
@@ -136,7 +136,7 @@ label tetris:
                     "300":
                         $ LineLimit = 300
                 jump tetris_difficulty
-            elif karma() >= 3:
+            elif karma_lvl() >= 3:
                 #If K = 3-5 regardless of S value
                 $ show_chr("A-ACEAA-AMAM")
                 y "Oh, lovely choice, [player]~"
@@ -155,7 +155,7 @@ label tetris:
                     "300":
                         $ LineLimit = 300
                 jump tetris_difficulty
-            elif karma() < 3:
+            elif karma_lvl() < 3:
                 #[If K = 1-2
                 $ show_chr("A-BEBAA-AMAM")
                 y "I-I'm not sure if you'd want to waste your time with me..."
@@ -178,7 +178,7 @@ label tetris:
                 jump tetris_difficulty
 
         "Score":
-            if persistent.lovecheck and karma() > 3 and sanity() < 2:
+            if persistent.lovecheck and karma_lvl() > 3 and sanity_lvl() < 2:
                 #[If K = 3-5 and lovecheck == true, S = 1-2]
                 $ show_chr("A-KLAAA-AKAK")
                 y "And maybe you will win me as a prize to be cherished... Forever~"
@@ -197,16 +197,16 @@ label tetris:
                     "500000":
                         $ TetrisScore = 500000
                 jump tetris_difficulty
-            elif karma() >= 3:
+            elif karma_lvl() >= 3:
                 #[K = 3-5 and regardless of S value]
                 $ show_chr("A-FCEAA-ABAB")
                 y "Oh, some competition, hm?"
                 y "Well I suppose being a little competitive wouldn't be too bad, now would it?"
                 $ show_chr("A-ABAAA-AMAM")
                 python:
-                    if sanity() >= 3:
+                    if sanity_lvl() >= 3:
                         placeholder = "contest"
-                    elif sanity() <= 3:
+                    elif sanity_lvl() <= 3:
                         placeholder = "thrill"
                 y "There's nothing wrong with a nice [placeholder] every once in a while..."
                 #If sanity 1-2 "thrill"
@@ -227,7 +227,7 @@ label tetris:
                     "500000":
                         $ TetrisScore = 500000
                 jump tetris_difficulty
-            elif karma() < 3:
+            elif karma_lvl() < 3:
                 #[K= 1-2 regardless of S value]
                 $ show_chr("A-AEBAA-ALAL")
                 y "W-well... [player], I don't know whether this is simply a jest or you just trying to impress me..."
@@ -252,7 +252,7 @@ label tetris:
                 jump tetris_difficulty
 
         "CO-OP":
-            if karma() == 5:
+            if karma_lvl() == 5:
                 #[If K = 5]
                 $ show_chr("A-ABABA-AMAM") # open mouth smile with blush, hands playing with hair
                 y "Oh how fun~!"
@@ -264,7 +264,7 @@ label tetris:
                 y "Okay game on dear [player]!"
                 $ AI_difficulty = "CO_OP"
                 jump tetris_rules
-            elif karma() == 1:
+            elif karma_lvl() == 1:
                 #[If K = 1]
                 $ show_chr("A-CEBAB-AAAL") # insert closed frown with worried eyebrows and slightly teary eyes and hand on her chest
                 y "A-are you sure...?"
@@ -272,10 +272,10 @@ label tetris:
                 y "Is this again a big joke to you? I... I don't know anymore."
                 #insert open frown with closed eyes and worried eyebrows with hands on hair
                 y "Let's try this... I guess."
-                #if sanity() > 2 and karma() > 2:
-                #elif sanity() > 2 and karma() < 3:
-                #elif sanity() < 3 and karma() > 2:
-                #elif sanity() < 3 and karma() < 3:
+                #if sanity_lvl() > 2 and karma_lvl() > 2:
+                #elif sanity_lvl() > 2 and karma_lvl() < 3:
+                #elif sanity_lvl() < 3 and karma_lvl() > 2:
+                #elif sanity_lvl() < 3 and karma_lvl() < 3:
                 $ AI_difficulty = "CO_OP"
                 jump tetris_rules
             else:
@@ -368,7 +368,7 @@ label custom_tetris_repeat_audio:
         "Please start from audio files":
             y "Okay"
             jump custom_tetris_repeat_audio
-    if karma() >= 2:
+    if karma_lvl() >= 2:
         $ show_chr("A-GCAAA-AEAD")
         y "Anyway, I'm looking forward to what you might come up with!"
         y "Everything you do is fun for me anyway..."
@@ -452,12 +452,12 @@ label tetris_difficulty:
         "Easy":
             $ AI_difficulty = 1
 
-            if karma() >= 3:
+            if karma_lvl() >= 3:
                 y "Oh, I see."
                 y "You'd like me to go easy on you this time, hm?"
                 y "I'm happy to oblige, [player]!"
 
-            elif karma() < 3:
+            elif karma_lvl() < 3:
                 #[If K= 1 or 2 regardless of S value]
                 $ show_chr("A-BEAAA-AMAM")
                 y "..."
@@ -465,22 +465,22 @@ label tetris_difficulty:
                 y "To indulge in this activity but at such an infantile level... Seemingly to jest at my abilities?"
                 $ show_chr("A-CEBAA-AAAD")  # closed frown with closed eyes and hand on her cheek (needs expressions)
                 y "Whatever... Let us proceed."
-                #elif sanity() > 2 and karma() < 3:
-                #elif sanity() < 3 and karma() > 2:
-                #elif sanity() < 3 and karma() < 3:
+                #elif sanity_lvl() > 2 and karma_lvl() < 3:
+                #elif sanity_lvl() < 3 and karma_lvl() > 2:
+                #elif sanity_lvl() < 3 and karma_lvl() < 3:
 
 
         "Medium":
             $ AI_difficulty = 2
 
-            if karma() >= 3:
+            if karma_lvl() >= 3:
             #[If K= 3-5 and S: 3-5]
                 $ show_chr("A-ABABA-AAAJ")
                 y "Oh I see~ Trying to warm up with a slight challenge eh?"
                 y "Well then. I would like to see how you do!"
                 y "It is good to get out of your comfort zone a bit more."
 
-            elif karma() < 3:
+            elif karma_lvl() < 3:
             #[If K = 1 or 2 regardless of S value]
                 $ show_chr("A-ADCAA-AAAL")
                 y "Hm... Y-you know I am slightly surprised that you wanted to partake in this game with me. I was thinking you'd pick a harder difficulty just to prove a point."
@@ -493,7 +493,7 @@ label tetris_difficulty:
         "Hard":
             $ AI_difficulty = 3
 
-            if karma() >= 3:
+            if karma_lvl() >= 3:
             #[If K = 3-5 and S = 3-5]
                 $ show_chr("A-ACCAA-AMAM")
                 y "Oh huhuhehehe... Really turning the dial up are you now, [player]?"
@@ -502,7 +502,7 @@ label tetris_difficulty:
                 y "Well as people say nowadays, I guess, let these games begin!"
                 y "O-oh but don't go too hard on yourself [player]... Eheheh."
 
-            elif karma() < 3:
+            elif karma_lvl() < 3:
             #[If K = 1-2]
                 $ show_chr("A-CECAA-ALAL")
                 y "I-I guess you really want to rub it in my face just to prove a point..."
@@ -513,7 +513,7 @@ label tetris_difficulty:
         "Disadvantage":
             $ AI_difficulty = 4
 
-            if karma() >= 3:
+            if karma_lvl() >= 3:
                 $ show_chr("A-DCCBA-AAAD")
                 y "Mmm..."
                 y "Oh dear [player]. That seems like such a Herculean task to tackle. Are you sure?"
@@ -521,7 +521,7 @@ label tetris_difficulty:
                 y "Ehehehehe... Well alright if you insist~"
                 y "Prepare thy mind and body for the penultimate gamer's challenge dear [player]!"
 
-            elif karma() > 3 and sanity() < 3:
+            elif karma_lvl() > 3 and sanity_lvl() < 3:
             #[If K= 3-5 and S= 2 or 1]
                 $ show_chr("A-DLCBA-AMAM")
                 y "Oh oh... Oh my yes!"
@@ -531,7 +531,7 @@ label tetris_difficulty:
                 $ show_chr("A-DCAAA-AFAG")
                 y "Show me, show them all what you are made of sweet [player]!!!"
 
-            elif karma() < 3:
+            elif karma_lvl() < 3:
             #[If K= 2 or 1, regardless of S value]
                 $ show_chr("A-DEDAA-ABAB")
                 y "I-I see..."
@@ -554,14 +554,14 @@ label tetris_difficulty:
                 y "...but I guess you like it that way don't you..."
 
             else:
-                if karma() >= 3:
-                #if karma() is 3-5
+                if karma_lvl() >= 3:
+                #if karma_lvl() is 3-5
                     $ show_chr("A-ACBAA-ABAL")
                     y "Very well, I'll try my best to offer you a suitable challenge."
                     y "Just keep in mind, it is just a game. It doesn't really matter who wins as long as we are having a good time."
 
-                elif karma() < 3:
-                #if karma() is 1-2
+                elif karma_lvl() < 3:
+                #if karma_lvl() is 1-2
                     $ show_chr("A-AFBAA-ABAL")
                     y "Maybe I can teach you a lesson here..."
 
@@ -574,15 +574,15 @@ label tetris_difficulty:
 
 
         "Your choice, [persistent.yuri_nickname]":
-            # K&S - both karma() and sanity are...
-            # K|S - either karma() or sanity() is...
+            # K&S - both karma_lvl() and sanity are...
+            # K|S - either karma_lvl() or sanity_lvl() is...
 
             # Adding random mood.
             $ import random
             $ randomMood = random.randint(-1, 1)
 
             # K&S are almost maximum.
-            if(abs(karma() + sanity() - 10) < 2):
+            if(abs(karma_lvl() + sanity_lvl() - 10) < 2):
                 if(randomMood < 1):
                     # Easy.
                     $ AI_difficulty = 1
@@ -604,7 +604,7 @@ label tetris_difficulty:
                         y "Oh, how polite of you to let me choose [player]. Why don't we keep it casual with medium for now then?"
 
             # K&S are high.
-            elif(abs(karma() + sanity() - 8) < 2):
+            elif(abs(karma_lvl() + sanity_lvl() - 8) < 2):
                 if(randomMood == -1):
                     # Easy.
                     $ AI_difficulty = 1
@@ -638,12 +638,12 @@ label tetris_difficulty:
             # K&S are neutral.
             # Or.
             # K|S is high.
-            elif(abs(karma() + sanity() - 6) < 2):
+            elif(abs(karma_lvl() + sanity_lvl() - 6) < 2):
                 if(randomMood == -1):
                     # Medium.
                     $ AI_difficulty = 2
 
-                    if(abs(karma() - sanity()) < 2):
+                    if(abs(karma_lvl() - sanity_lvl()) < 2):
                         # K&S are neutral.
                         $ show_chr("A-BCAAA-AMAM")
                         y "I-If you're comfortable with that, [player]."
@@ -651,7 +651,7 @@ label tetris_difficulty:
                         $ show_chr("A-IAAAA-AMAM")
                         y "Medium should suffice."
 
-                    elif(karma() < sanity()):
+                    elif(karma_lvl() < sanity_lvl()):
                         # Low K, High S.
                         $ show_chr("A-CECAA-AAAA")
                         y "..."
@@ -672,7 +672,7 @@ label tetris_difficulty:
                     # Hard.
                     $ AI_difficulty = 3
 
-                    if(abs(karma() - sanity()) < 2):
+                    if(abs(karma_lvl() - sanity_lvl()) < 2):
                         # K&S are neutral.
                         $ show_chr("A-BCAAA-AMAM")
                         y "I-If you're comfortable with that, [player]."
@@ -680,7 +680,7 @@ label tetris_difficulty:
                         $ show_chr("A-IAAAA-AMAM")
                         y "Hard should suffice."
 
-                    elif(karma() < sanity()):
+                    elif(karma_lvl() < sanity_lvl()):
                         # Low K, High S.
                         $ show_chr("A-CECAA-AAAA")
                         y "..."
@@ -701,7 +701,7 @@ label tetris_difficulty:
                     # Disadvantage.
                     $ AI_difficulty = 4
 
-                    if(abs(karma() - sanity()) < 2):
+                    if(abs(karma_lvl() - sanity_lvl()) < 2):
                         # K&S are neutral.
                         $ show_chr("A-BCAAA-AMAM")
                         y "I-If you're comfortable with that, [player]."
@@ -709,7 +709,7 @@ label tetris_difficulty:
                         $ show_chr("A-IAAAA-AMAM")
                         y "Disadvantaged should suffice."
 
-                    elif(karma() < sanity()):
+                    elif(karma_lvl() < sanity_lvl()):
                         # Low K, High S.
                         $ show_chr("A-CECAA-AAAA")
                         y "..."
@@ -729,19 +729,19 @@ label tetris_difficulty:
             # K&S are lower than average.
             # Or.
             # K|S is neutral.
-            elif(abs(karma() + sanity() - 4) < 2):
+            elif(abs(karma_lvl() + sanity_lvl() - 4) < 2):
                 if(randomMood == -1):
                     # Hard.
                     $ AI_difficulty = 3
 
-                    if(abs(karma() - sanity()) < 2):
+                    if(abs(karma_lvl() - sanity_lvl()) < 2):
                         # K&S lower than average.
                         $ show_chr("A-CEAAA-AAAC")
                         y "I d-don't really know..."
                         y "Does it really even matter what difficulty we play on?"
                         y "I guess I'll just go for hard, You'll probably just boast about it afterwards regardless."
 
-                    elif(karma() < sanity()):
+                    elif(karma_lvl() < sanity_lvl()):
                         # Low K, Neutral S.
                         $ show_chr("A-CEAAA-AAAC")
                         y "I d-don't really know..."
@@ -764,14 +764,14 @@ label tetris_difficulty:
                     # Disadvantage.
                     $ AI_difficulty = 4
 
-                    if(abs(karma() - sanity()) < 2):
+                    if(abs(karma_lvl() - sanity_lvl()) < 2):
                         # K&S lower than average.
                         $ show_chr("A-CEAAA-AAAC")
                         y "I d-don't really know..."
                         y "Does it really even matter what difficulty we play on?"
                         y "I guess I'll just go for disadvantaged, You'll probably just boast about it afterwards regardless."
 
-                    elif(karma() < sanity()):
+                    elif(karma_lvl() < sanity_lvl()):
                         # Low K, Neutral S.
                         $ show_chr("A-CEAAA-AAAC")
                         y "I d-don't really know..."
@@ -794,14 +794,14 @@ label tetris_difficulty:
                     # Expert.
                     $ AI_difficulty = 5
 
-                    if(abs(karma() - sanity()) < 2):
+                    if(abs(karma_lvl() - sanity_lvl()) < 2):
                         # K&S lower than average.
                         $ show_chr("A-CEAAA-AAAC")
                         y "I d-don't really know..."
                         y "Does it really even matter what difficulty we play on?"
                         y "I guess I'll just go for expert, You'll probably just boast about it afterwards regardless."
 
-                    elif(karma() < sanity()):
+                    elif(karma_lvl() < sanity_lvl()):
                         # Low K, Neutral S.
                         $ show_chr("A-CEAAA-AAAC")
                         y "I d-don't really know..."
@@ -823,12 +823,12 @@ label tetris_difficulty:
             # K&S are low.
             # Or.
             # K|S is minimal.
-            elif(abs(karma() + sanity() - 2) < 2):
+            elif(abs(karma_lvl() + sanity_lvl() - 2) < 2):
                 if(randomMood == -1):
                     # Disadvantage.
                     $ AI_difficulty = 4
 
-                    if(karma() < sanity()):
+                    if(karma_lvl() < sanity_lvl()):
                         $ show_chr ("A-AECAA-AAAF")
                         y "I couldn't honestly care less what difficulty we play at by this point."
                         y "N-No wait, you know what?"
@@ -847,7 +847,7 @@ label tetris_difficulty:
                     # Expert.
                     $ AI_difficulty = 5
 
-                    if(karma() < sanity()):
+                    if(karma_lvl() < sanity_lvl()):
                         $ show_chr ("A-AECAA-AAAF")
                         y "I couldn't honestly care less what difficulty we play at by this point."
                         y "N-No wait, you know what?"
@@ -866,7 +866,7 @@ label tetris_difficulty:
                     # Veteran.
                     $ AI_difficulty = 6
 
-                    if(karma() < sanity()):
+                    if(karma_lvl() < sanity_lvl()):
                         $ show_chr ("A-AECAA-AAAF")
                         y "I couldn't honestly care less what difficulty we play at by this point."
                         y "N-No wait, you know what?"
@@ -882,7 +882,7 @@ label tetris_difficulty:
                         y "Let's set it to veteran and see just how well you do."
 
             # K&S are almost minimal.
-            elif(abs(karma() + sanity()) < 2):
+            elif(abs(karma_lvl() + sanity_lvl()) < 2):
                 if(randomMood == -1):
                     # Expert.
                     $ AI_difficulty = 5
@@ -923,46 +923,46 @@ label tetris_rules:
     menu:
         y "Would you like some Tetris music while we play?"
         "Yes":
-           if AI_difficulty != "CO_OP":
-               y "Let the best Tetris player win."
-               $ show_chr("A-AACAA-AAAA")
-               y "Game on, [player]!"
-           else:
-               y "Let's enjoy our time together trying to get the highest score!"
-               $ show_chr("A-CBBAA-AAAJ")
-               y "I really hope I will be at least some of help for you, [player]."
-               $ show_chr("A-AACAA-AAAA")
+            if AI_difficulty != "CO_OP":
+                y "Let the best Tetris player win."
+                $ show_chr("A-AACAA-AAAA")
+                y "Game on, [player]!"
+            else:
+                y "Let's enjoy our time together trying to get the highest score!"
+                $ show_chr("A-CBBAA-AAAJ")
+                y "I really hope I will be at least some of help for you, [player]."
+                $ show_chr("A-AACAA-AAAA")
 
-           if persistent.skin == 1:
-               $ change_music("<loop 21.06>/music/tetris (a).ogg") #Once a musician in the Dev Team Server has finished their Tetris arrangement, please remove this comment.
-               #"<loop 1.81>/music/tetris (b).ogg"
-           elif persistent.skin == 2:
-               $ change_music("<loop 0.80>/music/tetris_99.ogg")
-           elif persistent.skin == 3:
-               $ change_music("<loop 19.30>/music/tetris_gb.ogg")
-           elif persistent.skin == 4:
-               $ change_music("<loop 0>/music/tetris_gmd.ogg")
-           elif persistent.skin == 5:
-               $ change_music("<loop 0>/music/tetris_m1nd_bend3r.ogg")
-           elif persistent.skin == 6:
-               $ change_music("<loop 0>/custom_tetris/tetris.ogg")
+            if persistent.skin == 1:
+                $ change_music("<loop 21.06>/music/tetris (a).ogg") #Once a musician in the Dev Team Server has finished their Tetris arrangement, please remove this comment.
+                #"<loop 1.81>/music/tetris (b).ogg"
+            elif persistent.skin == 2:
+                $ change_music("<loop 0.80>/music/tetris_99.ogg")
+            elif persistent.skin == 3:
+                $ change_music("<loop 19.30>/music/tetris_gb.ogg")
+            elif persistent.skin == 4:
+                $ change_music("<loop 0>/music/tetris_gmd.ogg")
+            elif persistent.skin == 5:
+                $ change_music("<loop 0>/music/tetris_m1nd_bend3r.ogg")
+            elif persistent.skin == 6:
+                $ change_music("<loop 0>/custom_tetris/tetris.ogg")
         "No":
-           if AI_difficulty != "CO_OP":
-               y "Let the best Tetris player win."
-               $ show_chr("A-AACAA-AAAA")
-               y "Game on, [player]!"
-           else:
-               y "Let's enjoy our time together trying to get the highest score!"
-               $ show_chr("A-CBBAA-AAAJ")
-               y "I really hope I will be at least some of help for you, [player]."
-               $ show_chr("A-AACAA-AAAA")
+            if AI_difficulty != "CO_OP":
+                y "Let the best Tetris player win."
+                $ show_chr("A-AACAA-AAAA")
+                y "Game on, [player]!"
+            else:
+                y "Let's enjoy our time together trying to get the highest score!"
+                $ show_chr("A-CBBAA-AAAJ")
+                y "I really hope I will be at least some of help for you, [player]."
+                $ show_chr("A-AACAA-AAAA")
 
     call screen startTetris(AI_difficulty)
 
 label tetris_over:
     $ change_music(current_music)
     if TetrisWinner == 0:
-        if karma() > 3 and sanity() > 3:
+        if karma_lvl() > 3 and sanity_lvl() > 3:
         #[If K= 4-5 and S= 4&5]
             $ show_chr("A-ABABA-AAAL")
             y "O-oh my!! Oh that was quite a little thrill~"
@@ -978,20 +978,20 @@ label tetris_over:
                     menu:
                         y "Would you like the same music as our last game?"
                         "Yes":
-                           if persistent.skin == 1:
-                               $ change_music("<loop 21.06>/music/tetris (a).ogg") #Once a musician in the Dev Team Server has finished their Tetris arrangement, please remove this comment.
-                           elif persistent.skin == 2:
-                               $ change_music("<loop 0.80>/music/tetris_99.ogg")
-                           elif persistent.skin == 3:
-                               $ change_music("<loop 19.30>/music/tetris_gb.ogg")
-                           elif persistent.skin == 4:
-                               $ change_music("<loop 0>/music/tetris_gmd.ogg")
-                           elif persistent.skin == 5:
-                               $ change_music("<loop 0>/music/tetris_m1nd_bend3r.ogg")
-                           elif persistent.skin == 6:
-                               $ change_music("<loop 0>/custom_tetris/tetris.ogg")
+                            if persistent.skin == 1:
+                                $ change_music("<loop 21.06>/music/tetris (a).ogg") #Once a musician in the Dev Team Server has finished their Tetris arrangement, please remove this comment.
+                            elif persistent.skin == 2:
+                                $ change_music("<loop 0.80>/music/tetris_99.ogg")
+                            elif persistent.skin == 3:
+                                $ change_music("<loop 19.30>/music/tetris_gb.ogg")
+                            elif persistent.skin == 4:
+                                $ change_music("<loop 0>/music/tetris_gmd.ogg")
+                            elif persistent.skin == 5:
+                                $ change_music("<loop 0>/music/tetris_m1nd_bend3r.ogg")
+                            elif persistent.skin == 6:
+                                $ change_music("<loop 0>/custom_tetris/tetris.ogg")
 
-                           call screen startTetris(AI_difficulty)
+                            call screen startTetris(AI_difficulty)
 
                         "No":
                             call screen startTetris(AI_difficulty)
@@ -1000,7 +1000,7 @@ label tetris_over:
                     y "I really enjoy playing with you. Let's do this again sometime soon."
                     jump ch30_loop
 
-        elif karma() > 3 and sanity() == 3:
+        elif karma_lvl() > 3 and sanity_lvl() == 3:
         #[If K=4-5 and S= 3]
             $ show_chr("A-BCAAA-AMAM")
             y "O-oh my... Oh I hope I did not slip up too much."
@@ -1018,7 +1018,7 @@ label tetris_over:
                     y "I really enjoy playing with you. Let's do this again sometime soon."
                     jump ch30_loop
 
-        elif karma() <= 2:
+        elif karma_lvl() <= 2:
         #[If K = 1-2 regardless of S value]
             $ show_chr("A-ACAAA-AAAC")
             y "O-oh you won eh...?"
@@ -1027,7 +1027,7 @@ label tetris_over:
             y "G-go ahead. Boast to your heart's content."
             y "I bet you only pretended to have fun playing against me..."
             y "Go on [player]."
-        elif sanity() > 2 and karma() < 3:
+        elif sanity_lvl() > 2 and karma_lvl() < 3:
             $ show_chr("A-ACAAA-AAAA")
             y "Congratulations, well done."
             y "I have to admit, that was more fun than I anticipated. Actually I was a bit worried that Tetris might become boring pretty fast."
@@ -1042,7 +1042,7 @@ label tetris_over:
                     y "I really enjoy playing with you. Let's do this again sometime soon."
                     jump ch30_loop
 
-        elif sanity() <= 3 and karma() >= 3:
+        elif sanity_lvl() <= 3 and karma_lvl() >= 3:
             $ show_chr("A-ACAAA-ABAB")
             y "Oh my, it looks like you've beaten me!"
             y "I might have to put more training into this, so that I can be an actual challenge next time."
@@ -1061,7 +1061,7 @@ label tetris_over:
                     y "I really enjoy playing with you. Let's do this again sometime soon."
                     jump ch30_loop
 
-        elif sanity() <= 3 and karma() < 3:
+        elif sanity_lvl() <= 3 and karma_lvl() < 3:
             $ show_chr("A-BFAAA-ABAE")
             y "Congratulations, I guess?"
             $ show_chr("A-IFAAA-ABAE")
@@ -1078,7 +1078,7 @@ label tetris_over:
                     jump ch30_loop
 
     elif TetrisWinner == 1:
-        if sanity() > 2 and karma() > 2:
+        if sanity_lvl() > 2 and karma_lvl() > 2:
             $ show_chr("A-ACAAA-ALAL")#insert closed smile with open eyes, happy eyebrows and hand on her chest
             y "Oh my..."
             y "Good show, good effort~"
@@ -1086,7 +1086,7 @@ label tetris_over:
             y "I know you wanted a higher score but there will always be a next time!"
             y "I hope you had fun, [player], I know I did!"
 
-        elif karma() > 4 and sanity() == 3:
+        elif karma_lvl() > 4 and sanity_lvl() == 3:
         #[If K=4-5 and S=3]
             $ show_chr("A-ACDAA-AMAM")
             y "O-oh... You lost? Uhm... eheh."
@@ -1097,7 +1097,7 @@ label tetris_over:
             y "It's the heart and thought that c-counts after all."
             y "S-so... do you want to play again? Or if you want to do something else, that is okay too [player]~"
 
-        elif karma() != 3 and sanity() != 3:
+        elif karma_lvl() != 3 and sanity_lvl() != 3:
         #[If K=3 and S=3]
             $ show_chr("A-BCABA-AMAM")
             y "W-well... This was quite intriguing to say the least."
@@ -1109,7 +1109,7 @@ label tetris_over:
             y "I-I am not sure..."
             y "D-do you want to play a bit more [player]?"
 
-        elif sanity() > 2 and karma() < 3:
+        elif sanity_lvl() > 2 and karma_lvl() < 3:
             $ show_chr("A-AEAAA-AAAC")
             y "Oh... you lost, eh?"
             y "Well then that's no surprise, I guess."
@@ -1118,7 +1118,7 @@ label tetris_over:
             y "Hm..."
             y "Well, I still hope you enjoyed playing... I guess."
 
-        elif sanity() < 3 and karma() > 3:
+        elif sanity_lvl() < 3 and karma_lvl() > 3:
         #If K= 4-5 and S: 1-2
             $ show_chr("A-ABAAA-AAAD")
             y "Aww... sorry [player]~"
@@ -1131,7 +1131,7 @@ label tetris_over:
             y "I look forward to another session with you as always [player]. Forever and just us.."
             y "No one ELSE!... Just us uhuhuhehehe...~"
 
-        elif karma() == 3 and sanity() <= 2:
+        elif karma_lvl() == 3 and sanity_lvl() <= 2:
         #If K= 3 and S: 1-2
             $ show_chr("A-HLAAA-ALAL")
             y "Aww, you lost?"
@@ -1141,7 +1141,7 @@ label tetris_over:
             y "Here in this room and no one else... I know you want to... And I want to also~"
             y "What do you say [player]? Doesn't that sound so heavenly?" #[maybe show this line as glitch text?]
 
-        elif sanity() < 3 and karma() < 3:
+        elif sanity_lvl() < 3 and karma_lvl() < 3:
             $ show_chr("A-DECAA-ABAB")# angry closed frown with angry eyes/eyebrows and hands on the table.
             y "Oh, so you lost, hm?"
             y "Well, that's not surprising."
@@ -1200,48 +1200,48 @@ init python:
             random.shuffle(self.piece_list)
             self.tetris_shapes = [
                 [[1, 1, 1],
-                 [0, 1, 0]],
+                [0, 1, 0]],
 
                 [[0, 2, 2],
-                 [2, 2, 0]],
+                [2, 2, 0]],
 
                 [[3, 3, 0],
-                 [0, 3, 3]],
+                [0, 3, 3]],
 
                 [[4, 0, 0],
-                 [4, 4, 4]],
+                [4, 4, 4]],
 
                 [[0, 0, 5],
-                 [5, 5, 5]],
+                [5, 5, 5]],
 
                 [[6, 6, 6, 6]],
 
                 [[7, 7],
-                 [7, 7]]
+                [7, 7]]
             ]
 
             self.stage = [[9,9,9,9,9,9,9,9,9,9,9,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,9,9,9,9,9,9,9,9,9,9,9]]
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,9,9,9,9,9,9,9,9,9,9,9]]
 
             if persistent.skin == 1:
 
@@ -1585,7 +1585,7 @@ init python:
                 self.current_shape.shape = self.current_shape.next_shape
                 self.current_shape.shape_number = self.current_shape.new_shape_number
                 self.piece_list.pop(0)
-                if len(self.piece_list) == 0:
+                if not self.piece_list:
                     self.piece_list = [0,1,2,3,4,5,6]
                     random.shuffle(self.piece_list)
                 self.current_shape.new_shape_number = self.piece_list[0]
@@ -1992,36 +1992,36 @@ init python:
 
         def find_t_spin(shape, stage):
             if shape[0][1] == 0 or shape[1][0] == 0 or shape[1][2] == 0 or shape[2][1] == 0:
-              # The shape is a T-shape.
-              for x in range(1, 11):
-                # Check if there is a valid T-Spin move to the left.
-                if stage[1][x] == 0 and stage[0][x-1] != 0 and stage[1][x-1] != 0 and stage[2][x-1] != 0:
-                  return -1
-                # Check if there is a valid T-Spin move to the right.
-                if stage[1][x] == 0 and stage[0][x+2] != 0 and stage[1][x+2] != 0 and stage[2][x+2] != 0:
-                  return 1
+                # The shape is a T-shape.
+                for x in range(1, 11):
+                    # Check if there is a valid T-Spin move to the left.
+                    if stage[1][x] == 0 and stage[0][x-1] != 0 and stage[1][x-1] != 0 and stage[2][x-1] != 0:
+                        return -1
+                    # Check if there is a valid T-Spin move to the right.
+                    if stage[1][x] == 0 and stage[0][x+2] != 0 and stage[1][x+2] != 0 and stage[2][x+2] != 0:
+                        return 1
             return 0
 
         def Yuri_AI(self):
-          # Find the best T-Spin move.
-          t_spin_move = find_t_spin(self.current_shape.shape, self.stage)
-          # If there is a valid T-Spin move, make it.
-          if t_spin_move != 0:
-            self.current_shape.x += t_spin_move
-          # Otherwise, find the best regular move.
-          else:
-            moves = bestMove()
-            # Rotate the shape the correct number of times.
-            for i in range(0, moves[1]-1):
-              self.rotateClockWiseAI()
-            # Move the shape to the correct position.
-            signbit = 1 if moves[0] < 0 else 0
-            if signbit == 0:
-              for i in range(0, moves[0]):
-                self.current_shape.x += 1
+            # Find the best T-Spin move.
+            t_spin_move = find_t_spin(self.current_shape.shape, self.stage)
+            # If there is a valid T-Spin move, make it.
+            if t_spin_move != 0:
+                self.current_shape.x += t_spin_move
+            # Otherwise, find the best regular move.
             else:
-              for i in range(moves[0], 0):
-                self.current_shape.x -= 1
+                moves = bestMove()
+                # Rotate the shape the correct number of times.
+                for i in range(0, moves[1]-1):
+                    self.rotateClockWiseAI()
+                # Move the shape to the correct position.
+                signbit = 1 if moves[0] < 0 else 0
+                if signbit == 0:
+                    for i in range(0, moves[0]):
+                        self.current_shape.x += 1
+                else:
+                    for i in range(moves[0], 0):
+                        self.current_shape.x -= 1
 
 #----------------------------------------------------------------------------------------------------
 
@@ -2140,48 +2140,48 @@ init python:
             random.shuffle(self.piece_list_Yuri)
             self.tetris_shapes = [
                 [[1, 1, 1],
-                 [0, 1, 0]],
+                [0, 1, 0]],
 
                 [[0, 2, 2],
-                 [2, 2, 0]],
+                [2, 2, 0]],
 
                 [[3, 3, 0],
-                 [0, 3, 3]],
+                [0, 3, 3]],
 
                 [[4, 0, 0],
-                 [4, 4, 4]],
+                [4, 4, 4]],
 
                 [[0, 0, 5],
-                 [5, 5, 5]],
+                [5, 5, 5]],
 
                 [[6, 6, 6, 6]],
 
                 [[7, 7],
-                 [7, 7]]
+                [7, 7]]
             ]
 
             self.stage = [[9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                         [9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9]]
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
+                        [9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9]]
 
             if persistent.skin == 1:
 
@@ -2496,7 +2496,7 @@ init python:
                 self.current_shape_player.shape = self.current_shape_player.next_shape
                 self.current_shape_player.shape_number = self.current_shape_player.new_shape_number
                 self.piece_list_player.pop(0)
-                if len(self.piece_list_player) == 0:
+                if not self.piece_list_player:
                     self.piece_list_player = [0,1,2,3,4,5,6]
                     random.shuffle(self.piece_list_player)
                 self.current_shape_player.new_shape_number = self.piece_list_player[0]
@@ -2510,7 +2510,7 @@ init python:
                 self.current_shape_Yuri.shape = self.current_shape_Yuri.next_shape
                 self.current_shape_Yuri.shape_number = self.current_shape_Yuri.new_shape_number
                 self.piece_list_Yuri.pop(0)
-                if len(self.piece_list_Yuri) == 0:
+                if not self.piece_list_Yuri:
                     self.piece_list_Yuri = [0,1,2,3,4,5,6]
                     random.shuffle(self.piece_list_Yuri)
                 self.current_shape_Yuri.new_shape_number = self.piece_list_Yuri[0]

@@ -6,7 +6,7 @@ label chess:
         boopable = False
         show_chr("A-BFBAA-AAAC")
 
-    if sanity() > 2 and karma() > 2:
+    if sanity_lvl() > 2 and karma_lvl() > 2:
         menu:
             y "Oh, so you'd like to play some chess, hm?"
             "Yes.":
@@ -17,7 +17,7 @@ label chess:
                 y "I see..."
                 y "Perhaps some other time, then."
                 jump ch30_loop
-    elif sanity() > 2 and karma() < 3:
+    elif sanity_lvl() > 2 and karma_lvl() < 3:
         menu:
             y "You... want to play Chess...?"
             "Yes.":
@@ -31,7 +31,7 @@ label chess:
                 y "Oh..."
                 y "Perhaps... some other time, then."
                 jump ch30_loop
-    elif sanity() < 3 and karma() > 2:
+    elif sanity_lvl() < 3 and karma_lvl() > 2:
         menu:
             y "Y-you want to play chess, yes?"
             "Yes.":
@@ -45,7 +45,7 @@ label chess:
                 y "Alright..."
                 y "Perhaps some other time, then..."
                 jump ch30_loop
-    elif sanity() < 3 and karma() < 3:
+    elif sanity_lvl() < 3 and karma_lvl() < 3:
         menu:
             y "You want to play chess, hm?"
             "Yes.":

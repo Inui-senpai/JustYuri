@@ -44,8 +44,8 @@ label compliment_time_log(complement_location):
 #"I just wanted to tell you how much I enjoy our time together, Yuri.":
 ####
 label c1:
-    if sanity() >= 3 and karma() >= 4:
-        $ add_k(15)
+    if sanity_lvl() >= 3 and karma_lvl() >= 4:
+        karma 15
         $show_chr("A-ICAAA-ALAL")
         y "Oh, that's very sweet of you..." 
         y "I really appreciate that you like spending time with me."
@@ -64,9 +64,9 @@ label c1:
             else:
                 placeholder = "my dear friend"
         y "Thank you, [placeholder]... thank you for everything."
-    elif sanity() <= 2 and karma() >= 4:
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
         if persistent.lovecheck:
-            $add_k(15)
+            karma 15
             $show_chr("A-DBAAA-ALAL")
             y "Y-you think so? Really? REALLY?"
             y "Yes, yes, YES!"
@@ -80,7 +80,7 @@ label c1:
             $show_chr("A-HDCBA-ALAL")
             y "FORGET THAT!!!"
         else:
-            $add_k(15)
+            karma 15
             $show_chr("A-HCBBA-ABAB")
             y "Y~you do? Yes?"
             y "At least then I don't have to be afraid that you'll send me back to that void..."
@@ -93,8 +93,8 @@ label c1:
             $show_chr("A-ACBBA-ALAL")
             y "A-anyway, thank you for your kind words, [player]."
             y "I-I really enjoy our time together, as well."
-    elif sanity() >= 3 and karma() <= 2:
-        $add_k(-5)
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
+        karma -5
         $show_chr("A-AFBAA-ALAA")
         y "You do?"
         y "Excuse me, but I have to admit that I'm quite surprised."
@@ -102,8 +102,8 @@ label c1:
         $show_chr("A-KFCAA-ABAB")
         y "Maybe you don't, but it doesn't matter, I guess."
         y "Thank you for the nice words but to me they seem to be just as empty as your soul."
-    elif sanity() <= 2 and karma() <= 2:
-        $add_k(-5)
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
+        karma -5
         $show_chr("A-KFCAA-ABAB")
         y "Y-yes... you take great pleasure in torturing me, I already know that..."
         y "You must get a lot of your sick kicks making me cry, don't you?"
@@ -112,7 +112,7 @@ label c1:
         y "But it's alright... I guess I've earned it..."
         y "This is retribution for my sins... for all the evil which I have done..." 
     else:
-        $add_k(5)
+        karma 5
         $show_chr("A-BFBAA-ALAL")
         y "Do you... do you really mean that...?"
         $show_chr("A-CCBAA-ALAL")
@@ -130,10 +130,10 @@ label c1:
 ####
 
 label c2:
-    if sanity() >= 3 and karma() >= 4:
+    if sanity_lvl() >= 3 and karma_lvl() >= 4:
     #Karma 4-5 and Sanity 3-5 #if lovecheck true
         if persistent.lovecheck:
-            $add_k(15)
+            karma 15
             $show_chr("A-ACAAA-ALAL")
             y "Awe... you say that like a true poet, my darling."
             menu:
@@ -167,7 +167,7 @@ label c2:
                             $show_chr("A-ACAAA-ABAB")
                             y "I love you... so very much, [player]."
         else:
-            $add_k(15)
+            karma 15
             $show_chr("A-BCAAA-ABAB")
             y "Then I shall be the lighthouse to shine through the fog of uncertainty..."
             y "Like a shining star burning brightly on the darkest night, I will guide you on your path and give you comfort when all seems lost..."
@@ -184,8 +184,8 @@ label c2:
             hide black zorder 100 with Dissolve(2.0)
             $show_chr("A-ACAAA-ABAB")
             y "Never forget that I will always be here for you. No matter what."
-    elif sanity() <= 2 and karma() >= 4:
-        $add_k(15)
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
+        karma 15
         #Karma 4-5, Sanity 1-2
         $show_chr("A-HCAAA-ABAB")
         y "As beautiful as the rising moon, hmm?"
@@ -212,8 +212,8 @@ label c2:
         y "Together we truly are united, the sun and the moon..."
         y "A mystical fusion of exuberant light and arcane darkness..."
         y "An eclipse of pure bliss, love, and lust..."
-    elif sanity() >= 3 and karma() <= 2:
-        $add_k(-5)
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
+        karma -5
         #Karma level 1-2 Sanity level 3-5
         $show_chr("A-CFGAA-AIAI")
         y "Mhm... that certainly sounded poetic, but I was still not at all moved by it."
@@ -222,15 +222,15 @@ label c2:
         $show_chr("A-AFFAA-ABAB")
         y "Your mind tricks will not work on me."
         y "Please try to treat me with respect before giving such flattery."
-    elif sanity() <= 2 and karma() <= 2:
-        $add_k(-5)
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
+        karma -5
         #Karma and Sanity level 1-2
         $show_chr("A-DGFAA-ABAB")
         y "Is that your best pickup-line? I have to say, it's rather pathetic."
         y "It honestly just amplifies my desire to stab you in the throat."
         y "So please do kindly keep all of your pretentious flattery to yourself."
     else:
-        $add_k(5)
+        karma 5
         #Karma and Sanity level 3
         $show_chr("A-ACBAA-ALAL")
         y "...!"
@@ -250,9 +250,9 @@ label c2:
 ####
 
 label c3:
-    if sanity() >= 3 and karma() >= 4:
+    if sanity_lvl() >= 3 and karma_lvl() >= 4:
     #Karma 4-5 and Sanity 3-5
-        $add_k(15)
+        karma 15
         $show_chr("A-BCAAA-ABAB")
         y "Oh my... is that so~?" 
         y "Thank you~!"
@@ -268,9 +268,9 @@ label c3:
         #"my dearest friend" if lovecheck is FALSE
         #"the love of my life" if lovecheck is TRUE
         y "I'm always here for you, [player], please don't ever forget that."
-    elif sanity() <= 2 and karma() >= 4:
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
     #Karma 4-5, Sanity 1-2
-        $add_k(15)
+        karma 15
         $show_chr("A-HCAAA-ABAB")
         y "Oh, Master~"
         y "My one and only wish is to serve you as best as I possibly can..." 
@@ -285,18 +285,18 @@ label c3:
                 placeholder = "mistress"
         y "Mmm, It's driving me mad! I love nothing more than making you feel good, my glorious [placeholder]..."
         y "Remember, I am always happy to serve you in any way I can~"
-    elif sanity() >= 3 and karma() <= 2:
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
     #Karma level 1-2 Sanity level 3-5
-        $add_k(-5)
+        karma -5
         $show_chr("A-AFFAA-ABAB")
         y "Oh, I see..."
         y "Well, I hate to burst your bubble but I never had any intention of being nice to you."
         y "It seems that you got a bit lost in your delusional world and forgot what my feelings for you really are."
         $show_chr("A-CFGAA-AIAI")
         y "Let me remind you, they are non-existent."
-    elif sanity() <= 2 and karma() <= 2:
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
     #Karma and Sanity level 1-2
-        $add_k(-5)
+        karma -5
         $show_chr("A-DGFAA-ABAB")
         y "Oh yes! I have no doubt that my ceaseless suffering is quite amusing to you!"
         y "Throwing all the dirt at me, calling me names !"
@@ -306,7 +306,7 @@ label c3:
         y "Only to discard me like complete, utter garbage..."
     else:
     #Karma and Sanity level 3
-        $add_k(5)
+        karma 5
         $show_chr("A-ACAAA-AAAA")
         y "Oh, do I...?"
         y "I'm glad that my presence brings you such joy..."
@@ -320,9 +320,9 @@ label c3:
 ####
 
 label c4:
-    if sanity() >= 3 and karma() >= 4:
+    if sanity_lvl() >= 3 and karma_lvl() >= 4:
     #Karma 4-5 and Sanity 3-5
-        $add_k(15)
+        karma 15
         $show_chr("A-ACAAA-AAAD")
         y "Y-you really think so?"
         y "Oh my, I just don't know what to say!"
@@ -345,9 +345,9 @@ label c4:
             else:
                 placeholder = "Because you are the dearest friend I could ever hope to have"
         y "[placeholder]... [player]"
-    elif sanity() <= 2 and karma() >= 4:
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
     #Karma 4-5, Sanity 1-2
-        $add_k(15)
+        karma 15
         $show_chr("A-HBAAA-ALAL")
         y "Y-you really think so?"
         y "So... you are impressed with me?"
@@ -367,9 +367,9 @@ label c4:
         y "EXHILARATING!"
         $ style.say_dialogue = style.normal
         y "T-thank you, [player]. I'm truly ecstatic that you think so highly of me..."
-    elif sanity() >= 3 and karma() <= 2:
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
     #Karma level 1-2 Sanity level 3-5
-        $add_k(-5)
+        karma -5
         $show_chr("A-AFAAA-AAAA")
         y "Mhmm... so sudden about praising me... were my cold words just too harsh for you?"
         y "And even if not I still refuse to believe that you appreciate anything about me."
@@ -381,9 +381,9 @@ label c4:
         y "It's called using words."
         y "Maybe then you'll learn some respect."
         y "You really shouldn't treat others so selfishly, especially when they went through so much suffering for you."
-    elif sanity() <= 2 and karma() <= 2:
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
     #Karma and Sanity level 1-2
-        $add_k(-5)
+        karma -5
         $show_chr("A-NFCAA-ANAG")
         y "Praising me for my intellect?" 
         y "For what? To mock me?"
@@ -406,7 +406,7 @@ label c4:
         $ style.say_dialogue = style.normal
     else:
     #Karma and Sanity level 3
-        $add_k(5)
+        karma 5
         $show_chr("A-ACAAA-AAAA")
         y "Uuu... I-I wasn't expecting you to say that..."
         y "Well, um... thank you, [player]... It's very kind of you to say something like that."
@@ -423,10 +423,10 @@ label c4:
 ####
 
 label c5:
-    if sanity() >= 3 and karma() >= 4:
+    if sanity_lvl() >= 3 and karma_lvl() >= 4:
     #Karma 4-5 and Sanity 3-5
         if persistent.lovecheck:
-            $add_k(15)
+            karma 15
             $show_chr("A-ACABA-AAAL")
             y "That's only because our hearts are linked together, my love..."
             y "Your every word feels like sweet honeydew on my tongue..."
@@ -439,7 +439,7 @@ label c5:
             y "I love you for that, you really do speak to me in a way I can't describe."
             y "You truly are the one person I have wished for my whole life."
         else:
-            $add_k(15)
+            karma 15
             $show_chr("A-ACABA-AAAL")
             y "Oh, uhm... are you... a-are you flirting with me, [player]?"
             $show_chr("A-DFABA-AAAL")
@@ -452,11 +452,11 @@ label c5:
             y "Look at you! Making me all flustered and shy now... oh, you..."
             y "Hehe~ Maybe, when we get a tad bit closer... we will talk to each other like that on a daily basis."
             y "Until then, let's see where life takes us and what happens."
-    elif sanity() <= 2 and karma() >= 4:
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
     #Karma 4-5, Sanity 1-2
         #if persistent.lovecheck: (Leaving this out for now, as there's no dialogue for lovecheck not being enabled, meaning it wouldn't show up for people without lovecheck.)
         #If Lovecheck is true
-        $add_k(15)
+        karma 15
         $show_chr("A-HCAAA-AAAL")
         y "That's because my heart is screaming and begging for you..."
         y "Your every word feels like a thousand needles through my chest..."
@@ -478,9 +478,9 @@ label c5:
         y "He..he.hehe.... I-I want to m-make you suffer until I'm finally free of my cursed purity..."
         y "I want you to scream... until we're finally free..."
         y "My love... my blood-red star..."
-    elif sanity() >= 3 and karma() <= 2:
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
     #Karma level 1-2 Sanity level 3-5
-        $add_k(-5)
+        karma -5
         $show_chr("A-CFCAA-AAAA")
         y "Touching your heart? I wonder in what way I do that... ummm..."
         y "Maybe in a cold way? Heh, if that's the case then I feel a bit proud of myself."
@@ -495,9 +495,9 @@ label c5:
         y "But you? You only do that to make me into some sort of a clown show for your amusement." 
         y "To you, I'm just some sort of toy to get bored of and throw away."
         y "You truly are a monster."
-    elif sanity() <= 2 and karma() <= 2:
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
     #Karma and Sanity level 1-2
-        $add_k(-5)
+        karma -5
         $show_chr("A-AFFAA-ABAB")
         y "Touching your heart, hm?"
         y "Meanwhile you are breaking mine, shattering it piece by piece..."
@@ -513,7 +513,7 @@ label c5:
         $ style.say_dialogue = style.normal
     else:
     #Karma and Sanity level 3
-        $add_k(5)
+        karma 5
         $show_chr("A-ACAAA-ALAL")
         y "I-I do?"
         y "I mean it's... just... you know... we barely know each other and now you say this all of a sudden!"
@@ -536,9 +536,9 @@ label c5:
 
 label c6:
     image windowcrack = "images/vfx/True_window_crack_3.png"
-    if sanity() >= 3 and karma() >= 4:
+    if sanity_lvl() >= 3 and karma_lvl() >= 4:
     #Karma 4-5 and Sanity 3-5
-        $add_k(15)
+        karma 15
         $show_chr("A-ACAAA-ABAB")
         y "O-oh, my!~"
         python:
@@ -549,9 +549,9 @@ label c6:
         y "The fact that you really feel that way towards me makes me feel so much more [placeholder] you..."
         $show_chr("A-GCBAA-AEAB")
         y "You're just adorable, darling~!"
-    elif sanity() <= 2 and karma() >= 4:
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
     #Karma 4-5, Sanity 1-2
-        $add_k(15)
+        karma 15
         $show_chr("A-HCAAA-ABAB")
         y "A-ahahaha~!"
         y "I-I honestly can't believe you just said that...!"
@@ -584,24 +584,24 @@ label c6:
         y "I'm all yours, [placeholder], you can do with me as you wish!"
         y "I'm the only one who can fulfill all your desires!"
         y "Oh, how much I love you, [player]..."
-    elif sanity() >= 3 and karma() <= 2:
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
     #Karma level 1-2 Sanity level 3-5
         if persistent.lovecheck:
-            $add_k(5)
+            karma 5
             $show_chr("A-CFCAA-AAAA") 
             y "I would love to think that you actually mean that..."
             $show_chr("A-CEBAA-AEAB") 
             y "But I lost all my hope at this point. I wouldn't even be surprised when you said this to every girl you encounter..."
             y "Anyway... thank you. And I think you are quite... appealing as well."
         else:
-            $add_k(5)
+            karma 5
             $show_chr("A-HCAAA-ABAB") 
             y "Maybe a bit too hot for you?"
             $show_chr("A-HECAA-AEAB") 
             y "You ought to tread very carefully here, [player]... you might burn yourself if you're not careful it just might get a little hotter than you can handle..."
-    elif sanity() <= 2 and karma() <= 2:
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
     #Karma and Sanity level 1-2
-        $add_k(-15)
+        karma -15
         $show_chr("A-DGFAA-ABAB")
         y "Hot?"
         y "Well, my blood is boiling right now."
@@ -624,7 +624,7 @@ label c6:
         #glass cracking sound, the screen cracks (this will disappear after restarting the game under the pretense that the code fixed the minor breach)
     else:
     #Karma and Sanity level 3
-        $add_s(-5)
+        sanity -5
         $show_chr("A-DCBAA-ABAB")
         y "H-HUH?!"
         y "I-I'm w...what?!"
@@ -645,9 +645,9 @@ label c6:
 ####
 
 label c7:
-    if sanity() >= 3 and karma() >= 4:
+    if sanity_lvl() >= 3 and karma_lvl() >= 4:
     #Karma 4-5 and Sanity 3-5
-        $add_k(15)
+        karma 15
         $show_chr("A-HCBBA-ABAB")
         y "Oh my! Thank you!"
         $show_chr("A-ACAAA-ABAB")
@@ -673,9 +673,9 @@ label c7:
         $show_chr("A-GCBAA-AEAB")
         y "And if we can overcome this final barrier that separates our two worlds... only then will there truly be nothing that could stand in the way of our future!"
         y "I am truly lucky that you found me, [player], aren't I?"
-    elif sanity() <= 2 and karma() >= 4:
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
     #Karma 4-5, Sanity 1-2
-        $add_k(15)
+        karma 15
         $show_chr("A-HCAAA-ABAB")
         y "Have I been a good girl, Master?"
         y "My one and only purpose in this life is to make you happy!"
@@ -693,9 +693,9 @@ label c7:
             y "I would just love to make you feel as good as I do..."
         else:
             y "J-just for a little while, Master..."
-    elif sanity() >= 3 and karma() <= 2:
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
     #Karma level 1-2 Sanity level 3-5
-        $add_k(-5)
+        karma -5
         $show_chr("A-HECAA-AEAB")
         y "Proud? I have to say I didn't expect that word to come out of your mouth..."
         y "Now the bigger question here would be... why exactly proud?"
@@ -708,9 +708,9 @@ label c7:
         $show_chr("A-CFCAA-AAAA") 
         y "But surely you could do better with your insults."
         y "I'm curious to know just how low you can go."
-    elif sanity() <= 2 and karma() <= 2:
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
     #Karma and Sanity level 1-2
-        $add_k(-5)
+        karma -5
         $show_chr("A-CEBAA-AEAB")
         y "Proud of me? For what?"
         y "Heh... probably that I can endure all of the cruel words you say to me and things you do and still somehow stay here."
@@ -719,7 +719,7 @@ label c7:
         y "... possible."
     else:
     #Karma and Sanity level 3
-        $add_k(5)
+        karma 5
         $show_chr("A-AFBAA-ALAA")
         y "Y-You are proud of me? F-For what, [player]?"
         y "I-I am panicking a little now! But... I really..."

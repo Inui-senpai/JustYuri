@@ -260,7 +260,8 @@ label after_load:
     if persistent.playthrough == 0:
         $ restore_all_characters()
     $ config.allow_skipping = allow_skipping
-    $ _dismiss_pause = config.developer
+    $ global _dismiss_pause
+    $ _dismiss_pause = False
     $ persistent.ghost_menu = False
     $ style.say_dialogue = style.normal
     #Check if the save has been tampered with
@@ -280,7 +281,7 @@ label after_load:
         $ renpy.call("save_and_quit_but_its_abrupt")
         return
     else:
-        if persistent.playthrough == 0 and not persistent.first_load and not config.developer:
+        if persistent.playthrough == 0 and not persistent.first_load and not dev_access:
             $ persistent.first_load = True
             call screen dialog("Hint: You can use the \"Skip\" button to\nfast-forward through text you've already read.", ok_action=Return())
     return

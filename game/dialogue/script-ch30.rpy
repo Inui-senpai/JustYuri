@@ -15,7 +15,7 @@ label ch30_autoload:
     $ persistent.stutter_player = persistent.playername[:1] + "-" + persistent.playername
     $ DisableTalk()
     $ y.display_args["callback"] = slow_nodismiss #while Yuri is speaking, run this code snippet. https://www.renpy.org/doc/html/dialogue.html
-    #$ m.what_args["slow_abortable"] = config.developer
+    #$ m.what_args["slow_abortable"] = dev_access
     $ y.what_args["slow_abortable"] = True
     $ style.say_dialogue = style.normal #normal text when she is talking
     $ config.allow_skipping = False #skipping button not allowed
@@ -37,6 +37,7 @@ label ch30_autoload:
     jump ch30_loop
 
 label ch30_loop:
+    $ update_presence()
     if persistent.HDY:
         $show_hdy("hdy_derpy_smile")
     python:
@@ -44,6 +45,7 @@ label ch30_loop:
             persistent.costume = persistent.saved_costume
             persistent.saved_costume = None
     python:
+        _dismiss_pause = False
         slow_nodismiss_copy()
         time_tracker_update()
         store.mousex = 0
@@ -114,11 +116,11 @@ label yuri_txt_found:
     y "But it kinda feels... weird, ya know?"
     y "I didn't expect this kind of... invasive sensation."
     y "Like you're trying to dig into my soul."
-    if karma() > 3:
-        $ add_k(-1)
+    if karma_lvl() > 3:
+        karma -1
         y "I'm sorry. It just... feels wrong is all."
     else:
-        $ add_k(-10)
+        karma -10
         y "Do you just not trust me?"
         y "..."
         y "Don't worry. Your actions speak louder than words."
@@ -446,7 +448,7 @@ label ch30_noskip:
     y "Thank you~"
     menu:
         "I'm sorry, I misclicked.":
-            $ add_k(1)
+            karma 1
             $ show_chr("A-GCBAA-AAAA")
             y "Oh yes! The auto and the history buttons are right next to it right?"
             y "I was actually worried that I might be boring you..."
@@ -454,14 +456,14 @@ label ch30_noskip:
 
         "Oh sorry, I was just curious.":
             $ show_chr("A-AFDAA-AAAA")
-            $ add_k(-1)
+            karma -1
             y "Curious? Oh yes... I forgot for a moment that my environment consists of some.. game..."
             y "But I need to ask you to be a bit more careful. I'm not a hundred percent sure whether or not some of these buttons are buggy since Monika had some... ‘fun' in here..."
             $ config.allow_skipping = False
 
         "I guess I have no choice, do I?":
-            $ add_s(-1)
-            $ add_k(-1)
+            sanity -1
+            karma -1
             $show_chr("A-GAGAA-AAAA")
             y "Not at all."
             $ config.allow_skipping = False
@@ -519,15 +521,15 @@ label ch30_autoload_cont:
 init -15 python:
     class Quit(Action, DictEquality):
         """
-         :doc: menu_action
+        :doc: menu_action
 
-         Quits the game.
+        Quits the game.
 
-         `confirm`
-              If true, prompts the user if he wants to quit, rather
-              than quitting directly. If None, asks if and only if
-              the user is not at the main menu.
-         """
+        `confirm`
+            If true, prompts the user if he wants to quit, rather
+            than quitting directly. If None, asks if and only if
+            the user is not at the main menu.
+        """
 
         def __init__(self, confirm=None):
             self.confirm = confirm
@@ -551,15 +553,15 @@ init -15 python:
 
     class Quit_no_farewell(Action, DictEquality):
         """
-         :doc: menu_action
+        :doc: menu_action
 
-         Quits the game.
+        Quits the game.
 
-         `confirm`
-              If true, prompts the user if he wants to quit, rather
-              than quitting directly. If None, asks if and only if
-              the user is not at the main menu.
-         """
+        `confirm`
+            If true, prompts the user if he wants to quit, rather
+            than quitting directly. If None, asks if and only if
+            the user is not at the main menu.
+        """
 
         def __init__(self, confirm=None):
             self.confirm = confirm

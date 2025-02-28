@@ -3,8 +3,7 @@
 
 
 label start:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
+    $ _dismiss_pause = False
     pass
 
 label classroom_jump:
@@ -28,7 +27,7 @@ label startgame:
     $ chapter = 0
 
     #If they quit during a pause, we have to set _dismiss_pause to false again (I hate this hack)
-    $ _dismiss_pause = config.developer
+    $ _dismiss_pause = False
 
     # Each of the girls' names before the MC learns their name throughout ch0.
     $ s_name = "Girl 3"

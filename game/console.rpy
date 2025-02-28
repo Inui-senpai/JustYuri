@@ -43,7 +43,7 @@ label updateconsole_torrent(log=[(" ", " ")]):
         for element in log:
             text.append(element[0])
             history.append(element[1])
-        if len(text) == 0:
+        if not text:
             text = [" "]
             history = [" "]
     show console_bg zorder 100
@@ -154,7 +154,7 @@ label updatedevconsole_torrent(log=[("", "")]):
         for element in log:
             text.append(element[0])
             history.append(element[1])
-        if len(text) == 0:
+        if not text:
             text = [" "]
             history = [" "]
     show console_caret_new zorder 100
@@ -188,7 +188,7 @@ label updatedevconsole_torrent_fast(log=[(" ", " ")]):
                 speed.append(element[2])
             else:
                 speed.append(1)
-        if len(text) == 0:
+        if not text:
             text = [" "]
             history = [" "]
     show console_caret_new zorder 100

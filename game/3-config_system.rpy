@@ -47,7 +47,7 @@ init -998 python:
 
                 final_options.append(option)
 
-            if len(final_options) == 0:
+            if not final_options:
                 print_fatal("Tried to register a configuration with no valid options. Add options or fix erroring options")
             return final_options
 

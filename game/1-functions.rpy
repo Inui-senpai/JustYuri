@@ -103,17 +103,88 @@ default yuri_state = {
 }
 
 #KS Variables
-default temp_sanity = 0 #temporary sanity booster, resets on each new play session.
-default temp_karma = 0
 default ks_variance = 15 #ks_variance is the variation within her points (She sometimes doesn't stay within her level on each reading.)
 default number_of_lvls = float(5)
 default points_per_level = float(40)
 default max_points = float(100)
 
+############
+#STATEMENTS#
+############
+python early:
+    def clamp(value, min_value, max_value):
+        return max(min(value, max_value), min_value)
+
+    def karma(points : float = None, should_set : bool = False) -> float:
+        """
+        Adds or sets the point value of karma if provided and returns the resulting karma
+        - Can be called without args to just return the karma
+        """
+        if points == None:
+            return persistent.karma_points
+        else:
+            if should_set:
+                karma_event = KarmaEvent(persistent.karma_points, clamp(points, -max_points, max_points), True)
+                EventAPI.call(karma_event)
+                persistent.karma_points = clamp(karma_event.resulting_karma, -max_points, max_points)
+                print_debug("Setting karma to " + str(persistent.karma_points))
+            else:
+                karma_event = KarmaEvent(persistent.karma_points, clamp(persistent.karma_points + points, -max_points, max_points), False)
+                EventAPI.call(karma_event)
+                persistent.karma_points = clamp(karma_event.resulting_karma, -max_points, max_points)
+                print_debug("Adding " + str(points) + " karma: " + str(persistent.karma_points))
+
+    def sanity(points : float = None, should_set : bool = False) -> float:
+        """
+        Adds or sets the point value of sanity if provided and returns the resulting sanity
+        - Can be called without args to just return the sanity
+        """
+        if points == None:
+            return persistent.sanity_points
+        else:
+            if should_set:
+                sanity_event = SanityEvent(persistent.sanity_points, clamp(points, -max_points, max_points), True)
+                EventAPI.call(sanity_event)
+                persistent.sanity_points = clamp(sanity_event.resulting_sanity, -max_points, max_points)
+                print_debug("Setting sanity to " + str(persistent.sanity_points))
+            else:
+                sanity_event = SanityEvent(persistent.sanity_points, clamp(persistent.sanity_points + points, -max_points, max_points), False)
+                EventAPI.call(sanity_event)
+                persistent.sanity_points = clamp(sanity_event.resulting_sanity, -max_points, max_points)
+                print_debug("Adding " + str(points) + " sanity: " + str(persistent.sanity_points))
+        
+    def statement_karma_parse(lexer):
+        lexer.expect_noblock("The karma statement does not expect a code block")
+        should_set = (lexer.keyword("set") == "set")
+        number = lexer.float()
+        return float(number) if number != None else None, should_set
+    def statement_karma_lint(arg):
+        if arg[0] == None:
+            renpy.error("The karma statement requires a float, but was not given one")
+    def statement_karma_execute(arg):
+        if arg[0] == None:
+            renpy.error("The karma statement requires a float, but was not given one")
+        karma(arg[0], arg[1])
+
+    def statement_sanity_parse(lexer):
+        lexer.expect_noblock("The sanity statement does not expect a code block")
+        should_set = (lexer.keyword("set") == "set")
+        number = lexer.float()
+        return float(number) if number != None else None, should_set
+    def statement_sanity_lint(arg):
+        if arg[0] == None:
+            renpy.error("The sanity statement requires a float, but was not given one")
+    def statement_sanity_execute(arg):
+        if arg[0] == None:
+            renpy.error("The sanity statement requires a float, but was not given one")
+        sanity(arg[0], arg[1])
+
+    renpy.register_statement("karma", statement_karma_parse, statement_karma_lint, statement_karma_execute)
+    renpy.register_statement("sanity", statement_sanity_parse, statement_sanity_lint, statement_sanity_execute)
+    
 ###########
 #FUNCTIONS#
 ###########
-
 init -999 python:
     import rstr
     import random
@@ -141,61 +212,61 @@ init -999 python:
     def default_yuri():
         #default_ks_dict = {
         #}
-        if karma() == 1 and sanity() == 1:
+        if karma_lvl() == 1 and sanity_lvl() == 1:
             show_chr("A-NFCAA-ANAG")
-        elif karma() == 1 and sanity() == 2:
+        elif karma_lvl() == 1 and sanity_lvl() == 2:
             show_chr("A-HECAA-AEAB")
-        elif karma() == 1 and sanity() == 3:
+        elif karma_lvl() == 1 and sanity_lvl() == 3:
             show_chr("A-CFCAA-AAAA")
-        elif karma() == 1 and sanity() == 4:
+        elif karma_lvl() == 1 and sanity_lvl() == 4:
             show_chr("A-BFBAA-AEAB")
-        elif karma() == 1 and sanity() == 5:
+        elif karma_lvl() == 1 and sanity_lvl() == 5:
             show_chr("A-CEBAA-AEAB")
-        elif karma() == 2 and sanity() == 1:
+        elif karma_lvl() == 2 and sanity_lvl() == 1:
             show_chr("A-DGFAA-ABAB")
-        elif karma() == 2 and sanity() == 2:
+        elif karma_lvl() == 2 and sanity_lvl() == 2:
             show_chr("A-AFFAA-ABAB")
-        elif karma() == 2 and sanity() == 3:
+        elif karma_lvl() == 2 and sanity_lvl() == 3:
             show_chr("A-KFCAA-ABAB")
-        elif karma() == 2 and sanity() == 4:
+        elif karma_lvl() == 2 and sanity_lvl() == 4:
             show_chr("A-AEAAA-ABAB")
-        elif karma() == 2 and sanity() == 5:
+        elif karma_lvl() == 2 and sanity_lvl() == 5:
             show_chr("A-AFAAA-ABAB")
-        elif karma() == 3 and sanity() == 1:
+        elif karma_lvl() == 3 and sanity_lvl() == 1:
             show_chr("A-CFGAA-AIAI")
-        elif karma() == 3 and sanity() == 2:
+        elif karma_lvl() == 3 and sanity_lvl() == 2:
             show_chr("A-IFBAA-ALAA")
-        elif karma() == 3 and sanity() == 3:
+        elif karma_lvl() == 3 and sanity_lvl() == 3:
             show_chr("A-AFBAA-ALAA")
-        elif karma() == 3 and sanity() == 4:
+        elif karma_lvl() == 3 and sanity_lvl() == 4:
             show_chr("A-AFAAA-AAAA")
-        elif karma() == 3 and sanity() == 5:
+        elif karma_lvl() == 3 and sanity_lvl() == 5:
             show_chr("A-AAAAA-AAAA")
-        elif karma() == 4 and sanity() == 1:
+        elif karma_lvl() == 4 and sanity_lvl() == 1:
             show_chr("A-DABAA-ABAB")
-        elif karma() == 4 and sanity() == 2:
+        elif karma_lvl() == 4 and sanity_lvl() == 2:
             show_chr("A-DAAAA-ABAB")
-        elif karma() == 4 and sanity() == 3:
+        elif karma_lvl() == 4 and sanity_lvl() == 3:
             show_chr("A-GCBAA-AEAB")
-        elif karma() == 4 and sanity() == 4:
+        elif karma_lvl() == 4 and sanity_lvl() == 4:
             show_chr("A-BCAAA-ABAB")
-        elif karma() == 4 and sanity() == 5:
+        elif karma_lvl() == 4 and sanity_lvl() == 5:
             show_chr("A-AAAAA-ABAB")
-        elif karma() == 5 and sanity() == 1:
+        elif karma_lvl() == 5 and sanity_lvl() == 1:
             show_chr("A-HABBA-ABAB")
-        elif karma() == 5 and sanity() == 2:
+        elif karma_lvl() == 5 and sanity_lvl() == 2:
             show_chr("A-HAAAA-ABAB")
-        elif karma() == 5 and sanity() == 3:
+        elif karma_lvl() == 5 and sanity_lvl() == 3:
             show_chr("A-AAAAA-ABAB")
-        elif karma() == 5 and sanity() == 4:
+        elif karma_lvl() == 5 and sanity_lvl() == 4:
             show_chr("A-AAAAA-ALAL")
-        elif karma() == 5 and sanity() == 5:
+        elif karma_lvl() == 5 and sanity_lvl() == 5:
             show_chr("A-AABAA-ALAL")
-        if karma() and sanity() == 5 and persistent.lovecheck:
+        if karma_lvl() and sanity_lvl() == 5 and persistent.lovecheck:
             show_chr("A-CABBA-ALAL")
-        if karma() and sanity() == 5 and persistent.lovecheck and persistent.yuri_nickname == "Lily":
+        if karma_lvl() and sanity_lvl() == 5 and persistent.lovecheck and persistent.yuri_nickname == "Lily":
             show_chr("A-CABBA-AMAM")
-        if karma() and sanity() == 5 and persistent.yuri_nickname == "Lily":
+        if karma_lvl() and sanity_lvl() == 5 and persistent.yuri_nickname == "Lily":
             show_chr("A-AABAA-AMAM")
 
     class yuri_display():
@@ -669,6 +740,7 @@ init -999 python:
                     "book": book
                 }
             }
+            print("Sprite", str(yuri_sit))
             renpy.show_screen("yuri_sit")
             #renpy.show("yuri_sit", zorder = 11)#, at_list = position, zorder = 11)
         elif chr == "yuri_stand":
@@ -882,7 +954,6 @@ init -999 python:
 init -2 python:
     import datetime
     import math
-    import random
 
     ##############
     #KS FUNCTIONS#
@@ -891,25 +962,15 @@ init -2 python:
     # Note: k = Karma, s = Sanity for this section.
 
     # Add/Subtract Points and Set Levels
-    def add_k(points): #add sanity points
-        global temp_karma
-        persistent.karma_points = ks_limiter(persistent.karma_points + points)
-        temp_karma += points
-    def add_s(points): #add karma points
-        global temp_sanity
-        persistent.sanity_points = ks_limiter(persistent.sanity_points + points)
-        temp_sanity += points
     def set_k_lvl(lvl):
         persistent.karma_points = lvl_to_point(lvl)
-        temp_karma = 0
     def set_s_lvl(lvl):
         persistent.sanity_points = lvl_to_point(lvl)
-        temp_sanity = 0
 
     # Return current Karma/Sanity lvl with small randomness added (ks_variance + random.uniform)
     # - lvls go from 1 to 5, each one being points_per_level large, currently at 40.
     # - This spans the number of points from -100 to +100
-    def karma(ks_variance_1 = 15):
+    def karma_lvl(ks_variance_1 = 15):
         global ks_variance
         try: ks_variance
         except NameError:
@@ -917,7 +978,7 @@ init -2 python:
         karma = float(persistent.karma_points + random.uniform(-ks_variance, ks_variance))
         return point_to_lvl(karma)
 
-    def sanity(ks_variance_1 = 15):
+    def sanity_lvl(ks_variance_1 = 15):
         global ks_variance
         try: ks_variance
         except NameError:
@@ -972,9 +1033,6 @@ init -2 python:
             return -max_points
         else:
             return points
-
-
-
 
     #TIME TRACKER FUNCTION
     def time_tracker_start(): #start can either be True or False

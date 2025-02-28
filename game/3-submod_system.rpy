@@ -44,6 +44,8 @@ init -999 python:
     #  Start Submod System
     #==================================================#
     print("Checking for submods...")
+    request_dev_access = False
+
     if not os.path.isdir(paths.submods[2]):
         print("Creating submods folder...")
         os.mkdir(paths.submods[2])
@@ -81,7 +83,7 @@ init -999 python:
                     submod.version = str(modinfo.get("version", submod.version))
                     submod.description = modinfo.get("description", submod.description)
                     submod.dependencies = modinfo.get("dependencies", submod.dependencies)
-
+                    request_dev_access = modinfo.get("developer_mode", request_dev_access)
                     if submod.description:
                         submod.description = str(submod.description)
                     if type(submod.dependencies) == str:
@@ -116,5 +118,8 @@ init -999 python:
                     print_error(KeyError("Submod " + submod.id + " is missing dependency " + parse_mod_id(dependency)), path=(submod.path, config.basedir))
                     should_continue = False
     if not should_continue:
-        print_fatal(KeyError("One or more submods are missing dependencies. Read error.log for more info"))        
+        print_fatal(KeyError("One or more submods are missing dependencies. Read error.log for more info"))
+    if request_dev_access:
+        print("One or more mods have requested developer mode. Enabling developer mode...")
+        dev_access = True
     print("Mod loading complete! Loaded " + str(submods.mod_count) + " mod(s)")

@@ -8,8 +8,8 @@ label random_farewell:
         if persistent.locked_farewells == None:
             persistent.locked_farewells = []
         x = [1, 2, 3, 4, 5, 15, 16, 17]
-        ks_convert_i = sanity()
-        ks_convert_k = karma()
+        ks_convert_i = sanity_lvl()
+        ks_convert_k = karma_lvl()
 
         #conditionals
         if ks_convert_k == 2 or ks_convert_k == 1:
@@ -307,7 +307,7 @@ label farewell_13: #flag orient to the new tracking system
         jump farewell_1
 
 label farewell_14:
-    if karma() <= 2:
+    if karma_lvl() <= 2:
         $show_chr("A-ADBBB-ALAL")
         y "Whatever you do, wherever you go, please don't let me become a memory that's just waiting to be forgotten."
         jump save_and_quit

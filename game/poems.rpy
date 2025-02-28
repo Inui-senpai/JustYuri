@@ -140,8 +140,8 @@ galabia,,pertinents expedients witty,,chirographies crachach unsatisfactoriness 
 erveless,,flawed sepulchred thanksgiver scrawl skug,,perorate stringers gelatine f\
 lagstones,,chuses conceptualization surrejoined,,counterblasts rache,,numerative,,de\
 lirifacients methylthionine,,mantram dynamist atomised,,eternization percalines hr\
-yvnias pragmatizing,,reproachfulnesses telework nowts demoded revealer,,burnettize\
- caryopteris subangular wirricows,,transvestites sinicized narcissus,,hikers meno,,\
+yvnias pragmatizing,,reproachfulnesses telework nowts demoded revealer,,burnettize \
+caryopteris subangular wirricows,,transvestites sinicized narcissus,,hikers meno,,\
 degassing,,postcrises alikenesses,,sycophancy seroconverting insure,,yantras raphid\
 es cliftiest bosthoon,,zootherapy chlorides nationwide schlub yuri,,timeshares cas\
 tanospermine backspaces reincite,,coactions cosignificative palafitte,,poofters su\
@@ -161,15 +161,15 @@ enneling halters,,peripheral congaing,,diatomicity,,foolings repayments,,hereabo
 vamosed him,,slanters moonrock porridgy monstruous,,heartwood bassoonist predispos\
 itions jargoon dominances,,timidest inalienable rewearing inevitably,,entreating r\
 etiary tranquillizing,,uniparental droogs,,allotropous,,forzati abiogenetic,,obdurat\
-ion exempted unifaces,,epilating calisaya dispiteously coggles,,vestmented flukily\
- ignifying complished hiccupy municipalize,,pentagraphs parcels sutler excavates,,\
+ion exempted unifaces,,epilating calisaya dispiteously coggles,,vestmented flukily \
+ignifying complished hiccupy municipalize,,pentagraphs parcels sutler excavates,,\
 stardust miscited thankfulness,,fouter pertused,,overpacks,,guarishes hylotheism,,pi
-Fresh blood seeps through the line parting her skin and slowly colors her breast red.\
- I begin to hyperventilate as my compulsion grows. The images won't go away. Images of\
- me driving the knife into her flesh continuously, fucking her body with the blade, \
+Fresh blood seeps through the line parting her skin and slowly colors her breast red. \
+I begin to hyperventilate as my compulsion grows. The images won't go away. Images of \
+me driving the knife into her flesh continuously, fucking her body with the blade, \
 making a mess of her. My head starts going crazy as my thoughts start to return. \
-Shooting pain assaults my mind along with my thoughts. This is disgusting. Absolutely\
- disgusting. How could I ever let myself think these things? But it's unmistakable. \
+Shooting pain assaults my mind along with my thoughts. This is disgusting. Absolutely \
+disgusting. How could I ever let myself think these things? But it's unmistakable. \
 The lust continues to linger through my veins. An ache in my muscles stems from the \
 unreleased tension experienced by my entire body. Her Third Eye is drawing me closer."""
     )
@@ -517,8 +517,8 @@ Viol nt, grating w vef rms
 Sq e king, screech ng, piercing
 SINE, COSINE, TANGENT
     Like play ng a ch lkboard on a t rntable
-        Like playing a KNIFE on a BREATHING RIBCAGE
- n  ndl ss
+        Like playing a KNIFE on a BREATHING RIBCAGE 
+n  ndl ss
 p  m
 Of m  n ngl ss\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n
 Delete Her
@@ -539,7 +539,7 @@ And all that was ever sought.
 And here I am,
 
 
-              a feather
+                a feather
 
 
 Lost adrift the sky, victim of the currents of the wind.
@@ -914,7 +914,7 @@ could it be me
 
 or should it be emptiness
 
- blades cutting deep
+blades cutting deep
 
 but not in my skin
 
@@ -928,7 +928,7 @@ could it be me
 
 or should it be the sins
 
- after the cryptic tale is told
+after the cryptic tale is told
 
 and the shadows start to grow
 
@@ -936,7 +936,7 @@ when the plot has yet to unfold
 
 that is at least as far as i know
 
- love is the thing that is keeping me going
+love is the thing that is keeping me going
 
 it keeps the darkness from overflowing
 

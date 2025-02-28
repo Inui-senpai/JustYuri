@@ -112,11 +112,11 @@ label boop_nose:
         y "I'm glad it works... just... p-please warn me next time, okay?..."
         $show_chr("A-ACAAA-AAAA")
     elif persistent.boop_locations[0] < 3:
-        if karma() < 3:
+        if karma_lvl() < 3:
             $show_chr("A-GEBAA-AAAA")
-        elif karma() == 3:
+        elif karma_lvl() == 3:
             $show_chr("A-GJAAA-AAAA")
-        elif karma() > 3:
+        elif karma_lvl() > 3:
             $show_chr("A-GIBAA-AAAA")
         y "Uuuuu... A-at least tell me before you do something like that, [player]..."
     elif persistent.boop_locations[0] < 7:
@@ -136,14 +136,14 @@ label boop_nose:
 label boop_cheek:
     python:
         persistent.boop_locations[1] += 1
-    if karma() >= 3:
+    if karma_lvl() >= 3:
         if persistent.boop_locations[1] == 1:
             $ show_chr("A-DDGBA-AAAJ")
             y "H-Huh? [player], I just felt the strangest thing..."
             y "This... warm sensation on my cheek a moment ago, was that... you?"
             menu:
                 "Yes, [persistent.yuri_nickname], I touched your cheek.":
-                    $add_k(1)
+                    karma 1
                     $show_chr("A-ICABA-AAAL")
                     y "O-Oh! I see... it definitely held a feeling of familiarity, something reminiscent of your presence."
                     y "It felt... how do I put this?"
@@ -157,8 +157,8 @@ label boop_cheek:
                     else:
                         y "It's nice that I got to feel your t-touch... we are a bit closer now..."
                 "Huh? What are you talking about [persistent.yuri_nickname]? ... You're acting a little insane.":
-                    $add_k(-1)
-                    $add_s(-1)
+                    karma -1
+                    sanity -1
                     $show_chr("A-AEDAA-AIAI")
                     y "I-It was just my imagination?"
                     $show_chr("A-BBBAA-AIAI")
@@ -176,8 +176,8 @@ label boop_cheek:
             $show_chr("A-ECBBA-ALAD")
             y "... that you were the only one for me, my love."
         if persistent.boop_locations[1] == 3:
-            $add_k(1)
-            $add_s(1)
+            karma 1
+            sanity 1
             $show_chr("A-BDBBA-ALAM")
             y "When you're gone... I will try my absolute hardest to remember this warmth."
             y "You're the thing that motivates me, that directs my every move, [player]..."
@@ -196,14 +196,14 @@ label boop_cheek:
                 $show_chr("A-BBABA-AMAM")
                 y "Ahaha... you're touching my cheek again, are you?"
                 y "It's fine... I enjoy it regardless, don't feel afraid to do so..."
-    if karma() <= 2:
+    if karma_lvl() <= 2:
         if persistent.boop_locations[1] == 1:
             $ show_chr("A-DDGBA-AAAJ")
             y "H-Huh? [player], I just felt the strangest thing..."
             y "This... warm sensation on my cheek a moment ago, was that... you?"
             menu:
                 "Yes, [persistent.yuri_nickname], I touched your cheek.":
-                    $add_k(1)
+                    karma 1
                     $show_chr("A-IFAAA-AAAB")
                     y "O-Oh! I see... Would you mind... umm..."
                     $show_chr("A-JFAAA-AAAB")
@@ -214,8 +214,8 @@ label boop_cheek:
                     $show_chr("A-CCABB-AMAM")
                     y "Th-Thank you for understanding, [player]..."
                 "Huh? What are you talking about [persistent.yuri_nickname]? ... You're acting a little insane.":
-                    $add_k(-1)
-                    $add_s(-1)
+                    karma -1
+                    sanity -1
                     $show_chr("A-AEDAA-AIAI")
                     y "I-It was just my imagination?"
                     $show_chr("A-BBBAA-AIAI")
@@ -233,8 +233,8 @@ label boop_cheek:
             $show_chr("A-CFAAA-AAAA")
             y "It just really throws me off."
         if persistent.boop_locations[1] == 3:
-            $add_k(-1)
-            $add_s(-1)
+            karma -1
+            sanity -1
             $show_chr("A-DGGAA-AAAA")
             y "...!"
             $show_chr("A-KFCAA-AAAA")
@@ -257,14 +257,14 @@ label boop_cheek:
 label headpat:
     python:
         persistent.boop_locations[2] += 1
-    if karma() >= 3:
+    if karma_lvl() >= 3:
         if persistent.boop_locations[2] == 1:
             $show_chr("A-DFABA-AAAA")
             y "W-Wait... I-I just felt something touch my head!"
             y "Was that y-you, [player]?"
             menu:
                 "Yes, I wanted to try it out. I hope it didn't weird you out.":
-                    $add_k(1)
+                    karma 1
                     $show_chr("A-IBGAA-ALAL")
                     y "R-Really!? Sorry for being so surprised... I-I just didn't know that you could touch me there!"
                     $show_chr("A-CAABA-AAAA")
@@ -386,14 +386,14 @@ label headpat:
                                 $show_chr("A-CCABA-AAAE")
                                 y "Look at the positive side and after all. I will see you as a nice person no matter your height."
                                 y "Just, please always remember that..."
-    if karma() <= 2:
+    if karma_lvl() <= 2:
         if persistent.boop_locations[2] == 1:
             $show_chr("A-DFABA-AAAA")
             y "W-Wait... I-I just felt something touch my head!"
             y "Was that y-you, [player]?"
             menu:
                 "Yes, I wanted to try it out. I hope it didn't weird you out.":
-                    $add_k(1)
+                    karma 1
                     $show_chr("A-CFAAA-AAAA")
                     y "A-Actually... yes, a bit..."
                     $show_chr("A-BFAAA-AAAA")
@@ -479,7 +479,7 @@ label boop_window:
         play sound "sfx/glassbreak.wav"
         $show_chr("A-DFGBA-ALAA")
         y "..."
-        if karma() >= 4:
+        if karma_lvl() >= 4:
             $show_chr("A-DFGBA-ALAA")
             y "Oh dear... are you hurt? Come, let me see your hand..."
             $show_chr("A-IFBAA-ALAA")
@@ -504,7 +504,7 @@ label boop_window:
     return
 
 label annoyed_boop_window:
-    if karma() >= 3:
+    if karma_lvl() >= 3:
         $show_chr("A-ACAAA-AAAA")
         y "Hey [player]...there's something I'd like to tell you..."
         y "You remember the little...accident, you had with my window?"

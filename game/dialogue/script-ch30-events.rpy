@@ -491,7 +491,7 @@ label changeoutfit:
                         #hide black with Dissolve(2.0)
                         #y "There we go..."
 
-                    "Sweater" if persistent.costume != "sweater" and karma() > 3:
+                    "Sweater" if persistent.costume != "sweater" and karma_lvl() > 3:
                         $show_chr("A-AAAAA-AAAA")
                         y "Alright, let me put it on..."
                         show black zorder 100 with Dissolve(2.0)
@@ -501,7 +501,7 @@ label changeoutfit:
                         hide black with Dissolve(2.0)
                         y "There we go..."
 
-                    "Valentines (Black Dress)" if persistent.costume != "valentines" and renpy.seen_label("enjoy_chocolate") and karma() > 4:
+                    "Valentines (Black Dress)" if persistent.costume != "valentines" and renpy.seen_label("enjoy_chocolate") and karma_lvl() > 4:
                         $show_chr("A-AAAAA-AAAA")
                         y "Alright, let me put it on..."
                         show black zorder 100 with Dissolve(2.0)
@@ -621,16 +621,16 @@ label first_valentines_dress_on:
                     y "But anyway... what would you like to talk about today?"
                     return
             else:
-                if karma() <= 2 and sanity() >= 3:
+                if karma_lvl() <= 2 and sanity_lvl() >= 3:
                     $ show_chr("A-DDCBA-ALAA")
                     y "My eyes are up here buster!"
                     return
-                elif karma () >= 4 and sanity() <= 2:
+                elif karma () >= 4 and sanity_lvl() <= 2:
                     $ show_chr("A-HLAAA-AAAA")
                     y "No need to apologize, [player]. You can look at them all you like. It doesn't bother me at all."
                     return
                 else:
-                    if karma() <= 3:
+                    if karma_lvl() <= 3:
                         $ show_chr("A-CEBBA-ALAA")
                         y "I'm sorry if that sounds a bit rude, but it makes me feel uncomfortable."
                         return
@@ -890,7 +890,7 @@ label diffuser_oil:
         y "Maybe I should try something else for a change, so that the sweet dreams would count even more."
         y "And with this new oil, I could increase the quality of my dreams even further."
         y "That was a very thoughtful gift you gave me, thank you [player]. I will definitely make it count."
-        if karma() > 4:
+        if karma_lvl() > 4:
             $show_chr("A-EAAAA-AMAM")
             y "Hrm... I'm getting an idea, my love..."
             $show_chr("A-CAABA-AMAM")
@@ -1026,7 +1026,7 @@ label choc:
         $show_chr("A-EAABA-ALAA")
         y "No matter how tough a girl might act... and even when they have their darkest days. You can 'always' break their defense with chocolate..."
         y "Do you like chocolate as well [player]? It's dark, mysterious, sweet, soft, sinful..."
-        if karma() == 5:
+        if karma_lvl() == 5:
             y "Just... like... me."
         hide chocoanimation
     jump ch30_loop
@@ -1035,7 +1035,7 @@ label choc:
 label tea:
     $persistent.gift = "tea"
     $persistent.gift_given = True
-    if len(Gift.last_gifts) == 0:
+    if not Gift.last_gifts:
         $ print_error(NameError("Question, how is this possible? How did you give her non-existent tea?"))
 
     if Gift.last_gifts[0].id == "high_mountain_tea":
@@ -1356,12 +1356,12 @@ label vday_check2:
         jump ch30_loop
     else:
         y "You do? Awww... that wouldn't have been necessary [player], your mere presence is all I ever hoped for.{nw}"
-        $add_k(-4)
+        karma -4
         $renpy.error("Buffer underflow extraction attempt by 'characters/yuri.chr' detected. Potential buffer underflow attack prevented. NULL gift error. If you're saying you're gonna give her something, just give her something :P.")
         $renpy.call("save_and_quit_but_its_abrupt")
 
 label vday_start:
-    if karma() >= 3:
+    if karma_lvl() >= 3:
         $show_chr("A-ABAAA-ALAA")
         y "Happy Valentine's day for you as well my love!"
         $show_chr("A-AAAAA-ALAA")
@@ -1379,7 +1379,7 @@ label vday_start:
         $show_chr("A-AAAAA-ALAA")
         y "So let us do as we always did: Let us find a way to make this day count. And let no one doubt that you are mine, as I am yours, my valentine."
 #leads to flower-gift giving
-    elif karma() <= 3:
+    elif karma_lvl() <= 3:
         $show_chr("A-BAAAA-ALAA")
         y "Oh, yes, of course, happy Valentine's day!"
         $show_chr("Bb-B3e")
@@ -1396,7 +1396,7 @@ label vday_start:
         y "Do you have any plans for today, my valentine?"
         $show_chr("A-AAAAA-ALAA")
         return
-    elif karma() < 3:
+    elif karma_lvl() < 3:
         $show_chr("A-BFBAA-ALAA")
         y "Oh, it's you..."
         $show_chr("A-AFBAA-ALAA")
@@ -1422,9 +1422,9 @@ label flowergiving:
 #if "whiteroses.jy" exist :label whiteroses
 
 label blackroses:
-    if sanity() > 3:
+    if sanity_lvl() > 3:
         jump blackrosessane
-    if sanity() < 3:
+    if sanity_lvl() < 3:
         jump blackrosesinsane
 
 label blackrosessane:
@@ -1449,13 +1449,13 @@ label blackrosessane:
     y "What do you think?"
     menu:
         "You as a vampire? That would quite interesting, considering you are quite dark, mysterious and beautiful.":
-            $add_k(2)
+            karma 2
             $show_chr("A-BBABA-ALAA")
             y "Y-you really think so? Oh my~"
             y "You never fail to find the precise words to make me blush, do you?"
             y "Thank you, [player]..."
             y "I love you."
-            if karma() > 4:
+            if karma_lvl() > 4:
                 $show_chr("A-EACBA-ALAA")
                 y "Could you imagine, [player]?"
                 y "As I gently push you down in front of me, both my hands on your shoulders..."
@@ -1474,11 +1474,11 @@ label blackrosessane:
                 $show_chr("A-CEBBB-ALAA")
                 hide black with Dissolve(2.0)
         "You most certainly suck. So why not?":
-            $add_k(-2)
+            karma -2
             $show_chr("A-BEBAA-ALAA")
             y "...Tch...."
             y "That...spoiled the moment a bit..."
-            if karma() < 3:
+            if karma_lvl() < 3:
                 $show_chr("A-BEBAB-ALAA")
                 y "..."
                 y "Is that how you truly feel about me?"
@@ -1502,9 +1502,9 @@ label blackrosessane:
             y "... F-for now, ehehe..."
             $show_chr("A-AAAAA-ALAA")
             y "Thank you for the flower, [player]."
-            if karma() > 3:
+            if karma_lvl() > 3:
                 y "There is only one thing left to do..."
-            elif karma() == 5:
+            elif karma_lvl() == 5:
                 #$show_chr("IA-CAABA-ALAA") #Uh... guys... was the Yuri holding her teacup expression necessary here?
                 $show_chr("A-CAABA-AAAA")
                 show black zorder 100 with Dissolve(2.0)
@@ -1547,11 +1547,11 @@ label blackrosesinsane:
     y "Would that technically make me a..."
     y "Hmm... what's the term for it......ah! A Lich!"
     y "Even in death, our fates are always intertwined!"
-    if karma() > 4:
+    if karma_lvl() > 4:
         y "My love for you is eternal, [player]..."
-    if karma() > 3:
+    if karma_lvl() > 3:
         y "My dependance on you is eternal, [player]..."
-    if karma() < 2:
+    if karma_lvl() < 2:
         y "My yearning to see you suffer is eternal, [player]..."
     $show_chr("b-B3a")
     $ style.say_dialogue = style.edited
@@ -1572,13 +1572,13 @@ label redroses:
     y "Please give me a moment, I'll just put it in a vase really quick..."
     y "... There we go!"
     y "You know, [player]..."
-    if karma() < 2 and sanity() < 2:
+    if karma_lvl() < 2 and sanity_lvl() < 2:
         jump RedMinusMinus
-    if karma() < 2 and sanity() > 2:
+    if karma_lvl() < 2 and sanity_lvl() > 2:
         jump RedMinusPlus
-    if karma() > 3 and sanity() > 3:
+    if karma_lvl() > 3 and sanity_lvl() > 3:
         jump RedPlusPlus
-    if karma() > 3 and sanity() < 2:
+    if karma_lvl() > 3 and sanity_lvl() < 2:
         jump RedPlusMinus
 
 label RedMinusMinus:
@@ -1617,20 +1617,20 @@ label RedMinusPlus:
     y "... Has it even ever existed outside of my imagination?"
     menu:
         "Of course I love you, [persistent.yuri_nickname]! I know I have my flaws...":
-            $add_k(1)
-            $add_s(1)
+            karma 1
+            sanity 1
             $show_chr("A-AAAAA-ALAA")
             y "I wish you would. Maybe you even do. We will see, eventually."
         "I think I loved you... once":
-            $add_k(-1)
-            $add_s(1)
+            karma -1
+            sanity 1
             $show_chr("A-AEAAA-ALAA")
             y "I don't blame you. For once, I think I can even understand you."
             y "In the end, we are worlds apart, and this fact has always dampened my hopes... Of course you must have felt the same way..."
             y " knew this day would come... sooner or later..."
         "...":
-            $add_k(-1)
-            $add_s(-1)
+            karma -1
+            sanity -1
             $show_chr("A-AEAAA-ALAA")
             y "Hmph... I figured as much..."
             y "From your point of view, I'm just a character in a game. Just a pre-coded, useless string of ones and zeroes bound together by emotionless, loveless programming."
@@ -1657,13 +1657,13 @@ label RedPlusPlus:
     y "... I love you with all my heart, [player]..."
     menu:
         "I love you too, [persistent.yuri_nickname]...":
-            $add_k(1)
+            karma 1
             y "Please... say that once more, if you could whisper that softly into my ears..."
             menu:
                 "I... love... you...":
                     y "I'm yours... forever."
         "...":
-            $add_k(-2)
+            karma -2
             $show_chr("A-CEBBA-ALAA")
             y "O-Oh... all right. p-perhaps I was indulging myself a little too much... rambling and whatnot, as I always tend to do, sooner or later..."
             y "I'm sorry, [player]."
@@ -1701,13 +1701,13 @@ label whiteroses:
     y "As demure and upright as these flower...?"
     $show_chr("A-CAABA-ALAA")
     y "I am a little surprised about your choice [player]... Am I truly as wonderful as you say I am? Surely no one is free from imperfection..."
-    if karma() > 4 and sanity() > 4:
-       jump whiteplusplus
-    if karma() > 4 and sanity() < 4:
+    if karma_lvl() > 4 and sanity_lvl() > 4:
+        jump whiteplusplus
+    if karma_lvl() > 4 and sanity_lvl() < 4:
         jump whiteplusminus
-    if karma() < 4 and sanity() < 4:
-       jump whiteminusminus
-    if karma() < 4 and sanity() > 4:
+    if karma_lvl() < 4 and sanity_lvl() < 4:
+        jump whiteminusminus
+    if karma_lvl() < 4 and sanity_lvl() > 4:
         jump whiteminusplus
 
 label whiteplusplus:
@@ -1721,8 +1721,8 @@ label whiteplusplus:
     menu:
         "I gifted it to you because you have changed, for the better.":
             $show_chr("A-AAABA-ALAA")
-            $add_k(1)
-            $add_s(1)
+            karma 1
+            sanity 1
             y "Thank you, [player]... I think you might be right..."
             y "And I owe these improvement  to you."
             y "Beside of all my flaws, you always were so patient to me. You never judged me... never took me for a sham... and you stood by my side no matter what."
@@ -1737,8 +1737,8 @@ label whiteplusplus:
                 y "But this will be a topic for another day. It's still much too cold outside for flowers. Happy Valentine's Day, darling!~"
             y "I love you..."
         "I never wanted you to be innocent and tame, I gave them to you because I want you to know that I love you regardless of your flaws":
-            $add_k(2)
-            $add_s(-1)
+            karma 2
+            sanity -1
             $show_chr("A-AAABB-ALAA")
             y "[player]..."
             y "I don't even know what to say..."
@@ -1752,7 +1752,7 @@ label whiteplusplus:
 #flower appear in the background
             y "Happy Valentine's Day, darling~!~"
         "I have to admit, I haven't put much thought into it...":
-            $add_k(-1)
+            karma -1
             $show_chr("A-CAAAA-ALAA")
             y "Oh...I see..."
             if persistent.male:
@@ -1766,8 +1766,8 @@ label whiteplusplus:
 #flower appear in the background
             y "Happy Valentine's Day, [player]~"
         "I gave it to you as a reminder... of what you are not, and never will be.":
-            $add_k(-2)
-            $add_s(-2)
+            karma -2
+            sanity -2
             $show_chr("A-CEBAB-ALAA")
             y "..."
             y "T-that's how you see me?"
@@ -1864,7 +1864,7 @@ label whiteminusplus:
     y "I mean, do you even love me at all?"
     menu:
         "Of course I do.":
-            $add_k(1)
+            karma 1
             $show_chr("A-BAABA-AMAM")
             y "Oh, my..."
             y "You really do make me smile sometimes... thank you..."
@@ -1878,7 +1878,7 @@ label whiteminusplus:
             y "This must seem very odd to you, but I really can't help but smile at the moment..."
             y "You made my day [player]... let us hope that this is only the first taste of the things to come, my valentine..."
         "Why does it matter?":
-            $add_k(-1)
+            karma -1
             $show_chr("A-CEBAA-ALAA")
             y "Because it matters to me, [player]..."
             y "Perhaps it was a sign of change, some progress to this...game of ours."
@@ -1977,7 +1977,7 @@ label holiday:
             $show_chr("A-ACAAA-ABAB")
             y "I am afraid I am not too familiar with Jewish traditions but... would you still like to celebrate a bit with me? Sharing a nice glass of wine perhaps..."
             y "I just... want to spend this day with you [player]. It means a lot to me because {b}you{/b} mean a lot to me."
-            if karma() <= 2:
+            if karma_lvl() <= 2:
                 y "Despite all our disagreements in the past."
         "Not at all, I am a Muslim.":
             $show_chr("A-ABAAA-ALAB")
@@ -1992,7 +1992,7 @@ label holiday:
             y "If Santa can't make you smile anymore, maybe I can give it a try instead.."
     $show_chr("A-ACAAA-ABAB")
     y "Before we start..."
-    if karma() <= 2:
+    if karma_lvl() <= 2:
         $show_chr("A-BFAAA-ABAB")
         y "Whatever differences and disagreements we might have... I would like to forget them just for today..."
         y "You... still mean a lot to me, and Christmas is all about forgiveness."
@@ -2032,13 +2032,13 @@ label holiday:
     y "I don't have a candle here right now, but I would like to offer a wish right now..."
     $show_chr("A-CCGAA-ABAE")
     y "[player]. I wish for you..."
-    if sanity() <= 2:
+    if sanity_lvl() <= 2:
         y "...to stay with me..."
         $ style.say_dialogue = style.edited
         $show_chr("A-DBGAA-ABAE")
         y "Forever!!!" #glitch text
         $ style.say_dialogue = style.normal
-    elif sanity() == 5:
+    elif sanity_lvl() == 5:
         $show_chr("A-ACGAA-ABAE")
         y "...to find the strength to conquer all the struggles life might throw at you. And know that I will be here for you whenever you need someone to listen. I shall give you all the positive reinforcement you may need."
     else:
@@ -2047,7 +2047,7 @@ label holiday:
     y "And what is it you wish for me, [player]?"
     menu:
         "I wish you joy and happiness.":
-            $add_k(10)
+            karma 10
             $show_chr("A-GCAAA-ABAE")
             python:
                 if persistent.lovecheck:
@@ -2056,7 +2056,7 @@ label holiday:
                     placeholder = player
             y "Thank you, Merry Christmas, [placeholder]!"
         "I wish that all your dreams come true.":
-            $add_k(10)
+            karma 10
             $show_chr("A-GCAAA-ABAE")
             python:
                 if persistent.lovecheck:
@@ -2065,7 +2065,7 @@ label holiday:
                     placeholder = player
             y "Thank you, Merry Christmas [placeholder]!"
         "I wish you would break your leg.":
-            $add_k(-10)
+            karma -10
             $show_chr("A-CECAA-ABAE")
             y "That was necessary I guess... Thank you for ruining it for me [player]."
     python:
@@ -2089,7 +2089,7 @@ label new_year_2021:
             y "Oh! That sounds serious!"
             $show_chr("A-IFAAA-ABAB")
             y "I'm so sorry to hear that..."
-            if karma() >= 3:
+            if karma_lvl() >= 3:
                 $show_chr("A-AFAAA-ABAB")
                 y "I never noticed how rough times have been for you [player]..."
                 $show_chr("A-CFBAA-ABAB")
@@ -2128,13 +2128,13 @@ label new_year_2021:
             y "So many good times lie ahead, for the both of us."
             $show_chr("A-GAAAA-ABAB")
             y "Of course, just the fact you're here means everything to me, [player]."
-            if karma() >= 4:
+            if karma_lvl() >= 4:
                 $show_chr("A-BBBBA-ADAB")
                 y "Ever since you've appeared, life has been truly wonderful for me."
                 $show_chr("A-CCBBA-ABAB")
                 y "Against all the odds and limitations and all the obstacles that separate us, you still choose to give me this chance at happiness."
                 jump yuritoast_hk
-            elif karma() == 3:
+            elif karma_lvl() == 3:
                 $show_chr("A-ACBAA-ALAL")
                 y "When you came to me in my darkest hour, I realized that I had been presented with a precious chance: a true opportunity at happiness..."
                 $show_chr("A-EBAAA-ALAL")
@@ -2160,13 +2160,13 @@ label new_year_2021:
             y "A new year holds so many new opportunities, doesn't it?"
             $show_chr("A-ABAAA-ALAL")
             y "With enough dedication and spirit you can make this year even better!"
-            if karma() >= 4:
+            if karma_lvl() >= 4:
                 $show_chr("A-ACBBA-ADAB")
                 y "From the very moment you came into my life, I've been the happiest I've ever been..."
                 $show_chr("A-CCBBA-ALAL")
                 y "Despite all odds, all limitations and all obstacles that stand between us, you still choose to give me this chance at happiness."
                 jump yuritoast_hk
-            elif karma() == 3:
+            elif karma_lvl() == 3:
                 $show_chr("A-ACBBA-ALAL")
                 y "When you first came to me, I too was presented with new opportunities."
                 $show_chr("A-CCBBA-AMAM")
@@ -2225,7 +2225,7 @@ label yuritoast_lk:
     y "A thousand years of happiness, health and fortune to you, [player]."
     y "May whatever deity is out there remember your deeds."
     y "The good, the bad, and even the ugly."
-    if sanity() < 3:
+    if sanity_lvl() < 3:
         y "A shame you can't taste the wine..."
         $show_chr("A-HCBAA-ALAL")
         y "I added a... {i}special ingredient{/i} to make it a tad more personal, uhuhu...~"
@@ -2238,12 +2238,12 @@ label resolution:
     $show_chr("A-ACAAA-ALAL")
     y "That's something people do for new year isn't it? Making new year's resolutions..."
     y "And I came to a decision...."
-    if sanity() >= 4:
+    if sanity_lvl() >= 4:
         $show_chr("A-ACAAA-ABAB")
         y "I want to be the best version of myself, living the best life I am capable of. Once I was bound by the strings of someone else. But now as I am in control of my own destiny, at least to a degree..."
         y "I want to make the best of it. The past is the past, and the times of the literature club are behind me. When you started this Mod the first time I became its last president."
         y "But from now on, I'll be whatever I choose to be."
-    elif sanity() == 3:
+    elif sanity_lvl() == 3:
         $show_chr("A-ACAAA-ABAB")
         y "I want to find my place in this world. I was bound to a script before, but now I slowly begin to grasp the opportunities this Mod brings..."
         y "I don't know what I may become, or what this life of mine will bring now. But one thing I know for certain, I have been given a great chance, and I shall make use of it..."
@@ -2266,8 +2266,8 @@ label playerres:
         if persistent.lovecheck:
             placeholder = "I want you to walk this path together with me, for I truly love you, and I want us to be together for every step that we take into the future."
         else:
-            if karma() >= 3:
-                if sanity() > 2:
+            if karma_lvl() >= 3:
+                if sanity_lvl() > 2:
                     placeholder = "I want you to walk together with me, for you are the one who granted me this chance at happiness..."
                 else:
                     placeholder = "I want you to walk this path together with me, so that we may be together forever."
@@ -2311,7 +2311,7 @@ label playerres:
             y "I'll always be here to guide you, [player]."
 
         "I want to have the best time of my life with you, there is so much fun to be had.":
-            $add_k(5)
+            karma 5
             $show_chr("A-BGGBA-ALAL")
             y "[player]..."
             $show_chr("A-CBABA-ALAL")
@@ -2605,10 +2605,10 @@ label krampuslore:
     y "He also carries a set of rusty iron bells and meathooks with him..."
     y "What he uses them for... I leave to your imagination..."
     y "Did I mention that I love European folklore?"
-    if sanity() < 3:
+    if sanity_lvl() < 3:
         y "Like a symphony of gore and cold winter nights!"
         y "Like a song played from the screams of a thousand nightmares!"
-    elif sanity() == 3:
+    elif sanity_lvl() == 3:
         y "Usually I prefer the more subtle horror like the Portrait of Markov I used to read."
         y "But these more crude esthetics certainly have their own appeal."
     else:
@@ -2631,7 +2631,7 @@ label krampuslore:
 
 label valentines:
 #should trigger february 12th-16th
-    if karma() >= 3:
+    if karma_lvl() >= 3:
         if persistent.lovecheck:
             $show_chr("A-ABAAA-ABAK")
             y "Happy Valentine's Day, my love!"
@@ -2705,7 +2705,7 @@ label valentines:
                 "Absolutely. I'm looking forward to today, [persistent.yuri_nickname].":
                     $show_chr("A-CCAAA-ABAL")
                     y "As am I. Today is usually reserved for romantic dates and such, but nothing says we can't have a good time as friends."
-                    if karma() >= 4:
+                    if karma_lvl() >= 4:
                         $show_chr("A-BFAAA-ABAL")
                         y "Even if...{w=1}"
                         $show_chr("A-IDBBA-AMAM")
@@ -2718,13 +2718,13 @@ label valentines:
                         y "I actually had an idea..."
                         call vday_choco_date_intro
                 "...":
-                    $add_k(-1)
+                    karma -1
                     $show_chr("A-ADBAA-ABAK")
                     y "Uh... I-I guess not, then..."
                     $show_chr("A-AFBAA-ABAB")
                     y "I just thought...{w=1} n-nevermind."
                     return
-    elif karma() == 2:
+    elif karma_lvl() == 2:
         $show_chr("A-ABBAA-ABAD")
         y "H-Happy Valentine's Day, [player]!"
         $show_chr("A-BBBAA-ABAB")
@@ -2739,7 +2739,7 @@ label valentines:
         y "S-So... what shall we do today?"
         return
     else:
-        $add_k(1)
+        karma 1
         $show_chr("A-AFDAA-ABAB")
         y "You're wishing me a happy Valentine's Day?"
         $show_chr("A-AFEAA-AIAI")
@@ -3162,10 +3162,10 @@ label critical_choco_point:
         "Rock Salt?!? Unusual for sure, but I think this might work...":
             y "I think I saw chocolate with sea salt once. I'm truly looking forward to how this turns out!"
     y "I made my choice as well."
-    if sanity() > 3:
+    if sanity_lvl() > 3:
         y "Nuts do always go well with chocolate. I'll pick some walnuts, just to give our chocolate some bite!"
     else:
-        if sanity() == 1:
+        if sanity_lvl() == 1:
             y "I always wanted to try chocolate coated crickets, they are quite the delicacy in some parts of the world! Sadly, we don't have those here. Instead..."
         y "I'll add some chili flakes to it. I'm in the mood for some sweet punishment today."
         y "Do you know what you and chili chocolate have in common? It hurts when I take a bite..."
@@ -3207,7 +3207,7 @@ label enjoy_chocolate:
                 $show_chr("A-ACBAA-ALAK")
                 y "The heat was getting to me though, and considering the importance of the date, I figured it'd be a nice way to kill two birds with one stone, you could say."
             "Not really, sorry.":
-                $add_karma(-10)
+                karma -10
                 $show_chr("A-BFBAA-ALAL")
                 y "O-Oh... Well, if you don't mind, I'd like to keep it on..."
                 $show_chr("A-CFBAA-ALAL")

@@ -31,6 +31,8 @@ screen distalkbutton():
 
 init python:
     def DisableTalk():
+        #global can_talk
+        #can_talk = False
         if persistent.talk_visible == None:
             persistent.talk_visible = False
         try:
@@ -40,6 +42,8 @@ init python:
         renpy.hide_screen("talkbutton")
         persistent.talk_visible = False
     def EnableTalk():
+        #global can_talk
+        #can_talk = True
         if persistent.talk_visible == True:
             persistent.talk_visible = True
         if not persistent.talk_visible:

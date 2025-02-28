@@ -9,14 +9,15 @@
 
 #==================================================#
 # Pre Initialization
-#==================================================#    
+#==================================================#
 python early:
-    import os, shutil, datetime, singleton, random, subprocess, base64, string, math, time, webbrowser, json, traceback
+    import os, shutil, datetime, singleton, random, subprocess, base64, string, math, time, webbrowser, json, traceback, inspect, rstr
     import re as regex
     #import jycrypt
     from typing import Any
     
-
+    dev_access = not "scripts" in config.archives
+    initial_dev_access = bool(dev_access)
     me = singleton.SingleInstance()
     today = datetime.date.today()
     sys.path.append(os.path.join(renpy.config.gamedir, 'python-packages'))
@@ -33,6 +34,79 @@ python early:
         linux_display = Display() # Gets the default display in linux
         linux_root = linux_display.screen().root # Gets the root window in linux to get important information
 
+    def get_home_directory():
+        if initial_dev_access:
+            return os.path.join(config.gamedir, "saves")
+
+        if renpy.macintosh:
+            return os.path.expanduser("~/Library/RenPy/")
+        elif renpy.windows:
+            if 'APPDATA' in os.environ:
+                return os.environ['APPDATA'] + "/RenPy/"
+            else:
+                return os.path.expanduser("~/RenPy/")
+        else:
+            return os.path.expanduser("~/.renpy/")
+
+    def copy_file(file_path, new_file_path):
+        with open(file_path, "rb") as file:
+            with open(new_file_path, "wb") as new_file:
+                from shutil import copyfileobj
+                copyfileobj(file, new_file)
+
+    def load_persistent(file_path):
+        from renpy.compat.pickle import loads
+        from glob import glob
+        import codecs
+        path = glob(os.path.join(file_path, "persistent"))
+
+        if path:
+            path = path[0]
+            with open(path,"rb") as file:
+                persistent_data = codecs.decode(file.read(), encoding='zlib', errors='strict')
+                persistent_var = loads(persistent_data)
+                
+                persistent_data = vars(persistent_var)
+                for key, value in sorted(persistent_data.items()):
+                    try:
+                        setattr(persistent_var, key, value)
+                    except:
+                        pass
+                return persistent_var
+        return None
+    
+    def save_persistent(persistent_var, file_path, file_name = "persistent"):
+        from renpy.compat.pickle import dumps
+        import zlib
+
+        if file_path and file_name:
+            path = os.path.join(file_path, file_name)
+            with open(path,"wb") as file:
+                print("Attempting to write...")
+                try:
+                    persistent_data = dumps(persistent_var)
+                    compressed = zlib.compress(persistent_data, 3)
+                    compressed += renpy.savetoken.sign_data(persistent_data).encode("utf-8")
+                    file.write(compressed)
+                    print("- Success")
+                except Exception as e:
+                    print_error(e, False)
+
+    def apply_persistent(persistent_var, overwrite=True):
+        if not persistent_var:
+            print_error(NameError("Failed to apply persistent as it is None"))
+        persistent_data = vars(persistent_var)
+        for key, value in sorted(persistent_data.items()):
+            try:
+                if not overwrite and hasattr(persistent, key):
+                    continue
+                setattr(persistent, key, value)
+            except:
+                pass
+
+    save_directory = get_home_directory() if initial_dev_access else os.path.join(get_home_directory(), "JustYuri")
+    backup_directory = os.path.join(save_directory, "backups")
+
 #==================================================#
 # Initialization
 #==================================================#
@@ -40,7 +114,6 @@ define current_label = None
 
 init -999 python:
     print("Loading " + config.name + " - " + config.version + "..." + os.linesep + "-------------------------------")
-    dev_access = config.developer
     dismiss_keys = config.keymap['dismiss']
     allow_dialogue = False
     allow_skipping = False
@@ -89,7 +162,7 @@ init -999 python:
     for archive in ['fonts']:
         if not archive in config.archives:
             renpy.error("DDLC archive files not found in /game folder. Check installation and try again.")
-
+    
     #If game closed with HDY enabled, disable it
     persistent.HDY = False
 

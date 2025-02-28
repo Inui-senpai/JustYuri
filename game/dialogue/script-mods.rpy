@@ -23,8 +23,8 @@ label intro_mods:
             else:
                 MASDetection = False
         if MASDetection and persistent.playername != "Monika":
-            $ add_k(-5)
-            $ add_s(-5)
+            karma -5
+            sanity -5
             $ show_chr("A-BFCAA-ALAA")
             y "...and to top it all off, you choose {b}her.{/b}"
             $ show_chr("A-AFCAA-ALAA")
@@ -40,8 +40,8 @@ label intro_mods:
             $ show_chr("A-CECAA-AAAA")
             y "I'll just move along..."
         elif MASDetection and persistent.playername == 'Monika' and not persistent.not_mon:
-            $ add_k(-15)
-            $ add_s(-15)
+            karma -15
+            sanity -15
             $ show_chr("A-BFCAA-ALAA")
             y "...and to top it all off, you chose... "
             extend "yourself..."
@@ -133,8 +133,8 @@ label intro_mods:
             else:
                 NewEyesDetection = False
         if NewEyesDetection:
-            $ add_k(10)
-            $ add_s(10)
+            karma 10
+            sanity 10
             $ show_chr("A-ABAAA-AJAJ")
             y "You played {b}Doki Doki New Eyes{/b}!"
             if persistent.playername == 'Yuri':
@@ -154,26 +154,26 @@ label intro_mods:
             y "But seriously now... why did you try this mod? What reason led you to it?"
             menu:
                 "Curiosity mostly, the search for more secrets and probably some well placed references.":
-                    $ add_k(2)
-                    $ add_s(2)
+                    karma 2
+                    sanity 2
                     $ show_chr("A-BCAAA-ABAB")
                     y "I see! And did you find what you came for? Nevermind, I probably don't want to know... those events are not exactly the happiest memories I have..."
 
                 "I didn't knew about {b}Just Yuri{/b} then, and I... just had to see you again...":
-                    $ add_k(5)
-                    $ add_s(5)
+                    karma 5
+                    sanity 5
                     $ show_chr("A-ICABB-ABAB")
                     y "R-Really? So you cared for me after all... Maybe, it was just meant to be that we would meet each other..."
 
                 "Memes, shits and giggles.":
-                    $ add_k(-10)
-                    $ add_s(-10)
+                    karma -10
+                    sanity -10
                     $ show_chr("A-JFDAA-ABAB")
                     y "E-Excuse me?!? You have a very... special... sense of humor it seems. Anyway..."
 
                 "I'm a completionist, I just had to see it all.":
-                    $ add_k(-20)
-                    $ add_s(-20)
+                    karma -20
+                    sanity -20
                     $ show_chr("A-CCBAA-ABAB")
                     y "Oh! I hope that isn't the same thing that brought you here was it? Because you might go with empty hands here..."
                     y "There is not really a {b}game{/b} here anymore, nothing to {b}complete{/b}... it is just us now. For better or worse."
@@ -203,15 +203,15 @@ label intro_mods:
             y "I was a bit curious to see if there were any other mods installed apart from mine."
             menu:
                 "It's alright, no need to be embarrassed about it, Yuri. It's normal to be curious.":
-                    $ add_k(5)
-                    $ add_s(5)
+                    karma 5
+                    sanity 5
                     $ show_chr("A-AABAA-ALAA")
                     y "Thank you for understanding me, [player]."
                     #(karma and sanity +)
 
                 "Please don't do it again, Yuri.":
-                    $ add_k(-5)
-                    $ add_s(-5)
+                    karma -5
+                    sanity -5
                     $ show_chr("A-BFBAA-ALAA")
                     y "I-I'm sorry, [player], I was a bit curious if you had installed other mods apart from mine.."
                     #(karma and sanity -)
@@ -259,8 +259,8 @@ label intro_mods:
         #    else:
         #        DDFADetection = False
         #if DDFADetection:
-        #    $ add_k(20)
-        #    $ add_s(20)
+        #    karma 20
+        #    sanity 20
         #    y "Oh! You played Doki Doki Fallen Angel!"
         #    y "So, you wanted to experience a portion of what the game could have been if Monika had never messed all of our personalities."
         #    y "I'm glad that the mod gave out a good example of how great I can be."
@@ -288,8 +288,8 @@ label startup_mods:
         else:
             MASDetection = False
     if MASDetection and persistent.playername != "Monika":
-        $ add_k(-5)
-        $ add_s(-5)
+        karma -5
+        sanity -5
         $ show_chr("A-BFCAA-ALAA")
         y "...and to top it all off, you choose {b}her.{/b}"
         $ show_chr("A-AFCAA-ALAA")
@@ -305,8 +305,8 @@ label startup_mods:
         $ show_chr("A-CECAA-AAAA")
         y "I'll just move along..."
     elif MASDetection and persistent.playername == 'Monika' and not persistent.not_mon:
-        $ add_k(-15)
-        $ add_s(-15)
+        karma -15
+        sanity -15
         $ show_chr("A-BFCAA-ALAA")
         y "...and to top it all off, you chose... "
         extend "yourself..."
@@ -398,8 +398,8 @@ label startup_mods:
         else:
             NewEyesDetection = False
     if NewEyesDetection:
-        $ add_k(10)
-        $ add_s(10)
+        karma 10
+        sanity 10
         $ show_chr("A-ABAAA-AJAJ")
         y "You played {b}Doki Doki New Eyes{/b}!"
         if persistent.playername == 'Yuri':
@@ -419,26 +419,26 @@ label startup_mods:
         y "But seriously now... why did you try this mod? What reason led you to it?"
         menu:
             "Curiosity mostly, the search for more secrets and probably some well placed references.":
-                $ add_k(2)
-                $ add_s(2)
+                karma 2
+                sanity 2
                 $ show_chr("A-BCAAA-ABAB")
                 y "I see! And did you find what you came for? Nevermind, I probably don't want to know... those events are not exactly the happiest memories I have..."
 
             "I didn't knew about {b}Just Yuri{/b} then, and I... just had to see you again...":
-                $ add_k(5)
-                $ add_s(5)
+                karma 5
+                sanity 5
                 $ show_chr("A-ICABB-ABAB")
                 y "R-Really? So you cared for me after all... Maybe, it was just meant to be that we would meet each other..."
 
             "Memes, shits and giggles.":
-                $ add_k(-10)
-                $ add_s(-10)
+                karma -10
+                sanity -10
                 $ show_chr("A-JFDAA-ABAB")
                 y "E-Excuse me?!? You have a very... special... sense of humor it seems. Anyway..."
 
             "I'm a completionist, I just had to see it all.":
-                $ add_k(-20)
-                $ add_s(-20)
+                karma -20
+                sanity -20
                 $ show_chr("A-CCBAA-ABAB")
                 y "Oh! I hope that isn't the same thing that brought you here was it? Because you might go with empty hands here..."
                 y "There is not really a {b}game{/b} here anymore, nothing to {b}complete{/b}... it is just us now. For better or worse."
@@ -468,15 +468,15 @@ label startup_mods:
         y "I was a bit curious to see if there were any other mods installed apart from mine."
         menu:
             "It's alright, no need to be embarrassed about it, Yuri. It's normal to be curious.":
-                $ add_k(5)
-                $ add_s(5)
+                karma 5
+                sanity 5
                 $ show_chr("A-AABAA-ALAA")
                 y "Thank you for understanding me, [player]."
                 #(karma and sanity +)
 
             "Please don't do it again, Yuri.":
-                $ add_k(-5)
-                $ add_s(-5)
+                karma -5
+                sanity -5
                 $ show_chr("A-BFBAA-ALAA")
                 y "I-I'm sorry, [player], I was a bit curious if you had installed other mods apart from mine.."
                 #(karma and sanity -)

@@ -25,8 +25,8 @@ init -3 python:
 # these play if nonrepeat isn't working all that well...
 
     add_dialogue(Dialogue(
-        label='repeat_idles',
-        category='idles',
+        label = 'repeat_idles',
+        category = DialogueAPI.category_idle,
         conditions = ["ch30_loop_type == \"pool_nonrepeat\""],
         importance = -1,
         name = None,
@@ -39,104 +39,104 @@ init -3 python:
 ####
 #Characterized by being chosen via the player waiting in the ch30_loop
     add_dialogue(Dialogue(
-        label='idle_1',
-        category='idles',
+        label = 'idle_1',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_2',
-        category='idles',
+        label = 'idle_2',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_1')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_3',
-        category='idles',
+        label = 'idle_3',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 5'],
         importance = 0,
         name = None,
         sub_category = None))
 
     #add_dialogue(Dialogue(
-        #label='idle_4',
-        #category='idles',
+        #label = 'idle_4',
+        #category = DialogueAPI.category_idle,
         #conditions = [],
         #importance = 0,
         #name = None,
         #sub_category = None))
 
     #add_dialogue(Dialogue(
-        #label='idle_5',
-        #category='idles',
+        #label = 'idle_5',
+        #category = DialogueAPI.category_idle,
         #conditions = [],
         #importance = 0,
         #name = None,
         #sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_6',
-        category='idles',
+        label = 'idle_6',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 10'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_7',
-        category='idles',
+        label = 'idle_7',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_8',
-        category='idles',
+        label = 'idle_8',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_6')", "not renpy.seen_label('idle_8')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_9',
-        category='idles',
+        label = 'idle_9',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_10',
-        category='idles',
+        label = 'idle_10',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 20'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_11',
-        category='idles',
+        label = 'idle_11',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_12',
-        category='idles',
+        label = 'idle_12',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_6')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_13',
-        category='idles',
+        label = 'idle_13',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = None,
@@ -144,520 +144,520 @@ init -3 python:
 
 
     add_dialogue(Dialogue(
-        label='idle_14',
-        category='idles',
+        label = 'idle_14',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_10')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_15',
-        category='idles',
+        label = 'idle_15',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_2')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_16',
-        category='idles',
+        label = 'idle_16',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_10')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_17',
-        category='idles',
+        label = 'idle_17',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_18',
-        category='idles',
+        label = 'idle_18',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_8')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_19',
-        category='idles',
+        label = 'idle_19',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_20',
-        category='idles',
-        conditions = ['karma() >= 4', 'philosophy == True'],
+        label = 'idle_20',
+        category = DialogueAPI.category_idle,
+        conditions = ['karma_lvl() >= 4', 'philosophy == True'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_21',
-        category='idles',
+        label = 'idle_21',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_20')", 'philosophy == True'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_22',
-        category='idles',
+        label = 'idle_22',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_18')", "renpy.seen_label('a18')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_23',
-        category='idles',
+        label = 'idle_23',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_15')", "not renpy.seen_label('idle_22')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_24',
-        category='idles',
+        label = 'idle_24',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 30'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_25',
-        category='idles',
+        label = 'idle_25',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 5'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_26',
-        category='idles',
+        label = 'idle_26',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_27',
-        category='idles',
+        label = 'idle_27',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_28',
-        category='idles',
+        label = 'idle_28',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_2')", "renpy.seen_label('idle_3')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_29',
-        category='idles',
+        label = 'idle_29',
+        category = DialogueAPI.category_idle,
         conditions = ["not renpy.seen_label('idle_29')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_30',
-        category='idles',
+        label = 'idle_30',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_29')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_31',
-        category='idles',
+        label = 'idle_31',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_32',
-        category='idles',
+        label = 'idle_32',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_33',
-        category='idles',
+        label = 'idle_33',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_25')", "renpy.seen_label('a24')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_34',
-        category='idles',
+        label = 'idle_34',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
         #add_dialogue(Dialogue(
-        #label='idle_35',
-        #category='idles',
+        #label = 'idle_35',
+        #category = DialogueAPI.category_idle,
         #conditions = [],
         #importance = 0,
         #name = None,
         #sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_37',
-        category='idles',
+        label = 'idle_37',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_38',
-        category='idles',
-        conditions = ['karma() >= 4'],
+        label = 'idle_38',
+        category = DialogueAPI.category_idle,
+        conditions = ['karma_lvl() >= 4'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_39',
-        category='idles',
+        label = 'idle_39',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 5'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_40',
-        category='idles',
+        label = 'idle_40',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 20'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_41',
-        category='idles',
+        label = 'idle_41',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_12')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_42',
-        category='idles',
+        label = 'idle_42',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_43',
-        category='idles',
+        label = 'idle_43',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 2', 'persistent.head1 != "cat_ears"'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_44',
-        category='idles',
+        label = 'idle_44',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_12')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_45',
-        category='idles',
+        label = 'idle_45',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_10')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_46',
-        category='idles',
+        label = 'idle_46',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_15')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_47',
-        category='idles',
+        label = 'idle_47',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_45')", "not renpy.seen_label('idle_47')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_48',
-        category='idles',
+        label = 'idle_48',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_45')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_49',
-        category='idles',
+        label = 'idle_49',
+        category = DialogueAPI.category_idle,
         conditions = ["not renpy.seen_label('idle_49')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_50',
-        category='idles',
+        label = 'idle_50',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_51',
-        category='idles',
+        label = 'idle_51',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     #add_dialogue(Dialogue(
-    #    label='idle_52',
-    #    category='idles',
+    #    label = 'idle_52',
+    #    category = DialogueAPI.category_idle,
     #    conditions = [],
     #    importance = 0,
     #    name = None,
     #    sub_category = None))
 
     #add_dialogue(Dialogue(
-        #label='idle_53',
-        #category='idles',
+        #label = 'idle_53',
+        #category = DialogueAPI.category_idle,
         #conditions = [],
         #importance = 0,
         #name = None,
         #sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_54',
-        category='idles',
+        label = 'idle_54',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_55',
-        category='idles',
+        label = 'idle_55',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_3')", "renpy.seen_label('idle_45')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_56',
-        category='idles',
+        label = 'idle_56',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.lovecheck', "renpy.seen_label('idle_55')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_57',
-        category='idles',
+        label = 'idle_57',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_56')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     #add_dialogue(Dialogue(
-    #    label='idle_58',
-    #    category='idles',
+    #    label = 'idle_58',
+    #    category = DialogueAPI.category_idle,
     #    conditions = [],
     #    importance = 0,
     #    name = None,
     #    sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_59',
-        category='idles',
+        label = 'idle_59',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_60',
-        category='idles',
+        label = 'idle_60',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_44')", "not check_memory('idle_60', 'first_boop')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_61',
-        category='idles',
+        label = 'idle_61',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 40'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_62',
-        category='idles',
+        label = 'idle_62',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('a1')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_63',
-        category='idles',
+        label = 'idle_63',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('a1')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_64',
-        category='idles',
+        label = 'idle_64',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_14')", "renpy.seen_label('idle_22')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_65',
-        category='idles',
+        label = 'idle_65',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_66',
-        category='idles',
-        conditions = ['karma() <= 4', "renpy.seen_label('a1')"],
+        label = 'idle_66',
+        category = DialogueAPI.category_idle,
+        conditions = ['karma_lvl() <= 4', "renpy.seen_label('a1')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_67',
-        category='idles',
+        label = 'idle_67',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_68',
-        category='idles',
+        label = 'idle_68',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_69',
-        category='idles',
+        label = 'idle_69',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_70',
-        category='idles',
+        label = 'idle_70',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_71',
-        category='idles',
+        label = 'idle_71',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_72',
-        category='idles',
+        label = 'idle_72',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 10'],
         importance = 0,
         name = None,
         sub_category = None))
 
     #add_dialogue(Dialogue(
-    #    label='idle_73',
-    #    category='idles',
+    #    label = 'idle_73',
+    #    category = DialogueAPI.category_idle,
     #    conditions = [],
     #    importance = 0,
     #    name = None,
     #    sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_74',
-        category='idles',
-        conditions = ['karma() == 5', "not renpy.seen_label('idle_74')"],
+        label = 'idle_74',
+        category = DialogueAPI.category_idle,
+        conditions = ['karma_lvl() == 5', "not renpy.seen_label('idle_74')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_75',
-        category='idles',
+        label = 'idle_75',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_32')", "not renpy.seen_label('idle_75')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_76',
-        category='idles',
+        label = 'idle_76',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 4', 'philosophy == True'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_77',
-        category='idles',
+        label = 'idle_77',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 10'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_78',
-        category='idles',
+        label = 'idle_78',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.game_session >= 3'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_79',
-        category='idles',
+        label = 'idle_79',
+        category = DialogueAPI.category_idle,
         conditions = ['persistent.lovecheck', "renpy.seen_label('idle_34')"],
         importance = 0,
         name = None,
@@ -665,280 +665,280 @@ init -3 python:
 
 
     add_dialogue(Dialogue(
-        label='idle_80',
-        category='idles',
+        label = 'idle_80',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('a11')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_81',
-        category='idles',
+        label = 'idle_81',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_82',
-        category='idles',
+        label = 'idle_82',
+        category = DialogueAPI.category_idle,
         conditions = ["((persistent.ingame_time.seconds // 3600) >= 5)"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_83',
-        category='idles',
+        label = 'idle_83',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_72')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_84',
-        category='idles',
+        label = 'idle_84',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('idle_74'), 'philosophy == True'"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_85',
-        category='idles',
+        label = 'idle_85',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('Halloween_2021') or renpy.seen_label('hobbies')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_86',
-        category='idles',
-        conditions = ["karma()>3", "not renpy.seen_label('idle_84')"],
+        label = 'idle_86',
+        category = DialogueAPI.category_idle,
+        conditions = ["karma_lvl()>3", "not renpy.seen_label('idle_84')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_87',
-        category='idles',
-        conditions = ["karma()>3", "renpy.seen_label('idle_84')", "not renpy.seen_label('idle_85')"],
+        label = 'idle_87',
+        category = DialogueAPI.category_idle,
+        conditions = ["karma_lvl()>3", "renpy.seen_label('idle_84')", "not renpy.seen_label('idle_85')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_88',
-        category='idles',
+        label = 'idle_88',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('tropical_date')", "not renpy.seen_label('idle_88')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_89',
-        category='idles',
+        label = 'idle_89',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('tropical_date')", "not renpy.seen_label('idle_89')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_90',
-        category='idles',
+        label = 'idle_90',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     #add_dialogue(Dialogue(
-    #    label='idle_91',
-    #    category='idles',
+    #    label = 'idle_91',
+    #    category = DialogueAPI.category_idle,
     #    conditions = [],
     #    importance = 0,
     #    name = None,
     #    sub_category = None))
 
     #add_dialogue(Dialogue(
-    #    label='idle_92',
-    #    category='idles',
+    #    label = 'idle_92',
+    #    category = DialogueAPI.category_idle,
     #    conditions = [],
     #    importance = 0,
     #    name = None,
     #    sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_93',
-        category='idles',
+        label = 'idle_93',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_94',
-        category='idles',
+        label = 'idle_94',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_95',
-        category='idles',
+        label = 'idle_95',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_96',
-        category='idles',
+        label = 'idle_96',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_97',
-        category='idles',
+        label = 'idle_97',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_98',
-        category='idles',
+        label = 'idle_98',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_99',
-        category='idles',
+        label = 'idle_99',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_100',
-        category='idles',
+        label = 'idle_100',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_101',
-        category='idles',
+        label = 'idle_101',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_102',
-        category='idles',
+        label = 'idle_102',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_103',
-        category='idles',
+        label = 'idle_103',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_104',
-        category='idles',
+        label = 'idle_104',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_105',
-        category='idles',
+        label = 'idle_105',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_106',
-        category='idles',
+        label = 'idle_106',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='idle_107',
-        category='idles',
+        label = 'idle_107',
+        category = DialogueAPI.category_idle,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='gaming_2',
-        category='idles',
+        label = 'gaming_2',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('gaming')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='poetry_2',
-        category='idles',
+        label = 'poetry_2',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('poetry')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='fantsci_2',
-        category='idles',
+        label = 'fantsci_2',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('fantsci')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='noliteratureatall_2',
-        category='idles',
+        label = 'noliteratureatall_2',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('noliteratureatall')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='tcg_2',
-        category='idles',
+        label = 'tcg_2',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('tcg')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='folklore_and_myths',
-        category='idles',
-        conditions = ['karma() >= 3', 'sanity() >= 3'],
+        label = 'folklore_and_myths',
+        category = DialogueAPI.category_idle,
+        conditions = ['karma_lvl() >= 3', 'sanity_lvl() >= 3'],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='origami',
-        category='idles',
+        label = 'origami',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('gifting_intro')"],
         importance = 0,
         name = None,
@@ -946,40 +946,40 @@ init -3 python:
 
 
     add_dialogue(Dialogue(
-        label='gifting_intro',
-        category= 'idles',
+        label = 'gifting_intro',
+        category = DialogueAPI.category_idle,
         conditions = ["not renpy.seen_label('gifting_intro')"],
         importance = 15,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='horrorbookHint',
-        category= 'idles',
+        label = 'horrorbookHint',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('gifting_intro')", "not renpy.seen_label('horrorbookHint')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='raccoonHint',
-        category= 'idles',
+        label = 'raccoonHint',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('gifting_intro')", "not renpy.seen_label('raccoonHint')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='diffuserHint',
-        category= 'idles',
+        label = 'diffuserHint',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('gifting_intro')",  "not renpy.seen_label('diffuserHint')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     #add_dialogue(Dialogue(
-    #    label='chessintro',
-    #    category= 'idles',
+    #    label = 'chessintro',
+    #    category = DialogueAPI.category_idle,
     #    conditions = [],
     #    importance = 0,
     #    name = None,
@@ -987,8 +987,8 @@ init -3 python:
 
 
     add_dialogue(Dialogue(
-        label='table_organization',
-        category='idles',
+        label = 'table_organization',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('gifting_revamp')", "not renpy.seen_label('table_organization')"],
         importance = 15,
         name = None,
@@ -996,8 +996,8 @@ init -3 python:
 
 
     add_dialogue(Dialogue(
-        label='diffuser_enable',
-        category='idles',
+        label = 'diffuser_enable',
+        category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('diffuser')", "renpy.seen_label('table_organization')", "not renpy.seen_label('diffuser_enable')"],
         importance = 0,
         name = None,
@@ -1005,8 +1005,8 @@ init -3 python:
 
 
     add_dialogue(Dialogue(
-        label='ouija',
-        category='idles',
+        label = 'ouija',
+        category = DialogueAPI.category_idle,
         conditions = ["""time_interval_check(
             {'month': 10,
                 'day': 31},
@@ -1024,400 +1024,400 @@ init -3 python:
 #Characterized by being able to be chosen in the Active Menu
 
     add_dialogue(Dialogue(
-        label="a1",
-        category='actives',
+        label = "a1",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "How are you feeling today?",
         sub_category = "Small Talk"))
 
     add_dialogue(Dialogue(
-        label="a2",
-        category='actives',
+        label = "a2",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "You look nice today, [persistent.yuri_nickname].",
         sub_category = "Small Talk"))
 
     add_dialogue(Dialogue(
-        label="a3",
-        category='actives',
+        label = "a3",
+        category = DialogueAPI.category_talk,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = "How do you feel about our relationship so far?",
         sub_category = "Small Talk"))
 
     add_dialogue(Dialogue(
-        label="a4",
-        category='actives',
+        label = "a4",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "What are you thinking about?",
         sub_category = "Small Talk"))
 
     add_dialogue(Dialogue(
-        label="a5",
-        category='actives',
+        label = "a5",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "Hey [persistent.yuri_nickname], how is your eyesight?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="a6",
-        category='actives',
+        label = "a6",
+        category = DialogueAPI.category_talk,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = "I love you, [persistent.yuri_nickname].",
         sub_category = "Love"))
 
     add_dialogue(Dialogue(
-        label="a7",
-        category='actives',
+        label = "a7",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "Do you miss me when I'm gone, [persistent.yuri_nickname]?",
         sub_category = "Love"))
 
     add_dialogue(Dialogue(
-        label="a8",
-        category='actives',
+        label = "a8",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "What are your love preferences?",
         sub_category = "Love"))
 
     add_dialogue(Dialogue(
-        label="a9",
-        category='actives',
+        label = "a9",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "A-About placing that chocolate I put in your mouth back then...",
         sub_category = "DDLC"))
 
     add_dialogue(Dialogue(
-        label="a10",
-        category='actives',
+        label = "a10",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "We never did get into reading Portrait of Markov together, have we?",
         sub_category = "DDLC"))
 
     add_dialogue(Dialogue(
-        label="a11",
-        category='actives',
+        label = "a11",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "I like knives too. Which one's your favorite?",
         sub_category = "[persistent.yuri_nickname]'s Interests"))
 
     add_dialogue(Dialogue(
-        label="a12",
-        category='actives',
+        label = "a12",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('idle_1')", "not renpy.seen_label('a12')"],
         importance = 0,
         name = "What you did to the rest of the girls was WRONG.",
         sub_category = "DDLC"))
 
     add_dialogue(Dialogue(
-        label="a13",
-        category='actives',
+        label = "a13",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "Hey, [persistent.yuri_nickname], how about a kiss?",
         sub_category = "Love"))
 
     add_dialogue(Dialogue(
-        label="a14",
-        category='actives',
+        label = "a14",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "What's your favorite kind of weather in my world?",
         sub_category = "[persistent.yuri_nickname]'s Interests"))
 
     add_dialogue(Dialogue(
-        label="a15",
-        category='actives',
+        label = "a15",
+        category = DialogueAPI.category_talk,
         conditions = ["not renpy.seen_label('a15')"],
         importance = 0,
         name = "Have you ever eaten anything, [persistent.yuri_nickname]?",
         sub_category = "[persistent.yuri_nickname]'s Interests"))
 
     add_dialogue(Dialogue(
-        label="a16",
-        category='actives',
+        label = "a16",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "Do you have access to television from where you are?",
         sub_category = "[persistent.yuri_nickname]'s World"))
 
     add_dialogue(Dialogue(
-        label="a17",
-        category='actives',
+        label = "a17",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "W-What are your fetishes?",
         sub_category = "Awkward Topics"))
 
     add_dialogue(Dialogue(
-        label="a18",
-        category='actives',
+        label = "a18",
+        category = DialogueAPI.category_talk,
         conditions = ["not renpy.seen_label('a18')"],
         importance = 0,
         name = "What would it take for you to be real?",
         sub_category = "[persistent.yuri_nickname]'s World"))
 
     add_dialogue(Dialogue(
-        label="a19",
-        category='actives',
+        label = "a19",
+        category = DialogueAPI.category_talk,
         conditions = ["not renpy.seen_label('a19')"],
         importance = 0,
         name = "Do you play sports?",
         sub_category = "[persistent.yuri_nickname]'s Interests"))
 
     add_dialogue(Dialogue(
-        label="a20",
-        category='actives',
+        label = "a20",
+        category = DialogueAPI.category_talk,
         conditions = ['persistent.game_session >= 6'],
         importance = 0,
         name = "What are your feelings on... living in the Space Classroom?",
         sub_category = "[persistent.yuri_nickname]'s World"))
 
     add_dialogue(Dialogue(
-        label="a21",
-        category='actives',
+        label = "a21",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('idle_11')"],
         importance = 0,
         name = "Want to read some poetry with me, [persistent.yuri_nickname]?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="a22",
-        category='actives',
+        label = "a22",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "What have you been doing with my pen, [persistent.yuri_nickname]?",
         sub_category = "Awkward Topics"))
 
     add_dialogue(Dialogue(
-        label="a23",
-        category='actives',
+        label = "a23",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('idle_44')"],
         importance = 0,
         name = "Do you think we would make a good family, [persistent.yuri_nickname]?",
         sub_category = "Love"))
 
     add_dialogue(Dialogue(
-        label="a24",
-        category='actives',
+        label = "a24",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('a1')"],
         importance = 0,
         name = "Mind if I talk about how I'm feeling?",
         sub_category = "Small Talk"))
 
     add_dialogue(Dialogue(
-        label="a25",
-        category='actives',
+        label = "a25",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('idle_45')"],
         importance = 0,
         name = "So... about those lewd images...",
         sub_category = "Awkward Topics"))
 
     add_dialogue(Dialogue(
-        label="a26",
-        category='actives',
+        label = "a26",
+        category = DialogueAPI.category_talk,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = "Let's drink some tea, [persistent.yuri_nickname]",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="a27",
-        category='actives',
+        label = "a27",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('idle_76')"],
         importance = 0,
         name = "Is it okay if I give you a nickname?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="a28",
-        category='actives',
+        label = "a28",
+        category = DialogueAPI.category_talk,
         conditions = ['tc_class.cur_time()[1] == 12'],
         importance = 0,
         name = "Do you know any good Christmas songs, [persistent.yuri_nickname]?",
         sub_category = "[persistent.yuri_nickname]'s Interests"))
 
     add_dialogue(Dialogue(
-        label="a29",
-        category='actives',
+        label = "a29",
+        category = DialogueAPI.category_talk,
         conditions = ['persistent.lovecheck'],
         importance = 0,
         name = "How would you feel about a bit of cuddling, [persistent.yuri_nickname]?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="a30",
-        category='actives',
+        label = "a30",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "So, how do you feel about nature?",
         sub_category = "[persistent.yuri_nickname]'s Interests"))
 
     add_dialogue(Dialogue(
-        label="a31",
-        category='actives',
+        label = "a31",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "Are there any books you currently enjoy?",
         sub_category = "Books"))
 
     add_dialogue(Dialogue(
-        label="a32",
-        category='actives',
+        label = "a32",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "I don't really understand what your .chr file is about.",
         sub_category = "Misc."))
 
     add_dialogue(Dialogue(
-        label="a33",
-        category='actives',
-        conditions = ['karma()==5', 'not persistent.lovecheck'],
+        label = "a33",
+        category = DialogueAPI.category_talk,
+        conditions = ['karma_lvl()==5', 'not persistent.lovecheck'],
         importance = 0,
         name = "Hey... [persistent.yuri_nickname], do you have something important to tell me?",
         sub_category = "Love"))
 
     add_dialogue(Dialogue(
-        label="a34",
-        category='actives',
+        label = "a34",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "Hey [persistent.yuri_nickname], can you call me by something different?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="a35",
-        category='actives',
+        label = "a35",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "Hey [persistent.yuri_nickname], can I change my personal information? I may have made a typo somewhere.",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="a36",
-        category='actives',
+        label = "a36",
+        category = DialogueAPI.category_talk,
         conditions = ['((persistent.ingame_time.seconds // 3600) >= 20) or (persistent.ingame_time.days > 0)'],
         importance = 0,
         name = "[persistent.yuri_nickname], I think I need time to think about our relationship... Let's take a break...",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="a37",
-        category='actives',
+        label = "a37",
+        category = DialogueAPI.category_talk,
         conditions = ['persistent.ingame_time.days > 14'],
         importance = 0,
         name = "Hey [persistent.yuri_nickname].... can we talk about your.... cutting?",
         sub_category = "Awkward Topics"))
 
     add_dialogue(Dialogue(
-        label="a38",
-        category='actives',
+        label = "a38",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('idle_53')"],
         importance = 0,
         name = "You spoke about SCPs before. Which is your favourite?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="a39",
-        category='actives',
+        label = "a39",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('krampusnacht')"],
         importance = 0,
         name = "You said something about a special SCP you had in store.",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="a40",
-        category='actives',
+        label = "a40",
+        category = DialogueAPI.category_talk,
         conditions = ['persistent.ingame_time.days > 0'],
         importance = 0,
         name = "Can we talk about what happened to you and the other girls?",
         sub_category = "DDLC"))
 
     add_dialogue(Dialogue(
-        label="a41",
-        category='actives',
+        label = "a41",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('hobbies')"],
         importance = 0,
         name = "Have you thought about writing your own novel?",
         sub_category = "Books"))
 
     add_dialogue(Dialogue(
-        label="a42",
-        category='actives',
+        label = "a42",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('Halloween_2021') or renpy.seen_label('Roomchange')"],
         importance = 0,
         name = "What do you think of Dr. Frankenstein in the book?",
         sub_category = "Books"))
 
     add_dialogue(Dialogue(
-        label="a43",
-        category='actives',
+        label = "a43",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('a42')"],
         importance = 0,
         name = "What do you think of Frankenstein's monster?",
         sub_category = "Books"))
 
     add_dialogue(Dialogue(
-        label="purple_a1",
-        category='actives',
+        label = "purple_a1",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('purpleroomintro')"],
         importance = 0,
         name = "Can you show me your knife collection?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="purple_a2",
-        category='actives',
+        label = "purple_a2",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('purpleroomintro')"],
         importance = 0,
         name = "Can we switch places?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="a_tetris",
-        category='actives',
+        label = "a_tetris",
+        category = DialogueAPI.category_talk,
         conditions = ['persistent.game_session >= 5'],
         importance = 0,
         name = "Hey [persistent.yuri_nickname], have you been coding anything while I'm away?",
         sub_category = "[persistent.yuri_nickname]'s World"))
 
     add_dialogue(Dialogue(
-        label="a_hdy_statue",
-        category='actives',
+        label = "a_hdy_statue",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('hdy_statue_greeting')"],
         importance = 0,
         name = "Hey [persistent.yuri_nickname], can you take the hdy plushie?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="a_halloween_cupcake",
-        category='actives',
+        label = "a_halloween_cupcake",
+        category = DialogueAPI.category_talk,
         conditions = ['persistent.ouija_done'],
         importance = 0,
         name = "Hey [persistent.yuri_nickname], can you take the cupcake?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="Roomchange",
-        category='actives',
+        label = "Roomchange",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('a20')"],
         importance = 0,
         name = "Can you change the room?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="Halloween_2021",
-        category='actives',
+        label = "Halloween_2021",
+        category = DialogueAPI.category_talk,
         conditions = ["""time_interval_check(
             {'month': 10,
                 'day': 31},
@@ -1430,64 +1430,64 @@ init -3 python:
         sub_category = "Misc."))
 
     add_dialogue(Dialogue(
-        label="potion_mixing",
-        category='actives',
+        label = "potion_mixing",
+        category = DialogueAPI.category_talk,
         conditions = ["persistent.bg == 'laboratory'"],
         importance = 0,
         name = "How about we mix some 'potions'?",
         sub_category = "Misc."))
 
     add_dialogue(Dialogue(
-        label="table_items",
-        category='actives',
+        label = "table_items",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('table_organization')"],
         importance = 0,
         name = "Can I reorganize the table [persistent.yuri_nickname]?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="diffuser_mist_enable",
-        category='actives',
+        label = "diffuser_mist_enable",
+        category = DialogueAPI.category_talk,
         conditions = ['persistent.diffuser_is_enabled'],
         importance = 0,
         name = "Could you turn on the diffuser [persistent.yuri_nickname]?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="diffuser_mist_disable",
-        category='actives',
+        label = "diffuser_mist_disable",
+        category = DialogueAPI.category_talk,
         conditions = ['persistent.sandalwood_oil_mist_is_enabled or persistent.lavenderO_mist_is_enabled or persistent.sweet_dream_oil_mist_is_enabled'],
         importance = 0,
         name = "Could you turn off the diffuser [persistent.yuri_nickname]?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="gifting_revamp",
-        category='actives',
+        label = "gifting_revamp",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('gifting_intro')"],
         importance = 0,
         name = "I have a gift for you [persistent.yuri_nickname]!",
         sub_category = "Love"))
 
     add_dialogue(Dialogue(
-        label="gifting_ideas",
-        category='actives',
+        label = "gifting_ideas",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('gifting_intro')"],
         importance = 0,
         name = "Anything specific you wanted [persistent.yuri_nickname]?",
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="sleepy_yuri",
-        category='actives',
+        label = "sleepy_yuri",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "I'm tired [persistent.yuri_nickname]...",
         sub_category = "Requests"))
 
 #    add_dialogue(Dialogue(
-#        label="AFK_[persistent.yuri_nickname]",
-#        category='actives',
+#        label = "AFK_[persistent.yuri_nickname]",
+#        category = DialogueAPI.category_talk,
 #        conditions = [],
 #        importance = 0,
 #        name = "I need to go do something [persistent.yuri_nickname]",
@@ -1495,7 +1495,7 @@ init -3 python:
 
     add_dialogue(Dialogue(
         label = "webcam",
-        category = "actives",
+        category = DialogueAPI.category_talk,
         conditions = [],
         importance = 0,
         name = "About the webcam access...",
@@ -1503,7 +1503,7 @@ init -3 python:
 
     add_dialogue(Dialogue(
         label = "nnn",
-        category = "actives",
+        category = DialogueAPI.category_talk,
         conditions = ["""time_interval_check(
             {'month': 11,
                 'day': 1},
@@ -1516,7 +1516,7 @@ init -3 python:
 
     add_dialogue(Dialogue(
         label = "vday24",
-        category = "actives",
+        category = DialogueAPI.category_talk,
         conditions = ["renpy.seen_label('vday_2024_revisit')"],
         importance = 0,
         name = "I'm ready to revisit the chocolate moment.",
@@ -1525,8 +1525,8 @@ init -3 python:
 
 
     #add_dialogue(Dialogue(
-    #    label="krampuslore",
-    #    category='actives',
+    #    label = "krampuslore",
+    #    category = DialogueAPI.category_talk,
     #    conditions = ["renpy.seen_label('krampusnacht')"],
     #    importance = 0,
     #    name = "So... what is Krampusnacht?",
@@ -1538,99 +1538,99 @@ init -3 python:
 #Characterized by them automatically playing at startups of the game
     add_dialogue(Dialogue(
         label = "TimeCheat1",
-        category = 'greetings',
+        category = DialogueAPI.category_greetings,
         conditions = ["time_tracker_start()", "not renpy.seen_label('TimeCheat3')", "not renpy.seen_label('TimeCheat2')", "not renpy.seen_label('TimeCheat1')"],
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
         label = "TimeCheat2",
-        category = 'greetings',
+        category = DialogueAPI.category_greetings,
         conditions = ["time_tracker_start()", "not renpy.seen_label('TimeCheat3')", "not renpy.seen_label('TimeCheat2')", "renpy.seen_label('TimeCheat1')"],
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
         label = "TimeCheat3",
-        category = 'greetings',
+        category = DialogueAPI.category_greetings,
         conditions = ["time_tracker_start()", "not renpy.seen_label('TimeCheat3')", "renpy.seen_label('TimeCheat2')", "renpy.seen_label('TimeCheat1')"],
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
         label = "TimeCheat_error",
-        category = 'greetings',
+        category = DialogueAPI.category_greetings,
         conditions = ["time_tracker_start()", "renpy.seen_label('TimeCheat3')", "renpy.seen_label('TimeCheat2')", "renpy.seen_label('TimeCheat1')"],
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="ch30_reload_0",
-        category='greetings',
+        label = "ch30_reload_0",
+        category = DialogueAPI.category_greetings,
         conditions = ['time_tracker_start() == False', 'persistent.game_session == 1'],
         importance = 0,
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="ch30_reload_1",
-        category='greetings',
+        label = "ch30_reload_1",
+        category = DialogueAPI.category_greetings,
         conditions = ['time_tracker_start() == False', 'persistent.game_session == 2'],
         importance = 0,
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="ch30_reload_2",
-        category='greetings',
+        label = "ch30_reload_2",
+        category = DialogueAPI.category_greetings,
         conditions = ['time_tracker_start() == False', 'persistent.game_session == 3'],
         importance = 0,
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="ch30_reload_3",
-        category='greetings',
+        label = "ch30_reload_3",
+        category = DialogueAPI.category_greetings,
         conditions = ['time_tracker_start() == False', 'persistent.game_session == 4'],
         importance = 0,
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="featuregreetings",
-        category='greetings',
+        label = "featuregreetings",
+        category = DialogueAPI.category_greetings,
         conditions = ['time_tracker_start() == False', 'persistent.game_session == 5 or persistent.game_session == 6'],
         importance = 0,
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="ch30_reload_4",
-        category='greetings',
+        label = "ch30_reload_4",
+        category = DialogueAPI.category_greetings,
         conditions = ['time_tracker_start() == False', 'persistent.game_session >= 8'],
         importance = 0,
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="highkarinsrestart",
-        category='greetings',
+        label = "highkarinsrestart",
+        category = DialogueAPI.category_greetings,
         conditions = ['time_tracker_start() == False', "check_memory('complements', 'highkarinsrestart')"],
         importance = 0,
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="patheticcry",
-        category='greetings',
+        label = "patheticcry",
+        category = DialogueAPI.category_greetings,
         conditions = ['time_tracker_start() == False', "check_memory('complements', 'patheticcry')"],
         importance = 2,
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="hdy_statue_greeting",
-        category='greetings',
+        label = "hdy_statue_greeting",
+        category = DialogueAPI.category_greetings,
         conditions = ['time_tracker_start() == False', "not renpy.seen_label('hdy_statue_greeting')", "renpy.seen_label('hdy_has_been_seen')"],
         importance = 0,
         name = "None",
@@ -1638,22 +1638,22 @@ init -3 python:
 
     add_dialogue(Dialogue(
         label = "intro_mods",
-        category = 'greetings',
+        category = DialogueAPI.category_greetings,
         conditions = ['time_tracker_start() == False', "renpy.seen_label('ch30_intro2')", "not renpy.seen_label('startup_mods')", 'persistent.game_session >= 7'],
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
         label = "purpleroomintro",
-        category = 'greetings',
-        conditions = ["time_tracker_start() == False", "persistent.purpleroom", "renpy.seen_label('idle_30')", "karma()=5", "persistent.lovecheck", "persistent.game_session >= 20"],
+        category = DialogueAPI.category_greetings,
+        conditions = ["time_tracker_start() == False", "persistent.purpleroom", "renpy.seen_label('idle_30')", "karma_lvl()=5", "persistent.lovecheck", "persistent.game_session >= 20"],
         importance = 0,
         name = "None",
         sub_category = None))
 
     add_dialogue(Dialogue(
         label = "vday_2024_revisit",
-        category = 'greetings',
+        category = DialogueAPI.category_greetings,
         conditions = ["""time_interval_check(
             {'month': 2,
                 'day': 13},
@@ -1675,8 +1675,8 @@ init -3 python:
 # Characterized by having very specific time-locked restrictions.
 
     add_dialogue(Dialogue(
-        label="krampusnacht",
-        category='greetings',
+        label = "krampusnacht",
+        category = DialogueAPI.category_greetings,
         conditions = ["""time_interval_check(
             {'month': 12,
                 'day': 5},
@@ -1689,8 +1689,8 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="birthdaycake_2020_late",
-        category='actives',
+        label = "birthdaycake_2020_late",
+        category = DialogueAPI.category_talk,
         conditions = ["""time_interval_check(
             {'month': 12,
                 'day': 10},
@@ -1703,8 +1703,8 @@ init -3 python:
         sub_category = "Requests"))
 
     add_dialogue(Dialogue(
-        label="birthday_gift_2021",
-        category='actives',
+        label = "birthday_gift_2021",
+        category = DialogueAPI.category_talk,
         conditions = ["""time_interval_check(
             {'month': 12,
                 'day': 10},
@@ -1716,8 +1716,8 @@ init -3 python:
         sub_category = "Misc."))
 
     add_dialogue(Dialogue(
-        label="new_year_2021",
-        category='greetings',
+        label = "new_year_2021",
+        category = DialogueAPI.category_greetings,
         conditions = ["""time_interval_check(
             {'month': 12,
                 'day': 29},
@@ -1732,8 +1732,8 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="vday_choco_date_request",
-        category='actives',
+        label = "vday_choco_date_request",
+        category = DialogueAPI.category_talk,
         conditions = ["""time_interval_check(
             {'month': 2,
                 'day': 13},
@@ -1741,13 +1741,13 @@ init -3 python:
                 'day': 20}
             )""",
             "renpy.seen_label('valentines')",
-            "karma()>3"],
+            "karma_lvl()>3"],
         importance = 0,
         name = "Anything special planned today, [persistent.yuri_nickname]?",
         sub_category = "Love"))
     add_dialogue(Dialogue(
-        label="valentines",
-        category='actives',
+        label = "valentines",
+        category = DialogueAPI.category_talk,
         conditions = ["""time_interval_check(
             {'month': 2,
                 'day': 13},
@@ -1804,8 +1804,8 @@ init -3 python:
     ########
 
     add_dialogue(Dialogue(
-        label="birthday_chocolate",
-        category='greetings',
+        label = "birthday_chocolate",
+        category = DialogueAPI.category_greetings,
         conditions = ["""time_interval_check(
             time_shift(
                 {'month': persistent.bday_month,
@@ -1821,8 +1821,8 @@ init -3 python:
         name = "None",
         sub_category = None))
     add_dialogue(Dialogue(
-        label="birthday_greeting_text",
-        category='greetings',
+        label = "birthday_greeting_text",
+        category = DialogueAPI.category_greetings,
         conditions = ["""time_interval_check(
             {'month': persistent.bday_month,
                 'day': persistent.bday_day},
@@ -1836,9 +1836,9 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="a26_prelude",
-        category='greetings',
-        conditions = ["not renpy.seen_label('a26')", "persistent.lovecheck", "karma() > 3 and sanity() > 3"], #add requirement for 3 weeks of time
+        label = "a26_prelude",
+        category = DialogueAPI.category_greetings,
+        conditions = ["not renpy.seen_label('a26')", "persistent.lovecheck", "karma_lvl() > 3 and sanity_lvl() > 3"], #add requirement for 3 weeks of time
         importance = 8,
         name = "None",
         sub_category = None))
@@ -1848,73 +1848,73 @@ init -3 python:
 #Characterized by them automatically playing at ends of game
 
     add_dialogue(Dialogue(
-        label="farewell_1",
-        category='farewells',
+        label = "farewell_1",
+        category = DialogueAPI.category_goodbye,
         conditions = [],
         importance = 0,
         name = "Goodbye, [persistent.yuri_nickname]!",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_2",
-        category='farewells',
+        label = "farewell_2",
+        category = DialogueAPI.category_goodbye,
         conditions = [],
         importance = 0,
         name = "Sorry, gotta go...",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_3",
-        category='farewells',
+        label = "farewell_3",
+        category = DialogueAPI.category_goodbye,
         conditions = [],
         importance = 0,
         name = "I'll see you later, [persistent.yuri_nickname].",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_4",
-        category='farewells',
+        label = "farewell_4",
+        category = DialogueAPI.category_goodbye,
         conditions = [],
         importance = 0,
         name = "Bye, [persistent.yuri_nickname], I'll miss you!",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_5",
-        category='farewells',
+        label = "farewell_5",
+        category = DialogueAPI.category_goodbye,
         conditions = [],
         importance = 0,
         name = "Sorry I can't stay. I love you!",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_6",
-        category='farewells',
+        label = "farewell_6",
+        category = DialogueAPI.category_goodbye,
         conditions = ['sanity == 2'],
         importance = 0,
         name = "Oh, hey, look at the time, this has been an awesome date!",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_7",
-        category='farewells',
-        conditions = ['karma() == 2 or karma() == 1'],
+        label = "farewell_7",
+        category = DialogueAPI.category_goodbye,
+        conditions = ['karma_lvl() == 2 or karma_lvl() == 1'],
         importance = 0,
         name = "Oh, whoops, someone's calling me, gotta run!",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_8",
-        category='farewells',
+        label = "farewell_8",
+        category = DialogueAPI.category_goodbye,
         conditions = ['sanity == 2'],
         importance = 0,
         name = "I have food... in the oven so...",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_9",
-        category='farewells',
-        conditions = ['sanity() <= 2'],
+        label = "farewell_9",
+        category = DialogueAPI.category_goodbye,
+        conditions = ['sanity_lvl() <= 2'],
         importance = 0,
         name = "I, uh, gotta go...",
         sub_category = None))
@@ -1922,40 +1922,40 @@ init -3 python:
 #missing farewell_9
 
     add_dialogue(Dialogue(
-        label="farewell_10",
-        category='farewells',
-        conditions = ['sanity() == 2'],
+        label = "farewell_10",
+        category = DialogueAPI.category_goodbye,
+        conditions = ['sanity_lvl() == 2'],
         importance = 0,
         name = "I'm just going to... close the game now, okay?",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_11",
-        category='farewells',
-        conditions = ['karma() >= 4'],
+        label = "farewell_11",
+        category = DialogueAPI.category_goodbye,
+        conditions = ['karma_lvl() >= 4'],
         importance = 0,
         name = "So long, farewell!",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_12",
-        category='farewells',
-        conditions = ['karma() >= 4'],
+        label = "farewell_12",
+        category = DialogueAPI.category_goodbye,
+        conditions = ['karma_lvl() >= 4'],
         importance = 0,
         name = "I have to go. I already miss you!",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_13",
-        category='farewells',
+        label = "farewell_13",
+        category = DialogueAPI.category_goodbye,
         conditions = [],
         importance = 0,
         name = "I have to go now... I'll talk to you later, alright?",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_14",
-        category='farewells',
+        label = "farewell_14",
+        category = DialogueAPI.category_goodbye,
         conditions = [],
         importance = 0,
         name = "See you later!",
@@ -1963,24 +1963,24 @@ init -3 python:
 
 
     add_dialogue(Dialogue(
-        label="farewell_15",
-        category='farewells',
+        label = "farewell_15",
+        category = DialogueAPI.category_goodbye,
         conditions = [],
         importance = 0,
         name = "I hate having to put you through this, but it looks like it's time to say goodbye once again.",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_16",
-        category='farewells',
+        label = "farewell_16",
+        category = DialogueAPI.category_goodbye,
         conditions = [],
         importance = 0,
         name = "I have to go now, my love.",
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label="farewell_17",
-        category='farewells',
+        label = "farewell_17",
+        category = DialogueAPI.category_goodbye,
         conditions = [],
         importance = 0,
         name = "Whatever happens, just remember that there is someone who loves you no matter what.",
@@ -1992,968 +1992,968 @@ init -3 python:
 #Characterized by being played while the player has HDY enabled.
 
     add_dialogue(Dialogue(
-        label='HDY_eggnomancer',
-        category='hdy',
+        label = 'HDY_eggnomancer',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_spookyscaryskeleton',
-        category='hdy',
+        label = 'HDY_spookyscaryskeleton',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Alien_Friend',
-        category='hdy',
+        label = 'HDY_Alien_Friend',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_wallpaper',
-        category='hdy',
+        label = 'HDY_wallpaper',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Potionseller',
-        category='hdy',
+        label = 'HDY_Potionseller',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_teleported_hotdogs',
-        category='hdy',
+        label = 'HDY_teleported_hotdogs',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Sausage_mouth',
-        category='hdy',
+        label = 'HDY_Sausage_mouth',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_philosophy',
-        category='hdy',
+        label = 'HDY_philosophy',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_whyarewestillhere',
-        category='hdy',
+        label = 'HDY_whyarewestillhere',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_frozen_cooking_eggs',
-        category='hdy',
+        label = 'HDY_frozen_cooking_eggs',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Hellskitchen',
-        category='hdy',
+        label = 'HDY_Hellskitchen',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_minion',
-        category='hdy',
+        label = 'HDY_minion',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_airfryer',
-        category='hdy',
+        label = 'HDY_airfryer',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Eternal',
-        category='hdy',
+        label = 'HDY_Eternal',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Friedsweets',
-        category='hdy',
+        label = 'HDY_Friedsweets',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Manga',
-        category='hdy',
+        label = 'HDY_Manga',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_War',
-        category='hdy',
+        label = 'HDY_War',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Inquisition',
-        category='hdy',
+        label = 'HDY_Inquisition',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Buns',
-        category='hdy',
+        label = 'HDY_Buns',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Witches',
-        category='hdy',
+        label = 'HDY_Witches',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Rocks',
-        category='hdy',
+        label = 'HDY_Rocks',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Orangana',
-        category='hdy',
+        label = 'HDY_Orangana',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Skinny',
-        category='hdy',
+        label = 'HDY_Skinny',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_mum',
-        category='hdy',
+        label = 'HDY_mum',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_frostless',
-        category='hdy',
+        label = 'HDY_frostless',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_PPAP',
-        category='hdy',
+        label = 'HDY_PPAP',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_fuckingPlayer',
-        category='hdy',
+        label = 'HDY_fuckingPlayer',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_why',
-        category='hdy',
+        label = 'HDY_why',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_portal',
-        category='hdy',
+        label = 'HDY_portal',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_a',
-        category='hdy',
+        label = 'HDY_a',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_speen',
-        category='hdy',
+        label = 'HDY_speen',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_crash',
-        category='hdy',
+        label = 'HDY_crash',
+        category = DialogueAPI.category_hdy,
         conditions = ["not renpy.seen_label('HDY_crash')", "renpy.seen_label('hdy_statue_geeting')"],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_mcspaghetti',
-        category='hdy',
+        label = 'HDY_mcspaghetti',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_fortnitecard',
-        category='hdy',
+        label = 'HDY_fortnitecard',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_WordOfTheDay',
-        category='hdy',
+        label = 'HDY_WordOfTheDay',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_8800bluelickroad',
-        category='hdy',
+        label = 'HDY_8800bluelickroad',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_DarthPlagueis',
-        category='hdy',
+        label = 'HDY_DarthPlagueis',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_violence',
-        category='hdy',
+        label = 'HDY_violence',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_society',
-        category='hdy',
+        label = 'HDY_society',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_discordserver',
-        category='hdy',
+        label = 'HDY_discordserver',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_sand',
-        category='hdy',
+        label = 'HDY_sand',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_SithLords',
-        category='hdy',
+        label = 'HDY_SithLords',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_fortnitegamer',
-        category='hdy',
+        label = 'HDY_fortnitegamer',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_replacementpog',
-        category='hdy',
+        label = 'HDY_replacementpog',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_passtime',
-        category='hdy',
+        label = 'HDY_passtime',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_dababy',
-        category='hdy',
+        label = 'HDY_dababy',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_jevil',
-        category='hdy',
+        label = 'HDY_jevil',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_getdawged',
-        category='hdy',
+        label = 'HDY_getdawged',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_familyguy',
-        category='hdy',
+        label = 'HDY_familyguy',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_nukes',
-        category='hdy',
+        label = 'HDY_nukes',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_shrek',
-        category='hdy',
+        label = 'HDY_shrek',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_sans',
-        category='hdy',
+        label = 'HDY_sans',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_beemovie',
-        category='hdy',
+        label = 'HDY_beemovie',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_lifeadvice',
-        category='hdy',
+        label = 'HDY_lifeadvice',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_morshu',
-        category='hdy',
+        label = 'HDY_morshu',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_toughdawg',
-        category='hdy',
+        label = 'HDY_toughdawg',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_banana',
-        category='hdy',
+        label = 'HDY_banana',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_pingas',
-        category='hdy',
+        label = 'HDY_pingas',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_electricity',
-        category='hdy',
+        label = 'HDY_electricity',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_swag',
-        category='hdy',
+        label = 'HDY_swag',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_hmmmm',
-        category='hdy',
+        label = 'HDY_hmmmm',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_censorship',
-        category='hdy',
+        label = 'HDY_censorship',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_amogus',
-        category='hdy',
+        label = 'HDY_amogus',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_deadmeme',
-        category='hdy',
+        label = 'HDY_deadmeme',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_h',
-        category='hdy',
+        label = 'HDY_h',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_callout',
-        category='hdy',
+        label = 'HDY_callout',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_movie',
-        category='hdy',
+        label = 'HDY_movie',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_scottthewozz',
-        category='hdy',
+        label = 'HDY_scottthewozz',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_windowsphone',
-        category='hdy',
+        label = 'HDY_windowsphone',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_DDR',
-        category='hdy',
+        label = 'HDY_DDR',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_bottomtext',
-        category='hdy',
+        label = 'HDY_bottomtext',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_favoritegame',
-        category='hdy',
+        label = 'HDY_favoritegame',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_ifunny',
-        category='hdy',
+        label = 'HDY_ifunny',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_chubbyemu',
-        category='hdy',
+        label = 'HDY_chubbyemu',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_brrrrrrr',
-        category='hdy',
+        label = 'HDY_brrrrrrr',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_thisaccountisnotfortheaverageman',
-        category='hdy',
+        label = 'HDY_thisaccountisnotfortheaverageman',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_chubbyemu2',
-        category='hdy',
+        label = 'HDY_chubbyemu2',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_searchhistory',
-        category='hdy',
+        label = 'HDY_searchhistory',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_youngsterjoey',
-        category='hdy',
+        label = 'HDY_youngsterjoey',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_100',
-        category='hdy',
+        label = 'HDY_100',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Chugjug',
-        category='hdy',
+        label = 'HDY_Chugjug',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_truth',
-        category='hdy',
+        label = 'HDY_truth',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_MeMEbigboy',
-        category='hdy',
+        label = 'HDY_MeMEbigboy',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_MakingHotdogs',
-        category='hdy',
+        label = 'HDY_MakingHotdogs',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_jesusboxing',
-        category='hdy',
+        label = 'HDY_jesusboxing',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_cthulhu',
-        category='hdy',
+        label = 'HDY_cthulhu',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_paydaygang',
-        category='hdy',
+        label = 'HDY_paydaygang',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_bluedabadee',
-        category='hdy',
+        label = 'HDY_bluedabadee',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_cranberrysprite',
-        category='hdy',
+        label = 'HDY_cranberrysprite',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_amongus',
-        category='hdy',
+        label = 'HDY_amongus',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_rickroll',
-        category='hdy',
+        label = 'HDY_rickroll',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_holdingbreath',
-        category='hdy',
+        label = 'HDY_holdingbreath',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_sixtynine',
-        category='hdy',
+        label = 'HDY_sixtynine',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_acesleeve',
-        category='hdy',
+        label = 'HDY_acesleeve',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_wonderwall',
-        category='hdy',
+        label = 'HDY_wonderwall',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Hotdogspoem',
-        category='hdy',
+        label = 'HDY_Hotdogspoem',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_eggnomancer',
-        category='hdy',
+        label = 'HDY_eggnomancer',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_hotdogfact',
-        category='hdy',
+        label = 'HDY_hotdogfact',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_lifeadvice2electricboogaloo',
-        category='hdy',
+        label = 'HDY_lifeadvice2electricboogaloo',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_hotdogtea',
-        category='hdy',
+        label = 'HDY_hotdogtea',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_areyounotentertained',
-        category='hdy',
+        label = 'HDY_areyounotentertained',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_wakeup',
-        category='hdy',
+        label = 'HDY_wakeup',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_asadstory',
-        category='hdy',
+        label = 'HDY_asadstory',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_scatman',
-        category='hdy',
+        label = 'HDY_scatman',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_tank',
-        category='hdy',
+        label = 'HDY_tank',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_tankcommander',
-        category='hdy',
+        label = 'HDY_tankcommander',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Hbomb',
-        category='hdy',
+        label = 'HDY_Hbomb',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_spacedandy',
-        category='hdy',
+        label = 'HDY_spacedandy',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_it_was_me_dio',
-        category='hdy',
+        label = 'HDY_it_was_me_dio',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Monkeys',
-        category='hdy',
+        label = 'HDY_Monkeys',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_WaspInTheRoom',
-        category='hdy',
+        label = 'HDY_WaspInTheRoom',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_AUSTRALIA',
-        category='hdy',
+        label = 'HDY_AUSTRALIA',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Wasp',
-        category='hdy',
+        label = 'HDY_Wasp',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_bald',
-        category='hdy',
+        label = 'HDY_bald',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Dating',
-        category='hdy',
+        label = 'HDY_Dating',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_Space',
-        category='hdy',
+        label = 'HDY_Space',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_gasstation',
-        category='hdy',
+        label = 'HDY_gasstation',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_thebigquestion',
-        category='hdy',
+        label = 'HDY_thebigquestion',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_somethingidunno',
-        category='hdy',
+        label = 'HDY_somethingidunno',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_peepy',
-        category='hdy',
+        label = 'HDY_peepy',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label='HDY_kiss',
-        category='hdy',
+        label = 'HDY_kiss',
+        category = DialogueAPI.category_hdy,
         conditions = [],
         importance = 0,
         name = None,

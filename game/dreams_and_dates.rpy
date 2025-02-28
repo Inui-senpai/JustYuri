@@ -1648,8 +1648,8 @@ label garden_date:
     y "But what about you? Are you enjoying this date so far?"
     menu:
         "I certainly am. Having a quiet and peaceful date with you... nothing is more ideal..":
-            $add_k(2)
-            $add_s(1)
+            karma 2
+            sanity 1
             $show_chr("A-GBAAA-ALAL")
             y "I'm so relieved to hear that [player]... To be honest with you, I have been quite nervous to put it mildly."
             $show_chr("A-AAAAA-ABAB")
@@ -1666,7 +1666,7 @@ label garden_date:
             $show_chr("A-AAAAA-ABAB")
             y "Thank you for being so caring. I will try to calm down a bit so that we can actually enjoy our time here together."
         "A few mistakes in the procedure so far. It's okay for the first time I guess.":
-            $add_k(-1)
+            karma -1
             $show_chr("A-BDAAA-AMAM")
             y "D-did I already manage to mess it up?"
             y "But we've barely even started..."
@@ -1821,7 +1821,7 @@ label Enter:
     y "What I wanted to say is, when you first opened my world, I didn't know much about you; nothing about your personality, or about your values and beliefs..."
     $show_chr("A-CAAAA-ZZAD")
     y "But in all the time we have spent together now, I've seen your true heart [player]..."
-    if sanity() >=4:
+    if sanity_lvl() >=4:
         $show_chr("A-JAGBA-ZZAD")
         y "You saw me with all my anxieties, all my flaws... and when others turned away, you took my hand, {i}metaphorically speaking of course{/i}, and showed me the way to a better version of myself..."
         y "You showed me what I could become, and with all your patience you helped me to overcome all the doubts that held me back..."
@@ -2408,9 +2408,9 @@ label urbanoutcome2:
             y "Tea comes in countless forms and flavors. From herbs to fruits. From sweet to sour. Hot or cold... whatever the situation, there {b}will{/b} be a fitting kind of tea to it!"
             y "Well, except for being forced to stab yourself in the chest. There isn't really any tea which makes {b}that{/b} any more pleasant..."
     python:
-        if karma() > 3: #75% chance
+        if karma_lvl() > 3: #75% chance
             random_variable = renpy.random.randint(2,5)
-        elif karma() < 3: #25% chance
+        elif karma_lvl() < 3: #25% chance
             random_variable = renpy.random.randint(0,3)
         else: #50% chance
             random_variable = renpy.random.randint(1,4)
@@ -2575,8 +2575,8 @@ label midpartsad:
                     $show_chr("A-CCBAA-ABAB")
                     y "Itadakimasu!"
                     menu:
-                       "Oh, was that japanese? Very well, Itadakimasu!":
-                           menu:
+                        "Oh, was that japanese? Very well, Itadakimasu!":
+                            menu:
                                 "Alright, I'm done.":
                                     y "So am I. What a lovely dinner. I hope you enjoyed it too! We should do this again in the future!"
                                     y "But now I would say, it is time to go home..."
@@ -2821,7 +2821,7 @@ init python:
             fits_var["blush"] = "blush"
 
         #select scars
-        if sanity() < 4:
+        if sanity_lvl() < 4:
             fits_var["scars"] = "scars"
         else:
             fits_var["scars"] = "nothing"
@@ -2883,14 +2883,14 @@ label tropical_date:
 
     menu:
         "It's okay, I understand, you don't have to apologize at all.":
-            $add_k(2)
+            karma 2
             $show_fits_standing("pareo_yuri_14")#Normal eyebrows, smiling, hands down.
             y "Ohhh... thank you. I'm glad you understand my struggle."
             y "Sorry if that sounded like self-pity."
             y "I just wanted to be sure that we have everything we need to make this experience enjoyable and memorable."
 
         "I see... it's okay, maybe you'll do even better next time!":
-            $add_k(1)
+            karma 1
             $show_fits_standing("pareo_yuri_14")#Normal eyebrows, smiling, blushing, hands down.
             y "You're right..."
             y "Maybe I am pushing myself too hard."
@@ -3119,7 +3119,7 @@ label tropical_date:
 
     menu:
         "You can trust me, I'm not going to judge. We all make mistakes.":
-            $ add_k(2)
+            karma 2
             y "..."
             y "Just forget that, sorry."
             $show_fits_standing("swimsuit_yuri_9") #Open mouth, sad mouth, closed mouth, hands over her chest.
@@ -3869,9 +3869,9 @@ label check:
     #"and I can't say that often enough" else
 
     python:
-        if karma() >= 2:
+        if karma_lvl() >= 2:
             placeholder = "despite our disagreements"
-        elif karma() == 3:
+        elif karma_lvl() == 3:
             placeholder = "despite the short time we've spent so far"
         else:
             placeholder = "and I can't say this often enough"
@@ -3887,7 +3887,7 @@ label check:
 
     menu:
         "I really like it! Your writing is always amazing, [persistent.yuri_nickname]!":
-            $ add_k(2)
+            karma 2
             $show_fits_standing("pareo_yuri_2") #Raised eyebrows, smiling, open mouth, blushing, hands on her chest.
             y "I am so glad to hear that!"
             y "I don't know if I deserve so much praise however."

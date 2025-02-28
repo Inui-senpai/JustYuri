@@ -32,11 +32,11 @@ init -999 python:
                 depth_speed = 1.5-depth/(self.depth+0.0)
                 
                 return [ SnowParticle(self.image[depth-1],
-                                      random.uniform(-self.wind, self.wind)*depth_speed,
-                                      self.speed*depth_speed,
-                                      random.randint(self.xborder[0], self.xborder[1]),
-                                      random.randint(self.yborder[0], self.yborder[1]),
-                                      ) ]
+                        random.uniform(-self.wind, self.wind)*depth_speed,
+                        self.speed*depth_speed,
+                        random.randint(self.xborder[0], self.xborder[1]),
+                        random.randint(self.yborder[0], self.yborder[1]),
+                        )]
         
         
         def image_init(self, image):
@@ -85,8 +85,7 @@ init -999 python:
             self.xpos += lag * self.wind
             self.ypos += lag * self.speed
                
-            if self.ypos > 446 or\
-               (self.xpos < -5 or self.xpos > 1012):
+            if self.ypos > 446 or (self.xpos < -5 or self.xpos > 1012):
                 return None
                 
             return int(self.xpos), int(self.ypos), st, self.image

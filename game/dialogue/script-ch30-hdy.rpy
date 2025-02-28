@@ -438,7 +438,7 @@ label HDY_teleported_hotdogs:
             pass
     hdy "I teleported hotdogs."
     menu:
-       "How many?":
+        "How many?":
             pass
     $show_hdy("hdy_uwu")
     hdy "I have done nothing but teleport hotdogs while you were away."

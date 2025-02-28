@@ -87,8 +87,8 @@ label playername:
         #y "But I'm willing to give you one chance, {b}one{/b} last chance."
         #$ show_chr("A-HECAA-AAAG")
         #y "Don't... make... me... regret... this..."
-        $ add_k(-1000000)
-        $ add_s(-1000000)
+        karma -1000000
+        sanity -1000000
         #Don't change those values please. Also, the script above won't be needed anymore since Bijuu Mike already showcased it - Darkskull
         $ show_chr("A-CFCAA-AAAA")
         y "..."
@@ -219,8 +219,8 @@ label playername:
 ###################################################################################################
 
     elif persistent.playername == 'Monika':
-        $ add_k(-30)
-        $ add_s(-30)
+        karma -30
+        sanity -30
         $ show_chr("A-AJAAA-AAAA")
         y "..."
         $ show_chr("A-AFCAA-AAAA")

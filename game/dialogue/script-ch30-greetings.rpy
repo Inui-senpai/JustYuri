@@ -12,8 +12,6 @@ label g_return:
     return
 
 label ch30_reload_0:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $ renpy.music.play(current_music, "music", True)
     $ show_chr("A-EFBBA-AMAM")
     y "..."
@@ -36,8 +34,6 @@ label ch30_reload_0:
     return
 
 label ch30_reload_1:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $ renpy.music.play(current_music, "music", True)
     $show_chr("A-GBBBA-ABAB")
     y "You're back..."
@@ -53,7 +49,7 @@ label ch30_reload_1:
     y "But it wouldn't really hurt to try, you know?"
     menu:
         "Just be cautious please. I don't want you to get hurt...":
-            $ add_k(1)
+            karma 1
             $show_chr("A-GCBBA-ALAB")
             y "Please don't worry. It's just a nightmare."
             $show_chr("A-BCBBA-ALAB")
@@ -62,7 +58,7 @@ label ch30_reload_1:
             y "Besides, now that I have the freedom to actually explore these things, I want to learn as much as I can."
             y "But thank you for caring so much about me [player]."
         "Be my guest. You certainly deserve it...":
-            $ add_k(-1)
+            karma -1
             $show_chr("A-IFBBA-ALAB")
             y "You're still mad about the events that unfolded in front of you, aren't you?"
             $show_chr("A-ACBAA-ALAB")
@@ -70,12 +66,12 @@ label ch30_reload_1:
             $show_chr("A-CEBBA-ALAB")
             y "It's not as if we {b}wanted{/b} this..."
         "You should try and play DDLC, gave me plenty of nightmares for sure!":
-            $ add_s(-1)
+            sanity -1
             $show_chr("A-BFBBA-ALAC")
             y "...you know... I'm not sure if you are serious about this or if this is just a morbid joke but..."
             y "Maybe it's not a bad idea at all! I have to admit I am a bit curious about how these events looked like from {b}your{/b} perspective..."
         "But... why?":
-            $ add_s(1)
+            sanity 1
             $show_chr("A-CFBBA-ALAD")
             y "Curiosity, for the most part."
             $show_chr("A-AFBBA-ALAD")
@@ -92,8 +88,6 @@ label ch30_reload_1:
     return
 
 label ch30_reload_2:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $ renpy.music.play(current_music, "music", True)
     $show_chr("A-GCBBA-ABAB")
     y "So... I've finally decided to alter my sleeping function next time."
@@ -120,7 +114,7 @@ label ch30_reload_2:
 
 label greetings_uhhh:
     #karma -2
-    $add_k(-2)
+    karma -2
     $show_chr("A-CFBAA-ABAB")
     y "..."
     $show_chr("A-CEBAA-ABAB")
@@ -130,7 +124,7 @@ label greetings_uhhh:
 
 label greetings_of_course:
     #karma +2
-    $add_k(+2)
+    karma +2)
     $show_chr("A-DHBBA-ABAB")
     y "..."
     $show_chr("A-GABBA-LAB")
@@ -151,8 +145,6 @@ label greetings_of_course:
     return
 
 label ch30_reload_3:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $ renpy.music.play(current_music, "music", True)
     $show_chr("A-BFAAA-AAAL")
     y "..."
@@ -181,8 +173,6 @@ label ch30_reload_3:
     y "What should we discuss today?"
     return
 label ch30_reload_4:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $ _history = True
     $ renpy.music.play(current_music, "music", True)
     #$finder = persistent.narrative.find("_dream")
@@ -221,7 +211,7 @@ label ch30_reload_4:
             #y "We were going to talk a little more, right?"
             #return
     $print_debug("reload_4 triggered")
-    $ ks_convert_1 = sanity()
+    $ ks_convert_1 = sanity_lvl()
     if ks_convert_1 == 2:
         $ reload_random = renpy.random.randint(1, 6)
         if reload_random == 1:
@@ -457,8 +447,6 @@ label ch30_reload_4:
 #Replaced entirely by a new greetings text https://docs.google.com/document/d/1EfeXUUgyW6SoYZWfKqvqTQdImf1nLY4vmTlx8zklSVM/edit
 
 label birthday_chocolate:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ABBAA-ADAB")
     y "Hey [player], this question might sound a bit random but..."
     y "Do you like chocolate? I ask because... well, I think you asked me at some point about the chocolate you gave me in the original game. So I was wondering."
@@ -496,8 +484,6 @@ label birthday_chocolate:
     return
 
 label birthday_greeting_text:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     #$ today = str(datetime.datetime.date(datetime.datetime.today()))
     #$ birthdate = persistent.birthdate
     #if today == birthdate:
@@ -615,7 +601,7 @@ label birthday_yes:
             y "Happy birthday [player]. Thanks for having me here."
         "I couldn't care less...":
             $show_chr("A-IEBAA-ALAA")
-            $add_k(-1)
+            karma -1
             y "O-Oh... I was rambling again wasn't I?"
             y "Nevermind. Just say what you would like to do next."
             return
@@ -684,23 +670,17 @@ label birthday_no:
     return
 
 label holiday_greeting:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ACAAA-ABAB")
     y "Happy holidays, [player]!"
     return
 
 label holiday_event_greeting:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ACAAA-ABAB")
     y "Happy holidays, [player]!"
     call holiday
     return
 
 label valentines_greeting:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ACAAA-ABAB")
     y "Greetings again [player]. I was actually looking forward to seeing you today."
     if persistent.lovecheck:
@@ -744,8 +724,6 @@ label valentines_greeting:
 
 
 label featuregreetings:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ACAAA-ABAB")
     y "Oh hello [player]."
     $show_chr("A-BDBAA-AMAM")
@@ -759,8 +737,6 @@ label featuregreetings:
     return
 
 label tetrisgreetings:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ACBAA-ABAB")
     y "You see, I put a lot of thought into things we can do together lately."
     $show_chr("A-BCBAA-ABAB")
@@ -776,15 +752,13 @@ label tetrisgreetings:
     return
 
 label tcrgreetings:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-ACBAA-ABAB")
     y "You see, I talked about how limited this world currently is before, at least I think I already talked about it..."
     $show_chr("A-BCBAA-ABAB")
     y "And believe me, it is quite astounding how old one single room can become when there is literally nothing else."
     $show_chr("A-ACAAA-ABAB")
     python:
-        if karma() >= 4:
+        if karma_lvl() >= 4:
             placeholder = "and knowing what a sweetheart you are you would probably have done it"
         else:
             placeholder = "dumping my problems on your shoulders once again"
@@ -814,9 +788,7 @@ label tcrgreetings:
     return
 
 label vday_2021:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
-    if karma() >= 3:
+    if karma_lvl() >= 3:
         if persistent.lovecheck:
             $ show_chr("A-ABGBA-ALAL")
             y "Happy Valentine's Day, my love!"
@@ -893,7 +865,7 @@ label vday_2021:
                 "Absolutely. I'm looking forward to today, [persistent.yuri_nickname].":
                     $ show_chr("A-GBGAA-ALAA")
                     y "As am I. Today is usually reserved for romantic dates and such, but nothing says we can't have a good time as friends."
-                    if karma() >= 4:
+                    if karma_lvl() >= 4:
                         $ show_chr("A-BBBAA-ALAA")
                         y "Even if...{w=1}"
                         $ show_chr("A-GBBBA-ALAA")
@@ -906,7 +878,7 @@ label vday_2021:
                         return
 
                 "...":
-                    $add_k(-1)
+                    karma -1
                     $ show_chr("A-ADBAA-ALAA")
                     y "Uh... I-I guess not, then..."
                     y "I just thought...{w=1}{nw} "
@@ -914,7 +886,7 @@ label vday_2021:
                     extend "n-nevermind."
                     return
 
-    elif karma() == 2:
+    elif karma_lvl() == 2:
         $ show_chr("A-ABAAA-AAAA")
         y "H-Happy Valentine's Day, [player]!"
         y "I had hoped you would visit today..."
@@ -926,7 +898,7 @@ label vday_2021:
         y "And I don't want a bit of discord ruining that friendship."
         y "S-So... what shall we do today?"
     else:
-        $add_k(1)
+        karma 1
         $ show_chr("A-ADDAA-ALAA")
         y "You're wishing me a happy Valentine's Day?"
         $ show_chr("A-BFAAA-ACAA")
@@ -940,8 +912,6 @@ label vday_2021:
     return
 
 label hdy_statue_greeting:
-    $ initial_presence()
-    $ update_presence(details="Playing Just Yuri", large_image="icon_large")
     $show_chr("A-JBGAA-AAAA")
     y "[player]! Do you remember that time I had this weird dream about becoming a hot dog?"
     $show_chr("A-BIDAA-AAAA")

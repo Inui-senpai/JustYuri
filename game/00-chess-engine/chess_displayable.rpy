@@ -375,7 +375,7 @@ init python:
             # https://en.wikipedia.org/wiki/Threefold_repetition
             # https://en.wikipedia.org/wiki/Fifty-move_rule
             # p: promotion, d: draw
-            if config.developer:
+            if dev_access:
                 keys = pygame.key.get_pressed()
                 if keys[pygame.K_p]: # promotion
                     self.show_promotion_ui = not self.show_promotion_ui # toggle show or hide

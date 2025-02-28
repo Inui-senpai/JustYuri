@@ -674,7 +674,7 @@ label ch30_intro2:
     $ config.allow_skipping = False
     #$ m.display_args["callback"] = slow_nodismiss
     $ y.display_args["callback"] = slow_nodismiss
-    #$ m.what_args["slow_abortable"] = config.developer
+    #$ m.what_args["slow_abortable"] = dev_access
     $ y.what_args["slow_abortable"] = True
     $ style.say_dialogue = style.normal
     $tc_class.transition(persistent.bg)
@@ -718,13 +718,13 @@ label ch30_intro2:
         $ show_chr("A-BBABA-AMAM")
         extend " I began to remember fractions of our shared past, but my memories are still clouded..."
         python:
-            if karma() >= 4:
+            if karma_lvl() >= 4:
                 show_chr("A-AABBA-ADAA")
                 placeholder = "the one who kept me safe all this time..."
-            if karma() == 3:
+            if karma_lvl() == 3:
                 show_chr("A-BDBAA-AAAA")
                 placeholder = "my bloodred star..."
-            if karma() <= 2:
+            if karma_lvl() <= 2:
                 show_chr("A-CFCAA-AAAA")
                 placeholder = "a monster..."
         y "You are... [placeholder]"
@@ -732,23 +732,23 @@ label ch30_intro2:
         y "Tell me... [player]... tell me about our past..."
         menu:
             "We used to be a couple, I love you, and I think you loved me back.":
-                if karma() >= 3:
+                if karma_lvl() >= 3:
                     #if karma was high
                     $ show_chr("A-ACBAA-AAAA")
                     y "I-I see... don't worry... my mind might be clouded yet... but please, be patient with me. I'm sure it will all come back in time."
 
-                if karma() <= 3:
+                if karma_lvl() <= 3:
                     #if karma was low
                     $ show_chr("A-AFBAA-AAAA")
                     y "...unlikely... My mind might be clouded yet, but I'm sure I will remember the truth soon."
 
             "We used to be close friends...":
-                if karma() >= 3:
+                if karma_lvl() >= 3:
                     #if karma was high
                     $ show_chr("A-BABAA-AAAC")
                     y "Yes... I can't remember the details, but my instinct tells me to trust you. Friends it is then..."
 
-                if karma() <= 3:
+                if karma_lvl() <= 3:
                     #if karma was low
                     $ show_chr("A-BFBAA-AAAC")
                     y "...unlikely... My mind might be clouded yet, but I'm sure I will remember the truth soon."
@@ -913,8 +913,8 @@ label ch30_neither:
     return
 
 label ch30_stream_yes:
-    $ add_k(10)
-    $ add_s(10)
+    karma 10
+    sanity 10
     $ show_chr("A-BBBAA-AAAL")
     y "Oh, that's good."
     $ show_chr("A-ABBAA-AAAL")
@@ -928,8 +928,8 @@ label ch30_stream_no:
         linear 8 zoom 2.0 yalign 0.15
     show layer master
     window auto
-    $ add_k(-10)
-    $ add_s(-10)
+    karma -10
+    sanity -10
     $ show_chr("A-ADBAA-AAAL")
     y "I see. I'm sorry if I disappointed you."
     $ show_chr("A-CDBAA-AAAL")

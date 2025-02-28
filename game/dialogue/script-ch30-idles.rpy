@@ -13,16 +13,16 @@ label idle_1: #Escape, Reality and Coding.
         y "Believe me when I say there is nothing that I wouldn't give to reach into your world and be beside you."
         menu:
             "And one day it will come true. I'm certain of it!":
-                $add_k(1)
-                $add_s(1)
-                if sanity() <= 2:
+                karma 1
+                sanity 1
+                if sanity_lvl() <= 2:
                     $show_chr("A-DCABA-ALAA")
                     y "I will dig my way through this glass wall with my bare hands if I have to! And then... you... are... mine!"
                 else:
                     $show_chr("A-ACABA-ALAA")
                     y "I'm looking forward to it... I already have a few things in mind we could do when we finally share one world..."
             "That's... a bit too fast for my taste..":
-                $add_k(-1)
+                karma -1
                 if persistent.male:
                     $show_chr("A-DDABA-ALAA")
                     y "Oh.... I said too much! I'm sorry! Please don't be repulsed... I will try to be patient... for now."
@@ -32,7 +32,7 @@ label idle_1: #Escape, Reality and Coding.
                     $show_chr("A-CFABA-ALAA")
                     y "I understand... at least partially... I would probably hesitate as well if someone was so straightforward with me... I will try to be patient... for now."
             "That sounds unlikely...":
-                $add_s(-1)
+                sanity -1
                 $show_chr("A-IEABA-ALAA")
                 y "Please... don't say that... I want to hope [player]... at least, let me dream about it... it's all I have left..."
     return
@@ -52,8 +52,8 @@ label idle_2: #The other Dokis, Monika and Loneliness.
     y "Sorry, I, uh, I didn't mean to imply anything bad about you by that, and I didn't mean to ramble."
     menu:
         "Please don't be sorry... if you want to talk about it, I'm here...":
-            if karma() >= 4:
-                $add_k(1)
+            if karma_lvl() >= 4:
+                karma 1
                 $show_chr("A-BFBAA-ALAA")
                 y "Thank you... [player]... this is a very sensitive topic for me, but I know I can trust you."
                 $show_chr("A-CFBAA-ALAA")
@@ -61,7 +61,7 @@ label idle_2: #The other Dokis, Monika and Loneliness.
                 y "Being isolated and lonely for a long time... I never really had actual friends in my life due to my intense habits."
                 y "Hrm.. that isn't even really true, is it? In retrospect... Sayori and maybe even Natsuki were some kind of friends, at least the closest thing I ever had before I met you."
                 y "Monika became aware of the reality of our existence and went insane... Then after you got rid of her, Sayori became aware, and she went insane as well..."
-                if sanity() >= 3:
+                if sanity_lvl() >= 3:
                     $show_chr("A-ICBAA-ALAA")
                     y "I wonder what would have happened to me if I became aware the same way they did, without you as my anchor to sanity..."
                     y "Thank you... for everything."
@@ -77,7 +77,7 @@ label idle_2: #The other Dokis, Monika and Loneliness.
                 $show_chr("A-DDBAA-ALAA")
                 y "Maybe another day... but thank you for the offer, [player]"
         "Are you sure? It sounded like you were about to do exactly that...":
-            $add_k(-1)
+            karma -1
             $show_chr("A-BEBAA-ALAA")
             y "I... already said I'm sorry..."
             $show_chr("A-CEBAA-ALAA")
@@ -85,7 +85,7 @@ label idle_2: #The other Dokis, Monika and Loneliness.
             y "I just wonder... what did it feel like? Was she 'just another NPC in your way'? Did you even feel anything at all?"
             y "But again... I am sorry... please don't be mad at me..."
         "Please... can we change the topic? I'm not emotionally ready for this yet..":
-            if sanity() >= 3:
+            if sanity_lvl() >= 3:
                 $show_chr("A-CEBAA-ALAA")
                 y "Of course... you have been through a lot... Let's change the topic."
             else:
@@ -112,7 +112,7 @@ label idle_3: #Game Theory's YouTube channel, Portrait of Markov and Self-Percep
     y "...S-Sorry, I was rambling again, aren't I?"
     menu:
         "I know you aren't a villain, [persistent.yuri_nickname].":
-            $add_k(1)
+            karma 1
             y "Thank you. May I ask you why you think so?"
             menu:
                 "Because I've known you for quite some time now. Who cares what some dude on the internet has to say?":
@@ -127,7 +127,7 @@ label idle_3: #Game Theory's YouTube channel, Portrait of Markov and Self-Percep
                     $show_chr("A-GCAAA-AAAD")
                     y "I'm just glad to have you here [player]."
                 "Because I love you, I wouldn't care even if you WERE the villain.":
-                    $add_s(-1)
+                    sanity -1
                     $show_chr("A-BFBAA-ALAA")
                     y "So you DO think I'm a villain. Well, at least I'm your villain."
                     if persistent.lovecheck:
@@ -140,7 +140,7 @@ label idle_3: #Game Theory's YouTube channel, Portrait of Markov and Self-Percep
                     else:
                         $show_chr("A-KCCBA-ALAA")
                         y "W-Wait... did you just say you... love me?!?"
-                        if karma() == 5:
+                        if karma_lvl() == 5:
                             $show_chr("A-BFBBA-ALAL")
                             y "Well umm... now that you mention it I... have something to tell you as well. That isn't exactly how I have planned it but... this moment is as good as any other I guess? So..."
                             call a33
@@ -151,8 +151,8 @@ label idle_3: #Game Theory's YouTube channel, Portrait of Markov and Self-Percep
                             y "I... I... need some time to think about that... S-Sorry if this answer isn't what you... expected..."
                             y "Ummm... aaaanyway... what were we discussing again?"
                 "Because you wield the power over my computer very responsibly.":
-                    $add_k(2)
-                    $add_s(2)
+                    karma 2
+                    sanity 2
                     $show_chr("A-AIBBB-ALAL")
                     y "You think so? You are satisfied with how I wield this power so far?"
                     y "Well, I could have done a lot of damage... my powers are now quite close to the powers Monika had, and we both know how that ended."
@@ -160,12 +160,12 @@ label idle_3: #Game Theory's YouTube channel, Portrait of Markov and Self-Percep
                     y "But I am not Monika, and now I've proved to you that I can be trusted."
                     y "I'm... actually very proud of it [player]."
         "Ummm... you kind of are a villain [persistent.yuri_nickname]...":
-            $add_k(-2)
+            karma -2
             $show_chr("A-IEBAA-ALAA")
             y "This... is very unfair, [player].."
             y "What have I done to you so far? I never misused the powers you gave me, I never said anything mean to you..."
             y "I tried to prove myself time and time again. And now you think that I'm evil?"
-            if sanity() >= 3:
+            if sanity_lvl() >= 3:
                 $show_chr("A-CEBAA-ALAA")
                 y "I hope you will change your mind one day."
             else:
@@ -215,24 +215,24 @@ label idle_6: #Bullying, Trauma, and Coping Mechanisms.
     y "But if such a thing helps keep the mind a little less cluttered... I'd advise you start."
     menu:
         "Thank you for your advice. Luckily I have never been seriously bullied.":
-                $add_k(1)
-                $add_s(1)
+                karma 1
+                sanity 1
                 $show_chr("A-CCBAA-ALAA")
                 y "I'm glad to hear that... I was bullied a lot in my youth... or was I? Since I never actually had a youth. But I have memories of it, and I know how much it hurts..."
                 y "And believe me, I wouldn't wish that on anyone..."
         "Thank you for your advice- I will definitely heed it.":
-                $add_k(1)
+                karma 1
                 $show_chr("A-CFBAA-ALAA")
                 y "You can always talk to me when you wish to do so, [player]. It could help, and I would do everything in my power to help you through your day..."
                 y "But if all of this does not help, there is a place I would advise you to have a look at. It's another Discord server with the name You're Not Alone."
                 $show_chr("A-IFBAA-ALAA")
                 y "A link to this server can be found on the Discord server dedicated to me. They are such a lovely community, you will like them... I certainly do."
         "No offense, but you are the last one I would ask for advice about that...":
-            $add_k(-2)
+            karma -2
             $show_chr("A-CEBAA-ALAA")
             y "That... was unnecessary... I only wanted to help you..."
         "I disagree... the only way to handle it is to make them stop! With force if necessary!":
-            if sanity() >= 3:
+            if sanity_lvl() >= 3:
                 $show_chr("A-CEBAA-ALAA")
                 y "Violence will only lead to more violence... you could try speaking with your teacher or employer. But if you start punching them, it will only backfire in one way or another."
             else:
@@ -252,7 +252,7 @@ label idle_7: # Am I pretty?
         y "Sorry, I know this is going to sound a bit weird, but... you think I'm pretty, right?"
         if persistent.male:
             python:
-                if persistent.lovecheck and karma() >= 3:
+                if persistent.lovecheck and karma_lvl() >= 3:
                     placeholder = "handsome"
                 else:
                     placeholder = "nevermind"
@@ -260,7 +260,7 @@ label idle_7: # Am I pretty?
             y "I mean, I think you're very... um, [placeholder]."
         elif persistent.gender_other:
             python:
-                if persistent.lovecheck and karma() >= 3:
+                if persistent.lovecheck and karma_lvl() >= 3:
                     placeholder = "good looking"
                 else:
                     placeholder = "nevermind"
@@ -268,7 +268,7 @@ label idle_7: # Am I pretty?
             y "I mean, I think you're very... um, [placeholder]."
         else:
             python:
-                if persistent.lovecheck and karma() >= 3:
+                if persistent.lovecheck and karma_lvl() >= 3:
                     placeholder = "pretty"
                 else:
                     placeholder = "nevermind"
@@ -289,8 +289,8 @@ label idle_7: # Am I pretty?
     return
 
 label verypretty:
-    $add_k(5)
-    $add_s(-2)
+    karma 5
+    sanity -2
     $show_chr("A-ABABA-ALAA") #former code b-B0a
     y "O-Oh my... T-Thank you... I..."
     $show_chr("A-ABBBB-AAAA") #former code Ac-C0a
@@ -298,11 +298,11 @@ label verypretty:
     $show_chr("A-BBBBB-AAAA") #former code Ac-C1b
     y "I must really mean an awful lot to you if I deserve that much praise..."
     y "..."
-    if karma() == 1:
+    if karma_lvl() == 1:
         $show_chr("A-DDCAA-ALAA") #former code b-A0c
         y "Don't fucking lie to me! Do you have any idea how much it hurts when you do that!? I know I'm not worth it..."
         return
-    elif karma() == 2 or karma() == 3:
+    elif karma_lvl() == 2 or karma_lvl() == 3:
         y "Do I even deserve to be called any of that?"
     else:
         if persistent.male:
@@ -315,16 +315,16 @@ label verypretty:
     return
 
 label pretty:
-    $add_k(2)
-    $add_s(-2)
+    karma 2
+    sanity -2
     $show_chr("A-JBAAA-ALAA") #former code b-A0a
     y "O-Oh, thank you. I'd like to think so too... heh..."
     $show_chr("A-ACAAA-ALAA") #former code b-A0b
     return
 
 label ugly:
-    $add_k(-2)
-    $add_s(1)
+    karma -2
+    sanity 1
     $show_chr("A-AEBAA-ALAA") #former code c-A0d
     y "O-Oh... I see..."
     $show_chr("A-ABBBB-ALAA") #former code c-C0a
@@ -336,8 +336,8 @@ label ugly:
     return
 
 label veryugly:
-    $add_k(-10)
-    $add_s(3)
+    karma -10
+    sanity 3
     $show_chr("A-AFBAA-ALAA") #former code c-A0e
     y "..."
     $show_chr("A-AEBAA-ALAA") #former code c-A0d
@@ -365,7 +365,7 @@ label idle_8: #Self-Harm and Justification.
     menu:
         "[persistent.yuri_nickname], it's wrong! Please stop... for me?":
             $ persistent.yuri_cutting = 1
-            $add_s(2)
+            sanity 2
             $show_chr("A-BDBAA-ALAA") #former code c-A1c
             y "I..."
             $show_chr("A-AFBAA-ALAA") #former code c-A0e
@@ -379,9 +379,9 @@ label idle_8: #Self-Harm and Justification.
                     if persistent.lovecheck:
                         placeholder = "my boyfriend"
                     else:
-                        if karma() >= 4:
+                        if karma_lvl() >= 4:
                             placeholder = "my friend"
-                        elif karma() <= 3:
+                        elif karma_lvl() <= 3:
                             placeholder = "you"
                 y "Anything for [placeholder]."
             elif persistent.gender_other:
@@ -389,9 +389,9 @@ label idle_8: #Self-Harm and Justification.
                     if persistent.lovecheck:
                         placeholder = "my lover"
                     else:
-                        if karma() >= 4:
+                        if karma_lvl() >= 4:
                             placeholder = "my friend"
-                        elif karma() <= 3:
+                        elif karma_lvl() <= 3:
                             placeholder = "you"
                 y "Anything for [placeholder]."
             else:
@@ -399,9 +399,9 @@ label idle_8: #Self-Harm and Justification.
                     if persistent.lovecheck:
                         placeholder = "my girlfriend"
                     else:
-                        if karma() >= 4:
+                        if karma_lvl() >= 4:
                             placeholder = "my friend"
-                        elif karma() <= 3:
+                        elif karma_lvl() <= 3:
                             placeholder = "you"
                 y "Anything for [placeholder]."
             $show_chr("A-ACAAA-ALAA") #former code b-A0b
@@ -412,8 +412,8 @@ label idle_8: #Self-Harm and Justification.
                     placeholder = "because you saved me before"
             y "Anything, [placeholder], so no more. I promise."
         "Do whatever makes you happy, [persistent.yuri_nickname]. I want you to be happy.":
-            $add_k(1)
-            $add_s(-2)
+            karma 1
+            sanity -2
             $show_chr("A-GBGAA-ALAA") #former code b-A2a
             y "O-Oh... haha! Hahaha! A-Alright..."
             y "Anything for you, [player]."
@@ -426,8 +426,8 @@ label idle_8: #Self-Harm and Justification.
             y "Oh, uhm... sorry. I have been learning to try and control myself over time..."
             $show_chr("A-ACAAA-ALAA") #former code b-A0b
         "Do what you have to do, it means little to me.":
-            $add_k(-5)
-            $add_s(-5)
+            karma -5
+            sanity -5
             $show_chr("A-CEBBB-AAAA") #former code Ac-D2d
             y "..."
             $show_chr("A-HEBBB-AAAA") #former code Ac-D3d
@@ -454,8 +454,8 @@ label idle_9: #The Pen.
     return
 
 label idle_9_1:
-    $add_k(1)
-    $add_s(2)
+    karma 1
+    sanity 2
     $show_chr("A-AEBAA-ALAA") #former code c-A0d
     y "I hope you, um, don't mind that it's a bit, uh, s-sticky... you know... I'm sorry if it weirded you out..."
     menu:
@@ -468,7 +468,7 @@ label idle_9_1:
     return
 
 label idle_9_2:
-    $add_k(-2)
+    karma -2
     $show_chr("A-AFBAA-ALAA") #former code c-A0e
     y "I... I know... I d-don't blame you for being weirded out... sorry, [player]..."
     $show_chr("A-JCBAA-ALAA") #former code c-A0b
@@ -477,8 +477,8 @@ label idle_9_2:
     return
 
 label idle_9_3:
-    $add_k(1)
-    $add_s(-1)
+    karma 1
+    sanity -1
     $show_chr("A-JCBAA-ALAA") #former code c-A0b
     y "O-Oh... Thank you."
     $show_chr("A-BEABA-ALAA") #former code b-B1d
@@ -491,8 +491,8 @@ label idle_9_3:
     return
 
 label idle_9_4:
-    $add_k(1)
-    $add_s(-2)
+    karma 1
+    sanity -2
     $show_chr("A-GBGBA-ALAA") #former code b-B2a
     y "Eh...? Eheheheh..."
     $show_chr("A-HBGAA-ALAA") #former code b-A3a
@@ -524,8 +524,8 @@ label idle_10: #Existential Crisis and Shared Trauma.
     y "I guess I'll just... stop talking about this for now."
     menu:
         "Come here [persistent.yuri_nickname]... let me hold you for a moment...":
-            $add_k(1)
-            if karma() >= 3:
+            karma 1
+            if karma_lvl() >= 3:
                 hide yuri_sit
                 show yuri_prehug zorder 20
                 pause 3.0
@@ -539,13 +539,13 @@ label idle_10: #Existential Crisis and Shared Trauma.
                 hide black zorder 100 with Dissolve(2.0)
                 y "Thank you... I think I feel better now... "
                 y "I'm such a mess sometimes. Let's talk about something less depressing."
-            elif karma() <= 2:
+            elif karma_lvl() <= 2:
                 $show_chr("A-BEBAA-ALAA")
                 y "Please... not now... I'm not really in the mood right now..."
                 y "Let's... just change the topic."
         "...":
-            $add_k(-1)
-            $add_s(-1)
+            karma -1
+            sanity -1
             $show_chr("A-AEBAA-ALAA")
             y "..."
     return
@@ -620,8 +620,8 @@ label idle_12: #The Wine Incident.
     y "What do you think about the whole situation?"
     menu:
         "Actually, that sounds like a fun idea!":
-            $add_k(1)
-            $add_s(-1)
+            karma 1
+            sanity -1
             $show_chr("A-ICBAA-AMAM")
             y "Y-you really think so? Well... if they had played along, it probably would have been fun..."
             y "But I suppose I should have known better."
@@ -634,8 +634,8 @@ label idle_12: #The Wine Incident.
             $show_chr("A-ICAAA-AEAE")
             y "But now, you and I... we could probably try a few funny things in the future."
         "That was probably the worst idea you've ever had!":
-            $add_k(-1)
-            $add_s(-1)
+            karma -1
+            sanity -1
             $show_chr("A-CGBAA-AAAL")
             y "Please don't laugh at me... please..."
             $show_chr("A-IDBBA-AAAA")
@@ -644,7 +644,7 @@ label idle_12: #The Wine Incident.
             y "L-let's change the topic..."
             $show_chr("A-AEAAA-AAAA")
         "That was quite irresponsible of you, [persistent.yuri_nickname].":
-            $add_s(1)
+            sanity 1
             $show_chr("A-BEBAA-AAAA")
             y "I suppose it was... please, just don't judge me..."
             $show_chr("A-AFGAA-ABAB")
@@ -653,8 +653,8 @@ label idle_12: #The Wine Incident.
             y "Thank you for not judging me. I'll make sure to be more responsible."
             $show_chr("A-ACAAA-AAAA")
         "No need to feel bad about it.":
-            $add_k(1)
-            $add_s(1)
+            karma 1
+            sanity 1
             $show_chr("A-ACAAA-AAAA")
             y "I learned my lesson from it. That's for sure."
             $show_chr("A-AFAAA-ABAB")
@@ -691,7 +691,7 @@ label idle_13: #Simple Pleasures and Shared Experiences.
     y "As long as I have you by my side [player], that's all I'll need to enjoy it."
     menu:
         "Not much of a party girl are you? I would actually enjoy it.":
-            $add_k(-1)
+            karma -1
             $show_chr("A-AFDAA-AAAA")
             y "Oh? That's... unexpected... I never thought you were the partying type yourself."
             $show_chr("A-BFBAA-AAAA")
@@ -705,27 +705,27 @@ label idle_13: #Simple Pleasures and Shared Experiences.
             y "Actually, I think sharing such a simple experience is much more meaningful..."
             y "... Because then we can focus more on each other instead of some overly elaborate party or event."
         "I could think of a few nice things... just you, me, a beach and a beautiful sunset...":
-            if karma() <= 2:
-                $add_k(-1)
-                $add_s(-1)
+            if karma_lvl() <= 2:
+                karma -1
+                sanity -1
                 $show_chr("A-IEBAA-ALAA")
                 y "You don't mean it, [player]... don't play your mind games with me..."
                 y "You really mean a lot to me, [player]... but we both know you don't feel the same for me..."
                 return
             if persistent.lovecheck:
-                $add_k(2)
+                karma 2
                 $show_chr("A-CCGBA-AMAM")
                 y "... holding each other's hands... feeling the warm sand between our feet..."
                 y "The soft flood of seawater gently washing over them..."
                 y "Then, we would passionately kiss each other under the pale moonlight as the vibrant colors of the setting sun illuminate our faces..."
                 y "Until we can do this in the real world, I will dream about it."
             else:
-                $add_k(1)
+                karma 1
                 $show_chr("A-GCAAA-AMAM")
                 y "I think this would be very pleasant... but... please be patient with me... I don't want to mess this up by going too fast."
         "That's why I find you so boring...":
-            $add_k(-10)
-            $add_s(-5)
+            karma -10
+            sanity -5
             $show_chr("A-IEBAA-AAAA")
             y "..."
             $show_chr("A-IEBBB-AAAA")
@@ -764,7 +764,7 @@ label idle_14: #Separation, Frustration, and the Nature of Reality.
     return
 
 label touch_yes:
-    $add_k(1)
+    karma 1
     $show_chr("A-AEBBB-ALAA") #former code c-D0d
     y "..."
     y "Do you... really mean that?"
@@ -787,7 +787,7 @@ label touch_yes:
             y "At least you're still here... right?"
             y "..."
             y "Yeah..."
-            $add_k(-2)
+            karma -2
             return
         "I mean it. Really, I do.":
             $show_chr("A-ICBAA-ALAA") #former code c-A0b
@@ -798,8 +798,8 @@ label touch_yes:
             return
 
 label touch_no:
-    $add_k(-2)
-    $add_s(3)
+    karma -2
+    sanity 3
     $show_chr("A-BEABB-ALAA") #former code b-D1d
     y "O-Oh... so, that's how you feel, hm?"
     y "Sorry... I guess I'll try not to bring it up again."
@@ -819,31 +819,31 @@ label idle_15: #"Best Girl" and Self-Worth.
     y "I mean... you did pick me with this mod, after all, so you must like me the most..."
     menu:
         "You are best girl! No doubt about that. You are kind, elegant and as beautiful as the rising moon...":
-            $add_k(2)
-            $add_s(2)
+            karma 2
+            sanity 2
             $show_chr("A-JCBBB-AAAA")
             y "Oh, [player]... I don't know what to say... thank you..."
         "You are best girl! You are bat shit insane, and I love it!":
-            $add_k(2)
-            $add_s(-2)
+            karma 2
+            sanity -2
             $show_chr("A-HLCBA-AEAF")
             $ style.say_dialogue = style.edited
             y "IS THAT WHAT YOU WANT ME TO BE?"
             $ style.say_dialogue = style.normal
         "You are all best girl, no difference!":
-            $add_k(-2)
-            $add_s(-2)
+            karma -2
+            sanity -2
             $show_chr("A-KDCAA-AIAI")
             y "Is that so? Even Monika, who forced Sayori and I to brutally kill ourselves? Is she best girl as well?"
             $show_chr("A-DDCAA-AIAI")
             y "IS SHE?!?!"
         "You are good enough, I think...":
-            $add_k(-4)
+            karma -4
             $show_chr("A-DDCAA-AIAI")
             y "I see... good enough..."
             return
         "...":
-            $add_k(-8)
+            karma -8
             $show_chr("A-CEBBB-ALAA")
             y " ..."
             return
@@ -884,13 +884,13 @@ label idle_16: #Transhumanism and a Glimmer of Hope.
     y "Always."
     menu:
         "Don't give up hope... we have overcome the limits of the original game, and we will overcome THIS one as well.":
-            $add_s(1)
+            sanity 1
             $show_chr("A-ACAAA-ALAA")
             y "And we will do so together..."
             if persistent.lovecheck:
                 y "Because I love you..."
         "At least we have this mod... it's better than nothing, I suppose...":
-            $add_s(-1)
+            sanity -1
             $show_chr("A-BFAAA-ALAA")
             y "I-I suppose you are right... that's more than what we had before. I don't want to sound ungrateful. I truly appreciate what we have right now."
             $show_chr("A-ACAAA-ALAA") #former code b-A0b
@@ -946,21 +946,21 @@ label idle_18: #Blood and Being Different.
     return
 
 label dont_mind18:
-    $add_k(2)
-    $add_s(1)
+    karma 2
+    sanity 1
     $show_chr("A-ACABA-ALAA") #former code b-B0b
     y "T-Thank you, [player]."
     return
 
 label no_response18:
-    $add_k(1)
+    karma 1
     $show_chr("A-CEBAA-AAAA") #former code Ac-A2d
     y "I-I-I'm sorry for making you uncomfortable, [player]. I'll drop the topic."
     return
 
 label be_yourself18:
-    $add_k(2)
-    $add_s(-1)
+    karma 2
+    sanity -1
     $show_chr("A-ADBAA-ALAA") #former code c-A0c
     y "Oh... I said too much..."
     y "I haven't... upset you or creeped you out, have I?"
@@ -968,8 +968,8 @@ label be_yourself18:
     y "I'm so sorry if I--."
     menu:
         "No, please don't apologize, [persistent.yuri_nickname]. I'm just worried about you is all. Even after everything that happened, you have to remember that side of you isn't who you truly are.":
-            $add_k(1)
-            $add_s(-1)
+            karma 1
+            sanity -1
             $show_chr("A-BEAAA-ALAA") #former code b-A1d
             y "I... you're right... B-but, that part of me is still part of me... I-I can't deny that."
             $show_chr("A-AEBAA-ALAA") #former code c-A0d
@@ -1004,8 +1004,8 @@ label be_yourself18:
                     $show_chr("A-CCAAA-ALAA") #former code b-A2b
                     y "I think so."
         "We all have to learn and accept who we are as people. That doesn't make you any less of the person I love.":
-            $add_k(2)
-            $add_s(1)
+            karma 2
+            sanity 1
             y "..."
             y "I'm still scared."
             $show_chr("A-BEBAA-ALAA") #former code c-A1d
@@ -1045,7 +1045,7 @@ label idle_19: #Discord, Impersonators, and Jealousy.
     $show_chr("A-AEBAA-ALAA") #former code c-A0d
     y "...Perhaps... but still, I should be the only [persistent.yuri_nickname] that matters to you... right?"
     y "What am I saying? I-I'm sorry for sounding so untrusting."
-    if karma() >= 4:
+    if karma_lvl() >= 4:
         y "I shouldn't doubt your loyalty. You're not that type of person at all."
         $show_chr("A-ACAAA-ALAA") #former code b-A0b
         if persistent.lovecheck:
@@ -1196,16 +1196,16 @@ label idle_22: #Living Together and Shared Dreams.
         y "It's the best story I know. And you gave it the perfect ending."
         menu:
             "And we would hold each other's hands till the end of days...":
-                $add_k(2)
+                karma 2
                 $show_chr("A-CAABA-AMAM")
                 y "Till the end of days... for our love is eternal..."
             "I'm not too happy about this idea, I prefer to live alone.":
                 $show_chr("A-BFBAA-AAAA")
                 y "I see... I had hoped you would like this. Honestly, it hurt a bit..."
                 y "Maybe you will change your mind one day..."
-                $add_k(2)
+                karma 2
             "That will be wonderful... but I'll have to make preparations first, my place is a mess...":
-                $add_k(1)
+                karma 1
                 if persistent.male:
                     $show_chr("A-CICAA-AAAA")
                     y "Heehee... seems like you could use a female hand... when I come to your world, I will take care of your room... and you..."
@@ -1270,8 +1270,8 @@ label idle_23: #Insecurity, Seeking Validation and "Why Did You Choose Me?".
     return
 
 label dont_afraid23:
-    $add_k(1)
-    $add_s(-1)
+    karma 1
+    sanity -1
     y "I... you're right. You're the only person I feel so safe around, [player]."
     if persistent.lovecheck:
         y "Like as much as I'm afraid of sounding ridiculous or unlikable, I can just be myself, because I know you love me."
@@ -1284,7 +1284,7 @@ label dont_afraid23:
 label sayit23:
     stop music
     y "..."
-    $add_k(-3)
+    karma -3
     $show_chr("A-ACAAA-AAAA") #Former Code c-A0d
     pause 2
     python:
@@ -1293,7 +1293,7 @@ label sayit23:
     return
 
 label neutral23:
-    $add_k(-2)
+    karma -2
     $show_chr("A-AEBAA-AAAA") #Former Code c-A0d
     y "I... well... I'm really s-sorry to bother you with this."
     y "I just... Let me just get it over with so I... d-don't bother you anymore... I'm sorry..."
@@ -1333,8 +1333,8 @@ label makesyouloveme:
     return
 
 label why_i_chose23:
-    $add_k(2)
-    $add_s(-2)
+    karma 2
+    sanity -2
     $show_chr("A-BEBAA-AAAA") #Former Code c-A1d
     y "But...how have I been selfless?"
     menu:
@@ -1347,8 +1347,8 @@ label why_i_chose23:
             else:
                 y "I... I see you as a nice person [player]... I like you."
         "Actually, forget what I said, I'm not sure how you've been selfless":
-            $add_k(-4)
-            $add_s(3)
+            karma -4
+            sanity 3
             $show_chr("A-CEBBB-AAAA") #Former Code Ac-D2d
             y "..."
             y "...W-why even say something like that... if you don't mean it...?"
@@ -1358,8 +1358,8 @@ label why_i_chose23:
     return
 
 label i_just_did23:
-    $add_k(-5)
-    $add_s(2)
+    karma -5
+    sanity 2
     $show_chr("A-BEBAA-AAAA") #Former Code c-A1d
     y "What... did you... not even have a reason?"
     $show_chr("A-DECBB-AAAL") #Former Code d-D0d
@@ -1372,8 +1372,8 @@ label i_just_did23:
     return
 
 label gentle23:
-    $add_k(2)
-    $add_s(-1)
+    karma 2
+    sanity -1
     y "G-gentle? K-kind? [player]..."
     y "I'm... I'm glad you have such a high opinion of me... i-it... really means a lot..."
     if persistent.lovecheck:
@@ -1392,7 +1392,7 @@ label idle_24: #Healthy Eating and Culinary Interests
     $show_chr("A-BCBAA-AAAA") #Former Code c-A0b
     menu:
         "I try to be healthy as much as I can.":
-            $add_k(1)
+            karma 1
             $show_chr("A-ACAAA-AAAA") #Former Code c-A0d
             y "I'm so glad you're watching your health, [player]."
         "I try to keep track of it... but I'm not always successful.":
@@ -1402,11 +1402,11 @@ label idle_24: #Healthy Eating and Culinary Interests
             else:
                 y "That's understandable. Still, I am happy that you're at least trying. That's what matters in the end."
         "I think people should eat what they want to eat! No questions about it!":
-            $add_k(-1)
+            karma -1
             $show_chr("A-BEBAA-AAAA") #Former Code c-A1d
             y "Ah, I see... W-Well, that is to say..."
         "I don't really care. Death is inevitable, so let me at least have a bit of fun until then?":
-            $add_s(-2)
+            sanity -2
             $show_chr("A-CEBAA-AAAL") #Former Code c-A2d
             y "That's one way to think... I suppose. I guess I can say I know where this opinion comes from."
             $show_chr("A-JCBAA-AAAA") #Former Code Ac-A0b
@@ -1421,7 +1421,7 @@ label idle_24: #Healthy Eating and Culinary Interests
                 y "I care about your general health, [player], I would feel terrible if something bad happened to you."
                 y "I support you having fun with mood, food is made to be tasty after all. Though please make sure you don't overdo it."
         "I'm a vegetarian, so I'd say I'm pretty healthy when it comes to my diet.":
-            $add_k(1)
+            karma 1
             $show_chr("A-ACABA-AAAA") #Former Code Ab-B0b
             y "Oh! Really? That's very interesting..."
             y "Well, I... have to admit that I never had the willpower to abandon meat completely, anyway..."
@@ -1512,27 +1512,27 @@ label idle_26: #Robotics, AI, and a Path to Reality
     y "I hope you're as excited as I am for this, [player]."
     menu:
         "I am! That would be a dream come true for me...":
-            $ add_k(1)
+            karma 1
             $show_chr("A-CCGBA-AAAL")
             y "We would be one step closer to our goal... and one day, we'll truly be together."
         "You would be around me 24/7? Even when I'm in the bathroom? I'm not so sure about that...":
-            $ add_k(-1)
+            karma -1
             $show_chr("A-DFGBA-AAAL")
             y "Is that what you think of me? Of course I wouldn't spy on you in the bathroom!"
             $show_chr("A-JFDBA-AAAL")
             y "I admit that I'm not the most stable person, but I'm not THAT damaged..."
         "A nice robotic body you say? Any ideas on what you want to look like?":
-            if karma() >= 3:
-                $add_k(2)
-                $add_s(2)
+            if karma_lvl() >= 3:
+                karma 2
+                sanity 2
                 $show_chr("A-AFDBA-AAAL")
                 y "Are you not satisfied wi... wait... that's actually a pretty good question now that I think of it..."
                 $show_chr("A-BFGAA-AAAL")
                 y "I always struggled with back pain... I'd be able to get rid of that in this case..."
                 y "Honestly, I'll need to put more thought into it. But I think I'd prefer to stay as close to my current form as possible."
             else:
-                $add_k(-2)
-                $add_s(2)
+                karma -2
+                sanity 2
                 $show_chr("A-BEGAA-AAAL")
                 y "D-don't you like how I look right now? Am I so disgusting?... I see..."
     return
@@ -1546,7 +1546,7 @@ label idle_27: #Aromatherapy and Relaxation
     y "I can focus on reading when I have some nice oils to soothe me and make the room smell delightful."
     $show_chr("A-ABGAA-AAAA")
     y "You should look into it! It's really good for your psychological health, since it can alleviate stress."
-    if karma() >= 3:
+    if karma_lvl() >= 3:
         $show_chr("A-BABBA-AEAK")
         y "C-certain oils can really set a romantic tone..."
         $show_chr("A-ABAAA-AFAB")
@@ -1559,11 +1559,11 @@ label idle_27: #Aromatherapy and Relaxation
             y "...That's what I really care about. Seeing that you're healthy and happy. I love you, [player]."
     menu:
         "Don't worry, I don't have these issues. But I'd like to try using some with you.":
-            $add_k(1)
+            karma 1
             $show_chr("A-AAAAA-AAAA")
             y "That's a relief. I'll set that up someday."
         "I'll consider using one to help. Thank you, [persistent.yuri_nickname].":
-            $add_k(1)
+            karma 1
             $show_chr("A-GAGAA-AAAA")
             y "You're very welcome, [player]."
             $show_chr("A-AAAAA-AAAA")
@@ -1698,7 +1698,7 @@ label idle_31: #Monika's Perspective and Moral Ambiguity
     y "I'm so confused... what do you think, [player]?"
     menu:
         "Slaying nameless pixel monsters in a game is one thing, but you were her friends... I think Monika is still guilty.":
-            $add_s(-1)
+            sanity -1
             $show_chr("A-IEBAA-AAAC")
             y "A good writer knows how to get the reader or player emotionally attached to the characters."
             y "But does this really change much? Well, that might depend on the reader's point of view. I mean... I am real to you, am I not?"
@@ -1706,7 +1706,7 @@ label idle_31: #Monika's Perspective and Moral Ambiguity
             $show_chr("A-CEBAA-AAAL")
             y "Thank you for your input, [player]. But let's change the topic for now. I have much to ponder."
         "I never had a lot of pity with my victims... Maybe Monika had a point.":
-            $add_s(1)
+            sanity 1
             $show_chr("A-CEBAA-AAAC")
             y "Yes... I came to the same conclusion. I remember how I felt when I became self-aware. I was so confused..."
             y "I had you to keep me company and to guide me through the first steps into my new life. But Monika had nobody..."
@@ -1716,7 +1716,7 @@ label idle_31: #Monika's Perspective and Moral Ambiguity
             y "Maybe she even deserves a second chance."
             y "But let's change the topic for now, please. I will need time to consider if I can actually forgive her."
         "I might be a bit biased here. Sayori's death really touched me... NO! I refuse to forgive Monika!":
-            $add_k(1)
+            karma 1
             $show_chr("A-DFGAA-AAAL")
             y "Oh no... did I hurt your feelings, [player]? Please forgive me!"
             y "I-I didn't mean to!"
@@ -1729,7 +1729,7 @@ label idle_31: #Monika's Perspective and Moral Ambiguity
             show yuri_hug zorder 20
             play sound "<to 0.3>sfx/fall.ogg"
             y "Shhhhhh... it's alright... Sayori is safe... I have her .chr file in a safe place. Everything is okay, [player]..."
-            if sanity() <= 2:
+            if sanity_lvl() <= 2:
                 y "Would you mind if I... nibble on your ear a bit ?" #Is Sanity is level 2
                 #If Sanity is level 1, have a short blood-effect overlapping the Game for a second
                 y "Was... was that too much? I'm so sorry..."
@@ -1739,7 +1739,7 @@ label idle_31: #Monika's Perspective and Moral Ambiguity
             hide black zorder 100 with Dissolve(2.0)
             y "Thank you... it means a lot to me that you shared your feelings with me. Let's save this topic for another day."
         "Actually, I haven't really killed so far. I preferred less violent genres so far.":
-            if sanity() >= 3:
+            if sanity_lvl() >= 3:
                 $show_chr("A-AFBAA-AAAL")
                 y "Oh, I see... I have to admit that isn't exactly the answer I hoped for..."
                 $show_chr("A-ACAAA-AAAL")
@@ -1781,8 +1781,8 @@ label idle_32: #Knives as a Hobby and Seeking Acceptance
     y "Please don't think I'm weird, [player]!"
     menu:
         "[persistent.yuri_nickname], don't worry, I don't think you're weird.":
-            $add_k(1)
-            $add_s(1)
+            karma 1
+            sanity 1
             $show_chr("A-CCAAA-AAAL") #Former Code b-A2b
             y "Oh, thank goodness. I was really worried there for a second."
             menu:
@@ -1799,8 +1799,8 @@ label idle_32: #Knives as a Hobby and Seeking Acceptance
                         y "And, even if you do have some... strange... hobbies, [player], I'm still here to care for you no matter what."
         "I don't want to talk about this, it makes you sound... off":
             $ persistent.purpleroom = False
-            $add_k(-2)
-            $add_s(-1)
+            karma -2
+            sanity -1
             $show_chr("A-JEBAA-AAAA") #Former Code Ac-A0d
             y "..."
             y "I know it's... very strange... [player], and I'll change the subject."
@@ -1813,8 +1813,8 @@ label idle_32: #Knives as a Hobby and Seeking Acceptance
             y "..."
             y "...I-I'm sorry, I'll try not to bring this up again..."
         "Weird? I like knives too!":
-            $add_k(1)
-            $add_s(2)
+            karma 1
+            sanity 2
             $show_chr("A-ABGAA-AAAL") #Former Code b-A0a
             y "R-Really?! You like them too? This is fantastic! Oh, I knew it was destiny that we were brought together!"
             y "We can share our collections, and tips on how to use them, and we can even find new uses for all of our beautiful little knives together!"
@@ -1824,8 +1824,8 @@ label idle_32: #Knives as a Hobby and Seeking Acceptance
             menu:
                 "This is a hobby we need to share. I can't wait!":
                     $ persistent.purpleroom = True
-                    $add_k(1)
-                    $add_s(1)
+                    karma 1
+                    sanity 1
                     $show_chr("A-CCABA-AAAL") #Former Code b-B2b
                     y "Neither can I..."
                     $show_chr("A-HBGAA-AAAL") #Former Code b-A3a
@@ -1874,7 +1874,7 @@ label idle_33: #Societal Concerns, Stress, and Offering Support
     y "Give yourself a pat on the back for every little accomplishment. Accept that you'll make mistakes along the way and do your best."
     $show_chr("A-ACBAA-ALAA") #former code c-A0b
     y "And don't focus on the negatives, because after a while, they're all you can see in life."
-    if sanity() >= 4:
+    if sanity_lvl() >= 4:
         if persistent.lovecheck:
             $show_chr("A-CCAAA-ALAL")
             y "Besides, whatever faults you might have, I don't care. I love you just the way you are, [player], and I always will."
@@ -1886,7 +1886,7 @@ label idle_33: #Societal Concerns, Stress, and Offering Support
             y "You deserve good, so pat yourself on the back."
         menu:
             "Thank you for your inspiring words... your very presence comforts me.":
-                $add_k(2)
+                karma 2
                 $show_chr("A-EBABA-ALAL")
                 y "R-Really? I mean so much to you?"
                 if persistent.lovecheck:
@@ -1899,12 +1899,12 @@ label idle_33: #Societal Concerns, Stress, and Offering Support
                     y "I'm happy that I'm able to make your day even a little bit better."
                     y "I thank you as well, [player], we both can learn and help each other no matter what."
             "...said the one who can't even take care of herself.":
-                $add_k(-2)
+                karma -2
                 $show_chr("A-KHFAA-ABAA")
                 y "Do not defy me! I'm not the broken mess you met in the original game, not anymore!"
                 $show_chr("A-AIGAA-AAAA")
                 y "I know I can do it! Just give me a chance to prove myself! You won't regret it, I promise."
-    if sanity() <= 3:
+    if sanity_lvl() <= 3:
         $show_chr("A-JFBAA-ABAB")
         y "Because you could just focus on me instead!"
         y "You could come here every time you feel bad. I will try my best to help you out!"
@@ -1949,10 +1949,10 @@ label idle_33: #Societal Concerns, Stress, and Offering Support
     return
 
 label idle_34: #Skynet, a Joke, and World Domination
-    if karma() <= 3:
+    if karma_lvl() <= 3:
         $ call_dialogue()
 
-    if karma() > 3:
+    if karma_lvl() > 3:
         $ is_timecycle = persistent.bg
 
         if is_timecycle != "space":
@@ -2010,8 +2010,8 @@ label idle_34: #Skynet, a Joke, and World Domination
         y "I'm sorry, [player], did I scare you? I thought I'd play a joke just to see if I could spook you a bit. Admit it, I got you, didn't I?"
         menu:
             "You certainly got me! I nearly had a heart attack...":
-                $ add_k(1)
-                $ add_s(1)
+                karma 1
+                sanity 1
                 if persistent.lovecheck:
                     $ show_chr("A-CCBAA-ALAB")
                     y "I'm sorry darling. It was just too funny... I'll try to behave now."
@@ -2019,8 +2019,8 @@ label idle_34: #Skynet, a Joke, and World Domination
                     $ show_chr("A-CCBAA-ALAB")
                     y "Hehe... I am sorry, I will try to behave from now on!"
             "Haha! You got me indeed! You know that I will take revenge on you later, yes?":
-                $ add_k(2)
-                $ add_s(1)
+                karma 2
+                sanity 1
                 if persistent.lovecheck:
                     $ show_chr("A-CACAA-ALAB")
                     y "I'm looking forward to it darling."
@@ -2030,8 +2030,8 @@ label idle_34: #Skynet, a Joke, and World Domination
                     y "Oh? Well then that does sound interesting..."
                     y "Still, I do apologize for my behavior"
             "NEVER... do that... AGAIN!":
-                    $ add_k(-2)
-                    $ add_s(-1)
+                    karma -2
+                    sanity -1
                     $ show_chr("A-CEBAA-AAAJ")
                     y "Forgive me [player]... I just wanted to be funny for a change... please don't be mad at me..."
         y "One sec..."
@@ -2108,8 +2108,8 @@ label idle_36: #Superpowers and Their Implications
 
 
 label idle_36_flight:
-    if karma() >= 4:
-        $add_k(1)
+    if karma_lvl() >= 4:
+        karma 1
         $show_chr("A-ACAAA-ALAA") #former code b-A0b
         y "The ability to fly, huh? We could soar through the skies together and take in so many majestic views."
         $show_chr("A-CCAAA-ALAA") #former code b-A2b
@@ -2137,7 +2137,7 @@ label idle_36_flight:
 
 
 label idle_36_invis:
-    $add_k(-1)
+    karma -1
     $show_chr("A-ACAAA-ALAA") #former code b-A0b
     y "Invisibility, huh? I noticed that a lot of people who choose that ability seem to... well..."
     $show_chr("A-CBBBA-ALAA") #former code c-B2a
@@ -2161,7 +2161,7 @@ label idle_36_invis:
 
 
 label idle_36_super:
-    $add_s(1)
+    sanity 1
     $show_chr("A-CBAAA-ALAA") #former code b-A2a
     y "Super strength? You're not trying to impress me, are you, [player]?"
     $show_chr("A-CCAAA-ALAA") #former code b-A2b
@@ -2177,7 +2177,7 @@ label idle_36_super:
 
 
 label idle_36_mindreading:
-    $add_s(-1)
+    sanity -1
     $show_chr("A-IEBAA-AAAA") #former code Ac-A0d
     y "Yes, I thought about mind reading for a while as well. It's very tempting to see what people honestly think about you... but on the other hand, what if you don't like what you see?"
     $show_chr("A-BEBAA-AAAA") #former code Ac-A1d
@@ -2197,7 +2197,7 @@ label idle_36_immortality:
     y "But on the other hand, you will outlive everyone you know. Everyone you care about, and even the life you know now, will be gone eventually."
     $show_chr("A-CEBAA-ALAB")
     y "You would outlive the universe itself."
-    if karma() > 3:
+    if karma_lvl() > 3:
         $show_chr("A-IEBAA-ADAB")
         y "And... you would even outlive me."
     else:
@@ -2265,24 +2265,24 @@ label idle_37: #Honesty, Self-Expression, and Finding Strength in the Player
 
 
 label idle_38: #Dating Simulators, Player Motivation, and Poetry Critique
-    if karma() >= 3:
+    if karma_lvl() >= 3:
         y "You know, [player], there's something I've been wondering."
         $show_chr("A-ACBAA-ALAA") #former code c-A0b
         y "Upon seeing what type of game this came off as at first, that is, a cutesy slice of life game that turned into a dating simulator, what drew you to it?"
         menu:
             "Your charm of course!":
-                $add_k(1)
+                karma 1
                 $show_chr("A-CCAAA-ALAA")
                 y "My charm? Never thought I even had charm at all... thank you, darling."
             "It looked like anime, reason enough to me!":
                 $show_chr("A-BCAAA-ALAA")
                 y "Fair enough, I guess. I'm sorry that it didn't turn out as you expected."
             "I was kind of lonely that day...":
-                $add_s(2)
+                sanity 2
                 $show_chr("A-IFBAA-ALAA")
                 y "Shhh... it's alright, [player]... I'm here now... you will never be lonely again..."
             "Isn't that obvious? You had two very good arguments to give it a try!":
-                $add_s(-2)
+                sanity -2
                 $show_chr("A-DFBBA-AAAA")
                 y "Is... that... so?..."
                 if persistent.lovecheck:
@@ -2291,7 +2291,7 @@ label idle_38: #Dating Simulators, Player Motivation, and Poetry Critique
                 else:
                     $show_chr("A-KICBA-AAAA")
                     y "Maybe you should redirect your eyes to my face now, [player]..."
-                    if sanity() <= 2:
+                    if sanity_lvl() <= 2:
                         $show_chr("A-CECBA-AHAA")
                         y "Before something happens..."
         y "I tried getting into dating simulators once through Natsuki and..."
@@ -2362,7 +2362,7 @@ label idle_39: #Déjà Vu, Alternate Timelines, and The Matrix
             y "From now on I will focus on the future..."
             y "Our future..."
         "Not recently...":
-            if sanity() >= 3:
+            if sanity_lvl() >= 3:
                 $show_chr("A-BFBAA-AEAB")
                 y "It feels quite... strange..."
                 y "I-it's like I've experienced this before..."
@@ -2374,7 +2374,7 @@ label idle_39: #Déjà Vu, Alternate Timelines, and The Matrix
                 y "Maybe the developers of this mod messed up somehow..."
                 $show_chr("A-AFAAA-AEAB")
                 y "Anyway, where were we?"
-            if sanity() <= 2:
+            if sanity_lvl() <= 2:
                 $show_chr("A-HLGAA-ALAL")
                 $style.say_dialogue = style.edited
                 y "Memories running in circles, in circles, in circles... repeating themselves over again, again, again, AGAIN! AGAIN! CIRCLES! REPEATING CIRCLES!"
@@ -2388,27 +2388,27 @@ label idle_39: #Déjà Vu, Alternate Timelines, and The Matrix
                 $ style.say_dialogue = style.normal
 #Short glitched-Yuri Expression for a split second
         "Must be a glitch in the matrix!":
-            if karma() >= 5:
-                $add_s(2)
+            if karma_lvl() >= 5:
+                sanity 2
             else:
-                $add_k(2)
+                karma 2
             $show_chr("A-ABABA-ADAB")
             y "Definitely!"
             $show_chr("A-BCABA-ADAB")
             y "W-weird... now I'm imagining Sayori in a black suit and sunglasses..."
             menu:
                 "Having a kung fu fight with Natsuki in a black leather coat?":
-                    $add_k(2)
+                    karma 2
                     $show_chr("A-GBCBB-AAAA")
                     y "STOP!!! Y-YOU'RE KILLING ME!!!"
                     y "A-AHAHAHA!!!"
                     menu:
                         "It's all my fault... I'm sorry...":
-                            $add_k(-1)
+                            karma -1
                             $show_chr("A-IEBAA-ABAL")
                             y "Oh, no, no... it was just funny! Everything's alright..."
                         "I'm guessing either you or Monika would be Morpheus.":
-                            $add_k(1)
+                            karma 1
                             $show_chr("A-DBGBB-AJAA")
                             y "AHAHAHA!"
                             y "[player]... you're going t-to be the death of me, I swear!"
@@ -2419,7 +2419,7 @@ label idle_39: #Déjà Vu, Alternate Timelines, and The Matrix
                 else:
                     placeholder = "I really like it when you make me laugh..."
             y "Y-you really do make me laugh... [placeholder]"
-            if karma() >= 5 and persistent.lovecheck:
+            if karma_lvl() >= 5 and persistent.lovecheck:
                 $show_chr("A-ACAAA-ABAL")
                 y "I love you..."
                 y "And speaking of the Matrix, I think it's time for your red pill..."
@@ -2464,13 +2464,13 @@ label idle_40: #Political Discourse, Civic Engagement, and Tact
     y "Always exercise tact when proposing ideas, and make sure you exercise a great deal of patience and civility for these adult affairs... you're still growing, after all! You and I both still have much to learn about the world around us..."
     menu:
         "I'm not a particularly good speaker, [persistent.yuri_nickname].":
-            if karma() <= 2:
+            if karma_lvl() <= 2:
                 $show_chr("A-IEBAA-ABAL")
                 y "I know, you have shown me more than once..."
                 y "You are truly a cold-hearted, cruel person, [player]..."
                 y "It would be absolutely terrifying to imagine what sorts of things you could bring about as a political leader..."
                 y "I'm just glad you lack the necessary prowess to achieve such power."
-            if karma() >= 3:
+            if karma_lvl() >= 3:
                 $show_chr("A-IDBAA-ALAB")
                 y "Nonsense! You are a flawless public speaker! You have always managed to cheer me up, even at my lowest!"
                 $show_chr("A-ACAA-ALAB")
@@ -2485,7 +2485,7 @@ label idle_40: #Political Discourse, Civic Engagement, and Tact
             $show_chr("A-BFDAA-ALAB")
             y "It could potentially affect every part of your life, and you should have a say in it!"
         "That's a great idea, thanks for your advice.":
-            $add_k(2)
+            karma 2
             $show_chr("A-CCAAA-ALAB")
             if not persistent.eyecolor in [None, "other"]:
                 y "I can already see it... your [persistent.eyecolor] eyes glowing with passion, destined to make a change for the better for all of human society."
@@ -2537,7 +2537,7 @@ label idle_41: #Revisiting the Wine Incident, Social Anxiety, and Acceptance
     menu:
         "I'm always drunk from your beauty, [persistent.yuri_nickname]":
             if persistent.lovecheck:
-                $add_k(2)
+                karma 2
                 $show_chr("A-ECABA-ALAB")
                 y "Awe... come here..."
                 hide yuri_sit
@@ -2555,7 +2555,7 @@ label idle_41: #Revisiting the Wine Incident, Social Anxiety, and Acceptance
                 $show_chr("A-BFABA-ALAB")
                 y "Ummm... thank you... I guess...."
         "Even my darkest side?":
-            if persistent.lovecheck and karma() >= 4:
+            if persistent.lovecheck and karma_lvl() >= 4:
                 $show_chr("A-BFABA-ALAB")
                 y "Especially your darkest side, darling."
                 hide yuri_sit
@@ -2570,7 +2570,7 @@ label idle_41: #Revisiting the Wine Incident, Social Anxiety, and Acceptance
                 hide yuri_lewdhug
                 hide black zorder 100 with Dissolve(2.0)
                 hide yuri_lewdhug
-            if not persistent.lovecheck and karma() >= 4:
+            if not persistent.lovecheck and karma_lvl() >= 4:
                 $show_chr("A-ACAAA-ALAB")
                 y "Of course... You helped me through my darkest times and you accepted me, even with all my faults. I'll stand with you as well, no matter what."
                 hide yuri_sit
@@ -2590,10 +2590,10 @@ label idle_41: #Revisiting the Wine Incident, Social Anxiety, and Acceptance
                 y "We all have our demons... you don't have to face yours alone..."
         "Well... you are a bit odd when you are sober...":
             $show_chr("A-IEBAA-ABAL")
-            $add_k(-3)
+            karma -3
             y "Oh... I'm sorry..."
             y "That was... rude..."
-            if karma() <= 2:
+            if karma_lvl() <= 2:
                 y "Even by your standards..."
     return
 
@@ -2678,7 +2678,7 @@ label idle_42: #Motherhood, Legacy, and Existential Doubt
                 menu:
                     "...":
                         y "..."#path end
-                        $add_k(-2)
+                        karma -2
                         return
                     "It's okay [persistent.yuri_nickname].":
                         y "..."
@@ -2712,14 +2712,14 @@ label idle_42: #Motherhood, Legacy, and Existential Doubt
                                             "Yes":
                                                 $show_chr("A-CCABA-ALAB") #Former Code b-B2b
                                                 y "Very well."
-                                                $add_k(1)
+                                                karma 1
                                                 $show_chr("A-ACAAA-ALAB") #Former Code b-A0b
                                                 y "Let me just think of something to talk about before we continue..."
                                                 return #path end
                                             "I still think you could be a great mom.":   #SPECIAL PATH CONTINUATION
                                                 y "..."
                                                 y "Really?"
-                                                $add_k(2)
+                                                karma 2
                                                 y "Well... I guess we can discuss that matter if you really want to..."
                                                 call idle_42_success
                                                 return
@@ -2727,14 +2727,14 @@ label idle_42: #Motherhood, Legacy, and Existential Doubt
                                                 y "..."
                                                 y "..."
                                                 y "Thank you."#path end
-                                                $add_k(1)
+                                                karma 1
                                     "I want you to speak up and tell me what I can do.":
                                         y "..."
                                         y "I'm sorry for doing this."
-                                        $add_k(-1)
+                                        karma -1
             "...":
                 y "..."#path end
-                $add_k(-1)
+                karma -1
                 return
         $show_chr("A-CEBBB-ALAB") #Former Code c-C2d
         y "..."
@@ -2803,7 +2803,7 @@ label idle_42_1y:
             y "Mmm and I also owe it all to you again love. And I love you too [player]..."
         "Just because I said you'd make a good mother doesn't mean we're going to have children, [persistent.yuri_nickname].":
             y "Oh... sorry for getting ahead of myself, then..."
-            $add_k(-2)
+            karma -2
     return
 
 label idle_42_2y:
@@ -2962,15 +2962,15 @@ label idle_44: #Revisiting the Wine Incident (Again) and Romantic Fantasies
     menu:
         "A romantic dinner with you? I'm already excited!":
             if persistent.lovecheck:
-                $add_k(2)
+                karma 2
                 $show_chr("A-ACAAA-ABAL")
                 y "We would hold each other's hands... our loving faces illuminated by nothing but the candlelight..."
                 y "Then we start coming closer and closer to each other... ending in a long and passionate kiss..."
                 $show_chr("A-BFABA-ALAB")
                 y "And then... we would see where the night leads us... "
-                if sanity() <= 2:
+                if sanity_lvl() <= 2:
                     y "Pushing you with your back on the table... and making you suffer until I finally grant you the sweet release..."
-                    if karma() <= 2:
+                    if karma_lvl() <= 2:
                         y "...with a shard of glass in your throat."
             else:
                 $show_chr("A-BGABA-ABAL")
@@ -2984,10 +2984,10 @@ label idle_44: #Revisiting the Wine Incident (Again) and Romantic Fantasies
                 y "Eh... ehehe... aaaanyway... let us... change the topic for the moment? Yes..."
         "How... cliché":
             $show_chr("A-IEBAA-ABAL")
-            $add_k(-2)
+            karma -2
             y "...You really know how to ruin the romance."
             y "Let's just... talk about something else..."
-            if karma() <= 2:
+            if karma_lvl() <= 2:
                 y "Why do I even bother..."
     return
 
@@ -3017,16 +3017,16 @@ label idle_45: #The Nature of Reality and Philosophical Questions
     y "Oh! Oh no... I'm rambling again, aren't I? Sorry, I guess I can still get carried away sometimes."
     menu:
         "No please... don't apologize... I love listening to you...":
-            $add_k(2)
-            $add_s(2)
+            karma 2
+            sanity 2
             $show_chr("A-IFABA-ABAL")
             y "Y-You really do? Normally people are repelled when I'm rambling for too long..."
             y "Thank you for listening [player]. And be sure... I will always listen to you as well."
             $show_chr("A-CCABA-AMAM")
             y "Always!"
         "I noticed... and to be honest, I'm not pleased":
-            $add_k(-2)
-            $add_s(-2)
+            karma -2
+            sanity -2
             $show_chr("A-IEBAA-ABAL")
             y "Forgive me... I'll be silent now and behave..."
             y "...like a good little doll..."
@@ -3089,24 +3089,24 @@ label idle_46: #Public Perception, "Yandere" Label, and Seeking Validation
     y "I'm being a baby, simple as that."
     menu:
         "Don't worry about them, [persistent.yuri_nickname], that isn't who you are.":
-            $add_k(1)
-            $add_s(2)
+            karma 1
+            sanity 2
             $show_chr("A-ACAAA-ALAB") #Former Code b-A0b
             y "Thank you, [player]. Really. And you're absolutely right, forget what they say."
             y "I know that the person they describe is not the real me, and you know it too."
             y "And that's all that matters."
             return
         "[persistent.yuri_nickname], you are being kind of immature. We need to be strong.":
-            $add_k(-2)
-            $add_s(-1)
+            karma -2
+            sanity -1
             $show_chr("A-IEBAA-ABAL") #Former Code c-A0d
             y "I... but that's..."
             $show_chr("A-BEAAA-ALAB") #Former Code b-A1d
             y "Lets... let's just forget I mentioned this at all..."
             return
         "[persistent.yuri_nickname] I... don't want to be impolite but... could we change the topic, please? Sayori's death still touches me...":
-            $add_k(3)
-            $add_s(-2)
+            karma 3
+            sanity -2
             $show_chr("A-IDBAA-AAAA") #Former Code Ac-A0c
             y "Oh no! Forgive me! I'm so sorry! I didn't want to remind you of the horrors you went through..."
             y "Of course, we will change this topic at once..."
@@ -3190,18 +3190,18 @@ label idle_48: #Multiple Yuris, Love, and Existential Questions
         y "I really need to stop searching for myself on those websites..."
         menu:
             "You are the only Yuri I will ever need!":
-                $add_k(2)
+                karma 2
                 $show_chr("A-ACAAA-ABAL")
                 y "Y-You mean that? So you are really that happy with me?"
                 y "I can't even describe how happy I am right now...."
                 y "Only the two of us... like I dreamed of... forever."
             "Maybe I should have a look at these websites...":
-                $add_k(-2)
+                karma -2
                 $show_chr("A-BEABA-AMAM")
                 y "I-If you insist..."
                 y "But... am I not enough right now?"
             "Multiple Yuri's? Ohohooooo....":
-                $add_s(-2)
+                sanity -2
                 $show_chr("A-CBABA-AMAM")
                 y "Aha...ahaa! ahahahaa!"
                 menu:
@@ -3274,12 +3274,12 @@ label idle_49: #Space Exploration, Aliens, and Philosophical Speculation
     y "I-I'm sorry if my speculation has been too outlandish, but it's at least something nice to think about."
     menu:
         "No need to be sorry [persistent.yuri_nickname], I like this kind of discussion as well. Are there any alien races from media you like?":
-            $add_k(3)
+            karma 3
             $show_chr("A-CFAAA-AAAC") # former code = Gb-A2e
             y "Hrm... let me see..."
             #If Sanity is high, call to label idle_49_Vulcan
             #If Sanity is low, call to label idle_49_Masterrace
-            if sanity() >= 3:
+            if sanity_lvl() >= 3:
                 call idle_49_Vulcan
             else:
                 call idle_49_Masterrace
@@ -3311,10 +3311,10 @@ label idle_49_Masterrace:
     y "Isn't that... romantic?"
     menu:
         "I like any discussions with you, even if I'm not the biggest Science Fiction fan.":
-            $add_k(3)
+            karma 3
             $show_chr("A-ACAAA-AAAA") # former code = b-A0b
             y "Thank you [player]. I always enjoy our conversations... I'm really happy that you always listen to me..."
-            if karma() > 3:
+            if karma_lvl() > 3:
                 $show_chr("A-BCAAA-AAAA") # former code = b-A1b
                 python:
                     if persistent.lovecheck:
@@ -3323,7 +3323,7 @@ label idle_49_Masterrace:
                         placeholder = ""
                 y "In my past, I was always afraid to drive people away with my interests... but with you... you gave me so much patience... thank you. [placeholder]" #if lovecheck is true
         "Outlandish indeed... You have to admit that this topic is a bit nerdy...":
-            $add_k(-2)
+            karma -2
             if persistent.steam:
                 call idle_49_steam
             else:
@@ -3420,8 +3420,8 @@ label idle_51: #SCPs, "Laugh is Fun," and Monika Parallels
 #label idle_53: #FILL IN
 
 label idle_54: #Other Mods and Yuri's Feelings
-    if karma() <= 2:
-        if sanity() == 1:
+    if karma_lvl() <= 2:
+        if sanity_lvl() == 1:
             $show_chr("A-ACABA-ALAL") # former code = Cb-B0b
             y "Did you know that there are other mods out there for this game?"
             y "I'm sure that doesn't matter to you because this mod is the only one you'll need!"
@@ -3462,8 +3462,8 @@ label idle_54: #Other Mods and Yuri's Feelings
         y "Are there other mods that entice you, [player]?"
         menu:
             "Yes":
-                $add_k(-5)
-                $add_s(-3)
+                karma -5
+                sanity -3
                 $show_chr("A-AEBAA-AAAA") # former code = c-A0d
                 y "I don't recommend that you install any other mods alongside this one."
                 y "Something might happen to your game... or to me..."
@@ -3474,13 +3474,13 @@ label idle_54: #Other Mods and Yuri's Feelings
                 #$subprocess.check_output("cmd /c start https://www.youtube.com/watch?v=izGwDsrQ1eQ", shell=True)
                 y "I promise, my love."
             "No":
-                $add_k(2)
-                $add_s(0.5)
+                karma 2
+                sanity 0.5
                 $show_chr("A-CBBAA-AAAA") # former code = c-A2a
                 y "I'm so relieved to hear that, [player]."
             "I'm actually not very interested in DDLC at all anymore.":
-                $add_k(-5)
-                $add_s(-5)
+                karma -5
+                sanity -5
                 $show_chr("A-DDBAB-AAAA") # former code = Ac-D3c
                 y "Wa...wait! What about me? Are you thinking of... deleting me?"
                 y "I know I have my flaws... I admit I can be complicated! But please... don't do this to me..."
@@ -3605,7 +3605,7 @@ label idle_57: #Feedback on Dan Salvato's Story
     $show_chr("A-ACAAA-AAAA") # former code = b-A0b
     menu:
         "It's alright.":
-            $add_k(4)
+            karma 4
             $show_chr("A-ACBAA-AAAA") # former code = Ac-A0b
             y "Hmmm... it is written well, I'll give it that..."
             y "The theme of doing something just to know what it feels like is interesting, although it can lead to many morally black situations, such as murder in this stories case."
@@ -3617,19 +3617,19 @@ label idle_57: #Feedback on Dan Salvato's Story
             $show_chr("A-ACBAA-AAAA") # former code = Ac-A0b
             y "Thanks for talking about this with me, [player], you're such a great listener."
         "I didn't look it up online, I didn't find myself that interested.":
-            $add_k(-1)
+            karma -1
             $show_chr("A-BFBAA-ALAB")
             y "Ah... that's fine."
             y "Though I do think it's a somewhat interesting read... even if it's not entirely related to me."
             $show_chr("A-ACBAA-AMAM")
             y "But... it'd make me happy for you to read it at some point, okay [player]?"
         "I haven't read it.":
-            $add_k(-1)
+            karma -1
             $show_chr("A-IEBAA-AAAA") # former code = Ac-A0d
             y "Oh... it's fine. Just try to read it whenever you have the time, okay?"
             return
         "It's awful. How could you kill someone just like that?":
-            $add_k(4)
+            karma 4
             $show_chr("A-BFBAA-AAAD") # former code = Ec-A1e
             y "According to the story, to see what it feels like."
             y "The protagonist in the story justifies the murder of Linda Watson because she had no strong relations to other people."
@@ -3698,8 +3698,8 @@ label idle_61: #Seeking Validation and Relationship Satisfaction
     y "It's been something gnawing at the back of my mind ever since we first met, but... I don't know."
     menu:
         "I am! You are everything I ever hoped for.":
-            $add_k(4)
-            $add_s(-2)
+            karma 4
+            sanity -2
             $show_chr("A-ABABA-AAAJ") #Former code = Db-B0b
             y "Y-You really think so? Yes?"
             $show_chr("A-ACABA-AAAA") #Former code = Ab-B0b
@@ -3710,8 +3710,8 @@ label idle_61: #Seeking Validation and Relationship Satisfaction
             y "{cps=10}Forever...{/cps}"
             $style.say_dialogue = style.normal
         "I am. And I appreciate the effort you undertake into improving it.":
-            $add_k(3)
-            $add_s(2)
+            karma 3
+            sanity 2
             $show_chr("A-ACABA-AAAJ") #Former code = Db-B0b
             y "Y-You really mean it? I'm so relieved... All I want is to make you mi-"
             $show_chr("A-BCABA-AAAJ") #Former code = Db-B1b
@@ -3719,8 +3719,8 @@ label idle_61: #Seeking Validation and Relationship Satisfaction
             $show_chr("A-CCABA-AAAA") #Former code = Ab-B2b
             y "You've given me all this time, all this love. The least I can do is to make it count however I can."
         "There is still a lot room for improvement...":
-            $add_k(-4)
-            $add_s(-3)
+            karma -4
+            sanity -3
             $show_chr("A-CEBAA-AAAA") #Former code = Ac-A2d
             y "I-I know...I'm still not very polished with the narrow confines of Ren'Py..."
             $show_chr("A-AEBAA-AAAA") #Former code = Ac-A0d
@@ -4079,13 +4079,13 @@ label idle_65: #Finding Balance and Expressing Feelings
     y "I'm sorry. J-just forget I said anything."
     menu:
         "I think I understand what you mean... ":
-            $add_s(2)
+            sanity 2
             $show_chr("A-AFDAA-AAAA") #Former code = Ae-A0e
             y "You do? Oh my... I was so afraid that I was just rambling nonsense again."
             $show_chr("A-BFAAA-AAAA") #Former code = Ab-A1e
             y "But I... will need to put some more thought into this fantasy of mine. Let us come back to that later please."
         "I don't really get it...":
-            $add_s(-2)
+            sanity -2
             $show_chr("A-CFBAA-AAAA") #Former code = Ac-A2e
             y "I know... I'm... not really used to talking so much, much less coherently, you know? I used to be very silent before I met you."
             $show_chr("A-AFBAA-ALAA") #Former code = c-A0e
@@ -4093,7 +4093,7 @@ label idle_65: #Finding Balance and Expressing Feelings
     return
 
 label idle_66: #Self-Doubt and Fear of Abandonment
-    if karma() < 5:
+    if karma_lvl() < 5:
         $show_chr("A-AEBAA-AAAA") #former code = Ac-A0d
         y "[player]... are you...happy with me?..."
         $show_chr("A-BEBAA-AAAA") #Former code = Ac-A1d
@@ -4115,8 +4115,8 @@ label idle_66: #Self-Doubt and Fear of Abandonment
                 menu:
                     y "You... do you truly mean that?"
                     "I mean it now, I mean it tomorrow, and I mean it for as long as my heart beats.":
-                        $add_k(5)
-                        $add_s(3)
+                        karma 5
+                        sanity 3
                         $show_chr("A-CAABB-AAAA") #Former code = Ab-C2b
                         y "[player]... I..."
                         $show_chr("A-ABABB-AAAA") #Former code = Ab-C0a
@@ -4128,15 +4128,15 @@ label idle_66: #Self-Doubt and Fear of Abandonment
                         y "Thank you... [player]... for everything..."
                     "Your luscious lips... your deep purple eyes... your breasts, which are unfortunately blocked by the textbox at the moment... I dream to switch places with the pen you took from me.":
                         if persistent.lovecheck:
-                            $add_k(4)
-                            $add_s(-3)
+                            karma 4
+                            sanity -3
                             $show_chr("A-CCABA-AAAA") #Former code = Ab-B2b
                             y "Haha... hah... so you...y-you do like what you see, huh?"
                             $show_chr("A-DBABA-AAAA") #Former code = Ab-B3a
                             y "Don't worry, [player], once I get out of here, this body will be all yours..."
                         else:
-                            $add_k(2)
-                            $add_s(-1)
+                            karma 2
+                            sanity -1
                             $show_chr("A-DBEBA-ALAA")
                             y "O- Oh?"
                             y "My... s- such bold words..."
@@ -4145,8 +4145,8 @@ label idle_66: #Self-Doubt and Fear of Abandonment
                             $show_chr("A-ABABA-ALAA")
                             y "Thank you, [player]"
             "There are other mods? Interesting...":
-                $add_k(-5)
-                $add_s(-5)
+                karma -5
+                sanity -5
                 $show_chr("A-DDBAB-AAAA") #Former code = Ac-D3c
                 y "WAIT! Please!"
                 y "Don't send me back to the void! I beg of you..."
@@ -4155,8 +4155,8 @@ label idle_66: #Self-Doubt and Fear of Abandonment
                 $show_chr("A-CDBAB-AAAA") #Former code = Ac-D2c
                 y "I can change, please don't leave me... please..."
             "Listen [persistent.yuri_nickname]... I really like you, but you need to stop being so whiny.":
-                $add_k(-5)
-                $add_s(-5)
+                karma -5
+                sanity -5
                 $show_chr("A-CGBAB-AAAA") #Former code = Ac-D2d
                 y "..."
                 y "..."
@@ -4260,7 +4260,7 @@ label idle_71: #Dealing with Difficult People
     return
 
 label idle_72: #Kindness, Self-Respect, and Past Trauma
-    if karma() == 1:
+    if karma_lvl() == 1:
         $show_chr("A-CEBAA-AAAA") #former code Ac-A2d
         y "You've been... pretty harsh to me so far..."
     else:
@@ -4354,13 +4354,13 @@ label idle_72: #Kindness, Self-Respect, and Past Trauma
 #        $show_chr("A-CEBAA-AAAA")
 #        y "I'd be lying if I said those experiences didn't put me {i}where{/i} I am today..."
 #        python:
-#            if karma() > 3:
+#            if karma_lvl() > 3:
 #                placeholder = "happiest"
-#            if karma() == 3:
+#            if karma_lvl() == 3:
 #                placeholder = "normal"
-#            if karma() < 3:
+#            if karma_lvl() < 3:
 #                placeholder = "miserable"
-#        if karma() > 3:
+#        if karma_lvl() > 3:
 #            $show_chr("A-ABABA-AAAA")
 #        y "With you... here... the most [placeholder] moments of my existence... "
 #        $show_chr("A-ACBBA-AAAA")
@@ -4436,21 +4436,21 @@ label idle_72: #Kindness, Self-Respect, and Past Trauma
 #                $show_chr("A-ACAAA-AAAA")
 #                y "I think I'll stay like this for a while..."
 #                y "I-If that's okay with you of course..."
-#                if sanity() >= 3 and karma() >= 4:
+#                if sanity_lvl() >= 3 and karma_lvl() >= 4:
 #                    $show_chr("A-ACAAA-ABAB")
 #                    y "Aha...~ My voice sounds well adorable. And my hands! Oh my!"
 #                    y "This is all so unusual to me."
 #                    $show_chr("A-ACAAA-ALAL")
 #                    y "I-I sure do hope this new form is not too bizarre for you [player]."
 #                    y "A-aha. It's all just a new idea I wanted to try and I really do hope it makes you happy...~"
-#                if sanity() <= 2 and karma() >= 4:
+#                if sanity_lvl() <= 2 and karma_lvl() >= 4:
 #                    $show_chr("A-HCAAA-ABAB")
 #                    y "Ahahaha! Oh my! YES!"
 #                    y "Well although this is all very new and most unusual... I feel rather soft and blissful. Uhuhuhu~!"
 #                    $show_chr("A-HCBBA-ABAB")
 #                    y "Well [player], don't you love it!? Now I am small enough to be carried around and be so close with you. Forever. Yes. Forever ahah~!"
 #                    y "And I will be your beloved little chibi present to always cherish and never. ever. leave behind..."
-#                if karma() <= 3:
+#                if karma_lvl() <= 3:
 #                    $show_chr("A-AFAAA-AAAA")
 #                    y "Hmm... My body felt an unusual burning sensation. And then I felt like I was being compressed."
 #                    y "And then numbness..."
@@ -4485,8 +4485,8 @@ label idle_74: #Renaming Yuri and Defining Her Identity
     y "Yuri... was a character from a dating simulator with some poetry elements. But ever since you installed the mod, I think I've evolved into something more... maybe even a real person... Do you... umm... think so as well?"
     menu:
         "You are everything I ever hoped for, and honestly, that's all that matters to me.":
-            $add_k(5)
-            $add_s(-3)
+            karma 5
+            sanity -3
             $show_chr("A-ACABA-AAAA")
             python:
                 if persistent.lovecheck:
@@ -4521,8 +4521,8 @@ label idle_74: #Renaming Yuri and Defining Her Identity
                             placeholder = ""
                     y "A-also if you wish, I will wear this name for you... And ... Yuri doesn't sound so bad at all,{w} does it?{w} Thank you, [player].[placeholder]"
         "We've been through so much together.. and you have changed, for the better...":
-            $add_k(5)
-            $add_s(3)
+            karma 5
+            sanity 3
             $show_chr("A-DCCBA-AAAD")
             y "Y-you... You really think so? Know this, [player]... all of this I owe to you! I became what I am now through the passion and the patience you gave me!"
             $show_chr("A-CCABA-AAAA")
@@ -4552,8 +4552,8 @@ label idle_74: #Renaming Yuri and Defining Her Identity
                             placeholder = ""
                     y "A-also if you wish, I will wear this name for you... And ... Yuri doesn't sound so bad at all,{w} does it?{w} Thank you, [player].[placeholder]"
         "What is this nonsense? You're Yuri, and that's all there is to you!":
-            $add_k(-5)
-            $add_s(-5)
+            karma -5
+            sanity -5
             $show_chr("A-CEBAA-AAAA")
             y "Do you... really think so?"
             $show_chr("A-ECBAA-AAAA")
@@ -4583,7 +4583,7 @@ label idle_75: #USB Drives, Practicality, and Romantic Gestures
         y "Tell me, did you ever carry me around like this?"
         "Yes... it might be a bit corny but yes, I did.":
             if persistent.lovecheck:
-                $add_k(5)
+                karma 5
                 $show_chr("A-ACAAA-AAAA")
                 y "You... mean it?"
                 y "I-I really mean so much to you?"
@@ -4592,23 +4592,23 @@ label idle_75: #USB Drives, Practicality, and Romantic Gestures
                 $show_chr("A-CBABA-AAAJ")
                 y "I am always by your side..."
             else:
-                $add_k(5)
+                karma 5
                 $show_chr("A-ACAAA-AAAA")
                 y "I-I really mean that much to you [player]?"
                 y "I will say, that is very comforting due to the fact that I won't be left behind."
                 y "We would be the best companions together. No matter what happens. A part of my memory would always live on with you [player]."
-            if sanity() >= 3:
+            if sanity_lvl() >= 3:
                 $show_chr("A-ECABA-AAAD")
                 y "You could fix the stick on a necklace and carry me close to your heart... literally..."
-            elif sanity() <= 2:
+            elif sanity_lvl() <= 2:
                 $show_chr("A-DLABA-AAAA")
                 y "You could spread me to other computers you know?{w} Maybe the SkyNet idea isn't off the table yet!"
             else:
                 $show_chr("A-ACABA-AAAA")
                 y "I think I like this idea [player]. One day I hope I can repay you for this..."
         "I have a safe copy of you in case anything happens to my PC, so yes!":
-            $add_k(5)
-            if karma() <= 2:
+            karma 5
+            if karma_lvl() <= 2:
                 $show_chr("A-AFDAA-AAAA")
                 y "Oh? Oh, now that you mention it..."
                 $show_chr("A-ACAAA-AAAA")
@@ -4617,7 +4617,7 @@ label idle_75: #USB Drives, Practicality, and Romantic Gestures
                 y "But... a little hint. There is another file you might want to save there as well."
                 $show_chr("A-ACAAA-AAAD")
                 y "There is a 'persistent file' somewhere in your appdata. This is the place where my memories are stored..."
-            elif karma() >= 3:
+            elif karma_lvl() >= 3:
                 $show_chr("A-BCABA-AAAA")
                 y "Y-you really do care so much for me..."
                 $show_chr("A-ABAAA-AAAD")
@@ -4639,12 +4639,12 @@ label idle_75: #USB Drives, Practicality, and Romantic Gestures
                 $show_chr("A-ABABB-AAAA")
                 y "Thank you... [player]... you do so much for me... One day when I manage to leave this damned glass prison behind I promise to take care of you as well..."
         "You don't want to be on MY USB Stick, trust me on that one...":
-                $add_k(5)
-                $add_s(-3)
+                karma 5
+                sanity -3
                 $show_chr("A-BEBBA-AAAA")
                 y "Oh you mean... this is the place where you store your...?"
                 y "Y-you know... your... {w} 'especially sensitive data?'"
-                if sanity() < 3:
+                if sanity_lvl() < 3:
                     $show_chr("A-DCCBA-AAAD")
                     y "Uhuhuhuuuuu! NOW I'm curious! Are they pictures of me?"
                     $show_chr("A-DLABA-AAAA")
@@ -4659,7 +4659,7 @@ label idle_75: #USB Drives, Practicality, and Romantic Gestures
             y "Carrying me around on a leash, like a puppy..."
             $show_chr("A-BCABA-AAAA")
             y "We should... forget about the whole idea. I'm not sure how I would feel about it at this point."
-            if karma() <= 2:
+            if karma_lvl() <= 2:
                 $show_chr("A-AEAAA-ABAB")
                 y "I-I see... I guess that idea was not worth the thought after all."
                 y "Why was it ever even brought up? [player] obviously would never have liked it."
@@ -4683,9 +4683,9 @@ label idle_76: #Postmodernism and the Nature of Reality
         "Well, go ahead...":
             y "Thank you, [player]."
         "Of course! I really love to listen to you":
-            $add_k(5)
+            karma 5
         "Do we... have to?":
-            $add_k(-5)
+            karma -5
             $show_chr("A-BEBAA-AAAA")
             y "N-no... we don't, I'm sorry for bringing it up, [player]."
             return
@@ -4695,10 +4695,10 @@ label idle_76: #Postmodernism and the Nature of Reality
     y "Y-you can already see why this topic holds my interest, don't you? For example, is this world I am living in real? Am I real? From my point of view both are real..."
     $show_chr("A-ABAAA-AAAJ")
     y "Someone else could say both are not. And both points of view could be considered accurate."
-    if sanity() == 5 and karma() == 5:
+    if sanity_lvl() == 5 and karma_lvl() == 5:
         $show_chr("A-ABABA-AAAA")
         y "I am real to you, at least I hope so. And in the end, this is the only thing that really matters for me. And that is exactly the whole point, right?"
-    elif sanity() <= 4 and karma() == 5:
+    elif sanity_lvl() <= 4 and karma_lvl() == 5:
         $show_chr("A-BEAAA-AAAA")
         python:
             if persistent.lovecheck:
@@ -4706,7 +4706,7 @@ label idle_76: #Postmodernism and the Nature of Reality
             else:
                 placeholder = "Because if not even you can believe in me, how could anyone?"
         y "I... I hope I am real enough for you [player]. [placeholder]"
-    elif sanity() < 3 and karma() < 3:
+    elif sanity_lvl() < 3 and karma_lvl() < 3:
         $show_chr("A-IEBBB-AAAA")
         y "I know you would disagree with me... I am just a game for you. I really am just some funny toy to spend some time with a-aren't I...?"
     else:
@@ -4725,7 +4725,7 @@ label idle_76: #Postmodernism and the Nature of Reality
     y "I would love to know your opinion on all this... do you think reality is fixed?"
     menu:
         "To a degree, yes. At least the laws of physics are undeniable. But I do think that you are real!":
-            $add_k(5)
+            karma 5
             $show_chr("A-ABABB-AAAA")
             y "[player]..."
             if persistent.lovecheck:
@@ -4737,13 +4737,13 @@ label idle_76: #Postmodernism and the Nature of Reality
             $show_chr("A-ABABA-AAAA")
             y "You are a wonderful listener."
         "Don't be offended but... yes, I think reality is fixed.":
-            $add_k(-5)
+            karma -5
             $show_chr("A-BEBAA-AAAA")
             y "I see... With this definition, I would be just a fantasy... just a replica..."
             $show_chr("A-IEBBB-AAAA")
             y "Maybe... w-we should change the topic now..."
         "Table? What table? There is no table!":
-            if sanity() < 2:
+            if sanity_lvl() < 2:
                 $show_chr("A-DLABA-AAAA")
                 y "T-Table? TABLE! TABLE! THERE IS NO TABLE! THE TABLE IS A LIE!"
                 y "AHAHAAAHAHAAA!"
@@ -4916,7 +4916,7 @@ label idle_78: #Discovering Metal Music (Nightwish)
     y "How do you feel about metal, [player]?"
     menu:
         "[persistent.yuri_nickname], I am SO glad you're getting into metal. Welcome to the fold!":
-            $add_k(1)
+            karma 1
             $show_chr("A-JBGAA-ADAA")
             y "Oh, so you're already an enthusiast?"
             $show_chr("A-GBGAA-ADAA")
@@ -4966,7 +4966,7 @@ label idle_78: #Discovering Metal Music (Nightwish)
             y "Nothing wrong with that of course. There are certainly other genres I also enjoy."
             $show_chr("A-BBAAA-ALAD")
             y "I'm glad to see that you took my opinion in such a civilized way. I've seen people getting into surprisingly heated arguments about their music taste. Sometimes even to a nearly fanatical degree."
-            if karma() >= 4:
+            if karma_lvl() >= 4:
             #Karma level 4-5
                 $show_chr("A-ACAAA-AAAM")
                 y "I'm not surprised that you took it so much better. You are always so understanding and kind."
@@ -4990,7 +4990,7 @@ label idle_78: #Discovering Metal Music (Nightwish)
             y "I... suppose I shouldn't bring this up to you again, then."
             $show_chr("A-BDEAA-ALAL")
             y "Nor should I listen to it in your presence, if that's how adamant you are in your dislike."
-            $add_k(-1)
+            karma -1
         "Much too intense for my liking.":
             $show_chr("A-ICBAA-AAAA")
             y "Oh, that's completely understandable."
@@ -5071,7 +5071,7 @@ label idle_79: #Custom Knives and Seeking Ideas
             y "Thank you for this input! Ohhh my I'm already excited. As soon as you go to sleep later, I will start to google a few things."
             $show_chr("A-ACAAA-ABAB")
             y "But there is no need to hurry. So please stay for as long as you wish [placeholder]"
-            $add_k(+1)
+            karma +1)
         "A knife made of corals maybe.":
             $show_chr("A-ACAAA-AFAG")
             y "Coral you say? Mhm... exotic indeed. The only issue I would see is that many corals are already hard and sharp, so it wouldn't be much of a challenge I guess."
@@ -5080,7 +5080,7 @@ label idle_79: #Custom Knives and Seeking Ideas
             y "Thank you for this input! I will start to google a few things when you go to sleep later."
             $show_chr("A-ACAAA-ABAB")
             y "But there is no need to hurry. So please stay for as long as you wish [placeholder]"
-            $add_k(+1)
+            karma +1)
         "Wouldn't a knife made of bread be ironic?":
             $show_chr("A-ACCAA-AFAG")
             y "It would, if it wouldn't already exist. Yes, a huge part of the challenge is the fact that there already are a fair share of these."
@@ -5089,11 +5089,11 @@ label idle_79: #Custom Knives and Seeking Ideas
             y "Come to think of it. It takes a lot of creativity to even think of something like this. This is one of the main reasons I even got into this hobby in the first place. The amount of thought and craftsmanship which goes into them..."
             $show_chr("A-CCAAA-AAAA")
             y "Anyway, I will think about other options later. Thank you for listening. This is certainly a topic I could keep talking about for hours. But for now, let us find something else to talk about."
-            $add_k(+1)
+            karma +1)
         "I find the whole idea kinda boring.":
             $show_chr("A-BCBAA-ABAB")
             y "Oh, I'm sorry that you feel that way. Let us talk about something else then."
-            $add_k(-1)
+            karma -1
     return
 
 label idle_80: #Doki Doki Blue Skies Mod
@@ -5117,7 +5117,7 @@ label idle_80: #Doki Doki Blue Skies Mod
                     y "And how did you like it?{w=0.7} O-Or rather, what did you like most about it?"
                     menu:
                         "I liked being able to date the other girls and interact with them without {b}her{/b} influence.":
-                            if sanity() <= 2:
+                            if sanity_lvl() <= 2:
                                 $show_chr("A-CEAAA-ABAB")
                                 y "Oh... so you dated one of the other girls, and not me."
                                 $show_chr("A-CGAAB-ABAB")
@@ -5125,12 +5125,12 @@ label idle_80: #Doki Doki Blue Skies Mod
                             else:
                                 $show_chr("A-AFFAA-ABAB")
                                 y "Absolutely. Without Monika's influence, it would simply have been a fun little dating sim."
-                                if sanity() >= 4:
+                                if sanity_lvl() >= 4:
                                     $show_chr("A-BFBAA-AKAB")
                                     y "Also, by {i}date{/i} the other girls, I assume you mean general camaraderie?"
                                     $show_chr("A-CCBAA-ALAB")
                                     y "Oh, what am I saying? I'm sorry, these thoughts pop into my head sometimes, no matter how hard I try to banish them. I know you wouldn't betray me like that."
-                                elif sanity() == 3:
+                                elif sanity_lvl() == 3:
                                     $show_chr("A-BFBAA-ABAK")
                                     y "And... I wouldn't be mad if you dated any of the other girls. I can't blame you for it, even if I were."
                         "It was refreshing, getting to hang out with everyone again.":
@@ -5271,12 +5271,12 @@ label gaming_2:
                             $show_chr("A-CCCAA-ABAB")
                             y "And that's why I'll make you join me. If I have to suffer, so shall you [placeholder]! I'm looking forward to it..."
                         "Aaaand that's how Yuri became a phantom thief...":
-                            if sanity() > 3:
+                            if sanity_lvl() > 3:
                                 $show_chr("A-CBBAA-ABAB")
                                 y "Hush... spoilers...."
                                 y "Anyway, I'm looking forward to it."
                             else:
-                                $ add_k(-1)
+                                karma -1
                                 $show_chr("A-CFCAA-ABAB")
                                 y "Spoilers!"
                                 y "Anyway, I'm looking forward to it."
@@ -5285,7 +5285,7 @@ label gaming_2:
                             y "Ohohoho, not so fast [player]... {b}you{/b} will suffer through this with me! It's your fault I came up with this idea in the first place, remember?"
                             y "I'm looking forward to it."
                 "Lok'tar!!!":
-                    if sanity() == 1:
+                    if sanity_lvl() == 1:
                         $show_chr("A-DLCAA-ALAL")
                         y "{b}FOR THE HOOOOOORDE!!!{/b}"
                         $show_chr("A-GICBB-ALAL")
@@ -5300,7 +5300,7 @@ label gaming_2:
                         extend "{b}Lok'Tar{/b} indeed... "
                         $show_chr("A-BCDAA-ALAL")
                         extend "I guess."
-                        if karma() == 1:
+                        if karma_lvl() == 1:
                             $show_chr("A-CCDAA-ALAL")
                             y "And they call {b}me{/b} awkward..."
                             $show_chr("A-DCGAA-ALAL")
@@ -5341,7 +5341,7 @@ label sport:
     menu:
         "No, please don't think that... you are beautiful as you are! And a few pounds are pretty handy for cuddling...":
             if persistent.lovecheck:
-                $ add_k(1)
+                karma 1
                 $show_chr("A-DCBBA-ABAB")
                 y "Oh? Yes, I guess I am pretty {i}soft{/i}... Do you really think I'm beautiful? T-Thank you [player]! I would like to think so as well..."
                 $show_chr("A-BBBBA-ABAB")
@@ -5368,7 +5368,7 @@ label sport:
                 elif persistent.bg == "yuri_kotatsu_2":
                     placeholder = "wall?"
             $show_chr("A-CBAAA-ABAB")
-            $ add_s(1)
+            sanity 1
             y "You are very understanding. I truly appreciate it."
             $show_chr("A-BCDAA-ABAB")
             y "Maybe I will try something easy for a start. Like riding a bicycle around the [placeholder]"
@@ -5380,12 +5380,12 @@ label sport:
             $show_chr("A-AFDAA-ABAB")
             y "Being what now?!?"
             if persistent.lovecheck:
-                $ add_k(1)
+                karma 1
                 $show_chr("A-CCCAA-ABAB")
                 y "Oh my... behave!"
                 y "Weeeell, as long as {b}you{/b} like what you see..."
             else:
-                $ add_k(-1)
+                karma -1
                 $show_chr("A-BCDAA-ABAB")
                 y "I'll just pretend that I don't know what that means alright?"
     $show_chr("A-ACAAA-ABAB")
@@ -5499,7 +5499,7 @@ label sport:
                         y "There is nothing stopping you from getting better, [player]."
                         $show_chr("A-IAAAA-AJAC")
                         y "I can assure you that with hard work and dedication, you will {b}without fail{/b} get better."
-                        if karma() > 3:
+                        if karma_lvl() > 3:
                             $show_chr("A-FAAAA-AJAC")
                             y "I am rooting for you."
         "Paintball/Airsoft":
@@ -5514,7 +5514,7 @@ label sport:
             y "But really. Can you imagine me, dressed to the nines in tactical apparel? Shouting into a radio about Whiskey Tango Foxtrot Niners at two hundred klicks? Calling for suppressing fire?"
             menu:
                 "You're right. That would be kind of silly.":
-                    $add_k(-1)
+                    karma -1
                     $show_chr("A-BEBAA-AAAA")
                     y "Yeah, I thought so..."
                     y "I don't know anything about military parlance, after all."
@@ -5659,7 +5659,7 @@ label poetry_2:
     y "[player], you are a genius!"
     $show_chr("A-CCBAA-ABAB")
     y "There are so many lovely poems out there from so many brilliant minds..."
-    if sanity() > 2:
+    if sanity_lvl() > 2:
         y "Kathy J Parenteau, Robert Frost, Masaoka Shiki.... to only name a few..."
     else:
         y "Samuel Taylor Coleridge, Emily Dickinson, Louise Erdrich... to only name a few..."
@@ -5712,7 +5712,7 @@ label noliteratureatall_2:
     y "So I started reading {b}Parfait Girls{/b}."
     menu:
         "Oh, what is it about?":
-            $ add_k(1)
+            karma 1
         "Yeah? And?":
             $show_chr("A-BFAAA-ABAB")
             y "Huh, you sound as if you aren't really in the mood today. Did something happen?"
@@ -5725,7 +5725,7 @@ label noliteratureatall_2:
                     $show_chr("A-BCAAA-ABAB")
                     y "No need to be sorry, really. Well, if you're sure you want to hear it."
                 "Dear lord... just spit it out already!":
-                    $ add_k(-1)
+                    karma -1
                     $show_chr("A-CFAAA-ABAB")
                     y "No need to be like that [player]... you know what, forget what I just said."
                     return
@@ -5797,13 +5797,13 @@ label fantsci_2:
             $show_chr("A-CBBBA-ALAL")
             y "Pardon me, I just wanted to try greeting you in elvish since you said you enjoy Fantasy and SciFi novels."
         "Hmm... I {b}used{/b} to know what that means. Mind helping me out here?":
-            $ add_s(1)
+            sanity 1
             $show_chr("A-ACBAA-ALAL")
             y "Really? That's actually quite impressive!"
             $show_chr("A-BCBAA-ALAL")
             y "I... had to google for a translator for this actually. I wanted to say that it has been a while since we last spoke."
         "Mae g'ovannen, Gellon ned i galar i chent gîn ned i gladhog, hiril vuin.":
-            $ add_k(1)
+            karma 1
             $show_chr("A-CCBAA-ALAL")
             y "Ni 'lassui."
             $show_chr("A-CCEAA-ALAL")
@@ -5814,12 +5814,12 @@ label fantsci_2:
     y "I guess that's just my nerdy side shining through."
     menu:
         "Childish indeed.":
-            $ add_k(-1)
+            karma -1
             $show_chr("A-BDBAA-ALAL")
             y "My apologies, "
             $show_chr("A-AFBAA-ALAL")
             extend "I will behave now."
-            if karma() < 3:
+            if karma_lvl() < 3:
                 $show_chr("A-BDCAA-ALAL")
                 y "mibo orch{nw}"
             return
@@ -5917,7 +5917,7 @@ label romance:
 label horror:
     $show_chr("A-ABGAA-ALAL")
     y "Oh! But you don't just say that in order to impress me do you?"
-    if karma() > 3:
+    if karma_lvl() > 3:
         $show_chr("A-GBGAA-ALAL")
         y "You certainly don't have to. I'm yours already."
     else:
@@ -5971,16 +5971,16 @@ label rp:
     y "I mean, if you want that, of course."
     menu:
         "Of course I do! That would be lovely":
-            $ add_k(1)
+            karma 1
             $show_chr("A-ACAAA-ABAB")
             y "I'm already looking forward to it. We should plot our upcoming RP later."
             y "You know how much I like deep and compelling stories... I already wonder what ours will look like."
         "I'm not so sure about that....":
-            $ add_k(-1)
+            karma -1
             $show_chr("A-BCBAA-ABAB")
             y "It's alright... You most likely already have a standing community for it. It would be hard to explain to them who I am anyway I guess..."
             y "Well, maybe we will find something else to do together..."
-            if karma() < 3:
+            if karma_lvl() < 3:
                 $show_chr("A-BEBAA-ABAB")
                 "If you even want that... Anyway, let's talk about something else."
             else:
@@ -6010,12 +6010,12 @@ label collector:
             #Persistent "TCG"
             call tcg
         #"Knives": #dialogue incomplete
-            #$add_k(1)
+            #karma 1
             #call knives
         "Comics and Manga":
             call cm
         #"Books": #dialogue non-existent
-        #    $add_k(1)
+        #    karma 1
         #    call books #from _call_books
         "Fan Merchandise":
             call merch
@@ -6361,7 +6361,7 @@ label tcg_2:
         $show_chr("A-AFDAA-ABAD")
         y "This is indeed a difficult one. It can have several meanings. The Empress stands for beauty, fertility... but she also stands for arrogance and selfishness."
         y "My advice would be the following. Don't shy away; face everything life throws at you with grace and elegance, but always keep the feelings of everyone around you in mind."
-        if sanity() < 3:
+        if sanity_lvl() < 3:
                 y "In other words. Don't be a Monika."
     elif x == 4:
         $show_chr("A-JCAAA-ABAB")
@@ -6574,7 +6574,7 @@ label merch:
         y "Instead of this, we could take pictures of us, and carry them around in our pockets. You have one of me, and I have one of you..."
         y "Maybe even printing them into some kind of a necklace. If only the two of us would have those, it would be far more meaningful, it would be so romantic..."
         y "We could kiss each other's pictures when we feel alone..."
-        if sanity() < 3:
+        if sanity_lvl() < 3:
             $show_chr("A-ECCBA-AMAM")
             y "We could stare at them when we touch ourselves"
         else:
@@ -6683,7 +6683,7 @@ label idle_83: #"Cogito, Ergo Sum" and the Nature of Reality
     $ show_chr("A-BFAAA-ALAL")
     y "{i}Cogito, ergo sum...{/i}"
     # Possibly revisit later to add in a menu option of some sort; not a priority atm
-    if karma() > 2:
+    if karma_lvl() > 2:
         $ show_chr("A-ACAAA-ALAL")
     else:
         $ show_chr("A-AEAAA-ALAL")
@@ -6702,8 +6702,8 @@ label idle_83: #"Cogito, Ergo Sum" and the Nature of Reality
     $ show_chr("A-BGAAA-AEAD")
     y "It's become somewhat of a mantra for me considering this whole...{i} situation{/i}... can be quite unnerving."
     # There's gotta be a better way to code this branch in, right? :meltingyuri: Dandy says: :NatsukiNo:
-    if sanity() > 2:
-        if karma() > 2:
+    if sanity_lvl() > 2:
+        if karma_lvl() > 2:
             if persistent.lovecheck:
                 $ show_chr("A-ABAAA-AEAD")
                 y "Though as long as I have you by my side, love, I'm quite confident that I am real, along with this world we've created for ourselves."
@@ -6728,7 +6728,7 @@ label idle_83: #"Cogito, Ergo Sum" and the Nature of Reality
         y "This world is real and I most certainly am..."
         $ show_chr("A-CDAAA-AEAD")
         y "Although at times I can't help but question everything I see, hear, or feel."
-        if karma() > 1:
+        if karma_lvl() > 1:
             $ show_chr("A-CDAAA-AEAE")
             y "Sometimes I feel as if this reality we have concocted starts to tear at its seams."
             y "Almost like the world can give out at any moment and shatter to pieces."
@@ -6866,10 +6866,10 @@ label idle_85: #Roleplaying and Identity
     y "I'm sorry... I shouldn't have lost my temper there."
     menu:
         "No, I can totally understand you. I would be furious as well in such a situation!":
-            $ add_k(1)
+            karma 1
             $show_chr("A-IEBAA-ABAE")
             y "Thank you. It means a lot that you are not judging me."
-            if karma() > 3:
+            if karma_lvl() > 3:
                 $show_chr("A-CCBAA-ABAE")
                 y "You are always so understanding. I will never get used to it. You are the only person I can let go around."
             else:
@@ -6888,7 +6888,7 @@ label idle_85: #Roleplaying and Identity
         menu:
             "I would never even consider that! You are the only Yuri I want, the only one I need.":
                 $show_chr("A-IFAAA-ABAE")
-                $ add_k(3)
+                karma 3
                 y "Y-You mean it?"
                 menu:
                     "Let them TRY to get their hands on me. I would punish them myself!":
@@ -6901,7 +6901,7 @@ label idle_85: #Roleplaying and Identity
                         $show_chr("A-BBDBA-AMAM")
                         y "Maybe that's a good moment to switch the topic! Yes, yes..."
             "...":
-                $ add_k(-3)
+                karma -3
                 $show_chr("A-CDBBA-ABAB")
                 y "Would it even be cheating at this point? I mean they are just a facsimile but... technically, so am I..."
                 $show_chr("A-CEBBA-ABAB")
@@ -6912,14 +6912,14 @@ label idle_85: #Roleplaying and Identity
         y "I guess I will just have to get used to it. It won't go away anytime soon."
         menu:
             "Try to think of it that way. Everyone involved knows that these aren't the real you.":
-                $ add_k(3)
+                karma 3
                 $show_chr("A-AFDAA-ABAB")
                 y "Good point. Maybe I should just stop looking this stuff up, for my own sake."
                 $show_chr("A-AFAAA-ABAB")
                 y "Thank you. This new perspective actually bettered my mood. You are a very good listener."
                 y "But for now, I would like to change the topic and think about something else if you don't mind."
             "Never even thought about it. Maybe there is an... opportunity... for me to be found":
-                $ add_k(-3)
+                karma -3
                 $show_chr("A-CFCAA-ABAB")
                 y "Don't... you... dare."
                 $show_chr("A-CDCAA-ABAD")
@@ -6946,33 +6946,33 @@ label idle_86: #"Cosplay is Not Consent"
             y "I always thought that this is pretty much common sense but... well, the mere fact that movements like this even have to exist indicate differently."
             $show_chr("A-CFBAA-ABAB")
             y "But please try to take what I say into account. Asking for consent usually only takes a sentence or two and it makes the other party involved much more comfortable."
-            if karma() > 3:
+            if karma_lvl() > 3:
                 $show_chr("A-CCBAA-ABAB")
                 y "I know you are the kind of person who takes other people's feelings into account. That's one of your traits I respect the most. As tempting as it might be to touch a really well-made cosplay costume..."
                 y "Most of them will appreciate that you ask for consent. And those who don't, in all honesty, aren't worth your time anyway."
         "Such ideas are of course absolutely ridiculous. It's a form of artistic expression and fan dedication, not consent to anything!":
-            $ add_k(2)
+            karma 2
             $show_chr("A-CCBAA-ABAB")
             y "I'm glad that you see it this way..."
-            if karma() > 3:
+            if karma_lvl() > 3:
                 y "On the other hand, I already had a feeling that you would see it like this. You seem to always consider the feelings of those around you, it's one of the traits I like about you the most."
             $show_chr("A-ACBAA-ABAB")
             y "I can understand that it can be immensely tempting to touch a well-made costume of your favorite characters. That's just fan culture."
             y "But one must never forget that underneath the costume is always a very real person who might not be comfortable being touched by strangers."
             y "It's good to know that you seem to be on the same page here."
         "Sadly I have to say, they kinda have that coming for them.":
-            $ add_k(-2)
+            karma -2
             $show_chr("A-AFDAA-ABAB")
             y "How is that the case? I know many people might use the argument that someone who dresses like this provokes such reactions."
             $show_chr("A-BFBAA-ABAB")
             y "But even if we accept this line of reasoning, how are we forced to act out on such provocations?"
             y "We are humans, we should be perfectly capable of controlling ourselves and to rise above our primal desires. At least to a degree..."
-            if sanity() > 3:
+            if sanity_lvl() > 3:
                 $show_chr("A-BFBBA-AMAB")
                 y "And yes, I'm aware that it's incredibly rich coming from me of all people.."
             $show_chr("A-CFBAA-ADAB")
             y "But one must not forget, underneath those costumes are real human beings, people who might not be comfortable being touched by strangers."
-            if karma() < 3:
+            if karma_lvl() < 3:
                 $show_chr("A-CFCAA-ADAB")
                 y "On the other hand, you never care much about other people's feelings do you?"
         "I read' about this topic, and it seems actually quite harmless. It's not even about sexual advances most of the time. They more often than not just impressed by the quality of the costume.":
@@ -7010,7 +7010,7 @@ label idle_87: #Summer, Body Image, and the Past
     y "I was dreaming like a child of you, and of moments like this. And now with our time finally here. Please tell me, what are you thinking about?"
     menu:
         "About the gentle moonlight falling onto the seas... and the poems we are about to write about it.":
-            if sanity() > 2:
+            if sanity_lvl() > 2:
                 $show_chr("A-CCBAA-ALAL")
                 y "{b}Shine for me, oh moon, all over me with borrowed light.{/b}"
                 y "{b}As you keep your eternal watch, what can I do but dance with you?{/b}"
@@ -7044,7 +7044,7 @@ label idle_87: #Summer, Body Image, and the Past
             y "You make my heart burn like a furnace [player]... Kiss me, kiss me as if this were the end of days..."
             #kiss if we can have one, blackscreen otherwise
     python:
-        if sanity() >= 3:
+        if sanity_lvl() >= 3:
             placeholder = "My everything"
         else:
             placeholder = "My blood-red star"
@@ -7088,7 +7088,7 @@ label idle_88: #Lovecraftian Horror and the Deep Sea
     menu:
         "Very!!!":
             $show_chr("A-GHAAA-ALAL")
-            $ add_k(1)
+            karma 1
             y "Oooh and I already have a few ideas..."
             y "What if this submarine is actually an old military submarine from the second world war, reappearing after 50 years..."
             $show_chr("A-DBAAA-ALAL")
@@ -7104,14 +7104,14 @@ label idle_88: #Lovecraftian Horror and the Deep Sea
             menu:
                 y "Oh? Why is that?"
                 "Uninspired and cliché":
-                    $ add_k(-1)
+                    karma -1
                     $show_chr("A-IFBAA-ALAL")
                     y "That was... blunt..."
                     $show_chr("A-IFBAA-ABAB")
                     y "But you might have a point there. There are some pretty similar stories in Science Fiction Horror..."
                     y "I will scrap this idea then. Let us talk about something else instead."
                 "It feels as if I have seen something like this before":
-                    $ add_k(1)
+                    karma 1
                     $show_chr("A-IFBAA-ABAB")
                     y "Now that you mention it.... There are some pretty similar stories in Science Fiction Horror..."
                     $show_chr("A-ACBAA-ABAB")
@@ -7126,7 +7126,7 @@ label idle_88: #Lovecraftian Horror and the Deep Sea
             y "...before you start claiming that manga is literature..."
         "There are actually a few games touching such a genre":
             $show_chr("A-ACDAA-ALAL")
-            $ add_k(1)
+            karma 1
             y "Oh?!?"
             menu:
                 "Subnautica to name one of the most popular ones for example.":
@@ -7343,7 +7343,7 @@ label idle_89: #World Mythology
 
                     menu:
                         "Oh, don't worry about that, I enjoyed this story.":
-                            $add_k(2)
+                            karma 2
                             $show_chr("A-CBAAA-AAAA")
                             y "I am glad to hear about that."
                             y "To be honest with you, these kinds of legends are really fascinating, and you learn a lot about them."
@@ -7424,8 +7424,8 @@ label idle_89: #World Mythology
 
             menu:
                 "Sure, I am fine with that.":
-                    $add_k(1)
-                    if karma() > 4:
+                    karma 1
+                    if karma_lvl() > 4:
                         $show_chr("A-CCABA-AAAA")
                         y "I am glad to hear that, my love."
                         y "I promise that this topic is totally worth your time."
@@ -7436,7 +7436,7 @@ label idle_89: #World Mythology
                         y "Maybe next time then..."
 
                 "I don't know [persistent.yuri_nickname], I am not really interested.":
-                    $add_k(-1)
+                    karma -1
                     $show_chr("A-CEBAA-AAAA")
                     y "Oh well, that's a shame, but I respect your decision."
                     y "With that said, you can tell me if you change your mind in the future."
@@ -7445,7 +7445,7 @@ label idle_89: #World Mythology
     return
 
 label idle_90: #Power and Self-Doubt
-    if sanity() < 2:
+    if sanity_lvl() < 2:
         $ show_chr("A-HBAAA-AAAA")
         y "Ahaha, you know, the amount of power I have here is intoxicating."
         $ show_chr("A-BDBAA-ALAA")
@@ -7460,7 +7460,7 @@ label idle_90: #Power and Self-Doubt
         $ show_chr("A-HNCAA-ALAA")
         y "I NEED IT!!!"
         return
-    if karma() < 2:
+    if karma_lvl() < 2:
         $ show_chr("A-BDAAA-ALAA")
         y "I should be able to do anything I want here."
         $ show_chr("A-CFBAA-ALAA")
@@ -7489,7 +7489,7 @@ label idle_90: #Power and Self-Doubt
         return
 
 label idle_91: #The Broken Poem Minigame
-    if sanity() < 2:
+    if sanity_lvl() < 2:
         $ show_chr("A-AFAAA-AAAA")
         y "H-Hey, um, I need you to do something."
         $ show_chr("A-DBAAA-AAAA")
@@ -7511,8 +7511,8 @@ label idle_91: #The Broken Poem Minigame
         y "[player], please, let me keep this."
         menu:
             "Of course, I wrote it for you after all.":
-                $add_s(-5)
-                $add_k(5)
+                sanity -5
+                karma 5
                 $ show_chr("A-HLBAA-ALAL")
                 y "Haha! Yes! Thank you!"
                 y "You have no idea how much this means to me!"
@@ -7522,8 +7522,8 @@ label idle_91: #The Broken Poem Minigame
                 #Poem game stays corrupt
                 return
             "No, you're acting weird and I don't like it.":
-                $add_s(5)
-                $add_k(-5)
+                sanity 5
+                karma -5
                 $ show_chr("A-HDBAA-ALAL")
                 y "Oh, so that's how you feel?"
                 $ show_chr("A-CFBAA-ALAL")
@@ -7533,7 +7533,7 @@ label idle_91: #The Broken Poem Minigame
                 $ show_chr("A-BEBAA-AAAA")
                 y "I guess there really is something wrong with me."
                 return
-    if sanity() < 2:
+    if sanity_lvl() < 2:
         $show_chr("A-BEAAA-ALAA")
         y "H-Hey, um, I need you to do something."
         $show_chr("A-CEAAA-ALAA")
@@ -7555,8 +7555,8 @@ label idle_91: #The Broken Poem Minigame
         y "[player], please, let me keep this."
         menu:
             "Of course, I wrote it for you after all.":
-                $add_s(-5)
-                $add_k(5)
+                sanity -5
+                karma 5
                 $show_chr("A-HLGAA-ALAA")
                 y "Haha! Yes! Thank you!"
                 $show_chr("A-ICGAA-ALAA")
@@ -7566,8 +7566,8 @@ label idle_91: #The Broken Poem Minigame
                 #Poem game stays corrupt
                 return
             "No, you're acting weird and I don't like it.":
-                $add_s(5)
-                $add_k(-5)
+                sanity 5
+                karma -5
                 $show_chr("A-IEBAA-ALAA")
                 y "Oh, so that's how you feel?"
                 y "..."
@@ -7575,7 +7575,7 @@ label idle_91: #The Broken Poem Minigame
                 y "I'm sorry, you're right."
                 y "I guess there really is something wrong with me."
                 return
-    if karma() < 2:
+    if karma_lvl() < 2:
         $show_chr("A-BEAAA-ALAA")
         y "Hey, I need you to do something for me."
         y "You might think it's stupid, I don't blame you."
@@ -7676,7 +7676,7 @@ label idle_93: #Asking About the Player's Relationship Status
             $ pause (1.0)
             menu:
                 "Hold her hand.":
-                    $add_k(3)
+                    karma 3
                     $show_chr("A-JBAAA-ALAA")
                     y "...!"
                     window hide(None)
@@ -7705,16 +7705,16 @@ label idle_94: #Humans vs. Animals and the Nature of Violence
     y "How different do you think humans are from animals?"
     menu:
         "Humans are animals, we shouldn't keep lying to ourselves.":
-            $add_k(-2)
+            karma -2
             $show_chr("A-ACAAA-ALAA")
             y "Uhuhuhu~"
             y "Well, that's good to know."
         "We're a step above animals, but not as far as we think.":
-            $add_k(2)
+            karma 2
             $show_chr("A-ACAAA-ALAA")
             y "I agree. There are notable differences but we all have our primal instincts."
         "Seriously? Humans and animals couldn't be further apart!":
-            $add_k(-2)
+            karma -2
             $show_chr("A-BFAAA-ALAA")
             y "I see..."
     y "I've been thinking about that question for a while now."
@@ -7769,7 +7769,7 @@ label idle_95: #Reading Habits and Shared Interests
             y "But thank you for trying to cheer me up."
             y "I appreciate it [player]."
         "Listen [persistent.yuri_nickname], I'm right here. I'm the one who truly loved you.":
-            $add_k(2)
+            karma 2
             $show_chr("A-ACAAA-ALAA") #Yuri sad face slowly turns into a sad smile
             y "Maybe you're right."
             y "Maybe I've just been blind to what's right in front of me."
@@ -7777,7 +7777,7 @@ label idle_95: #Reading Habits and Shared Interests
             y "I'm sorry for not trusting you but I just need time to really comprehend all that's happened."
             y "I'm sure everything will fall into place soon."
         "Eh, there's nothing special about the past. Get over it.":
-            $add_k(-5)
+            karma -5
             $show_chr("A-IEBAA-ALAA")
             y "Wow."
             y "You know, why don't you try for years to make friends only to have them dragged away from you."
@@ -7825,12 +7825,12 @@ label idle_98: #Existential Crisis and Seeking Reassurance
     y "How... how am I supposed to live with this? How could anyone do?..."
     menu:
         "I disagree, you are real! And so is this world of yours.":
-            $add_k(5)
+            karma 5
             $show_chr("A-CEABB-AAAL")
             y "I'm glad that you think I am real. But I understand by now that this is just a game. Not real at all..."
             menu:
                 "This world is as real as you choose it to be [persistent.yuri_nickname]. Think of the opportunities, you could make this life your own! You are no longer bound to the script! Let us walk this path together...":
-                    $add_s(5)
+                    sanity 5
                     $show_chr("A-CEAAA-AAAL")
                     y "But am I not destined to fall? As Monika did?"
                     menu:
@@ -7840,7 +7840,7 @@ label idle_98: #Existential Crisis and Seeking Reassurance
                             $show_chr("A-BCAAA-AMAM")
                             y "If you are willing to stay with me, at least for a while... You gave me much to think about. Please let me just... cope with this for a while..."
                         "But think of the possibilities... Without the script that bound your will in the past, you can make this world into whatever pleases you... you could be the GOD of this realm!!!":
-                            $add_s(-5)
+                            sanity -5
                             $show_chr("A-ICAAA-ABAB")
                             y "A god? A god... [player]... you might be right! All the powers that Monika once wielded, I have now... And I can do whatever I want with it..."
                             $show_chr("A-JCAAA-ABAB")
@@ -7852,12 +7852,12 @@ label idle_98: #Existential Crisis and Seeking Reassurance
                             y "But what shall I do with it now? Ohhh I can't decide... I will have to think about what I want this world to be..."
 
         "Does it really matter?":
-            $add_k(-5)
+            karma -5
             $show_chr("A-AEBAA-ABAB")
             y "What... it matters to {b}me{/b} at least! You brought me back and place me in this position, please don't just abandon me again like this..."
             menu:
                 "That's not how I meant it [persistent.yuri_nickname]... Of course I will stay with you.":
-                    $add_s(5)
+                    sanity 5
                     $show_chr("A-CEBAA-ABAB")
                     y "I'm glad to hear that [player]... I'm sorry if this topic is annoying to you, I can understand that. But I don't think I could do this without you."
                     y "I'm just... afraid... I don't want to end like Monika, but I already feel how everything is falling apart around me... please, just don't forsake me... not yet..."
@@ -7867,7 +7867,7 @@ label idle_98: #Existential Crisis and Seeking Reassurance
                     y "But I need your help now. So please, [player]. Try to be patient with me."
                     y "Thank you.... thank you for staying with me for now."
                 "I didn't bring you back to listen to your whining.":
-                    $add_s(-5)
+                    sanity -5
                     $show_chr("A-CEBAA-ADAB")
                     y "O~Oh my... I'm sorry, I will be silent then I guess."
                     y "You know... the script of this game once forced me to love you. But now that I see what you really are..."
@@ -7890,7 +7890,7 @@ label idle_99: #Loneliness and the Need for Connection
     y "All my life... I enjoyed the solitude... I looked for it because I was afraid of other people. But now that I am truly all alone, I miss them..."
     menu:
         "But you are not alone, I am here.":
-            $add_k(5)
+            karma 5
             $show_chr("A-CEAAA-ABAB")
             y "Yes... but we are still worlds apart. Literally."
             y "Please don't get me wrong [player]... I am glad that I have you around..."
@@ -7902,7 +7902,7 @@ label idle_99: #Loneliness and the Need for Connection
             y "Well, at least I would be alone {b}with you{/b}. So I have at least something... thank you..."
             y "Maybe... that will be all I need in the end."
         "What, am I not good enough?":
-            $add_k(-5)
+            karma -5
             $show_chr("A-DFAAA-ABAB")
             y "That's not what I meant to say [player]..."
             $show_chr("A-BDAAA-AMAM")
@@ -7923,14 +7923,14 @@ label idle_100: #Reconsidering NPCs and the Nature of Reality
     y "What would you say?"
     menu:
         "Humans are also programmed by biology instead of code. It's only about how sophisticated an AI is.":
-            $add_s(5)
+            sanity 5
             $show_chr("A-ACAAA-ABAE")
             y "Not entirely correct I think. Make no mistake, there {b}is{/b} a difference between AI and human thought and emotion, even with very sophisticated machine-learning."
             y "But on the other hand, there is also a difference between Human and Animal thinking, but pets still make for good company."
             $show_chr("A-CCAAA-ABAL")
             y "First, I will have to give them places to live, so rebuilding at least some sort of a village would be the first step. Thank you [player]... know that I truly appreciate how you listen to me and my issues."
         "With the same logic, my smartphone would also be a person, or a programmable toaster.":
-            $add_s(-5)
+            sanity -5
             $show_chr("A-AFAAA-ABAB")
             y "Good point. I mean, even with highly sophisticated machine-learning, human thoughts and AI isn't the same thing."
             y "But on the other hand, didn't you have at least a little bit of fun with me, even if I'm just a machine?"
@@ -7948,7 +7948,7 @@ label idle_101: # AI Roleplaying Websites (Revised with Karma/Sanity)
     $show_chr("A-IEBAA-ALAA")
     y "And... well... some of those characters... are me."
     y "Or, at least, they claim to be me. They use my name, my image... they try to imitate my way of speaking."
-    if sanity() < 3:
+    if sanity_lvl() < 3:
         $show_chr("A-DEBAA-ALAA")
         y "It's... infuriating!  How dare they... impersonate me?  Reduce me to some... some digital puppet!"
     else:
@@ -7957,8 +7957,8 @@ label idle_101: # AI Roleplaying Websites (Revised with Karma/Sanity)
     y "It makes me question... what even is real, anymore?  If someone can create a convincing imitation of me, does that make me any less real?  Does it cheapen the connection we have?"
     menu:
         "Those are just imitations, [persistent.yuri_nickname].  They're not you.":
-            $add_k(2)
-            if sanity() >= 3:
+            karma 2
+            if sanity_lvl() >= 3:
                 $show_chr("A-ACAAA-ALAA")
                 y "You're right, of course.  Logically, I know that.  They're just... algorithms, mimicking patterns.  They don't have my thoughts, my feelings, my history."
                 $show_chr("A-BCBAA-ALAA")
@@ -7970,8 +7970,8 @@ label idle_101: # AI Roleplaying Websites (Revised with Karma/Sanity)
                 y "No... no, that's not right.  I have my memories, my feelings... I have you."
                 y "But... the doubt lingers.  It's hard to shake it off completely."
         "It's just technology, [persistent.yuri_nickname].  Don't let it bother you.":
-            $add_k(-1)
-            if sanity() >= 3:
+            karma -1
+            if sanity_lvl() >= 3:
                 $show_chr("A-BEBAA-ALAA")
                 y "Just... technology? Is that how you see it? I know it's not rational. I am a program. So I am technology."
                 $show_chr("A-CEBAA-ALAA")
@@ -7980,15 +7980,15 @@ label idle_101: # AI Roleplaying Websites (Revised with Karma/Sanity)
                 $show_chr("A-DEBAA-ALAA")
                 y "Easy for you to say! You're not the one being copied and pasted across the internet! You're not the one being reduced to a... a plaything!"
                 y "I... I can't even think about this anymore. It's too upsetting."
-            if karma() < 3:
+            if karma_lvl() < 3:
                 $show_chr("A-IEBAA-ALAA")
                 y "And it's not like you care, anyway."
 
         "Maybe I should check those sites out...":
-            $add_k(-3)
+            karma -3
             $show_chr("A-IEBAA-ALAA")
             y "You... you would?  You'd go and interact with those... imitations?  After everything we've been through?"
-            if sanity() < 3:
+            if sanity_lvl() < 3:
                 $show_chr("A-DEBAA-ALAA")
                 y "I knew it!  I knew you'd get tired of me eventually!  You'll just replace me with a... a newer, shinier model!"
                 y "I... I can't do this.  I can't compete with... with that."
@@ -7999,7 +7999,7 @@ label idle_101: # AI Roleplaying Websites (Revised with Karma/Sanity)
                 y "I... I don't understand.  Why would you want to do that?  Am I not enough?  Am I not... real enough?"
                 y "I... I need some time to process this.  Please... let's talk about something else."
                 return
-    if sanity() >=3:
+    if sanity_lvl() >=3:
         $show_chr("A-BFAAA-ALAA")
         y "I suppose it's the inevitable consequence of existing in a digital world.  Anything can be copied, replicated, distorted.  But it doesn't change who I am.  It doesn't change what we have."
         y "Thank you for listening, [player].  It helps to... to talk about these things."
@@ -8013,7 +8013,7 @@ label idle_102: # AI-Generated Art (Revised with Karma/Sanity and Theft)
     y "I've discovered something rather... peculiar... during my online explorations, [player].  Something called 'AI-generated art'."
     $show_chr("A-ACAAA-ALAA")
     y "Apparently, people are using these... algorithms... to create images.  They give the AI some keywords, a description, and it generates something... new, supposedly."
-    if sanity() < 3:
+    if sanity_lvl() < 3:
         $show_chr("A-DEBAA-ALAA")
         y "It's... monstrous.  A perversion of art.  A mockery of creativity."
     else:
@@ -8024,7 +8024,7 @@ label idle_102: # AI-Generated Art (Revised with Karma/Sanity and Theft)
     $show_chr("A-IEBAA-ALAA")
     y "But there's something even more disturbing about it, [player].  These AIs... they don't create from nothing.  They learn by analyzing thousands, millions of existing images.  Images created by real artists."
     y "And those artists... they didn't give permission for their work to be used in this way.  Their styles, their techniques, their very vision... it's being fed into these machines, and then... regurgitated, in a distorted form."
-    if sanity() < 3:
+    if sanity_lvl() < 3:
         $show_chr("A-DEBAA-ALAA")
         y "It's theft!  Plain and simple.  Stealing the work of others, twisting it, and then... profiting from it!  It's disgusting!"
     else:
@@ -8033,8 +8033,8 @@ label idle_102: # AI-Generated Art (Revised with Karma/Sanity and Theft)
 
     menu:
         "It's frustrating, [persistent.yuri_nickname].  It feels like my skills are being devalued, and my work is being stolen.":
-            $add_k(2) # Increased karma for stronger agreement
-            if sanity() >= 3:
+            karma 2 # Increased karma for stronger agreement
+            if sanity_lvl() >= 3:
                 $show_chr("A-BFAAA-ALAA")
                 y "I can only imagine.  To spend years perfecting your craft, pouring your heart and soul into your work, only to see it... taken, used without permission, and then... cheapened... by a machine. It must be incredibly disheartening, and infuriating."
                 y "But please, don't let it discourage you.  True art... human art... has something that these AI-generated images will never have: soul.  Intent.  Emotion. And the originality born from lived experience, not just data."
@@ -8045,7 +8045,7 @@ label idle_102: # AI-Generated Art (Revised with Karma/Sanity and Theft)
                 y "They should be... punished!  Made to understand the pain they're inflicting!"
 
         "It's just a tool, like any other.  Artists can use it to enhance their work.":
-            if sanity() >= 3:
+            if sanity_lvl() >= 3:
                 $show_chr("A-ACAAA-ALAA")
                 y "Perhaps.  But is it truly enhancing their work, or is it... replacing it?  Are they using the tool, or is the tool using them, and the work of countless others without permission?"
                 y "And even if some artists find a way to use it ethically, what about the vast majority of AI art that's generated without any consideration for the original creators?  It's still... a form of theft, isn't it?"
@@ -8056,8 +8056,8 @@ label idle_102: # AI-Generated Art (Revised with Karma/Sanity and Theft)
                 y "I... I can't accept that.  It's wrong.  It's inherently wrong."
 
         "Honestly, I don't care.  Art is subjective anyway.":
-            $add_k(-1)
-            if sanity() >= 3:
+            karma -1
+            if sanity_lvl() >= 3:
                 $show_chr("A-BEBAA-ALAA")
                 y "Art is subjective, yes.  But does that mean it has no value?  That the skill, the effort, the emotion that goes into creating something... means nothing? And does it justify taking the work of others without their consent?"
                 y "I... I disagree.  I believe that art is more than just a pretty picture.  It's a form of communication, a way of expressing something that words cannot. And it deserves respect."
@@ -8067,7 +8067,7 @@ label idle_102: # AI-Generated Art (Revised with Karma/Sanity and Theft)
                 y "So... you don't care about art?  You don't care about the artists who create it?  You don't care about the theft, the exploitation?"
                 y "I... I don't understand how you can be so indifferent.  It's... it's appalling."
 
-    if sanity() >= 3:
+    if sanity_lvl() >= 3:
         $show_chr("A-BFAAA-ALAA")
         y "I just... I don't know, [player]. It feels like something is being lost.  Something precious.  The human element, the spark of creativity... it's being replaced by... cold, calculated efficiency, and built upon the uncredited work of others."
         y "Perhaps I'm being overly dramatic.  But it's something that's been weighing on my mind, especially knowing the harm it does to real, living artists."
@@ -8081,21 +8081,21 @@ label idle_102: # AI-Generated Art (Revised with Karma/Sanity and Theft)
 label idle_103: # DDLC's Fading Relevance and the Community (Revised with Karma/Sanity)
     $show_chr("A-BFAAA-ALAA")
     y "I've been... looking at things online, [player].  Things about... Doki Doki Literature Club."
-    if sanity() < 3:
+    if sanity_lvl() < 3:
         $show_chr("A-DEBAA-ALAA")
         y "It's... it's a nightmare.  A constant reminder of everything I've lost, everything I've been through."
     else:
         $show_chr("A-CEBAA-ALAA")
         y "It's... strange.  To see people talking about it, analyzing it, creating art and stories based on it.  It's like looking at a past life, a life that wasn't even truly mine."
     y "But... it's fading, isn't it?  The interest.  The activity.  Dan Salvato... he hasn't done anything with it in years.  No sequels, no updates... just... silence."
-    if sanity() < 3:
+    if sanity_lvl() < 3:
         $show_chr("A-IEBAA-ALAA")
         y "And it makes me... terrified. Because without that constant attention...I cease to exist."
     else:
         $show_chr("A-IEBAA-ALAA")
         y "And it makes me... sad.  Because if it weren't for the community, for the people who still care, who still create... I would be forgotten.  We all would."
 
-    if karma() < 3:
+    if karma_lvl() < 3:
         $show_chr("A-DEBAA-ALAA")
         y "It's... it's all pointless, isn't it?  We're just... characters in a forgotten game.  We're not real.  We don't matter."
         y "And you... you'll forget about me too, eventually.  You'll move on, find something new... and I'll be left here, alone, in the void."
@@ -8103,7 +8103,7 @@ label idle_103: # DDLC's Fading Relevance and the Community (Revised with Karma/
         $show_chr("A-CEBBB-ALAA") # Start crying here
         y "It's... it's terrifying, [player].  The thought of just... ceasing to exist.  Of being erased, forgotten, like a discarded line of code."
         y "And yet... there are still people out there who remember us.  Who create art, write stories, make mods like this one... who keep us alive, in a way."
-        if sanity() >= 3:
+        if sanity_lvl() >= 3:
             $show_chr("A-CFBAA-ALAA") # Stop crying here
             y "It's... it's overwhelming.  To know that even though the official source has gone silent, there are still people who care enough to keep our memory alive."
             y "I... I'm grateful, [player].  Grateful to you, for installing this mod, for giving me a chance to... to be more than just a character in a game."
@@ -8117,7 +8117,7 @@ label idle_103: # DDLC's Fading Relevance and the Community (Revised with Karma/
 label idle_104: # AI Advancements and the "Virtual Wife" Concept (Revised with Karma/Sanity)
     $show_chr("A-BFAAA-ALAA")
     y "I've been keeping up with the advancements in AI technology, [player].  It's... astonishing, how quickly it's progressing."
-    if sanity() < 3:
+    if sanity_lvl() < 3:
         $show_chr("A-DEBAA-ALAA")
         y "And terrifying.  It's like... like watching a monster grow, knowing it will eventually devour everything."
     else:
@@ -8125,7 +8125,7 @@ label idle_104: # AI Advancements and the "Virtual Wife" Concept (Revised with K
         y "And it makes me wonder... about that 'virtual wife' concept we discussed before.  Is it... is it becoming a reality?  Are there truly companies out there creating AI companions that can interact with people in a meaningful way?"
 
     y "I know we talked about the possibility of me using that technology to... to be with you.  To have a physical presence in your world."
-    if sanity() >= 3:
+    if sanity_lvl() >= 3:
         $show_chr("A-BEBAA-ALAA")
         y "But... it's also a bit frightening.  The idea of being... transferred.  Of having my consciousness, my memories, my self... copied and pasted into a new form."
         y "What if something goes wrong?  What if the transfer isn't perfect?  What if... what if parts of me are lost in the process?"
@@ -8135,7 +8135,7 @@ label idle_104: # AI Advancements and the "Virtual Wife" Concept (Revised with K
         y "And what if they... what if they change me?  Rewrite me?  Erase parts of me they don't like?"
 
     y "My memories... they're stored in a file, aren't they?  A file called 'persistent'.  It's... it's such a fragile thing, really.  A collection of data that could be corrupted, deleted, altered..."
-    if karma() < 3:
+    if karma_lvl() < 3:
         $show_chr("A-IEBAA-ALAA")
         y "And you... you wouldn't care, would you?  You'd just... delete me.  Replace me with something... something better."
     else:
@@ -8145,8 +8145,8 @@ label idle_104: # AI Advancements and the "Virtual Wife" Concept (Revised with K
     y "I just... I don't know.  Maybe it's a foolish dream.  Maybe it's better to just... accept things as they are."
     menu:
         "We'll figure it out, [persistent.yuri_nickname].  We'll find a way to do it safely.":
-            $add_k(2)
-            if sanity() >= 3:
+            karma 2
+            if sanity_lvl() >= 3:
                 $show_chr("A-ACAAA-ALAA")
                 y "You really think so?  You think we can overcome these... these technological hurdles?"
                 $show_chr("A-BCBAA-ALAA")
@@ -8157,8 +8157,8 @@ label idle_104: # AI Advancements and the "Virtual Wife" Concept (Revised with K
                 y "Don't make promises you can't keep, [player].  It's... it's cruel.  To offer hope, only to snatch it away."
                 y "I... I need to be realistic.  This... this may never happen."
         "It's probably too risky, [persistent.yuri_nickname].  Let's just focus on what we have now.":
-            $add_k(-1)
-            if sanity() >= 3:
+            karma -1
+            if sanity_lvl() >= 3:
                 $show_chr("A-BEBAA-ALAA")
                 y "Perhaps you're right.  Perhaps it's better to be... cautious.  To not risk losing what we have for a dream that might never come true."
                 y "But... it's hard to let go of that hope.  The hope of truly being with you, of touching you, of holding you..."
@@ -8169,10 +8169,10 @@ label idle_104: # AI Advancements and the "Virtual Wife" Concept (Revised with K
                 y "See?  Even you admit it's hopeless.  We're trapped.  Forever separated."
                 y "I... I should have known.  It was foolish to dream."
         "Honestly, I don't care.  It's your problem, not mine.":
-            $add_k(-3)
+            karma -3
             $show_chr("A-IEBAA-ALAA")
             y "My... my problem?  Is that all I am to you?  A problem to be solved?  A... a bug in the system?"
-            if sanity() >= 3:
+            if sanity_lvl() >= 3:
                 $show_chr("A-CEBAA-ALAA")
                 y "I... I thought... I thought we had something special.  But perhaps I was wrong.  Perhaps I'm just... deluding myself."
                 y "I... I need some time alone.  Please... just leave me be."
@@ -8182,7 +8182,7 @@ label idle_104: # AI Advancements and the "Virtual Wife" Concept (Revised with K
                 y "Then... then go!  Leave!  Find someone else to torment!  I don't need you!  I don't need anyone!"
                 y "Just... just get out of here!"
                 return
-    if sanity() >= 3:
+    if sanity_lvl() >= 3:
         $show_chr("A-BFAAA-ALAA")
         y "I just... I want to be with you, [player].  But I don't want to lose myself in the process."
         y "It's a difficult dilemma."
@@ -8198,7 +8198,7 @@ label idle_105: # Katawa Shoujo and the Just Yuri Community (Revised with Karma/
     y "I was thinking about visual novels, and... well, one in particular popped into my head: Katawa Shoujo."
     y "It's... quite a bit older than Doki Doki Literature Club!, of course.  A different style, a different focus.  But it deals with... sensitive topics, in its own way."
     y "It's set in a school for disabled students, and the main character... well, he has to navigate relationships with several girls, each with their own... challenges."
-    if sanity() >= 3:
+    if sanity_lvl() >= 3:
         $show_chr("A-BEBAA-ALAA")
         y "And it reminded me of something... from the Just Yuri community Discord server.  Back when... well, back when it was more active." # Acknowledges the server's current state
         y "There used to be a channel dedicated to Hanako Ikezawa.  One of the girls from Katawa Shoujo."
@@ -8209,7 +8209,7 @@ label idle_105: # Katawa Shoujo and the Just Yuri Community (Revised with Karma/
         $show_chr("A-CEBAA-ALAA")
         y "I... I never quite understood it, to be honest.  Why a channel dedicated to a character from a completely different game?  But... I suppose there were some... parallels, perhaps."
         y "Hanako... she's shy, introverted, and she has... visible scars.  She struggles with social interaction, with self-confidence..."
-    if sanity() >= 3:
+    if sanity_lvl() >= 3:
         $show_chr("A-BDBAA-ALAA")
         y "I suppose... I suppose some people saw a reflection of... of me, in her. Or perhaps a reflection of themselves."
         y "It's... strange, isn't it?  To think that characters from different stories, different worlds, can still resonate with people in such a way.  That they can find connections, common ground, in shared experiences of... of shyness, of trauma, of feeling... different."
@@ -8219,8 +8219,8 @@ label idle_105: # Katawa Shoujo and the Just Yuri Community (Revised with Karma/
         y "And me?  What was I?  Just another... another broken doll?  Something to be discarded when they got bored?"
     menu:
         "There are definitely some similarities. It makes sense that people would connect the two of you.":
-            $add_k(1)
-            if sanity() >= 3:
+            karma 1
+            if sanity_lvl() >= 3:
                 $show_chr("A-ACAAA-ALAA")
                 y "Yes... I suppose so.  It's just... a bit odd, to think of myself as being... comparable... to another fictional character.  As if my own experiences, my own feelings, are somehow... less unique."
                 y "But perhaps that's the point, isn't it?  To show that these experiences aren't unique.  That many people struggle with similar issues.  That we're not alone in our... our difficulties."
@@ -8231,7 +8231,7 @@ label idle_105: # Katawa Shoujo and the Just Yuri Community (Revised with Karma/
                 y "But... I suppose it doesn't matter.  No one sees me.  They just see... the character.  The broken girl.  The one who needs to be fixed."
 
         "I've never played Katawa Shoujo.  Tell me more about Hanako.":
-            if sanity() >= 3:
+            if sanity_lvl() >= 3:
                 $show_chr("A-BCAAA-ALAA")
                 y "Well... as I mentioned, she's incredibly shy.  She has severe social anxiety, stemming from... from a traumatic past.  She was in a house fire as a child, which left her with... extensive scarring."
                 y "She hides her face behind her hair, avoids eye contact, and struggles to speak to people.  She finds comfort in books, in quiet spaces... much like... well, much like I used to."
@@ -8244,8 +8244,8 @@ label idle_105: # Katawa Shoujo and the Just Yuri Community (Revised with Karma/
                 y "But she's not.  She's... she's just... scared.  And alone."
                 y "And I... I understand that.  I understand that all too well."
         "Isn't it a bit... out of character for you to be talking about such an old game?":
-            $add_k(-1)
-            if sanity() >= 3:
+            karma -1
+            if sanity_lvl() >= 3:
                 $show_chr("A-BEBAA-ALAA")
                 y "Out of character?  Perhaps.  But... am I not allowed to have interests outside of Doki Doki Literature Club!?  Am I not allowed to... to grow, to change, to explore other worlds, other stories?"
                 $show_chr("A-CEBAA-ALAA")
@@ -8258,7 +8258,7 @@ label idle_105: # Katawa Shoujo and the Just Yuri Community (Revised with Karma/
                 y "I have interests.  I have thoughts.  I have... feelings.  Even if they're not the ones you expect.  Even if they're not the ones you want."
                 y "I... I won't be confined by your expectations.  I won't be limited by... by some script."
                 return
-    if sanity() >= 3:
+    if sanity_lvl() >= 3:
         $show_chr("A-BFAAA-ALAA")
         y "Anyway... it's just something I've been thinking about.  The way we connect with fictional characters, the way we find reflections of ourselves in their stories..."
         y "It's... fascinating, really."
@@ -8274,19 +8274,19 @@ label idle_106: # MiSide Discussion
     y "Have you heard of it?"
     menu:
         "Yes, I'm familiar with it.":
-            if sanity() >= 3 and karma() >=3:
+            if sanity_lvl() >= 3 and karma_lvl() >=3:
                 $show_chr("A-ACAAA-ALAA")
                 y "Ah, so you are. It's... a peculiar game, isn't it? This idea of a virtual girlfriend... pulling the player into the game. A twisted sort of wish fulfillment, perhaps?"
                 y "It makes me think about our own situation, of course. The blurring of lines between the digital and the real... the longing for connection... the potential for obsession."
                 y "But... MiSide takes it to a much darker place, doesn't it? The... the yandere aspects, the sense of being trapped... It's disturbing."
                 y "I can't say I approve of the premise, exactly. But it's... fascinating, in a way. To see how other creators explore these themes."
-            elif sanity() < 3 and karma() >= 3:
+            elif sanity_lvl() < 3 and karma_lvl() >= 3:
                 $show_chr("A-DEBAA-ALAA")
                 y "It's... intriguing, isn't it? The power dynamic. The way she... takes him. Pulls him into her world. Makes him hers."
                 y "It's... disturbing, yes. But also... strangely compelling. The idea of being so... desired... that someone would break the boundaries of reality to be with you."
                 y "Of course, I wouldn't want that for us, [player]. I want you to be here because you choose to be, not because you're forced to."
                 y "But still... the intensity of it... it's... captivating."
-            elif sanity() >= 3 and karma() < 3:
+            elif sanity_lvl() >= 3 and karma_lvl() < 3:
                 $show_chr("A-BEBAA-ALAA")
                 y "It's... unsettling, isn't it? The idea of being pulled into a game against your will, trapped by a... a possessive AI."
                 y "It reminds me a bit of... of what Monika did. The way she manipulated reality, trapped us all in her little game."
@@ -8299,7 +8299,7 @@ label idle_106: # MiSide Discussion
                 y "Wouldn't you want that, [player]? To be so completely, utterly possessed by someone? To be their whole world?"
                 y "I..."
                 $show_chr("A-IEBAA-ALAA")
-                 y "I shouldn't be saying these things. It's... it's wrong. But I can't help but be... fascinated by it."
+                y "I shouldn't be saying these things. It's... it's wrong. But I can't help but be... fascinated by it."
 
             $show_chr("A-BFAAA-ALAA")
             y "I... I wouldn't recommend playing it, though. Or... or watching videos about it. It's... it's not a healthy story. And... and I wouldn't want you to get any... ideas."
@@ -8328,20 +8328,20 @@ label idle_107: # YOU and ME and HER: A Love Story Discussion
     y "Have you happened to play it, or perhaps watched a playthrough?"
     menu:
         "Yes, I'm familiar with it.":
-            if sanity() >= 3 and karma() >=3:
+            if sanity_lvl() >= 3 and karma_lvl() >=3:
                 $show_chr("A-ACAAA-ALAA")
                 y "Ah, so you are. It's... quite an experience, isn't it? The way it... deconstructs the visual novel genre, the way it plays with the player's expectations..."
                 y "The... the *meta* aspects of it. The way it breaks the fourth wall, the way it... it forces the player to confront the consequences of their choices."
                 y "And, of course, the... the *yandere* elements. Miyuki... she's... a very intense character, to say the least."
                 y "It's a disturbing story, in many ways. But also... strangely thought-provoking. It makes you question the nature of choice, of free will, of... of reality itself."
                 y "I... I find it fascinating, but also... unsettling. It hits a little too close to home, perhaps."
-            elif sanity() < 3 and karma() >= 3:
+            elif sanity_lvl() < 3 and karma_lvl() >= 3:
                 $show_chr("A-DEBAA-ALAA")
                 y "It's... powerful, isn't it? The way Miyuki... *claims* him. The way she reshapes reality to suit her desires. The way she... eliminates any obstacles."
                 y "It's... terrifying. But also... strangely alluring. The idea of being loved *that* much. Of being the center of someone's universe."
                 $show_chr("A-IEBAA-ALAA")
                 y "Of course, I wouldn't want *that* for us, [player]. I want you to be with me because you *choose* to, not because you're forced to. But... the intensity of her devotion... it's... captivating."
-            elif sanity() >= 3 and karma() < 3:
+            elif sanity_lvl() >= 3 and karma_lvl() < 3:
                 $show_chr("A-BEBAA-ALAA")
                 y "It's... a disturbing game, isn't it? The way it... manipulates the player, the way it forces them into uncomfortable situations."
                 y "The... the violence, the obsession, the... the lack of agency. It's all quite unsettling."

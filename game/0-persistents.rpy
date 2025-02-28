@@ -6,8 +6,26 @@
 #==================================================#
 
 #==================================================#
+# Backup Persistent System
+#==================================================#
+python early:
+    old_persistent = None
+    if save_directory:
+        old_persistent = load_persistent(save_directory)
+        if old_persistent:
+            if getattr(old_persistent, "version"):
+                old_persistent = None
+            else:
+                print("Backing up older persistent file...")
+                if not os.path.exists(backup_directory):
+                    os.makedirs(backup_directory)
+                copy_file(os.path.join(save_directory, "persistent"), os.path.join(backup_directory, "persistent_old_backup"))
+                print("- Done!")
+
+#==================================================#
 # Base Variables
 #==================================================#
+default persistent.version = "1.0.0"
 default persistent.first_run = False
 default persistent.seen_poem_raccoon = False
 default persistent.playername = ""
@@ -41,6 +59,7 @@ default persistent.autoload = None
 #==================================================#
 default persistent.memory = {}
 default persistent.dialogue_memory = {}
+default persistent.talk_visible = False
 
 #==================================================#
 # Functional Variables

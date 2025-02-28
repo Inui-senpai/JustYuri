@@ -49,6 +49,31 @@
 #     If there are any more callbacks that needs
 #     to be fired, they will be skipped.
 #==================================================#
+init -998 python:
+    class EventAPI:
+        event_handlers = {}
+
+        @staticmethod
+        def register(event_class, *callbacks):
+            if not inspect.isclass(event_class):
+                print_fatal(TypeError("Expected an Event class, but got an instance instead"))
+                return
+
+            if not event_class in EventAPI.event_handlers:
+                EventAPI.event_handlers[event_class] = EventHandler(event_class, callbacks)
+            else:
+                EventAPI.event_handlers[event_class].register(callbacks)
+
+        @staticmethod
+        def call(event: Event):
+            if event.__class__ in EventAPI.event_handlers:
+                EventAPI.event_handlers[event.__class__].call(event)
+            else:
+                print_error(NameError("Failed to execute event " + str(event.__class__.__name__) + " as the event was not registered prior to calling it"))
+
+        @staticmethod
+        def is_registered(event_class):
+            return event in EventAPI.event_handlers
 
 init -999 python:
     class Event:
@@ -67,7 +92,7 @@ init -999 python:
             self.register(callbacks)
 
         def register(self, callbacks):
-            print_debug("Registering " + str(len(callbacks)) + " callback(s) for event " + self.event.id)
+            print_debug("Registering " + str(len(callbacks)) + " callback(s) for event " + self.event.__name__)
             for callback in callbacks:
                 if callback and not callback in self.callbacks and type(callback) != tuple:
                     print_debug("  - Registering callback: " + repr(callback))
@@ -78,30 +103,10 @@ init -999 python:
                 try:
                     callback(event)
                 except BaseException as exception:
-                    print("Failed to execute event " + self.event.id + " as the function errored upon execution")
+                    print("Failed to execute event " + self.event.__name__ + " as the function errored upon execution")
                     print_error(exception, new_traceback=False)
-
-    class EventAPI:
-        event_handlers = {}
-
-        @staticmethod
-        def register(event: Event, *callbacks):
-            if not event.id in EventAPI.event_handlers:
-                EventAPI.event_handlers[event.id] = EventHandler(event, callbacks)
-            else:
-                EventAPI.event_handlers[event.id].register(callbacks)
-
-        @staticmethod
-        def call(event: Event):
-            if event.id in EventAPI.event_handlers:
-                EventAPI.event_handlers[event.id].call(event)
-            else:
-                print_error(NameError("Failed to execute event " + str(event.id) + " as the event was not registered prior to calling it"))
-
-        @staticmethod
-        def contains(id):
-            return id in EventAPI.event_handlers    
-
+    
+init -997 python:
     #==============================================#
     # Renpy Callbacks
     #==============================================#
@@ -129,6 +134,15 @@ init -999 python:
         EventAPI.call(SafeQuitEvent())
         
     def callback_exit():
+        old_persistent = load_persistent(save_directory)
+        if old_persistent:
+            print("Backing up persistent file...")
+            if not os.path.exists(backup_directory):
+                os.makedirs(backup_directory)
+            now = datetime.datetime.today()
+            save_persistent(old_persistent, backup_directory, "persistent_backup-" + str(now.year) + "-" + str(now.month) + "-" + str(now.day))
+            print("- Done!")
+
         EventAPI.call(ExitEvent())
 
     def callback_crash():
@@ -137,8 +151,7 @@ init -999 python:
     def callback_tick():
         EventAPI.call(callback_tick_event)
         callback_tick_event.ticks += 1
-    
-init -998 python:
+
     if persistent.crash:
         crashed = True
         callback_crash()

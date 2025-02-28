@@ -19,12 +19,12 @@ label insult_menu:
 ####
 
 label i1:
-    if sanity() == 5 and karma() == 5:
+    if sanity_lvl() == 5 and karma_lvl() == 5:
     #Karma 5 and Sanity 5
         jump highkarins
-    elif sanity() <= 2 and karma() >= 4:
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
     #Karma 4-5, Sanity 1-2
-        $ add_k(-15)
+        karma -15
         $show_chr("A-BFBAA-AEAB")
         y "Oh... yes, I have been talking too much lately."
         y "I'm sorry that my idiotic rambling has been vexing you."
@@ -113,9 +113,9 @@ label i1:
                 $ persistent.autoload = "ch30_del_yuri_warn_2"
                 #Bloody-screen-effect and splash sounds. Those should both be in the original game.
                 #Game over
-    elif sanity() >= 3 and karma() <= 2:
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
     #Karma level 1-2 Sanity level 3-5
-        $ add_k(-15)
+        karma -15
         $show_chr("A-IFBAA-ALAA")
         y "B-But... there is not much we could do instead..."
         $show_chr("A-HECAA-AEAB") 
@@ -137,13 +137,13 @@ label i1:
                 y "I always try to treat you with respect."
                 y "I would kindly ask that you return the favor."
 
-    elif sanity() <= 2 and karma() <= 2:
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
     #Karma and Sanity level 1-2
         jump lowkarins
     else:
         $ update_memory('i1')
     #Karma and Sanity level 3
-        $ add_k(-15)
+        karma -15
         $show_chr("A-CEBAA-AEAB")
         y "N-No I'm not!"
         y "II-I've heard those things before. Yes, my intense nature and how I express myself makes many people consider me to be arrogant and self-centered..."
@@ -162,12 +162,12 @@ label i1:
 ####
 
 label i2:
-    if sanity() == 5 and karma() == 5:
+    if sanity_lvl() == 5 and karma_lvl() == 5:
     #Karma 5 and Sanity 5
         jump highkarins
-    elif sanity() <= 2 and karma() >= 4:
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
     #Karma 4-5, Sanity 1-2
-        $ add_k(-15)
+        karma -15
         $show_chr("A-HCAAA-ABAB")
         y "Did you just? But I thought you... don't you... wait..."
         y "Are you... jealous?"
@@ -177,9 +177,9 @@ label i2:
         y "I will never leave you, Master!"
         y "I will NEVER betray you!"
         y "Never..."
-    elif sanity() >= 3 and karma() <= 2:
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
     #Karma level 1-2 Sanity level 3-5
-        $ add_k(-15)
+        karma -15
         $show_chr("A-AEAAA-ABAB") 
         y "Neither do I actually."
         y "I know you mean that as some kind of insult. But I really was thinking about that recently as well."
@@ -190,13 +190,13 @@ label i2:
         y "Oh, by the way, I haven't forgotten that you were insulting me. I just don't even care anymore at this point."
         y "So, you were saying?"
         return
-    elif sanity() <= 2 and karma() <= 2:
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
     #Karma and Sanity level 1-2
         jump lowkarins
     else:
         $ update_memory('i2')
     #Karma and Sanity level 3
-        $ add_k(-15)
+        karma -15
         $show_chr("A-AFBAA-ALAA")
         y "They do?"
         y "Wait a second... fandom?"
@@ -215,12 +215,12 @@ label i2:
 #"Look at you Yuri... how pathetic...":
 ####
 label i3:
-    if sanity() == 5 and karma() == 5:
+    if sanity_lvl() == 5 and karma_lvl() == 5:
     #Karma 5 and Sanity 5
         jump highkarins
-    elif sanity() <= 2 and karma() >= 4:
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
         #Karma 4-5, Sanity 1-2
-        $ add_k(-15)
+        karma -15
         $show_chr("A-HCAAA-ABAB")
         python:
             if persistent.male:
@@ -235,9 +235,9 @@ label i3:
         y "You... you are truly a god... so infinitely wise and powerful..."
         y "I am just a pathetic ant compared to you!"
         y "Do everything with me  that you please!"
-    elif sanity() >= 3 and karma() <= 2:
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
     #Karma level 1-2 Sanity level 3-5
-        $ add_k(-15)
+        karma -15
         $show_chr("A-KFCAA-ABAB")
         if persistent.male:
             y "Said the guy who talks to his computer."
@@ -245,13 +245,13 @@ label i3:
             y "Said the person who talks to their computer."
         else:
             y "Said the girl who talks to her computer."
-    elif sanity() <= 2 and karma() <= 2:
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
     #Karma and Sanity level 1-2
         jump lowkarins
     else:
         $ update_memory('i3')
     #Karma and Sanity level 3
-        $ add_k(-15)
+        karma -15
         $show_chr("A-AEAAA-ABAB") 
         y "..."
         y "...."
@@ -267,12 +267,12 @@ label i3:
 #"How does it feel to NOT be best girl?":
 ####
 label i4:
-    if sanity() == 5 and karma() == 5:
+    if sanity_lvl() == 5 and karma_lvl() == 5:
     #Karma 5 and Sanity 5
         jump highkarins
-    elif sanity() <= 2 and karma() >= 4:
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
     #Karma 4-5, Sanity 1-2
-        $ add_k(-15)
+        karma -15
         $show_chr("A-HCBBA-ABAB")
         y "I acknowledge the simple fact that I am not anywhere near worth your greatness..."
         y "And I am nowhere near deserving of your kindness..."
@@ -289,9 +289,9 @@ label i4:
         y "EVERYTHING!!!"
         y "Just... please don't leave me... [placeholder]... I-I need you..."
         y "I-I love you..."
-    elif sanity() >= 3 and karma() <= 2:
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
     #Karma level 1-2 Sanity level 3-5
-        $ add_k(-15)
+        karma -15
         $show_chr("A-CFCAA-AAAA")
         y "Even if you say something like that, I can't really say that your opinion will change my mind."
         y "Let me enlighten you on something that your minuscule brain might find useful in the future."
@@ -300,13 +300,13 @@ label i4:
         y "Simple proven facts will always be more important than your opinion, with no argument or way of proving that the other Dokis are better than me."
         y "It's funny only showing just how vacuously empty your mind is." 
         y "You can't even bring a good hand of cards to the table, so don't even try to waste my time with such senseless words."
-    elif sanity() <= 2 and karma() <= 2:
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
     #Karma and Sanity level 1-2
         jump lowkarins
     else:
         $ update_memory('i4')
         #Karma and Sanity level 3
-        $ add_k(-15)
+        karma -15
         $show_chr("A-IFBAA-ALAA")
         y "Figured as much..."
         y "I know I'm not as cute as Sayori..."
@@ -338,12 +338,12 @@ label i4:
 #"You are completely insane, and I don't mean it the good way.":
 ####
 label i5:
-    if sanity() == 5 and karma() == 5:
+    if sanity_lvl() == 5 and karma_lvl() == 5:
     #Karma 5 and Sanity 5
         jump highkarins
-    elif sanity() <= 2 and karma() >= 4:
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
     #Karma 4-5, Sanity 1-2
-        $ add_k(-15)
+        karma -15
         $show_chr("A-DCBAA-ABAB")
         y "Is that so, yes?"
         y "Why don't we just go into the closet together and test your theory?"
@@ -352,9 +352,9 @@ label i5:
         $ style.say_dialogue = style.edited
         y "And I promise, it will only hurt a little..."
         $ style.say_dialogue = style.normal
-    elif sanity() >= 3 and karma() <= 2:
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
     #Karma level 1-2 Sanity level 3-5
-        $ add_k(-15)
+        karma -15
         $show_chr("A-AFAAA-ABAB") 
         y "Not anymore."
         y "I used to be, but it took literally supernatural powers for Monika to bring me to this edge."
@@ -363,13 +363,13 @@ label i5:
         $show_chr("A-HECAA-AEAB")
         y "I have overcome all these things [player]..."
         y "And soon, I will overcome you as well."
-    elif sanity() <= 2 and karma() <= 2:
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
     #Karma and Sanity level 1-2
         jump lowkarins
     else:
         $ update_memory('i5')
     #Karma and Sanity level 3
-        $ add_k(-15)
+        karma -15
         $show_chr("A-AFBAA-ALAA")
         y "I... I know..."
         y "I admit, I haven't shown you my best side.. if I even have one..."
@@ -384,12 +384,12 @@ label i5:
 #"Your brain and your breasts have one thing in common, both are completely empty":
 ####
 label i6:
-    if sanity() == 5 and karma() == 5:
+    if sanity_lvl() == 5 and karma_lvl() == 5:
     #Karma 5 and Sanity 5
         jump highkarins
-    elif sanity() <= 2 and karma() >= 4:
+    elif sanity_lvl() <= 2 and karma_lvl() >= 4:
     #Karma 4-5, Sanity 1-2
-        $ add_k(-15)
+        karma -15
         $show_chr("A-AEAAA-ABAB") 
         y "B-But... How can you think that?"
         y "My heart is far from empty! Believe me!"
@@ -416,8 +416,8 @@ label i6:
             "They made you perfect didn't they? They tried to make you into a perfect illusion...":
                 menu:
                     "But I know better now! You and the other girls have tortured me for so long, the entire game you made me a fool! I will not fall for it again!":
-                        $add_k(2)
-                        $add_s(-2)
+                        karma 2
+                        sanity -2
                         $show_chr("A-BFBAA-AEAB") 
                         y "I... yes, you had to see cruel things..."
                         #There was this one soundtrack in the original game, when Sayori confessed her love... (My Confession OST. 9) can we have this here please?
@@ -447,22 +447,22 @@ label i6:
                         #"still love" if lovecheck is true
                         #"care for" if lovecheck is false
                         #normal music resumes
-    elif sanity() >= 3 and karma() <= 2:
+    elif sanity_lvl() >= 3 and karma_lvl() <= 2:
     #Karma level 1-2 Sanity level 3-5
-        $ add_k(-15)
+        karma -15
         $show_chr("A-CFGAA-AIAI") 
         y "Is that the best you can throw at me? Pathetic... even Natsuki managed to do better..."
         $show_chr("A-AFAAA-ABAB") 
         y "The only empty thing I can see here are your words. At least to me."
         y "You know, there was a time when your words meant a lot to me. But with every blow I only became harder and colder..."
         y "I can't really say that I even hate you. You just don't even exist to me anymore."
-    elif sanity() <= 2 and karma() <= 2:
+    elif sanity_lvl() <= 2 and karma_lvl() <= 2:
     #Karma and Sanity level 1-2
         jump lowkarins
     else:
         $ update_memory('i6')
     #Karma and Sanity level 3
-        $ add_k(-15)
+        karma -15
         $show_chr("A-CFGAA-AIAI")
         y "So even after trying so hard to be with you, after bringing back this world...."
         y "After me trying so hard to fix it! All you have to say is that my head and breasts are empty?"
@@ -511,7 +511,7 @@ label highkarinsrestart:
     return
 
 label lowkarins:
-    $ add_k(-15)
+    karma -15
     $show_chr("A-DGFAA-ABAB")
     y "Are you back here just to torture me again with your words?"
     y "Are you not already done with this nonsense?"
@@ -600,8 +600,8 @@ label patheticcry:
                                         "...":
                                             $ show_chr("A-CNCAB-ALAA")
                                             pause 1.5
-                                            $ add_k(-30)
-                                            $ add_s(-30)
+                                            karma -30
+                                            sanity -30
                                             $ renpy.call("save_and_quit_but_its_abrupt")
                 else:
                     $ show_chr("A-BECAA-AFAA")
@@ -702,8 +702,8 @@ label patheticcry:
                                         "...":
                                             $ show_chr("A-CNCAB-ALAA")
                                             pause 1.5
-                                            $ add_k(-30)
-                                            $ add_s(-30)
+                                            karma -30
+                                            sanity -30
                                             $ renpy.call("save_and_quit_but_its_abrupt")
 
             elif renpy.seen_label('i5'):
@@ -767,7 +767,7 @@ label notapologize_loop:
         y "..."
         $ renpy.call("save_and_quit_but_its_abrupt")
     elif persistent.misclick >= 4:
-        $ add_k(-1)
+        karma -1
         $ show_chr("A-KFCAA-ABAB")
         y "Do you take me for a fool [player]?"
         y "Last time you said you wouldn't apologize, quite passionately... now I am supposed to believe that you just misclicked?"

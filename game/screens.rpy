@@ -654,10 +654,16 @@ init -501 screen navigation():
             hbox:
                 if main_menu:
                     textbutton _("Credits") action ShowMenu("about")
-
         vbox:
             xpos 30
             ypos 340
+            style_prefix "navigation"
+            hbox:
+                if renpy.variant("pc"):
+                    textbutton _("Mod List") action ShowMenu("mod_list")
+        vbox:
+            xpos 30
+            ypos 380
             style_prefix "navigation"
             hbox:
                 if main_menu:
@@ -1080,7 +1086,7 @@ init -501 screen preferences():
                         #    imagebutton idle "/gui/poemgame/y_sticker_2.png" action NullAction()
                         #    #Once the button has been pressed, the image changes and will never change back. The button no longer does anything.
 
-                if config.developer:
+                if dev_access:
                     vbox:
                         style_prefix "radio"
                         label _("Rollback Side")
@@ -1616,6 +1622,8 @@ transform anim_with_old(lin, xp, yp, zo, al, lin_old, xp_old, yp_old, zo_old, al
 transform anim(lin, xp, yp, zo, al):
     linear lin xpos xp ypos yp zoom zo alpha al
 
+
+
 #screen to call three_choice_menu which has 3 controlable types of buttons
 #args
 #1, 2, 3, items for each button types
@@ -1651,7 +1659,7 @@ screen three_choice_menu(dict_items, current_list, three_below_button_items, sid
     key "K_a"  action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, -1, "right", cur_wheel_num)
     key "K_d" action Function(change_to_left, dict_items,scroll_button_items, three_below_button_items, side_button_items, 1, "left", cur_wheel_num)
 
-#Scroll button objects
+    #Scroll button objects
     fixed:
         xpos 0 ypos 0
 
@@ -1918,7 +1926,7 @@ screen make_expression():
                     return iterator
 
                 if type in ["upL", "lowL", "upR", "lowR", "head", "costume", "sprite", "position", "botharms"]:
-                     update_iterator(type, type + "List", step_size)
+                    update_iterator(type, type + "List", step_size)
 
                 else:
                     head_iterator = globals().get("headIterator")
@@ -1940,25 +1948,25 @@ screen make_expression():
 
                 if type == "botharms":
                     temp_code = (str(headList[headIterator]) + "-"
-                                 + str(eval("eyes" + str(headIterator) + "List")[eyesIterator])
-                                 + str(eval("mouth" + str(headIterator) + "List")[mouthIterator]) +
-                                 str(eval("eyebrows" + str(headIterator) + "List")[eyebrowsIterator]) +
-                                 str(eval("blush" + str(headIterator) + "List")[blushIterator]) +
-                                 str(eval("cry" + str(headIterator) + "List")[cryIterator]) +
-                                 "-ZZA" +
-                                 str(botharmsList[botharmsIterator]))
+                                + str(eval("eyes" + str(headIterator) + "List")[eyesIterator])
+                                + str(eval("mouth" + str(headIterator) + "List")[mouthIterator]) +
+                                str(eval("eyebrows" + str(headIterator) + "List")[eyebrowsIterator]) +
+                                str(eval("blush" + str(headIterator) + "List")[blushIterator]) +
+                                str(eval("cry" + str(headIterator) + "List")[cryIterator]) +
+                                "-ZZA" +
+                                str(botharmsList[botharmsIterator]))
                 else:
                     temp_code = (str(headList[headIterator]) + "-"
-                                 + str(eval("eyes" + str(headIterator) + "List")[eyesIterator])
-                                 + str(eval("mouth" + str(headIterator) + "List")[mouthIterator]) +
-                                 str(eval("eyebrows" + str(headIterator) + "List")[eyebrowsIterator]) +
-                                 str(eval("blush" + str(headIterator) + "List")[blushIterator]) +
-                                 str(eval("cry" + str(headIterator) + "List")[cryIterator]) +
-                                 "-" +
-                                 str(upLList[upLIterator]) +
-                                 str(lowLList[lowLIterator]) +
-                                 str(upRList[upRIterator]) +
-                                 str(lowRList[lowRIterator]))
+                                + str(eval("eyes" + str(headIterator) + "List")[eyesIterator])
+                                + str(eval("mouth" + str(headIterator) + "List")[mouthIterator]) +
+                                str(eval("eyebrows" + str(headIterator) + "List")[eyebrowsIterator]) +
+                                str(eval("blush" + str(headIterator) + "List")[blushIterator]) +
+                                str(eval("cry" + str(headIterator) + "List")[cryIterator]) +
+                                "-" +
+                                str(upLList[upLIterator]) +
+                                str(lowLList[lowLIterator]) +
+                                str(upRList[upRIterator]) +
+                                str(lowRList[lowRIterator]))
 
                 persistent.costume = costumeList[costumeIterator]
 
