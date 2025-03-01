@@ -228,7 +228,7 @@ label a2:#flag active skip overwritten
             "But they look nice on you!":
                 $ show_chr("A-CFBBA-AAAA")
                 y "W-well alright..."
-                y "Anything you..."
+                y "Anything for you..."
             "If you really want, sure.":
                 $ show_chr("A-ABBBA-AAAA")
                 y "Thank you, [player]."
@@ -4525,7 +4525,7 @@ label a32:
 #music = "my confession
 label a33:
     window hide
-    stop music fadeout 3.0
+    $ renpy.music.stop(fadeout=3)
     pause 3.0
     if sanity_lvl() and karma_lvl() >= 3:
         $ renpy.music.play("<loop 11.64>music/confession_orch-RC1.ogg", "music", True)
@@ -5536,22 +5536,22 @@ label a38:
                         $show_chr("A-CBAAA-AMAM")
                         y "While maintaining the theme of a gag or being a joke in general, it can still be terrifying."
                         y "It capitalizes on the theme of mystery, allowing people to theorize what's actually happening."
-                        if karma >= 3:
+                        if karma_lvl() >= 3:
                             $show_chr("A-ACABA-ABAM")
                             y "I hope you enjoyed it. I'm quite fond of J-Class SCPs."
-                        if karma < 3:
+                        if karma_lvl() < 3:
                             y "That's all I have to share."
                 "I don't trust you, I'm not clicking on it.":
-                            if karma >= 3:
+                            if karma_lvl() >= 3:
                                 $show_chr("A-BEBBA-ADAA")
                                 y "Oh."
                                 $show_chr("A-CCBBA-ADAA")
                                 y "T-That's OK!"
                                 y "..I thought you would like it."
-                            if karma < 3:
+                            if karma_lvl() < 3:
                                 $show_chr("A-BCGAA-ADAA")
                                 y "That is a smart choice, even if there was nothing there."
-                                if sanity <= 2:
+                                if sanity_lvl() >= 2:
                                     $show_chr("A-DBCBA-ADAA")
                                     y "I almost {b}wish{/b} SCPs were real, just for you."
                                     y "We {i}can{/i} always test it."
@@ -6099,7 +6099,7 @@ label a40:
     python:
         if persistent.lovecheck:
             placeholder = "my one and only true love"
-        elif karma > 3:
+        elif karma_lvl() > 3:
             placeholder = "my dearest friend"
         else:
             placeholder = "everything I have left"
@@ -6202,7 +6202,7 @@ label a42: #"So what do you think of Dr. Frankenstein in the book?"
     y "'Such a deplorable, tangled mass is already present in every single one of them. That's why I choose not to blame myself for their actions. All I did was untie the knot.'"
 
     #Variant dialogue: NKNS
-    if karma_lvl() == 3 and sanity == 3:
+    if karma_lvl() == 3 and sanity_lvl() == 3:
         $show_chr("A-CEGAA-AAAM")
         y "I understand that Monika was desperate, but even after driving one member to suicide and watching me being pushed down the same path, she had {i}that little{/i} trouble telling herself it wasn't her fault?"
         $show_chr("A-AEGAA-AAAM")
@@ -6213,7 +6213,7 @@ label a42: #"So what do you think of Dr. Frankenstein in the book?"
         y "...I'm sorry, I'm just depressing myself and probably boring you in the process. Moving on."
 
     #HKHS
-    elif karma_lvl() > 3 and sanity > 3:
+    elif karma_lvl() > 3 and sanity_lvl() > 3:
         $show_chr("A-CEGAA-AAAM")
         y "I understand that Monika was desperate, but even after driving one member to suicide and watching me being pushed down the same path, she had {i}that little{/i} trouble telling herself it wasn't her fault?"
         $show_chr("A-AEGAA-AAAM")
@@ -6229,7 +6229,7 @@ label a42: #"So what do you think of Dr. Frankenstein in the book?"
 
     #Not needed if event is locked to higher Karma Yuri's
     #LKHS and LKLS
-    elif karma < 3:
+    elif karma_lvl() < 3:
         $show_chr("A-BEAAA-ABAB")
         y "Then again, you haven't given me any reason to believe you're the slightest bit better."
 

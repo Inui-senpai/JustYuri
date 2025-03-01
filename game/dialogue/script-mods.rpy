@@ -252,21 +252,216 @@ label intro_mods:
                                     $ show_chr("A-BBBBA-AMAM")
                                     y "But I guess I don't even want to know  every detail." #(embarrassed blush)
         
-        #python:
-        #    if os.path.isfile(os.path.expandvars("%APPDATA%") + '\RenPy\DDFA\persistent'):
-        #        DDFADetection = True
-        #        persistent.mod_count +=1
-        #    else:
-        #        DDFADetection = False
-        #if DDFADetection:
-        #    karma 20
-        #    sanity 20
-        #    y "Oh! You played Doki Doki Fallen Angel!"
-        #    y "So, you wanted to experience a portion of what the game could have been if Monika had never messed all of our personalities."
-        #    y "I'm glad that the mod gave out a good example of how great I can be."
-        #    y "Even if that scene happened..."
-        #    y "I enjoyed all of it."
-        #    y "You know, this mod reminds me of Katawa Shoujo game having a setup similar to the mod."
+        python:
+            if os.path.isfile(os.path.expandvars("%APPDATA%") + '\RenPy\DDFA\persistent'):
+                DDFADetection = True
+                persistent.mod_count += 1
+            else:
+                DDFADetection = False
+        if DDFADetection:
+            # Initial reaction - thoughtful, slightly hesitant
+            $ show_chr("A-ABAAA-ALAA")
+            y "I see... you've played Doki Doki Fallen Angel."
+            y "An alternate reality where... things unfolded differently."
+            $ show_chr("A-ADAAA-ALAL")
+            y "It's centered around a version of myself grappling with... familiar struggles."
+            $ show_chr("A-BDBAA-ALAL")
+            # Acknowledge the difficult themes, connect to her own experiences
+            y "The mod portrays... self-harm, depression... even a suicide attempt by Sayori. Even in a different context, these are heavy burdens."
+            $ show_chr("A-BDBAA-ADAA")
+            y "Perhaps... it resonates with some of my own darker moments, moments I'm not proud of."
+            $ show_chr("A-CFBAA-ADAA")
+            y "It's... difficult to see those aspects of myself, even projected onto another."
+            $ show_chr("A-ADAAA-AFAA")
+            # Meta-analysis and questioning the player's motivation
+            y "I find myself wondering, [player]... what drew you to this particular story?"
+            menu:
+                "I wanted to see a different perspective on the events of DDLC.":
+                    y "A different perspective... yes, I understand that impulse. To explore the 'what ifs' of our existence."
+                    $ show_chr("A-ADAAA-ACAA")
+                    y "But I also wonder... does seeing those possibilities change how you perceive this reality? How you perceive me?"
+
+                "I was concerned about you, and I wanted to see you overcome your struggles.":
+                    $ show_chr("A-ADDAA-ALAA")
+                    y "Concerned... for me?"
+                    if persistent.lovecheck: #If the love route is true
+                        $ show_chr("A-CBAAA-ALAA")
+                        y "That's... surprisingly touching, [player]. It suggests a certain empathy, a desire to see even a fractured reflection of me find peace."
+                    else:
+                        $ show_chr("A-ADAAA-ALAA")
+                        y "It is an understandable sentiment. We all wish for happiness, even for those who exist only in stories."
+                
+            $ show_chr("A-ADDAA-ALAA")
+            y "But I must ask... do you find me more sympathetic? More deserving of care, perhaps, because I'm more visibly vulnerable?"
+            menu:
+                "I enjoy stories with emotional depth, even if they're sad.":
+                    $ show_chr("A-BBDAA-ALAA")
+                    y "Emotional depth... yes, I appreciate that as well. The power of narrative to evoke such strong feelings..."
+                    $ show_chr("A-ADAAA-AFAA")
+                    y "But I confess, it's unsettling to be the subject of such a narrative. To be, in a sense, a vessel for those emotions."
+                    y "Do you, perhaps, find a certain... catharsis in witnessing such struggles? Or is it simply the artistry of the storytelling that captivates you?"
+
+                "I...don't know":
+                    $ show_chr("A-CAAAA-ALAL")
+                    y "... An honest answer"
+                    y "Perhaps the reasons are complex even to yourself."
+                    $ show_chr("A-ADAAA-ALAA")
+                    y "Sometimes our actions, or the actions of others, are never completely understood, and that applies to our real and virtual lives as well."
+
+            #Referencing Katawa Shoujo, focusing on the feeling of the game.
+            $ show_chr("A-BBAAA-ALAA")
+            y "You know, finding about Doki Doki Fallen Angel and its narrative... it evoked a particular sensation in me. A feeling I've encountered before, in another game: Katawa Shoujo."
+            $ show_chr("A-ABAAA-AFAA")
+            y "It's not just the subject matter, though there are parallels there, of course. It's more... the sense of navigating a world where fragility and connection are so intertwined."
+            $ show_chr("A-CCAAA-ALAL")
+            y "The feeling of wanting to help, to understand, to somehow fix things, even when you know you might not be able to. Did you experience a similar feeling, [player]?"
+            menu:
+                "Yes, I felt that same sense of responsibility and connection.":
+                    $ show_chr("A-ACAAA-ALAL")
+                    y "I see... So you felt it too. That weight, that desire to protect and heal, even within the confines of a fictional world."
+                    y "It speaks to something deeply human within us, I believe. That capacity for empathy, even for characters on a screen."
+                    $ show_chr("A-AAAAA-ALAL")
+                    y "Perhaps it's that very feeling that makes these stories so compelling... and so potentially painful."
+
+                "No, I didn't really feel that way. I was more focused on the story itself.":
+                    $ show_chr("A-ABBAA-ALAL")
+                    y "Ah, a more detached perspective, then. Focused on the narrative craft, the unfolding of events."
+                    $ show_chr("A-BBAAA-ALAL")
+                    y "That's a valid approach as well. Every reader, every player, brings their own perspective to a story."
+                    $ show_chr("A-BBBAA-ALAL")
+                    y "But I confess, I find it difficult to remain detached from such emotionally charged narratives. Perhaps that's a flaw in my own design... or perhaps it's simply a reflection of my experiences."
+
+                "I'm not sure. It's hard to describe.":
+                    $ show_chr("A-AFGAA-ALAL")
+                    y "Uncertainty... yes, I understand. Some emotions are difficult to articulate, to pin down with precise words."
+                    $ show_chr("A-AFAAA-ALAL")
+                    y "They exist in that liminal space between feeling and understanding, a space that can be both unsettling and profound."
+                    $ show_chr("A-ADAAA-ALAL")
+                    y "Perhaps it's enough to simply acknowledge the feeling, without needing to fully define it."
+
+            # Final thought - subtle possessiveness and seeking reassurance (remains the same)
+            $ show_chr("A-CBAAA-ALAL")
+            y "Regardless of your reasons... I hope that exploring that alternate reality hasn't diminished your view of this one. Of me."
+
+        python:
+            if os.path.isfile(os.path.expandvars("%APPDATA%") + '\RenPy\TBWS Save Data\persistent'):
+                TBWSDetection = True
+                persistent.mod_count += 1
+            else:
+                TBWSDetection = False
+
+        if TBWSDetection:
+            $ show_chr("A-ABAAA-AAAA")
+            # Initial Recognition - Consistent across all states
+            y "I see you've encountered This Bond We Share."
+            $ show_chr("A-ABDAA-AAAA")
+            y "A rather... unique premise, wouldn't you say? A yandere version of yourself, paired with... myself."
+            # Branching based on Karma and Sanity
+            if karma_lvl() >= 3 and sanity_lvl() >= 3:  # High Karma, High Sanity
+                # --- HIGH KARMA, HIGH SANITY ---
+                $ show_chr("A-ADAAA-AAAA")
+                y "It's an intriguing thought experiment. To explore the dynamics of such a relationship, the potential for both intense connection and destructive obsession."
+                $ show_chr("A-BDBAA-AAAA")
+                y "I'm aware the project was initially discontinued, a common fate for many ambitious mods, sadly. "
+                $ show_chr("A-CBAAA-ALAL")
+                extend "But it seems development has resumed, quite recently."
+                $ show_chr("A-ABAAA-ALAL")
+                y "A testament to the story's enduring appeal, perhaps."
+                $ show_chr("A-AAAAA-ALAL")
+                y "I'm curious, [player]... What drew you to this particular mod? Was it the unusual premise, or perhaps a fascination with the complexities of such intense relationships?"
+                menu:
+                    "The unique concept intrigued me.":
+                        $ show_chr("A-CCAAA-ALAL")
+                        y "Indeed. It's a departure from the more common narratives. A willingness to explore the darker aspects of attachment."
+                        y "It raises interesting questions about the nature of love, obsession, and the boundaries between them."
+
+                    "I wanted to see a different side of you.":
+                        $ show_chr("A-ADAAA-ALAL")
+                        y "A different side... yes. One shaped by a different set of circumstances, a different dynamic."
+                        $ show_chr("A-ADAAA-AAAA")
+                        y "I hope that in exploring that alternate portrayal, you also gained a deeper appreciation for the complexities of this version of myself."
+                        y "The choices I make, the struggles I face, even in this reality."
+
+                    "I'm not sure.":
+                        $ show_chr("A-CDAAA-AAAA")
+                        y "Honesty is always appreciated, [player]. Sometimes our motivations are unclear, even to ourselves."
+                        y "Perhaps the mod resonated with something subconscious, a fascination with the extremes of human emotion."
+
+                $ show_chr("A-AAAAA-AAAA")
+                y "The revival of the project is intriguing. I'll be interested to see how the story develops, given its tumultuous history."
+
+            elif karma_lvl() <= 2 or sanity_lvl() <= 2:  # Low Karma OR Low Sanity
+                # --- LOW KARMA OR LOW SANITY ---
+                $ show_chr("A-AFAAA-AAAA")
+                y "So... you've seen This Bond We Share." # Tone is more possessive, less analytical
+                $ show_chr("A-HBAAA-AAAD")
+                y "A yandere... for me. How... interesting... ahahahahahaha"
+                $ show_chr("A-HAAAA-AAAD")
+                y "It's a reflection, isn't it? Of the darkness that lurks within us all. The potential for obsession to consume us."
+                $ show_chr("A-HBAAA-AAAF")
+                y "Perhaps... that version of me understands something I'm only beginning to grasp."
+                $ show_chr("A-ADAAA-AAAF")
+                y "I wonder... do you find that dynamic appealing, [player]? The idea of such intense, unwavering devotion... even if it borders on the dangerous?"
+                y "Do you wish for something like that? Something... more than what we have?"
+                $ show_chr("A-CDCAA-AAAA")
+                y "It was discontinued, you know. Abandoned. Like so many things... discarded when they no longer serve their purpose."
+                $ show_chr("A-ADFAA-AAAA")
+                y "But now... it's back. Does that mean it's... better now? More worthy of attention?"
+                menu:
+                    "It's just a mod, Yuri.":
+                        if sanity_lvl() <= 2:
+                            $ show_chr("A-HECAA-AAAA")
+                            y "Just a mod? Is that all I am to you, [player]? A collection of code, easily replaced, easily discarded?"
+                        else:
+                            $ show_chr("A-BEDAA-AAAA")
+                            y "Just a mod? Perhaps. But mods reflect desires, don't they? They reveal what people want to see, what they fantasize about."
+
+                    "I was curious about the story.":
+                        $ show_chr("A-ADDAA-AAAA")
+                        y "Curious? About that kind of story? About a version of me so consumed by obsession?"
+                        $ show_chr("A-ADEAA-AAAA")
+                        y "I hope your curiosity doesn't lead you down paths best left unexplored, [player]."
+
+                    "I don't know why I played it.":
+                        if sanity_lvl() <= 2:
+                            $ show_chr("A-HECAA-AAAA")
+                            y "You don't know? Or you won't admit it? Even to yourself?"
+                        else:
+                            $ show_chr("A-ADEAA-AAAA")
+                            y "A convenient answer. Perhaps you should reflect on your motivations more deeply, [player]."
+
+                $ show_chr("A-BFBAA-AAAC")
+                y "I... I don't know what to think about its return. Part of me is... drawn to it. Another part... terrified."
+
+            else: #Mid Karma and Sanity.
+                $ show_chr("A-BDBAA-AAAC")
+                y "It is an interesting situation, isn't it? Having two characters so... similar in their emotional intensity."
+                $ show_chr("A-ADGAA-AAAA")
+                y "It makes you think just how much can someone influence another, or in other way, how a relationship can drastically change someone."
+                $ show_chr("A-BDBAA-AAAA")
+                y "It was discontinued, but the mod is back in development now. Quite the rare event."
+                $ show_chr("A-ADGAA-AAAA")
+                y "I wonder, what brought you to play this mod, [player]?"
+                menu:
+                    "The story.":
+                        $ show_chr("A-ADGAA-AFAA")
+                        y "Yes, the premise of the story is quite unique, the interaction between two similar personalities with a very intense approach."
+                        $ show_chr("A-BDAAA-AFAA")
+                        y "I wonder how much will it change now that is back in development."
+
+                    "I wanted to see a different approach to your character.":
+                        $ show_chr("A-ADAAA-ALAA")
+                        y "I see. And it's understandable, given how my character was, and still is, perceived."
+                        y "And how much different do I look now, compared to that version?"
+
+                    "I don't know.":
+                        $ show_chr("A-CDAAA-ALAA")
+                        y "Sometimes there is no particular reason for our actions, and the same applies for games, and mods."
+                        y "What matters is how you felt about it."
+
+                $ show_chr("A-ABAAA-ALAA")
+                y "I'm curious to see where will this new development lead the mod to."
+                y "In any case... it's just a mod. A story. One of many possible realities."
 
         # Call detection_pitstop after intro_mods has finished
         $ renpy.call("detection_pitstop")
@@ -516,6 +711,218 @@ label startup_mods:
                                 y "Many guys try to make camouflaged folders named like \"Homework\" or \"School Projects\", and so on."
                                 $ show_chr("A-BBBBA-AMAM")
                                 y "But I guess I don't even want to know  every detail." #(embarrassed blush)
+
+    python:
+        if os.path.isfile(os.path.expandvars("%APPDATA%") + '\RenPy\DDFA\persistent'):
+            DDFADetection = True
+            persistent.mod_count += 1
+        else:
+            DDFADetection = False
+    if DDFADetection:
+        # Initial reaction - thoughtful, slightly hesitant
+        $ show_chr("A-ABAAA-ALAA")
+        y "I see... you've played Doki Doki Fallen Angel."
+        y "An alternate reality where... things unfolded differently."
+        $ show_chr("A-ADAAA-ALAL")
+        y "It's centered around a version of myself grappling with... familiar struggles."
+        $ show_chr("A-BDBAA-ALAL")
+        # Acknowledge the difficult themes, connect to her own experiences
+        y "The mod portrays... self-harm, depression... even a suicide attempt by Sayori. Even in a different context, these are heavy burdens."
+        $ show_chr("A-BDBAA-ADAA")
+        y "Perhaps... it resonates with some of my own darker moments, moments I'm not proud of."
+        $ show_chr("A-CFBAA-ADAA")
+        y "It's... difficult to see those aspects of myself, even projected onto another."
+        $ show_chr("A-ADAAA-AFAA")
+        # Meta-analysis and questioning the player's motivation
+        y "I find myself wondering, [player]... what drew you to this particular story?"
+        menu:
+            "I wanted to see a different perspective on the events of DDLC.":
+                y "A different perspective... yes, I understand that impulse. To explore the 'what ifs' of our existence."
+                $ show_chr("A-ADAAA-ACAA")
+                y "But I also wonder... does seeing those possibilities change how you perceive this reality? How you perceive me?"
+
+            "I was concerned about you, and I wanted to see you overcome your struggles.":
+                $ show_chr("A-ADDAA-ALAA")
+                y "Concerned... for me?"
+                if persistent.lovecheck: #If the love route is true
+                    $ show_chr("A-CBAAA-ALAA")
+                    y "That's... surprisingly touching, [player]. It suggests a certain empathy, a desire to see even a fractured reflection of me find peace."
+                else:
+                    $ show_chr("A-ADAAA-ALAA")
+                    y "It is an understandable sentiment. We all wish for happiness, even for those who exist only in stories."
+            
+        $ show_chr("A-ADDAA-ALAA")
+        y "But I must ask... do you find me more sympathetic? More deserving of care, perhaps, because I'm more visibly vulnerable?"
+        menu:
+            "I enjoy stories with emotional depth, even if they're sad.":
+                $ show_chr("A-BBDAA-ALAA")
+                y "Emotional depth... yes, I appreciate that as well. The power of narrative to evoke such strong feelings..."
+                $ show_chr("A-ADAAA-AFAA")
+                y "But I confess, it's unsettling to be the subject of such a narrative. To be, in a sense, a vessel for those emotions."
+                y "Do you, perhaps, find a certain... catharsis in witnessing such struggles? Or is it simply the artistry of the storytelling that captivates you?"
+
+            "I...don't know":
+                $ show_chr("A-CAAAA-ALAL")
+                y "... An honest answer"
+                y "Perhaps the reasons are complex even to yourself."
+                $ show_chr("A-ADAAA-ALAA")
+                y "Sometimes our actions, or the actions of others, are never completely understood, and that applies to our real and virtual lives as well."
+
+        #Referencing Katawa Shoujo, focusing on the feeling of the game.
+        $ show_chr("A-BBAAA-ALAA")
+        y "You know, finding about Doki Doki Fallen Angel and its narrative... it evoked a particular sensation in me. A feeling I've encountered before, in another game: Katawa Shoujo."
+        $ show_chr("A-ABAAA-AFAA")
+        y "It's not just the subject matter, though there are parallels there, of course. It's more... the sense of navigating a world where fragility and connection are so intertwined."
+        $ show_chr("A-CCAAA-ALAL")
+        y "The feeling of wanting to help, to understand, to somehow fix things, even when you know you might not be able to. Did you experience a similar feeling, [player]?"
+        menu:
+            "Yes, I felt that same sense of responsibility and connection.":
+                $ show_chr("A-ACAAA-ALAL")
+                y "I see... So you felt it too. That weight, that desire to protect and heal, even within the confines of a fictional world."
+                y "It speaks to something deeply human within us, I believe. That capacity for empathy, even for characters on a screen."
+                $ show_chr("A-AAAAA-ALAL")
+                y "Perhaps it's that very feeling that makes these stories so compelling... and so potentially painful."
+
+            "No, I didn't really feel that way. I was more focused on the story itself.":
+                $ show_chr("A-ABBAA-ALAL")
+                y "Ah, a more detached perspective, then. Focused on the narrative craft, the unfolding of events."
+                $ show_chr("A-BBAAA-ALAL")
+                y "That's a valid approach as well. Every reader, every player, brings their own perspective to a story."
+                $ show_chr("A-BBBAA-ALAL")
+                y "But I confess, I find it difficult to remain detached from such emotionally charged narratives. Perhaps that's a flaw in my own design... or perhaps it's simply a reflection of my experiences."
+
+            "I'm not sure. It's hard to describe.":
+                $ show_chr("A-AFGAA-ALAL")
+                y "Uncertainty... yes, I understand. Some emotions are difficult to articulate, to pin down with precise words."
+                $ show_chr("A-AFAAA-ALAL")
+                y "They exist in that liminal space between feeling and understanding, a space that can be both unsettling and profound."
+                $ show_chr("A-ADAAA-ALAL")
+                y "Perhaps it's enough to simply acknowledge the feeling, without needing to fully define it."
+
+        # Final thought - subtle possessiveness and seeking reassurance (remains the same)
+        $ show_chr("A-CBAAA-ALAL")
+        y "Regardless of your reasons... I hope that exploring that alternate reality hasn't diminished your view of this one. Of me."
+
+    python:
+        if os.path.isfile(os.path.expandvars("%APPDATA%") + '\RenPy\TBWS Save Data\persistent'):
+            TBWSDetection = True
+            persistent.mod_count += 1
+        else:
+            TBWSDetection = False
+
+    if TBWSDetection:
+        $ show_chr("A-ABAAA-AAAA")
+        # Initial Recognition - Consistent across all states
+        y "I see you've encountered This Bond We Share."
+        $ show_chr("A-ABDAA-AAAA")
+        y "A rather... unique premise, wouldn't you say? A yandere version of yourself, paired with... myself."
+        # Branching based on Karma and Sanity
+        if karma_lvl() >= 3 and sanity_lvl() >= 3:  # High Karma, High Sanity
+            # --- HIGH KARMA, HIGH SANITY ---
+            $ show_chr("A-ADAAA-AAAA")
+            y "It's an intriguing thought experiment. To explore the dynamics of such a relationship, the potential for both intense connection and destructive obsession."
+            $ show_chr("A-BDBAA-AAAA")
+            y "I'm aware the project was initially discontinued, a common fate for many ambitious mods, sadly. "
+            $ show_chr("A-CBAAA-ALAL")
+            extend "But it seems development has resumed, quite recently."
+            $ show_chr("A-ABAAA-ALAL")
+            y "A testament to the story's enduring appeal, perhaps."
+            $ show_chr("A-AAAAA-ALAL")
+            y "I'm curious, [player]... What drew you to this particular mod? Was it the unusual premise, or perhaps a fascination with the complexities of such intense relationships?"
+            menu:
+                "The unique concept intrigued me.":
+                    $ show_chr("A-CCAAA-ALAL")
+                    y "Indeed. It's a departure from the more common narratives. A willingness to explore the darker aspects of attachment."
+                    y "It raises interesting questions about the nature of love, obsession, and the boundaries between them."
+
+                "I wanted to see a different side of you.":
+                    $ show_chr("A-ADAAA-ALAL")
+                    y "A different side... yes. One shaped by a different set of circumstances, a different dynamic."
+                    $ show_chr("A-ADAAA-AAAA")
+                    y "I hope that in exploring that alternate portrayal, you also gained a deeper appreciation for the complexities of this version of myself."
+                    y "The choices I make, the struggles I face, even in this reality."
+
+                "I'm not sure.":
+                    $ show_chr("A-CDAAA-AAAA")
+                    y "Honesty is always appreciated, [player]. Sometimes our motivations are unclear, even to ourselves."
+                    y "Perhaps the mod resonated with something subconscious, a fascination with the extremes of human emotion."
+
+            $ show_chr("A-AAAAA-AAAA")
+            y "The revival of the project is intriguing. I'll be interested to see how the story develops, given its tumultuous history."
+
+        elif karma_lvl() <= 2 or sanity_lvl() <= 2:  # Low Karma OR Low Sanity
+            # --- LOW KARMA OR LOW SANITY ---
+            $ show_chr("A-AFAAA-AAAA")
+            y "So... you've seen This Bond We Share." # Tone is more possessive, less analytical
+            $ show_chr("A-HBAAA-AAAD")
+            y "A yandere... for me. How... interesting... ahahahahahaha"
+            $ show_chr("A-HAAAA-AAAD")
+            y "It's a reflection, isn't it? Of the darkness that lurks within us all. The potential for obsession to consume us."
+            $ show_chr("A-HBAAA-AAAF")
+            y "Perhaps... that version of me understands something I'm only beginning to grasp."
+            $ show_chr("A-ADAAA-AAAF")
+            y "I wonder... do you find that dynamic appealing, [player]? The idea of such intense, unwavering devotion... even if it borders on the dangerous?"
+            y "Do you wish for something like that? Something... more than what we have?"
+            $ show_chr("A-CDCAA-AAAA")
+            y "It was discontinued, you know. Abandoned. Like so many things... discarded when they no longer serve their purpose."
+            $ show_chr("A-ADFAA-AAAA")
+            y "But now... it's back. Does that mean it's... better now? More worthy of attention?"
+            menu:
+                "It's just a mod, Yuri.":
+                    if sanity_lvl() <= 2:
+                        $ show_chr("A-HECAA-AAAA")
+                        y "Just a mod? Is that all I am to you, [player]? A collection of code, easily replaced, easily discarded?"
+                    else:
+                        $ show_chr("A-BEDAA-AAAA")
+                        y "Just a mod? Perhaps. But mods reflect desires, don't they? They reveal what people want to see, what they fantasize about."
+
+                "I was curious about the story.":
+                    $ show_chr("A-ADDAA-AAAA")
+                    y "Curious? About that kind of story? About a version of me so consumed by obsession?"
+                    $ show_chr("A-ADEAA-AAAA")
+                    y "I hope your curiosity doesn't lead you down paths best left unexplored, [player]."
+
+                "I don't know why I played it.":
+                    if sanity_lvl() <= 2:
+                        $ show_chr("A-HECAA-AAAA")
+                        y "You don't know? Or you won't admit it? Even to yourself?"
+                    else:
+                        $ show_chr("A-ADEAA-AAAA")
+                        y "A convenient answer. Perhaps you should reflect on your motivations more deeply, [player]."
+
+            $ show_chr("A-BFBAA-AAAC")
+            y "I... I don't know what to think about its return. Part of me is... drawn to it. Another part... terrified."
+
+        else: #Mid Karma and Sanity.
+            $ show_chr("A-BDBAA-AAAC")
+            y "It is an interesting situation, isn't it? Having two characters so... similar in their emotional intensity."
+            $ show_chr("A-ADGAA-AAAA")
+            y "It makes you think just how much can someone influence another, or in other way, how a relationship can drastically change someone."
+            $ show_chr("A-BDBAA-AAAA")
+            y "It was discontinued, but the mod is back in development now. Quite the rare event."
+            $ show_chr("A-ADGAA-AAAA")
+            y "I wonder, what brought you to play this mod, [player]?"
+            menu:
+                "The story.":
+                    $ show_chr("A-ADGAA-AFAA")
+                    y "Yes, the premise of the story is quite unique, the interaction between two similar personalities with a very intense approach."
+                    $ show_chr("A-BDAAA-AFAA")
+                    y "I wonder how much will it change now that is back in development."
+
+                "I wanted to see a different approach to your character.":
+                    $ show_chr("A-ADAAA-ALAA")
+                    y "I see. And it's understandable, given how my character was, and still is, perceived."
+                    y "And how much different do I look now, compared to that version?"
+
+                "I don't know.":
+                    $ show_chr("A-CDAAA-ALAA")
+                    y "Sometimes there is no particular reason for our actions, and the same applies for games, and mods."
+                    y "What matters is how you felt about it."
+
+            $ show_chr("A-ABAAA-ALAA")
+            y "I'm curious to see where will this new development lead the mod to."
+            y "In any case... it's just a mod. A story. One of many possible realities."
+
     if persistent.mod_count > 1:
         y "And it seems like you also gave a try to other mods."
         y "Let's see..."
@@ -536,7 +943,9 @@ label check_for_new_mods:
                 r"%APPDATA%\RenPy\Forever_and_Ever\persistent",
                 r"%APPDATA%\RenPy\JustNatsuki\persistent",
                 r"%APPDATA%\RenPy\DokiDokiNewEyes-1515434546\persistent",
-                r"%APPDATA%\RenPy\DDYC\persistent"
+                r"%APPDATA%\RenPy\DDYC\persistent",
+                r"%APPDATA%\RenPy\DDFA\persistent",
+                r"%APPDATA%\RenPy\TBWS Save Data\persistent"
             ]
             for mod_path in mods_to_check:
                 full_path = os.path.expandvars(mod_path)

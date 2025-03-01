@@ -369,7 +369,7 @@ label rain_dream:
     hide hdy_statue
     hide cupcake_halloween
     $ config.allow_skipping = False
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     python:
         if persistent.male:
             pronounA = "him"
@@ -386,7 +386,7 @@ label rain_dream:
     show rain_dream_blossom zorder 105
     $renpy.music.play("sfx/heartbeat_subtle.mp3", channel='sound', loop=True)
     $renpy.music.set_volume(0.1, 0, 'voice')
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     play music "<loop 4.50>music/teardrops_loop.ogg" fadein 1.5
     hide black with Dissolve(2.5)
     #The sequence opens with the CG - Yuri is staring out a window, waiting for the [player], when [player] arrives the two  simply just talk with one another. A teacup is held loosely in Yuri's hand - which is visible in said CG.
@@ -647,7 +647,7 @@ label rain_dream:
     hide rain_dream_grin
     mc "I will never leave..."
     stop sound fadeout 1.5
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     # Fade to white
     # DREAM END
     hide white with Dissolve(2.5)
@@ -664,7 +664,7 @@ label ocean_dream:
     hide hdy_statue
     hide cupcake_halloween
     $ config.allow_skipping = False
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     play music "<to 96.30 loop 32.30>music/Underwater_Dream.ogg" fadein 1.5
     show black zorder 105 with Dissolve (2.5)
     show open_ocean zorder 100
@@ -743,14 +743,14 @@ label ocean_dream:
         show oceanbonus_2 zorder 100 #with Fade (1.0, 0.0, 0.5)
         hide oceanbonus_1
         stop sound fadeout 1.5
-        stop music fadeout 1.5
+        $ renpy.music.stop(fadeout=1.5)
         $ renpy.pause ()
         hide oceanbonus_2 with Dissolve(6)#2.5)
     else:
         show black zorder 105 with Dissolve(2.5)
         hide ocean_8
         stop sound fadeout 1.5
-        stop music fadeout 1.5
+        $ renpy.music.stop(fadeout=1.5)
         hide black with Dissolve(2.5)
     python:
         renpy.music.play(current_music, "music", True)
@@ -763,7 +763,7 @@ label ocean_man: #take me by the hand
     show oceanbonus_2 zorder 100 #with Fade (1.0, 0.0, 0.5)
     hide oceanbonus_1
     stop sound fadeout 1.5
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     $ renpy.pause ()
     hide oceanbonus_2 with Dissolve(6)#2.5)
     return
@@ -785,7 +785,7 @@ label highway_dream:
             repeat
     define martha = Character("Martha")
     $ config.allow_skipping = False
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     play music "music/Cruise_Control_RC.ogg" fadein 1.5
     show black zorder 105 with Dissolve (2.5)
     show highway_bg_scroll zorder 100
@@ -891,7 +891,7 @@ label highway_dream_1:
     y "Without a doubt, [player]."
     show black zorder 105 with Dissolve (2.5)
     stop sound fadeout 1.5
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     python:
         renpy.music.play(current_music, "music", True)
     hide highway_dream_1
@@ -943,7 +943,7 @@ label highway_dream_2:
     mc "Yeah?"
     y "I love you..."
     stop sound fadeout 1.5
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     python:
         renpy.music.play(current_music, "music", True)
     hide highway_dream_2
@@ -1046,7 +1046,7 @@ label highway_dream_3:
         "I must be dreaming, then."
         "Ah well. It was pleasant enough while it lasted."
     stop sound fadeout 1.5
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     python:
         renpy.music.play(current_music, "music", True)
     hide highway_dream_knives
@@ -1142,7 +1142,7 @@ label stroll_dream:
     hide hdy_statue
     hide cupcake_halloween
     $ config.allow_skipping = False
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     $renpy.sound.play("sfx/wind.ogg", channel='sound', loop=True)
     show black zorder 105 with Dissolve (2.5)
     show stroll_1 zorder 100
@@ -1499,7 +1499,7 @@ label garden_date:
         "chopsticks_day"
     $ _skipping = False
     $click_tea_button = 0
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     play music "music/teagardenzen.mp3" fadein 1.5
     #ambience music= https://www.youtube.com/watch?v=jLkkmqKiHjQ
     #Yuri standing sprite
@@ -2197,7 +2197,7 @@ label post_tea_facts:
     y "I love you, [player]."
     hide house_bg
     $ _skipping = False
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     hide white with Dissolve(2.5)
     $ renpy.music.play(current_music, "music", True, fadein=4.0)
     if persistent.bg == "space":
@@ -2277,7 +2277,7 @@ label urban_date:
     show black zorder 105 with Dissolve(2.5)
     show cafe_bg zorder 10
     $ _skipping = False
-    stop music fadeout 1.5
+    $ renpy.music.stop(fadeout=1.5)
     play music "<to 136.58 loop 1.80>music/urban_cafe.mp3" fadein 1.5
     $hide_yuri_sit = True
     $tc_class.transition("timecycle", speed="now")
@@ -2505,7 +2505,7 @@ label midpartnice:
             y "I love you..."
             hide cafe_inside_bg
             $ _skipping = False
-            stop music fadeout 1.5
+            $ renpy.music.stop(fadeout=1.5)
             hide black with Dissolve(2.5)
             $ renpy.music.play(current_music, "music", True, fadein=4.0)
             if persistent.bg == "space":
@@ -2585,7 +2585,7 @@ label midpartsad:
                                     y "I love you..."
                                     hide cafe_inside_bg
                                     $ _skipping = False
-                                    stop music fadeout 1.5
+                                    $ renpy.music.stop(fadeout=1.5)
                                     hide black with Dissolve(2.5)
                                     $ renpy.music.play(current_music, "music", True, fadein=4.0)
                                     if persistent.bg == "space":
@@ -2614,7 +2614,7 @@ label midpartsad:
             y "I love you, [player]."
             hide cafe_inside_bg
             $ _skipping = False
-            stop music fadeout 1.5
+            $ renpy.music.stop(fadeout=1.5)
             hide black with Dissolve(2.5)
             $ renpy.music.play(current_music, "music", True, fadein=4.0)
             if persistent.bg == "space":
