@@ -55,13 +55,23 @@ init python:
         global boop_sleepy_only
         boop_sleepy_only = sleepy_only
 
-    # Function for managing boop logic. 
+    # ADD THESE FUNCTIONS
+    def enable_boops():
+        global boopable
+        boopable = True
+
+    def disable_boops():
+        global boopable
+        boopable = False
+    #END ADD
+
+    # Function for managing boop logic.
     def boop_init(boop_type):
         global boopable
         global loop_again
         loop_again = True
         if boopable:
-            boopable = False
+            boopable = False  # Immediately set to False to prevent recursion
             DisableTalk()
             if boop_sleepy_only: # Is this boop disabled?
                 if boop_type == "sleepy_headpat": # This is a sleepy_headpat call, so do not skip it!

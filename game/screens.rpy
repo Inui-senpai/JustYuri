@@ -964,11 +964,15 @@ init -1 style about_label_text:
 init -501 screen save():
     tag menu
     use file_slots(_("Save"))
+    on "show" action Function(disable_boops)  # Disable on show
+    on "hide" action Function(enable_boops)   # Re-enable on hide
 
 
 init -501 screen load():
     tag menu
     use file_slots(_("Load"))
+    on "show" action Function(disable_boops)  # Disable on show
+    on "hide" action Function(enable_boops)   # Re-enable on hide
 
 init -1 python:
     def FileActionMod(name, page=None, **kwargs):
