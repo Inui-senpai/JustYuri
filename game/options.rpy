@@ -145,7 +145,7 @@ define config.save_directory = "JustYuri" if not config.developer else None
 
 ## The icon displayed on the taskbar or dock.
 
-define config.window_icon = "images/gui/window_icon.png"
+define config.window_icon = "images/gui/window_icon.ico"
 
 ## Custom configs ##############################################################
 
