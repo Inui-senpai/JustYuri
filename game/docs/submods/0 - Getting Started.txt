@@ -7,11 +7,15 @@ For a brief introduction into renpy, see: https://www.renpy.org/doc/html/quickst
 If you intend on creating a more advanced submod, you may need knowledge of python as well. The one good place to learn the basics is: https://www.w3schools.com/python/python_intro.asp
 
 To add dialogue to the talk menu, you use the add_dialogue method and provide it with your own Dialogue instance:
+
 label test_label:
+    $ show_chr("A-ABGBA-AAAA")
     y "Hi there!"
 
 init python:
-    add_dialogue(Dialogue("test_label", category_talk, name="Greet Yuri", sub_category="Greetings"))
+    add_dialogue(Dialogue("test_label", DialogueAPI.category_talk, name="Greet Yuri", sub_category="Greetings"))
+
+You can get the sprite code via the control panel when you enable developer mode.
 
 This mod contains various apis to help speed up development since the Just Yuri source is kinda messy at the moment. We will rectify the mess in time.
 You can find the sources here: https://github.com/DarkskullDawnZenith/JustYuri
