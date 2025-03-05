@@ -22,7 +22,6 @@ init -998 python:
                     pass
                 elif option_type == OptionTitle:
                     option_label_type = type(option.title)
-                    print(str(type(option.title)))
                     if option_label_type != str and not is_callable(option.title):
                         print_error("  - Failed to add option " + type_str(option) + " as the title is not a valid type")
                 elif option_type == OptionBar:

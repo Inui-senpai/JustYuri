@@ -21,10 +21,8 @@ python early:
             print(f"Failed to connect to Discord: {e}") #Debug message
             connected = False
     
-    def update_presence(details = None, large_image = "icon_large", large_text = "Like our little secret sneak peek?", small_image = None, small_text = None):
+    def update_presence(details = None, large_image = "icon_large", large_text = None, small_image = None, small_text = None):
         global connected, presence_details, presence_large_image, presence_large_text, presence_small_image, presence_small_text
-        if not connected:
-            connect_to_discord()  # Try to connect if not already
 
         if connected:
             if presence_details != details or presence_large_image != large_image or presence_large_text != large_text or presence_small_image != small_image or presence_small_text != small_text:
@@ -43,5 +41,6 @@ python early:
                     print(f"Failed to update presence: {e}")
                     connected = False # We probably lost connection, set to false
 
+    connect_to_discord()
     update_presence(details="Launching Just Yuri...")
         

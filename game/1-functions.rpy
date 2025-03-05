@@ -740,7 +740,6 @@ init -999 python:
                     "book": book
                 }
             }
-            print("Sprite", str(yuri_sit))
             renpy.show_screen("yuri_sit")
             #renpy.show("yuri_sit", zorder = 11)#, at_list = position, zorder = 11)
         elif chr == "yuri_stand":

@@ -7,9 +7,9 @@ init -998 python:
     #can_interrupt = True
 
     class DialogueAPI:
-        dialogues = {}
-        categories = {}
-        queued_dialogues = []
+    #     dialogues = {}
+    #     categories = {}
+    #     queued_dialogues = []
 
         category_talk = "actives"
         category_goodbye = "farewells"
@@ -17,124 +17,127 @@ init -998 python:
         category_idle = "idles"
         category_hdy = "hdy"
 
-        @staticmethod
-        def register(*dialogue_options):
-            for dialogue in dialogue_options:
-                if isinstance(dialogue, Dialogue): 
-                    if type(dialogue.label) != str:
-                        print_fatal(TypeError("Label needs to be a string type"))
-                        continue
-                    dialogues[dialogue.label] = dialogue
-                    category = dialogue.get_category()
-                    if category in categories:
-                        categories[category].append(dialogue)
-                    else:
-                        categories[category] = [dialogue]
-                    print_debug(" - Registered dialogue with the id " + dialogue.label)
-                else:
-                    print_error(TypeError("Dialogue option " + type_str(dialogue) + " is not an instance of Dialogue"))
+    #     @staticmethod
+    #     def register(*dialogue_options):
+    #         for dialogue in dialogue_options:
+    #             if isinstance(dialogue, Dialogue): 
+    #                 if type(dialogue.label) != str:
+    #                     print_fatal(TypeError("Label needs to be a string type"))
+    #                     continue
+    #                 dialogues[dialogue.label] = dialogue
+    #                 category = dialogue.get_category()
+    #                 if category in categories:
+    #                     categories[category].append(dialogue)
+    #                 else:
+    #                     categories[category] = [dialogue]
+    #                 print_debug(" - Registered dialogue with the id " + dialogue.label)
+    #             else:
+    #                 print_error(TypeError("Dialogue option " + type_str(dialogue) + " is not an instance of Dialogue"))
         
-        @staticmethod
-        def call(id : str = "idles", call_dialogue : bool = False, interrupt : bool = False):
-            """
-            Calls a specific dialogue based on the id provided.
-            By default, the id represents a dialogue category that should be called.
-            If call_dialogue is set to True, then it will directly call a registered dialogue based on the id
-            If interrupt is set to True, then it will interrupt any dialogue that may be already running
-            """
-            selected_dialogue = None
-            if call_dialogue: # If we only want to call a dialogue directly
-                if not id in DialogueAPI.dialogues:
-                    print_error(NameError("Dialogue " + id + " has not been registered yet. Skipping..."))
-                    return False
+    #     @staticmethod
+    #     def call(id : str = "idles", call_dialogue : bool = False, interrupt : bool = False):
+    #         """
+    #         Calls a specific dialogue based on the id provided.
+    #         By default, the id represents a dialogue category that should be called.
+    #         If call_dialogue is set to True, then it will directly call a registered dialogue based on the id
+    #         If interrupt is set to True, then it will interrupt any dialogue that may be already running
+    #         """
+    #         selected_dialogue = None
+    #         if call_dialogue: # If we only want to call a dialogue directly
+    #             if not id in DialogueAPI.dialogues:
+    #                 print_error(NameError("Dialogue " + id + " has not been registered yet. Skipping..."))
+    #                 return False
                 
-                DialogueAPI.dialogues[id].call(interrupt)
-            else: # If we want to call a specific category based on conditions
-                if id == category_talk:
-                    # First, we are going to scan the categories registry for any dialogue to execute
-                    selected_dialogues = []
-                    ordered_dialogues = {}
-                    for dialogue in DialogueAPI.categories[id]:
-                        if dialogue.is_available():
-                            selected_dialogues.append(dialogue)
+    #             DialogueAPI.dialogues[id].call(interrupt)
+    #         else: # If we want to call a specific category based on conditions
+    #             if id == category_talk:
+    #                 # First, we are going to scan the categories registry for any dialogue to execute
+    #                 selected_dialogues = []
+    #                 ordered_dialogues = {}
+    #                 for dialogue in DialogueAPI.categories[id]:
+    #                     if dialogue.is_available():
+    #                         selected_dialogues.append(dialogue)
                     
-                    # Second, populate the ordered_dialogues dictionary with every sub-category and dialogue option available to us
-                    for dialogue in selected_dialogues:
-                        categories = dialogue.get_sub_categories()
-                        if not categories: # If it does not have any categories, just throw it in the base category
-                            ordered_dialogues[dialogue.name] = dialogue
-                        else: # Populate the ordered_dialogues with every sub_category of this dialogue + the dialogue itself
-                            parent_category = None
-                            for category in categories:
-                                if not parent_category:
-                                    if not ordered_dialogues[category]:
-                                        ordered_dialogues[category] = []
-                                    parent_category = ordered_dialogues[category]
-                                else:
-                                    if not parent_category[category]:
-                                        parent_category[category] = []
-                                    parent_category = parent_category[category]
-                            parent_category[dialogue.name] = dialogue
-
-                    # Open the talk dialogue menu
-                    renpy.call_screen("talk_menu", ordered_dialogues)
-                else:
-
-                    # First, we are going to scan the categories registry for any dialogue to execute
-                    selected_dialogues = []
-                    importance = -sys.maxsize
-                    if not id in DialogueAPI.categories: # If the primary dialogue category has not been registered, throw an error
-                        print_error(NameError("Dialogue category " + id + " has not been registered yet. Skipping..."))
-                        return False
-
-                    for dialogue in DialogueAPI.categories[id]:
-                        if dialogue.is_available():
-                            if dialogue.importance > importance:
-                                selected_dialogues.clear()
-                                selected_dialogues.append(dialogue)
-                                inportance = dialogue.importance
-                            elif dialogue.importance == importance:
-                                selected_dialogues.append(dialogue)
-
-                    if not selected_dialogues: # If the primary dialogue category does not have any available dialogues after processing, throw an error
-                        print_error(NameError("Dialogue category " + id + " does not have any available dialogue options. Skipping..."))
-                        return False
-
-                    selected_dialogue = controlled_random(dialogue_list, selection_detail)
-
-                    if selection_detail == "idles":
-                        persistent.current_yuriidle = selected_dialogue
-                    # Next, call the dialogue based on what parent category it is under
+    #                 # Second, populate the ordered_dialogues dictionary with every sub-category and dialogue option available to us
+    #                 for dialogue in selected_dialogues:
+    #                     categories = dialogue.get_sub_categories()
+    #                     if not categories: # If it does not have any categories, just throw it in the base category
+    #                         ordered_dialogues[dialogue.name] = dialogue
+    #                     else: # Populate the ordered_dialogues with every sub_category of this dialogue + the dialogue itself
+    #                         parent_category = None
+    #                         for category in categories:
+    #                             if not parent_category:
+    #                                 if not ordered_dialogues[category]:
+    #                                     ordered_dialogues[category] = []
+    #                                 parent_category = ordered_dialogues[category]
+    #                             else:
+    #                                 if not parent_category[category]:
+    #                                     parent_category[category] = []
+    #                                 parent_category = parent_category[category]
+    #                         parent_category[dialogue.name] = dialogue
                     
-                    if selection_detail in ["idles", "greetings", "hdy"]:
-                        selected_dialogue = controlled_random(dialogue_list, selection_detail)
-
-                    if selection_detail == "idles":
-                        persistent.current_yuriidle = selected_dialogue
+    #                 global talk_menu_entries
+    #                 talk_menu_entries = ordered_dialogues
                     
-                    elif selection_detail == category_goodbye:
-                        farewell_options = []
-                        for dialogue_name in dialogue_list:
-                            farewell_options.append((dialogue_db[dialogue_name].name, dialogue_name))
-                        if len(dialogue_list) > 3:
-                            farewell_options = random.sample(farewell_options, k=3)
-                        farewell_options.append(("Nevermind", "return"))
-                        selected_dialogue = renpy.display_menu(farewell_options)
+    #                 # Open the talk dialogue menu
+    #                 renpy.call_screen("talk_menu")
+    #             else:
 
-                    #Activation
-                    if selected_dialogue != "return":
-                        print_debug("calling: " + selected_dialogue)
-                        renpy.call(selected_dialogue)
+    #                 # First, we are going to scan the categories registry for any dialogue to execute
+    #                 selected_dialogues = []
+    #                 importance = -sys.maxsize
+    #                 if not id in DialogueAPI.categories: # If the primary dialogue category has not been registered, throw an error
+    #                     print_error(NameError("Dialogue category " + id + " has not been registered yet. Skipping..."))
+    #                     return False
 
-                    #Post-Activation
-                    if selection_detail == "idles" or selection_detail == "hdy":
-                        persistent.current_yuriidle = 0
-                    loop_again = True
-                    return
-                    # else:
-                    print_debug(selection_method)
-                    y("Selection method not found")
-                    return True
+    #                 for dialogue in DialogueAPI.categories[id]:
+    #                     if dialogue.is_available():
+    #                         if dialogue.importance > importance:
+    #                             selected_dialogues.clear()
+    #                             selected_dialogues.append(dialogue)
+    #                             inportance = dialogue.importance
+    #                         elif dialogue.importance == importance:
+    #                             selected_dialogues.append(dialogue)
+
+    #                 if not selected_dialogues: # If the primary dialogue category does not have any available dialogues after processing, throw an error
+    #                     print_error(NameError("Dialogue category " + id + " does not have any available dialogue options. Skipping..."))
+    #                     return False
+
+    #                 selected_dialogue = controlled_random(dialogue_list, selection_detail)
+
+    #                 if selection_detail == "idles":
+    #                     persistent.current_yuriidle = selected_dialogue
+    #                 # Next, call the dialogue based on what parent category it is under
+                    
+    #                 if selection_detail in ["idles", "greetings", "hdy"]:
+    #                     selected_dialogue = controlled_random(dialogue_list, selection_detail)
+
+    #                 if selection_detail == "idles":
+    #                     persistent.current_yuriidle = selected_dialogue
+                    
+    #                 elif selection_detail == category_goodbye:
+    #                     farewell_options = []
+    #                     for dialogue_name in dialogue_list:
+    #                         farewell_options.append((dialogue_db[dialogue_name].name, dialogue_name))
+    #                     if len(dialogue_list) > 3:
+    #                         farewell_options = random.sample(farewell_options, k=3)
+    #                     farewell_options.append(("Nevermind", "return"))
+    #                     selected_dialogue = renpy.display_menu(farewell_options)
+
+    #                 #Activation
+    #                 if selected_dialogue != "return":
+    #                     print_debug("calling: " + selected_dialogue)
+    #                     renpy.call(selected_dialogue)
+
+    #                 #Post-Activation
+    #                 if selection_detail == "idles" or selection_detail == "hdy":
+    #                     persistent.current_yuriidle = 0
+    #                 loop_again = True
+    #                 return
+    #                 # else:
+    #                 print_debug(selection_method)
+    #                 y("Selection method not found")
+    #                 return True
     
     # works with a list of the 5 most recent dialogues (blocked_dialogues) and chooses a random dialogue from the list that isn't in the blocked_dialogues category.
     #def controlled_random(selected_dialogues, category):
@@ -165,7 +168,7 @@ init -998 python:
         dlist_no_block = list(set(dlist) - set(blocked_dialogues))
         if dlist_no_block == []:
             if blocked_dialogues == []:
-                renpy.error("No dialogues left! category type: " + selection_detail)
+                return None
             else:
                 chosen_dialogue = blocked_dialogues.pop(-1)
 
@@ -177,58 +180,58 @@ init -998 python:
         blocked_dialogues.insert(0, chosen_dialogue)
         return chosen_dialogue
 
-init -999 python:
-    class Dialoguee:
-        def __init__(self, label, name = None, category = None, conditions = [], importance = 0):
-            self.label = label
-            self.name = name if name else label
-            self.category = category.split("/") if category != None else []
-            self.conditions = conditions
-            self.importance = importance
+#init -999 python:
+    # class Dialoguee:
+    #     def __init__(self, label, name = None, category = None, conditions = [], importance = 0):
+    #         self.label = label
+    #         self.name = name if name else label
+    #         self.category = category.split("/") if category != None else []
+    #         self.conditions = conditions
+    #         self.importance = importance
         
-        def call(self, interrupt = False):
-            global can_talk
+    #     def call(self, interrupt = False):
+    #         global can_talk
 
-            if can_talk:
-                print_debug("Calling dialogue: " + self.label)
-                can_talk = False
-                renpy.call(self.label)
-            elif interrupt and can_interrupt:
-                def run(self):
-                    print_debug("Interrupting with dialogue: " + self.label)
-                    can_talk = False
-                    renpy.call(self.label)
-                    pass
-                renpy.invoke_in_main_thread(run, self)
-            else:
-                if self.can_queue():
-                    print_debug("Queuing dialogue: " + self.label)
-                    DialogueAPI.queued_dialogues.append(self.label)
+    #         if can_talk:
+    #             print_debug("Calling dialogue: " + self.label)
+    #             can_talk = False
+    #             renpy.call(self.label)
+    #         elif interrupt and can_interrupt:
+    #             def run(self):
+    #                 print_debug("Interrupting with dialogue: " + self.label)
+    #                 can_talk = False
+    #                 renpy.call(self.label)
+    #                 pass
+    #             renpy.invoke_in_main_thread(run, self)
+    #         else:
+    #             if self.can_queue():
+    #                 print_debug("Queuing dialogue: " + self.label)
+    #                 DialogueAPI.queued_dialogues.append(self.label)
 
-        def get_category(self):
-            return self.category[0] if len(self.category) > 0 else "unknown"
+    #     def get_category(self):
+    #         return self.category[0] if len(self.category) > 0 else "unknown"
 
-        def get_sub_categories(self):
-            return self.category[1:]
+    #     def get_sub_categories(self):
+    #         return self.category[1:]
         
-        def can_queue(self):
-            self.label in DialogueAPI.queued_dialogues
+    #     def can_queue(self):
+    #         self.label in DialogueAPI.queued_dialogues
 
-        def is_available(self):
-            if not self.conditions:  # Check if the list is empty
-                return True  # No conditions, so all are considered met
+    #     def is_available(self):
+    #         if not self.conditions:  # Check if the list is empty
+    #             return True  # No conditions, so all are considered met
 
-            for condition in self.conditions:
-                try:
-                    if not eval(condition):
-                        print_debug("Condition not met for " + self.label + ": " + condition)
-                        return False
-                except Exception as e:
-                    print("A fatal error has occured with one of the conditions for dialogue " + self.label)
-                    print_fatal(e, False) # Crash if any errors happen so the mod creator can fix the issue
-                    return False
+    #         for condition in self.conditions:
+    #             try:
+    #                 if not eval(condition):
+    #                     print_debug("Condition not met for " + self.label + ": " + condition)
+    #                     return False
+    #             except Exception as e:
+    #                 print("A fatal error has occured with one of the conditions for dialogue " + self.label)
+    #                 print_fatal(e, False) # Crash if any errors happen so the mod creator can fix the issue
+    #                 return False
 
-            return True  # All conditions evaluated successfully
+    #         return True  # All conditions evaluated successfully
 
 
 init -999 python:

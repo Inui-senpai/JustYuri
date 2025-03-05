@@ -1626,13 +1626,188 @@ transform anim_with_old(lin, xp, yp, zo, al, lin_old, xp_old, yp_old, zo_old, al
 transform anim(lin, xp, yp, zo, al):
     linear lin xpos xp ypos yp zoom zo alpha al
 
+define talk_menu_index = 0
+define talk_menu_entries = {}
+define talk_menu_category = []
+screen talk_menu(old_topics = []):
+    python:
+        def cycle_dialogue(index : int):
+            global talk_menu_index
+            talk_menu_index = talk_menu_index % 5
+            renpy.hide_screen("talk_menu")
+            renpy.show_screen("talk_menu")
+
+        def change_category(category):
+            global talk_menu_index, talk_menu_category
+            talk_menu_index = 0
+            talk_menu_category = category
+            renpy.hide_screen("talk_menu")
+            renpy.show_screen("talk_menu")
+    
+    # Assign keybinds to the talk menu
+    key "K_LEFT"  action Function(cycle_dialogue, -1)
+    key "K_RIGHT" action Function(cycle_dialogue, 1)
+    key "K_a"  action Function(cycle_dialogue, -1)
+    key "K_d" action Function(cycle_dialogue, 1)
+
+    # Render the arrow buttons in the selection menu
+    fixed:
+        xpos 0 ypos 0
+        imagebutton xalign 0.99 yalign 0.98 auto "gui/arrow_button_right_%s.png" action Function(cycle_dialogue, 1)
+        imagebutton xalign 0.01 yalign 0.98 auto "gui/arrow_button_left_%s.png" action Function(cycle_dialogue, -1)
+        if cur_wheel_num > 0:
+            textbutton "Back":
+                xpos 585
+                yalign 0.85
+                style "scrollable_menu_button"
+                action Function(change_category, talk_menu_category[:-1])
+
+    # Render the topics in the talk menu
+    fixed:
+        area (120, 640, 1200, 75)
+        viewport:
+            xadjustment prev_adj
+            has hbox
+
+        # Process what category will be displayed
+        python:
+            topics = []
+
+            
 
 
+    fixed:
+        area (120, 640, 1200, 75)
+
+        viewport:
+            xadjustment prev_adj
+
+            has hbox
+
+            python:
+                global current_topic_place
+                if current_topic_place >= len(scroll_button_items):
+                    current_topic_place = 0
+                elif current_topic_place < 0:
+                    current_topic_place = len(scroll_button_items) - 1
+
+            for i, i_topic in enumerate(range(current_topic_place - 2, current_topic_place + 3)):
+
+                if first_run == "right":
+                    $ i_topic += 1
+                elif first_run == "left":
+                    $ i_topic -= 1
+
+                if i_topic < 0:
+                    $ i_topic += len(scroll_button_items)
+                elif i_topic >= len(scroll_button_items):
+                    $ i_topic -= len(scroll_button_items)
+
+                if i == 0:
+                    if first_run == "right":
+                        if i_topic-1 < 0:
+                            $ temp_i_topic = len(scroll_button_items) - 1
+                        else:
+                            $ temp_i_topic = i_topic - 1
+                        textbutton scroll_button_items[temp_i_topic][0]:
+                            at anim_with_old(0.5, 0, 17, 0.4, 0.3, 0, -20, 20, 0, 0)
+                            style "side_menu_button"
+                            xsize 320
+                            ysize 75
+                            if cur_wheel_num == 0:
+                                action Function(move_to_other_wheel, dict_items , dict_items[scroll_button_items[temp_i_topic][0]], three_below_button_items, side_button_items, 1)
+                            else:
+                                action Return(scroll_button_items[temp_i_topic][1])
+                    textbutton scroll_button_items[i_topic][0]:
+                        if first_run == "left":
+                            at anim_with_old(0.5, -20,20,0, 0, 0, 0, 17, 0.4, 0.3)
+                        elif  first_run == "right":
+                            at anim_with_old(0.5, 10, 10, 0.65, 0.5, 0, 0, 17, 0.4, 0.3)
+                        else:
+                            at anim(0, 0, 17, 0.4, 0.3)
+                        if cur_wheel_num == 0:
+                            action Function(move_to_other_wheel, dict_items , dict_items[scroll_button_items[i_topic][0]], three_below_button_items, side_button_items, 1)
+                        else:
+                            action Return(scroll_button_items[i_topic][1])
+                        style "side_menu_button"
+                        xsize 320
+                        ysize 75
+                elif i == 1:
+                    textbutton scroll_button_items[i_topic][0]:
+                        if first_run == "left":
+                            at anim_with_old(0.5, 0, 17, 0.4, 0.3, 0, 10, 10, 0.65, 0.5)
+                        elif  first_run == "right":
+                            at anim_with_old(0.5, 20, 0, 1, 1, 0, 10, 10, 0.65, 0.5)
+                        else:
+                            at anim(0, 10, 10, 0.65, 0.5)
+                        if cur_wheel_num == 0:
+                            action Function(move_to_other_wheel, dict_items , dict_items[scroll_button_items[i_topic][0]], three_below_button_items, side_button_items, 1)
+                        else:
+                            action Return(scroll_button_items[i_topic][1])
+                        style "side_menu_button"
+                        xsize 320
+                        ysize 75
+                elif i == 2:
+                    textbutton scroll_button_items[i_topic][0]:
+                        if first_run == "left":
+                            #linear lin xpos xp ypos yp zoom zo alpha al
+                            at anim(0.5, 10, 10, 0.65, 0.5)
+                        elif  first_run == "right":
+                            at anim(0.5, 30, 10, 0.65, 0.5)
+                        if cur_wheel_num == 0:
+                            action Function(move_to_other_wheel, dict_items , dict_items[scroll_button_items[i_topic][0]], three_below_button_items, side_button_items, 1)
+                        else:
+                            action Return(scroll_button_items[i_topic][1])
+                        style "side_menu_button"
+                        xpos 20
+                        xsize 320
+                        ysize 75
+                elif i == 3:
+                    textbutton scroll_button_items[i_topic][0]:
+                        if first_run == "left":
+                            at anim_with_old(0.5, 20, 0, 1, 1, 0, 30, 10, 0.65, 0.5)
+                        elif  first_run == "right":
+                            at anim_with_old(0.5, 40, 17, 0.4, 0.3, 0, 30, 10, 0.65, 0.5)
+                        else:
+                            at anim(0, 30, 10, 0.65, 0.5)
+                        if cur_wheel_num == 0:
+                            action Function(move_to_other_wheel, dict_items , dict_items[scroll_button_items[i_topic][0]], three_below_button_items, side_button_items, 1)
+                        else:
+                            action Return(scroll_button_items[i_topic][1])
+                        style "side_menu_button"
+                        xsize 320
+                        ysize 75
+                elif i == 4:
+                    textbutton scroll_button_items[i_topic][0]:
+                        if first_run == "left":
+                            at anim_with_old(0.5, 30, 10, 0.65, 0.5, 0, 40, 17, 0.4, 0.3)
+                        elif  first_run == "right":
+                            at anim_with_old(0.5, 60, 20, 0, 0, 0, 40, 17, 0.4, 0.3)
+                        else:
+                            at anim(0, 40, 17, 0.4, 0.3)
+                        if cur_wheel_num == 0:
+                            action Function(move_to_other_wheel, dict_items , dict_items[scroll_button_items[i_topic][0]], three_below_button_items, side_button_items, 1)
+                        else:
+                            action Return(scroll_button_items[i_topic][1])
+                        style "side_menu_button"
+                        xsize 320
+                        ysize 75
+                    if first_run == "left":
+                        if i_topic+1 >= len(scroll_button_items):
+                            $ i_topic -= len(scroll_button_items)
+                        textbutton scroll_button_items[i_topic+1][0]:
+                            at anim_with_old(0.5, 40, 17, 0.4, 0.3, 0, 60, 20, 0, 0)
+                            style "side_menu_button"
+                            xsize 320
+                            ysize 75
+                            if cur_wheel_num == 0:
+                                action Function(move_to_other_wheel, dict_items , dict_items[scroll_button_items[i_topic+1][0]], three_below_button_items, side_button_items, 1)
+                            else:
+                                action Return(scroll_button_items[i_topic+1][1])
 #screen to call three_choice_menu which has 3 controlable types of buttons
 #args
 #1, 2, 3, items for each button types
 screen three_choice_menu(dict_items, current_list, three_below_button_items, side_button_items,first_run, cur_wheel_num):
-
     python:
         #put current list into local variable
         scroll_button_items = current_list
@@ -1646,6 +1821,7 @@ screen three_choice_menu(dict_items, current_list, three_below_button_items, sid
             current_topic_place += num
             renpy.hide_screen("three_choice_menu")
             renpy.show_screen("three_choice_menu", dict_items, scroll_button_items, three_below_button_items, side_button_items,turn, cur_wheel_num)
+            
         #Function which move from one wheel to another
         def move_to_other_wheel(dict_items, new_topics, three_below_button_items, side_button_items, cur_wheel_num):
             global current_topic_place
@@ -1661,7 +1837,7 @@ screen three_choice_menu(dict_items, current_list, three_below_button_items, sid
     key "K_LEFT"  action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, -1, "right", cur_wheel_num)
     key "K_RIGHT" action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, 1, "left", cur_wheel_num)
     key "K_a"  action Function(change_to_left, dict_items, scroll_button_items, three_below_button_items, side_button_items, -1, "right", cur_wheel_num)
-    key "K_d" action Function(change_to_left, dict_items,scroll_button_items, three_below_button_items, side_button_items, 1, "left", cur_wheel_num)
+    key "K_d" action Function(change_to_left, dict_items,scroll_button_items, three_below_button_items, side_button_items, 1, "left", cur_wheel_num) 
 
     #Scroll button objects
     fixed:

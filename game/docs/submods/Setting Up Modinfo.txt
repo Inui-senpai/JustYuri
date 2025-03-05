@@ -16,5 +16,8 @@
 	# The unique ids of each submod that this submod requires.
 	# If any id is present here and the mod isn't loaded, the game will crash and display any mods that are missing
 	# Also supports putting a single string as well if you don't want to use a list
-	"dependencies": []
+	"dependencies": [],
+
+	# Whether to enable debug mode for Just Yuri. Adds additional information to the logs and allows access to the control panel
+	"developer_mode": false
 }

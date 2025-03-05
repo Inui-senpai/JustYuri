@@ -1,4 +1,21 @@
-Welcome to the submodding community!
+Welcome to the submodding community! - Docs Version 1.0.0
 
+If you are seeing this for the first time, these files automatically generate anytime a submod folder is missing a modinfo.json file.
+To create a submod, change any of the information you want in the modinfo.json file, create your first .rpy file and start implementing whatever you can think of.
 
-If you ever need to regenerate these docs, delete the modinfo.json file and reboot the game. Have fun!
+For a brief introduction into renpy, see: https://www.renpy.org/doc/html/quickstart.html#the-ren-py-launcher
+If you intend on creating a more advanced submod, you may need knowledge of python as well. The one good place to learn the basics is: https://www.w3schools.com/python/python_intro.asp
+
+To add dialogue to the talk menu, you use the add_dialogue method and provide it with your own Dialogue instance:
+label test_label:
+    y "Hi there!"
+
+init python:
+    add_dialogue(Dialogue("test_label", category_talk, name="Greet Yuri", sub_category="Greetings"))
+
+This mod contains various apis to help speed up development since the Just Yuri source is kinda messy at the moment. We will rectify the mess in time.
+You can find the sources here: https://github.com/DarkskullDawnZenith/JustYuri
+
+In the future, this documentation will be more fleshed out and user friendly, but for now this will only cover the bare minimum.
+
+You can feel free to delete these documents if you would like to free up space for your mod. If you ever need to regenerate these docs, delete the modinfo.json file and reboot the game. Have fun!
