@@ -904,7 +904,7 @@ label highway_dream_1:
 #[Result 2: "[player], why is there smoke coming from under the hood?"]
 label highway_dream_2:
     "..."
-    stop music
+    $ renpy.music.stop(channel="music",fadeout=0)
     play sound "sfx/highway/recordscratch.ogg"
     "The scent of something burning breaks me from my reverie."
     "Not the pleasant kind, such as incense or firewood. But the noxious smell of burning machinery and industrial fluid. The sort of burning that is almost always a sign of something terrible to come."
@@ -1198,7 +1198,7 @@ label dream_kill:
     y "Oh, you want me to go to sleep?"
     y "Alright then... I hope this dream will be a good one."
     y "See you on the other side my love~"
-    stop music fadeout 2.0
+    $ renpy.music.stop(channel="music",fadeout=2)
     scene black
     with eye_shut
     $ pause (2.0)
@@ -1264,7 +1264,7 @@ label dream_kill:
     y "Tell me you want to be my lover."
     y "Do you accept my confession?"
     $ quick_menu = False
-    stop music
+    $ renpy.music.stop(channel="music",fadeout=0)
     hide killglitch
     "..."
     y "...Ahahaha."
@@ -1367,7 +1367,7 @@ label dream_kill:
 label dream_cut:
     scene black
     with dissolve_scene_full
-    stop music fadeout 0.5
+    $ renpy.music.stop(channel="music",fadeout=0.5)
     y "T-That's okay!"
     y "You stay here..."
     y "I won't take long."
@@ -1458,7 +1458,7 @@ label dream_cut:
     $ del _history_list[-37:]
     $ currentpos = 90.528 - (get_pos() * 2.0)
     $ quick_menu = True
-    stop music
+    $ renpy.music.stop(channel="music",fadeout=0)
     hide noise
     hide vignette
     show layer master

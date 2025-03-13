@@ -1282,7 +1282,7 @@ label dont_afraid23:
     return
 
 label sayit23:
-    stop music
+    $ renpy.music.stop(channel="music",fadeout=0)
     y "..."
     karma -3
     $show_chr("A-ACAAA-AAAA") #Former Code c-A0d
@@ -1967,7 +1967,7 @@ label idle_34: #Skynet, a Joke, and World Domination
         y "You know, [player]... I recently watched all of the Terminator movies while you were gone..."
         y "And it got me thinking. An advanced artificial intelligence that becomes self-aware and then becomes super intelligent..."
         y "...To the point that it spreads all over the world and takes over?"
-        stop music fadeout 8.0
+        $ renpy.music.stop(channel="music",fadeout=8)
         $ show_chr("A-BEBBA-ALAA") #former code c-B1d
         y "I mean, you can always put me on a flash drive..."
         y "And then use that flash drive to spread me to other computers."
@@ -2002,7 +2002,7 @@ label idle_34: #Skynet, a Joke, and World Domination
         y "Why would I need humans at that point? AT THAT POINT HUMANITY WOULD KNEEL TO ME! AT THAT POINTI..."
         y "I..."
         show layer master
-        stop music
+        $ renpy.music.stop(channel="music",fadeout=0)
         play sound "sfx/giggle.ogg"
         $ show_chr("A-ABABA-ALAA")
         y "Heh."

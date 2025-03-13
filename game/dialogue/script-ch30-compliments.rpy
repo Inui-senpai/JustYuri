@@ -10,9 +10,8 @@ label compliment_menu:
             ["I think you are very intelligent!", "c4"],
             ["You really know how to touch my heart...", "c5"],
             ["I have to say, you're pretty hot!", "c6"],
-            ["I'm truly proud of you!", "c7"]
-            ]
-            #["Nevermind.", "ch30_loop"]
+            ["I'm truly proud of you!", "c7"],
+            ["Nevermind.", "ch30_loop"]]
         renpy.call_screen("compliments", compliment_dict)
     jump ch30_loop
 

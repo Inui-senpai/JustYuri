@@ -8,7 +8,8 @@ label insult_menu:
             ["Look at you [persistent.yuri_nickname]... how pathetic...", "i3", "persistent.insult_counter += 1"],
             ["How does it feel to NOT be best girl?", "i4", "persistent.insult_counter += 1"],
             ["You are completely insane, and I don't mean it the good way.", "i5", "persistent.insult_counter += 1"],
-            ["Your brain and your breasts have one thing in common, both are completely empty", "i6", "persistent.insult_counter += 1"]]
+            ["Your brain and your breasts have one thing in common, both are completely empty", "i6", "persistent.insult_counter += 1"],
+            ["Nevermind.", "ch30_loop"]]
         if persistent.insult_counter >= 6:
             persistent.autoload = "enough_of_your_bullshit"
             renpy.jump("enough_of_your_bullshit")
@@ -69,7 +70,7 @@ label i1:
                 y "Was that... special enough?"
 
             "Die for me, [persistent.yuri_nickname]!":
-                stop music fadeout 4.0
+                $ renpy.music.stop(channel="music",fadeout=4)
                 $show_chr("A-HCBBA-ABAB")
                 y "Aha.. AHAHAHA!"
                 y "AS YOU WISH, MY LORD!"
@@ -92,7 +93,7 @@ label i1:
                 pause 5.0
                 play sound "sfx/stab.ogg"
                 pause 3.0
-                stop music fadeout 4.0
+                $ renpy.music.stop(channel="music",fadeout=4)
                 pause 5.0
                 show black onlayer front:
                     alpha 0.0

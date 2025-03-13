@@ -15,6 +15,7 @@ python early:
     import re as regex
     #import jycrypt
     from typing import Any
+    from store import renpy
     
     dev_access = not "scripts" in config.archives
     initial_dev_access = bool(dev_access)

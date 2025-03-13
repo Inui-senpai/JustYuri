@@ -100,7 +100,7 @@ label prompt_menu:
 
         randomnum = renpy.random.randint(0,6)
         ran_response = [
-            _("Hmm?, What is it?"),
+            _("Hmm, what is it?"),
             _("Yes, " + str(player) + "?"),
             _("Yes, my love?"),
             _("Hiya."),

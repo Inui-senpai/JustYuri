@@ -95,10 +95,12 @@ label chess:
         "White":
             y "May the better player win!"
             $ player_color = WHITE # this constant is defined in chess_displayable.rpy
+            $ renpy.free_memory()
         "Black":
             y "May the better player win!"
             # board view flipped so that the player's color is at the bottom of the screen
             $ player_color = BLACK
+            $ renpy.free_memory()
 
     #window hide
     $ quick_menu = False
@@ -132,6 +134,7 @@ label chess:
     #            $ keep_looping = False
 
 label chess_results:
+    $ renpy.free_memory()
     if _return == DRAW:
         y "Looks like it's a draw. Well played, [player]."
         jump ch30_loop

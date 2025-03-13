@@ -194,7 +194,7 @@ label ch30_reload_4:
             #show yuri sleep_open
             #pause 1.0
             #show black zorder 1000
-            #stop music
+            #$ renpy.music.stop(channel="music",fadeout=0)
             #play rustling
             #pause 5.0
             #hide black

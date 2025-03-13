@@ -156,12 +156,14 @@ label splashscreen:
                 pass
 
     python:
+        firstrun_path = os.path.join(renpy.config.savedir, "firstrun") # Use savedir
         firstrun = ""
         try:
-            firstrun = renpy.file("firstrun").read(1)
-        except:
-            with open(config.basedir + "/game/firstrun", "wb") as f:
-                pass
+            with open(firstrun_path, "r") as f:  # Use the correct path
+                firstrun = f.read(1)
+        except FileNotFoundError:  # Be specific about the exception
+            with open(firstrun_path, "wb") as f: # and open in binary
+                pass  # Create the file if it doesn't exist
     if not firstrun:
         if persistent.first_run:
             $ quick_menu = False
@@ -181,10 +183,11 @@ label splashscreen:
         python:
             if not firstrun:
                 try:
-                    with open(config.basedir + "/game/firstrun", "w") as f:
+                    with open(firstrun_path, "w") as f:  # Use the correct path
                         f.write("1")
-                except:
-                    renpy.jump("readonly")
+                except Exception as e: # Catch for debugging
+                    renpy.error(f"Failed to write to firstrun: {e}")
+                    # renpy.jump("readonly")  <- Don't jump, handle gracefully
 
     #If this is the first time the game has been run, show a disclaimer
     if not persistent.first_run:
@@ -214,7 +217,7 @@ label splashscreen:
                 pause 2.0
                 $ renpy.call("save_and_quit_but_its_abrupt")
 
-        "A sincere thanks to you for playing our mod. Your ideas, bug reports, feedback and encouragement have shaped the future of Just Yuri." 
+        "A sincere thanks to you for playing our mod. Your ideas, bug reports, feedback and encouragement have shaped the future of Just Yuri."
         "That future is bright and we thank you again for helping us build this project with you."
         "Please report any issues you find and suggestions you have at our GitLab; instructions to do that are in the documents provided with this game and within our online FAQ."
         "Updates to the game and our community can be found at our Discord {a=https://discordapp.com/invite/RUdwW7q}https://discordapp.com/invite/RUdwW7q{/a}"

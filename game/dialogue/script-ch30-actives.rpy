@@ -4525,7 +4525,7 @@ label a32:
 #music = "my confession
 label a33:
     window hide
-    $ renpy.music.stop(fadeout=3)
+    $ renpy.music.stop(channel="music", fadeout=3)
     pause 3.0
     if sanity_lvl() and karma_lvl() >= 3:
         $ renpy.music.play("<loop 11.64>music/confession_orch-RC1.ogg", "music", True)
@@ -4634,7 +4634,7 @@ label saneconfession_a:
                     y "I just... need some time, okay?"
                     y "Thank you for understanding, [player]..."
     window hide
-    stop music fadeout 3.0
+    $ renpy.music.stop(channel="music",fadeout=3)
     pause 3.0
     $ renpy.music.play(current_music, "music", True, fadein=3.0)
     return
@@ -4705,7 +4705,7 @@ label insaneconfession_a:
             y "..."
             y "You... you don't hate me, right?"
     window hide
-    stop music fadeout 3.0
+    $ renpy.music.stop(channel="music",fadeout=3)
     pause 3.0
     $ renpy.music.play(current_music, "music", True, fadein=3.0)
     return
@@ -4852,7 +4852,7 @@ label become_lovers:
     y "I love you, [player]. I love you so much."
     $persistent.lovecheck = True
     window hide
-    stop music fadeout 3.0
+    $ renpy.music.stop(channel="music",fadeout=3)
     pause 3.0
     $ renpy.music.play(current_music, "music", True, fadein=3.0)
     return
@@ -4873,7 +4873,7 @@ label remain_friends:
     y "[player], thank you for always being there for me."
     y "I hope to be the same pillar of support to you."
     window hide
-    stop music fadeout 3.0
+    $ renpy.music.stop(channel="music",fadeout=3)
     pause 3.0
     $ renpy.music.play(current_music, "music", True, fadein=3.0)
     return
@@ -4885,7 +4885,7 @@ label apathy_response:
     y "M- Maybe it's not the best idea to continue this conversation then..."
     y "It's... incredibly sensitive to me."
     window hide
-    stop music fadeout 3.0
+    $ renpy.music.stop(channel="music",fadeout=3)
     pause 3.0
     $ renpy.music.play(current_music, "music", True, fadein=3.0)
     return
@@ -4913,7 +4913,7 @@ label outright_denial:
     y "I just... wanted to..."
     y "N-nevermind."
     window hide
-    stop music fadeout 3.0
+    $ renpy.music.stop(channel="music",fadeout=3)
     pause 3.0
     $ renpy.music.play(current_music, "music", True, fadein=3.0)
     return
@@ -4934,7 +4934,7 @@ label kinda_hot:
     y "... I.. need a few moments."
     y "We can continue this conversation another time... you're clearly not the person I thought you were, [player]."
     window hide
-    stop music fadeout 3.0
+    $ renpy.music.stop(channel="music",fadeout=3)
     pause 3.0
     $ renpy.music.play(current_music, "music", True, fadein=3.0)
     return
@@ -4947,7 +4947,7 @@ label unenthusiastic_player:
     y "I'm sorry but.. I need you feeling okay before we can talk about this."
     y "If you're upset... let's talk about it, okay?"
     window hide
-    stop music fadeout 3.0
+    $ renpy.music.stop(channel="music",fadeout=3)
     pause 3.0
     $ renpy.music.play(current_music, "music", True, fadein=3.0)
     return

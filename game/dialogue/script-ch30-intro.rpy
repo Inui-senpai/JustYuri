@@ -11,13 +11,13 @@ label ch30_intro:
     $ style.say_dialogue = style.normal
     $ y_name = "Yuri"
     $ delete_all_saves()
-    stop music
+    $ renpy.music.stop(channel="music",fadeout=0)
     show splash_intro
     pause 7.48
     hide splash_intro
     show black zorder 100
     pause 7.52
-    stop music
+    $ renpy.music.stop(channel="music",fadeout=0)
     $ delete_character("sayori")
     $ delete_character("natsuki")
     $ delete_character("monika")
@@ -822,7 +822,7 @@ label ch30_stream:
     pause 10.0
     $ show_chr("A-AFAAA-AAAA")
     y "Wait a second..."
-    stop music fadeout 5.0
+    $ renpy.music.stop(channel="music",fadeout=5)
     y "Are you recording or streaming this?"
     menu:
         "Recording.":

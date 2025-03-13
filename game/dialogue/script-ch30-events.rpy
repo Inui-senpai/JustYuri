@@ -82,7 +82,7 @@ label ouija_repeat:
         #$coord_rn = renpy.get_mouse_pos()
         #y "These are the coordinates \n[coord_rn[0]], [coord_rn[1]]"
     hide yuri_sit
-    stop music fadeout 5.0
+    $ renpy.music.stop(channel="music",fadeout=5)
     y "A-alright, so how this works is w-... w-we... p-place our hands... t-t-together on the Planchette."
     y "O-oh... I forgot you can't actually place your hand on anything, I guess your mouse cursor will do [player], so please place your cursor on the planchette and we'll get started."
     y "The idea of this is that the spirits will guide the planchette around to spell out words to respond to us, we must not let go of the planchette however, no matter what!"
@@ -367,7 +367,6 @@ label yuriwakeup:
     hide yuri_sleepy
     $hide_yuri_sit = False
     y "Now then, what would you like to do [player]?"
-    $persistent.idle_frequency_factor = 1
     $persistent.HDY = False
     $boopable = True
     python:
@@ -2009,7 +2008,7 @@ label holiday:
     menu:
         "Sure!":
             y "Very well, let me open the browser for you really quick..."
-            stop music fadeout 8.0
+            $ renpy.music.stop(channel="music",fadeout=2)
             if renpy.windows:
                 $ subprocess.check_output("cmd /c start https://www.youtube.com/watch?v=0iQ3NXKDacE", shell=True)
             elif renpy.linux:
