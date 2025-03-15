@@ -1,12 +1,3 @@
-
-
-label test_area:
-    show oceanbonus_2 zorder 100
-    $ renpy.pause ()
-    y "not testing"
-    hide oceanbonus_2
-    return
-
 label ch30_main:
     jump ch30_autoload
 
@@ -79,9 +70,9 @@ label ch30_waitloop:
         loop_again = False
         boopable = True
         start_time = time.time()
-        renpy.pause(1)
+        # renpy.pause(1) # REMOVE THIS - We don't want a long initial pause
         boopable = False
-        renpy.pause(0.1)
+        # renpy.pause(0.1) # REMOVE THIS -  We don't want a long initial pause
 
     python:
         ran_dialogue = False
@@ -89,7 +80,7 @@ label ch30_waitloop:
             ran_dialogue = True
             DisableTalk()
             call_dialogue(queued_dialoguee[0][0], queued_dialoguee[0][1], queued_dialoguee[0][2])
-            
+
     python:
         if ran_dialogue:
             queued_dialoguee.pop(0)
@@ -97,11 +88,44 @@ label ch30_waitloop:
 
     python:
         slow_nodismiss_copy()
-        if loop_again or (time.time()-start_time) < waittime:
-            loop_again = True
-            renpy.jump("ch30_loop")
+        check_interval = 5  # Check for idles every 5 seconds
+        next_idle_check = start_time + check_interval
+        
+        while (time.time() - start_time) < waittime: #Main Wait Loop
+            if time.time() >= next_idle_check:
+                next_idle_check = time.time() + check_interval
+                
+                # Try to trigger an idle
+                DisableTalk()
+                
+                # Check if we should run HDY or regular idles
+                if not persistent.HDY:
+                    selected_dialogue = call_dialogue(ch30_loop_type, "idles", screener = True) #Check Dialogue
+                else:
+                    selected_dialogue = call_dialogue(ch30_loop_type, "hdy", screener = True)
+
+                if selected_dialogue != None:
+                    #if not persistent.HDY:
+                    #    call_dialogue(ch30_loop_type, "idles") # Now, trigger dialogue.
+                    #else:
+                    #    call_dialogue(ch30_loop_type, "hdy")
+                    if not persistent.HDY:
+                        call_dialogue(ch30_loop_type, "idles")
+                    else:
+                        player = randomplayername()
+                        call_dialogue(ch30_loop_type, "hdy")
+                    EnableTalk()
+                    loop_again = True #Go back to the ch30_loop
+                    renpy.jump("ch30_loop")
+
+
+                EnableTalk()
+
+
+            renpy.pause(1, hard=True) # Short pause within the loop.
+
+        # If waittime elapses without a natural idle, force one.
         DisableTalk()
-        tc_class.transition(persistent.bg) #if the timecycle changes, then it will change too.
         if not persistent.HDY:
             call_dialogue(ch30_loop_type, "idles")
         else:
