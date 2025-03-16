@@ -16,6 +16,7 @@ python early:
     #import jycrypt
     from typing import Any
     from store import renpy
+    from shutil import copyfile, SameFileError
     
     dev_access = not "scripts" in config.archives
     initial_dev_access = bool(dev_access)
