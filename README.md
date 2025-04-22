@@ -18,6 +18,7 @@ https://github.com/DarkskullDawnZenith/JustYuri/issues/new/choose
 
 
 Concerns
+
 Q: The start up warning says that I should expect NSFW content; I'm under 18, should I still be playing this?
 A: As of writing the game is currently mostly SFW and the warning is there for the future planned 18+ content; the content within depending on player actions can be the disturbing psychological horror, messed up stuff that you can come to expect from the DDLC base game. There is no adult imagery in the base Just Yuri game. There will be a hard NSFW patch available for those interested in that sort of thing when that is developed.
 
@@ -32,6 +33,7 @@ Q:How does Karma and Sanity affect things? Can it drive Yuri to kill herself? ;-
 A:Just dialogue currently as of writing, other uses soon :)
 
 Known Issues
+
 Q:Yuri saying there's something wonderful in her file and is requesting me to change her character file, should I? I heard that if it is changed to a .txt file, the game deletes her. How do I avoid that while still doing what she wants me to do?
 A: If this is still an issue please report this to #bug-reporting and copy the yuri.chr file, and paste it to to your desktop, and change that one on your desktop to a .txt. 
  
@@ -39,13 +41,15 @@ Q:My computer has messed up Yuri's character file and turned it into a .png file
 A:Close the game and rename her character file back to Yuri.chr and relaunch the game. If that didn't work, delete the persistent file located at %appdata%\RenPy\Just Yuri and delete the firstrun file in the game folder of your DDLC install location. Note: this will reset the game and Yuri with it. If that didn't work either, tell us on the Discord group in #bug-reporting.
 
 Bug reporting
+
 Q: Help!!! I've encountered a bug! What should I do to report this?
 A: How To Send An Official Bug Report, follow the github link from above.
 
-After filling out the above form, please post the traceback.txt on our Discord server in #bug-reporting, if one is present. https://discord.gg/TTw4TRz
+After filling out the above form, please post the traceback.txt on our Discord server in #bug-reporting, if one is present. https://discordapp.com/invite/RUdwW7q
 
 
 Common Suggestions
+
 NOTE: Before making any suggestions, please refer to the suggestions list already posted onto our discord group in the #jy-game-suggestions section, and if a suggestion you like is already listed, simply up vote that suggestion.
 
 
@@ -104,39 +108,27 @@ A:
 
 For Windows users:
 
-    Press the Windows key + R simultaneously to open the "Run" dialog box.
-
-    Type %appdata%\RenPy into the text box and press Enter or click OK.
-
-    This will open the Ren'Py folder within your AppData\Roaming directory. Inside, you'll find folders for different Ren'Py games and mods you have played. The original DDLC save folder is typically named DDLC-1454445547.
+Press the Windows key + R simultaneously to open the "Run" dialog box.
+Type %appdata%\RenPy into the text box and press Enter or click OK.
+This will open the Ren'Py folder within your AppData\Roaming directory. Inside, you'll find folders for different Ren'Py games and mods you have played. The original DDLC save folder is typically named DDLC-1454445547.
 
 macOS users:
 
-    Open Finder.
-
-    Click on "Go" in the menu bar at the top of the screen.
-
-    Hold down the Option (⌥) key. You should see "Library" appear in the dropdown menu. Click on "Library". (The Library folder is hidden by default).
-
-    Alternatively, while Finder is open, press Command (⌘) + Shift + G to open the "Go to Folder" dialog.
-
-    Type ~/Library/RenPy/ into the text box and click "Go".
-
-    This will open the Ren'Py folder where save data for DDLC and its mods are stored. The original DDLC save folder is usually DDLC-1454445547.
+Open Finder.
+Click on "Go" in the menu bar at the top of the screen.
+Hold down the Option (⌥) key. You should see "Library" appear in the dropdown menu. Click on "Library". (The Library folder is hidden by default).
+Alternatively, while Finder is open, press Command (⌘) + Shift + G to open the "Go to Folder" dialog.
+Type ~/Library/RenPy/ into the text box and click "Go".
+This will open the Ren'Py folder where save data for DDLC and its mods are stored. The original DDLC save folder is usually DDLC-1454445547.
 
 Linux users:
 
-    Open your File Manager.
-
-    Navigate to your Home directory.
-
-    You need to show hidden files. You can usually do this by pressing Ctrl + H or finding an option in the View menu (like "Show Hidden Files").
-
-    Look for a folder named .renpy.
-
-    Alternatively, open a Terminal and type cd ~/.renpy/ and press Enter. You can then use ls to list the contents or open the folder in your file manager (e.g., using xdg-open . or nautilus . depending on your environment).
-
-    Inside the .renpy folder, you will find the save data folders for DDLC (usually DDLC-1454445547) and any mods.
+Open your File Manager.
+Navigate to your Home directory.
+You need to show hidden files. You can usually do this by pressing Ctrl + H or finding an option in the View menu (like "Show Hidden Files").
+Look for a folder named .renpy.
+Alternatively, open a Terminal and type cd ~/.renpy/ and press Enter. You can then use ls to list the contents or open the folder in your file manager (e.g., using xdg-open . or nautilus . depending on your environment).
+Inside the .renpy folder, you will find the save data folders for DDLC (usually DDLC-1454445547) and any mods.
  
 Q:I want to help! Can I be the coder, artist, etc., of the mod?
 A:Yes,If you have skills, you can. Enter our discord server and there you can ask @Moderator for the applications.
@@ -147,22 +139,27 @@ Q:I have an idea for dialogue for Just Yuri. Is there any format I should use?
 A:There is a preferred format, namely this:
 
 
-# this is how you do a comment
+# This is how you do a comment
+```
 label idle_[insert number here]:
    mc "This is how to make MC talk."
    "This is how to do internal narration for MC."
    y "This is how to make Yuri talk."
+```
 
-   # How to process Karma or Sanity into marker values.
-   # Values for sanity and karma levels:
-   # Very High karma_lvl() and/or sanity_lvl() == 5
-   # High      karma_lvl() and/or sanity_lvl() == 4
-   # Neutral   karma_lvl() and/or sanity_lvl() == 3
-   # Low       karma_lvl() and/or sanity_lvl() == 2
-   # Very Low  karma_lvl() and/or sanity_lvl() == 1
+# How to process Karma or Sanity into marker values.
+Values for sanity and karma levels:
+```
+Very High karma_lvl() and/or sanity_lvl() == 5
+High      karma_lvl() and/or sanity_lvl() == 4
+Neutral   karma_lvl() and/or sanity_lvl() == 3
+Low       karma_lvl() and/or sanity_lvl() == 2
+Very Low  karma_lvl() and/or sanity_lvl() == 1
+```
 
-   # How to process Karma or Sanity points.
-   # Dialogue example.
+# How to process Karma or Sanity points.
+Dialogue example.
+```
    y "Sorry for talking too much [player]."
    menu:
       "It's okay [persistent.yuri_nickname], I enjoy talking with you.":
@@ -174,18 +171,18 @@ label idle_[insert number here]:
          karma -5  #Or any other value that is between -1 to -10
          sanity -5 #Or any other value that is between -1 to -10
          y "Y-you're right [player], I apologize."
+  ```
 
    # You have to define the sanity/karma level into a marker value first before using it in if statements like so: (THE $ IS VERY IMPORTANT SINCE THE persistent module [The module that helps store persistent data] only works in the context of python)
-   # Next, you can specify unique dialogue according to different sanity/karma values
+   Next, you can specify unique dialogue according to different sanity/karma values
+   ```
    if karma_lvl() >= 3:
       y "This is a High Karma decision"
    elif sanity_lvl() >= 3:
       y "This is a High Sanity decision"
    else:
       y "If not High Karma or Sanity, play this dialogue instead."
-   #
-   #
-   #
+
    y "This dialogue is the same regardless of Karma, and happens after both Karma options"
    menu:
       "This is now a menu prompt, and this text here shows up below the menu options"
@@ -197,3 +194,4 @@ label idle_[insert number here]:
    y "This dialogue connects both options back into a single pathway"
    #include this at the bottom to jump back to Yuri waiting for you to respond after talking in the idle
    jump ch30_loop
+```
