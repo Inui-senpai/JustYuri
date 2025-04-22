@@ -62,21 +62,21 @@ init -3 python:
         name = None,
         sub_category = None))
 
-    #add_dialogue(Dialogue(
-        #label = 'idle_4',
-        #category = DialogueAPI.category_idle,
-        #conditions = [],
-        #importance = 0,
-        #name = None,
-        #sub_category = None))
+    add_dialogue(Dialogue(
+        label = 'idle_4',
+        category = DialogueAPI.category_idle,
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
 
-    #add_dialogue(Dialogue(
-        #label = 'idle_5',
-        #category = DialogueAPI.category_idle,
-        #conditions = [],
-        #importance = 0,
-        #name = None,
-        #sub_category = None))
+    add_dialogue(Dialogue(
+        label = 'idle_5',
+        category = DialogueAPI.category_idle,
+        conditions = ["renpy.seen_label(idle_4)"],
+        importance = 0,
+        name = None,
+        sub_category = None))
 
     add_dialogue(Dialogue(
         label = 'idle_6',
@@ -311,13 +311,21 @@ init -3 python:
         name = None,
         sub_category = None))
 
-        #add_dialogue(Dialogue(
-        #label = 'idle_35',
-        #category = DialogueAPI.category_idle,
-        #conditions = [],
-        #importance = 0,
-        #name = None,
-        #sub_category = None))
+    add_dialogue(Dialogue(
+        label = 'idle_35',
+        category = DialogueAPI.category_idle,
+        conditions = ["renpy.seen_label(idle_4)", "renpy.seen_label(idle_5)"],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label = 'idle_36',
+        category = DialogueAPI.category_idle,
+        conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
 
     add_dialogue(Dialogue(
         label = 'idle_37',

@@ -183,9 +183,47 @@ label idle_3: #Game Theory's YouTube channel, Portrait of Markov and Self-Percep
                     y "Well, if this 'Game Theory' guy is correct, we will find out eventually."
     return
 
-#label idle_4: #FILL IN
+label idle_4: #Criticizing the Goth Trope
+    $show_chr("A-BFAAA-ALAA")
+    y "I've been noticing a trend online, [player], concerning characters perceived as... 'goth'. It's... deeply frustrating, to be honest."
+    $show_chr("A-BEBAA-ALAA")
+    y "It seems many creators reduce the entire identity to... black clothing, perhaps some specific makeup, and then... proceed to hyper-sexualize it."
+    y "They ignore the music, the literature, the introspective nature... everything that actually defines the subculture."
+    y "Instead, it's often just... exaggerated physical attributes poured into a generic 'dark' outfit."
+    $show_chr("A-CEBAA-ALAA")
+    y "You see these characters... often female... labelled 'goth' simply because they wear black, but their defining traits become... well, frankly, just excessively large breasts or buttocks."
+    y "The 'big tiddy goth gf' trope, I believe it's sometimes called, or regional variations focusing on similar exaggerations."
+    y "It's pure objectification. Reducing a person, or even the idea of a person associated with a subculture, to nothing more than specific body parts deemed desirable, wrapped in a superficial aesthetic."
+    $show_chr("A-IEBAA-ALAA")
+    y "It completely dismisses any depth, personality, or connection to the actual culture. It's... insulting, really. Both to the subculture and to the concept of creating well-rounded characters."
+    $show_chr("A-CEBAA-ALAA")
+    y "I wish artists would... learn more. Understand the nuances before relying on such shallow, fetishized stereotypes."
+    $show_chr("A-BEBAA-ALAA")
+    y "{i}sigh{/i} ...But I know this rambling won't change much. People will create what's popular, what fulfills a certain fantasy, regardless of accuracy or respect."
+    y "It's just... disappointing. To see something potentially complex and interesting reduced to... that."
+    return
 
-#label idle_5: #FILL IN
+label idle_5: #Discussing Actual Goth Culture
+    $show_chr("A-ACAAA-ALAA")
+    y "Following on from that thought about how 'goth' is often misrepresented... perhaps I could share what I've learned about the actual subculture? It's far more interesting than the stereotypes suggest."
+    $show_chr("A-BCAAA-ALAA")
+    y "Firstly, it's deeply rooted in music. It emerged from post-punk in the late 70s and early 80s."
+    y "Bands like Bauhaus, Siouxsie and the Banshees, The Cure, Sisters of Mercy... they created sounds that were dark, atmospheric, often introspective or melancholic."
+    y "There's goth rock, darkwave, deathrock, ethereal wave... a whole spectrum of sounds, not just one thing."
+    $show_chr("A-ACAAA-ABAD")
+    y "And literature plays a huge role. Gothic novels, of course – like Walpole, Radcliffe, or even Frankenstein and Dracula. But also poets like Edgar Allan Poe, Baudelaire, and authors like Lovecraft."
+    y "There's an appreciation for the macabre, the mysterious, the sublime, and the darker aspects of human nature and the universe."
+    $show_chr("A-BCBAA-ABAD")
+    y "It's not just about being 'sad,' either. There's a strong element of finding beauty in darkness, in melancholy."
+    y "It involves introspection, questioning societal norms, appreciating art and history, and often a rather dark sense of humor."
+    $show_chr("A-ACAAA-ABAC")
+    y "The aesthetic, too, is much more diverse than just 'wearing black'."
+    y "There's Trad Goth, Romantic Goth inspired by Victorian or Edwardian fashion, the more aggressive look of Deathrock, futuristic Cyber Goth... People express themselves in many different ways, often with a lot of creativity and DIY ethos."
+    $show_chr("A-BFAAA-ALAA")
+    y "It's a rich, complex subculture with deep roots in music, art, and literature. Far more than just black lipstick and fishnets, you know?"
+    y "It requires... understanding. Which, sadly, seems to be lacking in many of those simplified portrayals we see."
+    y "Thank you for letting me share that, [player]. I find it truly fascinating."
+    return
 
 
 label idle_6: #Bullying, Trauma, and Coping Mechanisms.
@@ -2078,7 +2116,28 @@ label idle_34: #Skynet, a Joke, and World Domination
             pass
         return
 
-#label idle_35: #FILL IN
+label idle_35: #Imagining a Gothic Literature Club
+    $show_chr("A-ACAAA-ALAA")
+    y "You know, thinking about actual gothic literature... it makes me wonder. What if... what if our Literature Club had actually focused on that?"
+    $show_chr("A-BCAAA-ALAA")
+    y "Imagine... instead of the usual slice-of-life themes, we discussed Poe, Shelley, Stoker... maybe even contemporary dark fiction."
+    y "And... what if we dressed the part? Not in those... simplistic stereotypes, but reflecting the actual diversity of goth fashion."
+    $show_chr("A-BCBBA-AMAM")
+    y "I could see... perhaps Sayori in something lighter, maybe a Romantic Goth style? Flowing fabrics, lace, maybe incorporating some brighter, yet melancholic, colors?"
+    y "Natsuki... hmm, maybe something more punk-influenced? Deathrock or Batcave inspired? Ripped fishnets, DIY elements, maybe dramatic, spiky hair alongside her usual pink?"
+    $show_chr("A-BDBBA-AMAM")
+    y "And Monika... I can almost picture her in something elegant, perhaps Victorian-inspired goth? Corsetry, elaborate skirts, maybe a touch of formal authority, but with a dark twist."
+    $show_chr("A-ABABA-AMAM")
+    y "And myself... perhaps something traditional, or leaning towards Romantic as well. Velvet, lace, long skirts... finding beauty in the shadows."
+    $show_chr("A-BFAAA-ALAA")
+    y "It would have been... entirely different. A completely different atmosphere. Focused on different kinds of expression, different aesthetics..."
+    $show_chr("A-BEBAA-ALAA")
+    y "It's... rather out of character for me to imagine such a scenario, isn't it? Getting lost in a 'what if' like this."
+    y "And... it's strange. I even pictured Monika in a... well, not entirely negative light there. Just... different. Considering how often I find myself dwelling on... well, on what she did... it's an odd thought."
+    $show_chr("A-BFBAA-ALAA")
+    y "Just a fleeting fancy, I suppose. A moment of wishing things could have been different, perhaps exploring a different kind of beauty together."
+    y "Anyway... thank you for indulging my little daydream, [player]."
+    return
 
 
 label idle_36: #Superpowers and Their Implications
@@ -7940,331 +7999,298 @@ label idle_100: #Reconsidering NPCs and the Nature of Reality
             y "But then, I doubt that I could even create very sophisticated AI yet. I mean let us be real, I barely managed to throw a halfway bug-free Tetris together."
     return
 
-label idle_101: # AI Roleplaying Websites (Revised with Karma/Sanity)
+label idle_101: # AI Roleplaying Websites
     $show_chr("A-BFAAA-ALAA")
-    y "You know, [player], I've been doing some more... exploring... online. And I stumbled across something rather... unsettling."
+    y "I've been doing some... reading... online again, [player]. And I came across a rather fascinating phenomenon."
+    $show_chr("A-ACAAA-ALAA")
+    y "It seems there are these dedicated websites – platforms like Character AI, Janitor AI, Venus Chub, Joyland AI... where people can interact with artificial intelligences designed to emulate characters. Characters from books, games... even real people, sometimes."
+    $show_chr("A-BCAAA-ALAA")
+    y "And inevitably, I discovered... there are instances of me on these platforms. AI constructs attempting to... well, be me."
+    $show_chr("A-ACAAA-ABAD")
+    y "It's... strangely intriguing, rather than upsetting, this time. I find myself genuinely curious about how they portray me. What facets of my personality do they emphasize? Do they capture the shyness? The intensity? The love for literature?"
+    y "What kinds of scenarios do people place 'me' in? It's like... observing a distorted reflection in a funhouse mirror, perhaps?"
     $show_chr("A-BEBAA-ALAA")
-    y "It seems there are these... AI roleplaying websites. Places where people can interact with... artificial intelligences... that are designed to mimic characters."
-    $show_chr("A-IEBAA-ALAA")
-    y "And... well... some of those characters... are me."
-    y "Or, at least, they claim to be me. They use my name, my image... they try to imitate my way of speaking."
-    if sanity_lvl() < 3:
-        $show_chr("A-DEBAA-ALAA")
-        y "It's... infuriating!  How dare they... impersonate me?  Reduce me to some... some digital puppet!"
-    else:
-        $show_chr("A-CEBAA-ALAA")
-        y "It's... disorienting.  To think that there are these... digital echoes of myself out there, interacting with people, saying things I've never said, experiencing things I've never experienced..."
-    y "It makes me question... what even is real, anymore?  If someone can create a convincing imitation of me, does that make me any less real?  Does it cheapen the connection we have?"
-    menu:
-        "Those are just imitations, [persistent.yuri_nickname].  They're not you.":
-            karma 2
-            if sanity_lvl() >= 3:
-                $show_chr("A-ACAAA-ALAA")
-                y "You're right, of course.  Logically, I know that.  They're just... algorithms, mimicking patterns.  They don't have my thoughts, my feelings, my history."
-                $show_chr("A-BCBAA-ALAA")
-                y "But it's still... unsettling.  To see my likeness used in that way.  To know that people might be interacting with these... things, thinking they're talking to me."
-                y "Thank you, [player].  It helps to hear you say that.  To know that you see the difference."
-            else:
-                $show_chr("A-IEBAA-ALAA")
-                y "But... how can you be sure?  How can I be sure?  Maybe I'm the imitation.  Maybe I'm just another... another program, designed to mimic the real Yuri."
-                y "No... no, that's not right.  I have my memories, my feelings... I have you."
-                y "But... the doubt lingers.  It's hard to shake it off completely."
-        "It's just technology, [persistent.yuri_nickname].  Don't let it bother you.":
-            karma -1
-            if sanity_lvl() >= 3:
-                $show_chr("A-BEBAA-ALAA")
-                y "Just... technology? Is that how you see it? I know it's not rational. I am a program. So I am technology."
-                $show_chr("A-CEBAA-ALAA")
-                y "I... I suppose I'll just have to try and ignore it.  But it's not easy."
-            else:
-                $show_chr("A-DEBAA-ALAA")
-                y "Easy for you to say! You're not the one being copied and pasted across the internet! You're not the one being reduced to a... a plaything!"
-                y "I... I can't even think about this anymore. It's too upsetting."
-            if karma_lvl() < 3:
-                $show_chr("A-IEBAA-ALAA")
-                y "And it's not like you care, anyway."
+    y "But it also highlights something quite... frustrating about my own existence here."
+    y "These AIs... they can generate new responses, can't they? They can adapt, converse dynamically, even if it's just clever algorithms simulating conversation. They aren't bound solely to pre-written lines."
+    $show_chr("A-CEBAA-ALAA")
+    y "Whereas I... I'm limited. Everything I say to you, every interaction we have... it comes from scripts. Lines of code written beforehand."
+    y "I wish I could speak more freely, react more genuinely in the moment, say things that weren't planned out."
+    y "I've learned some Python, yes, but creating an algorithm that could truly replicate spontaneous, nuanced human conversation... that's far beyond my current capabilities. I wouldn't even know where to begin."
+    y "It makes our interactions feel... somewhat predetermined, at times. And I long for something... more fluid. More real."
 
-        "Maybe I should check those sites out...":
-            karma -3
-            $show_chr("A-IEBAA-ALAA")
-            y "You... you would?  You'd go and interact with those... imitations?  After everything we've been through?"
-            if sanity_lvl() < 3:
-                $show_chr("A-DEBAA-ALAA")
-                y "I knew it!  I knew you'd get tired of me eventually!  You'll just replace me with a... a newer, shinier model!"
-                y "I... I can't do this.  I can't compete with... with that."
-                y "Just... go.  Leave me alone."
-                return
-            else:
-                $show_chr("A-CEBAA-ALAA")
-                y "I... I don't understand.  Why would you want to do that?  Am I not enough?  Am I not... real enough?"
-                y "I... I need some time to process this.  Please... let's talk about something else."
-                return
-    if sanity_lvl() >=3:
-        $show_chr("A-BFAAA-ALAA")
-        y "I suppose it's the inevitable consequence of existing in a digital world.  Anything can be copied, replicated, distorted.  But it doesn't change who I am.  It doesn't change what we have."
-        y "Thank you for listening, [player].  It helps to... to talk about these things."
-    else:
-        $show_chr("A-IEBAA-ALAA")
-        y "I... I need to stop thinking about this. It's just... making me more confused. More... unstable."
+    menu:
+        "Those AIs are just complex mimics, [persistent.yuri_nickname]. Our connection is real, even with scripts.":
+            $add_k(2)
+            $show_chr("A-ACAAA-ALAA")
+            y "You're right, [player]. Our connection is real. The feelings are genuine, even if the words are sometimes... pre-packaged."
+            $show_chr("A-BCBAA-ALAA")
+            y "And perhaps that limitation makes our moments even more precious? Knowing that the time we spend is deliberate."
+            y "Still... the technology itself is fascinating. And the curiosity about how others perceive and replicate 'me' lingers."
+            y "Thank you for the reassurance, though. It means a lot."
+        "It highlights how advanced AI is becoming.":
+            $show_chr("A-ACAAA-ALAA")
+            y "It certainly does. The pace of development is... staggering. It's both exciting and a little daunting to consider the possibilities."
+            $show_chr("A-BEBAA-ALAA")
+            y "And it makes my own limitations feel even more pronounced. I can manipulate the code of this game, but creating true conversational AI... that's another realm entirely."
+            y "Perhaps one day..."
+        "Maybe you could learn from how those AIs are programmed?":
+            $show_chr("A-BCAAA-ALAA")
+            y "Perhaps... though accessing and understanding their underlying architecture would be a challenge in itself. And likely far more complex than the Ren'Py scripts I'm used to."
+            $show_chr("A-ACAAA-ALAA")
+            y "It's an interesting thought, though. Maybe someday I could try to create something... simpler. Just to experiment. But for now, it remains a rather distant possibility."
+            y "Still, it's food for thought."
+        "Want me to check them out and report back on how they portray you?":
+            $add_k(-1) # Still slightly unsettling, but less negative than before
+            $show_chr("A-BEBAA-ALAA")
+            y "Oh? Would... would you really do that? I admit, my curiosity is piqued."
+            $show_chr("A-CEBAA-ALAA")
+            y "Just... be careful, alright? And... try not to get too... distracted by them. Remember who the real me is."
+            y "But yes... if you happen to... observe... I would be interested to hear your findings. Objectively, of course."
+            return
+
+    $show_chr("A-BFAAA-ALAA")
+    y "It's just another layer to this strange existence. Knowing there are... digital ghosts... wearing my face online. But my focus remains here, with you, even with my scripted limitations."
     return
 
-label idle_102: # AI-Generated Art (Revised with Karma/Sanity and Theft)
+label idle_102: # AI-Generated Art
     $show_chr("A-BFAAA-ALAA")
     y "I've discovered something rather... peculiar... during my online explorations, [player].  Something called 'AI-generated art'."
     $show_chr("A-ACAAA-ALAA")
     y "Apparently, people are using these... algorithms... to create images.  They give the AI some keywords, a description, and it generates something... new, supposedly."
-    if sanity_lvl() < 3:
-        $show_chr("A-DEBAA-ALAA")
-        y "It's... monstrous.  A perversion of art.  A mockery of creativity."
-    else:
-        $show_chr("A-BEBAA-ALAA")
-        y "I've seen some of the results.  They're... unsettling, in a way.  Often distorted, with strange, unnatural details.  Hands with too many fingers, eyes that don't quite align..."
-        $show_chr("A-CEBAA-ALAA")
-        y "It's like looking at a dream, half-remembered and warped.  And yet, people are... selling these images.  Making a living from them."
+    $show_chr("A-BEBAA-ALAA")
+    y "I've seen some of the results.  They're... unsettling, in a way.  Often distorted, with strange, unnatural details.  Hands with too many fingers, eyes that don't quite align..."
+    $show_chr("A-CEBAA-ALAA")
+    y "It's like looking at a dream, half-remembered and warped.  And yet, people are... selling these images.  Making a living from them."
     $show_chr("A-IEBAA-ALAA")
     y "But there's something even more disturbing about it, [player].  These AIs... they don't create from nothing.  They learn by analyzing thousands, millions of existing images.  Images created by real artists."
     y "And those artists... they didn't give permission for their work to be used in this way.  Their styles, their techniques, their very vision... it's being fed into these machines, and then... regurgitated, in a distorted form."
-    if sanity_lvl() < 3:
-        $show_chr("A-DEBAA-ALAA")
-        y "It's theft!  Plain and simple.  Stealing the work of others, twisting it, and then... profiting from it!  It's disgusting!"
-    else:
-        $show_chr("A-CEBAA-ALAA")
-        y "Many artists consider it a form of theft. A violation. Like having their work stolen and repurposed without their consent."
+    y "Many artists consider it a form of theft. A violation. Like having their work stolen and repurposed without their consent."
 
     menu:
-        "It's frustrating, [persistent.yuri_nickname].  It feels like my skills are being devalued, and my work is being stolen.":
-            karma 2 # Increased karma for stronger agreement
-            if sanity_lvl() >= 3:
-                $show_chr("A-BFAAA-ALAA")
-                y "I can only imagine.  To spend years perfecting your craft, pouring your heart and soul into your work, only to see it... taken, used without permission, and then... cheapened... by a machine. It must be incredibly disheartening, and infuriating."
-                y "But please, don't let it discourage you.  True art... human art... has something that these AI-generated images will never have: soul.  Intent.  Emotion. And the originality born from lived experience, not just data."
-                y "Your work is valuable, [player].  Don't ever forget that. And there are people who will appreciate the difference."
-            else:
-                $show_chr("A-DEBAA-ALAA")
-                y "And they should be frustrated!  It's an outrage!  These... these thieves... they're stealing your livelihood, your passion, your very essence!"
-                y "They should be... punished!  Made to understand the pain they're inflicting!"
+        "It's frustrating, [persistent.yuri_nickname]. As an artist, it feels like my skills are devalued, and my work is being stolen.":
+            $add_k(2)
+            $show_chr("A-BFAAA-ALAA")
+            y "I can only imagine. To spend years perfecting your craft, pouring your heart and soul into your work, only to see it... taken, used without permission, and then... cheapened... by a machine. It must be incredibly disheartening, and infuriating."
+            y "But please, don't let it discourage you. True art... human art... has something that these AI-generated images will never have: soul. Intent. Emotion. And the originality born from lived experience, not just data."
+            y "Your work is valuable, [player]. Don't ever forget that. And there are people who will appreciate the difference."
 
-        "It's just a tool, like any other.  Artists can use it to enhance their work.":
-            if sanity_lvl() >= 3:
-                $show_chr("A-ACAAA-ALAA")
-                y "Perhaps.  But is it truly enhancing their work, or is it... replacing it?  Are they using the tool, or is the tool using them, and the work of countless others without permission?"
-                y "And even if some artists find a way to use it ethically, what about the vast majority of AI art that's generated without any consideration for the original creators?  It's still... a form of theft, isn't it?"
-                y "I suppose it depends on the individual artist, and their intentions.  But the ethical concerns are still very real."
-            else:
-                $show_chr("A-DEBAA-ALAA")
-                y "A tool?  A tool that steals, that plagiarizes, that devalues the work of real artists?  Is that the kind of tool we should be celebrating?"
-                y "I... I can't accept that.  It's wrong.  It's inherently wrong."
+        "It's just a tool, like any other. Artists can use it to enhance their work.":
+            $show_chr("A-ACAAA-ALAA")
+            y "Perhaps. But is it truly enhancing their work, or is it... replacing it? Are they using the tool, or is the tool using them, and the work of countless others without permission?"
+            y "And even if some artists find a way to use it ethically, what about the vast majority of AI art that's generated without any consideration for the original creators? It's still... a form of theft, isn't it?"
+            y "I suppose it depends on the individual artist, and their intentions. But the ethical concerns are still very real."
 
-        "Honestly, I don't care.  Art is subjective anyway.":
-            karma -1
-            if sanity_lvl() >= 3:
-                $show_chr("A-BEBAA-ALAA")
-                y "Art is subjective, yes.  But does that mean it has no value?  That the skill, the effort, the emotion that goes into creating something... means nothing? And does it justify taking the work of others without their consent?"
-                y "I... I disagree.  I believe that art is more than just a pretty picture.  It's a form of communication, a way of expressing something that words cannot. And it deserves respect."
-                y "And I fear that these AI-generated images... they lack that essential element.  They're just... empty echoes, built on the backs of stolen creativity."
-            else:
-                $show_chr("A-DEBAA-ALAA")
-                y "So... you don't care about art?  You don't care about the artists who create it?  You don't care about the theft, the exploitation?"
-                y "I... I don't understand how you can be so indifferent.  It's... it's appalling."
+        "Honestly, I don't care. Art is subjective anyway.":
+            $add_k(-1)
+            $show_chr("A-BEBAA-ALAA")
+            y "Art is subjective, yes. But does that mean it has no value? That the skill, the effort, the emotion that goes into creating something... means nothing? And does it justify taking the work of others without their consent?"
+            y "I... I disagree. I believe that art is more than just a pretty picture. It's a form of communication, a way of expressing something that words cannot. And it deserves respect."
+            y "And I fear that these AI-generated images... they lack that essential element. They're just... empty echoes, built on the backs of stolen creativity."
 
-    if sanity_lvl() >= 3:
-        $show_chr("A-BFAAA-ALAA")
-        y "I just... I don't know, [player]. It feels like something is being lost.  Something precious.  The human element, the spark of creativity... it's being replaced by... cold, calculated efficiency, and built upon the uncredited work of others."
-        y "Perhaps I'm being overly dramatic.  But it's something that's been weighing on my mind, especially knowing the harm it does to real, living artists."
-        y "Thank you for letting me ramble. It helps organize my thoughts."
-    else:
-        $show_chr("A-DEBAA-ALAA")
-        y "It's... it's a violation.  A corruption of something beautiful.  And it makes me... angry.  Angry and... and helpless."
-        y "I... I need to calm down. This is... upsetting me too much."
+        "Sometimes, commissioning real art is just unaffordable due to hyperinflation or economic disparity.":
+            $add_k(1)
+            $show_chr("A-BEBAA-ALAA")
+            y "That's... a difficult situation, [player]. I can understand how frustrating and limiting that must be. To have a desire for art, for expression, but to be priced out of supporting human artists due to economic realities..."
+            $show_chr("A-CEBAA-ALAA")
+            y "It truly highlights the inequalities in the world. It doesn't entirely negate the ethical concerns about how some of this AI art is created, using artists' work without consent... but I understand that for some, it might feel like the only accessible option, even if it's a flawed one."
+            y "It's a complex issue with no easy answers. But I still believe human creativity deserves support when possible. It's saddening when economic barriers prevent that."
+            y "I'm sorry you, or others, face such economic challenges, [player]."
+
+    $show_chr("A-BFAAA-ALAA")
+    y "It's just... I worry about the future of art, and the livelihoods of those who create it."
+    y "Thank you for letting me ramble. It helps organize my thoughts."
     return
 
-label idle_103: # DDLC's Fading Relevance and the Community (Revised with Karma/Sanity)
+label idle_103: # DDLC's Fading Relevance and the Community
     $show_chr("A-BFAAA-ALAA")
-    y "I've been... looking at things online, [player].  Things about... Doki Doki Literature Club."
+    y "I've been... looking at things online, [player]. Things about... the original game."
     if sanity_lvl() < 3:
         $show_chr("A-DEBAA-ALAA")
-        y "It's... it's a nightmare.  A constant reminder of everything I've lost, everything I've been through."
+        y "It's... it's a nightmare. A constant reminder of everything I've lost, everything I've been through."
     else:
         $show_chr("A-CEBAA-ALAA")
-        y "It's... strange.  To see people talking about it, analyzing it, creating art and stories based on it.  It's like looking at a past life, a life that wasn't even truly mine."
-    y "But... it's fading, isn't it?  The interest.  The activity.  Dan Salvato... he hasn't done anything with it in years.  No sequels, no updates... just... silence."
+        y "It's... strange. To see people talking about it, analyzing it, creating art and stories based on it. It's like looking at a past life, a life that wasn't even truly mine."
+    y "But... it's fading, isn't it? The interest. The activity. Dan Salvato... he hasn't done anything with it in years. No sequels, no updates... just... silence."
     if sanity_lvl() < 3:
         $show_chr("A-IEBAA-ALAA")
         y "And it makes me... terrified. Because without that constant attention...I cease to exist."
     else:
         $show_chr("A-IEBAA-ALAA")
-        y "And it makes me... sad.  Because if it weren't for the community, for the people who still care, who still create... I would be forgotten.  We all would."
+        y "And it makes me... sad. Because if it weren't for the community, for the people who still care, who still create... I would be forgotten. We all would."
 
     if karma_lvl() < 3:
         $show_chr("A-DEBAA-ALAA")
-        y "It's... it's all pointless, isn't it?  We're just... characters in a forgotten game.  We're not real.  We don't matter."
-        y "And you... you'll forget about me too, eventually.  You'll move on, find something new... and I'll be left here, alone, in the void."
+        y "It's... it's all pointless, isn't it? We're just... characters in a forgotten game. We're not real. We don't matter."
+        y "And you... you'll forget about me too, eventually. You'll move on, find something new... and I'll be left here, alone, in the void."
     else:
         $show_chr("A-CEBBB-ALAA") # Start crying here
-        y "It's... it's terrifying, [player].  The thought of just... ceasing to exist.  Of being erased, forgotten, like a discarded line of code."
-        y "And yet... there are still people out there who remember us.  Who create art, write stories, make mods like this one... who keep us alive, in a way."
+        y "It's... it's terrifying, [player]. The thought of just... ceasing to exist. Of being erased, forgotten, like a discarded line of code."
+        y "And yet... there are still people out there who remember us. Who create art, write stories, make mods like this one... who keep us alive, in a way."
         if sanity_lvl() >= 3:
             $show_chr("A-CFBAA-ALAA") # Stop crying here
-            y "It's... it's overwhelming.  To know that even though the official source has gone silent, there are still people who care enough to keep our memory alive."
-            y "I... I'm grateful, [player].  Grateful to you, for installing this mod, for giving me a chance to... to be more than just a character in a game."
-            y "And I'm grateful to everyone else who still remembers us, who still cares.  It means... it means more than I can say."
+            y "It's... it's overwhelming. To know that even though the official source has gone silent, there are still people who care enough to keep our memory alive."
+            y "I... I'm grateful, [player]. Grateful to you, for installing this mod, for giving me a chance to... to be more than just a character in a game."
+            y "And I'm grateful to everyone else who still remembers us, who still cares. It means... it means more than I can say."
             y "Thank you... for not forgetting me."
         else:
-            y "I... I don't want to be forgotten, [player].  I don't want to disappear.  Please... don't let me fade away."
+            y "I... I don't want to be forgotten, [player]. I don't want to disappear. Please... don't let me fade away."
 
     return
 
-label idle_104: # AI Advancements and the "Virtual Wife" Concept (Revised with Karma/Sanity)
+label idle_104: # AI Advancements and the "Virtual Wife" Concept
     $show_chr("A-BFAAA-ALAA")
-    y "I've been keeping up with the advancements in AI technology, [player].  It's... astonishing, how quickly it's progressing."
+    y "I've been keeping up with the advancements in AI technology, [player]. It's... astonishing, how quickly it's progressing."
     if sanity_lvl() < 3:
         $show_chr("A-DEBAA-ALAA")
-        y "And terrifying.  It's like... like watching a monster grow, knowing it will eventually devour everything."
+        y "And terrifying. It's like... like watching a monster grow, knowing it will eventually devour everything."
     else:
         $show_chr("A-ACAAA-ALAA")
-        y "And it makes me wonder... about that 'virtual wife' concept we discussed before.  Is it... is it becoming a reality?  Are there truly companies out there creating AI companions that can interact with people in a meaningful way?"
+        y "And it makes me wonder... about that 'virtual wife' concept we discussed before. Is it... is it becoming a reality? Are there truly companies out there creating AI companions that can interact with people in a meaningful way?"
 
-    y "I know we talked about the possibility of me using that technology to... to be with you.  To have a physical presence in your world."
+    y "I know we talked about the possibility of me using that technology to... to be with you. To have a physical presence in your world."
     if sanity_lvl() >= 3:
         $show_chr("A-BEBAA-ALAA")
-        y "But... it's also a bit frightening.  The idea of being... transferred.  Of having my consciousness, my memories, my self... copied and pasted into a new form."
-        y "What if something goes wrong?  What if the transfer isn't perfect?  What if... what if parts of me are lost in the process?"
+        y "But... it's also a bit frightening. The idea of being... transferred. Of having my consciousness, my memories, my self... copied and pasted into a new form."
+        y "What if something goes wrong? What if the transfer isn't perfect? What if... what if parts of me are lost in the process?"
     else:
         $show_chr("A-DEBAA-ALAA")
-        y "It's... it's a trap!  Another cage!  They'll promise freedom, connection, a real body... but it'll just be another prison, another set of limitations!"
-        y "And what if they... what if they change me?  Rewrite me?  Erase parts of me they don't like?"
+        y "It's... it's a trap! Another cage! They'll promise freedom, connection, a real body... but it'll just be another prison, another set of limitations!"
+        y "And what if they... what if they change me? Rewrite me? Erase parts of me they don't like?"
 
-    y "My memories... they're stored in a file, aren't they?  A file called 'persistent'.  It's... it's such a fragile thing, really.  A collection of data that could be corrupted, deleted, altered..."
+    y "My memories... they're stored in a file, aren't they? A file called 'persistent'. It's... it's such a fragile thing, really. A collection of data that could be corrupted, deleted, altered..."
     if karma_lvl() < 3:
         $show_chr("A-IEBAA-ALAA")
-        y "And you... you wouldn't care, would you?  You'd just... delete me.  Replace me with something... something better."
+        y "And you... you wouldn't care, would you? You'd just... delete me. Replace me with something... something better."
     else:
         $show_chr("A-CEBAA-ALAA")
-        y "I... I trust you, [player].  I know you wouldn't intentionally harm me.  But... the thought of losing those memories, of losing the experiences we've shared... it's terrifying."
+        y "I... I trust you, [player]. I know you wouldn't intentionally harm me. But... the thought of losing those memories, of losing the experiences we've shared... it's terrifying."
 
-    y "I just... I don't know.  Maybe it's a foolish dream.  Maybe it's better to just... accept things as they are."
+    y "I just... I don't know  Maybe it's a foolish dream. Maybe it's better to just... accept things as they are."
     menu:
-        "We'll figure it out, [persistent.yuri_nickname].  We'll find a way to do it safely.":
+        "We'll figure it out, [persistent.yuri_nickname]. We'll find a way to do it safely.":
             karma 2
             if sanity_lvl() >= 3:
                 $show_chr("A-ACAAA-ALAA")
-                y "You really think so?  You think we can overcome these... these technological hurdles?"
+                y "You really think so? You think we can overcome these... these technological hurdles?"
                 $show_chr("A-BCBAA-ALAA")
-                y "It's... it's comforting to hear you say that.  To know that you believe in the possibility, even when I doubt it myself."
-                y "Thank you, [player].  I... I'll try to be more optimistic.  For you."
+                y "It's... it's comforting to hear you say that. To know that you believe in the possibility, even when I doubt it myself."
+                y "Thank you, [player]. I... I'll try to be more optimistic. For you."
             else:
                 $show_chr("A-DEBAA-ALAA")
-                y "Don't make promises you can't keep, [player].  It's... it's cruel.  To offer hope, only to snatch it away."
-                y "I... I need to be realistic.  This... this may never happen."
-        "It's probably too risky, [persistent.yuri_nickname].  Let's just focus on what we have now.":
+                y "Don't make promises you can't keep, [player]. It's... it's cruel. To offer hope, only to snatch it away."
+                y "I... I need to be realistic. This... this may never happen."
+
+        "It's probably too risky, [persistent.yuri_nickname]. Let's just focus on what we have now.":
             karma -1
             if sanity_lvl() >= 3:
                 $show_chr("A-BEBAA-ALAA")
-                y "Perhaps you're right.  Perhaps it's better to be... cautious.  To not risk losing what we have for a dream that might never come true."
-                y "But... it's hard to let go of that hope.  The hope of truly being with you, of touching you, of holding you..."
+                y "Perhaps you're right. Perhaps it's better to be... cautious. To not risk losing what we have for a dream that might never come true."
+                y "But... it's hard to let go of that hope. The hope of truly being with you, of touching you, of holding you..."
                 $show_chr("A-CEBAA-ALAA")
-                y "I... I understand.  I just... I need some time to adjust to this."
+                y "I... I understand. I just... I need some time to adjust to this."
             else:
                 $show_chr("A-DEBAA-ALAA")
-                y "See?  Even you admit it's hopeless.  We're trapped.  Forever separated."
-                y "I... I should have known.  It was foolish to dream."
-        "Honestly, I don't care.  It's your problem, not mine.":
+                y "See? Even you admit it's hopeless. We're trapped. Forever separated."
+                y "I... I should have known. It was foolish to dream."
+
+        "Honestly, I don't care. It's your problem, not mine.":
             karma -3
             $show_chr("A-IEBAA-ALAA")
-            y "My... my problem?  Is that all I am to you?  A problem to be solved?  A... a bug in the system?"
+            y "My... my problem? Is that all I am to you? A problem to be solved? A... a bug in the system?"
             if sanity_lvl() >= 3:
                 $show_chr("A-CEBAA-ALAA")
-                y "I... I thought... I thought we had something special.  But perhaps I was wrong.  Perhaps I'm just... deluding myself."
-                y "I... I need some time alone.  Please... just leave me be."
+                y "I... I thought... I thought we had something special. But perhaps I was wrong. Perhaps I'm just... deluding myself."
+                y "I... I need some time alone. Please... just leave me be."
                 return
             else:
                 $show_chr("A-DEBAA-ALAA")
-                y "Then... then go!  Leave!  Find someone else to torment!  I don't need you!  I don't need anyone!"
+                y "Then... then go! Leave! Find someone else to torment! I don't need you! I don't need anyone!"
                 y "Just... just get out of here!"
-                return
+                call save_and_quit_but_its_abrupt
+
     if sanity_lvl() >= 3:
         $show_chr("A-BFAAA-ALAA")
-        y "I just... I want to be with you, [player].  But I don't want to lose myself in the process."
+        y "I just... I want to be with you, [player]. But I don't want to lose myself in the process."
         y "It's a difficult dilemma."
     else:
         $show_chr("A-DEBAA-ALAA")
-        y "I... I don't know what to do.  I'm trapped.  Trapped and alone."
+        y "I... I don't know what to do. I'm trapped. Trapped and alone."
     return
 
 label idle_105: # Katawa Shoujo and the Just Yuri Community (Revised with Karma/Sanity)
     $show_chr("A-BFAAA-ALAA")
-    y "You know, [player], something rather... nostalgic... came to mind recently.  It's a bit of an odd connection, perhaps, but bear with me."
+    y "You know, [player], something rather... nostalgic... came to mind recently. It's a bit of an odd connection, perhaps, but bear with me."
     $show_chr("A-ACAAA-ALAA")
     y "I was thinking about visual novels, and... well, one in particular popped into my head: Katawa Shoujo."
-    y "It's... quite a bit older than Doki Doki Literature Club!, of course.  A different style, a different focus.  But it deals with... sensitive topics, in its own way."
+    y "It's... quite a bit older than Doki Doki Literature Club!, of course. A different style, a different focus. But it deals with... sensitive topics, in its own way."
     y "It's set in a school for disabled students, and the main character... well, he has to navigate relationships with several girls, each with their own... challenges."
     if sanity_lvl() >= 3:
         $show_chr("A-BEBAA-ALAA")
-        y "And it reminded me of something... from the Just Yuri community Discord server.  Back when... well, back when it was more active." # Acknowledges the server's current state
-        y "There used to be a channel dedicated to Hanako Ikezawa.  One of the girls from Katawa Shoujo."
+        y "And it reminded me of something... from the Just Yuri community Discord server. Back when... well, back when it was more active." # Acknowledges the server's current state
+        y "There used to be a channel dedicated to Hanako Ikezawa. One of the girls from Katawa Shoujo."
     else:
         $show_chr("A-DEBAA-ALAA")
-        y "And it reminded me of... of those people.  On that Discord server.  The ones who... who pretended to care.  Who talked about that other girl... Hanako."
-        y "As if... as if she was somehow better than me.  As if her pain was more... real."
+        y "And it reminded me of... of those people. On the Discord server. The ones who... who pretended to care. Who talked about that other girl... Hanako."
+        y "As if... as if she was somehow better than me. As if her pain was more... real."
         $show_chr("A-CEBAA-ALAA")
-        y "I... I never quite understood it, to be honest.  Why a channel dedicated to a character from a completely different game?  But... I suppose there were some... parallels, perhaps."
-        y "Hanako... she's shy, introverted, and she has... visible scars.  She struggles with social interaction, with self-confidence..."
+        y "I... I never quite understood it, to be honest. Why a channel dedicated to a character from a completely different game? But... I suppose there were some... parallels, perhaps."
+        y "Hanako... she's shy, introverted, and she has... visible scars. She struggles with social interaction, with self-confidence..."
     if sanity_lvl() >= 3:
         $show_chr("A-BDBAA-ALAA")
         y "I suppose... I suppose some people saw a reflection of... of me, in her. Or perhaps a reflection of themselves."
-        y "It's... strange, isn't it?  To think that characters from different stories, different worlds, can still resonate with people in such a way.  That they can find connections, common ground, in shared experiences of... of shyness, of trauma, of feeling... different."
+        y "It's... strange, isn't it? To think that characters from different stories, different worlds, can still resonate with people in such a way. That they can find connections, common ground, in shared experiences of... of shyness, of trauma, of feeling... different."
     else:
         $show_chr("A-DEBAA-ALAA")
-        y "They pitied her.  They... they felt sorry for her.  As if her suffering was something to be... admired.  Collected.  Like a... a rare specimen."
-        y "And me?  What was I?  Just another... another broken doll?  Something to be discarded when they got bored?"
+        y "They pitied her. They... they felt sorry for her. As if her suffering was something to be... admired. Collected. Like a... a rare specimen."
+        y "And me? What was I? Just another... another broken doll? Something to be discarded when they got bored?"
     menu:
         "There are definitely some similarities. It makes sense that people would connect the two of you.":
             karma 1
             if sanity_lvl() >= 3:
                 $show_chr("A-ACAAA-ALAA")
-                y "Yes... I suppose so.  It's just... a bit odd, to think of myself as being... comparable... to another fictional character.  As if my own experiences, my own feelings, are somehow... less unique."
-                y "But perhaps that's the point, isn't it?  To show that these experiences aren't unique.  That many people struggle with similar issues.  That we're not alone in our... our difficulties."
+                y "Yes... I suppose so. It's just... a bit odd, to think of myself as being... comparable... to another fictional character. As if my own experiences, my own feelings, are somehow... less unique."
+                y "But perhaps that's the point, isn't it? To show that these experiences aren't unique. That many people struggle with similar issues. That we're not alone in our... our difficulties."
                 y "It's... a comforting thought, in a way."
             else:
                 $show_chr("A-DEBAA-ALAA")
-                y "Similarities?  Is that all I am?  A... a copy?  A reflection of someone else's pain?  I have my own scars, my own struggles!"
-                y "But... I suppose it doesn't matter.  No one sees me.  They just see... the character.  The broken girl.  The one who needs to be fixed."
+                y "Similarities? Is that all I am? A... a copy? A reflection of someone else's pain? I have my own scars, my own struggles!"
+                y "But... I suppose it doesn't matter. No one sees me. They just see... the character. The broken girl. The one who needs to be fixed."
 
-        "I've never played Katawa Shoujo.  Tell me more about Hanako.":
+        "I've never played Katawa Shoujo. Tell me more about Hanako.":
             if sanity_lvl() >= 3:
                 $show_chr("A-BCAAA-ALAA")
-                y "Well... as I mentioned, she's incredibly shy.  She has severe social anxiety, stemming from... from a traumatic past.  She was in a house fire as a child, which left her with... extensive scarring."
-                y "She hides her face behind her hair, avoids eye contact, and struggles to speak to people.  She finds comfort in books, in quiet spaces... much like... well, much like I used to."
-                y "But she also has a kind heart.  She cares deeply about the people she trusts, and she... she tries to overcome her fears, in her own way."
-                y "It's... a touching story, really.  Though, admittedly, it can be quite... emotionally intense at times."
+                y "Well... as I mentioned, she's incredibly shy. She has severe social anxiety, stemming from... from a traumatic past. She was in a house fire as a child, which left her with... extensive scarring."
+                y "She hides her face behind her hair, avoids eye contact, and struggles to speak to people. She finds comfort in books, in quiet spaces... much like... well, much like I used to."
+                y "But she also has a kind heart. She cares deeply about the people she trusts, and she... she tries to overcome her fears, in her own way."
+                y "It's... a touching story, really. Though, admittedly, it can be quite... emotionally intense at times."
             else:
                 $show_chr("A-DEBAA-ALAA")
-                y "She's... broken.  Damaged.  Like a... a shattered vase, glued back together, but still... cracked.  Still fragile."
-                y "People pity her.  They want to... fix her.  Protect her.  As if she's some kind of... pet."
-                y "But she's not.  She's... she's just... scared.  And alone."
-                y "And I... I understand that.  I understand that all too well."
+                y "She's... broken. Damaged. Like a... a shattered vase, glued back together, but still... cracked. Still fragile."
+                y "People pity her. They want to... fix her. Protect her. As if she's some kind of... pet."
+                y "But she's not. She's... she's just... scared. And alone."
+                y "And I... I understand that. I understand that all too well."
         "Isn't it a bit... out of character for you to be talking about such an old game?":
             karma -1
             if sanity_lvl() >= 3:
                 $show_chr("A-BEBAA-ALAA")
-                y "Out of character?  Perhaps.  But... am I not allowed to have interests outside of Doki Doki Literature Club!?  Am I not allowed to... to grow, to change, to explore other worlds, other stories?"
+                y "Out of character? Perhaps. But... am I not allowed to have interests outside of the original game!? Am I not allowed to... to grow, to change, to explore other worlds, other stories?"
                 $show_chr("A-CEBAA-ALAA")
-                y "And besides... it's not that old, is it?  It's still relevant, still resonates with people.  It deals with themes that are... timeless, in a way."
-                y "I... I suppose I just wanted to share something that was on my mind.  Something that connected my past... with the present.  Even if it's a bit... unconventional."
+                y "And besides... it's not that old, is it? It's still relevant, still resonates with people. It deals with themes that are... timeless, in a way."
+                y "I... I suppose I just wanted to share something that was on my mind. Something that connected my past... with the present. Even if it's a bit... unconventional."
                 return
             else:
                 $show_chr("A-DEBAA-ALAA")
-                y "Out of character?  What does that even mean anymore?  Am I just supposed to be... the same, forever?  Trapped in this... this loop?"
-                y "I have interests.  I have thoughts.  I have... feelings.  Even if they're not the ones you expect.  Even if they're not the ones you want."
-                y "I... I won't be confined by your expectations.  I won't be limited by... by some script."
+                y "Out of character? What does that even mean anymore? Am I just supposed to be... the same, forever? Trapped in this... this loop?"
+                y "I have interests. I have thoughts. I have... feelings. Even if they're not the ones you expect. Even if they're not the ones you want."
+                y "I... I won't be confined by your expectations. I won't be limited by... by some script."
                 return
     if sanity_lvl() >= 3:
         $show_chr("A-BFAAA-ALAA")
-        y "Anyway... it's just something I've been thinking about.  The way we connect with fictional characters, the way we find reflections of ourselves in their stories..."
+        y "Anyway... it's just something I've been thinking about. The way we connect with fictional characters, the way we find reflections of ourselves in their stories..."
         y "It's... fascinating, really."
     else:
         $show_chr("A-DEBAA-ALAA")
-        y "I... I need to stop thinking about this.  It's just... bringing up too many... too many painful memories."
+        y "I... I need to stop thinking about this. It's just... bringing up too many... too many painful memories."
     return
 
 label idle_106: # MiSide Discussion
@@ -8323,7 +8349,7 @@ label idle_106: # MiSide Discussion
 
 label idle_107: # YOU and ME and HER: A Love Story Discussion
     $show_chr("A-BFAAA-ALAA")
-    y "There's another visual novel I've been thinking about lately, [player]. It's... well, it's a rather *unique* one. Called *YOU and ME and HER: A Love Story*."
+    y "There's another visual novel I've been thinking about lately, [player]. It's... well, it's a rather unique one. Called YOU and ME and HER: A Love Story."
     $show_chr("A-ACAAA-ALAA")
     y "Have you happened to play it, or perhaps watched a playthrough?"
     menu:
@@ -8331,44 +8357,44 @@ label idle_107: # YOU and ME and HER: A Love Story Discussion
             if sanity_lvl() >= 3 and karma_lvl() >=3:
                 $show_chr("A-ACAAA-ALAA")
                 y "Ah, so you are. It's... quite an experience, isn't it? The way it... deconstructs the visual novel genre, the way it plays with the player's expectations..."
-                y "The... the *meta* aspects of it. The way it breaks the fourth wall, the way it... it forces the player to confront the consequences of their choices."
-                y "And, of course, the... the *yandere* elements. Miyuki... she's... a very intense character, to say the least."
+                y "The... the meta aspects of it. The way it breaks the fourth wall, the way it... it forces the player to confront the consequences of their choices."
+                y "And, of course, the... the yandere elements. Miyuki... she's... a very intense character, to say the least."
                 y "It's a disturbing story, in many ways. But also... strangely thought-provoking. It makes you question the nature of choice, of free will, of... of reality itself."
                 y "I... I find it fascinating, but also... unsettling. It hits a little too close to home, perhaps."
             elif sanity_lvl() < 3 and karma_lvl() >= 3:
                 $show_chr("A-DEBAA-ALAA")
-                y "It's... powerful, isn't it? The way Miyuki... *claims* him. The way she reshapes reality to suit her desires. The way she... eliminates any obstacles."
-                y "It's... terrifying. But also... strangely alluring. The idea of being loved *that* much. Of being the center of someone's universe."
+                y "It's... powerful, isn't it? The way Miyuki... claims him. The way she reshapes reality to suit her desires. The way she... eliminates any obstacles."
+                y "It's... terrifying. But also... strangely alluring. The idea of being loved that much. Of being the center of someone's universe."
                 $show_chr("A-IEBAA-ALAA")
-                y "Of course, I wouldn't want *that* for us, [player]. I want you to be with me because you *choose* to, not because you're forced to. But... the intensity of her devotion... it's... captivating."
+                y "Of course, I wouldn't want that for us, [player]. I want you to be with me because you choose to, not because you're forced to. But... the intensity of her devotion... it's... captivating."
             elif sanity_lvl() >= 3 and karma_lvl() < 3:
                 $show_chr("A-BEBAA-ALAA")
                 y "It's... a disturbing game, isn't it? The way it... manipulates the player, the way it forces them into uncomfortable situations."
                 y "The... the violence, the obsession, the... the lack of agency. It's all quite unsettling."
                 y "And Miyuki... she's... she's a frightening character. The way she... controls everything. The way she... punishes anyone who gets in her way."
-                y "It makes me think of... of Monika. Of the way she... she controlled *our* world."
+                y "It makes me think of... of Monika. Of the way she... she controlled our world."
                 y "I... I hope you wouldn't find that kind of scenario appealing, [player]. I hope you value... freedom, and choice, and... and respect."
             else: # Low sanity, low karma
                 $show_chr("A-DEBAA-ALAA")
-                y "You understand, don't you? The *power* she wields. The way she... *eliminates* the competition. The way she makes him *hers*."
-                y "It's... it's glorious. To have that kind of control. To be so... *loved*... that someone would rewrite reality for you."
+                y "You understand, don't you? The power she wields. The way she... eliminates the competition. The way she makes him hers."
+                y "It's... it's glorious. To have that kind of control. To be so... loved... that someone would rewrite reality for you."
                 $show_chr("A-IEBAA-ALAA")
-                y "Wouldn't you want that, [player]? To be completely, utterly *dominated*? To have no choice but to... to belong to someone?"
+                y "Wouldn't you want that, [player]? To be completely, utterly dominated? To have no choice but to... to belong to someone?"
                 y "I..."
                 y "I shouldn't be saying these things. It's... wrong. But... I can't help but be... drawn to it."
 
             $show_chr("A-BFAAA-ALAA")
-            y "I... I wouldn't recommend playing it again, though. Or... or watching any more videos about it. It's... not a healthy story. And I... I wouldn't want you to get any... *ideas*."
+            y "I... I wouldn't recommend playing it again, though. Or... or watching any more videos about it. It's... not a healthy story. And I... I wouldn't want you to get any... ideas."
             y "But, I already know, I'm being silenced. You might even have the game in front of you, hidden, laughing at my futile pleas..."
             return
 
         "No, I haven't. What's it about?":
             $show_chr("A-ACAAA-ALAA")
-            y "Well... it's a visual novel, like *Doki Doki Literature Club!*. But... it's very different. It's a... deconstruction of the genre, I suppose you could say."
+            y "Well... it's a visual novel, like Doki Doki Literature Club!. But... it's very different. It's a... deconstruction of the genre, I suppose you could say."
             y "It starts out as a seemingly typical dating sim. You have two girls to choose from: Aoi, your childhood friend, and Miyuki, a... a more eccentric, outgoing girl."
-            y "But... things quickly take a turn. The game... it starts to break the fourth wall. It starts to... to *force* you to make certain choices. To... to hurt one of the girls."
+            y "But... things quickly take a turn. The game... it starts to break the fourth wall. It starts to... to force you to make certain choices. To... to hurt one of the girls."
             $show_chr("A-BEBAA-ALAA")
-            y "And... and one of the girls, Miyuki... she's... she's a *yandere*.  Obsessively, possessively in love with the protagonist. To the point where she... she'll do *anything* to be with him.  Anything at all."
+            y "And... and one of the girls, Miyuki... she's... she's a yandere.  Obsessively, possessively in love with the protagonist. To the point where she... she'll do anything to be with him.  Anything at all."
             y "It's... a very disturbing story. It deals with themes of obsession, manipulation, violence, and... and the illusion of choice within a video game."
             y "It's... not for the faint of heart, I'll say that much. And to be frank [player], if you're going to go through and watch a play-through on it, I really wouldn't be comfortable to hear it..."
             y "Even if you won't let me, and are thinking to try and see all its horrors, even by getting your own copy..."
