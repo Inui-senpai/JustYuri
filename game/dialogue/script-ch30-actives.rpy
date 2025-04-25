@@ -2750,6 +2750,7 @@ label specialpoems_myyuri:
             $show_chr("A-ABCAA-ABAF")
             extend " I'll just simply take things into my own hands."
             $player = "Big Fat Phony"
+            $persistent.playername = "Big Fat Phony"
             $show_chr("A-ABFBA-AEAJ")
             y "Ufufufu. . ."
             $show_chr("A-AAAAA-AEAM")
