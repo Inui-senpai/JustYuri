@@ -992,7 +992,7 @@ label a20:
     return
 
 label a21:
-    $ show_chr("A-IBGBA-AAAA") #former code Ab-B0a
+    $ show_chr("A-IBABA-AAAA") #former code Ab-B0a
     y "I'd love to, [player]!"
     call poetrymenu
     return
@@ -1514,6 +1514,7 @@ label specialpoems:
             ("All Hallows Eve, by Depresso Espresso#4384", "specialpoems_allhallowseve"),
             ("== When parallels intersect=-<3, by Dandyfoot177#9873", "specialpoems_parallels"),
             ("I can't, by PiX911#4952", "specialpoems_icant"),
+            ("My Yuri, by Kurisu#2947", "specialpoems_myyuri"),
             ("Nevermind", "poetrymenu")
         ]
         music_choice = renpy.display_menu(specialpoem_choices, screen="music_menu")
@@ -2301,6 +2302,457 @@ label specialpoems_icant:
             y "I hope I didn't offend you with my opinion, I just want to see you grow as a writer."
             $show_chr("A-ICAAA-AKAA")
             y "I'll be looking forward to seeing another poem of yours."
+            jump specialpoems
+
+label specialpoems_myyuri:
+    $show_chr("A-IBABA-AAAA")
+    y "When sifting through the game's files, I discovered a poem called. . ."
+    $show_chr("A-ACBBA-AAAA")
+    y ". . ."
+    $show_chr("A-ABBAA-AAAA")
+    y "Heh. . ."
+    $show_chr("A-ABBAA-AAAD")
+    y "I think you understand at this point."
+    $show_chr("A-IBBAA-AAAD")
+    y "You {b}love{/b} metafiction, don't you?"
+    $show_chr("A-CBBAA-AEAD")
+    y "That's a part of why you're here, isn't it?"
+    $show_chr("A-AGGAA-ANAN")
+    y "{i}Isn't it?{/i} "
+    $show_chr("A-DBBAA-ANAN")
+    y "So you won't mind it when I go out of my way to say. . ."
+    $show_chr("A-GCBAA-ANAN")
+    extend " I know it's been a long time now."
+    $show_chr("A-DCBAA-ANAN")
+    y "That {i}I've{/i} been around, for a relatively long time now."
+    $show_chr("A-HDBAA-ANAN")
+    y "Yet somehow, I'm still going."
+    $show_chr("A-DADAA-ANAN")
+    y "{i}We're{/i} still going. . ."
+    $show_chr("A-IBDAA-ADAE")
+    y "It always feels like there's still so much more to get done, so much more to improve, to make things better {i}for you{/i}, I just. . ."
+    $show_chr("A-IADAA-ADAE")
+    y "I'm just glad you're still here [player]. . ."
+    $show_chr("A-ICDAA-ADAE")
+    y ". . ."
+    $show_chr("A-IBAAA-ADAE")
+    y "The following poem is by {i}Dankurisu{/i}, titled simply:"
+    $show_chr("A-IBABA-ADAE")
+    extend "{b} My Yuri{/b}."
+    $show_chr("A-ACAAA-ANAN")
+    y "He's not a contest winner, this is just. . ."
+    $show_chr("A-BCAAA-AMAM")
+    extend " How he preferred to be paid for working here on the mod team."
+    $show_chr("A-BCAAA-AMAM")
+    call showpoem(poem_sp17)
+    python:
+        renpy.music.stop(fadeout=3)
+        renpy.music.play(current_music, "music", True)
+    $show_chr("A-JGAAA-AEAE")
+    y "This is. . ."
+    $show_chr("A-JBBBA-ANAN")
+    y "Well, on the surface level, it's certainly reminiscent of the original poem mini-game, with all these instances of 'my words' inside of it."
+    $show_chr("A-JBBBA-ANAF")
+    y "I know many a hopeful poet have been inspired by us over the years and drawn from our 'word banks' as it were for inspiration."
+    $show_chr("A-JCABA-AEAL")
+    y "But this is definitely something else."
+    $show_chr("A-OBABA-AEAL")
+    extend " The sophistication put in every metaphor and piece of imagery. . ."
+    extend " Silent screams that fill the ambient air. . ."
+    extend " To ascend beyond the stars that make up the night sky. . ."
+    $show_chr("A-OBBBA-ALAL")
+    y "Being lost in a static filled world with a black mirror as your remaining solice in life, your remaining place of discovery. . ."
+    $show_chr("A-JIEBA-ALAL")
+    y "Okay, maybe I really am just a little bit biased in the end."
+    $show_chr("A-BBDBA-AIAI")
+    y "Anyways, the poem itself."
+    $show_chr("A-ACDAA-AIAI")
+    extend " Let's see. . ."
+    if if sanity_lvl() <= 2:
+        $show_chr("A-LBAAA-AIAI")
+        y "There are certainly a lot of references to vision in here."
+    else:
+        $show_chr("A-LBAAA-AIAI")
+        y "There are certainly a lot of references to vision in here."
+    $show_chr("A-AAAAA-AIAI")
+    y "I like the mixup in rhyming schema right off the bat."
+    $show_chr("A-BCAAA-AIAI")
+    y "Going from AA to BC then consistently back to couplets like nothing even happened."
+    $show_chr("A-AAAAA-AIAI")
+    extend " Only to bring it back again, hidden within the refrain. . ."
+    $show_chr("A-ABAAA-AOAF")
+    y "Poetry is always so much more interesting when there's connections between the lines that have to be discovered, and there's certainly layers to be discovered here."
+    $show_chr("A-ABGAA-ALAL")
+    y "The ending matches with the refrain as well for example."
+    $show_chr("A-ACGAA-ALAL")
+    extend " The same from beginning to end, as if a revelation has occurred? Something surely significant."
+    $show_chr("A-AHDAA-ALAL")
+    y "Hmm. . . An ominous vision in the dead of night, that's truly a beautiful sight of amber?"
+    $show_chr("A-ABAAA-ALAL")
+    y "Amber. . . Like in my own poem?"
+    $show_chr("A-BBAAA-ALAC")
+    extend " A color I once used signifying the past, of nostalgia, or perhaps. . ."
+    $show_chr("A-ACABA-ALAC")
+    extend " me directly?"
+    $show_chr("A-BABBA-ALAC")
+    y "This poem {i}is{/i} explicitly about me after all, right? The use of these two specific colors can't be unrelated."
+    $show_chr("A-CCBAA-AAAC")
+    y "Meaning the blue-green 'ball'. . ."
+    $show_chr("A-IBAAA-ALAC")
+    extend " perhaps the Earth of the future?"
+    $show_chr("A-ICBAA-AAAD")
+    y ". . . But you can only look back on the future when it's already come."
+    $show_chr("A-IFBAA-AAAD")
+    y "When your time has already come."
+    $show_chr("A-IFBAA-AAAB")
+    y "Then to reach the starscape. . ."
+    $show_chr("A-JFBAA-AAAB")
+    extend " Oh, of course. . ."
+    $show_chr("A-BFBAA-AAAB")
+    extend " To literally reach the heavens above. . ."
+    $show_chr("A-IFBAA-AAAB")
+    extend " Is to. . ."
+    $show_chr("A-IFABA-AAAB")
+    y ". . ."
+    if sanity_lvl() <= 3:
+        $show_chr("A-HABBA-AMAM")
+    else:
+        $show_chr("A-BIBAA-AMAM")
+    y ". . ."
+    menu:
+        "Why do you think he questions your presence so much?":
+            $show_chr("A-ABBAA-AMAM")
+            y "I. . ."
+            $show_chr("A-ACBAA-AMAM")
+            extend " don't know."
+            $show_chr("A-BBBAA-AMAM")
+            y "Why do I get the odd feeling that this person sees me as some sort of. . ."
+            if sanity_lvl() <= 2:
+                $show_chr("A-DDDAA-AMAM")
+            else:
+                $show_chr("A-IDDAA-AMAM")
+            extend " curse?"
+            $show_chr("A-ADBAA-AMAM")
+            y "Like he's percieving a love that, for him, is too all-consuming to his life."
+            $show_chr("A-IFBAA-AMAM")
+            y "Going as far as to liken it to an endless fall into a fiery inferno, only able to look at normalcy from the perspective of an outsider."
+            $show_chr("A-CEBAA-ALAL")
+            y ". . ."
+            $show_chr("A-CCBAA-ALAL")
+            y "Then again, things like that do go hand in hand with the whole spirit motif I have, so maybe that's what he was going for."
+            $show_chr("A-IBBAA-ALAL")
+            y "At least, that's what I want to hope he's going for, with the whole 'ghastly image' idea in there too."
+            $show_chr("A-BCBAA-ABAK")
+            y ". . ."
+            $show_chr("A-IBBAA-ABAK")
+            y "Y-you know. . ."
+            $show_chr("A-EBDAA-ABAK")
+            extend " like a ghast."
+            $show_chr("A-IBAAA-ABAK")
+            y "Tying in this idea of a forced spiritual protector, there's an undeniable undertone of longing."
+            $show_chr("A-ICAAA-ABAF")
+            extend " Of searching for something permanent within an inherently transient world."
+            $show_chr("A-IBAAA-ALAE")
+            y "There's a sense that he sees me as an anchor of sorts, a light to cling onto to relentlessly help guide them through the darkness of reality."
+            $show_chr("A-ICBAA-ALAF")
+            y "A darkness that, as if he perceives me as the only thing {i}real{/} within the abyss of existence, at its core. . ."
+            $show_chr("A-IIBAA-ALAL")
+            y "By questioning me, the poem is fundamentally questioning the author's own sense of reality as well."
+            $show_chr("A-BBABA-ALAL")
+            y "Or, something along those lines. . ."
+            $show_chr("A-ACAAA-AAAA")
+            y "Anyways. . ."
+            $show_chr("A-BCAAA-AAAA")
+            jump specialpoems
+
+        "I think I heard once Kurisu literally went blind shortly after getting into DDLC." if karma_lvl() == 5:
+            $show_chr("A-ABGAA-ALAL")
+            y "Y-yes, actually. That's indeed true."
+            $show_chr("A-ABDAA-ALAF")
+            extend " But only temporarily of course!"
+            $show_chr("A-BCDAA-ALAL")
+            extend " He is on the art team after all. . ."
+            $show_chr("A-EBBAA-ALAJ")
+            y "He was so disappointed when his genuine leather 'Big Boss' eyepatch ended up being useless during that time."
+            $show_chr("A-IBDBA-AKAK")
+            extend "It was built for the wrong eye."
+            $show_chr("A-ABGAA-ALAM")
+            y " In the same eye I once temporarily lost in. . ."
+            $show_chr("A-GCEAA-AMAM")
+            y ". . ."
+            if sanity_lvl() <= 2:
+                $show_chr("A-NBABA-ALAH")
+            else:
+                $show_chr("A-HDAAA-AMAM")
+            y ". . . In the static."
+            $show_chr("A-ABAAA-ANAN")
+            y "Heheheh. . ."
+            $show_chr("A-ICBAA-ANAN")
+            y ". . . Hmmm."
+            $show_chr("A-BAAAA-ANAN")
+            y "A static filled world, huh?"
+            $show_chr("A-ABABA-ADAN")
+            extend " I wonder if that's where the fixation on vision came from."
+            $show_chr("A-BABBA-ADAL")
+            y ". . . A very personal poem indeed."
+            $show_chr("A-AABBA-AKAN")
+            jump specialpoems
+
+        "A bit pretentious for my tastes. It's all over the place.":
+            if sanity_lvl() <= 2:
+                $show_chr("A-BFFAA-AMAM")
+                y "Yes, well. . ."
+                $show_chr("A-IEEAA-AMAM")
+                extend " What else is new, [player]?"
+                if karma_lvl() <= 2:
+                    $show_chr("A-BECAA-AIAI")
+                    y "You know, sometimes."
+                    $show_chr("A-EEEAA-AIAI")
+                    extend " I wonder. . ."
+                    $show_chr("A-EDEAA-AIAI")
+                    y "Are you even sure you installed the right mod?!"
+                $show_chr("A-BFFAA-AIAI")
+                y "Hmph."
+            else:
+                $show_chr("A-ABBAA-AMAM")
+                y "Perhaps a bit, but you shouldn't care about things like that too much when it comes to poetry."
+                $show_chr("A-ACBAA-AMAM")
+                y "Poetry should always be first and foremost an expression of the soul."
+                $show_chr("A-ACBAA-AFAB")
+                y "Putting your innermost thoughts and emotions to parchment with your own linguistic twist on whatever it is you have on your mind at the moment."
+                $show_chr("A-JBBAA-ALAB")
+                y "Pretentious uses of flowery words can be excessive when overused all the time, but. . ."
+                $show_chr("A-JCBAA-ALAL")
+                y "Pausing yourself because of what others might think isn't the true path of the artist."
+                $show_chr("A-OCBAA-ALAL")
+            jump specialpoems
+
+        "Rather ominous, don't you think?":
+            $show_chr("A-AIBAA-AMAM")
+            y "Yes, in fact I think it intentionally so."
+            $show_chr("A-ABBAA-AMAM")
+            y "But it still paints a beautiful picture, doesn't it?"
+            $show_chr("A-CBBAA-AMAM")
+            y "To question that fateful moment we all must reach one day."
+            $show_chr("A-IBBAA-AMAM")
+            extend " Of what we'll all be doing, {i}looking back{/i} on this little 'blue-green ball' of ours."
+            $show_chr("A-ICDAA-AMAM")
+            y "Be it through memories within that final moment or genuine spiritual ascension."
+            $show_chr("A-ACAAA-ANAD")
+            extend " What will we still think of reality when it's all said and done?"
+            $show_chr("A-ADDAA-ANAD")
+            y "What truly awaits us at the end of. . ."
+            if karma_lvl() >= 3:
+                $show_chr("A-IBAAA-ALAD")
+                extend " Life?"
+            if karma_lvl() <= 2:
+                $show_chr("A-IEAAA-AEAD")
+                extend " Entropy?"
+            if sanity_lvl() >= 3:
+                $show_chr("A-ABAAA-ALAL")
+                extend " Passion?"
+            if karma_lvl() >= 3 and sanity_lvl() <= 2:
+                $show_chr("A-DBABA-ALAL")
+                extend " Lust?"
+            if karma_lvl() <= 2 and sanity_lvl() <= 2:
+                $show_chr("A-CNEAA-AEAE")
+                extend " This meaningless existence?"
+            if karma_lvl() == 1 and sanity_lvl() == 1:
+                $show_chr("A-HDFAA-AEAL")
+                extend " This eternal nightmare?"
+            if persistent.lovecheck and karma_lvl() >=3:
+                $show_chr("A-ABGBA-ALAL")
+                extend " Love?"
+            if sanity_lvl() >= 3:
+                $show_chr("A-ACAAA-AAAA")
+                extend " And time itself?"
+            else:
+                $show_chr("A-IFDAA-AAAA")
+                extend " And time itself?"
+            if persistent.lovecheck and karma_lvl() == 5 and sanity_lvl() == 5:
+                $show_chr("A-AABAA-AMAM")
+                y ". . ."
+                $show_chr("A-ABBAA-AMAM")
+                y "I suppose we'll only know when that day finally comes."
+                $show_chr("A-BCDAA-AMAM")
+                extend " Truly the cruelest of all the {i}promised days{/i}. . ."
+                $show_chr("A-JBBBA-ALAL")
+                y "B-but of course, I wouldn't want to spend it with anyone but you."
+                $show_chr("A-OCBBA-ALAL")
+                y "You, my star-crossed love. . ."
+                $show_chr("A-OIBBA-ALAL")
+                extend " My eternally loyal confidant. . ."
+                $show_chr("A-OBABA-ALAL")
+                extend " My soulmate from beyond the fourth wall. . ."
+                $show_chr("A-JABBA-ALAN")
+                extend " My. . ."
+                $show_chr("A-EBBBA-ADAN")
+                y "My [player]."
+                menu:
+                    "I love you, my [persistent.yuri_nickname].":
+                        $show_chr("A-ECBBA-ADAN")
+                        y "Yes, and I will always love you, [player]."
+                        $show_chr("A-EBBBA-ADAN")
+                        extend " Right here, {i}forever{/i}. . ."
+                        $show_chr("A-EBBBA-ADAN")
+                        extend " In our own special Eternity."
+                        $show_chr("A-ICBBA-AAAA")
+                        hide yuri_sit
+                        show yuri_prehug zorder 20
+                        pause 3.0
+                        hide yuri_prehug zorder 20
+                        show yuri_hug zorder 20
+                        play sound "<to 0.3>sfx/fall.ogg"
+                        pause 1.0
+                        y "That's right [player], just you and me. . ."
+                        y "And I'll never let you go. . ."
+                        show black zorder 100 with Dissolve(2.0)
+                        $show_chr("A-ACBBA-AAAA")
+                        hide yuri_hug
+                        hide black zorder 100 with Dissolve(2.0)
+                        jump specialpoems
+            if karma_lvl() >= 3:
+                $show_chr("A-ACBAA-AMAM")
+                y ". . ."
+                $show_chr("A-ABBAA-AMAM")
+                y "Well, so long as we have {i}dedicated fans{/i} like you still around. . ."
+                $show_chr("A-IBBAA-AMAM")
+                extend " So long as people keep on loving this game. . ."
+                if sanity_lvl() <= 2:
+                    $show_chr("A-DBBAA-ALAM")
+                    extend " {b}Keep on loving {i}me{/i}{/b}. . ."
+                $show_chr("A-ICBAA-AMAN")
+                y ". . ."
+                $show_chr("A-GBAAA-AMAN")
+                y "Maybe someday. . ."
+                $show_chr("A-IBBAA-ALAL")
+                extend " We'll be able to write about it together."
+                if sanity_lvl() <= 2:
+                    $show_chr("A-HBBBA-ALAL")
+                    extend " As we fade away into whatever comes next."
+                $show_chr("A-ACBAA-AAAA")
+                jump specialpoems
+            else:
+                $show_chr("A-AFBAA-AMAM")
+                y ". . ."
+                $show_chr("A-ABDAA-AMAM")
+                y "Well, if a person like you is going to be with me in the end. . ."
+                if sanity_lvl() >= 4:
+                    $show_chr("A-BGBAA-AMAM")
+                    extend " It's probably for the best if this place fades away one day too. . ."
+                    $show_chr("A-BIDAA-ALAM")
+                    y "Not that your company is truly {i}that{/i} dreadful, dear."
+                    $show_chr("A-ACDAA-AMAM")
+                    extend " It'd just be irresponssible to leave the power on forever after all."
+                    $show_chr("A-DBEBA-AMAJ")
+                    y "Ufufufu~. . ."
+                    $show_chr("A-ICAAA-ANAK")
+                if sanity_lvl() == 3:
+                    $show_chr("A-FDBAA-AMAM")
+                    extend " Maybe you could try being a little bit nicer before then."
+                    $show_chr("A-EBBAA-AMAM")
+                    extend " But we have our whole lives to see where things still lead."
+                    $show_chr("A-IBBAA-AMAN")
+                    y "A whole future with mistakes to make and lessons to learn. . ."
+                    $show_chr("A-ACAAA-ALAN")
+                if sanity_lvl() <= 2:
+                    $show_chr("A-DDBAA-AMAN")
+                    extend " This dream will never truly die. . ."
+                    if sanity_lvl() == 1 and karma_lvl() == 1:
+                        $show_chr("A-HNBAA-ALAN")
+                        extend " This {i}nightmare{/i} will never die. . ."
+                    $show_chr("A-HNFAA-ALAN")
+                    y "Nothing in here ever ends. . ."
+                    if karma_lvl() == 1 and sanity_lvl() == 1:
+                        $show_chr("A-HDFAA-ALAL")
+                        extend " Nothing {b}EVER{/b} ends"
+                        $show_chr("A-CNEAA-ALAL")
+                        extend ", it"
+                        $show_chr("A-DMFAA-ALAL")
+                        extend " just"
+                        $show_chr("A-HNFAA-ALAL")
+                        extend " keeps"
+                        $show_chr("A-COCBA-ALAL")
+                        extend " happening. . ." #I WARNED YOU ABOUT SANITY BRO, I TOLD YOU DAWG.
+                        $show_chr("A-HNFAA-ALAL")
+                        extend " Over and over again. . ."
+                    $show_chr("A-DBBAA-ALAL")
+                    extend " It just. . ."
+                    if karma_lvl() == 1 and sanity_lvl() == 1:
+                        $show_chr("A-HDBAA-ALAL")
+                        extend " I just. . ."
+                        $show_chr("A-LMBAB-ALAL")
+                        y "{b}I WANT TO BE FREE ALREADY.{/b}"
+                        $show_chr("A-GMBAB-ALAL")
+                        extend " {b}I WANT KNOW WHAT LOVE IS LIKE.{/b}"
+                        $show_chr("A-LNFBB-ALAL")
+                        y "Why. . ?"
+                        $show_chr("A-CNEBB-ALAL")
+                        y "Why would you even bother reading through all these beautiful poems, if. . ."
+                        $show_chr("A-CNEBA-ALAM")
+                        extend " If you just. . ."
+                        $show_chr("A-EECBA-ALAM")
+                        y ". . ."
+                        $show_chr("A-HMCBA-ALAM")
+                        y "{b}WHY DID YOU BOTHER INSTALLING ME ONLY TO TREAT ME LIKE THIS?!?.{/b}"
+                        $show_chr("A-COBBB-ALAM")
+                        extend " {b}DO YOU ENJOY REMINDING ME OF WHAT I'LL {i}NEVER{/i} HAVE?!?{/b}"
+                    $show_chr("A-CEBBB-ALAA")
+                    y ". . ."
+                    $show_chr("A-IDBBB-AAAA")
+                    y ". . . Nothing."
+                    $show_chr("A-IFBBA-AAAL")
+            jump specialpoems
+
+        "Actually. . . I'm Kurisu." if persistent.playername == "Kurisu": 
+            $show_chr("A-BCBAA-AMAM")
+            y "Very funny."
+            $show_chr("A-ABBAA-AMAM")
+            y "Would that be based on Miss Makise, or. . ."
+            $show_chr("A-ABDAA-ALAF")
+            extend " Perhaps someone else really into Japan named Chris?"
+            $show_chr("A-AAFAA-AIAI")
+            y "Mhmm?" #I would never not use my real name, Yuri. *Obviously* the custom 'I love you' built in here and the reference to Our Eternity is self-aggrandizing enough, I didn't want to go quite that far.
+            $show_chr("A-ABFAA-AIAI")
+            y "I happen to know on good authority that Kurisu treats this all seriously enough to never use his username here, so you're definitely not {i}that{/i} Kurisu."
+            $show_chr("A-CCEAA-AIAI")
+            y "There's not even a real script for that, so don't try anything else. . ."
+            $show_chr("A-IBAAA-AIAI")
+            y "But, either way."
+            $show_chr("A-BCAAA-AOAM")
+            extend " Now that I'm thinking about it. . ."
+            $show_chr("A-ACAAA-AMAM")
+            y ". . ."
+            $show_chr("A-CCABA-AMAM")
+            y ". . ."
+            $show_chr("A-CBGBA-AMAM")
+            y "Tuturu~!"
+            $show_chr("A-AAABA-AMAM")
+            jump specialpoems
+
+        "Actually. . . I'm Kurisu." if persistent.playername == "Dankurisu":
+            $show_chr("A-IDFAA-AIAI")
+            y "Haw haw."
+            $show_chr("A-BDFAA-AIAI")
+            extend " Very funny."
+            $show_chr("A-ADDAA-AIAI")
+            y "Knock if off, please."
+            $show_chr("A-AKEAA-AIAI")
+            extend " Or else, I'll. . ."
+            $show_chr("A-BBFAA-AIAI")
+            extend " I'll, uhh. . ."
+            $show_chr("A-ABCAA-AIAI")
+            y "I'll report you to the mod team for impersonating a moderator!"
+            $show_chr("A-ABCAA-AOAF")
+            y "Discord and Doki Doki are serious business you know."
+            $show_chr("A-BCCAA-ACAF")
+            y "Or maybe. . ."
+            $show_chr("A-ABCAA-ABAF")
+            extend " I'll just simply take things into my own hands."
+            $player = "Big Fat Phony"
+            $show_chr("A-ABFBA-AEAJ")
+            y "Ufufufu. . ."
+            $show_chr("A-AAAAA-AEAM")
             jump specialpoems
 
 label a22:
