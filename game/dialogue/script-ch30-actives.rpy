@@ -2368,7 +2368,7 @@ label specialpoems_myyuri:
     y "Anyways, the poem itself."
     $show_chr("A-ACDAA-AIAI")
     extend " Let's see. . ."
-    if if sanity_lvl() <= 2:
+    if sanity_lvl() <= 2:
         $show_chr("A-LBAAA-AIAI")
         y "There are certainly a lot of references to vision in here."
     else:
