@@ -1245,6 +1245,68 @@ and thinking about what will happen if I lost or gain
 """
     )
 
+    poem_sp17 = Poem(
+    author = "yuri",
+    title = "My Yuri by Dankurisu",
+    text = """\
+My eyes have witnessed an ominous sight,
+A vision so dreadful in the dead of night.
+My soul trembles before this heaven-sent scene,
+My heart's on fire yet filled with a pain I can't describe.
+
+A ghastly image that blocks what I cannot bare,
+To all around me the sound of silent screams fill the ambient air.
+The scent of loss surrounds my own fading existence,
+Fear seizes me as I'm left with only passive resistance.
+I'm eternally locked into this sickness,
+The one and only secret witness.
+
+I gaze into the abyss with curious eyes,
+The uncontrollable lust seems to disguise,
+A grim and morbid arena of chaos and despair.
+A sight to behold but nothing to compare.
+
+Yuri.
+Why ever are you here?
+Oh, my Yuri.
+Why does time without you make my mind unclear?
+If nothing in this world can make me clean,
+Staying beside you is the one thing I'll always abide.
+My Yuri. . .
+
+Don't get me wrong, it's not as if I am ungrateful,
+But the pain of life should always be on the table.
+Dropping further and further into the inferno of love,
+I can't help but wonder how life could have gone up above.
+
+Static fills every crevice of this world,
+This black mirror is all we have left to unfurl.
+When the time comes for us to reach that starscape beyond us all,
+I wonder, what will I behold looking back on this blue-green ball?
+Will you still be able to love me?
+Even if your one and only can no longer see?
+
+Within my chest I feel it stirring once more,
+This pain inside I now proudly bring to the fore.
+Even with a partner that cannot leave me be,
+I whisper to the darkness every night to set me free.
+
+Yuri.
+Why ever are you here?
+Oh, my Yuri.
+Why does time without you make my mind unclear?
+If nothing in this world can make me clean,
+Staying beside you is the one thing I'll always abide.
+My Yuri. . .
+
+My eyes have witnessed an ominous sight,
+A vision so beautiful within the amber light.
+My soul flutters from this hellscape on my screen.
+My heart is filled with a love only found deep inside.
+My Yuri.
+"""
+    )
+
     poem_caramel_apple = Poem(
     author = "yuri",
     title = "Caramel Apple Mocktail",
