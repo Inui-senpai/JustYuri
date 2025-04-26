@@ -100,14 +100,11 @@ label mouse_coords:
         "Back.":
             jump control_panel
 
-python:
-    persistent.firstboop = True
-
 label boop_nose:
     python:
         persistent.boop_locations[0] += 1
     if persistent.boop_locations[0] == 1:
-        $update_memory("idle_62", "first_boop")
+        $update_memory("idle_60", "first_boop")
         $show_chr("A-DDGBA-AAAA")
         y "Ah... AHHHHH!"
         $show_chr("A-DDABA-AAAJ")

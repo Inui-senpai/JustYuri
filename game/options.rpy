@@ -250,8 +250,8 @@ init python:
     build.classify("game/**.webm", "videos")
 
     #new addition. Saves all python files while excluding
-    build.classify("game/00-chess-engine/python-packages/chess/**", "scripts")
-    build.classify("game/python-packages/**", "scripts")
+    #build.classify("game/00-chess-engine/python-packages/chess/**", "scripts")
+    #build.classify("game/python-packages/**", "scripts")
     #build.classify("game/python-packages/jycrypt.py", "scripts")
     #build.classify("game/python-packages/jychrmod.py", "scripts")
     #build.classify("game/python-packages/jysavechanger.py", "scripts")
