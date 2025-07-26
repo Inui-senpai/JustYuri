@@ -235,7 +235,7 @@ label tetris:
                 y "Or maybe I would win you. Hehe. Either way, everyone wins!"
                 menu:
                     "50,000 Points":
-                        $ TetrisScore = 20000
+                        $ TetrisScore = 50000
                     "100,000 Points":
                         $ TetrisScore = 100000
                     "200,000 Points":
@@ -267,7 +267,7 @@ label tetris:
                 y "Alright, let us see who will outdo the other!"
                 menu:
                     "50,000 Points":
-                        $ TetrisScore = 20000
+                        $ TetrisScore = 50000
                     "100,000 Points":
                         $ TetrisScore = 100000
                     "200,000 Points":
@@ -292,7 +292,7 @@ label tetris:
                 y "Let's get on with it."
                 menu:
                     "50,000 Points":
-                        $ TetrisScore = 20000
+                        $ TetrisScore = 50000
                     "100,000 Points":
                         $ TetrisScore = 100000
                     "200,000 Points":
@@ -313,7 +313,7 @@ label tetris:
                 $ show_chr("A-ABABA-AMAM") # open mouth smile with blush, hands playing with hair
                 y "Oh how fun~!"
                 y "W-well if you insist [player]. It is better when we strive toward the same goal together."
-                y "As the old saying goes, birds of a feather flock together. Two heads are always better than one ~!"
+                y "As the old saying goes, birds of a feather flock together. Two heads are always better than one~!"
                 $ show_chr("A-FCCBA-AAAL") # smirk with a wink and hand on her chest (This needs expressions)
                 y "Maybe it might even become an all-nighter! Ehehe..."
                 $ show_chr("A-ECABA-AAAJ")  # closed mouth smile with hands on her lips and half-lidded eyes (needs expressions)
@@ -384,12 +384,12 @@ label custom_tetris_repeat:
     y "The Co-op mode shares the same procedure, but this time it is 421 x 420 pixels and you name it {b}grids (coop).png{/b}. It's in the same folder again."
     y "Now we come to the blocks."
     y "Fun fact, did you know that a single block is called a Tetromino?"
-    y "There are 7 pieces in Tetris which usually have diffrent colors. You could make them the same colors"
+    y "There are 7 pieces in Tetris which usually have different colors. You could make them the same colors"
     y "But that would be kind of boring. Don't you think?"
     $ show_chr("A-ACAAA-AFAD")
     y "Each pieces is build from individual blocks which are number from 1 to 7."
     y "Also in newer version of Tetris. You can see where the piece will land. We refer it as {b}shadow pieces{/b} "
-    y "They also need to have their own colors which are usually transparency of nomral blocks"
+    y "They also need to have their own colors which are usually transparency of normal blocks"
     y "Each of the cube need to be a .png image with size 20x20. You can use the {b}cube_1.png{/b} file from the folder \"game\\images\\tetris\\tetris\" as an example..."
     y "For the T Piece you set up cube_1.png and shadow_1.png"
     y "For the S Piece you set up cube_2.png and shadow_2.png"
@@ -400,7 +400,7 @@ label custom_tetris_repeat:
     y "For the O Piece you set up cube_7.png and shadow_7.png"
     y "The last is wall of the game. For wall you set up cube_8.png. Most of the time is black for easy distinguish"
     y "For now in your custome_Tetris folder, you should have 18 files. 2 Background, 8 cube and 8 shadow png"
-    y "Is everything good? If not let me know and I will reapet the step again"
+    y "Is everything good? If not let me know and I will repeat the step again"
     menu:
         "Yes":
             y "Okay. Let's go to next part"
@@ -424,19 +424,19 @@ label custom_tetris_repeat_audio:
     y "t-rotate.ogg for whenever you rotate the piece."
     y "Those are were sfx sound. For the main music which will loop for the duration of game."
     y "Use \"tetris.ogg\""
-    y "So in the end your custome_Tetris folder should have 26 files. 2 Background, 8 cube, 8 shadow png and 8 .ogg files"
+    y "So in the end your custom_tetris folder should have 26 files. 2 Backgrounds, 8 cubes, 8 shadow pngs and 8 ogg files."
     $ show_chr("A-BCBAA-AEAD")
     y "I-I hope I didn't confuse you with that explanation..."
     y "I'm not good at explaining such technicalities..."
-    y "If I mess up and you still need to adjust something let me know and I will repeat the steps"
+    y "If I mess up and you still need to adjust something let me know and I will repeat the steps."
     menu:
-        "Everything is fine":
-            y "Yay"
-        "Please start from start":
-            y "Okay"
+        "Everything is fine.":
+            y "Yay."
+        "Please start from start.":
+            y "Okay."
             jump custom_tetris_repeat
-        "Please start from audio files":
-            y "Okay"
+        "Please start from audio files.":
+            y "Okay."
             jump custom_tetris_repeat_audio
     if karma_lvl() >= 2:
         $ show_chr("A-GCAAA-AEAD")
@@ -451,8 +451,8 @@ label custom_tetris_repeat_audio:
 
 label custom_tetris_failure:
     $show_chr("A-ACDAA-ABAB")
-    y "[player]? It seems you need to fix some issue which I mention"
-    y "Pehraps I should explain all steps again"
+    y "[player]? It seems you need to fix some issue which I mention."
+    y "Perhaps I should explain all steps again..."
     call custom_tetris_repeat
 
 label custom_tetris_checkpoint:
@@ -481,7 +481,7 @@ label custom_tetris_checkpoint:
                     y("That's fine. I'll be waiting for them regardless.")
                     renpy.jump("ch30_loop")
                 custom_tetris_png_req = ["background", "background_no_grind"]
-                custom_tetris_music_req = ["t-fl", "t-2fl", "t-3fl", "t-4fl", "t-drop", "t-move", "t-rotate", "tetris"]
+                custom_tetris_music_req = ["t-fl", "t-2fl", "t-3fl", "t-4fl", "t-drop", "t-move", "t-rotate", "t-spin", "tetris"]
                 custom_tetris_all_ready = True
                 for i in custom_tetris_png_req:
                     element = (i + ".png", i + ".png")
