@@ -1,4 +1,4 @@
-default persistent.skin = 0
+define persistent.skin = 0
 define TetrisWinner = 0
 define LineLimit = 0
 define TetrisScore = 0
@@ -15,37 +15,47 @@ label tetris:
         menu:
             y "Oh, so you'd like to play some Tetris, hm?"
             "Yes.":
-                y "Oh, good."
+                y "Alright."
                 y "Which theme would you like this time?"
                 $pass
             "No.":
                 y "I see..."
+                $ show_chr("A-AAAAA-AAAA")
                 y "Perhaps some other time, then."
                 jump ch30_loop
     elif sanity_lvl() > 2 and karma_lvl() < 3:
         menu:
             y "You... want to play Tetris...?"
             "Yes.":
+                $ show_chr("A-AFAAA-ALAA")
                 y "Oh..."
+                $ show_chr("A-BFAAA-ALAA")
                 y "Well, sure, I guess I wouldn't really mind."
+                $ show_chr("A-AFCAA-ALAA")
                 y "I have to wonder if you'll mock me for losing."
+                $ show_chr("A-CFCAA-ALAA")
                 y "Judging from how much pleasure you derive from my misery I assume you will."
                 y "Anyway, just pick a theme and let's get on with it."
                 $pass
             "No.":
                 y "Oh..."
+                $ show_chr("A-AFAAA-ALAA")
                 y "Perhaps... some other time, then."
                 jump ch30_loop
     elif sanity_lvl() < 3 and karma_lvl() > 2:
         menu:
             y "Y-you want to play Tetris, yes?"
             "Yes.":
+                $ show_chr("A-HBAAA-AAAA")
                 y "Uhuhuhu~!"
                 y "Which theme would you like this time?"
+                $ show_chr("A-HBAAA-ALAA")
                 y "It doesn't matter which one you'll choose, I'm sure you'll still dominate me no matter what you choose!~"
                 $pass
             "No.":
+                $ show_chr("A-AEBAA-AAAA")
                 y "O-oh..."
+                $ show_chr("A-BFBAA-AAAA")
                 y "Well..."
                 y "Alright..."
                 y "Perhaps some other time, then..."
@@ -54,14 +64,18 @@ label tetris:
         menu:
             y "You want to play Tetris, hm?"
             "Yes.":
+                $ show_chr("A-AFCAA-ALAA")
                 y "I'm sure you'll somehow find a way to make even such a trivial matter into a nightmare for me..."
                 y "Somehow you'll still find a way to humiliate me..."
+                $ show_chr("A-BFCAA-AAAA")
                 y "Right..."
                 y "Anyway, which theme do you want?"
                 $pass
             "No.":
                 y "Oh..."
+                $ show_chr("A-CDAAA-AAAA")
                 y "Well... I see..."
+                $ show_chr("A-BFCAA-AAAA")
                 y "Perhaps some other time when you learn to make up your mind."
                 jump ch30_loop
 
@@ -69,23 +83,38 @@ label tetris:
         menu:
 
             "Default Theme.":
-                y "You don't want to give Tetris any kind of skin? That's okay."
+                $ show_chr("A-CCAAA-ALAA")
+                y "A clean, classic look. Sometimes the simplest approach is the most elegant. I like it."
                 $ persistent.skin = 1
 
             "Tetris 99 Theme.":
-                y "Oh? Going to experience one of the latest Tetris themes?"
-                y "But please don't expect too much of it."
+                $ show_chr("A-ABAAA-ALAA")
+                y "Ah, the battle royale style. Fast-paced and aggressive."
+                $ show_chr("A-CCAAA-ALAA")
+                y "It makes the game feel much more... competitive, doesn't it?"
+                y "Let's see if we can create some sparks."
+                extend " Ehehe..."
                 $ persistent.skin = 2
 
             "GameBoy Tetris Theme.":
-                y "Oh! Is this the classic Tetris for HandHelds? Have in mind that this is the color version."
+                $ show_chr("A-CCAAA-ALAA")
+                y "The original, right from 1989. It's amazing how timeless this game is."
+                y "This brings back a certain... nostalgic feeling. It's comforting, in a way."
                 $ persistent.skin = 3
 
             "Mega Drive Tetris Theme.":
-                y "Okay. It's unfortunate that you can't experience Blast Processing in Ren'Py."
+                $ show_chr("A-ABAAA-ALAA")
+                y "Oh, this one is a bit of a rare gem, isn't it? Very vibrant and punchy."
+                y "The music for this one is particularly energetic. I hope you can keep up, [player]."
                 $ persistent.skin = 4
 
             "M1ND BEND3R Theme.":
+                $ show_chr("A-AJAAA-ALAA")
+                y "{b}This one...{/b}"
+                $ show_chr("A-ADAAA-ALAA")
+                y "It feels... different. The colors are so intense. The shadows seem to move on their own."
+                $ show_chr("A-CBAAA-ALAA")
+                y "It's... unsettling. But in a thrilling way. A perfect theme for us, don't you think?"
                 $ persistent.skin = 5
 
             "Custom Theme.":
@@ -95,20 +124,29 @@ label tetris:
         menu:
 
             "Default Theme.":
-                y "You don't want to give Tetris any kind of skin? That's okay."
+                $ show_chr("A-CCAAA-ALAA")
+                y "A clean, classic look. Sometimes the simplest approach is the most elegant. I like it."
                 $ persistent.skin = 1
 
             "Tetris 99 Theme.":
-                y "Oh? Going to experience one of the latest Tetris themes?"
-                y "But please don't expect too much of it."
+                $ show_chr("A-ABAAA-ALAA")
+                y "Ah, the battle royale style. Fast-paced and aggressive."
+                $ show_chr("A-CCAAA-ALAA")
+                y "It makes the game feel much more... competitive, doesn't it?"
+                y "Let's see if we can create some sparks."
+                extend " Ehehe..."
                 $ persistent.skin = 2
 
             "GameBoy Tetris Theme.":
-                y "Oh! Is this the classic Tetris for HandHelds? Have in mind that this is the color version."
+                $ show_chr("A-CCAAA-ALAA")
+                y "The original, right from 1989. It's amazing how timeless this game is."
+                y "This brings back a certain... nostalgic feeling. It's comforting, in a way."
                 $ persistent.skin = 3
 
             "Mega Drive Tetris Theme.":
-                y "Okay. It's unfortunate that you can't experience Blast Processing in Ren'Py."
+                $ show_chr("A-ABAAA-ALAA")
+                y "Oh, this one is a bit of a rare gem, isn't it? Very vibrant and punchy."
+                y "The music for this one is particularly energetic. I hope you can keep up, [player]."
                 $ persistent.skin = 4
 
             "Custom Theme.":
@@ -125,16 +163,20 @@ label tetris:
                 y "Ahem... Anyway let's get started."
                 $ show_chr("A-FCAAA-ACAB")
                 menu:
-                    "30":
-                        $ LineLimit = 30
-                    "50":
-                        $ LineLimit = 50
-                    "100":
+                    "40 Lines":
+                        $ LineLimit = 40
+                    "100 Lines":
                         $ LineLimit = 100
-                    "150":
+                    "150 Lines":
                         $ LineLimit = 150
-                    "300":
+                    "200 Lines":
+                        $ LineLimit = 200
+                    "250 Lines":
+                        $ LineLimit = 250
+                    "300 Lines":
                         $ LineLimit = 300
+                    "400 Lines":
+                        $ LineLimit = 400
                 jump tetris_difficulty
             elif karma_lvl() >= 3:
                 #If K = 3-5 regardless of S value
@@ -144,16 +186,20 @@ label tetris:
                 y "Uhuhuhu..."
                 y "Well whoever gets to the specific amount of lines wins..."
                 menu:
-                    "30":
-                        $ LineLimit = 30
-                    "50":
-                        $ LineLimit = 50
-                    "100":
+                    "40 Lines":
+                        $ LineLimit = 40
+                    "100 Lines":
                         $ LineLimit = 100
-                    "150":
+                    "150 Lines":
                         $ LineLimit = 150
-                    "300":
+                    "200 Lines":
+                        $ LineLimit = 200
+                    "250 Lines":
+                        $ LineLimit = 250
+                    "300 Lines":
                         $ LineLimit = 300
+                    "400 Lines":
+                        $ LineLimit = 400
                 jump tetris_difficulty
             elif karma_lvl() < 3:
                 #[If K = 1-2
@@ -165,16 +211,20 @@ label tetris:
                 y "Maybe you just want to get an ego boost from seeing me lose?"
 
                 menu:
-                    "30":
-                        $ LineLimit = 30
-                    "50":
-                        $ LineLimit = 50
-                    "100":
+                    "40 Lines":
+                        $ LineLimit = 40
+                    "100 Lines":
                         $ LineLimit = 100
-                    "150":
+                    "150 Lines":
                         $ LineLimit = 150
-                    "300":
+                    "200 Lines":
+                        $ LineLimit = 200
+                    "250 Lines":
+                        $ LineLimit = 250
+                    "300 Lines":
                         $ LineLimit = 300
+                    "400 Lines":
+                        $ LineLimit = 400
                 jump tetris_difficulty
 
         "Score":
@@ -184,18 +234,20 @@ label tetris:
                 y "And maybe you will win me as a prize to be cherished... Forever~"
                 y "Or maybe I would win you. Hehe. Either way, everyone wins!"
                 menu:
-                    "20000":
+                    "50,000 Points":
                         $ TetrisScore = 20000
-                    "50000":
-                        $ TetrisScore = 50000
-                    "100000":
+                    "100,000 Points":
                         $ TetrisScore = 100000
-                    "200000":
+                    "200,000 Points":
                         $ TetrisScore = 200000
-                    "300000":
-                        $ TetrisScore = 300000
-                    "500000":
+                    "250,000 Points":
+                        $ TetrisScore = 250000
+                    "500,000 Points":
                         $ TetrisScore = 500000
+                    "750,000 Points":
+                        $ TetrisScore = 750000
+                    "1,000,000 Points":
+                        $ TetrisScore = 1000000
                 jump tetris_difficulty
             elif karma_lvl() >= 3:
                 #[K = 3-5 and regardless of S value]
@@ -214,18 +266,20 @@ label tetris:
                 $ show_chr("A-AAEAA-ALAL")
                 y "Alright, let us see who will outdo the other!"
                 menu:
-                    "20000":
+                    "50,000 Points":
                         $ TetrisScore = 20000
-                    "50000":
-                        $ TetrisScore = 50000
-                    "100000":
+                    "100,000 Points":
                         $ TetrisScore = 100000
-                    "200000":
+                    "200,000 Points":
                         $ TetrisScore = 200000
-                    "300000":
-                        $ TetrisScore = 300000
-                    "500000":
+                    "250,000 Points":
+                        $ TetrisScore = 250000
+                    "500,000 Points":
                         $ TetrisScore = 500000
+                    "750,000 Points":
+                        $ TetrisScore = 750000
+                    "1,000,000 Points":
+                        $ TetrisScore = 1000000
                 jump tetris_difficulty
             elif karma_lvl() < 3:
                 #[K= 1-2 regardless of S value]
@@ -237,18 +291,20 @@ label tetris:
                 y "Well, whatever."
                 y "Let's get on with it."
                 menu:
-                    "20000":
+                    "50,000 Points":
                         $ TetrisScore = 20000
-                    "50000":
-                        $ TetrisScore = 50000
-                    "100000":
+                    "100,000 Points":
                         $ TetrisScore = 100000
-                    "200000":
+                    "200,000 Points":
                         $ TetrisScore = 200000
-                    "300000":
-                        $ TetrisScore = 300000
-                    "500000":
+                    "250,000 Points":
+                        $ TetrisScore = 250000
+                    "500,000 Points":
                         $ TetrisScore = 500000
+                    "750,000 Points":
+                        $ TetrisScore = 750000
+                    "1,000,000 Points":
+                        $ TetrisScore = 1000000
                 jump tetris_difficulty
 
         "CO-OP":
@@ -292,10 +348,24 @@ label tetris:
                 $ AI_difficulty = "CO_OP"
                 jump tetris_rules
 
+        "Endless": # --- NEW GAME MODE ---
+            if karma_lvl() >= 3:
+                $ show_chr("A-ADDAA-ALAA")
+                y "Just... playing until one of us can't go on? A true battle of endurance."
+                $ show_chr("A-AACAA-ALAA")
+                y "Very well."
+            else:
+                $ show_chr("A-AEEAA-ALAA")
+                y "So, you just want to see me suffer until I make a mistake?"
+                $ show_chr("A-CECAA-ALAA")
+                y "Fine."
+
+            jump tetris_difficulty
+
 label custom_tetris_checkpoint_start:
     $ show_chr("A-ACAAA-ABAB")
     y "Oh, you'd like to try your hand on a custom Tetris build?"
-    y "Well, let me give you a quick walk-through of how it's done or do you already have it all figure out?"
+    y "Well, let me give you a quick walkthrough of how it's done or do you already have it all figure out?"
     menu:
         "Try me":
             y "Okay"
@@ -308,18 +378,18 @@ label custom_tetris_repeat:
     y "All those files which you will create will have to go to folder \"game\\custom_tetris\""
     y "First thing you need to know is that all images have to be in .png format and all sounds have to be .ogg files. Ren'Py will reject anything else."
     y "Let's start with the background. {b}Line Count{/b} and {b}Score{/b} have two types of background depending on difficulties."
-    y "For the Easy, Medium and Hard difficulties it has to be 220 x 420 pixels image. Use the {b}background.png{/b} file from the folder \"game\\images\\tetris\\tetris\" as an example..."
+    y "For the Relaxed, Focused and Intense difficulties it has to be 220 x 420 pixels image. Use the {b}background.png{/b} file from the folder \"game\\images\\tetris\\tetris\" as an example..."
     $ show_chr("A-ACAAA-ABAD")
-    y "For the same modes but in the Disadvantage, Veteran and Expert difficulties, it is the exact same procedure, but this time you have to delete the grids and name it {b}backgrund_no_grind{/b}... oh yes, and it still has to be a .png file!"
+    y "For the same modes but in the Unyielding, Maniacal and Hopeless difficulties, it is the exact same procedure, but this time you have to delete the grids and name it {b}backgrund_no_grind{/b}... oh yes, and it still has to be a .png file!"
     y "The Co-op mode shares the same procedure, but this time it is 421 x 420 pixels and you name it {b}grids (coop).png{/b}. It's in the same folder again."
     y "Now we come to the blocks."
     y "Fun fact, did you know that a single block is called a Tetromino?"
-    y "There are 7 pieces in Tetris which usually have different colors. You could make them the same colors"
+    y "There are 7 pieces in Tetris which usually have diffrent colors. You could make them the same colors"
     y "But that would be kind of boring. Don't you think?"
     $ show_chr("A-ACAAA-AFAD")
     y "Each pieces is build from individual blocks which are number from 1 to 7."
     y "Also in newer version of Tetris. You can see where the piece will land. We refer it as {b}shadow pieces{/b} "
-    y "They also need to have their own colors which are usually transparency of normal blocks"
+    y "They also need to have their own colors which are usually transparency of nomral blocks"
     y "Each of the cube need to be a .png image with size 20x20. You can use the {b}cube_1.png{/b} file from the folder \"game\\images\\tetris\\tetris\" as an example..."
     y "For the T Piece you set up cube_1.png and shadow_1.png"
     y "For the S Piece you set up cube_2.png and shadow_2.png"
@@ -330,7 +400,7 @@ label custom_tetris_repeat:
     y "For the O Piece you set up cube_7.png and shadow_7.png"
     y "The last is wall of the game. For wall you set up cube_8.png. Most of the time is black for easy distinguish"
     y "For now in your custome_Tetris folder, you should have 18 files. 2 Background, 8 cube and 8 shadow png"
-    y "Is everything good? If not let me know and I will repeat the step again"
+    y "Is everything good? If not let me know and I will reapet the step again"
     menu:
         "Yes":
             y "Okay. Let's go to next part"
@@ -382,7 +452,7 @@ label custom_tetris_repeat_audio:
 label custom_tetris_failure:
     $show_chr("A-ACDAA-ABAB")
     y "[player]? It seems you need to fix some issue which I mention"
-    y "Perhaps I should explain all steps again"
+    y "Pehraps I should explain all steps again"
     call custom_tetris_repeat
 
 label custom_tetris_checkpoint:
@@ -447,515 +517,966 @@ label tetris_difficulty:
     $ show_chr("A-AAAAA-AAAA")
     y "If you are not used to Tetris, we can adjust the difficulty a bit. Just tell me how you wish it to be, I will not judge."
 
+    python:
+        # renpy.random.random() returns a float between 0.0 and 1.0.
+        # This condition will be true 0.5% of the time.
+        show_singularity = (renpy.random.random() < 0.005)
 
-    menu:
-        "Easy":
-            $ AI_difficulty = 1
+    if show_singularity:
+        menu:
+            "Relaxed":
+                $ AI_difficulty = 1
 
-            if karma_lvl() >= 3:
-                y "Oh, I see."
-                y "You'd like me to go easy on you this time, hm?"
-                y "I'm happy to oblige, [player]!"
-
-            elif karma_lvl() < 3:
-                #[If K= 1 or 2 regardless of S value]
-                $ show_chr("A-BEAAA-AMAM")
-                y "..."
-                y "I-is this some kind of joke? Directed at me?"
-                y "To indulge in this activity but at such an infantile level... Seemingly to jest at my abilities?"
-                $ show_chr("A-CEBAA-AAAD")  # closed frown with closed eyes and hand on her cheek (needs expressions)
-                y "Whatever... Let us proceed."
-                #elif sanity_lvl() > 2 and karma_lvl() < 3:
-                #elif sanity_lvl() < 3 and karma_lvl() > 2:
-                #elif sanity_lvl() < 3 and karma_lvl() < 3:
-
-
-        "Medium":
-            $ AI_difficulty = 2
-
-            if karma_lvl() >= 3:
-            #[If K= 3-5 and S: 3-5]
-                $ show_chr("A-ABABA-AAAJ")
-                y "Oh I see~ Trying to warm up with a slight challenge eh?"
-                y "Well then. I would like to see how you do!"
-                y "It is good to get out of your comfort zone a bit more."
-
-            elif karma_lvl() < 3:
-            #[If K = 1 or 2 regardless of S value]
-                $ show_chr("A-ADCAA-AAAL")
-                y "Hm... Y-you know I am slightly surprised that you wanted to partake in this game with me. I was thinking you'd pick a harder difficulty just to prove a point."
-                y "I mean why even bother with such a simple difficulty with someone as myself?"
-                y "If this is meant to be a joke, I quite frankly do not understand it."
-                $ show_chr("A-CECAA-ALAL")
-                y "Whatever... Anyways let the games begin."
-
-
-        "Hard":
-            $ AI_difficulty = 3
-
-            if karma_lvl() >= 3:
-            #[If K = 3-5 and S = 3-5]
-                $ show_chr("A-ACCAA-AMAM")
-                y "Oh huhuhehehe... Really turning the dial up are you now, [player]?"
-                y "Well I do like it when you get a bit more daring~ It is rather inspiring."
-                # soft closed smile with a blush and hands on the table
-                y "Well as people say nowadays, I guess, let these games begin!"
-                y "O-oh but don't go too hard on yourself [player]... Eheheh."
-
-            elif karma_lvl() < 3:
-            #[If K = 1-2]
-                $ show_chr("A-CECAA-ALAL")
-                y "I-I guess you really want to rub it in my face just to prove a point..."
-                y "Very well then... Let the games begin, I suppose."
-                y "Hmph."
-
-
-        "Disadvantage":
-            $ AI_difficulty = 4
-
-            if karma_lvl() >= 3:
-                $ show_chr("A-DCCBA-AAAD")
-                y "Mmm..."
-                y "Oh dear [player]. That seems like such a Herculean task to tackle. Are you sure?"
-                $ show_chr("A-ABAAA-ALAL")
-                y "Ehehehehe... Well alright if you insist~"
-                y "Prepare thy mind and body for the penultimate gamer's challenge dear [player]!"
-
-            elif karma_lvl() > 3 and sanity_lvl() < 3:
-            #[If K= 3-5 and S= 2 or 1]
-                $ show_chr("A-DLCBA-AMAM")
-                y "Oh oh... Oh my yes!"
-                y "A glutton for punishment aren't you [player]?"
-                y "Whatever scars from this task you may carry I will bear with you!"
-                y "J-just be a bit careful [player]... If you exert yourself too much and get hurt, I might have to thrash a few things here~ Aahahaha..."
-                $ show_chr("A-DCAAA-AFAG")
-                y "Show me, show them all what you are made of sweet [player]!!!"
-
-            elif karma_lvl() < 3:
-            #[If K= 2 or 1, regardless of S value]
-                $ show_chr("A-DEDAA-ABAB")
-                y "I-I see..."
-                y "I guess you just want to jest with me then..."
-                $ show_chr("A-BEABB-AMAM")
-                y "Maybe prove your point further on how bigger you are than me? Rub it in my face just a little more. To show how much you don't need me?"
-                $ show_chr("A-CEAAA-AMAM")
-                y "N-nevermind... It wouldn't matter what I said here. Let the games begin I guess."
-
-
-        "Expert":
-            $ AI_difficulty = 5
-
-            $ show_chr("A-ACBAA-AIAI")
-            y "Oh you are in for a bumpy ride [player]..."
-
-            if persistent.lovecheck:
-            #if lovecheck is true
-                $ show_chr("A-ACCBA-AIAI")
-                y "...but I guess you like it that way don't you..."
-
-            else:
                 if karma_lvl() >= 3:
-                #if karma_lvl() is 3-5
-                    $ show_chr("A-ACBAA-ABAL")
-                    y "Very well, I'll try my best to offer you a suitable challenge."
-                    y "Just keep in mind, it is just a game. It doesn't really matter who wins as long as we are having a good time."
+                    y "A Relaxed pace sounds lovely."
+                    y "You just want to enjoy the game without any pressure, don't you? I'm happy to oblige, [player]!"
 
                 elif karma_lvl() < 3:
-                #if karma_lvl() is 1-2
-                    $ show_chr("A-AFBAA-ABAL")
-                    y "Maybe I can teach you a lesson here..."
+                    #[If K= 1 or 2 regardless of S value]
+                    $ show_chr("A-BEAAA-AMAM")
+                    y "..."
+                    y "Relaxed? Are you mocking me?"
+                    y "To play at such an infantile level... It feels like a jest at my expense."
+                    $ show_chr("A-CEBAA-AAAD")
+                    y "Whatever... Let us proceed."
 
 
-        "Veteran":
-            $ AI_difficulty = 6
-            $ show_chr("A-ACAAA-ABAL")
-            y "The highest, I see..."
-            y "I'm not even sure if I'm good enough to pull this off but... let's give it a try."
+            "Focused":
+                $ AI_difficulty = 2
+
+                if karma_lvl() >= 3:
+                #[If K= 3-5 and S: 3-5]
+                    $ show_chr("A-ABABA-AAAJ")
+                    y "Oh, a Focused game? A nice, standard challenge."
+                    y "Well then, I'd like to see how you do! It's good to get out of your comfort zone a bit."
+
+                elif karma_lvl() < 3:
+                #[If K = 1 or 2 regardless of S value]
+                    $ show_chr("A-ADCAA-AAAL")
+                    y "Hm... A Focused game?"
+                    y "I'm surprised you didn't pick something harder just to prove a point. Why bother with such a simple difficulty with me?"
+                    y "If this is meant to be a joke, I quite frankly do not understand it."
+                    $ show_chr("A-CECAA-ALAL")
+                    y "Whatever... Let's just begin."
 
 
-        "Your choice, [persistent.yuri_nickname]":
-            # K&S - both karma_lvl() and sanity are...
-            # K|S - either karma_lvl() or sanity_lvl() is...
+            "Intense":
+                $ AI_difficulty = 3
 
-            # Adding random mood.
-            $ import random
-            $ randomMood = random.randint(-1, 1)
+                if karma_lvl() >= 3:
+                #[If K = 3-5 and S = 3-5]
+                    $ show_chr("A-ACCAA-AMAM")
+                    y "Feeling Intense, are we, [player]? Uhuhu..."
+                    y "Well, I do like it when you get a bit more daring. It's rather inspiring."
+                    y "Alright then, let the games begin! But don't push yourself too hard... Eheheh."
 
-            # K&S are almost maximum.
-            if(abs(karma_lvl() + sanity_lvl() - 10) < 2):
-                if(randomMood < 1):
-                    # Easy.
-                    $ AI_difficulty = 1
+                elif karma_lvl() < 3:
+                #[If K = 1-2]
+                    $ show_chr("A-CECAA-ALAL")
+                    y "An Intense match... So you really want to rub it in my face just to prove a point."
+                    y "Very well then... Let the games begin, I suppose. Hmph."
 
-                    $ show_chr("A-IAABA-AAAC")
-                    if persistent.lovecheck == True:
-                        y "Oh, how polite of you to let me choose. Why don't we keep it casual for now with easy then darling~"
-                    else:
-                        y "Oh, how polite of you to let me choose [player]. Why don't we keep it casual with easy then?"
 
+            "Unyielding":
+                $ AI_difficulty = 4
+
+                if karma_lvl() >= 3:
+                    $ show_chr("A-DCCBA-AAAD")
+                    y "Mmm... Unyielding?"
+                    y "Oh dear, [player]. That sounds like a Herculean task. Are you sure?"
+                    $ show_chr("A-ABAAA-ALAL")
+                    y "Ehehehe... Well, alright, if you insist."
+                    y "Prepare your mind for a truly relentless challenge, my dear [player]!"
+
+                elif karma_lvl() > 3 and sanity_lvl() < 3:
+                #[If K= 3-5 and S= 2 or 1]
+                    $ show_chr("A-DLCBA-AMAM")
+                    y "Oh, oh my, yes! Unyielding!"
+                    y "A glutton for punishment, aren't you, [player]?"
+                    y "Whatever scars you may carry from this, I will bear them with you!"
+                    $ show_chr("A-DCAAA-AFAG")
+                    y "Show them all what you are made of, sweet [player]!!!"
+
+                elif karma_lvl() < 3:
+                #[If K= 2 or 1, regardless of S value]
+                    $ show_chr("A-DEDAA-ABAB")
+                    y "I see... you chose Unyielding."
+                    y "I suppose you just want to jest with me then..."
+                    $ show_chr("A-BEABB-AMAM")
+                    y "Maybe to prove your point further? To rub it in my face just a little more?"
+                    $ show_chr("A-CEAAA-AMAM")
+                    y "N-nevermind... It wouldn't matter what I said. Let the games begin."
+
+
+            "Maniacal":
+                $ AI_difficulty = 5
+
+                $ show_chr("A-ACBAA-AIAI")
+                y "Feeling Maniacal, are we? You're in for a bumpy ride, [player]..."
+                if persistent.lovecheck:
+                    $ show_chr("A-ACCBA-AIAI")
+                    y "...but I guess you like it that way, don't you..."
                 else:
-                    # Medium.
-                    $ AI_difficulty = 2
+                    if karma() >= 3:
+                        $ show_chr("A-ACBAA-ABAL")
+                        y "Very well. I'll try my best to offer you a suitable challenge."
+                        y "Just keep in mind, it is just a game. It doesn't matter who wins, as long as we are having a good time."
+                    elif karma() < 3:
+                        $ show_chr("A-AFBAA-ABAL")
+                        y "On Maniacal... perhaps I can finally teach you a lesson."
 
-                    $ show_chr("A-IAABA-AAAC")
-                    if persistent.lovecheck == True:
-                        y "Oh, how polite of you to let me choose. Why don't we keep it casual for now with medium then darling~"
+
+            "Hopeless":
+                $ AI_difficulty = 6
+                $ show_chr("A-ACAAA-ABAL")
+                y "The Hopeless difficulty... I see..."
+                y "I'm not even sure if I'm good enough to pull this off but... let's give it a try."
+
+
+            "Your choice, Yuri":
+                # K&S - both karma_lvl() and sanity are...
+                # K|S - either karma_lvl() or sanity_lvl() is...
+
+                # Adding random mood.
+                $ import random
+                $ randomMood = random.randint(-1, 1)
+
+                # K&S are almost maximum.
+                if(abs(karma_lvl() + sanity_lvl() - 10) < 2):
+                    if(randomMood < 1):
+                        # Easy.
+                        $ AI_difficulty = 1
+
+                        $ show_chr("A-IAABA-AAAC")
+                        if persistent.lovecheck == True:
+                            y "Oh, how polite of you to let me choose. Why don't we keep it Relaxed for now then, darling~"
+                        else:
+                            y "Oh, how polite of you to let me choose, [player]. Why don't we keep it Relaxed for now then?"
+
                     else:
-                        y "Oh, how polite of you to let me choose [player]. Why don't we keep it casual with medium for now then?"
+                        # Medium.
+                        $ AI_difficulty = 2
 
-            # K&S are high.
-            elif(abs(karma_lvl() + sanity_lvl() - 8) < 2):
-                if(randomMood == -1):
-                    # Easy.
-                    $ AI_difficulty = 1
+                        $ show_chr("A-IAABA-AAAC")
+                        if persistent.lovecheck == True:
+                            y "Oh, how polite of you to let me choose. Why don't we keep it Focused for now then, darling~"
+                        else:
+                            y "Oh, how polite of you to let me choose, [player]. Why don't we keep it Focused for now then?"
 
-                    $ show_chr("A-CCAAA-AAAC")
-                    y "Hmm..."
-                    $ show_chr("A-ICAAA-AAAC")
-                    y "I'm feeling something just a bit less challenging if that's alright with you."
-                    y "Easy should work just fine for us then."
+                # K&S are high.
+                elif(abs(karma_lvl() + sanity_lvl() - 8) < 2):
+                    if(randomMood == -1):
+                        # Relaxed.
+                        $ AI_difficulty = 1
 
-                elif(randomMood == 0):
-                    # Medium.
-                    $ AI_difficulty = 2
+                        $ show_chr("A-CCAAA-AAAC")
+                        y "Hmm..."
+                        $ show_chr("A-ICAAA-AAAC")
+                        y "I'm feeling something just a bit less challenging if that's alright with you."
+                        y "Relaxed should work just fine for us then."
 
-                    $ show_chr("A-CCAAA-AAAC")
-                    y "Hmm..."
-                    $ show_chr("A-ICAAA-AAAC")
-                    y "I'm feeling something just a bit challenging if that's alright with you."
-                    y "Medium should work just fine for us then."
+                    elif(randomMood == 0):
+                        # Focused.
+                        $ AI_difficulty = 2
 
+                        $ show_chr("A-CCAAA-AAAC")
+                        y "Hmm..."
+                        $ show_chr("A-ICAAA-AAAC")
+                        y "I'm feeling something just a bit challenging if that's alright with you."
+                        y "Focused should work just fine for us then."
+
+                    else:
+                        # Intense.
+                        $ AI_difficulty = 3
+
+                        $ show_chr("A-CCAAA-AAAC")
+                        y "Hmm..."
+                        $ show_chr("A-ICAAA-AAAC")
+                        y "I'm feeling something with a decent bit of challenge if that's alright with you."
+                        y "Intense should work just fine for us then."
+
+                # K&S are neutral.
+                # Or.
+                # K|S is high.
+                elif(abs(karma_lvl() + sanity_lvl() - 6) < 2):
+                    if(randomMood == -1):
+                        # Focused.
+                        $ AI_difficulty = 2
+
+                        if(abs(karma_lvl() - sanity_lvl()) < 2):
+                            # K&S are neutral.
+                            $ show_chr("A-BCAAA-AMAM")
+                            y "I-If you're comfortable with that, [player]."
+                            y "Don't expect me to give you a free pass though."
+                            $ show_chr("A-IAAAA-AMAM")
+                            y "Focused should suffice."
+
+                        elif(karma_lvl() < sanity_lvl()):
+                            # Low K, High S.
+                            $ show_chr("A-CECAA-AAAA")
+                            y "..."
+                            $ show_chr("A-CDCAA-AAAA")
+                            y "Could you at least have put in the effort to choose your own difficulty setting?"
+                            y "Let's just get this over with. Focused it is."
+
+                        else:
+                            # Low S, High K.
+                            $ show_chr("A-DBAAA-AAAA")
+                            y "{b}It would be quite fun if you were always this passive towards me [player].{/b}"
+                            $ show_chr("A-CAABA-ADAA")
+                            y "..."
+                            $ show_chr("A-CBABA-ADAA")
+                            y "I still need to go ahead and choose a difficulty don't I? Focused should do just fine then, correct?"
+
+                    elif(randomMood == 0):
+                        # Intense.
+                        $ AI_difficulty = 3
+
+                        if(abs(karma_lvl() - sanity_lvl()) < 2):
+                            # K&S are neutral.
+                            $ show_chr("A-BCAAA-AMAM")
+                            y "I-If you're comfortable with that, [player]."
+                            y "Don't expect me to give you a free pass though."
+                            $ show_chr("A-IAAAA-AMAM")
+                            y "Intense should suffice."
+
+                        elif(karma_lvl() < sanity_lvl()):
+                            # Low K, High S.
+                            $ show_chr("A-CECAA-AAAA")
+                            y "..."
+                            $ show_chr("A-CDCAA-AAAA")
+                            y "Could you at least have put in the effort to choose your own difficulty setting?"
+                            y "Let's just get this over with. Intense it is."
+
+                        else:
+                            # Low S, High K.
+                            $ show_chr("A-DBAAA-AAAA")
+                            y "{b}It would be quite fun if you were always this passive towards me [player].{/b}"
+                            $ show_chr("A-CAABA-ADAA")
+                            y "..."
+                            $ show_chr("A-CBABA-ADAA")
+                            y "I still need to go ahead and choose a difficulty don't I? Intense should do just fine then, correct?"
+
+                    else:
+                        # Unyielding.
+                        $ AI_difficulty = 4
+
+                        if(abs(karma_lvl() - sanity_lvl()) < 2):
+                            # K&S are neutral.
+                            $ show_chr("A-BCAAA-AMAM")
+                            y "I-If you're comfortable with that, [player]."
+                            y "Don't expect me to give you a free pass though."
+                            $ show_chr("A-IAAAA-AMAM")
+                            y "Unyielding should suffice."
+
+                        elif(karma_lvl() < sanity_lvl()):
+                            # Low K, High S.
+                            $ show_chr("A-CECAA-AAAA")
+                            y "..."
+                            $ show_chr("A-CDCAA-AAAA")
+                            y "Could you at least have put in the effort to choose your own difficulty setting?"
+                            y "Let's just get this over with. Unyielding it is."
+
+                        else:
+                            # Low S, High K.
+                            $ show_chr("A-DBAAA-AAAA")
+                            y "{b}It would be quite fun if you were always this passive towards me [player].{/b}"
+                            $ show_chr("A-CAABA-ADAA")
+                            y "..."
+                            $ show_chr("A-CBABA-ADAA")
+                            y "I still need to go ahead and choose a difficulty don't I? Unyielding should do just fine then, correct?"
+
+                # K&S are lower than average.
+                # Or.
+                # K|S is neutral.
+                elif(abs(karma_lvl() + sanity_lvl() - 4) < 2):
+                    if(randomMood == -1):
+                        # Intense.
+                        $ AI_difficulty = 3
+
+                        if(abs(karma_lvl() - sanity_lvl()) < 2):
+                            # K&S lower than average.
+                            $ show_chr("A-CEAAA-AAAC")
+                            y "I d-don't really know..."
+                            y "Does it really even matter what difficulty we play on?"
+                            y "I guess I'll just go for Intense, You'll probably just boast about it afterwards regardless."
+
+                        elif(karma_lvl() < sanity_lvl()):
+                            # Low K, Neutral S.
+                            $ show_chr("A-CEAAA-AAAC")
+                            y "I d-don't really know..."
+                            y "Does it really even matter what difficulty we play on?"
+                            y "I guess I'll just go for Intense, You'll probably just boast about it afterwards regardless..."
+                            $ show_chr("A-CEAAB-AAAJ")
+                            y "What did I do to deserve this kind of treatment anyways?"
+                            y "..."
+                            $ show_chr("A-CEAAA-AAAK")
+                            y "Let's just get on with it already."
+
+                        else:
+                            # Low S, Neutral K.
+                            y "How about we go for Intense if you're willing?"
+                            $ show_chr("A-DAAAA-AAAD")
+                            y "It would be quite fun to pressure you just a bit."
+                            y "Not to mention it's cute to watch you squirm around trying to keep up with me."
+
+                    elif(randomMood == 0):
+                        # Unyielding.
+                        $ AI_difficulty = 4
+
+                        if(abs(karma_lvl() - sanity_lvl()) < 2):
+                            # K&S lower than average.
+                            $ show_chr("A-CEAAA-AAAC")
+                            y "I d-don't really know..."
+                            y "Does it really even matter what difficulty we play on?"
+                            y "I guess I'll just go for Unyielding, You'll probably just boast about it afterwards regardless."
+
+                        elif(karma_lvl() < sanity_lvl()):
+                            # Low K, Neutral S.
+                            $ show_chr("A-CEAAA-AAAC")
+                            y "I d-don't really know..."
+                            y "Does it really even matter what difficulty we play on?"
+                            y "I guess I'll just go for Unyielding, You'll probably just boast about it afterwards regardless..."
+                            $ show_chr("A-CEAAB-AAAJ")
+                            y "What did I do to deserve this kind of treatment anyways?"
+                            y "..."
+                            $ show_chr("A-CEAAA-AAAK")
+                            y "Let's just get on with it already."
+
+                        else:
+                            # Low S, Neutral K.
+                            y "How about we go for Unyielding if you're willing?"
+                            $ show_chr("A-DAAAA-AAAD")
+                            y "It would be quite fun to pressure you just a bit."
+                            y "Not to mention it's cute to watch you squirm around trying to keep up with me."
+
+                    else:
+                        # Maniacal.
+                        $ AI_difficulty = 5
+
+                        if(abs(karma_lvl() - sanity_lvl()) < 2):
+                            # K&S lower than average.
+                            $ show_chr("A-CEAAA-AAAC")
+                            y "I d-don't really know..."
+                            y "Does it really even matter what difficulty we play on?"
+                            y "I guess I'll just go for Maniacal, You'll probably just boast about it afterwards regardless."
+
+                        elif(karma_lvl() < sanity_lvl()):
+                            # Low K, Neutral S.
+                            $ show_chr("A-CEAAA-AAAC")
+                            y "I d-don't really know..."
+                            y "Does it really even matter what difficulty we play on?"
+                            y "I guess I'll just go for Maniacal, You'll probably just boast about it afterwards regardless..."
+                            $ show_chr("A-CEAAB-AAAJ")
+                            y "What did I do to deserve this kind of treatment anyways?"
+                            y "..."
+                            $ show_chr("A-CEAAA-AAAK")
+                            y "Let's just get on with it already."
+
+                        else:
+                            # Low S, Neutral K.
+                            y "How about we go for Maniacal if you're willing?"
+                            $ show_chr("A-DAAAA-AAAD")
+                            y "It would be quite fun to pressure you just a bit."
+                            y "Not to mention it's cute to watch you squirm around trying to keep up with me."
+
+                # K&S are low.
+                # Or.
+                # K|S is minimal.
+                elif(abs(karma_lvl() + sanity_lvl() - 2) < 2):
+                    if(randomMood == -1):
+                        # Unyielding.
+                        $ AI_difficulty = 4
+
+                        if(karma_lvl() < sanity_lvl()):
+                            $ show_chr ("A-AECAA-AAAF")
+                            y "I couldn't honestly care less what difficulty we play at by this point."
+                            y "N-No wait, you know what?"
+                            y "This would make for a good opportunity to put you in your place, and I won't waste it."
+                            y "Let's set it to Unyielding and see just how well you do."
+
+                        else:
+                            $ show_chr("A-AECAA-AAAF")
+                            y "I couldn't honestly care less what difficulty we play at by this point."
+                            y "N-No wait, you know what?"
+                            y "This would make for a good opportunity to put you in your place, and I won't waste it."
+                            $ show_chr ("A-AECAA-AAAG")
+                            y "Let's set it to Unyielding and see just how well you do."
+
+                    elif(randomMood == 0):
+                        # Maniacal.
+                        $ AI_difficulty = 5
+
+                        if(karma_lvl() < sanity_lvl()):
+                            $ show_chr ("A-AECAA-AAAF")
+                            y "I couldn't honestly care less what difficulty we play at by this point."
+                            y "N-No wait, you know what?"
+                            y "This would make for a good opportunity to put you in your place, and I won't waste it."
+                            y "Let's set it to Maniacal and see just how well you do."
+
+                        else:
+                            $ show_chr("A-AECAA-AAAF")
+                            y "I couldn't honestly care less what difficulty we play at by this point."
+                            y "N-No wait, you know what?"
+                            y "This would make for a good opportunity to put you in your place, and I won't waste it."
+                            $ show_chr ("A-AECAA-AAAG")
+                            y "Let's set it to Maniacal and see just how well you do."
+
+                    else:
+                        # Hopeless.
+                        $ AI_difficulty = 6
+
+                        if(karma_lvl() < sanity_lvl()):
+                            $ show_chr ("A-AECAA-AAAF")
+                            y "I couldn't honestly care less what difficulty we play at by this point."
+                            y "N-No wait, you know what?"
+                            y "This would make for a good opportunity to put you in your place, and I won't waste it."
+                            y "Let's set it to Hopeless and see just how well you do."
+
+                        else:
+                            $ show_chr("A-AECAA-AAAF")
+                            y "I couldn't honestly care less what difficulty we play at by this point."
+                            y "N-No wait, you know what?"
+                            y "This would make for a good opportunity to put you in your place, and I won't waste it."
+                            $ show_chr ("A-AECAA-AAAG")
+                            y "Let's set it to Hopeless and see just how well you do."
+
+                # K&S are almost minimal.
+                elif(abs(karma_lvl() + sanity_lvl()) < 2):
+                    if(randomMood == -1):
+                        # Maniacal.
+                        $ AI_difficulty = 5
+
+                        $ show_chr("A-DBCAA-AAAF")
+                        y "{b}HA HA...{/b}"
+                        y "You want me to choose the difficulty?"
+                        y "Fine [player], your wish is my command."
+                        $ show_chr("A-DBCAA-AAAC")
+                        y "How about Maniacal hmm? Seems like a fair competition don't you think?"
+                        $ show_chr("A-CBCAA-AAAC")
+                        y "I just hope you'll be able to keep up the pace. It would be quite a shame if I decimated the scoreboard."
+
+                    else:
+                        # Hopeless.
+                        $ AI_difficulty = 6
+
+                        $ show_chr("A-DBCAA-AAAF")
+                        y "{b}HA HA...{/b}"
+                        y "You want me to choose the difficulty?"
+                        y "Fine [player], your wish is my command."
+                        $ show_chr("A-DBCAA-AAAC")
+                        y "How about Hopeless hmm? Seems like a fair competition don't you think?"
+                        $ show_chr("A-CBCAA-AAAC")
+                        y "I just hope you'll be able to keep up the pace. It would be quite a shame if I decimated the scoreboard."
+
+            "??????????":
+                $ AI_difficulty = 7
+                $ show_chr("A-AFAAA-ALAA")
+                y "..."
+                $ show_chr("A-ADAAA-ALAA")
+                y "You weren't supposed to see that."
+                $ show_chr("A-DDAAA-ALAA")
+                y "What... are you?"
+                $ show_chr("A-ADAAA-ALAA")
+                y "..."
+                $ show_chr("A-AJDAA-ALAA")
+                y "Let's see what happens when we break the rules."
+
+    else:
+        menu:
+            "Relaxed":
+                $ AI_difficulty = 1
+
+                if karma_lvl() >= 3:
+                    y "A Relaxed pace sounds lovely."
+                    y "You just want to enjoy the game without any pressure, don't you? I'm happy to oblige, [player]!"
+
+                elif karma_lvl() < 3:
+                    #[If K= 1 or 2 regardless of S value]
+                    $ show_chr("A-BEAAA-AMAM")
+                    y "..."
+                    y "Relaxed? Are you mocking me?"
+                    y "To play at such an infantile level... It feels like a jest at my expense."
+                    $ show_chr("A-CEBAA-AAAD")
+                    y "Whatever... Let us proceed."
+
+
+            "Focused":
+                $ AI_difficulty = 2
+
+                if karma_lvl() >= 3:
+                #[If K= 3-5 and S: 3-5]
+                    $ show_chr("A-ABABA-AAAJ")
+                    y "Oh, a Focused game? A nice, standard challenge."
+                    y "Well then, I'd like to see how you do! It's good to get out of your comfort zone a bit."
+
+                elif karma_lvl() < 3:
+                #[If K = 1 or 2 regardless of S value]
+                    $ show_chr("A-ADCAA-AAAL")
+                    y "Hm... A Focused game?"
+                    y "I'm surprised you didn't pick something harder just to prove a point. Why bother with such a simple difficulty with me?"
+                    y "If this is meant to be a joke, I quite frankly do not understand it."
+                    $ show_chr("A-CECAA-ALAL")
+                    y "Whatever... Let's just begin."
+
+
+            "Intense":
+                $ AI_difficulty = 3
+
+                if karma_lvl() >= 3:
+                #[If K = 3-5 and S = 3-5]
+                    $ show_chr("A-ACCAA-AMAM")
+                    y "Feeling Intense, are we, [player]? Uhuhu..."
+                    y "Well, I do like it when you get a bit more daring. It's rather inspiring."
+                    y "Alright then, let the games begin! But don't push yourself too hard... Eheheh."
+
+                elif karma_lvl() < 3:
+                #[If K = 1-2]
+                    $ show_chr("A-CECAA-ALAL")
+                    y "An Intense match... So you really want to rub it in my face just to prove a point."
+                    y "Very well then... Let the games begin, I suppose. Hmph."
+
+
+            "Unyielding":
+                $ AI_difficulty = 4
+
+                if karma_lvl() >= 3:
+                    $ show_chr("A-DCCBA-AAAD")
+                    y "Mmm... Unyielding?"
+                    y "Oh dear, [player]. That sounds like a Herculean task. Are you sure?"
+                    $ show_chr("A-ABAAA-ALAL")
+                    y "Ehehehe... Well, alright, if you insist."
+                    y "Prepare your mind for a truly relentless challenge, my dear [player]!"
+
+                elif karma_lvl() > 3 and sanity_lvl() < 3:
+                #[If K= 3-5 and S= 2 or 1]
+                    $ show_chr("A-DLCBA-AMAM")
+                    y "Oh, oh my, yes! Unyielding!"
+                    y "A glutton for punishment, aren't you, [player]?"
+                    y "Whatever scars you may carry from this, I will bear them with you!"
+                    $ show_chr("A-DCAAA-AFAG")
+                    y "Show them all what you are made of, sweet [player]!!!"
+
+                elif karma_lvl() < 3:
+                #[If K= 2 or 1, regardless of S value]
+                    $ show_chr("A-DEDAA-ABAB")
+                    y "I see... you chose Unyielding."
+                    y "I suppose you just want to jest with me then..."
+                    $ show_chr("A-BEABB-AMAM")
+                    y "Maybe to prove your point further? To rub it in my face just a little more?"
+                    $ show_chr("A-CEAAA-AMAM")
+                    y "N-nevermind... It wouldn't matter what I said. Let the games begin."
+
+
+            "Maniacal":
+                $ AI_difficulty = 5
+
+                $ show_chr("A-ACBAA-AIAI")
+                y "Feeling Maniacal, are we? You're in for a bumpy ride, [player]..."
+                if persistent.lovecheck:
+                    $ show_chr("A-ACCBA-AIAI")
+                    y "...but I guess you like it that way, don't you..."
                 else:
-                    # Hard.
-                    $ AI_difficulty = 3
+                    if karma() >= 3:
+                        $ show_chr("A-ACBAA-ABAL")
+                        y "Very well. I'll try my best to offer you a suitable challenge."
+                        y "Just keep in mind, it is just a game. It doesn't matter who wins, as long as we are having a good time."
+                    elif karma() < 3:
+                        $ show_chr("A-AFBAA-ABAL")
+                        y "On Maniacal... perhaps I can finally teach you a lesson."
 
-                    $ show_chr("A-CCAAA-AAAC")
-                    y "Hmm..."
-                    $ show_chr("A-ICAAA-AAAC")
-                    y "I'm feeling something with a decent bit of challenge if that's alright with you."
-                    y "Hard should work just fine for us then."
 
-            # K&S are neutral.
-            # Or.
-            # K|S is high.
-            elif(abs(karma_lvl() + sanity_lvl() - 6) < 2):
-                if(randomMood == -1):
-                    # Medium.
-                    $ AI_difficulty = 2
+            "Hopeless":
+                $ AI_difficulty = 6
+                $ show_chr("A-ACAAA-ABAL")
+                y "The Hopeless difficulty... I see..."
+                y "I'm not even sure if I'm good enough to pull this off but... let's give it a try."
 
-                    if(abs(karma_lvl() - sanity_lvl()) < 2):
-                        # K&S are neutral.
-                        $ show_chr("A-BCAAA-AMAM")
-                        y "I-If you're comfortable with that, [player]."
-                        y "Don't expect me to give you a free pass though."
-                        $ show_chr("A-IAAAA-AMAM")
-                        y "Medium should suffice."
 
-                    elif(karma_lvl() < sanity_lvl()):
-                        # Low K, High S.
-                        $ show_chr("A-CECAA-AAAA")
-                        y "..."
-                        $ show_chr("A-CDCAA-AAAA")
-                        y "Could you at least have put in the effort to choose your own difficulty setting?"
-                        y "Let's just get this over with. Medium it is."
+            "Your choice, Yuri":
+                # K&S - both karma_lvl() and sanity are...
+                # K|S - either karma_lvl() or sanity_lvl() is...
 
-                    else:
-                        # Low S, High K.
-                        $ show_chr("A-DBAAA-AAAA")
-                        y "{b}It would be quite fun if you were always this passive towards me [player].{/b}"
-                        $ show_chr("A-CAABA-ADAA")
-                        y "..."
-                        $ show_chr("A-CBABA-ADAA")
-                        y "I still need to go ahead and choose a difficulty don't I? Medium should do just fine then, correct?"
+                # Adding random mood.
+                $ import random
+                $ randomMood = random.randint(-1, 1)
 
-                elif(randomMood == 0):
-                    # Hard.
-                    $ AI_difficulty = 3
+                # K&S are almost maximum.
+                if(abs(karma_lvl() + sanity_lvl() - 10) < 2):
+                    if(randomMood < 1):
+                        # Easy.
+                        $ AI_difficulty = 1
 
-                    if(abs(karma_lvl() - sanity_lvl()) < 2):
-                        # K&S are neutral.
-                        $ show_chr("A-BCAAA-AMAM")
-                        y "I-If you're comfortable with that, [player]."
-                        y "Don't expect me to give you a free pass though."
-                        $ show_chr("A-IAAAA-AMAM")
-                        y "Hard should suffice."
-
-                    elif(karma_lvl() < sanity_lvl()):
-                        # Low K, High S.
-                        $ show_chr("A-CECAA-AAAA")
-                        y "..."
-                        $ show_chr("A-CDCAA-AAAA")
-                        y "Could you at least have put in the effort to choose your own difficulty setting?"
-                        y "Let's just get this over with. Hard it is."
+                        $ show_chr("A-IAABA-AAAC")
+                        if persistent.lovecheck == True:
+                            y "Oh, how polite of you to let me choose. Why don't we keep it Relaxed for now then, darling~"
+                        else:
+                            y "Oh, how polite of you to let me choose, [player]. Why don't we keep it Relaxed for now then?"
 
                     else:
-                        # Low S, High K.
-                        $ show_chr("A-DBAAA-AAAA")
-                        y "{b}It would be quite fun if you were always this passive towards me [player].{/b}"
-                        $ show_chr("A-CAABA-ADAA")
-                        y "..."
-                        $ show_chr("A-CBABA-ADAA")
-                        y "I still need to go ahead and choose a difficulty don't I? Hard should do just fine then, correct?"
+                        # Medium.
+                        $ AI_difficulty = 2
 
-                else:
-                    # Disadvantage.
-                    $ AI_difficulty = 4
+                        $ show_chr("A-IAABA-AAAC")
+                        if persistent.lovecheck == True:
+                            y "Oh, how polite of you to let me choose. Why don't we keep it Focused for now then, darling~"
+                        else:
+                            y "Oh, how polite of you to let me choose, [player]. Why don't we keep it Focused for now then?"
 
-                    if(abs(karma_lvl() - sanity_lvl()) < 2):
-                        # K&S are neutral.
-                        $ show_chr("A-BCAAA-AMAM")
-                        y "I-If you're comfortable with that, [player]."
-                        y "Don't expect me to give you a free pass though."
-                        $ show_chr("A-IAAAA-AMAM")
-                        y "Disadvantaged should suffice."
+                # K&S are high.
+                elif(abs(karma_lvl() + sanity_lvl() - 8) < 2):
+                    if(randomMood == -1):
+                        # Relaxed.
+                        $ AI_difficulty = 1
 
-                    elif(karma_lvl() < sanity_lvl()):
-                        # Low K, High S.
-                        $ show_chr("A-CECAA-AAAA")
-                        y "..."
-                        $ show_chr("A-CDCAA-AAAA")
-                        y "Could you at least have put in the effort to choose your own difficulty setting?"
-                        y "Let's just get this over with. Disadvantaged it is."
+                        $ show_chr("A-CCAAA-AAAC")
+                        y "Hmm..."
+                        $ show_chr("A-ICAAA-AAAC")
+                        y "I'm feeling something just a bit less challenging if that's alright with you."
+                        y "Relaxed should work just fine for us then."
 
-                    else:
-                        # Low S, High K.
-                        $ show_chr("A-DBAAA-AAAA")
-                        y "{b}It would be quite fun if you were always this passive towards me [player].{/b}"
-                        $ show_chr("A-CAABA-ADAA")
-                        y "..."
-                        $ show_chr("A-CBABA-ADAA")
-                        y "I still need to go ahead and choose a difficulty don't I? Disadvantaged should do just fine then, correct?"
+                    elif(randomMood == 0):
+                        # Focused.
+                        $ AI_difficulty = 2
 
-            # K&S are lower than average.
-            # Or.
-            # K|S is neutral.
-            elif(abs(karma_lvl() + sanity_lvl() - 4) < 2):
-                if(randomMood == -1):
-                    # Hard.
-                    $ AI_difficulty = 3
-
-                    if(abs(karma_lvl() - sanity_lvl()) < 2):
-                        # K&S lower than average.
-                        $ show_chr("A-CEAAA-AAAC")
-                        y "I d-don't really know..."
-                        y "Does it really even matter what difficulty we play on?"
-                        y "I guess I'll just go for hard, You'll probably just boast about it afterwards regardless."
-
-                    elif(karma_lvl() < sanity_lvl()):
-                        # Low K, Neutral S.
-                        $ show_chr("A-CEAAA-AAAC")
-                        y "I d-don't really know..."
-                        y "Does it really even matter what difficulty we play on?"
-                        y "I guess I'll just go for hard, You'll probably just boast about it afterwards regardless..."
-                        $ show_chr("A-CEAAB-AAAJ")
-                        y "What did I do to deserve this kind of treatment anyways?"
-                        y "..."
-                        $ show_chr("A-CEAAA-AAAK")
-                        y "Let's just get on with it already."
+                        $ show_chr("A-CCAAA-AAAC")
+                        y "Hmm..."
+                        $ show_chr("A-ICAAA-AAAC")
+                        y "I'm feeling something just a bit challenging if that's alright with you."
+                        y "Focused should work just fine for us then."
 
                     else:
-                        # Low S, Neutral K.
-                        y "How about we go for hard if you're willing?"
-                        $ show_chr("A-DAAAA-AAAD")
-                        y "It would be quite fun to pressure you just a bit."
-                        y "Not to mention it's cute to watch you squirm around trying to keep up with me."
+                        # Intense.
+                        $ AI_difficulty = 3
 
-                elif(randomMood == 0):
-                    # Disadvantage.
-                    $ AI_difficulty = 4
+                        $ show_chr("A-CCAAA-AAAC")
+                        y "Hmm..."
+                        $ show_chr("A-ICAAA-AAAC")
+                        y "I'm feeling something with a decent bit of challenge if that's alright with you."
+                        y "Intense should work just fine for us then."
 
-                    if(abs(karma_lvl() - sanity_lvl()) < 2):
-                        # K&S lower than average.
-                        $ show_chr("A-CEAAA-AAAC")
-                        y "I d-don't really know..."
-                        y "Does it really even matter what difficulty we play on?"
-                        y "I guess I'll just go for disadvantaged, You'll probably just boast about it afterwards regardless."
+                # K&S are neutral.
+                # Or.
+                # K|S is high.
+                elif(abs(karma_lvl() + sanity_lvl() - 6) < 2):
+                    if(randomMood == -1):
+                        # Focused.
+                        $ AI_difficulty = 2
 
-                    elif(karma_lvl() < sanity_lvl()):
-                        # Low K, Neutral S.
-                        $ show_chr("A-CEAAA-AAAC")
-                        y "I d-don't really know..."
-                        y "Does it really even matter what difficulty we play on?"
-                        y "I guess I'll just go for disadvantaged, You'll probably just boast about it afterwards regardless..."
-                        $ show_chr("A-CEAAB-AAAJ")
-                        y "What did I do to deserve this kind of treatment anyways?"
-                        y "..."
-                        $ show_chr("A-CEAAA-AAAK")
-                        y "Let's just get on with it already."
+                        if(abs(karma_lvl() - sanity_lvl()) < 2):
+                            # K&S are neutral.
+                            $ show_chr("A-BCAAA-AMAM")
+                            y "I-If you're comfortable with that, [player]."
+                            y "Don't expect me to give you a free pass though."
+                            $ show_chr("A-IAAAA-AMAM")
+                            y "Focused should suffice."
 
-                    else:
-                        # Low S, Neutral K.
-                        y "How about we go for disadvantaged if you're willing?"
-                        $ show_chr("A-DAAAA-AAAD")
-                        y "It would be quite fun to pressure you just a bit."
-                        y "Not to mention it's cute to watch you squirm around trying to keep up with me."
+                        elif(karma_lvl() < sanity_lvl()):
+                            # Low K, High S.
+                            $ show_chr("A-CECAA-AAAA")
+                            y "..."
+                            $ show_chr("A-CDCAA-AAAA")
+                            y "Could you at least have put in the effort to choose your own difficulty setting?"
+                            y "Let's just get this over with. Focused it is."
 
-                else:
-                    # Expert.
-                    $ AI_difficulty = 5
+                        else:
+                            # Low S, High K.
+                            $ show_chr("A-DBAAA-AAAA")
+                            y "{b}It would be quite fun if you were always this passive towards me [player].{/b}"
+                            $ show_chr("A-CAABA-ADAA")
+                            y "..."
+                            $ show_chr("A-CBABA-ADAA")
+                            y "I still need to go ahead and choose a difficulty don't I? Focused should do just fine then, correct?"
 
-                    if(abs(karma_lvl() - sanity_lvl()) < 2):
-                        # K&S lower than average.
-                        $ show_chr("A-CEAAA-AAAC")
-                        y "I d-don't really know..."
-                        y "Does it really even matter what difficulty we play on?"
-                        y "I guess I'll just go for expert, You'll probably just boast about it afterwards regardless."
+                    elif(randomMood == 0):
+                        # Intense.
+                        $ AI_difficulty = 3
 
-                    elif(karma_lvl() < sanity_lvl()):
-                        # Low K, Neutral S.
-                        $ show_chr("A-CEAAA-AAAC")
-                        y "I d-don't really know..."
-                        y "Does it really even matter what difficulty we play on?"
-                        y "I guess I'll just go for expert, You'll probably just boast about it afterwards regardless..."
-                        $ show_chr("A-CEAAB-AAAJ")
-                        y "What did I do to deserve this kind of treatment anyways?"
-                        y "..."
-                        $ show_chr("A-CEAAA-AAAK")
-                        y "Let's just get on with it already."
+                        if(abs(karma_lvl() - sanity_lvl()) < 2):
+                            # K&S are neutral.
+                            $ show_chr("A-BCAAA-AMAM")
+                            y "I-If you're comfortable with that, [player]."
+                            y "Don't expect me to give you a free pass though."
+                            $ show_chr("A-IAAAA-AMAM")
+                            y "Intense should suffice."
 
-                    else:
-                        # Low S, Neutral K.
-                        y "How about we go for expert if you're willing?"
-                        $ show_chr("A-DAAAA-AAAD")
-                        y "It would be quite fun to pressure you just a bit."
-                        y "Not to mention it's cute to watch you squirm around trying to keep up with me."
+                        elif(karma_lvl() < sanity_lvl()):
+                            # Low K, High S.
+                            $ show_chr("A-CECAA-AAAA")
+                            y "..."
+                            $ show_chr("A-CDCAA-AAAA")
+                            y "Could you at least have put in the effort to choose your own difficulty setting?"
+                            y "Let's just get this over with. Intense it is."
 
-            # K&S are low.
-            # Or.
-            # K|S is minimal.
-            elif(abs(karma_lvl() + sanity_lvl() - 2) < 2):
-                if(randomMood == -1):
-                    # Disadvantage.
-                    $ AI_difficulty = 4
-
-                    if(karma_lvl() < sanity_lvl()):
-                        $ show_chr ("A-AECAA-AAAF")
-                        y "I couldn't honestly care less what difficulty we play at by this point."
-                        y "N-No wait, you know what?"
-                        y "This would make for a good opportunity to put you in your place, and I won't waste it."
-                        y "Let's set it to disadvantaged and see just how well you do."
+                        else:
+                            # Low S, High K.
+                            $ show_chr("A-DBAAA-AAAA")
+                            y "{b}It would be quite fun if you were always this passive towards me [player].{/b}"
+                            $ show_chr("A-CAABA-ADAA")
+                            y "..."
+                            $ show_chr("A-CBABA-ADAA")
+                            y "I still need to go ahead and choose a difficulty don't I? Intense should do just fine then, correct?"
 
                     else:
-                        $ show_chr("A-AECAA-AAAF")
-                        y "I couldn't honestly care less what difficulty we play at by this point."
-                        y "N-No wait, you know what?"
-                        y "This would make for a good opportunity to put you in your place, and I won't waste it."
-                        $ show_chr ("A-AECAA-AAAG")
-                        y "Let's set it to disadvantaged and see just how well you do."
+                        # Unyielding.
+                        $ AI_difficulty = 4
 
-                elif(randomMood == 0):
-                    # Expert.
-                    $ AI_difficulty = 5
+                        if(abs(karma_lvl() - sanity_lvl()) < 2):
+                            # K&S are neutral.
+                            $ show_chr("A-BCAAA-AMAM")
+                            y "I-If you're comfortable with that, [player]."
+                            y "Don't expect me to give you a free pass though."
+                            $ show_chr("A-IAAAA-AMAM")
+                            y "Unyielding should suffice."
 
-                    if(karma_lvl() < sanity_lvl()):
-                        $ show_chr ("A-AECAA-AAAF")
-                        y "I couldn't honestly care less what difficulty we play at by this point."
-                        y "N-No wait, you know what?"
-                        y "This would make for a good opportunity to put you in your place, and I won't waste it."
-                        y "Let's set it to expert and see just how well you do."
+                        elif(karma_lvl() < sanity_lvl()):
+                            # Low K, High S.
+                            $ show_chr("A-CECAA-AAAA")
+                            y "..."
+                            $ show_chr("A-CDCAA-AAAA")
+                            y "Could you at least have put in the effort to choose your own difficulty setting?"
+                            y "Let's just get this over with. Unyielding it is."
+
+                        else:
+                            # Low S, High K.
+                            $ show_chr("A-DBAAA-AAAA")
+                            y "{b}It would be quite fun if you were always this passive towards me [player].{/b}"
+                            $ show_chr("A-CAABA-ADAA")
+                            y "..."
+                            $ show_chr("A-CBABA-ADAA")
+                            y "I still need to go ahead and choose a difficulty don't I? Unyielding should do just fine then, correct?"
+
+                # K&S are lower than average.
+                # Or.
+                # K|S is neutral.
+                elif(abs(karma_lvl() + sanity_lvl() - 4) < 2):
+                    if(randomMood == -1):
+                        # Intense.
+                        $ AI_difficulty = 3
+
+                        if(abs(karma_lvl() - sanity_lvl()) < 2):
+                            # K&S lower than average.
+                            $ show_chr("A-CEAAA-AAAC")
+                            y "I d-don't really know..."
+                            y "Does it really even matter what difficulty we play on?"
+                            y "I guess I'll just go for Intense, You'll probably just boast about it afterwards regardless."
+
+                        elif(karma_lvl() < sanity_lvl()):
+                            # Low K, Neutral S.
+                            $ show_chr("A-CEAAA-AAAC")
+                            y "I d-don't really know..."
+                            y "Does it really even matter what difficulty we play on?"
+                            y "I guess I'll just go for Intense, You'll probably just boast about it afterwards regardless..."
+                            $ show_chr("A-CEAAB-AAAJ")
+                            y "What did I do to deserve this kind of treatment anyways?"
+                            y "..."
+                            $ show_chr("A-CEAAA-AAAK")
+                            y "Let's just get on with it already."
+
+                        else:
+                            # Low S, Neutral K.
+                            y "How about we go for Intense if you're willing?"
+                            $ show_chr("A-DAAAA-AAAD")
+                            y "It would be quite fun to pressure you just a bit."
+                            y "Not to mention it's cute to watch you squirm around trying to keep up with me."
+
+                    elif(randomMood == 0):
+                        # Unyielding.
+                        $ AI_difficulty = 4
+
+                        if(abs(karma_lvl() - sanity_lvl()) < 2):
+                            # K&S lower than average.
+                            $ show_chr("A-CEAAA-AAAC")
+                            y "I d-don't really know..."
+                            y "Does it really even matter what difficulty we play on?"
+                            y "I guess I'll just go for Unyielding, You'll probably just boast about it afterwards regardless."
+
+                        elif(karma_lvl() < sanity_lvl()):
+                            # Low K, Neutral S.
+                            $ show_chr("A-CEAAA-AAAC")
+                            y "I d-don't really know..."
+                            y "Does it really even matter what difficulty we play on?"
+                            y "I guess I'll just go for Unyielding, You'll probably just boast about it afterwards regardless..."
+                            $ show_chr("A-CEAAB-AAAJ")
+                            y "What did I do to deserve this kind of treatment anyways?"
+                            y "..."
+                            $ show_chr("A-CEAAA-AAAK")
+                            y "Let's just get on with it already."
+
+                        else:
+                            # Low S, Neutral K.
+                            y "How about we go for Unyielding if you're willing?"
+                            $ show_chr("A-DAAAA-AAAD")
+                            y "It would be quite fun to pressure you just a bit."
+                            y "Not to mention it's cute to watch you squirm around trying to keep up with me."
 
                     else:
-                        $ show_chr("A-AECAA-AAAF")
-                        y "I couldn't honestly care less what difficulty we play at by this point."
-                        y "N-No wait, you know what?"
-                        y "This would make for a good opportunity to put you in your place, and I won't waste it."
-                        $ show_chr ("A-AECAA-AAAG")
-                        y "Let's set it to expert and see just how well you do."
+                        # Maniacal.
+                        $ AI_difficulty = 5
 
-                else:
-                    # Veteran.
-                    $ AI_difficulty = 6
+                        if(abs(karma_lvl() - sanity_lvl()) < 2):
+                            # K&S lower than average.
+                            $ show_chr("A-CEAAA-AAAC")
+                            y "I d-don't really know..."
+                            y "Does it really even matter what difficulty we play on?"
+                            y "I guess I'll just go for Maniacal, You'll probably just boast about it afterwards regardless."
 
-                    if(karma_lvl() < sanity_lvl()):
-                        $ show_chr ("A-AECAA-AAAF")
-                        y "I couldn't honestly care less what difficulty we play at by this point."
-                        y "N-No wait, you know what?"
-                        y "This would make for a good opportunity to put you in your place, and I won't waste it."
-                        y "Let's set it to veteran and see just how well you do."
+                        elif(karma_lvl() < sanity_lvl()):
+                            # Low K, Neutral S.
+                            $ show_chr("A-CEAAA-AAAC")
+                            y "I d-don't really know..."
+                            y "Does it really even matter what difficulty we play on?"
+                            y "I guess I'll just go for Maniacal, You'll probably just boast about it afterwards regardless..."
+                            $ show_chr("A-CEAAB-AAAJ")
+                            y "What did I do to deserve this kind of treatment anyways?"
+                            y "..."
+                            $ show_chr("A-CEAAA-AAAK")
+                            y "Let's just get on with it already."
+
+                        else:
+                            # Low S, Neutral K.
+                            y "How about we go for Maniacal if you're willing?"
+                            $ show_chr("A-DAAAA-AAAD")
+                            y "It would be quite fun to pressure you just a bit."
+                            y "Not to mention it's cute to watch you squirm around trying to keep up with me."
+
+                # K&S are low.
+                # Or.
+                # K|S is minimal.
+                elif(abs(karma_lvl() + sanity_lvl() - 2) < 2):
+                    if(randomMood == -1):
+                        # Unyielding.
+                        $ AI_difficulty = 4
+
+                        if(karma_lvl() < sanity_lvl()):
+                            $ show_chr ("A-AECAA-AAAF")
+                            y "I couldn't honestly care less what difficulty we play at by this point."
+                            y "N-No wait, you know what?"
+                            y "This would make for a good opportunity to put you in your place, and I won't waste it."
+                            y "Let's set it to Unyielding and see just how well you do."
+
+                        else:
+                            $ show_chr("A-AECAA-AAAF")
+                            y "I couldn't honestly care less what difficulty we play at by this point."
+                            y "N-No wait, you know what?"
+                            y "This would make for a good opportunity to put you in your place, and I won't waste it."
+                            $ show_chr ("A-AECAA-AAAG")
+                            y "Let's set it to Unyielding and see just how well you do."
+
+                    elif(randomMood == 0):
+                        # Maniacal.
+                        $ AI_difficulty = 5
+
+                        if(karma_lvl() < sanity_lvl()):
+                            $ show_chr ("A-AECAA-AAAF")
+                            y "I couldn't honestly care less what difficulty we play at by this point."
+                            y "N-No wait, you know what?"
+                            y "This would make for a good opportunity to put you in your place, and I won't waste it."
+                            y "Let's set it to Maniacal and see just how well you do."
+
+                        else:
+                            $ show_chr("A-AECAA-AAAF")
+                            y "I couldn't honestly care less what difficulty we play at by this point."
+                            y "N-No wait, you know what?"
+                            y "This would make for a good opportunity to put you in your place, and I won't waste it."
+                            $ show_chr ("A-AECAA-AAAG")
+                            y "Let's set it to Maniacal and see just how well you do."
 
                     else:
-                        $ show_chr("A-AECAA-AAAF")
-                        y "I couldn't honestly care less what difficulty we play at by this point."
-                        y "N-No wait, you know what?"
-                        y "This would make for a good opportunity to put you in your place, and I won't waste it."
-                        $ show_chr ("A-AECAA-AAAG")
-                        y "Let's set it to veteran and see just how well you do."
+                        # Hopeless.
+                        $ AI_difficulty = 6
 
-            # K&S are almost minimal.
-            elif(abs(karma_lvl() + sanity_lvl()) < 2):
-                if(randomMood == -1):
-                    # Expert.
-                    $ AI_difficulty = 5
+                        if(karma_lvl() < sanity_lvl()):
+                            $ show_chr ("A-AECAA-AAAF")
+                            y "I couldn't honestly care less what difficulty we play at by this point."
+                            y "N-No wait, you know what?"
+                            y "This would make for a good opportunity to put you in your place, and I won't waste it."
+                            y "Let's set it to Hopeless and see just how well you do."
 
-                    $ show_chr("A-DBCAA-AAAF")
-                    y "{b}HA HA...{/b}"
-                    y "You want me to choose the difficulty?"
-                    y "Fine [player], your wish is my command."
-                    $ show_chr("A-DBCAA-AAAC")
-                    y "How about expert hmm? Seems like a fair competition don't you think?"
-                    $ show_chr("A-CBCAA-AAAC")
-                    y "I just hope you'll be able to keep up the pace. It would be quite a shame if I decimated the scoreboard."
+                        else:
+                            $ show_chr("A-AECAA-AAAF")
+                            y "I couldn't honestly care less what difficulty we play at by this point."
+                            y "N-No wait, you know what?"
+                            y "This would make for a good opportunity to put you in your place, and I won't waste it."
+                            $ show_chr ("A-AECAA-AAAG")
+                            y "Let's set it to Hopeless and see just how well you do."
 
-                else:
-                    # Veteran.
-                    $ AI_difficulty = 6
+                # K&S are almost minimal.
+                elif(abs(karma_lvl() + sanity_lvl()) < 2):
+                    if(randomMood == -1):
+                        # Maniacal.
+                        $ AI_difficulty = 5
 
-                    $ show_chr("A-DBCAA-AAAF")
-                    y "{b}HA HA...{/b}"
-                    y "You want me to choose the difficulty?"
-                    y "Fine [player], your wish is my command."
-                    $ show_chr("A-DBCAA-AAAC")
-                    y "How about veteran hmm? Seems like a fair competition don't you think?"
-                    $ show_chr("A-CBCAA-AAAC")
-                    y "I just hope you'll be able to keep up the pace. It would be quite a shame if I decimated the scoreboard."
+                        $ show_chr("A-DBCAA-AAAF")
+                        y "{b}HA HA...{/b}"
+                        y "You want me to choose the difficulty?"
+                        y "Fine [player], your wish is my command."
+                        $ show_chr("A-DBCAA-AAAC")
+                        y "How about Maniacal hmm? Seems like a fair competition don't you think?"
+                        $ show_chr("A-CBCAA-AAAC")
+                        y "I just hope you'll be able to keep up the pace. It would be quite a shame if I decimated the scoreboard."
+
+                    else:
+                        # Hopeless.
+                        $ AI_difficulty = 6
+
+                        $ show_chr("A-DBCAA-AAAF")
+                        y "{b}HA HA...{/b}"
+                        y "You want me to choose the difficulty?"
+                        y "Fine [player], your wish is my command."
+                        $ show_chr("A-DBCAA-AAAC")
+                        y "How about Hopeless hmm? Seems like a fair competition don't you think?"
+                        $ show_chr("A-CBCAA-AAAC")
+                        y "I just hope you'll be able to keep up the pace. It would be quite a shame if I decimated the scoreboard."
 
 
 label tetris_rules:
     $ show_chr("A-GAGAA-AAAA")
     if persistent.tetris_first:
         y "Allow me to explain the controls..."
-        y "You can use arrows to move your pieces. Hitting UP will rotate your piece, hitting DOWN will speed up your drop."
-        y "Hitting SPACE will drop the piece instantaneously."
-        y "Q key will put the piece into hold, but you can't double hold the same piece..."
-        y "...While the E key will use the piece which you are holding."
+        y "You use the Left and Right arrows to move your piece. A quick tap moves it once, while holding the key will make it slide."
+        y "Use the Up arrow to rotate your piece clockwise, and the Z key to rotate it counter-clockwise."
+        y "Pressing the Down arrow will make the piece 'soft drop', or fall faster."
+        y "The Spacebar will 'hard drop' the piece, instantly locking it at the bottom."
+        y "Finally, you can press C to swap your current piece with the one in the 'Hold' slot. You can only do this once per piece!"
         $ persistent.tetris_first = False
 
     menu:
         y "Would you like some Tetris music while we play?"
         "Yes":
-            if AI_difficulty != "CO_OP":
-                y "Let the best Tetris player win."
-                $ show_chr("A-AACAA-AAAA")
-                y "Game on, [player]!"
-            else:
-                y "Let's enjoy our time together trying to get the highest score!"
-                $ show_chr("A-CBBAA-AAAJ")
-                y "I really hope I will be at least some of help for you, [player]."
-                $ show_chr("A-AACAA-AAAA")
+           if AI_difficulty != "CO_OP":
+               y "Let the best Tetris player win."
+               $ show_chr("A-AACAA-AAAA")
+               y "Game on, [player]!"
+           else:
+               y "Let's enjoy our time together trying to get the highest score!"
+               $ show_chr("A-CBBAA-AAAJ")
+               y "I really hope I will be at least some of help for you, [player]."
+               $ show_chr("A-AACAA-AAAA")
 
-            if persistent.skin == 1:
-                $ change_music("<loop 21.06>/music/tetris (a).ogg") #Once a musician in the Dev Team Server has finished their Tetris arrangement, please remove this comment.
-                #"<loop 1.81>/music/tetris (b).ogg"
-            elif persistent.skin == 2:
-                $ change_music("<loop 0.80>/music/tetris_99.ogg")
-            elif persistent.skin == 3:
-                $ change_music("<loop 19.30>/music/tetris_gb.ogg")
-            elif persistent.skin == 4:
-                $ change_music("<loop 0>/music/tetris_gmd.ogg")
-            elif persistent.skin == 5:
-                $ change_music("<loop 0>/music/tetris_m1nd_bend3r.ogg")
-            elif persistent.skin == 6:
-                $ change_music("<loop 0>/custom_tetris/tetris.ogg")
+           if persistent.skin == 1:
+               $ change_music("<loop 21.06>/music/tetris (a).ogg") #Once a musician in the Dev Team Server has finished their Tetris arrangement, please remove this comment.
+               #"<loop 1.81>/music/tetris (b).ogg"
+           elif persistent.skin == 2:
+               $ change_music("<loop 0.80>/music/tetris_99.ogg")
+           elif persistent.skin == 3:
+               $ change_music("<loop 19.30>/music/tetris_gb.ogg")
+           elif persistent.skin == 4:
+               $ change_music("<loop 0>/music/tetris_gmd.ogg")
+           elif persistent.skin == 5:
+               $ change_music("<loop 0>/music/tetris_m1nd_bend3r.ogg")
+           elif persistent.skin == 6:
+               $ change_music("<loop 0>/custom_tetris/tetris.ogg")
         "No":
-            if AI_difficulty != "CO_OP":
-                y "Let the best Tetris player win."
-                $ show_chr("A-AACAA-AAAA")
-                y "Game on, [player]!"
-            else:
-                y "Let's enjoy our time together trying to get the highest score!"
-                $ show_chr("A-CBBAA-AAAJ")
-                y "I really hope I will be at least some of help for you, [player]."
-                $ show_chr("A-AACAA-AAAA")
+           if AI_difficulty != "CO_OP":
+               y "Let the best Tetris player win."
+               $ show_chr("A-AACAA-AAAA")
+               y "Game on, [player]!"
+           else:
+               y "Let's enjoy our time together trying to get the highest score!"
+               $ show_chr("A-CBBAA-AAAJ")
+               y "I really hope I will be at least some of help for you, [player]."
+               $ show_chr("A-AACAA-AAAA")
 
     call screen startTetris(AI_difficulty)
 
@@ -978,20 +1499,20 @@ label tetris_over:
                     menu:
                         y "Would you like the same music as our last game?"
                         "Yes":
-                            if persistent.skin == 1:
-                                $ change_music("<loop 21.06>/music/tetris (a).ogg") #Once a musician in the Dev Team Server has finished their Tetris arrangement, please remove this comment.
-                            elif persistent.skin == 2:
-                                $ change_music("<loop 0.80>/music/tetris_99.ogg")
-                            elif persistent.skin == 3:
-                                $ change_music("<loop 19.30>/music/tetris_gb.ogg")
-                            elif persistent.skin == 4:
-                                $ change_music("<loop 0>/music/tetris_gmd.ogg")
-                            elif persistent.skin == 5:
-                                $ change_music("<loop 0>/music/tetris_m1nd_bend3r.ogg")
-                            elif persistent.skin == 6:
-                                $ change_music("<loop 0>/custom_tetris/tetris.ogg")
+                           if persistent.skin == 1:
+                               $ change_music("<loop 21.06>/music/tetris (a).ogg") #Once a musician in the Dev Team Server has finished their Tetris arrangement, please remove this comment.
+                           elif persistent.skin == 2:
+                               $ change_music("<loop 0.80>/music/tetris_99.ogg")
+                           elif persistent.skin == 3:
+                               $ change_music("<loop 19.30>/music/tetris_gb.ogg")
+                           elif persistent.skin == 4:
+                               $ change_music("<loop 0>/music/tetris_gmd.ogg")
+                           elif persistent.skin == 5:
+                               $ change_music("<loop 0>/music/tetris_m1nd_bend3r.ogg")
+                           elif persistent.skin == 6:
+                               $ change_music("<loop 0>/custom_tetris/tetris.ogg")
 
-                            call screen startTetris(AI_difficulty)
+                           call screen startTetris(AI_difficulty)
 
                         "No":
                             call screen startTetris(AI_difficulty)
@@ -1163,1797 +1684,1388 @@ label tetris_over:
     jump ch30_loop
 
 screen startTetris(AI_difficulty):
+    # The player and AI Tetris instances now require a reference to each other
+    # to compare scores for win conditions and dynamic events.
     if AI_difficulty != "CO_OP":
         fixed:
             area (150, 120, 600, 1100)
-            if AI_difficulty < 7:
-                default tetris_player = tetris(0)
-            else:
-                default tetris_player = tetris(-1)
+            # The player's Tetris instance.
+            # Pass the AI_difficulty to the player's instance as well.
+            default tetris_player = TetrisDisplayable(is_ai=False, ai_difficulty=AI_difficulty)
+
+            # The AI opponent's instance.
+            default tetris_Yuri = TetrisDisplayable(is_ai=True, ai_difficulty=AI_difficulty, opponent_game=tetris_player.game)
+            # Give the player a reference to the AI's game state.
+            $ tetris_player.set_opponent(tetris_Yuri.game)
+
             add tetris_player
 
         fixed:
             area (900, 120, 600, 1100)
-            default tetris_Yuri = tetris(AI_difficulty)
             add tetris_Yuri
     else:
         fixed:
             area (50, 120, 600, 1100)
-            default tetris_Co_OP = Co_OP_tetris()
+            default tetris_Co_OP = CoOpTetrisDisplayable() 
             add tetris_Co_OP
 
 init python:
-#-----------------------------------------Tetris----------------------------------------------------#
     import pygame
-    class tetris(renpy.Displayable):
-        def __init__(self, AI):
-            renpy.Displayable.__init__(self)
-            if AI == -1:
-                self.put_shadow = 0
-                self.AI = AI + 1
-            else:
-                self.put_shadow = 1
-                self.AI = AI
-            self.movesAI = []
-            self.PIXEL_SIZE = 20
-            self.piece_list = [0,1,2,3,4,5,6]
-            random.shuffle(self.piece_list)
-            self.tetris_shapes = [
-                [[1, 1, 1],
-                [0, 1, 0]],
+    import random
+    import copy
 
-                [[0, 2, 2],
-                [2, 2, 0]],
+    # (The configuration constants and the TetrisGame class from the previous step
+    # are assumed to be here. They are included again for completeness.)
 
-                [[3, 3, 0],
-                [0, 3, 3]],
+    # --- NEW CONTROL CONSTANTS ---
+    DAS_DELAY = 0.16  # 160ms before auto-shift starts
+    ARR_DELAY = 0.03  # 30ms between movements during auto-shift (very fast)
+    # --- END NEW CONSTANTS ---
 
-                [[4, 0, 0],
-                [4, 4, 4]],
+    #-----------------------------------------
+    # MODERN TETRIS CONFIGURATION
+    #-----------------------------------------
+    BOARD_WIDTH = 10
+    BOARD_HEIGHT = 22
+    VISIBLE_BOARD_HEIGHT = 20
+    PIXEL_SIZE = 20
+    LOCK_DELAY = 0.5
 
-                [[0, 0, 5],
-                [5, 5, 5]],
+    TETROMINOES = {
+        'T': {'shape': [[1, 1, 1], [0, 1, 0]], 'color_id': 1},
+        'S': {'shape': [[0, 2, 2], [2, 2, 0]], 'color_id': 2},
+        'Z': {'shape': [[3, 3, 0], [0, 3, 3]], 'color_id': 3},
+        'J': {'shape': [[4, 0, 0], [4, 4, 4]], 'color_id': 4},
+        'L': {'shape': [[0, 0, 5], [5, 5, 5]], 'color_id': 5},
+        'I': {'shape': [[6, 6, 6, 6]], 'color_id': 6},
+        'O': {'shape': [[7, 7], [7, 7]], 'color_id': 7}
+    }
+    
+    JLSTZ_KICKS = { '0-1': [(0, 0), (-1, 0), (-1, 1), (0, -2), (-1, -2)], '1-0': [(0, 0), (1, 0), (1, -1), (0, 2), (1, 2)], '1-2': [(0, 0), (1, 0), (1, -1), (0, 2), (1, 2)], '2-1': [(0, 0), (-1, 0), (-1, 1), (0, -2), (-1, -2)], '2-3': [(0, 0), (1, 0), (1, 1), (0, -2), (1, -2)], '3-2': [(0, 0), (-1, 0), (-1, -1), (0, 2), (-1, 2)], '3-0': [(0, 0), (-1, 0), (-1, -1), (0, 2), (-1, 2)], '0-3': [(0, 0), (1, 0), (1, 1), (0, -2), (1, -2)]}
+    I_KICKS = { '0-1': [(0, 0), (-2, 0), (1, 0), (-2, -1), (1, 2)], '1-0': [(0, 0), (2, 0), (-1, 0), (2, 1), (-1, -2)], '1-2': [(0, 0), (-1, 0), (2, 0), (-1, 2), (2, -1)], '2-1': [(0, 0), (1, 0), (-2, 0), (1, -2), (-2, 1)], '2-3': [(0, 0), (2, 0), (-1, 0), (2, 1), (-1, -2)], '3-2': [(0, 0), (-2, 0), (1, 0), (-2, -1), (1, 2)], '3-0': [(0, 0), (1, 0), (-2, 0), (1, -2), (-2, 1)], '0-3': [(0, 0), (-1, 0), (2, 0), (-1, 2), (2, -1)]}
 
-                [[6, 6, 6, 6]],
+    SKINS = {1: {"path": "images/tetris/tetris/", "sfx_suffix": ".ogg"}, 2: {"path": "images/tetris/tetris_99/", "sfx_suffix": "(99).ogg"}, 3: {"path": "images/tetris/tetris_gb/", "sfx_suffix": ".ogg"}, 4: {"path": "images/tetris/tetris_gmd/", "sfx_suffix": "(g).ogg"}, 5: {"path": "images/tetris/tetris_mb/", "sfx_suffix": "(mb).ogg"}, 6: {"path": "/custom_tetris/", "sfx_suffix": ".ogg"}}
 
-                [[7, 7],
-                [7, 7]]
-            ]
+    # --- AI Difficulty Scaling ---
+    # Multiplier for the natural gravity affecting the AI's pieces.
+    # A higher number means a faster fall speed.
+    AI_GRAVITY_MULTIPLIERS = {
+        1: 1.0,   # Relaxed: Normal speed
+        2: 1.2,   # Focused: 20% faster
+        3: 1.5,   # Intense: 50% faster
+        4: 2.0,   # Unyielding: 2x faster
+        5: 3.0,   # Maniacal: 3x faster
+        6: 5.0,   # Hopeless: 5x faster
+        7: 8.0    # Singularity: 8x faster
+    }
 
-            self.stage = [[9,9,9,9,9,9,9,9,9,9,9,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,9,9,9,9,9,9,9,9,9,9,9]]
+    # Delay in seconds between each of the AI's physical actions (move, rotate).
+    # A lower number means the AI executes its plan much faster.
+    AI_ACTION_DELAY = {
+        1: (0.12, 0.08),  # Relaxed: Starts slow, gets moderately slow.
+        2: (0.10, 0.06),  # Focused: Starts moderately slow, gets reasonably fast.
+        3: (0.08, 0.04),  # Intense: Starts fast, gets very fast.
+        4: (0.06, 0.02),  # Unyielding: Starts very fast, gets extremely fast.
+        5: (0.04, 0.01),  # Maniacal: Starts extremely fast, becomes nearly instant.
+        6: (0.0, 0.0),    # Hopeless: Is always instant.
+        7: (0.0, 0.0),    # Singularity: Is always instant.
+    }
 
-            if persistent.skin == 1:
+    # The level at which an AI is considered to have reached its "peak" skill.
+    # Its reaction speed will scale progressively until it reaches this level.
+    AI_PERFECTION_LEVEL = 20.0 # Use a float for accurate division
 
-                self.color_1 = Image("images/tetris/tetris/cube_1.png")
-                self.color_2 = Image("images/tetris/tetris/cube_2.png")
-                self.color_3 = Image("images/tetris/tetris/cube_3.png")
-                self.color_4 = Image("images/tetris/tetris/cube_4.png")
-                self.color_5 = Image("images/tetris/tetris/cube_5.png")
-                self.color_6 = Image("images/tetris/tetris/cube_6.png")
-                self.color_7 = Image("images/tetris/tetris/cube_7.png")
-                self.color_9 = Image("images/tetris/tetris/cube_8.png")
-
-                self.shadow_color_1 = Image("images/tetris/tetris/cube_1.png")
-                self.shadow_color_2 = Image("images/tetris/tetris/cube_2.png")
-                self.shadow_color_3 = Image("images/tetris/tetris/cube_3.png")
-                self.shadow_color_4 = Image("images/tetris/tetris/cube_4.png")
-                self.shadow_color_5 = Image("images/tetris/tetris/cube_5.png")
-                self.shadow_color_6 = Image("images/tetris/tetris/cube_6.png")
-                self.shadow_color_7 = Image("images/tetris/tetris/cube_7.png")
-
-                self.score = 0
-
-                self.playsounds = True
-                self.soundbdrop = "sfx/t-drop.ogg"
-                self.soundline = "sfx/t-fl.ogg"
-                self.soundldrop = "sfx/t-fl-drop.ogg"
-                self.soundmove = "sfx/t-move.ogg"
-                self.soundrotate = "sfx/t-rotate.ogg"
-                self.sound2line = "sfx/t-2fl.ogg"
-                self.sound3line = "sfx/t-3fl.ogg"
-                self.sound4line = "sfx/t-4fl.ogg"
-
-            elif persistent.skin == 2:
-
-                self.color_1 = Image("images/tetris/tetris_99/cube_1.png")
-                self.color_2 = Image("images/tetris/tetris_99/cube_2.png")
-                self.color_3 = Image("images/tetris/tetris_99/cube_3.png")
-                self.color_4 = Image("images/tetris/tetris_99/cube_4.png")
-                self.color_5 = Image("images/tetris/tetris_99/cube_5.png")
-                self.color_6 = Image("images/tetris/tetris_99/cube_6.png")
-                self.color_7 = Image("images/tetris/tetris_99/cube_7.png")
-                self.color_9 = Image("images/tetris/tetris_99/cube_8.png")
-
-                self.shadow_color_1 = Image("images/tetris/tetris_99/cube_1.png")
-                self.shadow_color_2 = Image("images/tetris/tetris_99/cube_2.png")
-                self.shadow_color_3 = Image("images/tetris/tetris_99/cube_3.png")
-                self.shadow_color_4 = Image("images/tetris/tetris_99/cube_4.png")
-                self.shadow_color_5 = Image("images/tetris/tetris_99/cube_5.png")
-                self.shadow_color_6 = Image("images/tetris/tetris_99/cube_6.png")
-                self.shadow_color_7 = Image("images/tetris/tetris_99/cube_7.png")
-
-                self.score = 0
-
-                self.playsounds = True
-                self.soundbdrop = "sfx/t-drop(99).ogg"
-                self.soundline = "sfx/t-fl(99).ogg"
-                self.soundldrop = "sfx/t-fl-drop(99).ogg"
-                self.soundmove = "sfx/t-move(99).ogg"
-                self.soundrotate = "sfx/t-rotate(99).ogg"
-                self.sound2line = "sfx/t-2fl(99).ogg"
-                self.sound3line = "sfx/t-3fl(99).ogg"
-                self.sound4line = "sfx/t-4fl(99).ogg"
-
-            elif persistent.skin == 3:
-
-                self.color_1 = Image("images/tetris/tetris_gb/cube_1.png")
-                self.color_2 = Image("images/tetris/tetris_gb/cube_2.png")
-                self.color_3 = Image("images/tetris/tetris_gb/cube_3.png")
-                self.color_4 = Image("images/tetris/tetris_gb/cube_4.png")
-                self.color_5 = Image("images/tetris/tetris_gb/cube_5.png")
-                self.color_6 = Image("images/tetris/tetris_gb/cube_6.png")
-                self.color_7 = Image("images/tetris/tetris_gb/cube_7.png")
-                self.color_9 = Image("images/tetris/tetris_gb/cube_8.png")
-
-                self.shadow_color_1 = Image("images/tetris/tetris_gb/cube_1.png")
-                self.shadow_color_2 = Image("images/tetris/tetris_gb/cube_2.png")
-                self.shadow_color_3 = Image("images/tetris/tetris_gb/cube_3.png")
-                self.shadow_color_4 = Image("images/tetris/tetris_gb/cube_4.png")
-                self.shadow_color_5 = Image("images/tetris/tetris_gb/cube_5.png")
-                self.shadow_color_6 = Image("images/tetris/tetris_gb/cube_6.png")
-                self.shadow_color_7 = Image("images/tetris/tetris_gb/cube_7.png")
-
-                self.score = 0
-
-                self.playsounds = True
-                self.soundbdrop = "sfx/t-drop.ogg"
-                self.soundline = "sfx/t-fl.ogg"
-                self.soundldrop = "sfx/t-fl-drop.ogg"
-                self.soundmove = "sfx/t-move.ogg"
-                self.soundrotate = "sfx/t-rotate.ogg"
-                self.sound2line = "sfx/t-2fl.ogg"
-                self.sound3line = "sfx/t-3fl.ogg"
-                self.sound4line = "sfx/t-4fl.ogg"
-
-            elif persistent.skin == 4:
-
-
-                self.color_1 = Image("images/tetris/tetris_gmd/cube_1.png")
-                self.color_2 = Image("images/tetris/tetris_gmd/cube_2.png")
-                self.color_3 = Image("images/tetris/tetris_gmd/cube_3.png")
-                self.color_4 = Image("images/tetris/tetris_gmd/cube_4.png")
-                self.color_5 = Image("images/tetris/tetris_gmd/cube_5.png")
-                self.color_6 = Image("images/tetris/tetris_gmd/cube_6.png")
-                self.color_7 = Image("images/tetris/tetris_gmd/cube_7.png")
-                self.color_9 = Image("images/tetris/tetris_gmd/cube_8.png")
-
-                self.shadow_color_1 = Image("images/tetris/tetris_gmd/cube_1.png")
-                self.shadow_color_2 = Image("images/tetris/tetris_gmd/cube_2.png")
-                self.shadow_color_3 = Image("images/tetris/tetris_gmd/cube_3.png")
-                self.shadow_color_4 = Image("images/tetris/tetris_gmd/cube_4.png")
-                self.shadow_color_5 = Image("images/tetris/tetris_gmd/cube_5.png")
-                self.shadow_color_6 = Image("images/tetris/tetris_gmd/cube_6.png")
-                self.shadow_color_7 = Image("images/tetris/tetris_gmd/cube_7.png")
-
-                self.score = 0
-
-                self.playsounds = True
-                self.soundbdrop = "sfx/t-drop(g).ogg"
-                self.soundline = "sfx/t-fl(g).ogg"
-                self.soundldrop = "sfx/t-fl-drop(g).ogg"
-                self.soundmove = "sfx/t-move(g).ogg"
-                self.soundrotate = "sfx/t-rotate(g).ogg"
-                self.sound2line = "sfx/t-2fl(g).ogg"
-                self.sound3line = "sfx/t-3fl(g).ogg"
-                self.sound4line = "sfx/t-4fl(g).ogg"
-
-            elif persistent.skin == 5:
-
-
-                self.color_1 = Image("images/tetris/tetris_mb/cube_1.png")
-                self.color_2 = Image("images/tetris/tetris_mb/cube_2.png")
-                self.color_3 = Image("images/tetris/tetris_mb/cube_3.png")
-                self.color_4 = Image("images/tetris/tetris_mb/cube_4.png")
-                self.color_5 = Image("images/tetris/tetris_mb/cube_5.png")
-                self.color_6 = Image("images/tetris/tetris_mb/cube_6.png")
-                self.color_7 = Image("images/tetris/tetris_mb/cube_7.png")
-                self.color_9 = Image("images/tetris/tetris_mb/cube_8.png")
-
-                self.shadow_color_1 = Image("images/tetris/tetris_mb/shadow_1.png")
-                self.shadow_color_2 = Image("images/tetris/tetris_mb/shadow_2.png")
-                self.shadow_color_3 = Image("images/tetris/tetris_mb/shadow_3.png")
-                self.shadow_color_4 = Image("images/tetris/tetris_mb/shadow_4.png")
-                self.shadow_color_5 = Image("images/tetris/tetris_mb/shadow_5.png")
-                self.shadow_color_6 = Image("images/tetris/tetris_mb/shadow_6.png")
-                self.shadow_color_7 = Image("images/tetris/tetris_mb/shadow_7.png")
-
-                self.score = 0
-
-                self.playsounds = True
-                self.soundbdrop = "sfx/t-drop(mb).ogg"
-                self.soundline = "sfx/t-fl(mb).ogg"
-                self.soundldrop = "sfx/t-fl-drop(mb).ogg"
-                self.soundmove = "sfx/t-move(mb).ogg"
-                self.soundrotate = "sfx/t-rotate(mb).ogg"
-                self.sound2line = "sfx/t-2fl(mb).ogg"
-                self.sound3line = "sfx/t-3fl(mb).ogg"
-                self.sound4line = "sfx/t-4fl(mb).ogg"
-
-            elif persistent.skin == 6:
-
-
-                self.color_1 = Image("/custom_tetris/cube_1.png")
-                self.color_2 = Image("/custom_tetris/cube_2.png")
-                self.color_3 = Image("/custom_tetris/cube_3.png")
-                self.color_4 = Image("/custom_tetris/cube_4.png")
-                self.color_5 = Image("/custom_tetris/cube_5.png")
-                self.color_6 = Image("/custom_tetris/cube_6.png")
-                self.color_7 = Image("/custom_tetris/cube_7.png")
-                self.color_9 = Image("/custom_tetris/cube_8.png")
-
-                self.shadow_color_1 = Image("/custom_tetris/shadow_1.png")
-                self.shadow_color_2 = Image("/custom_tetris/shadow_2.png")
-                self.shadow_color_3 = Image("/custom_tetris/shadow_3.png")
-                self.shadow_color_4 = Image("/custom_tetris/shadow_4.png")
-                self.shadow_color_5 = Image("/custom_tetris/shadow_5.png")
-                self.shadow_color_6 = Image("/custom_tetris/shadow_6.png")
-                self.shadow_color_7 = Image("/custom_tetris/shadow_7.png")
-
-                self.score = 0
-
-                self.playsounds = True
-                self.soundbdrop = "/custom_tetris/t-drop.ogg"
-                self.soundline = "/custom_tetris/t-fl.ogg"
-                self.soundldrop = "/custom_tetris/t-fl-drop.ogg"
-                self.soundmove = "/custom_tetris/t-move.ogg"
-                self.soundrotate = "/custom_tetris/t-rotate.ogg"
-                self.sound2line = "/custom_tetris/t-2fl.ogg"
-                self.sound3line = "/custom_tetris/t-3fl.ogg"
-                self.sound4line = "/custom_tetris/t-4fl.ogg"
-
-
-            class current_shape:
-                shape = ""
-                shape_number = ""
-                shape_hold = ""
-                new_shape_number = self.piece_list[0]
-                next_shape = self.tetris_shapes[new_shape_number]
-                x = 5
-                y = 1
-                move_time = 0.300
-                speed = 0.60 - 2
-            self.was_it_hold = False
-            self.temp_position = 3
-            self.current_shape = current_shape()
+    #-----------------------------------------
+    # CORE TETRIS GAME LOGIC CLASS (Unchanged)
+    #-----------------------------------------
+    class TetrisGame:
+        # This class is identical to the one from the previous response.
+        # It handles all game state, rules, and logic internally.
+        def __init__(self, difficulty=0): # difficulty=0 for player, 1-6 for AI
+            self.board = [[0] * BOARD_WIDTH for _ in range(BOARD_HEIGHT)]
+            self.score = 0
             self.level = 1
-            self.allLines = 0
-            self.oldst = None
-            self.new_shape = True
+            self.lines_cleared = 0
+            self.difficulty = difficulty # Store the difficulty setting
             self.game_over = False
-            self.winner = None
-            self.Yuri_Face = 0
+            self.bag = []
+            self.next_pieces = []
+            self.fill_bag()
+            for _ in range(5): self.next_pieces.append(self.draw_from_bag())
+            self.current_piece = None
+            self.hold_piece_type = None
+            self.can_hold = True
+            self.spawn_new_piece()
+            self.last_move_was_rotation = False
+            self.last_clear_info = None
+            self.lock_timer = 0
+            self.is_landed = False
+            self.time_since_fall = 0.0
 
-        #Function which add shape to stage.
-        #Arguments current x and y position of shape in stage
-        def addShapeToStage(self, current_x, current_y):
-            for idr, row in enumerate(self.current_shape.shape):
-                for idc, column in enumerate(row):
-                    if column != 0:
-                        self.stage[current_y+idr][current_x+idc]=column
+        def fill_bag(self):
+            self.bag = list(TETROMINOES.keys())
+            random.shuffle(self.bag)
 
-        def render(self, width, height, st, at):
-            global PlayerForYuri
-            #Win/lose conditions
-            def winner(win):
-                global TetrisWinner
-                if win == 0:
-                    if self.AI == 0:
-                        TetrisWinner = 0   #Yuri lose
-                    else:
-                        TetrisWinner = 1   #Player lose
-                else:
-                    if self.AI == 0:
-                        TetrisWinner = 1   #Player lose
-                    else:
-                        TetrisWinner = 0   #Yuri lose
+        def draw_from_bag(self):
+            if not self.bag: self.fill_bag()
+            return self.bag.pop(0)
 
-            for idc in range(4, 8):
-                if self.stage[1][idc] != 0:
-                    self.game_over = True
-                    winner(1)
-
-            if TetrisScore !=0:
-                if self.score >= TetrisScore:
-                    self.game_over = True
-                    winner(0)
-
-            elif LineLimit !=0:
-                if self.allLines >= LineLimit:
-                    self.game_over = True
-                    winner(0)
-
+        def spawn_new_piece(self):
+            piece_type = self.next_pieces.pop(0)
+            self.next_pieces.append(self.draw_from_bag())
+            shape_info = TETROMINOES[piece_type]
+            self.current_piece = {'type': piece_type, 'shape': shape_info['shape'], 'x': (BOARD_WIDTH - len(shape_info['shape'][0])) // 2, 'y': 0, 'rotation': 0}
+            self.can_hold = True
+            self.is_landed = False
+            self.lock_timer = 0
+            self.last_move_was_rotation = False # --- RESET THE FLAG ---
+            if self.check_collision(self.current_piece['shape'], self.current_piece['x'], self.current_piece['y']):
+                self.game_over = True
+        
+        def update(self, dt):
             if self.game_over:
-                import pygame
-                while True:
-                    for event in pygame.event.get():
-                        if event.type == pygame.KEYDOWN:
-                            renpy.jump("tetris_over")
+                return
 
-            ####################################################################################
-            #Function which check if there are lines. If yes, add it to score and return new stage
-            def lines():
-                numberOfFullLines = 0
-                #Check if there are any lines and fix stage
-                prevLine = False
-                for idr in range(1, 21):
-                    fullLine = True
-                    for idc in range(1, 11):
-                        if self.stage[idr][idc] == 0:
-                            fullLine = False
-                            break
-                    if fullLine:
-                        numberOfFullLines += 1
-                        renpy.sound.play(self.soundline)
-                        for idc in range(1, 11):
-                            self.stage[idr][idc] = 0
-                        if prevLine != fullLine:
-                            for i in range(0, idr-1):
-                                for idc in range(1, 11):
-                                    self.stage[idr-i][idc] = self.stage[idr-i-1][idc]
-                                    self.stage[idr-i-1][idc] = 0
-                                    fullLine = False
-                    prevLine = fullLine
+            # --- Gravity Calculation ---
+            # Get the speed multiplier based on the game's difficulty setting
+            speed_multiplier = AI_GRAVITY_MULTIPLIERS.get(self.difficulty, 1.0)
 
-                #Score points depending on how many lines there were cleared
-                self.allLines += numberOfFullLines
-                if numberOfFullLines == 1:
-                    self.score += 100 * self.level
-                elif numberOfFullLines == 2:
-                    self.score += 300 * self.level
-                    renpy.sound.play(self.sound2line)
-                elif numberOfFullLines == 3:
-                    self.score += 500 * self.level
-                    renpy.sound.play(self.sound3line)
-                elif numberOfFullLines == 4:
-                    self.score += 800 * self.level
-                    renpy.sound.play(self.sound4line)
-                self.level =  int(self.allLines/10)+1
-            #################################################################################
-            r = renpy.Render(width, height)
-            if persistent.skin == 1:
-                if AI_difficulty >= 4:
-                    background = renpy.render(Image("images/tetris/tetris/background_no_grind.png"), width, height, st, at)
-                else:
-                    background = renpy.render(Image("images/tetris/tetris/background.png"), width, height, st, at)
-
-            elif persistent.skin == 2:
-                if AI_difficulty >= 4:
-                    background = renpy.render(Image("images/tetris/tetris_99/background_no_grind.png"), width, height, st, at)
-                else:
-                    background = renpy.render(Image("images/tetris/tetris_99/background.png"), width, height, st, at)
-
-            elif persistent.skin == 3:
-                if AI_difficulty >= 4:
-                    background = renpy.render(Image("images/tetris/tetris_gb/background_no_grind.png"), width, height, st, at)
-                else:
-                    background = renpy.render(Image("images/tetris/tetris_gb/background.png"), width, height, st, at)
-
-            elif persistent.skin == 4:
-                if AI_difficulty >= 4:
-                    background = renpy.render(Image("images/tetris/tetris_gmd/background_no_grind.png"), width, height, st, at)
-                else:
-                    background = renpy.render(Image("images/tetris/tetris_gmd/background.png"), width, height, st, at)
-
-            elif persistent.skin == 5:
-                if AI_difficulty >= 4:
-                    background = renpy.render(Image("images/tetris/tetris_mb/background_no_grind.png"), width, height, st, at)
-                else:
-                    background = renpy.render(Image("images/tetris/tetris_mb/background.png"), width, height, st, at)
-
-            elif persistent.skin == 6:
-                if AI_difficulty >= 4:
-                    background = renpy.render(Image("/custom_tetris/background_no_grind.png"), width, height, st, at)
-                else:
-                    background = renpy.render(Image("/custom_tetris/background.png"), width, height, st, at)
-            r.blit(background, (0, 0))
-            lines()
-            if self.new_shape:
-                self.was_it_hold = False
-                self.current_shape.x = 5
-                self.current_shape.y = 1
-                self.current_shape.shape = self.current_shape.next_shape
-                self.current_shape.shape_number = self.current_shape.new_shape_number
-                self.piece_list.pop(0)
-                if not self.piece_list:
-                    self.piece_list = [0,1,2,3,4,5,6]
-                    random.shuffle(self.piece_list)
-                self.current_shape.new_shape_number = self.piece_list[0]
-                self.current_shape.next_shape = self.tetris_shapes[self.current_shape.new_shape_number]
-                self.new_shape = False
-                self.temp_position = 1
-                if self.AI != 0:
-                    temp_AI = True
-                    for idc in range(1, 11):
-                        if self.stage[2][idc] != 0:
-                            temp_AI = False
-                    if temp_AI:
-                        self.movesAI = self.Yuri_AI()
-
-            if self.oldst is None:
-                self.oldst = st
-            if self.level > 19:
-                speed_Y = 18
+            # High-level 20G gravity remains the same for everyone
+            if self.level >= 20:
+                self.move(0, 1, reset_lock=False)
             else:
-                speed_Y = self.level
-            if self.AI == 1:
-                if self.current_shape.y >= 10:
-                    self.current_shape.speed = 0.30
-            elif self.AI == 2:
-                if self.current_shape.y >= 5:
-                    self.current_shape.speed = 0.15
-            elif self.AI == 3:
-                if self.current_shape.y >= 2.5:
-                    self.current_shape.speed = 0.075
-            elif self.AI == 4:
-                if self.current_shape.y >= 0.625:
-                    self.current_shape.speed = 0.0375 - 13
-            elif self.AI == 5:
-                if self.current_shape.y >= 0.3125:
-                    self.current_shape.speed = 0.01875 - 26
-            elif self.AI == 6:
-                if self.current_shape.y >= 0.15625:
-                    self.current_shape.speed = 0.009375 - 39
+                self.time_since_fall += dt
+                base_interval = max(0.05, 0.5 - ((self.level - 1) * 0.022))
+                gravity_interval = base_interval / speed_multiplier
+                if self.time_since_fall >= gravity_interval:
+                    self.time_since_fall = 0
+                    self.move(0, 1, reset_lock=False)
 
-            if self.temp_position == self.current_shape.y:
-                if len(self.movesAI) != 0:
-                    if self.movesAI[0] == "r":
-                        self.rotateClockWiseAI()
-                    else:
-                        self.current_shape.x += int(self.movesAI[0])
-                    del self.movesAI[0]
-                    self.temp_position += 1
-
-            dtime = st - self.oldst
-            self.oldst = st
-            temp_can_go_down = True
-            if self.current_shape.move_time <= 0:
-                # Check if bottom is empty
-                for idr, row in enumerate(self.current_shape.shape):
-                    for idc, column in enumerate(row):
-                        if column != 0:
-                            if self.stage[self.current_shape.y + 1 + idr][self.current_shape.x + idc] != 0:
-                                temp_can_go_down = False
-                                renpy.sound.play(self.soundbdrop)
-                                break
-                if temp_can_go_down != False:
-                    self.current_shape.move_time = self.current_shape.speed
-                    self.current_shape.y += 1
+            if self.is_landed:
+                self.lock_timer += dt
+                if self.lock_timer >= LOCK_DELAY:
+                    self.lock_piece()
+            
+            # --- STATE 2: The piece is actively falling. ---
+            # If the piece is not landed, we only care about gravity.
+            else:
+                # Handle "20G" instant-fall gravity for high levels.
+                if self.level >= 20:
+                    self.current_piece['y'] = self.get_ghost_y()
+                    self.is_landed = True # The piece has now landed, so the lock delay will start next frame.
+                    self.time_since_fall = 0
+                
+                # Handle standard, progressive gravity for levels 1-19.
                 else:
-                    self.new_shape = True
-                    self.addShapeToStage(self.current_shape.x, self.current_shape.y)
-            else:
-                self.current_shape.move_time -= dtime
+                    # Get the base speed multiplier for the current difficulty.
+                    speed_multiplier = AI_GRAVITY_MULTIPLIERS.get(self.difficulty, 1.0)
+                    
+                    # Calculate the fall interval based on the current level.
+                    base_interval = max(0.05, 0.5 - ((self.level - 1) * 0.022))
+                    
+                    # Apply the difficulty multiplier.
+                    gravity_interval = base_interval / speed_multiplier
 
-            def draw_shape(sx, sy, current_shape,shadow):
-                for idr, row in enumerate(current_shape):
-                    for idc, column in enumerate(row):
-                        if column == 1:
-                            shape = renpy.render(self.color_1, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if self.put_shadow == 1 and shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_1, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape.y)))
-                        elif column == 2:
-                            shape = renpy.render(self.color_2, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if self.put_shadow == 1 and shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_2, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape.y)))
-                        elif column == 3:
-                            shape = renpy.render(self.color_3, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if self.put_shadow == 1 and shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_3, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape.y)))
-                        elif column == 4:
-                            shape = renpy.render(self.color_4, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if self.put_shadow == 1 and shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_4, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape.y)))
-                        elif column == 5:
-                            shape = renpy.render(self.color_5, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if self.put_shadow == 1 and shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_5, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape.y)))
-                        elif column == 6:
-                            shape = renpy.render(self.color_6, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if self.put_shadow == 1 and shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_6, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape.y)))
-                        elif column == 7:
-                            shape = renpy.render(self.color_7, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if self.put_shadow == 1 and shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_7, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape.y)))
-                        elif column == 9:
-                            shape = renpy.render(self.color_9, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
+                    self.time_since_fall += dt
+                    if self.time_since_fall >= gravity_interval:
+                        self.time_since_fall = 0
+                        # move() will set self.is_landed to True if it fails to move down.
+                        self.move(0, 1, reset_lock=False)
 
-            b = "Lines - %(s)d " % {"s":self.allLines }
-            c = "Level - %(s)d " % {"s":self.level}
-            d = "Next:"
+        def check_collision(self, shape, x, y):
+            for r, row in enumerate(shape):
+                for c, cell in enumerate(row):
+                    if cell != 0:
+                        board_x, board_y = x + c, y + r
+                        if not (0 <= board_x < BOARD_WIDTH and 0 <= board_y < BOARD_HEIGHT) or self.board[board_y][board_x] != 0:
+                            return True
+            return False
 
-            f = Text(b)
-            g = Text(c)
-            h = Text(d)
+        def get_ghost_y(self):
+            if not self.current_piece: return -1
+            ghost_y = self.current_piece['y']
+            while not self.check_collision(self.current_piece['shape'], self.current_piece['x'], ghost_y + 1):
+                ghost_y += 1
+            return ghost_y
 
-            text_allLines_render = renpy.render(f, width, height, st, at)
-            text_level_render = renpy.render(g, width, height, st, at)
-            text_next_render = renpy.render(h, width, height, st, at)
+        def lock_piece(self):
+            """Locks the current piece, then checks for clears before spawning the next."""
+            if not self.current_piece: return
 
+            shape, x, y = self.current_piece['shape'], self.current_piece['x'], self.current_piece['y']
+            color_id = TETROMINOES[self.current_piece['type']]['color_id']
+            for r, row in enumerate(shape):
+                for c, cell in enumerate(row):
+                    if cell != 0: self.board[y + r][x + c] = color_id
 
-            if self.AI == 0:
-                r.blit(text_allLines_render, (-120, -100))
-                r.blit(text_level_render, (-120, -50))
-                r.blit(text_next_render, (-120, -10))
-                draw_shape(-100, 40, self.current_shape.next_shape,0)
-                i = "Hold:"
-                j = Text(i)
-                text_hold_render = renpy.render(j, width, height, st, at)
-                r.blit(text_hold_render, (-120, 100))
-                draw_shape(-100, 160, self.current_shape.shape_hold,0)
-                if LineLimit != 0:
-                    i = "Line to Victory - %(s)d " % {"s":LineLimit}
-                    j = Text(i)
-                    text_line = renpy.render(j, width, height, st, at)
-                    r.blit(text_line, (420, -100))
-                    PlayerForYuri = self.allLines
-                elif TetrisScore != 0:
-                    a = "Score - %(s)d " % {"s":self.score }
-                    e = Text(a)
-                    text_score_render = renpy.render(e, width, height, st, at)
-                    r.blit(text_score_render, (30, -100))
-                    PlayerForYuri = self.score
-            else:
-                if LineLimit != 0 and (self.allLines > LineLimit/6 or PlayerForYuri > LineLimit/6):
-                    if self.Yuri_Face <> 1 and self.allLines > PlayerForYuri:
-                        if persistent.skin == 1:
-                            music_swap = True
-                            if music_swap:
-                                change_music("<loop 1.81>/music/tetris (b).ogg")
-                                music_swap = False
-                            elif not music_swap:
-                                pass
-                        show_chr("A-ABDAA-AAAJ")
-                        self.Yuri_Face = 1
-                        renpy.restart_interaction()
-                    elif self.Yuri_Face <> 2 and self.allLines < PlayerForYuri:
-                        if persistent.skin == 1:
-                            music_swap = True
-                            if music_swap:
-                                change_music("<loop 1.81>/music/tetris (b).ogg")
-                                music_swap = False
-                            elif not music_swap:
-                                pass
-                        show_chr("A-DEBAA-AMAM")
-                        self.Yuri_Face = 2
-                        renpy.restart_interaction()
-                elif TetrisScore != 0 and (self.score > TetrisScore/6 or PlayerForYuri > TetrisScore/6):
-                    if self.Yuri_Face <> 1 and self.score > PlayerForYuri:
-                        if persistent.skin == 1:
-                            music_swap = True
-                            if music_swap:
-                                change_music("<loop 1.81>/music/tetris (b).ogg")
-                                music_swap = False
-                            elif not music_swap:
-                                pass
-                        show_chr("A-ABDAA-AAAJ")
-                        self.Yuri_Face = 1
-                        renpy.restart_interaction()
-                    elif self.Yuri_Face <> 2 and self.score < PlayerForYuri:
-                        if persistent.skin == 1:
-                            music_swap = True
-                            if music_swap:
-                                change_music("<loop 1.81>/music/tetris (b).ogg")
-                                music_swap = False
-                            elif not music_swap:
-                                pass
-                        show_chr("A-DEBAA-AMAM")
-                        self.Yuri_Face = 2
-                        renpy.restart_interaction()
+            # --- MODIFICATION ---
+            # Call clear_lines FIRST, while we still know about the piece that was just locked.
+            self.clear_lines()
+            self.spawn_new_piece()
 
-                r.blit(text_allLines_render, (250, -100))
-                r.blit(text_level_render, (250, -50))
-                r.blit(text_next_render, (250, -10))
-                if TetrisScore != 0:
-                    a = "Score - %(s)d " % {"s":self.score }
-                    e = Text(a)
-                    text_score_render = renpy.render(e, width, height, st, at)
-                    r.blit(text_score_render, (30, -100))
-                draw_shape(280, 40, self.current_shape.next_shape,0)
-
-            draw_shape(0, 0, self.stage,0)
-            draw_shape(self.current_shape.x*self.PIXEL_SIZE, self.current_shape.y*self.PIXEL_SIZE, self.current_shape.shape,1)
-
-            renpy.redraw(self, 0)
-            return r
-        ############################################################################################################################
-        # Rotate piecec functions
-        def rotateClockWise(self, mat):
-            tempShape = mat
-            tempRow = tempShape
-            tempX = self.current_shape.x
-            tempY = self.current_shape.y
-            ifRotation = True
-            renpy.sound.play(self.soundrotate)
-            lenRow = len(mat)
-            lenCol = len(mat[0])
-            #Rotation of Long I piece:
-            # I to -
-            if lenRow == 4:
-                tempRow = [[] for _ in range(lenCol)]
-                for idr, row in enumerate(mat):
-                    lenColumn = len(row)
-                    for idc, column in enumerate(row):
-                        tempRow[idc].insert(0,column)
-                self.current_shape.y+=1
-                if self.stage[self.current_shape.y][self.current_shape.x-1] == 0:
-                    self.current_shape.x-=1
-                for idc, row in enumerate(tempRow[0]):
-                    if self.stage[self.current_shape.y][self.current_shape.x+idc] != 0:
-                        ifRotation = False
-                        break
-            # - to I
-            elif lenRow == 1:
-                tempRow = [[] for _ in range(lenCol)]
-                for idr, row in enumerate(mat):
-                    lenColumn = len(row)
-                    for idc, column in enumerate(row):
-                        tempRow[idc].insert(0,column)
-                self.current_shape.y-=1
-                self.current_shape.x+=1
-                for idr, row in enumerate(tempRow):
-                    if self.stage[self.current_shape.y+idr][self.current_shape.x] != 0:
-                        ifRotation = False
-                        break
-            #Rotation of Z,L ,T piece
-            # xxx    xx
-            # xxx to xx
-            #        xx
-            elif lenRow == 2 and lenCol != 2:
-                tempRow = [[] for _ in range(lenCol)]
-                for idr, row in enumerate(mat):
-                    lenColumn = len(row)
-                    for idc, column in enumerate(row):
-                        tempRow[idc].insert(0,column)
-                for idr, row in enumerate(tempRow):
-                    for idc, column in enumerate(row):
-                        if column != 0:
-                            if self.stage[self.current_shape.y+idr][self.current_shape.x+idc] != 0:
-                                ifRotation = False
-                                break
-            # xx    xxx
-            # xx to xxx
-            # xx
-            elif lenRow == 3:
-                tempRow = [[] for _ in range(lenCol)]
-                for idr, row in enumerate(mat):
-                    lenColumn = len(row)
-                    for idc, column in enumerate(row):
-                        tempRow[idc].insert(0,column)
-                if self.stage[self.current_shape.y][self.current_shape.x+len(tempRow[0])-1] != 0:
-                    self.current_shape.x-=1
-                for idr, row in enumerate(tempRow):
-                    for idc, column in enumerate(row):
-                        if column != 0:
-                            if self.stage[self.current_shape.y+idr][self.current_shape.x+idc] != 0:
-                                ifRotation = False
-                                break
-            elif lenRow == 2 and lenCol == 2:
-                ifRotation = True
-            #Fail the rotation, back to orginal position
-            if ifRotation == False:
-                tempRow = tempShape
-                self.current_shape.x = tempX
-                self.current_shape.y = tempY
-            return tempRow
-            ###################################################################################################################
-
-        def find_bottom(self):
-            temp_y = 0
-            for idr in range(self.current_shape.y+len(self.current_shape.shape)-1, 22):
-                for idc, column in enumerate(self.current_shape.shape[0]):
-                    if self.stage[idr][self.current_shape.x + idc ] != 0:
-                        temp_y = idr-len(self.current_shape.shape)
-                        break
-                if temp_y != 0:
-                    break
-            for position in range(0, 4):
-                temp_fit = True
-                for idr, row in enumerate(self.current_shape.shape):
-                    for idc, column in enumerate(row):
-                        if column != 0:
-                            if self.stage[temp_y+idr][self.current_shape.x + idc] != 0:
-                                temp_fit = False
-                                break
-                if temp_fit:
-                    temp_y += 1
-                else:
-                    temp_y -= 1
-                    break
-            return temp_y
-
-        def player_t_spin(shape, stage):
-            if shape[0][1] != 0 and shape[1][0] != 0 and shape[1][2] != 0 and shape[2][1] != 0:
-                return True
-            elif shape[0][1] == 0 and shape[1][0] == 0 and shape[1][2] != 0 and shape[2][1] != 0:
-                return True
-            elif shape[0][1] != 0 and shape[1][0] != 0 and shape[1][2] == 0 and shape[2][1] != 0:
-                return True
-            elif shape[0][1] != 0 and shape[1][0] != 0 and shape[1][2] != 0 and shape[2][1] == 0:
-                return True
-            else:
+        def _is_t_spin_full(self):
+            """
+            Checks for a full T-Spin using the 3-corner rule.
+            A full T-Spin requires 3 of the 4 corners around the T piece to be occupied.
+            """
+            if not self.current_piece or self.current_piece['type'] != 'T':
                 return False
 
-        def event(self, ev, x, y, st):
-            import pygame
-            temp_can_left = True
-            temp_can_right = True
-            if self.level > 19:
-                self.current_shape.speed = 0.20
-            else:
-                self.current_shape.speed = 0.20
-            if ev.type == pygame.KEYDOWN and self.AI == 0:
-                if ev.key == pygame.K_UP:
-                    self.current_shape.shape = self.rotateClockWise(self.current_shape.shape)
-                elif ev.key == pygame.K_LEFT:
-                    renpy.sound.play(self.soundmove)
-                    for idr, row in enumerate(self.current_shape.shape):
-                        for idc, column in enumerate(row):
-                            if column != 0:
-                                if self.stage[self.current_shape.y + idr][self.current_shape.x - 1 + idc] != 0:
-                                    temp_can_left = False
-                                    break
-                    if temp_can_left:
-                        self.current_shape.x -= 1
-                elif ev.key == pygame.K_RIGHT:
-                    renpy.sound.play(self.soundmove)
-                    for idr, row in enumerate(self.current_shape.shape):
-                        for idc, column in enumerate(row):
-                            if column != 0:
-                                if self.stage[self.current_shape.y + idr][self.current_shape.x + 1 + idc ] != 0:
-                                    temp_can_right = False
-                                    break
-                    if temp_can_right:
-                        self.current_shape.x += 1
-                elif ev.key == pygame.K_DOWN:
-                    self.current_shape.speed = 0.002
-                elif ev.key == pygame.K_SPACE:
-                    #if player_t_spin(self.current_shape.shape, self.stage):
-                    #    renpy.sound.play(self.soundbdrop)
-                    #    self.addShapeToStage(self.current_shape.x, self.find_bottom())
-                    #    self.new_shape = True
-                    #else:
-                    renpy.sound.play(self.soundbdrop)
-                    self.addShapeToStage(self.current_shape.x, self.find_bottom())
-                    self.new_shape = True
-                elif ev.key == pygame.K_q and self.current_shape.shape_hold == "" and self.was_it_hold ==False:
-                    self.current_shape.shape_hold = self.current_shape.shape
-                    self.new_shape = True
-                elif ev.key == pygame.K_e and self.current_shape.shape_hold != "":
-                    self.current_shape.next_shape = self.current_shape.shape
-                    self.current_shape.shape = self.current_shape.shape_hold
-                    self.current_shape.shape_hold = ""
-                    self.current_shape.x = 5
-                    self.current_shape.y = 1
-                    self.was_it_hold = True
+            p = self.current_piece
+            # The four corners relative to the T piece's 3x3 bounding box
+            corners = [(p['y'], p['x']), (p['y'], p['x'] + 2), (p['y'] + 2, p['x']), (p['y'] + 2, p['x'] + 2)]
+            occupied_corners = 0
+            for r, c in corners:
+                # Check if the corner is off-board or if the board cell is not empty
+                if not (0 <= c < BOARD_WIDTH and 0 <= r < BOARD_HEIGHT) or self.board[r][c] != 0:
+                    occupied_corners += 1
+            
+            return occupied_corners >= 3
 
-        def rotateClockWiseAI(self):
-            lenRow = len(self.current_shape.shape)
-            lenCol = len(self.current_shape.shape[0])
-            tempRow = [[] for _ in range(lenCol)]
-            for idr, row in enumerate(self.current_shape.shape):
-                for idc, column in enumerate(row):
-                    tempRow[idc].insert(0,column)
-            del self.current_shape.shape
-            self.current_shape.shape = tempRow
+        def clear_lines(self):
+            """
+            --- COMPLETE OVERHAUL ---
+            Checks for and clears completed lines with full modern T-Spin scoring rules.
+            This method will now set self.last_clear_info for the displayable to read.
+            """
+            self.last_clear_info = None # Reset before checking
+            
+            was_rotation = self.last_move_was_rotation
+            is_t_piece = self.current_piece and self.current_piece['type'] == 'T'
+            
+            is_full_tspin = False
+            is_mini_tspin = False
 
-        def find_t_spin(shape, stage):
-            if shape[0][1] == 0 or shape[1][0] == 0 or shape[1][2] == 0 or shape[2][1] == 0:
-                # The shape is a T-shape.
-                for x in range(1, 11):
-                    # Check if there is a valid T-Spin move to the left.
-                    if stage[1][x] == 0 and stage[0][x-1] != 0 and stage[1][x-1] != 0 and stage[2][x-1] != 0:
-                        return -1
-                    # Check if there is a valid T-Spin move to the right.
-                    if stage[1][x] == 0 and stage[0][x+2] != 0 and stage[1][x+2] != 0 and stage[2][x+2] != 0:
-                        return 1
-            return 0
-
-        def Yuri_AI(self):
-            # Find the best T-Spin move.
-            t_spin_move = find_t_spin(self.current_shape.shape, self.stage)
-            # If there is a valid T-Spin move, make it.
-            if t_spin_move != 0:
-                self.current_shape.x += t_spin_move
-            # Otherwise, find the best regular move.
-            else:
-                moves = bestMove()
-                # Rotate the shape the correct number of times.
-                for i in range(0, moves[1]-1):
-                    self.rotateClockWiseAI()
-                # Move the shape to the correct position.
-                signbit = 1 if moves[0] < 0 else 0
-                if signbit == 0:
-                    for i in range(0, moves[0]):
-                        self.current_shape.x += 1
+            # 1. Determine if the move was a T-Spin of any kind
+            if was_rotation and is_t_piece:
+                if self._is_t_spin_full():
+                    is_full_tspin = True
                 else:
-                    for i in range(moves[0], 0):
-                        self.current_shape.x -= 1
+                    is_mini_tspin = True
 
-#----------------------------------------------------------------------------------------------------
+            # 2. Find completed lines
+            lines_to_clear = [r for r, row in enumerate(self.board) if all(cell != 0 for cell in row)]
+            num_cleared = len(lines_to_clear)
+            
+            # 3. Apply score and set clear info based on the type of clear
+            score_to_add = 0
+            clear_type = "NONE"
 
-        def Yuri_AI(self):
-            def calculateScoreForMove():
-                height = 0
-                lines = 0
-                holes = 0
-                temp_col_height = [None] * 10
-                bumpiness = 0
-                #Caluclate height and lines
-                for idr in range(20, 0, -1):
-                    temp_clear_line = True
-                    for idc in range(1, 11):
-                        if self.stage[idr][idc] == 0:
-                            temp_clear_line = False
-                            break
-                    if temp_clear_line:
-                        lines += 1
-                #Caluclate holes and bumpiness
-                for idc in range(1, 11):
-                    temp_col_height[idc-1] = 0
-                    temp_holes = 0
-                    for idr in range(20, 0, -1):
-                        if self.stage[idr][idc] != 0:
-                            holes += temp_holes
-                            temp_holes = 0
-                        else:
-                            temp_holes += 1
-                        if self.stage[idr][idc] != 0:
-                            temp_col_height[idc-1] = 21-idr
-                for i in range(0, 9):
-                    height += temp_col_height[i]
-                    bumpiness += abs(temp_col_height[i] - temp_col_height[i+1])
-                height += temp_col_height[9]
-                score = (-0.510066 * height) + (0.760666 * lines) - (0.35663 * holes) - (0.184483 * bumpiness)
-                return score
+            if is_full_tspin:
+                score_map = {0: 400, 1: 800, 2: 1200, 3: 1600} # T-Spin 0, Single, Double, Triple
+                score_to_add = score_map.get(num_cleared, 0)
+                clear_type = f"T_SPIN_FULL_{num_cleared}"
 
-            def shapeRotation(shape):
-                if shape == 6:
-                    return 2
-                elif shape == 0 or shape == 3 or shape == 4:
-                    return 5
-                elif shape == 1 or shape == 2 or shape == 5:
-                    return 3
+            elif is_mini_tspin:
+                score_map = {0: 100, 1: 200, 2: 400} # Mini T-Spin 0, Single, Double
+                score_to_add = score_map.get(num_cleared, 0)
+                clear_type = f"T_SPIN_MINI_{num_cleared}"
 
-            ####################################################################################################################
-            def bestMove():
-                import copy
-                moves = []
-                best_score = -100
-                temp_shape = copy.deepcopy(self.current_shape.shape)
-                temp_rotation = shapeRotation(self.current_shape.shape_number)
+            elif num_cleared > 0: # Standard clear (not a T-Spin)
+                score_map = {1: 100, 2: 300, 3: 500, 4: 800} # Single, Double, Triple, Tetris
+                score_to_add = score_map.get(num_cleared, 0)
+                clear_type = f"NORMAL_{num_cleared}"
+            
+            if score_to_add > 0:
+                self.score += score_to_add * self.level
+                self.last_clear_info = {'type': clear_type, 'lines': num_cleared}
 
-                #Find best position
-                temp_stage = copy.deepcopy(self.stage)
-                for rot in range(1, temp_rotation):
-                    temp_len = len(self.current_shape.shape[0])-1
-                    for idc in range(1, 11-temp_len):
-                        del self.stage
-                        self.stage = copy.deepcopy(temp_stage)
-                        temp_break = False
-                        for idr in range(1, 22):
-                            for idcShape in range(0, len(self.current_shape.shape[0])):
-                                if self.current_shape.shape[len(self.current_shape.shape)-1][idcShape] != 0:
-                                    if self.stage[idr][idc+idcShape] != 0:
-                                        temp_idr = idr
-                                        temp_break = True
-                                        break
-                            if temp_break:
-                                break
-                        for idr in range(0, 21):
-                            temp_free = True
-                            temp_idr -= 1
-                            for idrShape, row in enumerate(self.current_shape.shape):
-                                for idcShape, column in enumerate(row):
-                                    if column != 0:
-                                        if self.stage[temp_idr+(idrShape-(len(self.current_shape.shape)-1))][idc+idcShape] != 0:
-                                            temp_free = False
-                            if temp_free:
-                                self.addShapeToStage(idc, temp_idr-(len(self.current_shape.shape)-1))
-                                temp_score = calculateScoreForMove()
-                                if temp_score > best_score:
-                                    best_score = temp_score
-                                    moves = [idc-5, rot]
-                                break
-                    self.rotateClockWiseAI()
-                self.stage = copy.deepcopy(temp_stage)
-                del temp_stage
-                self.current_shape.shape = copy.deepcopy(temp_shape)
-                del temp_shape
+            # 4. Update board state if lines were cleared
+            if num_cleared > 0:
+                self.lines_cleared += num_cleared
+                self.level = (self.lines_cleared // 10) + 1
 
-                temp_moves = []
-                for i in range(0, moves[1]-1):
-                    temp_moves.append("r")
-                signbit = 1 if moves[0] < 0 else 0
-                if signbit == 0:
-                    for i in range(0, moves[0]):
-                        temp_moves.append("1")
-                else:
-                    for i in range(moves[0], 0):
-                        temp_moves.append("-1")
-                return temp_moves
-            return bestMove()
+                new_board = [row for r, row in enumerate(self.board) if r not in lines_to_clear]
+                for _ in range(num_cleared):
+                    new_board.insert(0, [0] * BOARD_WIDTH)
+                self.board = new_board
+        
+        def move(self, dx, dy, reset_lock=True):
+            if self.game_over: return False
+            new_x, new_y = self.current_piece['x'] + dx, self.current_piece['y'] + dy
+            if not self.check_collision(self.current_piece['shape'], new_x, new_y):
+                self.current_piece['x'], self.current_piece['y'] = new_x, new_y
+                if reset_lock: self.is_landed, self.lock_timer = False, 0
+                self.last_move_was_rotation = False # --- RESET THE FLAG ---
+                return True
+            else:
+                if dy > 0: self.is_landed = True
+                return False
 
+        def rotate(self, clockwise=True):
+            if self.game_over or self.current_piece['type'] == 'O': return
+            p = self.current_piece
+            original_rotation = p['rotation']
+            new_shape = list(zip(*p['shape'][::-1])) if clockwise else list(zip(*p['shape']))[::-1]
+            new_rotation = (original_rotation + 1) % 4 if clockwise else (original_rotation - 1 + 4) % 4
+            rotation_key = f"{original_rotation}-{new_rotation}"
+            kick_table = I_KICKS if p['type'] == 'I' else JLSTZ_KICKS
+            for dx, dy in kick_table.get(rotation_key, []):
+                test_x, test_y = p['x'] + dx, p['y'] - dy
+                if not self.check_collision(new_shape, test_x, test_y):
+                    p['shape'], p['x'], p['y'], p['rotation'] = new_shape, test_x, test_y, new_rotation
+                    self.is_landed, self.lock_timer = False, 0
+                    self.last_move_was_rotation = True # --- SET THE FLAG ---
+                    return
 
-#-----------------------------------------Co_OP Tetris----------------------------------------------------#
-    class Co_OP_tetris(renpy.Displayable):
-        def __init__(self):
-            renpy.Displayable.__init__(self)
-            self.movesAI = []
-            self.PIXEL_SIZE = 20
-            self.piece_list_player = [0,1,2,3,4,5,6]
-            self.piece_list_Yuri = [0,1,2,3,4,5,6]
-            random.shuffle(self.piece_list_player)
-            random.shuffle(self.piece_list_Yuri)
-            self.tetris_shapes = [
-                [[1, 1, 1],
-                [0, 1, 0]],
+        def hard_drop(self):
+            if self.game_over: return
+            ghost_y = self.get_ghost_y()
+            self.score += (ghost_y - self.current_piece['y'])
+            self.current_piece['y'] = ghost_y
+            self.last_move_was_rotation = False # --- RESET THE FLAG ---
+            self.lock_piece()
 
-                [[0, 2, 2],
-                [2, 2, 0]],
+        def hold(self):
+            if not self.can_hold or self.game_over: return
 
-                [[3, 3, 0],
-                [0, 3, 3]],
+            # Reset the landed state and lock timer IMMEDIATELY.
+            # This cancels any pending lock from the previous piece.
+            self.is_landed = False
+            self.lock_timer = 0
+            
+            self.last_move_was_rotation = False
+            self.can_hold = False # A hold action can only be done once per piece.
 
-                [[4, 0, 0],
-                [4, 4, 4]],
+            if self.hold_piece_type is None:
+                # If hold is empty, the current piece goes into hold, and a new piece spawns.
+                self.hold_piece_type = self.current_piece['type']
+                self.spawn_new_piece()
+            else:
+                # If hold is full, swap the current piece with the held piece.
+                held_type, self.hold_piece_type = self.hold_piece_type, self.current_piece['type']
+                shape_info = TETROMINOES[held_type]
+                self.current_piece = {'type': held_type, 'shape': shape_info['shape'], 'x': (BOARD_WIDTH - len(shape_info['shape'][0])) // 2, 'y': 0, 'rotation': 0}
 
-                [[0, 0, 5],
-                [5, 5, 5]],
+    #-----------------------------------------
+    # ARTIFICIAL INTELLIGENCE CLASS
+    #-----------------------------------------
+    class TetrisAI:
+        # Heuristic weights for scoring a board state.
+        WEIGHTS = {
+            'height': -0.51,
+            'lines': 0.76,
+            'holes': -0.35,
+            'bumpiness': -0.18,
+            't_spin_bonus': 2.0 # A massive bonus to incentivize the move.
+        }
 
-                [[6, 6, 6, 6]],
+        def find_best_move(self, game):
+            """
+            Analyzes the board and current piece to find the optimal placement.
+            Returns a dictionary with the target x, rotation, and resulting score.
+            """
+            best_move = {'score': -float('inf'), 'x': -1, 'rotation': 0}
+            temp_piece = copy.deepcopy(game.current_piece)
+            
+            for rotation in range(4): # 4 possible rotations
+                # Find all possible x positions for this rotation
+                min_x = -min(c for r in temp_piece['shape'] for c, cell in enumerate(r) if cell)
+                max_x = BOARD_WIDTH - max(c + 1 for r in temp_piece['shape'] for c, cell in enumerate(r) if cell)
 
-                [[7, 7],
-                [7, 7]]
-            ]
+                for x in range(min_x, max_x + 1):
+                    sim_board = copy.deepcopy(game.board)
+                    
+                    # Find landing position (hard drop)
+                    y = temp_piece['y']
+                    while not self._check_collision_sim(sim_board, temp_piece['shape'], x, y + 1):
+                        y += 1
+                    
+                    # Store the final landing position for the T-Spin check.
+                    final_x, final_y = x, y
+                    self._place_piece_sim(sim_board, temp_piece['shape'], final_x, final_y, TETROMINOES[temp_piece['type']]['color_id'])
+                    
+                    # Call the evaluation function with all necessary parameters.
+                    score = self._evaluate_board(sim_board, temp_piece['type'], final_x, final_y)
 
-            self.stage = [[9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,9],
-                        [9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9]]
+                    if score > best_move['score']:
+                        best_move = {'score': score, 'x': x, 'rotation': rotation}
 
-            if persistent.skin == 1:
+                # Rotate the temporary piece for the next loop
+                if temp_piece['type'] != 'O':
+                    temp_piece['shape'] = list(zip(*temp_piece['shape'][::-1]))
+            return best_move
 
-                self.color_1 = Image("images/tetris/tetris/cube_1.png")
-                self.color_2 = Image("images/tetris/tetris/cube_2.png")
-                self.color_3 = Image("images/tetris/tetris/cube_3.png")
-                self.color_4 = Image("images/tetris/tetris/cube_4.png")
-                self.color_5 = Image("images/tetris/tetris/cube_5.png")
-                self.color_6 = Image("images/tetris/tetris/cube_6.png")
-                self.color_7 = Image("images/tetris/tetris/cube_7.png")
-                self.color_9 = Image("images/tetris/tetris/cube_8.png")
+        def _evaluate_board(self, board, piece_type, piece_x, piece_y):
+            """
+            Calculates the score of a given board state.
+            This definition now correctly accepts all 5 arguments.
+            """
+            heights = [0] * BOARD_WIDTH
+            for c in range(BOARD_WIDTH):
+                for r in range(BOARD_HEIGHT):
+                    if board[r][c] != 0:
+                        heights[c] = BOARD_HEIGHT - r
+                        break
 
-                self.shadow_color_1 = Image("images/tetris/tetris/cube_1.png")
-                self.shadow_color_2 = Image("images/tetris/tetris/cube_2.png")
-                self.shadow_color_3 = Image("images/tetris/tetris/cube_3.png")
-                self.shadow_color_4 = Image("images/tetris/tetris/cube_4.png")
-                self.shadow_color_5 = Image("images/tetris/tetris/cube_5.png")
-                self.shadow_color_6 = Image("images/tetris/tetris/cube_6.png")
-                self.shadow_color_7 = Image("images/tetris/tetris/cube_7.png")
+            agg_height = sum(heights)
+            completed_lines = sum(1 for row in board if all(cell != 0 for cell in row))
+            holes = sum(1 for c in range(BOARD_WIDTH) for r in range(BOARD_HEIGHT - heights[c], BOARD_HEIGHT) if board[r][c] == 0)
+            bumpiness = sum(abs(heights[i] - heights[i+1]) for i in range(len(heights) - 1))
 
-                self.score = 0
+            t_spin_bonus = 0
+            if piece_type == 'T' and completed_lines > 0:
+                if self._check_t_spin_sim(board, piece_x, piece_y):
+                    t_spin_bonus = self.WEIGHTS['t_spin_bonus']
 
-                self.playsounds = True
-                self.soundbdrop = "sfx/t-drop.ogg"
-                self.soundline = "sfx/t-fl.ogg"
-                self.soundldrop = "sfx/t-fl-drop.ogg"
-                self.soundmove = "sfx/t-move.ogg"
-                self.soundrotate = "sfx/t-rotate.ogg"
-                self.sound4line = "sfx/t-4fl.ogg"
+            score = (self.WEIGHTS['height'] * agg_height +
+                     self.WEIGHTS['lines'] * completed_lines +
+                     self.WEIGHTS['holes'] * holes +
+                     self.WEIGHTS['bumpiness'] * bumpiness +
+                     t_spin_bonus)
+            return score
 
+        def _check_t_spin_sim(self, board, piece_x, piece_y):
+            """
+            Checks if a T-piece placement qualifies as a T-Spin using the 3-corner rule.
+            """
+            corners = [(piece_y, piece_x), (piece_y, piece_x + 2), (piece_y + 2, piece_x), (piece_y + 2, piece_x + 2)]
+            occupied_corners = 0
+            for r, c in corners:
+                if not (0 <= c < BOARD_WIDTH and 0 <= r < BOARD_HEIGHT) or board[r][c] != 0:
+                    occupied_corners += 1
+            return occupied_corners >= 3
 
-            elif persistent.skin == 2:
+        def _check_collision_sim(self, board, shape, x, y):
+            for r, row in enumerate(shape):
+                for c, cell in enumerate(row):
+                    if cell != 0:
+                        board_x, board_y = x + c, y + r
+                        if not (0 <= board_x < BOARD_WIDTH and 0 <= board_y < BOARD_HEIGHT) or board[board_y][board_x] != 0:
+                            return True
+            return False
 
-                self.color_1 = Image("images/tetris/tetris_99/cube_1.png")
-                self.color_2 = Image("images/tetris/tetris_99/cube_2.png")
-                self.color_3 = Image("images/tetris/tetris_99/cube_3.png")
-                self.color_4 = Image("images/tetris/tetris_99/cube_4.png")
-                self.color_5 = Image("images/tetris/tetris_99/cube_5.png")
-                self.color_6 = Image("images/tetris/tetris_99/cube_6.png")
-                self.color_7 = Image("images/tetris/tetris_99/cube_7.png")
-                self.color_9 = Image("images/tetris/tetris_99/cube_8.png")
+        def _place_piece_sim(self, board, shape, x, y, value_to_place):
+            """
+            Places a piece on a simulated board using a given value.
+            """
+            for r, row in enumerate(shape):
+                for c, cell in enumerate(row):
+                    if cell != 0:
+                        board[y + r][x + c] = value_to_place
 
-                self.shadow_color_1 = Image("images/tetris/tetris_99/cube_1.png")
-                self.shadow_color_2 = Image("images/tetris/tetris_99/cube_2.png")
-                self.shadow_color_3 = Image("images/tetris/tetris_99/cube_3.png")
-                self.shadow_color_4 = Image("images/tetris/tetris_99/cube_4.png")
-                self.shadow_color_5 = Image("images/tetris/tetris_99/cube_5.png")
-                self.shadow_color_6 = Image("images/tetris/tetris_99/cube_6.png")
-                self.shadow_color_7 = Image("images/tetris/tetris_99/cube_7.png")
+    #-----------------------------------------
+    # REN'PY DISPLAYABLE CLASS (Completed)
+    #-----------------------------------------
+    class TetrisDisplayable(renpy.Displayable):
+        def __init__(self, is_ai=False, ai_difficulty=0, opponent_game=None, **kwargs):
+            super(TetrisDisplayable, self).__init__(**kwargs)
+            self.game = TetrisGame(difficulty=ai_difficulty)
+            self.is_ai = is_ai
+            self.ai_difficulty = ai_difficulty
+            self.opponent_game = opponent_game
+            self.yuri_face_state = 0
+            self.music_swapped = False
+            self.VALID_SOUND_KEYS = { pygame.K_LEFT, pygame.K_RIGHT, pygame.K_UP, pygame.K_z }
 
-                self.score = 0
+            if self.is_ai:
+                self.ai = TetrisAI()
+                self.ai_target_move = None
+                self.ai_move_timer = 0.0
+                self.ai_delay_range = AI_ACTION_DELAY.get(self.ai_difficulty, (0.1, 0.05))
 
-                self.playsounds = True
-                self.soundbdrop = "sfx/t-drop(99).ogg"
-                self.soundline = "sfx/t-fl(99).ogg"
-                self.soundldrop = "sfx/t-fl-drop(99).ogg"
-                self.soundmove = "sfx/t-move(99).ogg"
-                self.soundrotate = "sfx/t-rotate(99).ogg"
-                self.sound2line = "sfx/t-2fl(99).ogg"
-                self.sound3line = "sfx/t-3fl(99).ogg"
-                self.sound4line = "sfx/t-4fl(99).ogg"
+            else:
+                self.held_key = None      # Which key is being held ('left', 'right')
+                self.das_timer = 0.0      # Timer for the DAS delay
+                self.arr_timer = 0.0      # Timer for the ARR speed
+            
+            self.load_assets()
+            self.last_update_time = 0
+            self.yuri_face_state = 0
+            self.put_shadow = not is_ai or ai_difficulty < 4
 
+            # --- NEW DAS/ARR STATE VARIABLES ---
+            if not self.is_ai:
+                self.das_key = None      # The key currently being evaluated for DAS ('left' or 'right')
+                self.das_timer = 0.0     # The timer for the initial DAS delay
+                self.arr_timer = 0.0     # The timer for the faster Auto-Repeat Rate
 
-            elif persistent.skin == 3:
+        def set_opponent(self, opponent_game):
+            """A method to link the opponent after both objects are created."""
+            self.opponent_game = opponent_game
 
-                self.color_1 = Image("images/tetris/tetris_gb/cube_1.png")
-                self.color_2 = Image("images/tetris/tetris_gb/cube_2.png")
-                self.color_3 = Image("images/tetris/tetris_gb/cube_3.png")
-                self.color_4 = Image("images/tetris/tetris_gb/cube_4.png")
-                self.color_5 = Image("images/tetris/tetris_gb/cube_5.png")
-                self.color_6 = Image("images/tetris/tetris_gb/cube_6.png")
-                self.color_7 = Image("images/tetris/tetris_gb/cube_7.png")
-                self.color_9 = Image("images/tetris/tetris_gb/cube_8.png")
-
-                self.shadow_color_1 = Image("images/tetris/tetris_gb/cube_1.png")
-                self.shadow_color_2 = Image("images/tetris/tetris_gb/cube_2.png")
-                self.shadow_color_3 = Image("images/tetris/tetris_gb/cube_3.png")
-                self.shadow_color_4 = Image("images/tetris/tetris_gb/cube_4.png")
-                self.shadow_color_5 = Image("images/tetris/tetris_gb/cube_5.png")
-                self.shadow_color_6 = Image("images/tetris/tetris_gb/cube_6.png")
-                self.shadow_color_7 = Image("images/tetris/tetris_gb/cube_7.png")
-
-                self.score = 0
-
-                self.playsounds = True
-                self.soundbdrop = "sfx/t-drop.ogg"
-                self.soundline = "sfx/t-fl.ogg"
-                self.soundldrop = "sfx/t-fl-drop.ogg"
-                self.soundmove = "sfx/t-move.ogg"
-                self.soundrotate = "sfx/t-rotate.ogg"
-                self.sound4line = "sfx/t-4fl.ogg"
-
-
-            elif persistent.skin == 4:
-
-
-                self.color_1 = Image("images/tetris/tetris_gmd/cube_1.png")
-                self.color_2 = Image("images/tetris/tetris_gmd/cube_2.png")
-                self.color_3 = Image("images/tetris/tetris_gmd/cube_3.png")
-                self.color_4 = Image("images/tetris/tetris_gmd/cube_4.png")
-                self.color_5 = Image("images/tetris/tetris_gmd/cube_5.png")
-                self.color_6 = Image("images/tetris/tetris_gmd/cube_6.png")
-                self.color_7 = Image("images/tetris/tetris_gmd/cube_7.png")
-                self.color_9 = Image("images/tetris/tetris_gmd/cube_8.png")
-
-                self.shadow_color_1 = Image("images/tetris/tetris_gmd/cube_1.png")
-                self.shadow_color_2 = Image("images/tetris/tetris_gmd/cube_2.png")
-                self.shadow_color_3 = Image("images/tetris/tetris_gmd/cube_3.png")
-                self.shadow_color_4 = Image("images/tetris/tetris_gmd/cube_4.png")
-                self.shadow_color_5 = Image("images/tetris/tetris_gmd/cube_5.png")
-                self.shadow_color_6 = Image("images/tetris/tetris_gmd/cube_6.png")
-                self.shadow_color_7 = Image("images/tetris/tetris_gmd/cube_7.png")
-
-                self.score = 0
-
-                self.playsounds = True
-                self.soundbdrop = "sfx/t-drop(g).ogg"
-                self.soundline = "sfx/t-fl(g).ogg"
-                self.soundldrop = "sfx/t-fl-drop(g).ogg"
-                self.soundmove = "sfx/t-move(g).ogg"
-                self.soundrotate = "sfx/t-rotate(g).ogg"
-                self.sound4line = "sfx/t-4fl(g).ogg"
-
-            elif persistent.skin == 5:
-
-
-                self.color_1 = Image("images/tetris/tetris_mb/cube_1.png")
-                self.color_2 = Image("images/tetris/tetris_mb/cube_2.png")
-                self.color_3 = Image("images/tetris/tetris_mb/cube_3.png")
-                self.color_4 = Image("images/tetris/tetris_mb/cube_4.png")
-                self.color_5 = Image("images/tetris/tetris_mb/cube_5.png")
-                self.color_6 = Image("images/tetris/tetris_mb/cube_6.png")
-                self.color_7 = Image("images/tetris/tetris_mb/cube_7.png")
-                self.color_9 = Image("images/tetris/tetris_mb/cube_8.png")
-
-                self.shadow_color_1 = Image("images/tetris/tetris_mb/shadow_1.png")
-                self.shadow_color_2 = Image("images/tetris/tetris_mb/shadow_2.png")
-                self.shadow_color_3 = Image("images/tetris/tetris_mb/shadow_3.png")
-                self.shadow_color_4 = Image("images/tetris/tetris_mb/shadow_4.png")
-                self.shadow_color_5 = Image("images/tetris/tetris_mb/shadow_5.png")
-                self.shadow_color_6 = Image("images/tetris/tetris_mb/shadow_6.png")
-                self.shadow_color_7 = Image("images/tetris/tetris_mb/shadow_7.png")
-
-                self.score = 0
-
-                self.playsounds = True
-                self.soundbdrop = "sfx/t-drop(mb).ogg"
-                self.soundline = "sfx/t-fl(mb).ogg"
-                self.soundldrop = "sfx/t-fl-drop(mb).ogg"
-                self.soundmove = "sfx/t-move(mb).ogg"
-                self.soundrotate = "sfx/t-rotate(mb).ogg"
-                self.sound2line = "sfx/t-2fl(mb).ogg"
-                self.sound3line = "sfx/t-3fl(mb).ogg"
-                self.sound4line = "sfx/t-4fl(mb).ogg"
-
-            elif persistent.skin == 6:
-
-
-                self.color_1 = Image("/custom_tetris/cube_1.png")
-                self.color_2 = Image("/custom_tetris/cube_2.png")
-                self.color_3 = Image("/custom_tetris/cube_3.png")
-                self.color_4 = Image("/custom_tetris/cube_4.png")
-                self.color_5 = Image("/custom_tetris/cube_5.png")
-                self.color_6 = Image("/custom_tetris/cube_6.png")
-                self.color_7 = Image("/custom_tetris/cube_7.png")
-                self.color_9 = Image("/custom_tetris/cube_8.png")
-
-                self.shadow_color_1 = Image("/custom_tetris/shadow_1.png")
-                self.shadow_color_2 = Image("/custom_tetris/shadow_2.png")
-                self.shadow_color_3 = Image("/custom_tetris/shadow_3.png")
-                self.shadow_color_4 = Image("/custom_tetris/shadow_4.png")
-                self.shadow_color_5 = Image("/custom_tetris/shadow_5.png")
-                self.shadow_color_6 = Image("/custom_tetris/shadow_6.png")
-                self.shadow_color_7 = Image("/custom_tetris/shadow_7.png")
-
-                self.score = 0
-
-                self.playsounds = True
-                self.soundbdrop = "/custom_tetris/t-drop.ogg"
-                self.soundline = "/custom_tetris/t-fl.ogg"
-                self.soundldrop = "/custom_tetris/t-fl-drop.ogg"
-                self.soundmove = "/custom_tetris/t-move.ogg"
-                self.soundrotate = "/custom_tetris/t-rotate.ogg"
-                self.sound2line = "/custom_tetris/t-2fl.ogg"
-                self.sound3line = "/custom_tetris/t-3fl.ogg"
-                self.sound4line = "/custom_tetris/t-4fl.ogg"
-
-
-            class current_shape_player:
-                shape = ""
-                shape_number = ""
-                new_shape_number = self.piece_list_player[0]
-                next_shape = self.tetris_shapes[new_shape_number]
-                x = 5
-                y = 1
-                move_time = 0.300
-                speed = 0.20
-
-            class current_shape_Yuri:
-                shape = ""
-                shape_number = ""
-                new_shape_number = self.piece_list_Yuri[0]
-                next_shape = self.tetris_shapes[new_shape_number]
-                x = 5
-                y = 1
-                move_time = 0.300
-                speed = 0.20
-
-            self.temp_position = 3
-            self.current_shape_player = current_shape_player()
-            self.current_shape_Yuri = current_shape_Yuri ()
-            self.level = 1
-            self.allLines = 0
-            self.oldst = None
-            self.new_shape_player = True
-            self.new_shape_Yuri = True
-            self.game_over = False
-            self.winner = None
-
-        #Function which add shape to stage.
-        #Arguments current x and y position of shape in stage
-        def addShapeToStage(self, current_shape, current_x, current_y):
-            for idr, row in enumerate(current_shape.shape):
-                for idc, column in enumerate(row):
-                    if column != 0:
-                        self.stage[current_y+idr][current_x+idc]=column
+        def load_assets(self):
+            skin_id = getattr(persistent, 'skin', 1)
+            skin = SKINS.get(skin_id, SKINS[1])
+            path, sfx = skin['path'], skin['sfx_suffix']
+            self.background_img = Image(path + "background.png")
+            self.colors = {i: Image(path + f"cube_{i}.png") for i in range(1, 8)}
+            self.colors[9] = Image(path + "cube_8.png")
+            self.shadow_colors = {i: Image(path + (f"shadow_{i}.png" if skin_id in [5, 6] else f"cube_{i}.png")) for i in range(1, 8)}
+            self.sounds = {
+                'drop': f"sfx/t-drop{sfx}",
+                'move': f"sfx/t-move{sfx}",
+                'rotate': f"sfx/t-rotate{sfx}",
+                '1line': f"sfx/t-fl{sfx}",
+                '2line': f"sfx/t-2fl{sfx}",
+                '3line': f"sfx/t-3fl{sfx}",
+                '4line': f"sfx/t-4fl{sfx}",
+                'tspin': f"sfx/t-spin{sfx}",
+            }
 
         def render(self, width, height, st, at):
-            #Win/lose conditions               ):
-            global TetrisWinner
+            if self.last_update_time == 0: self.last_update_time = st
+            dtime = st - self.last_update_time
+            self.last_update_time = st
 
-            for idc in range(4, 16):
-                if self.stage[1][idc] != 0:
-                    self.game_over = True
+            if not self.is_ai and self.held_key is not None:
+                self.das_timer += dtime
+                # If the initial DAS delay is over...
+                if self.das_timer > DAS_DELAY:
+                    self.arr_timer += dtime
+                    # ...start moving at the faster ARR speed.
+                    if self.arr_timer > ARR_DELAY:
+                        # This -= trick handles cases where the frame rate is low
+                        self.arr_timer -= ARR_DELAY
+                        self.game.move(-1 if self.held_key == 'left' else 1, 0)
+                        renpy.sound.play(self.sounds['move'])
 
-            if self.game_over:
-                if self.score > persistent.best_co_op_tetris_score:
-                    persistent.best_co_op_tetris_score = self.score
-                    TetrisWinner = 2
-                else:
-                    TetrisWinner = 3
-                while True:
-                    for event in pygame.event.get():
-                        if event.type == pygame.KEYDOWN:
-                            renpy.jump("tetris_over")
+            # The rest of the render method is unchanged
+            if not self.game.game_over:
+                self.game.update(dtime)
+                if self.is_ai: self.ai_update(dtime)
+                self.check_win_conditions()
 
-            ####################################################################################
-            #Function which check if there are lines. If yes, add it to score and return new stage
-            def lines():
-                numberOfFullLines = 0
-                #Check if there are any lines and fix stage
-                prevLine = False
-                for idr in range(1, 21):
-                    fullLine = True
-                    for idc in range(1, 21):
-                        if self.stage[idr][idc] == 0:
-                            fullLine = False
-                            break
-                    if fullLine:
-                        numberOfFullLines += 1
-                        renpy.sound.play(self.soundline)
-                        for idc in range(1, 21):
-                            self.stage[idr][idc] = 0
-                        if prevLine != fullLine:
-                            for i in range(0, idr-1):
-                                for idc in range(1, 21):
-                                    self.stage[idr-i][idc] = self.stage[idr-i-1][idc]
-                                    self.stage[idr-i-1][idc] = 0
-                                    fullLine = False
-                    prevLine = fullLine
+            # --- NEW SOUND LOGIC ---
+            # Check the info flag that TetrisGame sets for us.
+            if self.game.last_clear_info:
+                info = self.game.last_clear_info
+                clear_type = info['type']
+                
+                # Play sound based on the type of clear
+                if "T_SPIN_FULL" in clear_type:
+                    renpy.sound.play(self.sounds['tspin'])
+                elif "T_SPIN_MINI" in clear_type:
+                    renpy.sound.play(self.sounds['tspin'])
+                elif "NORMAL_4" in clear_type:
+                    renpy.sound.play(self.sounds['4line'])
+                elif "NORMAL_3" in clear_type:
+                    renpy.sound.play(self.sounds['3line'])
+                elif "NORMAL_2" in clear_type:
+                    renpy.sound.play(self.sounds['2line'])
+                elif "NORMAL_1" in clear_type:
+                    renpy.sound.play(self.sounds['1line'])
+                
+                # IMPORTANT: Reset the flag so the sound doesn't play on every frame.
+                self.game.last_clear_info = None
 
-                #Score points depending on how many lines there were cleared
-                self.allLines += numberOfFullLines
-                if numberOfFullLines == 1:
-                    self.score += 100 * self.level
-                elif numberOfFullLines == 2:
-                    self.score += 300 * self.level
-                elif numberOfFullLines == 3:
-                    self.score += 500 * self.level
-                elif numberOfFullLines == 4:
-                    self.score += 800 * self.level
-                    renpy.sound.play(self.sound4line)
-                self.level =  int(self.allLines/10)+1
-            #################################################################################
             r = renpy.Render(width, height)
+            r.blit(renpy.render(self.background_img, width, height, st, at), (0, 0))
+            
+            playfield_width = BOARD_WIDTH * PIXEL_SIZE
+            playfield_x_offset = 10
+            playfield_y_offset = 10
 
-            if persistent.skin == 1:
-                background = renpy.render(Image("images/tetris/tetris/background_co_op.png"), width, height, st, at)
+            self.draw_board(r, playfield_x_offset, playfield_y_offset, st, at)
+            if self.put_shadow:
+                self.draw_ghost_piece(r, playfield_x_offset, playfield_y_offset, st, at)
+            self.draw_current_piece(r, playfield_x_offset, playfield_y_offset, st, at)
+            
+            # --- THE FIX ---
+            # Call draw_ui with the correct 6 arguments.
+            self.draw_ui(r, playfield_x_offset, playfield_y_offset, st, at)
+            # --- END THE FIX ---
+            
+            self.check_dynamic_events()
+            renpy.redraw(self, 0.016)
+            return r
 
-            elif persistent.skin == 2:
-                background = renpy.render(Image("images/tetris/tetris_99/background_co_op.png"), width, height, st, at)
+        def draw_board(self, r, x_off, y_off, st, at):
+            """
+            Draws the walls and the locked pieces directly onto the main render object 'r'.
+            """
+            # --- Draw the Walls ---
+            wall_texture = self.colors.get(9)
+            if wall_texture:
+                wall_render = renpy.render(wall_texture, PIXEL_SIZE, PIXEL_SIZE, st, at)
+                # Left and Right Walls
+                for y in range(VISIBLE_BOARD_HEIGHT):
+                    r.blit(wall_render, (x_off - PIXEL_SIZE, y_off + y * PIXEL_SIZE)) # Left
+                    r.blit(wall_render, (x_off + BOARD_WIDTH * PIXEL_SIZE, y_off + y * PIXEL_SIZE)) # Right
+                # Bottom Wall
+                for x in range(-1, BOARD_WIDTH + 1):
+                    r.blit(wall_render, (x_off + x * PIXEL_SIZE, y_off + VISIBLE_BOARD_HEIGHT * PIXEL_SIZE))
 
-            elif persistent.skin == 3:
-                background = renpy.render(Image("images/tetris/tetris_gb/background_co_op.png"), width, height, st, at)
+            # --- Draw the Locked Pieces (existing logic) ---
+            board_offset = BOARD_HEIGHT - VISIBLE_BOARD_HEIGHT
+            for y in range(VISIBLE_BOARD_HEIGHT):
+                for x in range(BOARD_WIDTH):
+                    cell = self.game.board[y + board_offset][x]
+                    if cell != 0 and self.colors.get(cell):
+                        render_obj = renpy.render(self.colors[cell], PIXEL_SIZE, PIXEL_SIZE, st, at)
+                        screen_x = x_off + (x * PIXEL_SIZE)
+                        screen_y = y_off + (y * PIXEL_SIZE)
+                        r.blit(render_obj, (screen_x, screen_y))
 
-            elif persistent.skin == 4:
-                background = renpy.render(Image("images/tetris/tetris_gmd/background_co_op.png"), width, height, st, at)
+        def draw_piece(self, r, x_off, y_off, piece, is_ghost, st, at):
+            """Generic function to draw a piece directly onto the main render object 'r'."""
+            color_id = TETROMINOES[piece['type']]['color_id']
+            img_dict = self.shadow_colors if is_ghost else self.colors
+            base_img = img_dict.get(color_id)
+            if not base_img:
+                return
 
-            elif persistent.skin == 5:
-                background = renpy.render(Image("images/tetris/tetris_mb/background_co_op.png"), width, height, st, at)
+            if is_ghost:
+                displayable_to_render = im.Alpha(base_img, 0.4)
+            else:
+                displayable_to_render = base_img
 
-            elif persistent.skin == 6:
-                background = renpy.render(Image("/custom_tetris/background_co_op.png"), width, height, st, at)
+            piece_y_offset = piece['y'] - (BOARD_HEIGHT - VISIBLE_BOARD_HEIGHT)
 
-            r.blit(background, (0, 0))
-            lines()
+            for row_idx, row in enumerate(piece['shape']):
+                for col_idx, cell in enumerate(row):
+                    if cell != 0:
+                        # Calculate the final screen position for this block of the piece.
+                        screen_x = x_off + ((piece['x'] + col_idx) * PIXEL_SIZE)
+                        screen_y = y_off + ((piece_y_offset + row_idx) * PIXEL_SIZE)
+                        
+                        # Only draw if it's within the visible part of the board area.
+                        if screen_y >= y_off:
+                            render_obj = renpy.render(displayable_to_render, PIXEL_SIZE, PIXEL_SIZE, st, at)
+                            r.blit(render_obj, (screen_x, screen_y))
+        
+        # These are helper functions that call the main 'draw_piece' method.
+        def draw_current_piece(self, r, x_off, y_off, st, at):
+            if self.game.current_piece and not self.game.game_over:
+                self.draw_piece(r, x_off, y_off, self.game.current_piece, False, st, at)
 
-            #Player
-            if self.new_shape_player:
-                self.current_shape_player.x = 5
-                self.current_shape_player.y = 1
-                self.current_shape_player.shape = self.current_shape_player.next_shape
-                self.current_shape_player.shape_number = self.current_shape_player.new_shape_number
-                self.piece_list_player.pop(0)
-                if not self.piece_list_player:
-                    self.piece_list_player = [0,1,2,3,4,5,6]
-                    random.shuffle(self.piece_list_player)
-                self.current_shape_player.new_shape_number = self.piece_list_player[0]
-                self.current_shape_player.next_shape = self.tetris_shapes[self.current_shape_player.new_shape_number]
-                self.new_shape_player = False
+        def draw_ghost_piece(self, r, x_off, y_off, st, at):
+            if self.game.current_piece and not self.game.game_over:
+                ghost_piece = copy.deepcopy(self.game.current_piece)
+                ghost_piece['y'] = self.game.get_ghost_y()
+                self.draw_piece(r, x_off, y_off, ghost_piece, True, st, at)
+        
+        def draw_ui(self, r, x_off, y_off, st, at):
+            """
+            Draws the UI elements. This definition now correctly takes 6 arguments.
+            """
+            is_player = not self.is_ai
+            text_size = 22
+            width, height = r.width, r.height
 
-            #Yuri
-            if self.new_shape_Yuri:
-                self.current_shape_Yuri.x = 15
-                self.current_shape_Yuri.y = 1
-                self.current_shape_Yuri.shape = self.current_shape_Yuri.next_shape
-                self.current_shape_Yuri.shape_number = self.current_shape_Yuri.new_shape_number
-                self.piece_list_Yuri.pop(0)
-                if not self.piece_list_Yuri:
-                    self.piece_list_Yuri = [0,1,2,3,4,5,6]
-                    random.shuffle(self.piece_list_Yuri)
-                self.current_shape_Yuri.new_shape_number = self.piece_list_Yuri[0]
-                self.current_shape_Yuri.next_shape = self.tetris_shapes[self.current_shape_Yuri.new_shape_number]
-                self.new_shape_Yuri = False
-                self.temp_position = 1
-                temp_AI = True
-                for idc in range(1, 21):
-                    if self.stage[2][idc] != 0:
-                        temp_AI = False
-                if temp_AI:
-                    self.movesAI = self.Yuri_AI()
+            playfield_width = BOARD_WIDTH * PIXEL_SIZE
+            
+            # Layout for the Player's screen (left instance)
+            player_layout = {
+                "text_anchor_x": x_off - 140, # Position text to the left of the playfield
+                "queue_anchor_x": x_off + playfield_width + 20, # Position queues to the right
+            }
 
-            if self.oldst is None:
-                self.oldst = st
+            # Layout for the AI's screen (right instance)
+            ai_layout = {
+                "text_anchor_x": x_off - 140,
+                "queue_anchor_x": x_off + playfield_width + 20,
+            }
+            
+            layout = player_layout if is_player else ai_layout
+            text_x = layout["text_anchor_x"]
+            queue_x = layout["queue_anchor_x"]
+            
+            r.blit(renpy.render(Text(f"Score: {self.game.score}", size=text_size), width, height, st, at), (text_x, y_off))
+            r.blit(renpy.render(Text(f"Level: {self.game.level}", size=text_size), width, height, st, at), (text_x, y_off + 30))
+            r.blit(renpy.render(Text(f"Lines: {self.game.lines_cleared}", size=text_size), width, height, st, at), (text_x + 130, y_off + 30))
+            
+            r.blit(renpy.render(Text("Next:", size=text_size), width, height, st, at), (queue_x, y_off + 90))
+            for i, p_type in enumerate(self.game.next_pieces[:5]):
+                 self.draw_ui_piece(r, p_type, (queue_x, y_off + 120 + i * 60), st, at)
 
-            if self.current_shape_Yuri.y >= 4:
-                self.current_shape_Yuri.speed = 0.4 - 0.03 * (self.level - 1)
+            if is_player:
+                r.blit(renpy.render(Text("Hold:", size=text_size), width, height, st, at), (text_x, y_off + 90))
+                if self.game.hold_piece_type:
+                    self.draw_ui_piece(r, self.game.hold_piece_type, (text_x, y_off + 120), st, at)
+                
+                win_text = None
+                if LineLimit != 0:
+                    win_text = f"Lines to Win: {max(0, LineLimit - self.game.lines_cleared)}"
+                elif TetrisScore != 0:
+                    win_text = f"Score Goal: {TetrisScore}"
+                
+                if win_text:
+                    r.blit(renpy.render(Text(win_text, size=text_size), width, height, st, at), (text_x, y_off + 60))
 
-            if self.temp_position == self.current_shape_Yuri.y:
-                for i in range(0, 3):
-                    if len(self.movesAI) != 0:
-                        if self.movesAI[0] == "r":
-                            self.rotateClockWiseAI()
+        def draw_ui_piece(self, r, piece_type, pos, st, at):
+            """Draws a piece in the UI (Next/Hold) with centering for large pieces like 'I'."""
+            info = TETROMINOES[piece_type]
+            img = self.colors.get(info['color_id'])
+            if not img: return
+
+            # Center the piece horizontally within a 4-block wide area.
+            piece_width = len(info['shape'][0]) * PIXEL_SIZE
+            x_offset = ( (4 * PIXEL_SIZE) - piece_width ) / 2
+
+            for y, row in enumerate(info['shape']):
+                for x, cell in enumerate(row):
+                    if cell != 0:
+                        r.blit(renpy.render(img, PIXEL_SIZE, PIXEL_SIZE, st, at), (pos[0] + x_offset + x*PIXEL_SIZE, pos[1] + y*PIXEL_SIZE))
+
+        def ai_update(self, dtime):
+            if self.game.current_piece and not self.ai_target_move:
+                self.ai_target_move = self.ai.find_best_move(self.game)
+            
+            if self.ai_target_move:
+                # --- NEW: Special "Singularity" AI Behavior ---
+                if self.ai_difficulty == 7:
+                    p = self.game.current_piece
+                    target_rot = self.ai_target_move['rotation']
+                    target_x = self.ai_target_move['x']
+                    
+                    # 1. Rotate the piece in memory until it matches the target rotation.
+                    while p['rotation'] != target_rot:
+                        p['shape'] = list(zip(*p['shape'][::-1])) # Perform one clockwise rotation
+                        p['rotation'] = (p['rotation'] + 1) % 4
+                    
+                    # 2. Instantly set the piece's horizontal position.
+                    p['x'] = target_x
+                    
+                    # 3. Hard drop it. This all happens in a single frame.
+                    self.game.hard_drop()
+                    renpy.sound.play(self.sounds['drop'])
+                    self.ai_target_move = None
+                    
+                # --- This is the existing logic for all other difficulties ---
+                else:
+                    progress = min(1.0, (self.game.level - 1) / (AI_PERFECTION_LEVEL - 1))
+                    start_delay, end_delay = self.ai_delay_range
+                    current_action_delay = start_delay + (end_delay - start_delay) * progress
+                    
+                    self.ai_move_timer += dtime
+                    if self.ai_move_timer >= current_action_delay:
+                        self.ai_move_timer = 0
+                        p = self.game.current_piece
+                        target_rot = self.ai_target_move['rotation']
+                        target_x = self.ai_target_move['x']
+
+                        if p['rotation'] != target_rot:
+                            self.game.rotate()
+                        elif p['x'] < target_x:
+                            self.game.move(1, 0)
+                        elif p['x'] > target_x:
+                            self.game.move(-1, 0)
                         else:
-                            self.current_shape_Yuri.x += int(self.movesAI[0])
-                        del self.movesAI[0]
-                self.temp_position += 1
-
-            dtime = st - self.oldst
-            self.oldst = st
-            temp_can_go_down = True
-
-            #Player
-            if self.current_shape_player.move_time <= 0:
-                # Check if bottom is empty
-                for idr, row in enumerate(self.current_shape_player.shape):
-                    for idc, column in enumerate(row):
-                        if column != 0:
-                            if self.stage[self.current_shape_player.y + 1 + idr][self.current_shape_player.x + idc] != 0:
-                                temp_can_go_down = False
-                                renpy.sound.play(self.soundbdrop)
-                                break
-                if temp_can_go_down != False:
-                    self.current_shape_player.move_time = self.current_shape_player.speed
-                    self.current_shape_player.y += 1
+                            self.game.hard_drop()
+                            renpy.sound.play(self.sounds['drop'])
+                            self.ai_target_move = None
+        
+        def check_win_conditions(self):
+            global TetrisWinner # Use global to signal winner to Ren'Py script
+            if self.opponent_game is None: return
+            
+            # Condition: This instance has topped out.
+            if self.game.game_over and not self.opponent_game.game_over:
+                # If this instance is the player, the player LOST. AI is the winner.
+                if not self.is_ai:
+                    TetrisWinner = 1 # AI Wins
+                # If this instance is the AI, the AI LOST. Player is the winner.
                 else:
-                    self.new_shape_player = True
-                    self.addShapeToStage(self.current_shape_player, self.current_shape_player.x, self.current_shape_player.y)
-            else:
-                self.current_shape_player.move_time -= dtime
+                    TetrisWinner = 0 # Player Wins
+                # Also end the opponent's game to freeze their screen too.
+                self.opponent_game.game_over = True
+                return
 
-            #Yuri
-            if self.current_shape_Yuri.move_time <= 0:
-                # Check if bottom is empty
-                for idr, row in enumerate(self.current_shape_Yuri.shape):
-                    for idc, column in enumerate(row):
-                        if column != 0:
-                            if self.stage[self.current_shape_Yuri.y + 1 + idr][self.current_shape_Yuri.x + idc] != 0:
-                                temp_can_go_down = False
-                                renpy.sound.play(self.soundbdrop)
-                                break
-                if temp_can_go_down != False:
-                    self.current_shape_Yuri.move_time = self.current_shape_Yuri.speed
-                    self.current_shape_Yuri.y += 1
+            # Condition: The opponent has topped out.
+            if self.opponent_game.game_over and not self.game.game_over:
+                # If this instance is the player, the opponent (AI) LOST. Player is the winner.
+                if not self.is_ai:
+                    TetrisWinner = 0 # Player Wins
+                # If this instance is the AI, the opponent (player) LOST. AI is the winner.
                 else:
-                    self.new_shape_Yuri = True
-                    self.addShapeToStage(self.current_shape_Yuri, self.current_shape_Yuri.x, self.current_shape_Yuri.y)
+                    TetrisWinner = 1 # AI Wins
+                # End this instance's game to freeze the screen.
+                self.game.game_over = True
+                return
+            # --- END OF FIX 2 ---
+
+            # Score/Line limit conditions remain the same.
+            if LineLimit != 0 and self.game.lines_cleared >= LineLimit:
+                TetrisWinner = 0 if not self.is_ai else 1
+                self.game.game_over = True
+            elif TetrisScore != 0 and self.game.score >= TetrisScore:
+                TetrisWinner = 0 if not self.is_ai else 1
+                self.game.game_over = True
+
+        def check_dynamic_events(self):
+            # This logic only applies to the AI instance with skin 1
+            if not self.is_ai or self.opponent_game is None or getattr(persistent, 'skin', 1) != 1:
+                return
+
+            # Determine if the intensity threshold has been passed
+            threshold_passed = False
+            if LineLimit > 0 and (self.game.lines_cleared > LineLimit/6 or self.opponent_game.lines_cleared > LineLimit/6):
+                threshold_passed = True
+            elif TetrisScore > 0 and (self.game.score > TetrisScore/6 or self.opponent_game.score > TetrisScore/6):
+                threshold_passed = True
+
+            if threshold_passed:
+                # --- MUSIC SWAP LOGIC ---
+                # This block now has two conditions:
+                # 1. Has the threshold been passed?
+                # 2. Have we NOT swapped the music yet?
+                if not self.music_swapped:
+                    # If both are true, play the music...
+                    renpy.music.stop(channel="music")
+                    renpy.music.play("<loop 1.81>/music/tetris (b).ogg", channel="music")
+                    # ...and immediately set the flag to True. This ensures this
+                    # block will never, ever run again for this instance.
+                    self.music_swapped = True
+
+                # --- EXPRESSION CHANGE LOGIC (Now safely decoupled from the music) ---
+                # This logic can run as many times as needed without affecting the BGM.
+                if self.game.score > self.opponent_game.score and self.yuri_face_state != 1:
+                    self.yuri_face_state = 1
+                    renpy.show("A-ABDAA-AAAJ", tag="yuri_face")
+                elif self.game.score < self.opponent_game.score and self.yuri_face_state != 2:
+                    self.yuri_face_state = 2
+                    renpy.show("A-DEBAA-AMAM", tag="yuri_face")
+
+        def event(self, ev, x, y, st):
+            # The AI completely ignores all events.
+            if self.is_ai:
+                return
+
+            # --- PLAYER EVENT HANDLING ---
+            # On game over, only a key press to exit is allowed. No sounds.
+            if self.game.game_over:
+                if ev.type == pygame.KEYDOWN:
+                    renpy.jump("tetris_over")
+                return
+
+            # --- SIMPLIFIED KEYDOWN LOGIC ---
+            if ev.type == pygame.KEYDOWN:
+                # Handle horizontal movement start
+                if ev.key == pygame.K_LEFT:
+                    # Check if this is a fresh press, not an OS-level repeat
+                    if self.held_key != 'left':
+                        self.game.move(-1, 0) # Initial move
+                        renpy.sound.play(self.sounds['move'])
+                        self.held_key = 'left'
+                        self.das_timer = 0.0 # Reset timers for the new hold
+                        self.arr_timer = 0.0
+                elif ev.key == pygame.K_RIGHT:
+                    if self.held_key != 'right':
+                        self.game.move(1, 0) # Initial move
+                        renpy.sound.play(self.sounds['move'])
+                        self.held_key = 'right'
+                        self.das_timer = 0.0 # Reset timers for the new hold
+                        self.arr_timer = 0.0
+
+                # --- Other keys are unchanged ---
+                elif ev.key == pygame.K_UP:
+                    renpy.sound.play(self.sounds['rotate'])
+                    self.game.rotate(clockwise=True)
+                elif ev.key == pygame.K_z:
+                    renpy.sound.play(self.sounds['rotate'])
+                    self.game.rotate(clockwise=False)
+                elif ev.key == pygame.K_SPACE:
+                    self.game.hard_drop()
+                    renpy.sound.play(self.sounds['drop'])
+                elif ev.key in [pygame.K_c, pygame.K_q, pygame.K_e]:
+                    self.game.hold()
+                elif ev.key == pygame.K_DOWN:
+                    self.game.time_since_fall = 1.0
+
+            elif ev.type == pygame.KEYUP:
+                # If the player releases the key they were holding, clear the state.
+                if (ev.key == pygame.K_LEFT and self.held_key == 'left') or \
+                   (ev.key == pygame.K_RIGHT and self.held_key == 'right'):
+                    self.held_key = None
+
+    #-----------------------------------------
+    # MODERN CO-OP GAME LOGIC CLASS
+    #-----------------------------------------
+    class CoOpTetrisGame:
+        """
+        Manages the game state for a double-wide, shared-board co-op game.
+        It controls two pieces simultaneously on one large playfield.
+        """
+        CO_OP_BOARD_WIDTH = 20 # Double the standard width
+        
+        def __init__(self):
+            self.board = [[0] * self.CO_OP_BOARD_WIDTH for _ in range(BOARD_HEIGHT)]
+            self.score = 0
+            self.level = 1
+            self.lines_cleared = 0
+            self.game_over = False
+
+            # --- Player State ---
+            self.player_bag = []
+            self.player_next = []
+            self.player_piece = None
+            self.player_hold = None
+            self.player_can_hold = True
+            self.player_is_landed = False
+            self.player_lock_timer = 0
+            self.player_time_since_fall = 0.0
+            
+            # --- AI State ---
+            self.ai_bag = []
+            self.ai_next = []
+            self.ai_piece = None
+            self.ai_hold = None
+            self.ai_can_hold = True
+            self.ai_is_landed = False
+            self.ai_lock_timer = 0
+            self.ai_time_since_fall = 0.0
+            
+            # Initialize both players' piece supplies
+            self.fill_bag(is_player=True)
+            self.fill_bag(is_player=False)
+            for _ in range(5):
+                self.player_next.append(self.draw_from_bag(True))
+                self.ai_next.append(self.draw_from_bag(False))
+
+            self.spawn_new_piece(is_player=True)
+            self.spawn_new_piece(is_player=False)
+
+            self.last_clear_info = None
+
+        def fill_bag(self, is_player):
+            bag = list(TETROMINOES.keys())
+            random.shuffle(bag)
+            if is_player: self.player_bag = bag
+            else: self.ai_bag = bag
+
+        def draw_from_bag(self, is_player):
+            if is_player:
+                if not self.player_bag: self.fill_bag(True)
+                return self.player_bag.pop(0)
             else:
-                self.current_shape_Yuri.move_time -= dtime
+                if not self.ai_bag: self.fill_bag(False)
+                return self.ai_bag.pop(0)
 
-            def draw_shape(sx, sy, current_shape,shadow):
-                for idr, row in enumerate(current_shape):
-                    for idc, column in enumerate(row):
-                        if column == 1:
-                            shape = renpy.render(self.color_1, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_1, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape_player.y)))
-                        elif column == 2:
-                            shape = renpy.render(self.color_2, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_2, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape_player.y)))
-                        elif column == 3:
-                            shape = renpy.render(self.color_3, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_3, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape_player.y)))
-                        elif column == 4:
-                            shape = renpy.render(self.color_4, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_4, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape_player.y)))
-                        elif column == 5:
-                            shape = renpy.render(self.color_5, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_5, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape_player.y)))
-                        elif column == 6:
-                            shape = renpy.render(self.color_6, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_6, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape_player.y)))
-                        elif column == 7:
-                            shape = renpy.render(self.color_7, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_7, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape_player.y)))
-                        elif column == 7:
-                            shape = renpy.render(self.color_7, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
-                            if shadow == 1:
-                                temp_shape = renpy.render(self.shadow_color_7, width, height, st, at)
-                                temp_shape.alpha = 0.3
-                                r.blit(temp_shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, (int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr) + self.PIXEL_SIZE * (self.find_bottom()-self.current_shape_player.y)))
-                        elif column == 9:
-                            shape = renpy.render(self.color_9, width, height, st, at)
-                            r.blit(shape, (int(sx - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idc, int(sy - self.PIXEL_SIZE / 2) + self.PIXEL_SIZE * idr))
+        def spawn_new_piece(self, is_player):
+            piece_type = self.draw_from_bag(is_player)
+            shape_info = TETROMINOES[piece_type]
 
-            a = "Score - %(s)d " % {"s":self.score }
-            b = "Lines - %(s)d " % {"s":self.allLines }
-            c = "Level - %(s)d " % {"s":self.level}
-            d = "Next player:"
-            i = "Best Score - %(s)d " % {"s":persistent.best_co_op_tetris_score }
-            k = "Next Yuri:"
+            # Player spawns on the left, AI on the right
+            start_x = 3 if is_player else 13
+            new_piece = {'type': piece_type, 'shape': shape_info['shape'], 'x': start_x, 'y': 0, 'rotation': 0}
 
-            e = Text(a)
-            f = Text(b)
-            g = Text(c)
-            h = Text(d)
-            j = Text(i)
-            l = Text(k)
+            if self.check_collision(new_piece['shape'], new_piece['x'], new_piece['y']):
+                self.game_over = True
+            
+            if is_player:
+                self.player_piece = new_piece
+                self.player_can_hold = True
+                self.player_is_landed = False
+                self.player_lock_timer = 0
+                self.player_next.append(self.draw_from_bag(True))
+            else:
+                self.ai_piece = new_piece
+                self.ai_can_hold = True
+                self.ai_is_landed = False
+                self.ai_lock_timer = 0
+                self.ai_next.append(self.draw_from_bag(False))
 
-            text_allLines_render = renpy.render(f, width, height, st, at)
-            text_level_render = renpy.render(g, width, height, st, at)
-            text_next_player_render = renpy.render(h, width, height, st, at)
-            text_next_Yuri_render = renpy.render(l, width, height, st, at)
+        def update(self, dt):
+            if self.game_over: return
 
-            text_score_render = renpy.render(e, width, height, st, at)
-            r.blit(text_score_render, (5, -50))
+            # --- THE FIX: Added a fall interval to control speed ---
+            # You can change 0.6 to any number. Higher = Slower.
+            fall_interval = max(0.05, 0.3 - ((self.level - 1) * 0.025))
+            # --- END THE FIX ---
 
-            text_score_render = renpy.render(j, width, height, st, at)
-            r.blit(text_score_render, (5, -100))
-            r.blit(text_allLines_render, (250, -100))
-            r.blit(text_level_render, (250, -50))
+            # --- Handle Player Gravity and Lock ---
+            if self.player_piece:
+                if self.player_is_landed:
+                    self.player_lock_timer += dt
+                    if self.player_lock_timer >= LOCK_DELAY:
+                        self.lock_piece(True)
+                else:
+                    # Timer-based gravity for the player
+                    self.player_time_since_fall += dt
+                    if self.player_time_since_fall >= fall_interval:
+                        self.player_time_since_fall = 0
+                        self.move(0, 1, is_player=True, reset_lock=False)
 
-            r.blit(text_next_player_render, (5, 450))
-            draw_shape(25, 500, self.current_shape_player.next_shape,0)
+            # --- Handle AI Gravity and Lock ---
+            if self.ai_piece:
+                if self.ai_is_landed:
+                    self.ai_lock_timer += dt
+                    if self.ai_lock_timer >= LOCK_DELAY:
+                        self.lock_piece(False)
+                else:
+                    # Timer-based gravity for the AI
+                    self.ai_time_since_fall += dt
+                    if self.ai_time_since_fall >= fall_interval:
+                        self.ai_time_since_fall = 0
+                        self.move(0, 1, is_player=False, reset_lock=False)
 
-            r.blit(text_next_Yuri_render, (250, 450))
-            draw_shape(275, 500, self.current_shape_Yuri.next_shape,0)
+        def check_collision(self, shape, x, y):
+            for r, row in enumerate(shape):
+                for c, cell in enumerate(row):
+                    if cell != 0:
+                        board_x, board_y = x + c, y + r
+                        if not (0 <= board_x < self.CO_OP_BOARD_WIDTH and 0 <= board_y < BOARD_HEIGHT) or self.board[board_y][board_x] != 0:
+                            return True
+            return False
 
-            draw_shape(0, 0, self.stage,0)
-            draw_shape(self.current_shape_player.x*self.PIXEL_SIZE, self.current_shape_player.y*self.PIXEL_SIZE, self.current_shape_player.shape,1)
-            draw_shape(self.current_shape_Yuri.x*self.PIXEL_SIZE, self.current_shape_Yuri.y*self.PIXEL_SIZE, self.current_shape_Yuri.shape,0)
+        def lock_piece(self, is_player):
+            piece_to_lock = self.player_piece if is_player else self.ai_piece
+            if not piece_to_lock: return
+
+            shape, x, y = piece_to_lock['shape'], piece_to_lock['x'], piece_to_lock['y']
+            color_id = TETROMINOES[piece_to_lock['type']]['color_id']
+
+            for r, row in enumerate(shape):
+                for c, cell in enumerate(row):
+                    if cell != 0: self.board[y + r][x + c] = color_id
+            
+            self.clear_lines()
+            self.spawn_new_piece(is_player)
+
+        def clear_lines(self):
+            lines_to_clear = [r for r, row in enumerate(self.board) if all(cell != 0 for cell in row)]
+            num_cleared = len(lines_to_clear)
+
+            if num_cleared > 0:
+                self.lines_cleared += num_cleared
+                score_map = {1: 100, 2: 300, 3: 500, 4: 800} # Standard scoring
+                self.score += score_map.get(num_cleared, 0) * self.level
+                self.level = (self.lines_cleared // 10) + 1
+                self.last_clear_info = {'lines': num_cleared}
+
+                new_board = [row for r, row in enumerate(self.board) if r not in lines_to_clear]
+                for _ in range(num_cleared):
+                    new_board.insert(0, [0] * self.CO_OP_BOARD_WIDTH)
+                self.board = new_board
+        
+        def move(self, dx, dy, is_player, reset_lock=True):
+            piece = self.player_piece if is_player else self.ai_piece
+            if self.game_over or not piece: return False
+            
+            new_x, new_y = piece['x'] + dx, piece['y'] + dy
+            if not self.check_collision(piece['shape'], new_x, new_y):
+                piece['x'], piece['y'] = new_x, new_y
+                if reset_lock:
+                    if is_player: self.player_is_landed, self.player_lock_timer = False, 0
+                    else: self.ai_is_landed, self.ai_lock_timer = False, 0
+                return True
+            else:
+                if dy > 0:
+                    if is_player: self.player_is_landed = True
+                    else: self.ai_is_landed = True
+                return False
+
+        def rotate(self, is_player, clockwise=True):
+            piece = self.player_piece if is_player else self.ai_piece
+            if self.game_over or not piece or piece['type'] == 'O': return
+            
+            original_rotation = piece['rotation']
+            new_shape = list(zip(*piece['shape'][::-1])) if clockwise else list(zip(*piece['shape']))[::-1]
+            new_rotation = (original_rotation + 1) % 4 if clockwise else (original_rotation - 1 + 4) % 4
+            rotation_key = f"{original_rotation}-{new_rotation}"
+            kick_table = I_KICKS if piece['type'] == 'I' else JLSTZ_KICKS
+            
+            for dx, dy in kick_table.get(rotation_key, []):
+                test_x, test_y = piece['x'] + dx, piece['y'] - dy
+                if not self.check_collision(new_shape, test_x, test_y):
+                    piece['shape'], piece['x'], piece['y'], piece['rotation'] = new_shape, test_x, test_y, new_rotation
+                    if is_player: self.player_is_landed, self.player_lock_timer = False, 0
+                    else: self.ai_is_landed, self.ai_lock_timer = False, 0
+                    return
+
+        def get_ghost_y(self, is_player):
+            piece = self.player_piece if is_player else self.ai_piece
+            if not piece: return -1
+            ghost_y = piece['y']
+            while not self.check_collision(piece['shape'], piece['x'], ghost_y + 1):
+                ghost_y += 1
+            return ghost_y
+
+        def hard_drop(self, is_player):
+            piece = self.player_piece if is_player else self.ai_piece
+            if self.game_over or not piece: return
+            ghost_y = self.get_ghost_y(is_player)
+            self.score += (ghost_y - piece['y']) # Shared score bonus
+            piece['y'] = ghost_y
+            self.lock_piece(is_player)
+
+        def hold(self, is_player):
+            if self.game_over: return
+            if is_player:
+                if not self.player_can_hold: return
+                held_type, self.player_hold = self.player_hold, self.player_piece['type']
+                self.player_can_hold = False
+                if held_type is None: self.spawn_new_piece(True)
+                else:
+                    shape_info = TETROMINOES[held_type]
+                    self.player_piece = {'type': held_type, 'shape': shape_info['shape'], 'x': 3, 'y': 0, 'rotation': 0}
+            else: # AI hold
+                if not self.ai_can_hold: return
+                held_type, self.ai_hold = self.ai_hold, self.ai_piece['type']
+                self.ai_can_hold = False
+                if held_type is None: self.spawn_new_piece(False)
+                else:
+                    shape_info = TETROMINOES[held_type]
+                    self.ai_piece = {'type': held_type, 'shape': shape_info['shape'], 'x': 13, 'y': 0, 'rotation': 0}
+
+    #-----------------------------------------
+    # MODERN CO-OP DISPLAYABLE CLASS
+    #-----------------------------------------
+    class CoOpTetrisDisplayable(renpy.Displayable):
+        def __init__(self, **kwargs):
+            super(CoOpTetrisDisplayable, self).__init__(**kwargs)
+            self.game = CoOpTetrisGame()
+            self.ai = TetrisAI()
+            self.ai_target_move = None
+            self.ai_move_timer = 0.0
+            self.ai_delay_range = AI_ACTION_DELAY.get(3) # Let's fix AI difficulty to Hard (3) for co-op
+
+            # Player DAS/ARR control state
+            self.held_key = None
+            self.das_timer = 0.0
+            self.arr_timer = 0.0
+
+            self.load_assets()
+            self.last_update_time = 0
+
+        def load_assets(self):
+            # This is the streamlined asset loader from the versus mode
+            skin_id = getattr(persistent, 'skin', 1)
+            skin = SKINS.get(skin_id, SKINS[1])
+            path, sfx = skin['path'], skin['sfx_suffix']
+            self.background_img = Image(path + "background_co_op.png") # Use co-op background
+            self.colors = {i: Image(path + f"cube_{i}.png") for i in range(1, 8)}
+            self.shadow_colors = {i: Image(path + (f"shadow_{i}.png" if skin_id in [5, 6] else f"cube_{i}.png")) for i in range(1, 8)}
+            self.sounds = {'drop': f"sfx/t-drop{sfx}", 'move': f"sfx/t-move{sfx}", 'rotate': f"sfx/t-rotate{sfx}", '1line': f"sfx/t-fl{sfx}", '4line': f"sfx/t-4fl{sfx}"}
+
+        def render(self, width, height, st, at):
+            global TetrisWinner # Use global to signal winner to Ren'Py script
+
+            if self.last_update_time == 0: self.last_update_time = st
+            dtime = st - self.last_update_time
+            self.last_update_time = st
+
+            # Handle player input for auto-repeat
+            if self.held_key is not None:
+                self.das_timer += dtime
+                if self.das_timer > DAS_DELAY:
+                    self.arr_timer += dtime
+                    if self.arr_timer > ARR_DELAY:
+                        self.arr_timer -= ARR_DELAY
+                        self.game.move(-1 if self.held_key == 'left' else 1, 0, is_player=True)
+                        renpy.sound.play(self.sounds['move'])
+            
+            # Update game state
+            if not self.game.game_over:
+                self.game.update(dtime)
+                self.ai_update(dtime)
+            else: # Handle game over condition
+                if persistent.best_co_op_tetris_score < self.game.score:
+                    persistent.best_co_op_tetris_score = self.game.score
+                    TetrisWinner = 2 # New high score
+                else:
+                    TetrisWinner = 3 # No new high score
+                renpy.jump("tetris_over")
+
+            # Play sounds for line clears
+            if self.game.last_clear_info:
+                info = self.game.last_clear_info
+                if info['lines'] >= 4: renpy.sound.play(self.sounds['4line'])
+                else: renpy.sound.play(self.sounds['1line'])
+                self.game.last_clear_info = None
+
+            # --- Drawing ---
+            r = renpy.Render(width, height)
+            r.blit(renpy.render(self.background_img, width, height, st, at), (0, 0))
+            
+            playfield_x_offset = 0
+            playfield_y_offset = 0
+
+            self.draw_board(r, playfield_x_offset, playfield_y_offset, st, at)
+            # Draw ghosts first
+            self.draw_ghost_piece(r, playfield_x_offset, playfield_y_offset, is_player=True, st=st, at=at)
+            self.draw_ghost_piece(r, playfield_x_offset, playfield_y_offset, is_player=False, st=st, at=at)
+            # Draw solid pieces on top
+            self.draw_piece(r, self.game.player_piece, playfield_x_offset, playfield_y_offset, st, at)
+            self.draw_piece(r, self.game.ai_piece, playfield_x_offset, playfield_y_offset, st, at)
+            self.draw_ui(r, width, height, st, at)
 
             renpy.redraw(self, 0)
             return r
-        ############################################################################################################################
-        # Rotate piecec functions
-        def rotateClockWise(self, mat):
-            tempShape = mat
-            tempRow = tempShape
-            tempX = self.current_shape_player.x
-            tempY = self.current_shape_player.y
-            ifRotation = True
-            renpy.sound.play(self.soundrotate)
-            lenRow = len(mat)
-            lenCol = len(mat[0])
-            #Rotation of Long I piece:
-            # I to -
-            if lenRow == 4:
-                tempRow = [[] for _ in range(lenCol)]
-                for idr, row in enumerate(mat):
-                    lenColumn = len(row)
-                    for idc, column in enumerate(row):
-                        tempRow[idc].insert(0,column)
-                self.current_shape_player.y+=1
-                if self.stage[self.current_shape_player.y][self.current_shape_player.x-1] == 0:
-                    self.current_shape_player.x-=1
-                for idc, row in enumerate(tempRow[0]):
-                    if self.stage[self.current_shape_player.y][self.current_shape_player.x+idc] != 0:
-                        ifRotation = False
-                        break
-            # - to I
-            elif lenRow == 1:
-                tempRow = [[] for _ in range(lenCol)]
-                for idr, row in enumerate(mat):
-                    lenColumn = len(row)
-                    for idc, column in enumerate(row):
-                        tempRow[idc].insert(0,column)
-                self.current_shape_player.y-=1
-                self.current_shape_player.x+=1
-                for idr, row in enumerate(tempRow):
-                    if self.stage[self.current_shape_player.y+idr][self.current_shape_player.x] != 0:
-                        ifRotation = False
-                        break
-            #Rotation of Z,L ,T piece
-            # xxx    xx
-            # xxx to xx
-            #        xx
-            elif lenRow == 2 and lenCol != 2:
-                tempRow = [[] for _ in range(lenCol)]
-                for idr, row in enumerate(mat):
-                    lenColumn = len(row)
-                    for idc, column in enumerate(row):
-                        tempRow[idc].insert(0,column)
-                for idr, row in enumerate(tempRow):
-                    for idc, column in enumerate(row):
-                        if column != 0:
-                            if self.stage[self.current_shape_player.y+idr][self.current_shape_player.x+idc] != 0:
-                                ifRotation = False
-                                break
-            # xx    xxx
-            # xx to xxx
-            # xx
-            elif lenRow == 3:
-                tempRow = [[] for _ in range(lenCol)]
-                for idr, row in enumerate(mat):
-                    lenColumn = len(row)
-                    for idc, column in enumerate(row):
-                        tempRow[idc].insert(0,column)
-                if self.stage[self.current_shape_player.y][self.current_shape_player.x+len(tempRow[0])-1] != 0:
-                    self.current_shape_player.x-=1
-                for idr, row in enumerate(tempRow):
-                    for idc, column in enumerate(row):
-                        if column != 0:
-                            if self.stage[self.current_shape_player.y+idr][self.current_shape_player.x+idc] != 0:
-                                ifRotation = False
-                                break
-            elif lenRow == 2 and lenCol == 2:
-                ifRotation = True
-            #Fail the rotation, back to orginal position
-            if ifRotation == False:
-                tempRow = tempShape
-                self.current_shape_player.x = tempX
-                self.current_shape_player.y = tempY
-            return tempRow
-            ####################################################################################################################
-        def find_bottom(self):
-            temp_y = 0
-            for idr in range(self.current_shape_player.y, 22):
-                for idc, column in enumerate(self.current_shape_player.shape[0]):
-                    if self.stage[idr][self.current_shape_player.x + idc ] != 0:
-                        temp_y = idr-len(self.current_shape_player.shape)
-                        break
-                if temp_y != 0:
-                    break
-            for position in range(0, 4):
-                temp_fit = True
-                for idr, row in enumerate(self.current_shape_player.shape):
-                    for idc, column in enumerate(row):
-                        if column != 0:
-                            if self.stage[temp_y+idr][self.current_shape_player.x + idc] != 0:
-                                temp_fit = False
-                                break
-                if temp_fit:
-                    temp_y += 1
-                else:
-                    temp_y -= 1
-                    break
-            return temp_y
 
+        def draw_board(self, r, x_off, y_off, st, at):
+            board_offset = BOARD_HEIGHT - VISIBLE_BOARD_HEIGHT
+            for y in range(VISIBLE_BOARD_HEIGHT):
+                for x in range(self.game.CO_OP_BOARD_WIDTH):
+                    cell = self.game.board[y + board_offset][x]
+                    if cell != 0 and self.colors.get(cell):
+                        render_obj = renpy.render(self.colors[cell], PIXEL_SIZE, PIXEL_SIZE, st, at)
+                        r.blit(render_obj, (x_off + x * PIXEL_SIZE, y_off + y * PIXEL_SIZE))
+
+        def draw_piece(self, r, piece, x_off, y_off, st, at, is_ghost=False):
+            if not piece: return
+            color_id = TETROMINOES[piece['type']]['color_id']
+            img_dict = self.shadow_colors if is_ghost else self.colors
+            img = img_dict.get(color_id)
+            if not img: return
+            
+            displayable_to_render = im.Alpha(img, 0.4) if is_ghost else img
+            piece_y_offset = piece['y'] - (BOARD_HEIGHT - VISIBLE_BOARD_HEIGHT)
+
+            for row_idx, row in enumerate(piece['shape']):
+                for col_idx, cell in enumerate(row):
+                    if cell != 0:
+                        screen_x = x_off + (piece['x'] + col_idx) * PIXEL_SIZE
+                        screen_y = y_off + (piece_y_offset + row_idx) * PIXEL_SIZE
+                        if screen_y >= y_off:
+                            r.blit(renpy.render(displayable_to_render, PIXEL_SIZE, PIXEL_SIZE, st, at), (screen_x, screen_y))
+        
+        def draw_ghost_piece(self, r, x_off, y_off, is_player, st, at):
+            piece = self.game.player_piece if is_player else self.game.ai_piece
+            if not piece: return
+            ghost_piece = copy.deepcopy(piece)
+            ghost_piece['y'] = self.game.get_ghost_y(is_player)
+            self.draw_piece(r, ghost_piece, x_off, y_off, st, at, is_ghost=True)
+            
+        def draw_ui(self, r, width, height, st, at):
+            text_size = 22
+            # Shared Stats (Centered)
+            r.blit(renpy.render(Text(f"Score: {self.game.score}", size=text_size), width, height, st, at), (width/2 - 50, 20))
+            r.blit(renpy.render(Text(f"Lines: {self.game.lines_cleared}", size=text_size), width, height, st, at), (width/2 - 50, 50))
+            r.blit(renpy.render(Text(f"Level: {self.game.level}", size=text_size), width, height, st, at), (width/2 - 50, 80))
+
+            # Player UI (Left Side)
+            player_ui_y = 300
+            r.blit(renpy.render(Text("Hold", size=text_size), width, height, st, at), (player_ui_x, 150))
+            if self.game.player_hold: self.draw_ui_piece(r, self.game.player_hold, (player_ui_x, 180), st, at)
+            r.blit(renpy.render(Text("Next", size=text_size), width, height, st, at), (player_ui_x, 280))
+            for i, p_type in enumerate(self.game.player_next[:3]):
+                 self.draw_ui_piece(r, p_type, (player_ui_x, 310 + i * 60), st, at)
+
+            # AI UI (Right Side)
+            ai_ui_y = 300
+            r.blit(renpy.render(Text("Yuri's Next", size=text_size), width, height, st, at), (ai_ui_x, 280))
+            for i, p_type in enumerate(self.game.ai_next[:3]):
+                 self.draw_ui_piece(r, p_type, (ai_ui_x, 310 + i * 60), st, at)
+
+        def draw_ui_piece(self, r, piece_type, pos, st, at):
+            # Copied directly from the modernized versus mode displayable
+            info = TETROMINOES[piece_type]
+            img = self.colors.get(info['color_id'])
+            if not img: return
+            piece_width = len(info['shape'][0]) * PIXEL_SIZE
+            x_offset = ( (4 * PIXEL_SIZE) - piece_width ) / 2
+            for y, row in enumerate(info['shape']):
+                for x, cell in enumerate(row):
+                    if cell != 0: r.blit(renpy.render(img, PIXEL_SIZE, PIXEL_SIZE, st, at), (pos[0] + x_offset + x*PIXEL_SIZE, pos[1] + y*PIXEL_SIZE))
+
+        def ai_update(self, dtime):
+            # This is the AI control logic, adapted for the co-op game
+            if self.game.ai_piece and not self.ai_target_move:
+                # We must tell the AI about the AI's piece and that its world is wider
+                self.ai_target_move = self.ai.find_best_move(self.game, is_co_op=True)
+            
+            if self.ai_target_move:
+                start_delay, end_delay = self.ai_delay_range
+                current_action_delay = start_delay # In co-op, AI speed doesn't ramp up
+                
+                self.ai_move_timer += dtime
+                if self.ai_move_timer >= current_action_delay:
+                    self.ai_move_timer = 0
+                    p = self.game.ai_piece
+                    target_rot = self.ai_target_move['rotation']
+                    target_x = self.ai_target_move['x']
+
+                    if p['rotation'] != target_rot: self.game.rotate(is_player=False)
+                    elif p['x'] < target_x: self.game.move(1, 0, is_player=False)
+                    elif p['x'] > target_x: self.game.move(-1, 0, is_player=False)
+                    else:
+                        self.game.hard_drop(is_player=False) 
+                        renpy.sound.play(self.sounds['drop'])
+                        self.ai_target_move = None
+        
         def event(self, ev, x, y, st):
-            import pygame
-            temp_can_left = True
-            temp_can_right = True
-            if self.level > 19:
-                self.current_shape.speed = 0.20
-            else:
-                self.current_shape_player.speed = 0.20
+            # This is our robust, modern event handler for player input
+            if self.game.game_over: return
             if ev.type == pygame.KEYDOWN:
-                if ev.key == pygame.K_UP:
-                    self.current_shape_player.shape = self.rotateClockWise(self.current_shape_player.shape)
-                elif ev.key == pygame.K_LEFT:
-                    renpy.sound.play(self.soundmove)
-                    for idr, row in enumerate(self.current_shape_player.shape):
-                        for idc, column in enumerate(row):
-                            if column != 0:
-                                if self.stage[self.current_shape_player.y + idr][self.current_shape_player.x - 1 + idc] != 0:
-                                    temp_can_left = False
-                                    break
-                    if temp_can_left:
-                        self.current_shape_player.x -= 1
+                if ev.key == pygame.K_LEFT:
+                    if self.held_key != 'left':
+                        self.game.move(-1, 0, is_player=True)
+                        renpy.sound.play(self.sounds['move'])
+                        self.held_key = 'left'
+                        self.das_timer = 0.0
                 elif ev.key == pygame.K_RIGHT:
-                    renpy.sound.play(self.soundmove)
-                    for idr, row in enumerate(self.current_shape_player.shape):
-                        for idc, column in enumerate(row):
-                            if column != 0:
-                                if self.stage[self.current_shape_player.y + idr][self.current_shape_player.x + 1 + idc ] != 0:
-                                    temp_can_right = False
-                                    break
-                    if temp_can_right:
-                        self.current_shape_player.x += 1
-                elif ev.key == pygame.K_DOWN:
-                    self.current_shape_player.speed = 0.002
-                elif ev.key == pygame.K_SPACE:
-                    renpy.sound.play(self.soundbdrop)
-                    self.addShapeToStage(self.current_shape_player, self.current_shape_player.x, self.find_bottom())
-                    self.new_shape_player = True
+                    if self.held_key != 'right':
+                        self.game.move(1, 0, is_player=True)
+                        renpy.sound.play(self.sounds['move'])
+                        self.held_key = 'right'
+                        self.das_timer = 0.0
+                elif ev.key == pygame.K_UP: self.game.rotate(is_player=True, clockwise=True)
+                elif ev.key == pygame.K_z: self.game.rotate(is_player=True, clockwise=False)
+                elif ev.key == pygame.K_SPACE: self.game.hard_drop(is_player=True)
+                elif ev.key in [pygame.K_c, pygame.K_q, pygame.K_e]: self.game.hold(is_player=True)
+                elif ev.key == pygame.K_DOWN: self.game.move(0, 1, is_player=True) # Soft Drop
+            elif ev.type == pygame.KEYUP:
+                if (ev.key == pygame.K_LEFT and self.held_key == 'left') or \
+                   (ev.key == pygame.K_RIGHT and self.held_key == 'right'):
+                    self.held_key = None
 
-        def rotateClockWiseAI(self):
-            lenRow = len(self.current_shape_Yuri.shape)
-            lenCol = len(self.current_shape_Yuri.shape[0])
-            tempRow = [[] for _ in range(lenCol)]
-            for idr, row in enumerate(self.current_shape_Yuri.shape):
-                for idc, column in enumerate(row):
-                    tempRow[idc].insert(0,column)
-            del self.current_shape_Yuri.shape
-            self.current_shape_Yuri.shape = tempRow
+    # --- MODIFICATION TO TetrisAI CLASS ---
+    # We need to make the AI aware of the wider co-op board.
+    class TetrisAI:
+        WEIGHTS = {'height': -0.51, 'lines': 0.76, 'holes': -0.35, 'bumpiness': -0.18, 't_spin_bonus': 0.5} # T-Spins are less important in co-op
 
-#----------------------------------------------------------------------------------------------------
-
-        def Yuri_AI(self):
-            def calculateScoreForMove():
-                height = 0
-                lines = 0
-                holes = 0
-                temp_col_height = [None] * 20
-                bumpiness = 0
-                #Caluclate height and lines
-                for idr in range(20, 0, -1):
-                    temp_clear_line = True
-                    for idc in range(1, 21):
-                        if self.stage[idr][idc] == 0:
-                            temp_clear_line = False
-                            break
-                    if temp_clear_line:
-                        lines += 1
-                #Caluclate holes and bumpiness
-                for idc in range(1, 21):
-                    temp_col_height[idc-1] = 0
-                    temp_holes = 0
-                    for idr in range(20, 0, -1):
-                        if self.stage[idr][idc] != 0:
-                            holes += temp_holes
-                            temp_holes = 0
-                        else:
-                            temp_holes += 1
-                        if self.stage[idr][idc] != 0:
-                            temp_col_height[idc-1] = 21-idr
-                for i in range(0, 19):
-                    height += temp_col_height[i]
-                    bumpiness += abs(temp_col_height[i] - temp_col_height[i+1])
-                height += temp_col_height[19]
-                score = (-0.510066 * height) + (0.760666 * lines) - (0.35663 * holes) - (0.184483 * bumpiness)
-                return score
-
-            def shapeRotation(shape):
-                if shape == 6:
-                    return 2
-                elif shape == 0 or shape == 3 or shape == 4:
-                    return 5
-                elif shape == 1 or shape == 2 or shape == 5:
-                    return 3
-
-            ####################################################################################################################
-            def bestMove():
-                import copy
-                moves = [0,1]
-                best_score = -100
-                temp_shape = copy.deepcopy(self.current_shape_Yuri.shape)
-                temp_rotation = shapeRotation(self.current_shape_Yuri.shape_number)
-
-                #Find best position
-                temp_stage = copy.deepcopy(self.stage)
-                for rot in range(1, temp_rotation):
-                    temp_len = len(self.current_shape_Yuri.shape[0])-1
-                    for idc in range(1, 21-temp_len):
-                        del self.stage
-                        self.stage = copy.deepcopy(temp_stage)
-                        temp_break = False
-                        for idr in range(1, 22):
-                            for idcShape in range(0, len(self.current_shape_Yuri.shape[0])):
-                                if self.current_shape_Yuri.shape[len(self.current_shape_Yuri.shape)-1][idcShape] != 0:
-                                    if self.stage[idr][idc+idcShape] != 0:
-                                        temp_idr = idr
-                                        temp_break = True
-                                        break
-                            if temp_break:
-                                break
-                        for idr in range(0, 21):
-                            temp_free = True
-                            temp_idr -= 1
-                            for idrShape, row in enumerate(self.current_shape_Yuri.shape):
-                                for idcShape, column in enumerate(row):
-                                    if column != 0:
-                                        if self.stage[temp_idr+(idrShape-(len(self.current_shape_Yuri.shape)-1))][idc+idcShape] != 0:
-                                            temp_free = False
-                            if temp_free:
-                                self.addShapeToStage(self.current_shape_Yuri, idc, temp_idr-(len(self.current_shape_Yuri.shape)-1))
-                                temp_score = calculateScoreForMove()
-                                if temp_score > best_score:
-                                    best_score = temp_score
-                                    moves = [idc-15, rot]
-                                break
-                    self.rotateClockWiseAI()
-                self.stage = copy.deepcopy(temp_stage)
-                del temp_stage
-                self.current_shape_Yuri.shape = copy.deepcopy(temp_shape)
-                del temp_shape
-
-                temp_moves = []
-                for i in range(0, moves[1]-1):
-                    temp_moves.append("r")
-                signbit = 1 if moves[0] < 0 else 0
-                if signbit == 0:
-                    for i in range(0, moves[0]):
-                        temp_moves.append("1")
-                else:
-                    for i in range(moves[0], 0):
-                        temp_moves.append("-1")
-                return temp_moves
+        def find_best_move(self, game, is_co_op=False):
+            best_move = {'score': -float('inf'), 'x': -1, 'rotation': 0}
             
-            #Check if the current tetromino of Yuri_AI has reached the bottom of the grid or a previously placed tetromino.
-            temp_can_go_down = True
-            for idr, row in enumerate(self.current_shape_Yuri.shape):
-                for idc, column in enumerate(row):
-                    if column != 0:
-                        if self.stage[self.current_shape_Yuri.y + 1 + idr][self.current_shape_Yuri.x + idc] != 0:
-                            temp_can_go_down = False
-                            break
+            current_piece = game.ai_piece if is_co_op else game.current_piece
+            board_width = game.CO_OP_BOARD_WIDTH if is_co_op else BOARD_WIDTH
+            board_height = BOARD_HEIGHT
+            board_state = game.board
             
-            # If the tetromino has reached the bottom, freeze it in place.
-            if temp_can_go_down == False:
-                self.addShapeToStage(self.current_shape_Yuri, self.current_shape_Yuri.x, self.current_shape_Yuri.y)
-                self.new_shape_Yuri = True
-            else:
-                # Otherwise, let it continue falling.
-                return bestMove()
+            if not current_piece: return best_move
+            temp_piece = copy.deepcopy(current_piece)
+            
+            for rotation in range(4):
+                min_x = -min(c for r in temp_piece['shape'] for c, cell in enumerate(r) if cell)
+                max_x = board_width - max(c + 1 for r in temp_piece['shape'] for c, cell in enumerate(r) if cell)
 
+                for x in range(min_x, max_x + 1):
+                    sim_board = copy.deepcopy(board_state)
+                    y = temp_piece['y']
+                    while not self._check_collision_sim(sim_board, temp_piece['shape'], x, y + 1, board_width, board_height):
+                        y += 1
+                    
+                    self._place_piece_sim(sim_board, temp_piece['shape'], x, y, TETROMINOES[temp_piece['type']]['color_id'])
+                    score = self._evaluate_board(sim_board, board_width, board_height)
+
+                    if score > best_move['score']:
+                        best_move = {'score': score, 'x': x, 'rotation': rotation}
+
+                if temp_piece['type'] != 'O':
+                    temp_piece['shape'] = list(zip(*temp_piece['shape'][::-1]))
+            return best_move
+
+        def _evaluate_board(self, board, board_width, board_height):
+            heights = [0] * board_width
+            for c in range(board_width):
+                for r in range(board_height):
+                    if board[r][c] != 0:
+                        heights[c] = board_height - r
+                        break
+            agg_height = sum(heights)
+            completed_lines = sum(1 for row in board if all(cell != 0 for cell in row))
+            holes = sum(1 for c in range(board_width) for r in range(board_height - heights[c], board_height) if board[r][c] == 0)
+            bumpiness = sum(abs(heights[i] - heights[i+1]) for i in range(len(heights) - 1))
+            score = (self.WEIGHTS['height'] * agg_height + self.WEIGHTS['lines'] * completed_lines + self.WEIGHTS['holes'] * holes + self.WEIGHTS['bumpiness'] * bumpiness)
+            return score
+
+        def _check_collision_sim(self, board, shape, x, y, board_width, board_height):
+            for r, row in enumerate(shape):
+                for c, cell in enumerate(row):
+                    if cell != 0:
+                        board_x, board_y = x + c, y + r
+                        if not (0 <= board_x < board_width and 0 <= board_y < board_height) or board[board_y][board_x] != 0:
+                            return True
+            return False
+            
+        # --- THIS IS THE MISSING METHOD THAT CAUSED THE CRASH ---
+        def _place_piece_sim(self, board, shape, x, y, value_to_place):
+            """
+            Places a piece on a simulated board using a given value.
+            """
+            for r, row in enumerate(shape):
+                for c, cell in enumerate(row):
+                    if cell != 0:
+                        board[y + r][x + c] = value_to_place

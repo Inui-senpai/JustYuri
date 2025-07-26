@@ -232,22 +232,27 @@ init python:
 
     build.classify("game/**.jpg", "images")
     build.classify("game/**.png", "images")
-    build.classify("game/gifts/**.png", "images")
 
     #flag Check for accuracy
     build.classify("game/**.rpyc", "scripts")
     build.classify("game/**.txt", "scripts")
     build.classify("game/**.chr", "scripts")
-    build.classify("game/**.exe", "scripts")
+    #build.classify("game/**.exe", "scripts")
     #build.classify("game/**.jy", "scripts")
     build.classify("game/**.xml", "scripts")
     build.classify("game/**.wav", "audio")
     build.classify("game/**.mp3", "audio")
     build.classify("game/**.ogg", "audio")
     build.classify("game/**.ttf", "fonts")
-    build.classify("game/**.otf", "audio")
+    build.classify("game/**.otf", "fonts")
     build.classify("game/**.mp4", "videos")
     build.classify("game/**.webm", "videos")
+
+    # New line to keep submods folder and its contents loose
+    # This MUST come BEFORE broader rules like "game/**.txt" or "game/**.png"
+    # if you want files *inside* submods to follow this rule instead of the broader one.
+    # However, since you want the *entire* folder loose, placing it here is fine.
+    build.classify('/game/submods/**', "all") # "all" signifies 'include but do not archive' here
 
     #new addition. Saves all python files while excluding
     #build.classify("game/00-chess-engine/python-packages/chess/**", "scripts")
@@ -256,8 +261,8 @@ init python:
     #build.classify("game/python-packages/jychrmod.py", "scripts")
     #build.classify("game/python-packages/jysavechanger.py", "scripts")
     build.classify("game/dev_logs/**.jy_log", "scripts")
-    build.classify("game/bin/**", "scripts")
-    build.classify("game/00-chess-engine/bin/**", "scripts")
+    #build.classify("game/bin/**", "scripts")
+    #build.classify("game/00-chess-engine/bin/**", "scripts")
 
     ##Optionally include a zip file with all source code
     build.classify('**.rpy','source')
@@ -281,7 +286,6 @@ init python:
     build.classify('script-regex.txt', None)
     build.classify('/game/10', None)
     build.classify('/game/cache/*.*', None)
-    build.classify('/game/submods/**', None)
     build.classify('**.rpa',None)
     build.classify('*the_magic_password.txt*',None)
     build.classify('characters.zip',None)

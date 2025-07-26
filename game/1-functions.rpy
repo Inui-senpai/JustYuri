@@ -1548,14 +1548,11 @@ screen yuri_sleep():
 
 layeredimage yuri_sleep:
 
-    if persistent.costume == "sweater":
+    if persistent.costume == "sweater" or persistent.costume == "valentines":
         "yuri_resting_pyjama[current_timecycle_marker]"
 
     if persistent.costume == "school":
         "yuri_resting_school[current_timecycle_marker]"
-
-    if persistent.costume == "valentines":
-        "yuri_resting_pyjama[current_timecycle_marker]"
 
 
 if hide_yuri_sleep == False:
@@ -1766,9 +1763,9 @@ layeredimage yuri_lewdhug:
         "lewdhug_[persistent.costume]_day"#currently missing for valentines outfit
 
 layeredimage yuri_sleepy:
-    if persistent.bg == "space" and renpy.has_image ("yuri_sleepy" + persistent.costume + "_space"):
+    if persistent.bg == "space" and renpy.has_image("yuri_sleepy_" + persistent.costume + "_space"):
         "yuri_sleepy_[persistent.costume]_space"
-    elif persistent.bg != "space" and renpy.has_image("=" + persistent.costume + current_timecycle_marker):
+    elif persistent.bg != "space" and renpy.has_image("yuri_sleepy_" + persistent.costume + current_timecycle_marker):
         "yuri_sleepy_[persistent.costume][current_timecycle_marker]"
     else:
         "yuri_sleepy_[persistent.costume]_day"
