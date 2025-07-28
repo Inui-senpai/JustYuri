@@ -520,7 +520,7 @@ label tetris_difficulty:
     python:
         # renpy.random.random() returns a float between 0.0 and 1.0.
         # This condition will be true 0.5% of the time.
-        show_singularity = (renpy.random.random() < 0.005)
+        show_singularity = (renpy.random.random() < 1.0)
 
     if show_singularity:
         menu:
@@ -1444,39 +1444,48 @@ label tetris_rules:
     menu:
         y "Would you like some Tetris music while we play?"
         "Yes":
-           if AI_difficulty != "CO_OP":
-               y "Let the best Tetris player win."
-               $ show_chr("A-AACAA-AAAA")
-               y "Game on, [player]!"
-           else:
-               y "Let's enjoy our time together trying to get the highest score!"
-               $ show_chr("A-CBBAA-AAAJ")
-               y "I really hope I will be at least some of help for you, [player]."
-               $ show_chr("A-AACAA-AAAA")
 
-           if persistent.skin == 1:
-               $ change_music("<loop 21.06>/music/tetris (a).ogg") #Once a musician in the Dev Team Server has finished their Tetris arrangement, please remove this comment.
-               #"<loop 1.81>/music/tetris (b).ogg"
-           elif persistent.skin == 2:
-               $ change_music("<loop 0.80>/music/tetris_99.ogg")
-           elif persistent.skin == 3:
-               $ change_music("<loop 19.30>/music/tetris_gb.ogg")
-           elif persistent.skin == 4:
-               $ change_music("<loop 0>/music/tetris_gmd.ogg")
-           elif persistent.skin == 5:
-               $ change_music("<loop 0>/music/tetris_m1nd_bend3r.ogg")
-           elif persistent.skin == 6:
-               $ change_music("<loop 0>/custom_tetris/tetris.ogg")
+            if AI_difficulty == 7:
+                y "Let the best Tetris player win."
+                $ show_chr("A-AACAA-AAAA")
+                y "Game on, [player]!"
+                # This music will play regardless of the chosen skin
+                $ change_music("<loop 5.853>/music/tetris_99_3.ogg")
+
+            elif AI_difficulty != "CO_OP":
+                y "Let the best Tetris player win."
+                $ show_chr("A-AACAA-AAAA")
+                y "Game on, [player]!"
+            else:
+                y "Let's enjoy our time together trying to get the highest score!"
+                $ show_chr("A-CBBAA-AAAJ")
+                y "I really hope I will be at least some of help for you, [player]."
+                $ show_chr("A-AACAA-AAAA")
+
+            if AI_difficulty != 7:
+                if persistent.skin == 1:
+                    $ change_music("<loop 21.06>/music/tetris (a).ogg") #Once a musician in the Dev Team Server has finished their Tetris arrangement, please remove this comment.
+                    #"<loop 1.81>/music/tetris (b).ogg"
+                elif persistent.skin == 2:
+                    $ change_music("<loop 0.857>/music/tetris_99.ogg")
+                elif persistent.skin == 3:
+                    $ change_music("<loop 19.30>/music/tetris_gb.ogg")
+                elif persistent.skin == 4:
+                    $ change_music("<loop 0>/music/tetris_gmd.ogg")
+                elif persistent.skin == 5:
+                    $ change_music("<loop 0>/music/tetris_m1nd_bend3r.ogg")
+                elif persistent.skin == 6:
+                    $ change_music("<loop 0>/custom_tetris/tetris.ogg")
         "No":
-           if AI_difficulty != "CO_OP":
-               y "Let the best Tetris player win."
-               $ show_chr("A-AACAA-AAAA")
-               y "Game on, [player]!"
-           else:
-               y "Let's enjoy our time together trying to get the highest score!"
-               $ show_chr("A-CBBAA-AAAJ")
-               y "I really hope I will be at least some of help for you, [player]."
-               $ show_chr("A-AACAA-AAAA")
+            if AI_difficulty != "CO_OP":
+                y "Let the best Tetris player win."
+                $ show_chr("A-AACAA-AAAA")
+                y "Game on, [player]!"
+            else:
+                y "Let's enjoy our time together trying to get the highest score!"
+                $ show_chr("A-CBBAA-AAAJ")
+                y "I really hope I will be at least some of help for you, [player]."
+                $ show_chr("A-AACAA-AAAA")
 
     call screen startTetris(AI_difficulty)
 
@@ -1499,20 +1508,23 @@ label tetris_over:
                     menu:
                         y "Would you like the same music as our last game?"
                         "Yes":
-                           if persistent.skin == 1:
-                               $ change_music("<loop 21.06>/music/tetris (a).ogg") #Once a musician in the Dev Team Server has finished their Tetris arrangement, please remove this comment.
-                           elif persistent.skin == 2:
-                               $ change_music("<loop 0.80>/music/tetris_99.ogg")
-                           elif persistent.skin == 3:
-                               $ change_music("<loop 19.30>/music/tetris_gb.ogg")
-                           elif persistent.skin == 4:
-                               $ change_music("<loop 0>/music/tetris_gmd.ogg")
-                           elif persistent.skin == 5:
-                               $ change_music("<loop 0>/music/tetris_m1nd_bend3r.ogg")
-                           elif persistent.skin == 6:
-                               $ change_music("<loop 0>/custom_tetris/tetris.ogg")
+                            if AI_difficulty == 7:
+                                $ change_music("<loop 5.853>/music/tetris_99_3.ogg")
+                            else:
+                                if persistent.skin == 1:
+                                    $ change_music("<loop 21.06>/music/tetris (a).ogg") #Once a musician in the Dev Team Server has finished their Tetris arrangement, please remove this comment.
+                                elif persistent.skin == 2:
+                                    $ change_music("<loop 0.857>/music/tetris_99.ogg")
+                                elif persistent.skin == 3:
+                                    $ change_music("<loop 19.30>/music/tetris_gb.ogg")
+                                elif persistent.skin == 4:
+                                    $ change_music("<loop 0>/music/tetris_gmd.ogg")
+                                elif persistent.skin == 5:
+                                    $ change_music("<loop 0>/music/tetris_m1nd_bend3r.ogg")
+                                elif persistent.skin == 6:
+                                    $ change_music("<loop 0>/custom_tetris/tetris.ogg")
 
-                           call screen startTetris(AI_difficulty)
+                            call screen startTetris(AI_difficulty)
 
                         "No":
                             call screen startTetris(AI_difficulty)
@@ -1717,10 +1729,18 @@ init python:
     # (The configuration constants and the TetrisGame class from the previous step
     # are assumed to be here. They are included again for completeness.)
 
-    # --- NEW CONTROL CONSTANTS ---
+    # --- Constants for Singularity AI Rhythm ---
+    SINGULARITY_BPM_NORMAL = 164.0
+    SINGULARITY_BPM_FRENZY = 328.0
+    # Convert BPM to a time interval in seconds (60 seconds / beats per minute)
+    SINGULARITY_INTERVAL_NORMAL = 60.0 / SINGULARITY_BPM_NORMAL
+    SINGULARITY_INTERVAL_FRENZY = 60.0 / SINGULARITY_BPM_FRENZY
+
     DAS_DELAY = 0.16  # 160ms before auto-shift starts
     ARR_DELAY = 0.03  # 30ms between movements during auto-shift (very fast)
-    # --- END NEW CONSTANTS ---
+
+    DAS_DELAY_20G = 0.10  # A much shorter delay to start moving
+    ARR_DELAY_20G = 0.00  # Instantaneous movement after DAS
 
     #-----------------------------------------
     # MODERN TETRIS CONFIGURATION
@@ -1730,6 +1750,7 @@ init python:
     VISIBLE_BOARD_HEIGHT = 20
     PIXEL_SIZE = 20
     LOCK_DELAY = 0.5
+    LOCK_DELAY_20G = 0.65
 
     TETROMINOES = {
         'T': {'shape': [[1, 1, 1], [0, 1, 0]], 'color_id': 1},
@@ -1798,6 +1819,7 @@ init python:
             self.spawn_new_piece()
             self.last_move_was_rotation = False
             self.last_clear_info = None
+            self.b2b_active = False # --- B2B state variable ---
             self.lock_timer = 0
             self.is_landed = False
             self.time_since_fall = 0.0
@@ -1835,7 +1857,8 @@ init python:
                 self.move(0, 1, reset_lock=False)
             else:
                 self.time_since_fall += dt
-                base_interval = max(0.05, 0.5 - ((self.level - 1) * 0.022))
+                speed_multiplier = AI_GRAVITY_MULTIPLIERS.get(self.difficulty, 1.0)
+                base_interval = max(0.05, 0.8 - ((self.level - 1) * 0.022))
                 gravity_interval = base_interval / speed_multiplier
                 if self.time_since_fall >= gravity_interval:
                     self.time_since_fall = 0
@@ -1843,7 +1866,12 @@ init python:
 
             if self.is_landed:
                 self.lock_timer += dt
-                if self.lock_timer >= LOCK_DELAY:
+                
+                # --- Select lock delay based on level ---
+                current_lock_delay = LOCK_DELAY_20G if self.level >= 20 else LOCK_DELAY
+                
+                # Use the selected value in the comparison
+                if self.lock_timer >= current_lock_delay:
                     self.lock_piece()
             
             # --- STATE 2: The piece is actively falling. ---
@@ -1923,58 +1951,60 @@ init python:
             return occupied_corners >= 3
 
         def clear_lines(self):
-            """
-            --- COMPLETE OVERHAUL ---
-            Checks for and clears completed lines with full modern T-Spin scoring rules.
-            This method will now set self.last_clear_info for the displayable to read.
-            """
-            self.last_clear_info = None # Reset before checking
+            # --- This method gets a complete overhaul for B2B logic ---
+            self.last_clear_info = None
             
             was_rotation = self.last_move_was_rotation
             is_t_piece = self.current_piece and self.current_piece['type'] == 'T'
-            
-            is_full_tspin = False
-            is_mini_tspin = False
-
-            # 1. Determine if the move was a T-Spin of any kind
-            if was_rotation and is_t_piece:
-                if self._is_t_spin_full():
-                    is_full_tspin = True
-                else:
-                    is_mini_tspin = True
-
-            # 2. Find completed lines
             lines_to_clear = [r for r, row in enumerate(self.board) if all(cell != 0 for cell in row)]
             num_cleared = len(lines_to_clear)
-            
-            # 3. Apply score and set clear info based on the type of clear
+
+            is_difficult_clear = False
             score_to_add = 0
             clear_type = "NONE"
 
-            if is_full_tspin:
-                score_map = {0: 400, 1: 800, 2: 1200, 3: 1600} # T-Spin 0, Single, Double, Triple
-                score_to_add = score_map.get(num_cleared, 0)
-                clear_type = f"T_SPIN_FULL_{num_cleared}"
-
-            elif is_mini_tspin:
-                score_map = {0: 100, 1: 200, 2: 400} # Mini T-Spin 0, Single, Double
-                score_to_add = score_map.get(num_cleared, 0)
-                clear_type = f"T_SPIN_MINI_{num_cleared}"
-
-            elif num_cleared > 0: # Standard clear (not a T-Spin)
-                score_map = {1: 100, 2: 300, 3: 500, 4: 800} # Single, Double, Triple, Tetris
+            # 1. Determine clear type and base score
+            is_tspin = was_rotation and is_t_piece
+            if is_tspin:
+                is_mini = not self._is_t_spin_full()
+                if is_mini:
+                    score_map = {0: 100, 1: 200, 2: 400}
+                    score_to_add = score_map.get(num_cleared, 0)
+                    clear_type = f"T_SPIN_MINI_{num_cleared}"
+                else: # Full T-Spin
+                    score_map = {0: 400, 1: 800, 2: 1200, 3: 1600}
+                    score_to_add = score_map.get(num_cleared, 0)
+                    clear_type = f"T_SPIN_FULL_{num_cleared}"
+                is_difficult_clear = True
+            
+            elif num_cleared > 0:
+                score_map = {1: 100, 2: 300, 3: 500, 4: 800}
                 score_to_add = score_map.get(num_cleared, 0)
                 clear_type = f"NORMAL_{num_cleared}"
+                if num_cleared == 4: # Tetris is a difficult clear
+                    is_difficult_clear = True
             
+            # 2. Apply B2B Bonus if applicable
+            if is_difficult_clear and self.b2b_active:
+                score_to_add = int(score_to_add * 1.5)
+                clear_type = "B2B_" + clear_type # Update clear type for sound/visuals
+            
+            # 3. Add score and update game state
             if score_to_add > 0:
                 self.score += score_to_add * self.level
                 self.last_clear_info = {'type': clear_type, 'lines': num_cleared}
 
-            # 4. Update board state if lines were cleared
+            # 4. Update B2B state for the NEXT turn
+            if is_difficult_clear:
+                if num_cleared > 0: # Only activate B2B on scoring clears
+                    self.b2b_active = True
+            elif num_cleared > 0: # A simple clear breaks the chain
+                self.b2b_active = False
+
+            # 5. Rebuild the board
             if num_cleared > 0:
                 self.lines_cleared += num_cleared
                 self.level = (self.lines_cleared // 10) + 1
-
                 new_board = [row for r, row in enumerate(self.board) if r not in lines_to_clear]
                 for _ in range(num_cleared):
                     new_board.insert(0, [0] * BOARD_WIDTH)
@@ -2164,6 +2194,10 @@ init python:
                 self.ai_move_timer = 0.0
                 self.ai_delay_range = AI_ACTION_DELAY.get(self.ai_difficulty, (0.1, 0.05))
 
+                self.ai_rhythm_timer = 0.0
+                self.ai_frenzy_mode = False
+                self.ai_frenzy_drops_left = 0
+
             else:
                 self.held_key = None      # Which key is being held ('left', 'right')
                 self.das_timer = 0.0      # Timer for the DAS delay
@@ -2188,6 +2222,11 @@ init python:
             skin_id = getattr(persistent, 'skin', 1)
             skin = SKINS.get(skin_id, SKINS[1])
             path, sfx = skin['path'], skin['sfx_suffix']
+
+            if self.ai_difficulty == 7:
+                # Override the SFX to use the sound pack from skin 2 (Tetris 99)
+                sfx = SKINS.get(2)['sfx_suffix']
+
             self.background_img = Image(path + "background.png")
             self.colors = {i: Image(path + f"cube_{i}.png") for i in range(1, 8)}
             self.colors[9] = Image(path + "cube_8.png")
@@ -2208,17 +2247,26 @@ init python:
             dtime = st - self.last_update_time
             self.last_update_time = st
 
+            # --- MODIFIED DAS/ARR LOGIC (PLAYER ONLY) ---
             if not self.is_ai and self.held_key is not None:
+                
+                current_das = DAS_DELAY_20G if self.game.level >= 20 else DAS_DELAY
+                current_arr = ARR_DELAY_20G if self.game.level >= 20 else ARR_DELAY
+
                 self.das_timer += dtime
-                # If the initial DAS delay is over...
-                if self.das_timer > DAS_DELAY:
-                    self.arr_timer += dtime
-                    # ...start moving at the faster ARR speed.
-                    if self.arr_timer > ARR_DELAY:
-                        # This -= trick handles cases where the frame rate is low
-                        self.arr_timer -= ARR_DELAY
+                
+                # Use the selected DAS value
+                if self.das_timer > current_das:
+                    # If ARR is 0 (for 20G), move every frame. Otherwise, use timer.
+                    if current_arr == 0.0:
                         self.game.move(-1 if self.held_key == 'left' else 1, 0)
                         renpy.sound.play(self.sounds['move'])
+                    else:
+                        self.arr_timer += dtime
+                        if self.arr_timer > current_arr:
+                            self.arr_timer -= current_arr
+                            self.game.move(-1 if self.held_key == 'left' else 1, 0)
+                            renpy.sound.play(self.sounds['move'])
 
             # The rest of the render method is unchanged
             if not self.game.game_over:
@@ -2260,11 +2308,9 @@ init python:
             if self.put_shadow:
                 self.draw_ghost_piece(r, playfield_x_offset, playfield_y_offset, st, at)
             self.draw_current_piece(r, playfield_x_offset, playfield_y_offset, st, at)
-            
-            # --- THE FIX ---
+
             # Call draw_ui with the correct 6 arguments.
             self.draw_ui(r, playfield_x_offset, playfield_y_offset, st, at)
-            # --- END THE FIX ---
             
             self.check_dynamic_events()
             renpy.redraw(self, 0.016)
@@ -2337,43 +2383,63 @@ init python:
         
         def draw_ui(self, r, x_off, y_off, st, at):
             """
-            Draws the UI elements. This definition now correctly takes 6 arguments.
+            Draws the UI elements for Versus mode with full X/Y alignment control.
             """
             is_player = not self.is_ai
             text_size = 22
             width, height = r.width, r.height
-
             playfield_width = BOARD_WIDTH * PIXEL_SIZE
-            
-            # Layout for the Player's screen (left instance)
+
+            # --- LAYOUT CONFIGURATION ---
+            # You can now easily change these anchor points to reposition the UI blocks.
+
+            # --- Player's UI Layout (for the left game instance) ---
             player_layout = {
-                "text_anchor_x": x_off - 140, # Position text to the left of the playfield
-                "queue_anchor_x": x_off + playfield_width + 20, # Position queues to the right
+                "stats_anchor_x": x_off - 140,      # X-pos for Score/Level/Lines
+                "stats_anchor_y": y_off - 100,      # Y-pos for Score/Level/Lines
+                "hold_anchor_x": x_off - 140,       # X-pos for Hold box
+                "hold_anchor_y": y_off - 10,        # Y-pos for Hold box
+                "queue_anchor_x": x_off + playfield_width + 20, # X-pos for Next box
+                "queue_anchor_y": y_off - 10         # Y-pos for Next box
             }
 
-            # Layout for the AI's screen (right instance)
+            # --- AI's UI Layout (for the right game instance) ---
             ai_layout = {
-                "text_anchor_x": x_off - 140,
-                "queue_anchor_x": x_off + playfield_width + 20,
+                "stats_anchor_x": x_off - 140,      # X-pos for Score/Level/Lines
+                "stats_anchor_y": y_off - 100,       # Y-pos for Score/Level/Lines
+                "hold_anchor_x": 0,                 # Not used by AI
+                "hold_anchor_y": 0,                 # Not used by AI
+                "queue_anchor_x": x_off + playfield_width + 20, # X-pos for Next box
+                "queue_anchor_y": y_off - 10         # Y-pos for Next box
             }
             
+            # Select the correct layout dictionary for this instance
             layout = player_layout if is_player else ai_layout
-            text_x = layout["text_anchor_x"]
-            queue_x = layout["queue_anchor_x"]
             
-            r.blit(renpy.render(Text(f"Score: {self.game.score}", size=text_size), width, height, st, at), (text_x, y_off))
-            r.blit(renpy.render(Text(f"Level: {self.game.level}", size=text_size), width, height, st, at), (text_x, y_off + 30))
-            r.blit(renpy.render(Text(f"Lines: {self.game.lines_cleared}", size=text_size), width, height, st, at), (text_x + 130, y_off + 30))
-            
-            r.blit(renpy.render(Text("Next:", size=text_size), width, height, st, at), (queue_x, y_off + 90))
-            for i, p_type in enumerate(self.game.next_pieces[:5]):
-                 self.draw_ui_piece(r, p_type, (queue_x, y_off + 120 + i * 60), st, at)
+            # --- Draw Stats (Score, Level, Lines) ---
+            stats_x = layout["stats_anchor_x"]
+            stats_y = layout["stats_anchor_y"]
+            r.blit(renpy.render(Text(f"Score: {self.game.score}", size=text_size), width, height, st, at), (stats_x, stats_y))
+            r.blit(renpy.render(Text(f"Level: {self.game.level}", size=text_size), width, height, st, at), (stats_x, stats_y + 30))
+            r.blit(renpy.render(Text(f"Lines: {self.game.lines_cleared}", size=text_size), width, height, st, at), (stats_x + 130, stats_y + 30)) # Offset for side-by-side text
 
+            # --- Draw Next Queue ---
+            queue_x = layout["queue_anchor_x"]
+            queue_y = layout["queue_anchor_y"]
+            r.blit(renpy.render(Text("Next:", size=text_size), width, height, st, at), (queue_x, queue_y))
+            for i, p_type in enumerate(self.game.next_pieces[:5]):
+                 self.draw_ui_piece(r, p_type, (queue_x, queue_y + 30 + i * 60), st, at)
+
+            # --- Player-Specific UI Elements ---
             if is_player:
-                r.blit(renpy.render(Text("Hold:", size=text_size), width, height, st, at), (text_x, y_off + 90))
+                # Draw Hold Box
+                hold_x = layout["hold_anchor_x"]
+                hold_y = layout["hold_anchor_y"]
+                r.blit(renpy.render(Text("Hold:", size=text_size), width, height, st, at), (hold_x, hold_y))
                 if self.game.hold_piece_type:
-                    self.draw_ui_piece(r, self.game.hold_piece_type, (text_x, y_off + 120), st, at)
+                    self.draw_ui_piece(r, self.game.hold_piece_type, (hold_x, hold_y + 30), st, at)
                 
+                # Draw Win Condition Text
                 win_text = None
                 if LineLimit != 0:
                     win_text = f"Lines to Win: {max(0, LineLimit - self.game.lines_cleared)}"
@@ -2381,7 +2447,16 @@ init python:
                     win_text = f"Score Goal: {TetrisScore}"
                 
                 if win_text:
-                    r.blit(renpy.render(Text(win_text, size=text_size), width, height, st, at), (text_x, y_off + 60))
+                    # Position win text relative to the main stats
+                    r.blit(renpy.render(Text(win_text, size=text_size), width, height, st, at), (stats_x, stats_y + 60))
+
+            # --- Draw B2B Indicator ---
+            # This works for both the player and the AI instance.
+            if self.game.b2b_active:
+                stats_x = layout["stats_anchor_x"]
+                stats_y = layout["stats_anchor_y"]
+                b2b_text = Text("Back-to-Back!", size=text_size, color="#FFD700") # Gold color
+                r.blit(renpy.render(b2b_text, width, height, st, at), (stats_x, stats_y + 120))
 
         def draw_ui_piece(self, r, piece_type, pos, st, at):
             """Draws a piece in the UI (Next/Hold) with centering for large pieces like 'I'."""
@@ -2403,31 +2478,52 @@ init python:
                 self.ai_target_move = self.ai.find_best_move(self.game)
             
             if self.ai_target_move:
-                # --- NEW: Special "Singularity" AI Behavior ---
+                # --- Complete overhaul of Singularity AI behavior ---
                 if self.ai_difficulty == 7:
-                    p = self.game.current_piece
-                    target_rot = self.ai_target_move['rotation']
-                    target_x = self.ai_target_move['x']
+                    # Determine which BPM interval to use
+                    current_interval = SINGULARITY_INTERVAL_FRENZY if self.ai_frenzy_mode else SINGULARITY_INTERVAL_NORMAL
                     
-                    # 1. Rotate the piece in memory until it matches the target rotation.
-                    while p['rotation'] != target_rot:
-                        p['shape'] = list(zip(*p['shape'][::-1])) # Perform one clockwise rotation
-                        p['rotation'] = (p['rotation'] + 1) % 4
-                    
-                    # 2. Instantly set the piece's horizontal position.
-                    p['x'] = target_x
-                    
-                    # 3. Hard drop it. This all happens in a single frame.
-                    self.game.hard_drop()
-                    renpy.sound.play(self.sounds['drop'])
-                    self.ai_target_move = None
-                    
+                    self.ai_rhythm_timer += dtime
+
+                    # If enough time has passed to match the rhythm...
+                    if self.ai_rhythm_timer >= current_interval:
+                        self.ai_rhythm_timer -= current_interval # Use subtraction to maintain rhythm accuracy
+
+                        # 1. Perform the "teleport" drop action
+                        p = self.game.current_piece
+                        target_rot = self.ai_target_move['rotation']
+                        target_x = self.ai_target_move['x']
+                        while p['rotation'] != target_rot:
+                            p['shape'] = list(zip(*p['shape'][::-1]))
+                            p['rotation'] = (p['rotation'] + 1) % 4
+                        p['x'] = target_x
+                        self.game.hard_drop()
+                        renpy.sound.play(self.sounds['drop'])
+                        self.ai_target_move = None # Find a new move for the next piece
+
+                        # 2. Update the frenzy state machine
+                        if self.ai_frenzy_mode:
+                            self.ai_frenzy_drops_left -= 1
+                            if self.ai_frenzy_drops_left <= 0:
+                                self.ai_frenzy_mode = False # Frenzy ends, return to normal BPM
+                        else:
+                            # 2.5% chance to enter frenzy mode
+                            if renpy.random.random() < 0.025:
+                                self.ai_frenzy_mode = True
+                                self.ai_frenzy_drops_left = 3 # Set for 3 consecutive fast drops
+                
                 # --- This is the existing logic for all other difficulties ---
                 else:
-                    progress = min(1.0, (self.game.level - 1) / (AI_PERFECTION_LEVEL - 1))
                     start_delay, end_delay = self.ai_delay_range
-                    current_action_delay = start_delay + (end_delay - start_delay) * progress
-                    
+
+                    if self.game.level >= 20:
+                        # Use the fastest possible action delay for this AI's difficulty setting
+                        current_action_delay = end_delay
+                    else:
+                        # Use the normal scaling logic for levels 1-19
+                        progress = min(1.0, (self.game.level - 1) / (AI_PERFECTION_LEVEL - 1))
+                        current_action_delay = start_delay + (end_delay - start_delay) * progress
+
                     self.ai_move_timer += dtime
                     if self.ai_move_timer >= current_action_delay:
                         self.ai_move_timer = 0
@@ -2473,7 +2569,6 @@ init python:
                 # End this instance's game to freeze the screen.
                 self.game.game_over = True
                 return
-            # --- END OF FIX 2 ---
 
             # Score/Line limit conditions remain the same.
             if LineLimit != 0 and self.game.lines_cleared >= LineLimit:
@@ -2605,6 +2700,10 @@ init python:
             self.ai_is_landed = False
             self.ai_lock_timer = 0
             self.ai_time_since_fall = 0.0
+
+            self.player_last_move_was_rotation = False
+            self.ai_last_move_was_rotation = False
+            self.b2b_active = False # --- B2B state variable ---
             
             # Initialize both players' piece supplies
             self.fill_bag(is_player=True)
@@ -2659,19 +2758,20 @@ init python:
         def update(self, dt):
             if self.game_over: return
 
-            # --- THE FIX: Added a fall interval to control speed ---
+            # --- Added a fall interval to control speed ---
             # You can change 0.6 to any number. Higher = Slower.
             fall_interval = max(0.05, 0.3 - ((self.level - 1) * 0.025))
-            # --- END THE FIX ---
+
+            current_lock_delay = LOCK_DELAY_20G if self.level >= 20 else LOCK_DELAY
 
             # --- Handle Player Gravity and Lock ---
             if self.player_piece:
                 if self.player_is_landed:
                     self.player_lock_timer += dt
-                    if self.player_lock_timer >= LOCK_DELAY:
+                    # Use the selected value here
+                    if self.player_lock_timer >= current_lock_delay:
                         self.lock_piece(True)
                 else:
-                    # Timer-based gravity for the player
                     self.player_time_since_fall += dt
                     if self.player_time_since_fall >= fall_interval:
                         self.player_time_since_fall = 0
@@ -2681,10 +2781,10 @@ init python:
             if self.ai_piece:
                 if self.ai_is_landed:
                     self.ai_lock_timer += dt
-                    if self.ai_lock_timer >= LOCK_DELAY:
+                    # Use the selected value here too
+                    if self.ai_lock_timer >= current_lock_delay:
                         self.lock_piece(False)
                 else:
-                    # Timer-based gravity for the AI
                     self.ai_time_since_fall += dt
                     if self.ai_time_since_fall >= fall_interval:
                         self.ai_time_since_fall = 0
@@ -2705,25 +2805,56 @@ init python:
 
             shape, x, y = piece_to_lock['shape'], piece_to_lock['x'], piece_to_lock['y']
             color_id = TETROMINOES[piece_to_lock['type']]['color_id']
-
             for r, row in enumerate(shape):
                 for c, cell in enumerate(row):
                     if cell != 0: self.board[y + r][x + c] = color_id
             
-            self.clear_lines()
+            # Pass the correct last_move flag to clear_lines
+            last_move_was_rotation = self.player_last_move_was_rotation if is_player else self.ai_last_move_was_rotation
+            self.clear_lines(last_move_was_rotation, piece_to_lock['type'])
+            
             self.spawn_new_piece(is_player)
 
-        def clear_lines(self):
+        def clear_lines(self, was_rotation, piece_type):
+            self.last_clear_info = None
+            is_t_piece = piece_type == 'T'
+            is_tspin = was_rotation and is_t_piece
             lines_to_clear = [r for r, row in enumerate(self.board) if all(cell != 0 for cell in row)]
             num_cleared = len(lines_to_clear)
+            
+            is_difficult_clear = (is_tspin and num_cleared > 0) or num_cleared == 4
+            score_to_add = 0
+            clear_type = "NONE"
 
+            # 1. Determine base score
+            if is_tspin:
+                score_map = {1: 800, 2: 1200, 3: 1600}
+                score_to_add = score_map.get(num_cleared, 0)
+                clear_type = "T_SPIN"
+            elif num_cleared > 0:
+                score_map = {1: 100, 2: 300, 3: 500, 4: 800}
+                score_to_add = score_map.get(num_cleared, 0)
+                clear_type = f"NORMAL_{num_cleared}"
+            
+            # 2. Apply B2B Bonus
+            if is_difficult_clear and self.b2b_active:
+                score_to_add = int(score_to_add * 1.5)
+                clear_type = "B2B_" + clear_type
+
+            if score_to_add > 0:
+                self.score += score_to_add * self.level
+                self.last_clear_info = {'type': clear_type, 'lines': num_cleared}
+
+            # 3. Update B2B state for the NEXT turn
+            if is_difficult_clear:
+                self.b2b_active = True
+            elif num_cleared > 0:
+                self.b2b_active = False
+
+            # 4. Rebuild the board
             if num_cleared > 0:
                 self.lines_cleared += num_cleared
-                score_map = {1: 100, 2: 300, 3: 500, 4: 800} # Standard scoring
-                self.score += score_map.get(num_cleared, 0) * self.level
                 self.level = (self.lines_cleared // 10) + 1
-                self.last_clear_info = {'lines': num_cleared}
-
                 new_board = [row for r, row in enumerate(self.board) if r not in lines_to_clear]
                 for _ in range(num_cleared):
                     new_board.insert(0, [0] * self.CO_OP_BOARD_WIDTH)
@@ -2746,6 +2877,11 @@ init python:
                     else: self.ai_is_landed = True
                 return False
 
+                # --- Reset the rotation flag on successful move ---
+                if is_player: self.player_last_move_was_rotation = False
+                else: self.ai_last_move_was_rotation = False
+                return True
+
         def rotate(self, is_player, clockwise=True):
             piece = self.player_piece if is_player else self.ai_piece
             if self.game_over or not piece or piece['type'] == 'O': return
@@ -2762,6 +2898,10 @@ init python:
                     piece['shape'], piece['x'], piece['y'], piece['rotation'] = new_shape, test_x, test_y, new_rotation
                     if is_player: self.player_is_landed, self.player_lock_timer = False, 0
                     else: self.ai_is_landed, self.ai_lock_timer = False, 0
+                    return
+
+                    if is_player: self.player_last_move_was_rotation = True
+                    else: self.ai_last_move_was_rotation = True
                     return
 
         def get_ghost_y(self, is_player):
@@ -2826,8 +2966,18 @@ init python:
             path, sfx = skin['path'], skin['sfx_suffix']
             self.background_img = Image(path + "background_co_op.png") # Use co-op background
             self.colors = {i: Image(path + f"cube_{i}.png") for i in range(1, 8)}
+            self.colors[9] = Image(path + "cube_8.png")
             self.shadow_colors = {i: Image(path + (f"shadow_{i}.png" if skin_id in [5, 6] else f"cube_{i}.png")) for i in range(1, 8)}
-            self.sounds = {'drop': f"sfx/t-drop{sfx}", 'move': f"sfx/t-move{sfx}", 'rotate': f"sfx/t-rotate{sfx}", '1line': f"sfx/t-fl{sfx}", '4line': f"sfx/t-4fl{sfx}"}
+            self.sounds = {
+                'drop': f"sfx/t-drop{sfx}",
+                'move': f"sfx/t-move{sfx}",
+                'rotate': f"sfx/t-rotate{sfx}",
+                '1line': f"sfx/t-fl{sfx}",
+                '2line': f"sfx/t-2fl{sfx}",
+                '3line': f"sfx/t-3fl{sfx}",
+                '4line': f"sfx/t-4fl{sfx}",
+                'tspin': f"sfx/t-spin{sfx}",
+            }
 
         def render(self, width, height, st, at):
             global TetrisWinner # Use global to signal winner to Ren'Py script
@@ -2861,16 +3011,27 @@ init python:
             # Play sounds for line clears
             if self.game.last_clear_info:
                 info = self.game.last_clear_info
-                if info['lines'] >= 4: renpy.sound.play(self.sounds['4line'])
-                else: renpy.sound.play(self.sounds['1line'])
+                clear_type = info['type']
+                
+                if clear_type == "T_SPIN":
+                    renpy.sound.play(self.sounds['tspin'])
+                elif info['lines'] == 4:
+                    renpy.sound.play(self.sounds['4line'])
+                elif info['lines'] == 3:
+                    renpy.sound.play(self.sounds['3line'])
+                elif info['lines'] == 2:
+                    renpy.sound.play(self.sounds['2line'])
+                elif info['lines'] == 1:
+                    renpy.sound.play(self.sounds['1line'])
+                
                 self.game.last_clear_info = None
 
             # --- Drawing ---
             r = renpy.Render(width, height)
             r.blit(renpy.render(self.background_img, width, height, st, at), (0, 0))
             
-            playfield_x_offset = 0
-            playfield_y_offset = 0
+            playfield_x_offset = 10
+            playfield_y_offset = 10
 
             self.draw_board(r, playfield_x_offset, playfield_y_offset, st, at)
             # Draw ghosts first
@@ -2885,6 +3046,21 @@ init python:
             return r
 
         def draw_board(self, r, x_off, y_off, st, at):
+            # --- Wall Drawing Logic ---
+            wall_texture = self.colors.get(9)
+            if wall_texture:
+                wall_render = renpy.render(wall_texture, PIXEL_SIZE, PIXEL_SIZE, st, at)
+                # Left and Right Walls
+                for y in range(VISIBLE_BOARD_HEIGHT):
+                    # Draw the left wall
+                    r.blit(wall_render, (x_off - PIXEL_SIZE, y_off + y * PIXEL_SIZE))
+                    # Draw the right wall, using the co-op board width
+                    r.blit(wall_render, (x_off + self.game.CO_OP_BOARD_WIDTH * PIXEL_SIZE, y_off + y * PIXEL_SIZE))
+                # Bottom Wall
+                for x in range(-1, self.game.CO_OP_BOARD_WIDTH + 1):
+                    r.blit(wall_render, (x_off + x * PIXEL_SIZE, y_off + VISIBLE_BOARD_HEIGHT * PIXEL_SIZE))
+
+            # --- This is the existing logic for drawing locked pieces ---
             board_offset = BOARD_HEIGHT - VISIBLE_BOARD_HEIGHT
             for y in range(VISIBLE_BOARD_HEIGHT):
                 for x in range(self.game.CO_OP_BOARD_WIDTH):
@@ -2920,24 +3096,62 @@ init python:
             
         def draw_ui(self, r, width, height, st, at):
             text_size = 22
-            # Shared Stats (Centered)
-            r.blit(renpy.render(Text(f"Score: {self.game.score}", size=text_size), width, height, st, at), (width/2 - 50, 20))
-            r.blit(renpy.render(Text(f"Lines: {self.game.lines_cleared}", size=text_size), width, height, st, at), (width/2 - 50, 50))
-            r.blit(renpy.render(Text(f"Level: {self.game.level}", size=text_size), width, height, st, at), (width/2 - 50, 80))
 
-            # Player UI (Left Side)
-            player_ui_y = 300
-            r.blit(renpy.render(Text("Hold", size=text_size), width, height, st, at), (player_ui_x, 150))
-            if self.game.player_hold: self.draw_ui_piece(r, self.game.player_hold, (player_ui_x, 180), st, at)
-            r.blit(renpy.render(Text("Next", size=text_size), width, height, st, at), (player_ui_x, 280))
+            # --- LAYOUT CONFIGURATION ---
+            # You can now easily change these X and Y values to reposition the UI blocks.
+            
+            # --- Player's UI Layout (Left Side) ---
+            player_ui_layout = {
+                "anchor_x": 50,     # Horizontal starting point
+                "anchor_y": 150     # VERTICAL starting point
+            }
+
+            # --- AI's UI Layout (Right Side) ---
+            ai_ui_layout = {
+                "anchor_x": width - 150,  # Horizontal starting point
+                "anchor_y": 280           # VERTICAL starting point
+            }
+
+            # --- Shared Stats Layout (Top Center) ---
+            shared_stats_layout = {
+                "anchor_x": width / 2 - 50,
+                "anchor_y": 20
+            }
+
+            # --- 1. Draw Shared Stats ---
+            shared_x = shared_stats_layout["anchor_x"]
+            shared_y = shared_stats_layout["anchor_y"]
+            r.blit(renpy.render(Text(f"Score: {self.game.score}", size=text_size), width, height, st, at), (430, 20))
+            r.blit(renpy.render(Text(f"Lines: {self.game.lines_cleared}", size=text_size), width, height, st, at), (430, 50))
+            r.blit(renpy.render(Text(f"Level: {self.game.level}", size=text_size), width, height, st, at), (430, 80))
+
+            # --- Draw B2B Indicator ---
+            if self.game.b2b_active:
+                b2b_text = Text("Back-to-Back!", size=text_size, color="#FFD700")
+                r.blit(renpy.render(b2b_text, width, height, st, at), (shared_x, shared_y + 90))
+
+            # --- 2. Draw Player's UI ---
+            player_x = player_ui_layout["anchor_x"]
+            player_y = player_ui_layout["anchor_y"]
+            
+            # Draw Hold Box (positioned using the anchor)
+            r.blit(renpy.render(Text("Hold", size=text_size), width, height, st, at), (40, 450))
+            if self.game.player_hold:
+                self.draw_ui_piece(r, self.game.player_hold, (40, 510), st, at)
+            
+            # Draw Next Box (positioned relative to the Hold box)
+            r.blit(renpy.render(Text("Next", size=text_size), width, height, st, at), (450, 140))
             for i, p_type in enumerate(self.game.player_next[:3]):
-                 self.draw_ui_piece(r, p_type, (player_ui_x, 310 + i * 60), st, at)
+                 self.draw_ui_piece(r, p_type, (450, 170 + 30 + i * 60), st, at)
 
-            # AI UI (Right Side)
-            ai_ui_y = 300
-            r.blit(renpy.render(Text("Yuri's Next", size=text_size), width, height, st, at), (ai_ui_x, 280))
+            # --- 3. Draw AI's UI ---
+            ai_x = ai_ui_layout["anchor_x"]
+            ai_y = ai_ui_layout["anchor_y"]
+
+            # Draw AI's Next Box (positioned using its own anchor)
+            r.blit(renpy.render(Text("Yuri's Next", size=text_size), width, height, st, at), (550, 140))
             for i, p_type in enumerate(self.game.ai_next[:3]):
-                 self.draw_ui_piece(r, p_type, (ai_ui_x, 310 + i * 60), st, at)
+                 self.draw_ui_piece(r, p_type, (550, 170 + 30 + i * 60), st, at)
 
         def draw_ui_piece(self, r, piece_type, pos, st, at):
             # Copied directly from the modernized versus mode displayable
@@ -3004,7 +3218,8 @@ init python:
     # --- MODIFICATION TO TetrisAI CLASS ---
     # We need to make the AI aware of the wider co-op board.
     class TetrisAI:
-        WEIGHTS = {'height': -0.51, 'lines': 0.76, 'holes': -0.35, 'bumpiness': -0.18, 't_spin_bonus': 0.5} # T-Spins are less important in co-op
+        # Give T-Spins a moderate bonus in co-op, as they are useful but not the only goal
+        WEIGHTS = {'height': -0.51, 'lines': 0.76, 'holes': -0.35, 'bumpiness': -0.18, 't_spin_bonus': 0.5}
 
         def find_best_move(self, game, is_co_op=False):
             best_move = {'score': -float('inf'), 'x': -1, 'rotation': 0}
@@ -3028,7 +3243,10 @@ init python:
                         y += 1
                     
                     self._place_piece_sim(sim_board, temp_piece['shape'], x, y, TETROMINOES[temp_piece['type']]['color_id'])
-                    score = self._evaluate_board(sim_board, board_width, board_height)
+                    
+                    # --- MODIFICATION: Pass piece info to the evaluation function ---
+                    score = self._evaluate_board(sim_board, board_width, board_height, piece_type=temp_piece['type'], piece_x=x, piece_y=y)
+                    # --- END MODIFICATION ---
 
                     if score > best_move['score']:
                         best_move = {'score': score, 'x': x, 'rotation': rotation}
@@ -3037,7 +3255,8 @@ init python:
                     temp_piece['shape'] = list(zip(*temp_piece['shape'][::-1]))
             return best_move
 
-        def _evaluate_board(self, board, board_width, board_height):
+        def _evaluate_board(self, board, board_width, board_height, piece_type, piece_x, piece_y):
+            # --- MODIFICATION: This now accepts piece info to check for T-Spins ---
             heights = [0] * board_width
             for c in range(board_width):
                 for r in range(board_height):
@@ -3048,8 +3267,28 @@ init python:
             completed_lines = sum(1 for row in board if all(cell != 0 for cell in row))
             holes = sum(1 for c in range(board_width) for r in range(board_height - heights[c], board_height) if board[r][c] == 0)
             bumpiness = sum(abs(heights[i] - heights[i+1]) for i in range(len(heights) - 1))
-            score = (self.WEIGHTS['height'] * agg_height + self.WEIGHTS['lines'] * completed_lines + self.WEIGHTS['holes'] * holes + self.WEIGHTS['bumpiness'] * bumpiness)
+            
+            # --- NEW T-SPIN CHECK FOR AI ---
+            t_spin_bonus = 0
+            if piece_type == 'T' and completed_lines > 0:
+                if self._check_t_spin_sim(board, piece_x, piece_y, board_width, board_height):
+                    t_spin_bonus = self.WEIGHTS['t_spin_bonus'] * completed_lines # Reward more for clearing lines
+            
+            score = (self.WEIGHTS['height'] * agg_height +
+                     self.WEIGHTS['lines'] * completed_lines +
+                     self.WEIGHTS['holes'] * holes +
+                     self.WEIGHTS['bumpiness'] * bumpiness +
+                     t_spin_bonus) # Add the bonus to the final score
             return score
+
+        def _check_t_spin_sim(self, board, piece_x, piece_y, board_width, board_height):
+            # Checks the 3-corner rule for a T-Spin
+            corners = [(piece_y, piece_x), (piece_y, piece_x + 2), (piece_y + 2, piece_x), (piece_y + 2, piece_x + 2)]
+            occupied_corners = 0
+            for r, c in corners:
+                if not (0 <= c < board_width and 0 <= r < board_height) or board[r][c] != 0:
+                    occupied_corners += 1
+            return occupied_corners >= 3
 
         def _check_collision_sim(self, board, shape, x, y, board_width, board_height):
             for r, row in enumerate(shape):
