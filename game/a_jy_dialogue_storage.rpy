@@ -883,7 +883,7 @@ init -3 python:
     add_dialogue(Dialogue(
         label = 'idle_106',
         category = DialogueAPI.category_idle,
-        conditions = [],
+        conditions = ["renpy.seen_label(idle_4)", "renpy.seen_label(idle_5)", "ren.seen_label(idle_35)"],
         importance = 0,
         name = None,
         sub_category = None))
@@ -892,6 +892,14 @@ init -3 python:
         label = 'idle_107',
         category = DialogueAPI.category_idle,
         conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label = 'idle_108',
+        category = DialogueAPI.category_idle,
+        conditions = ["renpy.seen_label(idle_4)", "renpy.seen_label(idle_5)", "ren.seen_label(idle_35)", "renpy.seen_label(idle_106)"],
         importance = 0,
         name = None,
         sub_category = None))
