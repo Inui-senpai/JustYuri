@@ -520,7 +520,7 @@ label tetris_difficulty:
     python:
         # renpy.random.random() returns a float between 0.0 and 1.0.
         # This condition will be true 0.5% of the time.
-        show_singularity = (renpy.random.random() < 1.0)
+        show_singularity = (renpy.random.random() < 0.005)
 
     if show_singularity:
         menu:
