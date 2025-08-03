@@ -70,9 +70,6 @@ label ch30_waitloop:
         loop_again = False
         boopable = True
         start_time = time.time()
-        # renpy.pause(1) # REMOVE THIS - We don't want a long initial pause
-        boopable = False
-        # renpy.pause(0.1) # REMOVE THIS -  We don't want a long initial pause
 
     python:
         ran_dialogue = False
@@ -396,7 +393,7 @@ label ch30_del_yuri_warn:
             testing_space = '~/Library/RenPy/JustYuri'
     call updatedevconsole_torrent(
         [('python', '>python'),
-        (" ", ' \nPython 2.7.14 (v2.7.14:84471935ed, Sep 16 2017, 20:19:30) [MSC v.1500 32 bit (Intel)] on win32\nType "help", "copyright", "credits" or "license" for more information.'),
+        (' ', 'Python 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 21:58:38) [MSC v.1935 64 bit (AMD64)] on win32\nType "help", "copyright", "credits" or "license" for more information.'),
         (">>dev_console.rpy", ">>>dev_console.py"),
         (" "," "),
         ("Authenticating...........", ">Authenticating..........."),
@@ -426,7 +423,7 @@ label ch30_del_yuri_warn_2:
             testing_space = '~/Library/RenPy/JustYuri'
     call updatedevconsole_torrent(
         [('python', '>python'),
-        (" ", ' \nPython 2.7.14 (v2.7.14:84471935ed, Sep 16 2017, 20:19:30) [MSC v.1500 32 bit (Intel)] on win32\nType "help", "copyright", "credits" or "license" for more information.'),
+        (' ', 'Python 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 21:58:38) [MSC v.1935 64 bit (AMD64)] on win32\nType "help", "copyright", "credits" or "license" for more information.'),
         (">>dev_console.rpy", ">>>dev_console.py"),
         (" "," "),
         ("Authenticating...........", ">Authenticating..........."),

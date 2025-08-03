@@ -945,14 +945,6 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label = 'folklore_and_myths',
-        category = DialogueAPI.category_idle,
-        conditions = ['karma_lvl() >= 3', 'sanity_lvl() >= 3'],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
         label = 'origami',
         category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('gifting_intro')"],

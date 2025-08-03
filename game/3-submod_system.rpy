@@ -279,12 +279,20 @@ You can feel free to delete these documents if you would like to free up space f
             if os.path.isfile(mod_icon_path):
                 print("  - Mod " + submod.id + " has an icon. Loading image...")
                 try:
-                    submod.icon = Transform(mod_icon_path, size=(100, 100), fit="contain")
+                    # 1. Get the path to the icon relative to the game directory.
+                    relative_icon_path = os.path.relpath(mod_icon_path, config.gamedir)
+                    # 2. Normalize the path separators to forward slashes, which Ren'Py prefers.
+                    relative_icon_path = relative_icon_path.replace(os.path.sep, '/')
+
+                    # 3. Use this relative path for the Transform. Ren'Py will now find it correctly.
+                    submod.icon = Transform(relative_icon_path, size=(100, 100), fit="contain")
+                    print(f"  - Successfully created Transform for icon at: {relative_icon_path}")
                 except Exception as e:
                     print("  - Failed to load icon.png")
                     print_error(e, path=mod_error_path)
+            # If no custom icon is found, the default icon set in Submod.__init__ will be used.
 
-            # --- Register mod ---
+            # This line now correctly registers the Transform (either the default or the custom one)
             renpy.image(submod.id + ":icon", submod.icon)
             submods.mods[submod.id] = submod
             print("  - Mod ID: " + submod.id + ", Version: " + submod.version)
