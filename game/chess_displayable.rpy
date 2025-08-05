@@ -152,13 +152,12 @@ screen chess(fen, player_color, movetime, depth):
             hbox spacing 5:
                 text 'Resign' color COLOR_WHITE size 13 yalign 0.5
                 textbutton '⚐':
-                    action [Confirm('Would you like to resign?',
+                    action Confirm('Would you like to resign?',
                         yes=[
                         Play('sound', AUDIO_DRAW),
-                        # if the current player resigns, the winner will be the opposite side
-                        Return(not chess_displayable.whose_turn),
-                        Jump("chess_results")  # Add the jump action here
-                        ])]
+                        # This Return action will exit the screen.
+                        Return(not chess_displayable.whose_turn)
+                        ])
                     style 'control_button' yalign 0.5
 
             hbox spacing 5:
@@ -182,16 +181,12 @@ screen chess(fen, player_color, movetime, depth):
             add chess_displayable
             add hover_displayable # hover loc over chesspieces
         if chess_displayable.game_status == CHECKMATE:
-            # use a timer so the player can see the screen once again
-            timer 4.0 action [
-            Return(chess_displayable.winner),
-            renpy.jump("chess_results")  # Add the jump action here
-            ]
+            # The action should ONLY be Return.
+            timer 4.0 action Return(chess_displayable.winner)
+
         elif chess_displayable.game_status == STALEMATE:
-            timer 4.0 action [
-            Return(DRAW),
-            renpy.jump("chess_results")  # Add the jump action here
-            ]
+            # The action should ONLY be Return.
+            timer 4.0 action Return(DRAW)
 
     # right panel for promotion selection
     showif chess_displayable.show_promotion_ui:

@@ -235,7 +235,7 @@ label eternity_intro:
         call hideconsole
     $ show_chr("A-ACAAA-AAAA")
     # Initial greeting and inquiry about eye color
-y "Someday, I want to stare deep into your eyes as well..."
+    y "Someday, I want to stare deep into your eyes as well..."
     $ show_chr("A-ABAAA-AAAA")
     y "What color are they?"
     menu:
@@ -753,7 +753,13 @@ label ch30_intro2:
                     $ show_chr("A-BFBAA-AAAC")
                     y "...unlikely... My mind might be clouded yet, but I'm sure I will remember the truth soon."
     else:
-        call intro_mods
+        # This python block now checks for mod files and jumps to the appropriate label.
+        if check_for_any_mod_persistent():
+            # If any mod file is found, jump to the mod detection dialogue.
+            $ renpy.jump("intro_mods")
+        else:
+            # If no mod files are found, jump to the pitstop.
+            $ renpy.jump("detection_pitstop")
 
 
 label detection_pitstop:
@@ -1013,47 +1019,65 @@ screen messagebox(message):
 
 label birthday_select_screen:
     python:
-        if persistent.bday_month:
-            persistent.bday_month = str(persistent.bday_month)
+        # Import the datetime module to get the current year
+        import datetime
+
+        # --- Function to check for a leap year ---
+        def is_leap(year):
+            """
+            Checks if a given year is a leap year according to the Gregorian calendar rules.
+            """
+            if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+                return True
+            return False
+
+        # --- Month Input and Validation ---
+        while True:
             renpy.call_screen("birthday_input", "month")
-            while int(persistent.bday_month) > 12 or int(persistent.bday_month) < 1:
-                y("I don't know if that month even exists.")
-                renpy.call_screen("birthday_input", "month")
-            renpy.hide_screen("birthday_input")
-            persistent.bday_month = int(persistent.bday_month)
-        else:
-            repeat
-    python:
-        if persistent.bday_day:
-            persistent.bday_day = str(persistent.bday_day)
+            try:
+                month = int(persistent.bday_month)
+                if 1 <= month <= 12:
+                    persistent.bday_month = month
+                    break
+                else:
+                    y("I don't know if that month even exists. Please try again.")
+            except (ValueError, TypeError):
+                y("That doesn't seem to be a number. Could you please enter the month number?")
+
+        # --- Day Input and Validation ---
+        # Get the current year from the system to check for a leap year
+        current_year = datetime.datetime.now().year
+
+        # Determine the maximum number of days for the chosen month
+        if persistent.bday_month in [1, 3, 5, 7, 8, 10, 12]:
+            max_day = 31
+        elif persistent.bday_month in [4, 6, 9, 11]:
+            max_day = 30
+        elif persistent.bday_month == 2:
+            # Check if the current year is a leap year to set the correct max days for February
+            if is_leap(current_year):
+                max_day = 29
+            else:
+                max_day = 28
+            
+        while True:
             renpy.call_screen("birthday_input", "day")
-            while int(persistent.bday_day) > 31 or int(persistent.bday_day) < 1:
-                y("I don't know if that day even exists.")
-                renpy.call_screen("birthday_input", "day")
-            renpy.hide_screen("birthday_input")
-            persistent.bday_day = int(persistent.bday_day)
-        else:
-            repeat
+            try:
+                day = int(persistent.bday_day)
+                if 1 <= day <= max_day:
+                    persistent.bday_day = day
+                    break
+                else:
+                    if persistent.bday_month == 2 and day > 28:
+                         y("That day only exists in a leap year. Please try again.")
+                    else:
+                         y("That day doesn't exist in the month you chose. Please try again.")
+            except (ValueError, TypeError):
+                y("That doesn't seem to be a number. Could you please enter the day?")
+
+    # Hide the input screen once a valid date is confirmed
+    $ renpy.hide_screen("birthday_input")
     return
-
-screen birthday_input(type):
-    style_prefix "confirm"
-    add "gui/overlay/confirm.png"
-    #key "K_RETURN" action [Play("sound", gui.activate_sound), [Hide("day_input"), Function(finishday), Return(True)]]
-    frame:
-        has vbox:
-            xalign .5
-            yalign .5
-            spacing 30
-        label _("What is the [type] of your birthday?:"):
-            style "confirm_prompt"
-            xalign 0.5
-        input default "" value FieldInputValue(persistent, "bday_" + type) length 2 allow "1234567890"
-        hbox:
-            xalign 0.5
-            spacing 100
-
-            textbutton _("OK") action Return()
 
 image splash_intro = Movie(play="images/splash/splash-video.mp4", loops=0)
 

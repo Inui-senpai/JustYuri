@@ -1645,9 +1645,10 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label = "intro_mods",
+        label = "startup_mods",
         category = DialogueAPI.category_greetings,
-        conditions = ['time_tracker_start() == False', "renpy.seen_label('ch30_intro2')", "not renpy.seen_label('startup_mods')", 'persistent.game_session >= 7'],
+        conditions = ["has_new_mods()"],
+        importance = 20, # High importance to ensure it runs if new mods are found
         name = "None",
         sub_category = None))
 
