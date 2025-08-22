@@ -11,7 +11,7 @@
 ## title, and shows up in the interface and error reports.
 ##
 ## The _() surrounding the string marks it as eligible for translation.
-define config.name = "Just Yuri (Beta)"
+define config.name = _("Just Yuri (Beta)")
 
 ## The version of the game.
 define config.version = "Beta-1.10.4"
@@ -21,7 +21,7 @@ define config.developer = dev_access
 
 ## Determines if the title given above is shown on the main menu screen. Set
 ## this to False to hide the title.
-$ gui.show_name = True
+# $ gui.show_name = True
 
 ## Text that is placed on the game's about screen. To insert a blank line
 ## between paragraphs, write \n\n.
@@ -138,7 +138,7 @@ default preferences.sfx_volume = 0.75
 ##
 ## Generally the same as your build name
 ## Should always be a literal string and not an expression
-define config.save_directory = "JustYuri" if not config.developer else None
+define config.save_directory = "JustYuri" #if not config.developer else None
 
 ## Icon
 ## ########################################################################'
@@ -162,13 +162,14 @@ define config.gl_test_image = "white"
 #define config.gl_resize = False
 
 init python:
-    if len(renpy.loadsave.location.locations) > 1: del(renpy.loadsave.location.locations[1])
+    # if len(renpy.loadsave.location.locations) > 1: del(renpy.loadsave.location.locations[1])
     renpy.game.preferences.pad_enabled = False
     def replace_text(s):
-        s = s.replace('--', u'\u2014') # em dash
-        s = s.replace(' - ', u'\u2014') # em dash
+        # s = s.replace('--', u'\u2014') # em dash
+        # s = s.replace(' - ', u'\u2014') # em dash
+        s = s.replace(" - ", " – ")
         return s
-    config.replace_text = replace_text
+    config.say_menu_text_filter = replace_text
 
     def game_menu_check():
         if quick_menu: renpy.call_in_new_context('_game_menu')
@@ -220,39 +221,41 @@ init python:
 
 
     ## These files get put into your data file
-    build.archive("scripts", "all")
-    build.archive("images", "all")
-    build.archive("audio", "all")
-    build.archive("fonts", "all")
-    build.archive("videos", "all")
+    build.archive("audio", "renpy")
+    build.archive("fonts", "renpy")
+    build.archive("images", "renpy")
+    build.archive("scripts", "renpy")
+    build.archive("videos", "renpy")
 
-    build.classify("game/music/**", "audio")
+    build.classify("game/music/**", "audio android ios")
     #build.classify("game/**.rpy",build.name) #Optional line to include plaintext scripts
     #build.classify("README.html",build.name) #Included help file for mod installation
 
-    build.classify("game/**.jpg", "images")
-    build.classify("game/**.png", "images")
+    build.classify("game/**.jpg", "images android ios")
+    build.classify("game/**/**.png", "images android ios")
 
     #flag Check for accuracy
-    build.classify("game/**.rpyc", "scripts")
-    build.classify("game/**.txt", "scripts")
-    build.classify("game/**.chr", "scripts")
+    build.classify("game/**.rpyc", "scripts android ios")
+    build.classify("game/**.rpymc", "scripts android ios")
+    build.classify("game/**.txt", "scripts android ios")
+    build.classify("game/**.chr", "scripts android ios")
     #build.classify("game/**.exe", "scripts")
     #build.classify("game/**.jy", "scripts")
-    build.classify("game/**.xml", "scripts")
-    build.classify("game/**.wav", "audio")
-    build.classify("game/**.mp3", "audio")
-    build.classify("game/**.ogg", "audio")
-    build.classify("game/**.ttf", "fonts")
-    build.classify("game/**.otf", "fonts")
-    build.classify("game/**.mp4", "videos")
-    build.classify("game/**.webm", "videos")
+    build.classify("game/**.xml", "scripts android ios")
+    build.classify("game/**.wav", "audio android ios")
+    build.classify("game/**.mp3", "audio android ios")
+    build.classify("game/**.ogg", "audio android ios")
+    build.classify("game/**.ttf", "fonts android ios")
+    build.classify("game/**.otf", "fonts android ios")
+    build.classify("game/**.mp4", "videos android ios")
+    build.classify("game/**.webm", "videos android ios")
 
     # New line to keep submods folder and its contents loose
     # This MUST come BEFORE broader rules like "game/**.txt" or "game/**.png"
     # if you want files *inside* submods to follow this rule instead of the broader one.
     # However, since you want the *entire* folder loose, placing it here is fine.
-    build.classify('/game/submods/**', "all") # "all" signifies 'include but do not archive' here
+    # build.classify('/game/submods/**', "all") # "all" signifies 'include but do not archive' here
+    # TL: I don't want it, thank you very much
 
     #new addition. Saves all python files while excluding
     #build.classify("game/00-chess-engine/python-packages/chess/**", "scripts")
@@ -260,14 +263,14 @@ init python:
     #build.classify("game/python-packages/jycrypt.py", "scripts")
     #build.classify("game/python-packages/jychrmod.py", "scripts")
     #build.classify("game/python-packages/jysavechanger.py", "scripts")
-    build.classify("game/dev_logs/**.jy_log", "scripts")
+    build.classify("game/dev_logs/**.jy_log", None) # we don't need it
     #build.classify("game/bin/**", "scripts")
     #build.classify("game/00-chess-engine/bin/**", "scripts")
 
     ##Optionally include a zip file with all source code
-    build.classify('**.rpy','source')
-    build.package(build.directory_name + "source",'zip','source',description='Source Code Archive')
-    build.package(build.directory_name + "Mod",'zip',build.name,description='DDLC Compatible Mod')
+    # build.classify('**.rpy','source')
+    # build.package(build.directory_name + "source",'zip','source',description='Source Code Archive')
+    # build.package(build.directory_name + "Mod",'zip',build.name,description='DDLC Compatible Mod')
 
     build.classify('**~', None)
     build.classify('**.bak', None)
@@ -279,6 +282,7 @@ init python:
     build.classify('**/.DS_Store', None)
     build.classify('**/thumbs.db', None)
     build.classify('**.rpy', None)
+    build.classify('**.rpym', None)
     build.classify('**.psd', None)
     build.classify('**.sublime-project', None)
     build.classify('**.sublime-workspace', None)
@@ -294,14 +298,16 @@ init python:
     ## so they appear in both the app and the zip file.
 
     build.documentation('*.html')
-    build.documentation('*.txt')
-    build.documentation('*.md')
+    # build.documentation('*.txt')
+    # build.documentation('*.md')
 
     build.include_old_themes = False
 
     #Adding the line to *actually build a BASE to update from. Update building
     #is now set to true.
     build.include_update = True
+
+    build.script_version = False
 
 ## A Google Play license key is required to download expansion files and perform
 ## in-app purchases. It can be found on the "Services & APIs" page of the Google
