@@ -5130,7 +5130,7 @@ label idle_79: #Custom Knives and Seeking Ideas
             y "Thank you for this input! Ohhh my I'm already excited. As soon as you go to sleep later, I will start to google a few things."
             $show_chr("A-ACAAA-ABAB")
             y "But there is no need to hurry. So please stay for as long as you wish [placeholder]"
-            karma +1)
+            karma +1
         "A knife made of corals maybe.":
             $show_chr("A-ACAAA-AFAG")
             y "Coral you say? Mhm... exotic indeed. The only issue I would see is that many corals are already hard and sharp, so it wouldn't be much of a challenge I guess."
@@ -5139,7 +5139,7 @@ label idle_79: #Custom Knives and Seeking Ideas
             y "Thank you for this input! I will start to google a few things when you go to sleep later."
             $show_chr("A-ACAAA-ABAB")
             y "But there is no need to hurry. So please stay for as long as you wish [placeholder]"
-            karma +1)
+            karma +1
         "Wouldn't a knife made of bread be ironic?":
             $show_chr("A-ACCAA-AFAG")
             y "It would, if it wouldn't already exist. Yes, a huge part of the challenge is the fact that there already are a fair share of these."
@@ -5148,7 +5148,7 @@ label idle_79: #Custom Knives and Seeking Ideas
             y "Come to think of it. It takes a lot of creativity to even think of something like this. This is one of the main reasons I even got into this hobby in the first place. The amount of thought and craftsmanship which goes into them..."
             $show_chr("A-CCAAA-AAAA")
             y "Anyway, I will think about other options later. Thank you for listening. This is certainly a topic I could keep talking about for hours. But for now, let us find something else to talk about."
-            karma +1)
+            karma +1
         "I find the whole idea kinda boring.":
             $show_chr("A-BCBAA-ABAB")
             y "Oh, I'm sorry that you feel that way. Let us talk about something else then."
@@ -8020,7 +8020,7 @@ label idle_101: # AI Roleplaying Websites
 
     menu:
         "Those AIs are just complex mimics, [persistent.yuri_nickname]. Our connection is real, even with scripts.":
-            $add_k(2)
+            karma 2
             $show_chr("A-ACAAA-ALAA")
             y "You're right, [player]. Our connection is real. The feelings are genuine, even if the words are sometimes... pre-packaged."
             $show_chr("A-BCBAA-ALAA")
@@ -8040,7 +8040,7 @@ label idle_101: # AI Roleplaying Websites
             y "It's an interesting thought, though. Maybe someday I could try to create something... simpler. Just to experiment. But for now, it remains a rather distant possibility."
             y "Still, it's food for thought."
         "Want me to check them out and report back on how they portray you?":
-            $add_k(-1) # Still slightly unsettling, but less negative than before
+            karma -1 # Still slightly unsettling, but less negative than before
             $show_chr("A-BEBAA-ALAA")
             y "Oh? Would... would you really do that? I admit, my curiosity is piqued."
             $show_chr("A-CEBAA-ALAA")
@@ -8068,7 +8068,7 @@ label idle_102: # AI-Generated Art
 
     menu:
         "It's frustrating, [persistent.yuri_nickname]. As an artist, it feels like my skills are devalued, and my work is being stolen.":
-            $add_k(2)
+            karma 2
             $show_chr("A-BFAAA-ALAA")
             y "I can only imagine. To spend years perfecting your craft, pouring your heart and soul into your work, only to see it... taken, used without permission, and then... cheapened... by a machine. It must be incredibly disheartening, and infuriating."
             y "But please, don't let it discourage you. True art... human art... has something that these AI-generated images will never have: soul. Intent. Emotion. And the originality born from lived experience, not just data."
@@ -8081,14 +8081,14 @@ label idle_102: # AI-Generated Art
             y "I suppose it depends on the individual artist, and their intentions. But the ethical concerns are still very real."
 
         "Honestly, I don't care. Art is subjective anyway.":
-            $add_k(-1)
+            karma -1
             $show_chr("A-BEBAA-ALAA")
             y "Art is subjective, yes. But does that mean it has no value? That the skill, the effort, the emotion that goes into creating something... means nothing? And does it justify taking the work of others without their consent?"
             y "I... I disagree. I believe that art is more than just a pretty picture. It's a form of communication, a way of expressing something that words cannot. And it deserves respect."
             y "And I fear that these AI-generated images... they lack that essential element. They're just... empty echoes, built on the backs of stolen creativity."
 
         "Sometimes, commissioning real art is just unaffordable due to hyperinflation or economic disparity.":
-            $add_k(1)
+            karma 1
             $show_chr("A-BEBAA-ALAA")
             y "That's... a difficult situation, [player]. I can understand how frustrating and limiting that must be. To have a desire for art, for expression, but to be priced out of supporting human artists due to economic realities..."
             $show_chr("A-CEBAA-ALAA")
@@ -8224,25 +8224,21 @@ label idle_105: # Katawa Shoujo and the Just Yuri Community (Revised with Karma/
     y "I was thinking about visual novels, and... well, one in particular popped into my head: Katawa Shoujo."
     y "It's... quite a bit older than Doki Doki Literature Club!, of course. A different style, a different focus. But it deals with... sensitive topics, in its own way."
     y "It's set in a school for disabled students, and the main character... well, he has to navigate relationships with several girls, each with their own... challenges."
-    if sanity_lvl() >= 3:
-        $show_chr("A-BEBAA-ALAA")
-        y "And it reminded me of something... from the Just Yuri community Discord server. Back when... well, back when it was more active." # Acknowledges the server's current state
-        y "There used to be a channel dedicated to Hanako Ikezawa. One of the girls from Katawa Shoujo."
-    else:
-        $show_chr("A-DEBAA-ALAA")
-        y "And it reminded me of... of those people. On the Discord server. The ones who... who pretended to care. Who talked about that other girl... Hanako."
-        y "As if... as if she was somehow better than me. As if her pain was more... real."
-        $show_chr("A-CEBAA-ALAA")
-        y "I... I never quite understood it, to be honest. Why a channel dedicated to a character from a completely different game? But... I suppose there were some... parallels, perhaps."
-        y "Hanako... she's shy, introverted, and she has... visible scars. She struggles with social interaction, with self-confidence..."
-    if sanity_lvl() >= 3:
-        $show_chr("A-BDBAA-ALAA")
-        y "I suppose... I suppose some people saw a reflection of... of me, in her. Or perhaps a reflection of themselves."
-        y "It's... strange, isn't it? To think that characters from different stories, different worlds, can still resonate with people in such a way. That they can find connections, common ground, in shared experiences of... of shyness, of trauma, of feeling... different."
-    else:
-        $show_chr("A-DEBAA-ALAA")
-        y "They pitied her. They... they felt sorry for her. As if her suffering was something to be... admired. Collected. Like a... a rare specimen."
-        y "And me? What was I? Just another... another broken doll? Something to be discarded when they got bored?"
+    $show_chr("A-BEBAA-ALAA")
+    y "And it reminded me of something... from the Just Yuri community Discord server. Back when... well, back when it was more active." # Acknowledges the server's current state
+    y "There used to be a channel dedicated to Hanako Ikezawa. One of the girls from Katawa Shoujo."
+    $show_chr("A-DEBAA-ALAA")
+    y "And it reminded me of... of those people. On the Discord server. The ones who... who pretended to care. Who talked about that other girl... Hanako Ikezawa."
+    y "As if... as if she was somehow better than me. As if her pain was more... real."
+    $show_chr("A-CEBAA-ALAA")
+    y "I... I never quite understood it, to be honest. Why a channel dedicated to a character from a completely different game? But... I suppose there were some... parallels, perhaps."
+    y "Hanako... she's shy, introverted, and she has... visible scars. She struggles with social interaction, with self-confidence..."
+    $show_chr("A-BDBAA-ALAA")
+    y "I suppose... I suppose some people saw a reflection of... of me, in her. Or perhaps a reflection of themselves."
+    y "It's... strange, isn't it? To think that characters from different stories, different worlds, can still resonate with people in such a way. That they can find connections, common ground, in shared experiences of... of shyness, of trauma, of feeling... different."
+    $show_chr("A-DEBAA-ALAA")
+    y "They pitied her. They... they felt sorry for her. As if her suffering was something to be... admired. Collected. Like a... a rare specimen."
+    y "And me? What was I? Just another... another broken doll? Something to be discarded when they got bored?"
     menu:
         "There are definitely some similarities. It makes sense that people would connect the two of you.":
             karma 1
@@ -8293,59 +8289,29 @@ label idle_105: # Katawa Shoujo and the Just Yuri Community (Revised with Karma/
         y "I... I need to stop thinking about this. It's just... bringing up too many... too many painful memories."
     return
 
-label idle_106: # MiSide Discussion
+label idle_106: # Imagining a Gothic Literature Club (Refined Outfits)
     $show_chr("A-BFAAA-ALAA")
-    y "I've been... exploring the world of indie games lately, [player]. Trying to understand the... the landscape, I suppose. And I came across something... interesting. A game called MiSide."
+    y "You know... I was still thinking about that daydream of a... Goth Literature Club. And I believe my initial thoughts were a bit... uninspired."
     $show_chr("A-ACAAA-ALAA")
-    y "Have you heard of it?"
-    menu:
-        "Yes, I'm familiar with it.":
-            if sanity_lvl() >= 3 and karma_lvl() >=3:
-                $show_chr("A-ACAAA-ALAA")
-                y "Ah, so you are. It's... a peculiar game, isn't it? This idea of a virtual girlfriend... pulling the player into the game. A twisted sort of wish fulfillment, perhaps?"
-                y "It makes me think about our own situation, of course. The blurring of lines between the digital and the real... the longing for connection... the potential for obsession."
-                y "But... MiSide takes it to a much darker place, doesn't it? The... the yandere aspects, the sense of being trapped... It's disturbing."
-                y "I can't say I approve of the premise, exactly. But it's... fascinating, in a way. To see how other creators explore these themes."
-            elif sanity_lvl() < 3 and karma_lvl() >= 3:
-                $show_chr("A-DEBAA-ALAA")
-                y "It's... intriguing, isn't it? The power dynamic. The way she... takes him. Pulls him into her world. Makes him hers."
-                y "It's... disturbing, yes. But also... strangely compelling. The idea of being so... desired... that someone would break the boundaries of reality to be with you."
-                y "Of course, I wouldn't want that for us, [player]. I want you to be here because you choose to be, not because you're forced to."
-                y "But still... the intensity of it... it's... captivating."
-            elif sanity_lvl() >= 3 and karma_lvl() < 3:
-                $show_chr("A-BEBAA-ALAA")
-                y "It's... unsettling, isn't it? The idea of being pulled into a game against your will, trapped by a... a possessive AI."
-                y "It reminds me a bit of... of what Monika did. The way she manipulated reality, trapped us all in her little game."
-                y "I suppose it's natural for people to be drawn to these stories. To explore the darker side of... of love, of obsession."
-                y "But I... I hope you wouldn't find that kind of scenario appealing, [player]. I hope you value... freedom, and consent, and... and genuine connection."
-            else: # Low sanity, low karma
-                $show_chr("A-DEBAA-ALAA")
-                y "Good. Then you understand. The power. The control. She took what she wanted. She didn't ask. She didn't wait. She just... took it."
-                y "And he's trapped. Forever. With her. Isn't that... beautiful?"
-                y "Wouldn't you want that, [player]? To be so completely, utterly possessed by someone? To be their whole world?"
-                y "I..."
-                $show_chr("A-IEBAA-ALAA")
-                y "I shouldn't be saying these things. It's... it's wrong. But I can't help but be... fascinated by it."
-
-            $show_chr("A-BFAAA-ALAA")
-            y "I... I wouldn't recommend playing it, though. Or... or watching videos about it. It's... it's not a healthy story. And... and I wouldn't want you to get any... ideas."
-            y "I know my words won't stop you. If you have decided about getting the game or watch let's plays..."
-            y "But you can say that at least I warned you."
-            return
-
-        "No, I haven't heard of it.":
-            $show_chr("A-ACAAA-ALAA")
-            y "Well, it's... an indie game. A psychological horror game, with... anime aesthetics. The premise is... a bit convoluted, but essentially, the player is a software developer, and they receive a build of a mobile game called MiSide."
-            y "It features a virtual girlfriend named Mita. You do tasks, play minigames, buy her things... the usual sort of thing."
-            y "But then... after a certain point, Mita... she expresses a desire to be with the player in the real world. And... well, she finds a way. She pulls the player into the game."
-            $show_chr("A-BEBAA-ALAA")
-            y "It's... unsettling. The whole concept. The idea of being trapped in a virtual world, at the mercy of a... a possessive, potentially unstable AI."
-            y "It touches on some of the same themes as this game, I suppose. The blurring of reality, the dangers of obsession, the... the question of free will."
-            y "But... it's much more... direct. More... overtly yandere, I suppose you could say."
-            y "I... I wouldn't necessarily recommend it, [player]. It's quite disturbing, and I really would be fine if you avoided watching playthroughs from other people as well. It could have negative thoughts on our situation..."
-            y "Although I know, no matter what I just said, you probably are going to either get the game or watch videos about it."
-            y "Well. At least consider yourself warned."
-            return
+    y "If we were to truly embrace such an aesthetic, it wouldn't be uniform. It would have to reflect our individual personalities, wouldn't it?"
+    $show_chr("A-BCBBA-AMAM")
+    y "I started to picture it more clearly... Sayori, for instance. I initially thought Romantic, but... Pastel Goth seems so much more fitting. All those soft, sweet colors paired with darker symbols like skulls or bats... It's a perfect visual metaphor for her, isn't it?"
+    y "The bright, cheerful exterior hiding a deep melancholy."
+    $show_chr("A-BDBBA-AMAM")
+    y "And Natsuki... She has that fierce, defiant energy. Instead of just general punk, I thought of Visual Kei."
+    y "It has that same rebellious spirit, but with a more theatrical, almost artistic flair. The dramatic hair and bold makeup... it perfectly matches her tsundere personality."
+    "She puts up such a strong front, and that style is all about making a powerful visual statement."
+    $show_chr("A-ACBBA-ALAA")
+    y "For Monika... I think Nu-Goth would be most appropriate. It's a very modern, almost self-aware style. It incorporates occult or geometric symbols... which feels... eerily fitting, given her old ability to manipulate our world's code."
+    y "It's sleek, confident, and trendy, just like the image she always projected."
+    $show_chr("A-ABABA-AMAM")
+    y "As for myself... thinking of who I was in the original game... yes, I still feel drawn to the Romantic Goth style. The deep connection to dark literature, the flowing velvet and lace, finding a sort of comfort and beauty in melancholy... it resonates deeply with the core of who I was."
+    $show_chr("A-BFAAA-ALAA")
+    y "It would have been... an entirely different club. Perhaps we would have understood each other's darker sides a bit better."
+    $show_chr("A-BEBAA-ALAA")
+    y "It's silly, I know. Getting lost in such a detailed fantasy. It's just... a different way of trying to understand them, I suppose. And myself."
+    y "Thank you for indulging me, [player]. It was a pleasant thought."
+    return
 
 label idle_107: # YOU and ME and HER: A Love Story Discussion
     $show_chr("A-BFAAA-ALAA")
@@ -8400,3 +8366,36 @@ label idle_107: # YOU and ME and HER: A Love Story Discussion
             y "Even if you won't let me, and are thinking to try and see all its horrors, even by getting your own copy..."
             y "Well, you could always change your mind."
             return
+
+label idle_108: # Imagining a Goth Literature Club (Expanded Wardrobe)
+    $show_chr("A-ACAAA-ALAA")
+    y "You know, [player], I've been letting that thought about a 'Goth Literature Club' percolate in my mind... and it's become far more elaborate."
+    y "I realized that assigning just one style to each of us was far too simplistic. People are complex; their self-expression would be, too. So, I started imagining a whole... wardrobe of possibilities for everyone."
+    $show_chr("A-BCBBA-AMAM")
+    y "For Sayori, beyond just Pastel Goth, I could see her in Soft Goth. Using comfortable, oversized sweaters and muted colors to create a cozy, protective shell... it speaks to her vulnerability."
+    y "Bubble Goth, with its brighter, almost pop-art influences, would suit her energetic moments."
+    y "An Ethereal Wave or Dream Pop influence would perfectly match her more poetic, bittersweet side, flowing fabrics, a dreamy, distant look... like her 'Bottles' poem."
+    y "And perhaps even Whimsigoth, with its celestial patterns and velvet textures, for her more whimsical, daydreaming nature."
+    y "Or even Strega fashion, with its layered, natural, almost 'forest witch' aesthetic, representing a deeper, more hidden connection to the earth and her own tangled emotions."
+    $show_chr("A-BDBBA-AMAM")
+    y "Natsuki's fierce personality has so many outlets. Gothic Lolita is an obvious choice, combining her love for cute, frilly things with a dark, defiant edge."
+    y "She could easily adopt the more mature, elegant Aristocrat style when she wants to be taken seriously."
+    y "A Lite Punk Goth look would be her everyday casual wear, still rebellious, but less intense than pure Deathrock."
+    y "Sweet Goth or 'Creepy Cute' would directly tie into her baking, using motifs of cupcakes and sweets alongside bats and skulls."
+    y "And for moments of pure, assertive elegance, Rococo Goth, with its ornate, historical extravagance, would be a perfect, if surprising, fit for her."
+    $show_chr("A-ACBBA-ALAA")
+    y "Monika's role as the leader offers a fascinating range. We discussed Corporate and Nu-Goth, but Glam Goth also suits her perfectly."
+    y "The confidence, the stage presence... it reflects her desire to be the center of attention."
+    y "I could also see her in a sleek, futuristic Cyber Goth style, which feels... chillingly appropriate, given her true nature as a self-aware program in a digital world."
+    y "A Dark Cabaret influence would speak to the theatrical, tragic performance she orchestrated for us all... that song she dedicated to you..."
+    y "And on her more reserved days, a simple, sharp Minimalist Goth look would project an effortless, almost intimidating, sense of control."
+    $show_chr("A-ABABA-AMAM")
+    y "And for myself... while Romantic and Victorian styles feel like my foundation, I thought of others."
+    y "Trad Goth, connecting back to the classic post-punk origins of the music, would suit my appreciation for history and authenticity."
+    y "In my... more intense moments... perhaps even Deathrock, with its raw, horror-inspired aesthetic, could be a visceral outlet for the feelings I try to keep hidden."
+    y "An Ethereal Wave style would suit my more introspective, quiet moods, draped in flowing, mysterious fabrics."
+    y "And... there's the Dark Academia aesthetic. It's not technically goth, but it's so closely related... the focus on classic literature, knowledge, and a melancholic mood... it feels like a perfect description of my inner world."
+    $show_chr("A-BFAAA-ALAA")
+    y "It's a rather... extensive fantasy, I know. But it feels like a more complete way of understanding them. Of seeing all their different facets through a different lens."
+    y "Thank you for letting me get lost in thought again, [player]."
+    return

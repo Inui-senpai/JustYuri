@@ -883,7 +883,7 @@ init -3 python:
     add_dialogue(Dialogue(
         label = 'idle_106',
         category = DialogueAPI.category_idle,
-        conditions = [],
+        conditions = ["renpy.seen_label(idle_4)", "renpy.seen_label(idle_5)", "ren.seen_label(idle_35)"],
         importance = 0,
         name = None,
         sub_category = None))
@@ -892,6 +892,14 @@ init -3 python:
         label = 'idle_107',
         category = DialogueAPI.category_idle,
         conditions = [],
+        importance = 0,
+        name = None,
+        sub_category = None))
+
+    add_dialogue(Dialogue(
+        label = 'idle_108',
+        category = DialogueAPI.category_idle,
+        conditions = ["renpy.seen_label(idle_4)", "renpy.seen_label(idle_5)", "ren.seen_label(idle_35)", "renpy.seen_label(idle_106)"],
         importance = 0,
         name = None,
         sub_category = None))
@@ -932,14 +940,6 @@ init -3 python:
         label = 'tcg_2',
         category = DialogueAPI.category_idle,
         conditions = ["renpy.seen_label('tcg')"],
-        importance = 0,
-        name = None,
-        sub_category = None))
-
-    add_dialogue(Dialogue(
-        label = 'folklore_and_myths',
-        category = DialogueAPI.category_idle,
-        conditions = ['karma_lvl() >= 3', 'sanity_lvl() >= 3'],
         importance = 0,
         name = None,
         sub_category = None))
@@ -1645,9 +1645,10 @@ init -3 python:
         sub_category = None))
 
     add_dialogue(Dialogue(
-        label = "intro_mods",
+        label = "startup_mods",
         category = DialogueAPI.category_greetings,
-        conditions = ['time_tracker_start() == False', "renpy.seen_label('ch30_intro2')", "not renpy.seen_label('startup_mods')", 'persistent.game_session >= 7'],
+        conditions = ["has_new_mods()"],
+        importance = 20, # High importance to ensure it runs if new mods are found
         name = "None",
         sub_category = None))
 

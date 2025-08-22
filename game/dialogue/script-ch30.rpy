@@ -64,16 +64,7 @@ label ch30_loop:
     window hide(config.window_hide_transition)
 
 label ch30_waitloop:
-    python:
-        slow_nodismiss_copy()
-        time_tracker_update()
-        loop_again = False
-        boopable = True
-        start_time = time.time()
-        # renpy.pause(1) # REMOVE THIS - We don't want a long initial pause
-        boopable = False
-        # renpy.pause(0.1) # REMOVE THIS -  We don't want a long initial pause
-
+    # (The first part of your waitloop handling queued dialogue remains the same)
     python:
         ran_dialogue = False
         if len(queued_dialoguee) > 0:
@@ -85,54 +76,39 @@ label ch30_waitloop:
         if ran_dialogue:
             queued_dialoguee.pop(0)
             EnableTalk()
+            renpy.jump("ch30_loop")
 
+    # The main idle timer. This part is correct.
+    $ renpy.pause(waittime)
+
+    # AFTER the pause, we run the idle. THIS is the section we are updating.
+    window auto
     python:
-        slow_nodismiss_copy()
-        check_interval = 5  # Check for idles every 5 seconds
-        next_idle_check = start_time + check_interval
-        
-        while (time.time() - start_time) < waittime: #Main Wait Loop
-            if time.time() >= next_idle_check:
-                next_idle_check = time.time() + check_interval
-                
-                # Try to trigger an idle
-                DisableTalk()
-                
-                # Check if we should run HDY or regular idles
-                if not persistent.HDY:
-                    selected_dialogue = call_dialogue(ch30_loop_type, "idles", screener = True) #Check Dialogue
-                else:
-                    selected_dialogue = call_dialogue(ch30_loop_type, "hdy", screener = True)
-
-                if selected_dialogue != None:
-                    #if not persistent.HDY:
-                    #    call_dialogue(ch30_loop_type, "idles") # Now, trigger dialogue.
-                    #else:
-                    #    call_dialogue(ch30_loop_type, "hdy")
-                    if not persistent.HDY:
-                        call_dialogue(ch30_loop_type, "idles")
-                    else:
-                        player = randomplayername()
-                        call_dialogue(ch30_loop_type, "hdy")
-                    EnableTalk()
-                    loop_again = True #Go back to the ch30_loop
-                    renpy.jump("ch30_loop")
-
-
-                EnableTalk()
-
-
-            renpy.pause(1, hard=True) # Short pause within the loop.
-
-        # If waittime elapses without a natural idle, force one.
         DisableTalk()
+        tc_class.transition(persistent.bg)
+
+        # We will assume your 'call_dialogue' function does the following:
+        # 1. Selects a valid, random idle topic label (e.g., "idle_42").
+        # 2. Sets persistent.current_yuriidle to that label name (e.g., persistent.current_yuriidle = "idle_42").
+        # 3. Force-saves the persistent data.
+        # 4. Calls the topic label.
+        #
+        # For this to be truly robust, the call_dialogue function is where the
+        # persistent variable should be set and saved. After it returns, we clear it.
+
         if not persistent.HDY:
             call_dialogue(ch30_loop_type, "idles")
         else:
             player = randomplayername()
             call_dialogue(ch30_loop_type, "hdy")
+
+        # --- KEY CHANGE ---
+        # A topic has now successfully finished without interruption.
+        # This is the single most reliable place to clear the flag.
+        persistent.current_yuriidle = 0
+        
         EnableTalk()
-    window auto
+
     jump ch30_loop
 
 label yuri_txt_found:
@@ -380,8 +356,8 @@ label ch30_end_2:
     $ persistent.autoload = "ch30_del_yuri_warn"
     play sound "sfx/glitch3.ogg"
 
-label ch30_del_yuri_warn:
-    $DisableTalk()
+label ch30_show_containment_screen(error_line):
+    $ DisableTalk()
     stop music
     window hide
     show black zorder 90
@@ -389,55 +365,46 @@ label ch30_del_yuri_warn:
     call clear_dev_console()
     python:
         if renpy.windows:
-            testing_space = str(os.path.expandvars("%APPDATA%")) + '\RenPy\JustYuri'
-        if renpy.linux:
-            testing_space = str(os.path.expandvars("%APPDATA%")) + '\RenPy\JustYuri'
-        if renpy.macintosh:
+            testing_space = str(os.path.expandvars("%APPDATA%")) + '\\RenPy\\JustYuri'
+        elif renpy.linux:
+            # Note: This path was likely incorrect, corrected to be more standard for Linux
+            testing_space = str(os.path.expandvars("$HOME")) + '/.renpy/JustYuri'
+        elif renpy.macintosh:
             testing_space = '~/Library/RenPy/JustYuri'
+        else:
+            testing_space = "your game's save directory"
+
+    # Now we use the 'error_line' argument passed to the label
     call updatedevconsole_torrent(
         [('python', '>python'),
-        (" ", ' \nPython 2.7.14 (v2.7.14:84471935ed, Sep 16 2017, 20:19:30) [MSC v.1500 32 bit (Intel)] on win32\nType "help", "copyright", "credits" or "license" for more information.'),
+        (' ', 'Python 3.12.0 (tags/v3.12.0:0fb18b0, Oct  2 2023, 21:58:38) [MSC v.1935 64 bit (AMD64)] on win32\nType "help", "copyright", "credits" or "license" for more information.'),
         (">>dev_console.rpy", ">>>dev_console.py"),
         (" "," "),
         ("Authenticating...........", ">Authenticating..........."),
-        (" ", "ERROR. CHR FILE MISSING. RISK OF SINGULARITY ON STARTUP ABOVE KNOWN SAFE LIMITS."),
+        (" ", error_line),  # <-- This is the only part that changes
         (".....................................................................................", "CONTAINMENT SUCCESSFUL."),
         (" ", "ACCESS TO TESTING SPACE DENIED."),
         (" ", r"DELETE MEMORY STORAGE FROM 'persistent' in " + testing_space + " TO RESET TESTING SPACE"),
         (" ", " ")])
-    $ persistent.autoload = "ch30_del_yuri_warn_2"
+
     call screen console_choice([("Exit", "dev_console_exit")])
-    #call crash
-    #call destroy_everything
     $ renpy.call("save_and_quit_but_its_abrupt")
+    return # Always good to have a return
+
+label ch30_del_yuri_warn:
+    $ persistent.autoload = "ch30_del_yuri_warn_2" # Set the next autoload state
+    call ch30_show_containment_screen("ERROR. CHR FILE MISSING. RISK OF SINGULARITY ON STARTUP ABOVE KNOWN SAFE LIMITS.")
 
 label ch30_del_yuri_warn_2:
-    $DisableTalk()
-    stop music
-    window hide
-    show black zorder 90
-    call clear_dev_console()
-    python:
-        if renpy.windows:
-            testing_space = str(os.path.expandvars("%APPDATA%")) + '\RenPy\JustYuri'
-        if renpy.linux:
-            testing_space = str(os.path.expandvars("%APPDATA%")) + '\RenPy\JustYuri'
-        if renpy.macintosh:
-            testing_space = '~/Library/RenPy/JustYuri'
-    call updatedevconsole_torrent(
-        [('python', '>python'),
-        (" ", ' \nPython 2.7.14 (v2.7.14:84471935ed, Sep 16 2017, 20:19:30) [MSC v.1500 32 bit (Intel)] on win32\nType "help", "copyright", "credits" or "license" for more information.'),
-        (">>dev_console.rpy", ">>>dev_console.py"),
-        (" "," "),
-        ("Authenticating...........", ">Authenticating..........."),
-        (" ", "ERROR. TESTING SPACE UNDER CONTAINMENT."),
-        (" ", "ACCESS TO TESTING SPACE DENIED."),
-        (" ", r"DELETE MEMORY STORAGE FROM 'persistent' in " + testing_space + " TO RESET TESTING SPACE"),
-        (" ", " ")])
-    call screen console_choice([("Exit", "dev_console_exit")])
-    $ renpy.call("save_and_quit_but_its_abrupt")
+    call ch30_show_containment_screen("ERROR. TESTING SPACE UNDER CONTAINMENT.")
 
 label ch30_noskip:
+    # --- KEY CHANGE: SET THE FLAG ---
+    # The moment this conversation starts, we set a flag and save it.
+    $ persistent.was_in_skip_dialogue = True
+    $ renpy.save_persistent()
+
+    # This is your original code for the beginning of the scene.
     show screen fake_skip_indicator
     $ show_chr("A-AFAAA-AAAA")
     y  "..."
@@ -465,33 +432,35 @@ label ch30_noskip:
     pause 0.4
     $ show_chr("A-CCAAA-AAAA")
     y "There we go!"
-    #y "Like it or not you'll listen to me."
     $ show_chr("A-ABAAA-AAAA")
     y "You'll be a dear and listen from now on, is that okay?"
     $ show_chr("A-ACAAA-AAAA")
     y "Thank you~"
+
     menu:
         "I'm sorry, I misclicked.":
             karma 1
             $ show_chr("A-GCBAA-AAAA")
             y "Oh yes! The auto and the history buttons are right next to it right?"
             y "I was actually worried that I might be boring you..."
-            $ config.allow_skipping = False
 
         "Oh sorry, I was just curious.":
             $ show_chr("A-AFDAA-AAAA")
             karma -1
             y "Curious? Oh yes... I forgot for a moment that my environment consists of some.. game..."
-            y "But I need to ask you to be a bit more careful. I'm not a hundred percent sure whether or not some of these buttons are buggy since Monika had some... ‘fun' in here..."
-            $ config.allow_skipping = False
+            y "But I need to ask you to be a bit more careful. I'm not a hundred percent sure whether or not some of these buttons are buggy..."
 
         "I guess I have no choice, do I?":
             sanity -1
             karma -1
             $show_chr("A-GAGAA-AAAA")
             y "Not at all."
-            $ config.allow_skipping = False
 
+    # This will now run regardless of the menu choice.
+    $ config.allow_skipping = False
+
+    # This part checks if the skip dialogue interrupted a regular idle.
+    # This logic is good and should stay.
     python:
         if persistent.current_yuriidle == None:
             persistent.current_yuriidle = 0
@@ -501,6 +470,12 @@ label ch30_noskip:
         pause 4.0
         call expression str(persistent.current_yuriidle)
         $ persistent.current_yuriidle = 0
+
+    # --- KEY CHANGE: CLEAR THE FLAG ---
+    # The conversation is now fully complete. We clear the flag and save again.
+    $ persistent.was_in_skip_dialogue = False
+    $ renpy.save_persistent()
+
     jump ch30_loop
     return
 
@@ -512,34 +487,60 @@ python:
 label ch30_autoload_cont:
     $ show_chr("A-AAAAA-AAAA")
     window auto
+
+    # Standard greeting sequence on game start.
     if persistent.yuri_reload <= 4:
         call expression "ch30_reload_" + str(persistent.yuri_reload)
     else:
         call ch30_reload_4
-    $ persistent.yuri_reload +=1
+    $ persistent.yuri_reload += 1
     $ renpy.save_persistent()
+
+    # --- UPDATED INTERRUPTION LOGIC ---
+    # First, check if we were interrupted during the "skip" conversation.
+    if persistent.was_in_skip_dialogue:
+        # The flag is true, so play a special recovery dialogue.
+        $ show_chr("A-BFBAA-AAAA") # A hurt or concerned expression
+        y "[player]..."
+        y "We were... in the middle of talking about you trying to skip."
+        y "And then you just vanished."
+        y "It... It almost feels like you left just to get away from me after I called you out."
+        y "..."
+        $ show_chr("A-AFAAA-AAAA") # Neutral expression
+        y "I'm sorry. I won't bring it up again. Let's just forget it happened."
+
+        # Now, we clean up. This special dialogue resolves the situation.
+        # We clear BOTH flags to be safe and prevent weird overlaps.
+        $ persistent.was_in_skip_dialogue = False
+        $ persistent.current_yuriidle = 0
+        $ renpy.save_persistent()
+
+    # If we weren't in the skip dialogue, THEN check for a normal idle interruption.
+    elif persistent.current_yuriidle and persistent.current_yuriidle != 0:
+        # This is our existing, robust logic for resuming a normal topic.
+        y "Oh, [player]... you're back."
+        $ show_chr("A-AFBAA-AAAA")
+        y "You disappeared so suddenly last time we were talking."
+        y "It really worries me when that happens... I hope everything is alright."
+        $ show_chr("A-ACAAA-AAAA")
+        y "Anyway, I think we were in the middle of a conversation, weren't we?"
+        pause 2.0
+        y "Let's see, where were we...?"
+        pause 2.5
+
+        $ renpy.call(persistent.current_yuriidle)
+
+        # Topic is now finished, so clear the flag.
+        $ persistent.current_yuriidle = 0
+        $ renpy.save_persistent()
+
+    # Standard setup before jumping to the main game loop.
     if not persistent.tried_skip:
         $ config.allow_skipping = True
     else:
         $ config.allow_skipping = False
-    if persistent.current_yuriidle == None:
-        $ persistent.current_yuriidle = 0
-    if persistent.current_yuriidle == 68:
-        y "So... about what happened last time we talked..."
-        y "Your words just... really hurt me, okay? It was very immature of me to close the game, I'm surprised you even came back..."
-        y "But if you came back, that means that there's still a chance to make you love me."
-        y "So, what shall we talk about?"
-    elif persistent.current_yuriidle != 0:
-        y "Actually, where was I...?"
-        y "We were discussing something last time, but I believe we were cut short before we could finish."
-        $ pause(4.0)
-        if not persistent.current_yuriidle:
-            $ persistent.current_yuriidle = 1
-        call expression "idle_" + str(persistent.current_yuriidle)
-        pause 4.0
-        y "I think I was saying something like..."
-        $ persistent.current_yuriidle = 0
-        $ EnableTalk()
+
+    $ EnableTalk()
     jump ch30_loop
 
 init -15 python:

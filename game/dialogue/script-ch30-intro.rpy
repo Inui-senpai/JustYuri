@@ -234,23 +234,26 @@ label eternity_intro:
         y "I was hoping I could get your webcam to work, but it seems I don't have 'Administrator Access'..."
         call hideconsole
     $ show_chr("A-ACAAA-AAAA")
+    # Initial greeting and inquiry about eye color
     y "Someday, I want to stare deep into your eyes as well..."
     $ show_chr("A-ABAAA-AAAA")
     y "What color are they?"
     menu:
         "Brown.":
             $ show_chr("A-ABGAA-AAAA")
-            y "Oh, you have brown eyes. That's really nice."
+            y "Oh, brown eyes. That's really quite lovely."
             $ show_chr("A-BBAAA-ADAA")
-            y "I've done a little bit of research on this color, and what I discovered was quite intriguing."
+            y "I've read a bit about brown eyes, and it's fascinating how common they are, yet how much variety there is within the color itself."
+            # More modern take on brown eyes: focus on protection and cultural significance
             $ show_chr("A-CCAAA-AMAM")
-            y "For example; brown eyes can help prevent certain cancers, and people with this eye color commonly possess faster senses."
+            y "Did you know that the brown pigment, melanin, offers greater protection against UV radiation and even certain diseases? It's quite remarkable how our biology adapts."
             $ show_chr("A-BBAAA-ACAA")
-            y "Brown-eyed people are said to be very independent, self-confident, determined and trustworthy."
+            y "People with brown eyes are often described as being warm, approachable, and reliable. There's a certain groundedness to them, I think."
             $ show_chr("A-BABAA-ACAA")
-            y "They're also the practical type who will go out of their way just to make sure you are happy, and a plethora of other attributes I won't list just yet."
+            y "They're often seen as dependable and may have a very steady presence. It's a color that feels very... present."
             window hide
             pause 5.0
+            # Yuri's characteristic hesitation and slight insecurity
             $ show_chr("A-BFAAA-ADAA")
             y "..."
             $ show_chr("A-AFAAA-ADAA")
@@ -258,17 +261,16 @@ label eternity_intro:
             $ show_chr("A-CFBAA-ADAA")
             y "..."
             $ show_chr("A-ABBAA-ADAA")
-            y "Sorry about that..."
-            extend " for some reason I got this feeling that you were contradicting on what I said about people with brown eyes."
+            y "Forgive me, sometimes I get a little lost in the details. I hope I wasn't rambling too much."
             $ show_chr("A-BDBAA-ALAA")
-            y "I hope you didn't contradicted me..."
+            y "It's just... I'm trying to be more precise, you know?"
             $ show_chr("A-BFBAA-ALAA")
             y "..."
             $ show_chr("A-ABBCA-AFAA")
-            extend "moving on..."
+            extend "moving on, though..."
             $ show_chr("A-ABAAA-AFAA")
-            y "One thing I want to make sure of as well."
-            y "Which tone of brown are your eyes?"
+            y "One thing I wanted to be sure about..."
+            y "Which particular shade of brown are your eyes?"
             menu:
                 "Light Brown":
                     $ persistent.eyecolor = "light brown"
@@ -283,30 +285,31 @@ label eternity_intro:
                     pass
 
             $ show_chr("A-GBAAA-ALAA")
-            y "Perfect. This time I won't make a mistake of sticking to just a single color when they are either lighter or darker."
+            y "Ah, yes. That's much better. It's important to be specific, isn't it?"
             $ show_chr("A-BBBCA-ALAA")
-            y "Ah! W-where was I now?"
+            y "Now, where was I...?"
 
         "Blue.":
             $ show_chr("A-ABGAA-AAAA")
-            y "Oh, you have blue eyes. That's really nice."
+            y "Oh, blue eyes. How fascinating."
             $ show_chr("A-BBAAA-ADAA")
-            y "I've done a little bit of research on this color, and my findings were quite interesting."
+            y "I've always found blue eyes to be quite striking, almost ethereal."
+            # Updated facts on blue eyes: genetic mutation, rarity, and perception.
             $ show_chr("A-CCAAA-AMAM")
-            y "For example; 8 percent of the world's population has true blue eyes."
+            y "It's quite incredible to think that all blue eyes likely stem from a single genetic mutation that occurred thousands of years ago. It's a testament to how unique our genetics can be."
             $ show_chr("A-BABAA-ACAA")
-            y "They are also considered the result of a mutation. Someone in the Black Sea from 6,000 to 10,000 years ago had a genetic accident that resulted in his eyes turning blue."
+            y "While not as rare as green eyes globally, true blue eyes are still not as common as brown, making them rather special."
             $ show_chr("A-AAAAA-AFAA")
-            y "The OCA2 (AKA Oculocutaneous Albinism II) is responsible for producing melanosomal transmembrane protein, or the P protein."
+            y "The gene responsible, OCA2, is quite complex, and even scientists are still unraveling all its nuances. It's like a beautiful, intricate puzzle."
             $ show_chr("A-BBBAA-AKAA")
-            y "But, science hasn't completely understood this simple color."
+            y "And the perception of blue eyes... they're often associated with youth, serenity, and a certain calm intellect."
             $ show_chr("A-ACBAA-AKAA")
-            y "Also, blue eyes are associated with youth and knowledge."
+            y "Some say blue-eyed individuals tend to be more analytical and perhaps a bit reserved, but also very dedicated in their relationships."
             $ show_chr("A-CABBA-AKAA")
-            y "Blue-eyed people are said to have long-lasting relationships and the desire to make other people happy."
+            y "They can possess a quiet strength and a deep capacity for loyalty."
             $ show_chr("A-ABAAA-AFAA")
-            y "Um... one thing I want to make sure of as well."
-            y "Which tone of blue are your eyes?"
+            y "Um... if you don't mind me asking..."
+            y "Which shade of blue do your eyes have?"
             menu:
                 "Light Blue":
                     $ persistent.eyecolor = "light blue"
@@ -317,126 +320,124 @@ label eternity_intro:
                     pass
 
             $ show_chr("A-GBAAA-ALAA")
-            y "Perfect. This time I won't make a mistake of sticking to just a single color when they are either lighter or darker."
+            y "Perfect. It's always better to be precise, I feel."
             $ show_chr("A-BBBCA-ALAA")
             y "Ah! W-where was I now?"
 
         "Green.":
             $ persistent.eyecolor = "green"
             $ show_chr("A-ABGAA-AAAA")
-            y "Oh, you have green eyes. That's really nice."
+            y "Green eyes... how enchanting."
             $ show_chr("A-ABGAA-AFAA")
-            y "Did you know that the largest concentration of green eyed people is in Ireland, Scotland and Northern Europe? In Ireland and Scotland, 86 percent of people have either blue or green eyes."
+            y "They're quite rare, aren't they? With the highest concentrations often found in Northern Europe."
             $ show_chr("A-CCAAA-AMAM")
-            y "It's also said that green eyes have existed from the Bronze Age Era, which means that they've been around for thousands of years."
+            y "The origins of green eyes are fascinating, possibly linked to the Bronze Age. It's like a glimpse into ancient times."
             $ show_chr("A-BDAAA-AAAC")
-            y "During primitive times, it was believed that people with green eyes were evil."
-            y "They're found to be rather rare worldwide and so they're often considered to be quite mysterious. In fact, only around 2 percent of people have true green eyes."
+            y "Historically, they've been associated with a certain mystique, perhaps even a touch of the uncanny due to their rarity."
+            y "Globally, only about 2% of people have true green eyes, making them exceptionally uncommon."
             $ show_chr("A-BEAAA-AIAI")
-            y "Although rare generally, green eyes are especially rare amongst the African and Asian race. However, a village in Western China has many individuals with green eyes and blonde hair."
+            y "It's interesting how certain genetic traits can be more prevalent in specific regions, like that village in China with a higher prevalence of green eyes and lighter hair."
             $ show_chr("A-ADAAA-ALAA")
-            y "Green-eyed people are said to be curious about nature, passionate in relationships, and possess a positive outlook on life."
+            y "Green-eyed individuals are often described as being imaginative, curious, and having a vibrant zest for life."
             $ show_chr("A-CDAAA-ALAA")
-            y "Those with green eyes are also intelligent and have a zest for life."
+            y "They can also possess a strong sense of intuition and a passionate nature."
             $ show_chr("A-AEAAA-AAAF")
-            y "But aside from that, you can get jealous soon."
+            y "Though, I have heard they can sometimes be prone to a bit of jealousy, but that's just what I've read..."
 
         "Hazel.":
             $ persistent.eyecolor = "hazel"
             $ show_chr("A-ABGAA-AAAA")
-            y "Oh, you have hazel eyes. That's really nice."
+            y "Hazel eyes... a beautiful blend."
             $ show_chr("A-CCAAA-AMAM")
-            y "Though, Hazel is actually not a true color in itself, but rather it's a blend of various colors. However, it's considered as an eye color which displays a combination of Greens, Browns, and Blues."
+            y "Hazel isn't truly a single color, but rather a fascinating mix of brown, green, and sometimes even amber or gold. It's like a little piece of art."
             $ show_chr("A-ABAAA-AAAA")
-            y "Here's an interesting fact. Did you know that 74 percent of hazel eyes appear to have a brown ring around the pupil?"
+            y "I've read that a distinctive feature for many hazel eyes is the brown ring around the pupil, which adds to their unique depth."
             $ show_chr("A-ABGAA-AFAA")
-            y "That's quite unique if you ask me."
-            y "Though one pair of hazel eyes is never identical to another person's pair of hazel eyes."
+            y "That's what makes them so captivating, I think – no two pairs are ever exactly alike."
+            y "Some might lean more towards green, others towards brown, creating such a spectrum."
             $ show_chr("A-ABGAA-ALAA")
-            y "Some people possess lighter features of green while others have darker features of Brown."
+            y "The way they can subtly shift color depending on the light or even one's mood... it's quite captivating."
             $ show_chr("A-CBAAA-ALAA")
-            y "Hazel eyes are special because they seem to change color depending on your mood."
+            y "People with hazel eyes are often said to be spontaneous, adventurous, and enjoy novelty."
             $ show_chr("A-AABBA-ACAA")
-            y "Overall, you're spontaneous, fun-loving, adventurous, and neophilic!"
+            y "They can have a very lively and engaging personality."
             $ show_chr("A-AABBA-AMAM")
-            y "One point to be aware of is the potential bad temper of those with hazel eyes"
-            $ show_chr("A-GBBAA-AMAM")
-            y "But if you can handle this, then you are in for a joy-ride! "
+            y "However, I have also encountered some descriptions that suggest a somewhat fiery temper, but that's likely just an exaggeration..."
 
         "Silver.":
             $ persistent.eyecolor = "silver"
             $ show_chr("A-ABGAA-AAAA")
-            y "Oh, you have silver eyes. That's really nice."
+            y "Silver eyes... that's exceptionally rare and quite striking."
             $ show_chr("A-CCAAA-AMAM")
-            y "And very rare."
+            y "They are indeed very rare."
             $ show_chr("A-BFBAA-AAAC")
-            y "Though silver eyes are considered very genetically close to blue eyes but aren't quite the same."
+            y "Silver eyes are often considered a very pale variant of blue, though they have a distinct quality all their own."
             $ show_chr("A-AFBAA-AAAC")
-            y "Scientists think silver eyes are simply a lighter variant of blue eyes."
+            y "Some theories suggest they're a lighter shade of blue, but they certainly possess a unique luminescence."
             $ show_chr("A-CEAAA-AAAA")
-            y "But most think they aren't blue eyes."
+            y "It's their distinctiveness that sets them apart from true blue."
             $ show_chr("A-ADAAA-ALAA")
-            y "That's why they're one of the rarest eye colors. Along with true blue and true green."
+            y "Along with true blue and true green, silver eyes are among the most uncommon."
             $ show_chr("A-BDAAA-ALAA")
-            y "Aside from that, silver eyed people are wise, gentle, and put all their passion into everything they do."
+            y "Those with silver eyes are often described as being wise, gentle, and deeply passionate about what they pursue."
             $ show_chr("A-BCAAA-ALAA")
-            y "They take love and romance very seriously. Likewise, silver-eyed people are analytic and rational, which makes them suitable to lead in any situation."
-            y "These are great people who will have a positive impact on all those around them."
+            y "They tend to approach love and romance with great sincerity. Their analytical and rational nature also makes them natural leaders."
+            y "They often have a positive influence on those around them."
 
         "Purple.":
             $ persistent.eyecolor = "purple"
             $ show_chr("A-ABGAA-AAAA")
-            y "Oh, you have Purple eyes. That's really nice."
+            y "Purple eyes... how unique. They almost remind me of... well, mine."
             $ show_chr("A-BBAAA-ADAA")
-            y "Though it's the same color as mine."
+            y "It's such an unusual color, isn't it?"
             $ show_chr("A-AAAAA-AMAM")
-            y "But yet, it's really nice."
+            y "But very beautiful, nonetheless."
             $ show_chr("A-ABAAA-AFAA")
-            y "Purple-eyed people tend to be immune from skin tanning or burning, despite the pigment being extraordinarily pale hue."
+            y "There are some fascinating, albeit somewhat mythical, accounts of people with purple eyes. Some lore suggests an unusual resilience or even a longer lifespan."
             $ show_chr("A-BDAAA-ALAA")
-            y "It's also said that people live for an entire year, sometimes even 150. Though their aging is said to stop when they turn 50 and they stop looking older than that even as they pass 100 years of age."
+            y "It's said that individuals with such rare eye colors possess a vivid imagination and a strong sense of self-esteem."
             $ show_chr("A-IJAAA-ALAA")
-            y "According to {i}Alexandria's Genesis (Purple Eyes): Fact Or Fallacy?{/i} A person who had Purple eyes lived for 122 years."
+            y "The idea of their aging slowing down, or them living exceptionally long lives, is quite captivating, though it borders on the fantastical."
             $ show_chr("A-ABBAA-ALAA")
-            y "Isn't that absolutely impressive?"
+            y "Isn't that absolutely remarkable to consider?"
             $ show_chr("A-ABBAA-AMAM")
-            y "Purple-eyed people also are highly imaginative, creative, possess lots of self-esteem, they are often perfectionists with high ideals and have lots of charisma."
+            y "They are often described as highly creative, possessing a great deal of charisma and a tendency towards perfectionism."
 
         "Other.":
             $ show_chr("A-ABGAA-AMAM")
-            y "Oh, I see. That's alright, I was pretty much limited in the options there."
+            y "Oh, I see. That's perfectly fine. My options were quite limited, I'm afraid."
             $ show_chr("A-ABGAA-AAAA")
-            y "But I know some facts as well."
+            y "But I do know a few things about other eye colors as well."
             $ show_chr("A-BBAAA-ADAA")
-            y "Like for example. Amber-eyed people appear to be reserved but are actually very charming and warm. They have a hint of mystery about them. They love having lots of friends and need to feel accepted; they thrive on social interaction."
+            y "For instance, amber eyes. People with them are often perceived as reserved, but are actually quite charming and warm, with an aura of mystery."
             $ show_chr("A-BAAAA-AAAF")
-            y "Amber eyes are more common in felines, but humans can also possess the ultra-rare yellowish, golden, or copper-colored eyes."
+            y "Amber eyes are more common in animals, but for humans, they're a beautiful, solid color that can range from yellowish to a coppery hue."
             $ show_chr("A-CBAAA-AAAF")
-            y "Unlike hazel eyes, amber eyes are a solid color and don't contain brown, green, or orange flecks, and it's likely that you're of Spanish, Asian, South American or South African descent."
+            y "Unlike hazel, amber eyes have a uniform color without flecks of other shades. They're quite distinctive."
             $ show_chr("A-ACAAA-AAAK")
-            y "True black eyes are uncommon.{w=0.5} Though it's believed that people with dark brown eyes are considered to have black eyes."
+            y "True black eyes are extremely rare. Often, what appears as black is actually a very dark shade of brown."
             $ show_chr("A-BAGAA-AMAM")
-            y "Black-eyed people are known to be secretive, passionate, and loyal, especially to their friends. At the same time, you're intuitive, and can tap into powerful energy. You're also hard working and will always give your best shot at whatever you are doing."
+            y "Individuals with very dark eyes, often perceived as black, are said to be passionate, loyal, and possess a deep intuition."
+            y "They're often hard-working and dedicated to their pursuits."
             $ show_chr("A-CDAAA-AMAM")
-            y "Red eyes are caused by a group of diseases called albinism."
+            y "And then there are red eyes, which are typically associated with albinism."
             $ show_chr("A-AFBAA-ACAA")
-            y "There are several kinds of albinism, and each affects the body somewhat differently."
+            y "Albinism is a genetic condition that affects pigmentation, and its manifestation can vary."
             $ show_chr("A-BFBAA-ADAA")
-            y "Generally, they are disorders that are inherited genetically which involve hypopigmentation of the parts of the body like the hair, skin or eyes."
-            y "When a person with albinism's eyes do appear red, it's because they are lacking melanin in both the epithelium layer and the stroma layer of their irises."
-            y "So, which one of them do you have?"
+            y "When eyes appear red, it's usually because there's a lack of melanin in the iris, allowing the blood vessels to show through."
+            y "So, which of these, or perhaps another, describes your eyes?"
             menu:
                 "Amber":
                     $ persistent.eyecolor = "amber"
                     $ show_chr("A-GBAAA-ALAA")
-                    y "Perfect. This time I won't make a mistake of saying an incorrect word for your eyes..."
+                    y "Perfect. It's important to get these details right."
                     $ show_chr("A-BBBCA-ALAA")
                     y "Ah! W-where was I now?"
 
                 "True Black":
                     $ persistent.eyecolor = "black"
                     $ show_chr("A-GBAAA-ALAA")
-                    y "Perfect. This time I won't make a mistake of saying an incorrect word for your eyes..."
+                    y "Perfect. It's important to get these details right."
                     $ show_chr("A-BBBCA-ALAA")
                     y "Ah! W-where was I now?"
 
@@ -444,42 +445,41 @@ label eternity_intro:
                 "Red":
                     $ persistent.eyecolor = "red"
                     $ show_chr("A-BDDAA-ACAA")
-                    y "Hold on a second... if you do have red eyes are you sure you have that disease?"
+                    y "Hold on... if your eyes are red, are you sure it's not something else? I mean, I don't want to assume..."
                     $ show_chr("A-ADAAA-AFAA")
-                    y "I ask because there might still be some people disguising themselves as fictional characters while playing this mod and they say they have red eyes."
-                    y "Unlike yours, those red eyes are commonly seen on vampires."
+                    y "Sometimes people might be referencing fictional characters, like vampires, with red eyes. I just want to be clear."
+                    y "Though, if it is albinism, it's a very fascinating condition."
                     $ show_chr("A-AFAAA-AFAA")
-                    y "Or maybe they are like the albinism's but with a true red tone."
+                    y "Or perhaps it's a true red tone, distinct from the way blood vessels might show through."
                     $ show_chr("A-AICAA-ALAA")
-                    y "Whichever it is... I do hope you didn't got through here to tell me you have red eyes when in actuality the thing red in your eyes is the sciera."
+                    y "I do hope you're not referring to the sclera, the white part of your eye, being red. That can sometimes be a sign of irritation."
                     $ show_chr("A-CDAAA-ALAA")
-                    y "The sciera is the white part of your eyes if you were wondering..."
+                    y "The sclera is, of course, the white part of your eye. Just for clarity."
                     $ show_chr("A-ADBAA-ALAA")
-                    y "Anyway, I trust you okay?"
+                    y "Anyway, I trust your word. Thank you for clarifying."
                     $ show_chr("A-BBBAA-ALAA")
-                    y "Sorry about that... where was I now?"
+                    y "Sorry about that... I can get a little too inquisitive sometimes. Where was I?"
 
 
         "I have Heterochromia":
             $ persistent.eyecolor = "heterochromatic"
             $ show_chr("A-ABGAA-AAAA")
-            y "What? Really? You have two different colored eyes?"
+            y "Heterochromia? That's absolutely remarkable!"
             $ show_chr("A-AABAA-ADAA")
-            y "Oh my... that's incredibly unique, incredibly rare."
+            y "To have two different colored eyes... it's incredibly rare and quite unique."
             $ show_chr("A-BBBBA-ADAA")
-            y "I'm impressed that you have incredibly different eye colors."
+            y "I'm truly impressed by such a distinctive feature."
             $ show_chr("A-ABGAA-AAAF")
-            y "Did you know that Heterochromia usually is benign. In other words, it's not an eye disease, and it doesn't affect visual acuity."
+            y "It's usually benign, meaning it doesn't affect vision, which is a relief to know. It's purely a beautiful variation."
             $ show_chr("A-CCAAA-AAAA")
-            y "Benign heterochromia can give a person a captivating, even exotic, appearance."
-            y "In fact, a number of celebrities including {i}Dan Aykroyd, Kate Bosworth, Henry Cavill, Alice Eve, Josh Henderson, Mila Kunis, Jane Seymour and Christopher Walken{/i} have heterochromia."
+            y "Benign heterochromia can give a person such a captivating, even exotic, appearance. It's truly a natural beauty."
+            y "I've read that many famous individuals have heterochromia, adding to their allure."
             $ show_chr("A-CBAAA-AAAA")
-            y "Heterochromia also occurs in animals."
+            y "It's not just in humans, either. It occurs quite frequently in certain animal breeds."
             $ show_chr("A-BBAAA-AKAA")
-            y "Breeds of dogs that commonly exhibit heterochromia include Siberian husky, Australian shepherd, border collie, Shetland sheepdog, Welsh corgi, Great Dane, dachshund and Chihuahua."
-            y "Such cat breeds include Turkish Van, Turkish angora, Japanese bobtail and sphynx."
+            y "Breeds like Siberian Huskies and Turkish Angoras are known for it. It seems to be a trait that's even selectively bred for in some cases."
             $ show_chr("A-BBAAA-ALAA")
-            y "Often such \"odd-eyed cats\" have been bred specifically to have this feature."
+            y "It's fascinating how nature expresses itself in such varied ways."
 
     window hide
     pause 1.5
@@ -753,7 +753,13 @@ label ch30_intro2:
                     $ show_chr("A-BFBAA-AAAC")
                     y "...unlikely... My mind might be clouded yet, but I'm sure I will remember the truth soon."
     else:
-        call intro_mods
+        # This python block now checks for mod files and jumps to the appropriate label.
+        if check_for_any_mod_persistent():
+            # If any mod file is found, jump to the mod detection dialogue.
+            $ renpy.jump("intro_mods")
+        else:
+            # If no mod files are found, jump to the pitstop.
+            $ renpy.jump("detection_pitstop")
 
 
 label detection_pitstop:
@@ -1013,47 +1019,65 @@ screen messagebox(message):
 
 label birthday_select_screen:
     python:
-        if persistent.bday_month:
-            persistent.bday_month = str(persistent.bday_month)
+        # Import the datetime module to get the current year
+        import datetime
+
+        # --- Function to check for a leap year ---
+        def is_leap(year):
+            """
+            Checks if a given year is a leap year according to the Gregorian calendar rules.
+            """
+            if (year % 4 == 0 and year % 100 != 0) or (year % 400 == 0):
+                return True
+            return False
+
+        # --- Month Input and Validation ---
+        while True:
             renpy.call_screen("birthday_input", "month")
-            while int(persistent.bday_month) > 12 or int(persistent.bday_month) < 1:
-                y("I don't know if that month even exists.")
-                renpy.call_screen("birthday_input", "month")
-            renpy.hide_screen("birthday_input")
-            persistent.bday_month = int(persistent.bday_month)
-        else:
-            repeat
-    python:
-        if persistent.bday_day:
-            persistent.bday_day = str(persistent.bday_day)
+            try:
+                month = int(persistent.bday_month)
+                if 1 <= month <= 12:
+                    persistent.bday_month = month
+                    break
+                else:
+                    y("I don't know if that month even exists. Please try again.")
+            except (ValueError, TypeError):
+                y("That doesn't seem to be a number. Could you please enter the month number?")
+
+        # --- Day Input and Validation ---
+        # Get the current year from the system to check for a leap year
+        current_year = datetime.datetime.now().year
+
+        # Determine the maximum number of days for the chosen month
+        if persistent.bday_month in [1, 3, 5, 7, 8, 10, 12]:
+            max_day = 31
+        elif persistent.bday_month in [4, 6, 9, 11]:
+            max_day = 30
+        elif persistent.bday_month == 2:
+            # Check if the current year is a leap year to set the correct max days for February
+            if is_leap(current_year):
+                max_day = 29
+            else:
+                max_day = 28
+            
+        while True:
             renpy.call_screen("birthday_input", "day")
-            while int(persistent.bday_day) > 31 or int(persistent.bday_day) < 1:
-                y("I don't know if that day even exists.")
-                renpy.call_screen("birthday_input", "day")
-            renpy.hide_screen("birthday_input")
-            persistent.bday_day = int(persistent.bday_day)
-        else:
-            repeat
+            try:
+                day = int(persistent.bday_day)
+                if 1 <= day <= max_day:
+                    persistent.bday_day = day
+                    break
+                else:
+                    if persistent.bday_month == 2 and day > 28:
+                         y("That day only exists in a leap year. Please try again.")
+                    else:
+                         y("That day doesn't exist in the month you chose. Please try again.")
+            except (ValueError, TypeError):
+                y("That doesn't seem to be a number. Could you please enter the day?")
+
+    # Hide the input screen once a valid date is confirmed
+    $ renpy.hide_screen("birthday_input")
     return
-
-screen birthday_input(type):
-    style_prefix "confirm"
-    add "gui/overlay/confirm.png"
-    #key "K_RETURN" action [Play("sound", gui.activate_sound), [Hide("day_input"), Function(finishday), Return(True)]]
-    frame:
-        has vbox:
-            xalign .5
-            yalign .5
-            spacing 30
-        label _("What is the [type] of your birthday?:"):
-            style "confirm_prompt"
-            xalign 0.5
-        input default "" value FieldInputValue(persistent, "bday_" + type) length 2 allow "1234567890"
-        hbox:
-            xalign 0.5
-            spacing 100
-
-            textbutton _("OK") action Return()
 
 image splash_intro = Movie(play="images/splash/splash-video.mp4", loops=0)
 
